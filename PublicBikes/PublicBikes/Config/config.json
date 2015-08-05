@@ -1,0 +1,7 @@
+﻿{
+  "ApplicationName": "PBike",
+  "SupportEmail": "yourSupport@support.fr",
+  "WindowsPhoneMapServiceToken": "YourWindowsPhoneMapServiceTokenHere",
+  "GoogleApiKey": "YourGoogleApiKeyHere",
+  "JcDecauxApiKey": "YourJcDecauxApiKeyHere"
+}
