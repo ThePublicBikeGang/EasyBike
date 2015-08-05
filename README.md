@@ -1,4 +1,4 @@
-## PublicBikes: A cross platform app for Public Bikes based on Xamarin. Join the GANG !
+## PBike: A cross platform app for Public Bikes based on Xamarin. Join the GANG !
 
 ![](https://github.com/MarcMagnin/PublicBikes/blob/master/PublicBikes/PublicBikes/Assets/Icon.png)
 
