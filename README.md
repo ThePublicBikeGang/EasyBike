@@ -5,6 +5,12 @@
 The objective of the project is to store on a shared library all the integration logic of public bike services.
 All services can be easily accessed with common interfaces.
 
+### Sources to help integration
+The Bike-sharing map
+https://www.google.com/maps/d/viewer?mid=zGPlSU9zZvZw.kmqv_ul1MfkI
+The Bike-sharing map twitter
+https://twitter.com/BikesharingMap
+
 ### List of cities 
 https://docs.google.com/spreadsheets/d/13Tim2Nvd41jKQim8dkglOsFcO_iTW7OBWGuAcSQrQUo/pubhtml
 
