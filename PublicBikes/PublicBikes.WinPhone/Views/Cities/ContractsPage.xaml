@@ -8,7 +8,7 @@
      xmlns:i="using:Microsoft.Xaml.Interactivity" 
     xmlns:viewModel="using:PublicBikes.ViewModels"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    
+    xmlns:imageExt="using:PublicBikes.Extensions"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance Type=viewModel:ContractsViewModel, IsDesignTimeCreatable=True}"
     
@@ -244,7 +244,6 @@
             </Setter>
         </Style>
         <DataTemplate x:Key="GroupHeaderDataTemplate">
-            <!-- Source="{Binding ImagePath}" -->
             <Grid Height="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="65"/>
@@ -252,9 +251,10 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Border BorderBrush="Black" Background="{ThemeResource PhoneAccentBrush}" Opacity="0.4" Grid.ColumnSpan="3"/>
-                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding ImagePath}" Margin="8"/>
-                <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding ImageSource}" Margin="8"/>
 
+                <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+              
                 <TextBlock Text="{Binding ItemsCounterStr}"  Grid.Column="2"
 								Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" VerticalAlignment="Bottom" Margin="0,0,5,5"/>
 

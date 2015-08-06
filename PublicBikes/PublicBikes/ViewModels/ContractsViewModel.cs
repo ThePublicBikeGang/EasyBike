@@ -2,13 +2,16 @@
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
+using PublicBikes.Config;
 using PublicBikes.Design;
 using PublicBikes.Models;
 using PublicBikes.Notification;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-
+using Xamarin.Forms;
+using System.Reflection;
+using System.IO;
 
 namespace PublicBikes.ViewModels
 {
@@ -19,6 +22,7 @@ namespace PublicBikes.ViewModels
         private readonly IRefreshService _refreshService;
         private readonly IDialogService _dialogService;
         private readonly INotificationService _notificationService;
+        private readonly IConfigService _configService;
 
         private RelayCommand<Contract> _contractTappedCommand;
         public ObservableCollection<ContractGroup> ContractGroups = new ObservableCollection<ContractGroup>();
@@ -34,13 +38,14 @@ namespace PublicBikes.ViewModels
         }
 
         [PreferredConstructor]
-        public ContractsViewModel(INotificationService notificationService, IDialogService dialogService, IContractService contractsService, IRefreshService refreshService, INavigationService navigationService)
+        public ContractsViewModel(IConfigService configService, INotificationService notificationService, IDialogService dialogService, IContractService contractsService, IRefreshService refreshService, INavigationService navigationService)
         {
             _notificationService = notificationService;
             _dialogService = dialogService;
             _navigationService = navigationService;
             _contractsService = contractsService;
             _refreshService = refreshService;
+            _configService = configService;
             Init();
         }
 
@@ -63,11 +68,24 @@ namespace PublicBikes.ViewModels
             var storedContracts = await _contractsService.GetContractsAsync();
             var staticContracts = _contractsService.GetStaticContracts();
             staticContracts = storedContracts.Union(staticContracts).ToList();
-            foreach (var contract in staticContracts.GroupBy(c => c.Pays).Select(c => c.First()).OrderBy(c => c.Pays).ToList())
+
+            var assembly = typeof(ContractsViewModel).GetTypeInfo().Assembly;
+            foreach (var contract in staticContracts.GroupBy(c => c.Country).Select(c => c.First()).OrderBy(c => c.Country).ToList())
             {
-                var group = new ContractGroup() { Title = contract.Pays, ImagePath = contract.PaysImage };
+                var imageMemoryStream = new MemoryStream();
+                byte[] testt = null;
+                try { 
+                using (var stream = assembly.GetManifestResourceStream($"PublicBikes.Assets.Flags.{contract.ISO31661}.png"))
+                {
+                    stream.CopyTo(imageMemoryStream);
+                        testt = imageMemoryStream.ToArray();
+                }
+                }
+                catch { }
+
+                var group = new ContractGroup() { Title = contract.Country, ImageSource = testt };
                 group.Items = new ObservableCollection<Contract>();
-                foreach (var c in staticContracts.Where(c => c.Pays == contract.Pays).OrderBy(c => c.Name).ToList())
+                foreach (var c in staticContracts.Where(c => c.Country == contract.Country).OrderBy(c => c.Name).ToList())
                 {
                     //if (storedContracts.Any(a => a.StorageName == c.StorageName))
                     //{

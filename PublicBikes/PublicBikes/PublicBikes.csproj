@@ -48,6 +48,7 @@
     <Compile Include="Config\IConfigService.cs" />
     <Compile Include="Design\DesignContractsService.cs" />
     <Compile Include="Design\DesignNavigationService.cs" />
+    <Compile Include="Extensions\ImageResourceExtension.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\ContractList.cs" />
     <Compile Include="Models\ContractsGroup.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Models\Contracts\PL\SzczecinContract.cs" />
     <Compile Include="Models\Contracts\PL\SzczecinModel.cs" />
     <Compile Include="Models\Contracts\StationModelBase.cs" />
+    <Compile Include="Services\FavoritesService.cs" />
     <Compile Include="Services\IContractService.cs" />
     <Compile Include="Services\IRefreshService.cs" />
     <Compile Include="Services\RefreshService.cs" />
@@ -137,27 +139,284 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.1.4.3.6376\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.1.4.3.6376\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.1.4.3.6376\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Serialization\" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Flags\AE.png" />
+    <EmbeddedResource Include="Assets\Flags\AT.png" />
+    <EmbeddedResource Include="Assets\Flags\AU.png" />
+    <EmbeddedResource Include="Assets\Flags\AZ.png" />
+    <EmbeddedResource Include="Assets\Flags\BE.png" />
+    <EmbeddedResource Include="Assets\Flags\BG.png" />
+    <EmbeddedResource Include="Assets\Flags\CA.png" />
+    <EmbeddedResource Include="Assets\Flags\CH.png" />
+    <EmbeddedResource Include="Assets\Flags\CL.png" />
+    <EmbeddedResource Include="Assets\Flags\CN.png" />
+    <EmbeddedResource Include="Assets\Flags\CY.png" />
+    <EmbeddedResource Include="Assets\Flags\DE.png" />
+    <EmbeddedResource Include="Assets\Flags\ES.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Afghanistan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Albania.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Algeria.png" />
+    <Content Include="Assets\Flags\flags_style1_small\American_Samoa.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Andorra.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Angola.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Anguilla.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Antigua_and_Barbuda.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Argentina.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Armenia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Aruba.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Australia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Austria.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Azerbaijan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Bahamas.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Bahrain.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Bangladesh.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Barbados.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Belarus.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Belgium.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Belize.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Benin.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Bermuda.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Bhutan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Bolivia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Bosnia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Botswana.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Brazil.png" />
+    <Content Include="Assets\Flags\flags_style1_small\British_Virgin_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Brunei.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Bulgaria.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Burkina_Faso.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Burundi.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Cambodia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Cameroon.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Canada.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Cape_Verde.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Cayman_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Central_African_Republic.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Chad.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Chile.png" />
+    <Content Include="Assets\Flags\flags_style1_small\China.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Christmas_Island.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Colombia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Comoros.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Cook_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Costa_Rica.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Croatia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Cuba.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Cyprus.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Czech_Republic.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Côte_d%27Ivoire.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Democratic_Republic_of_the_Congo.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Denmark.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Djibouti.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Dominica.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Dominican_Republic.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Ecuador.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Egypt.png" />
+    <Content Include="Assets\Flags\flags_style1_small\El_Salvador.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Equatorial_Guinea.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Eritrea.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Estonia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Ethiopia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Falkland_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Faroe_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Fiji.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Finland.png" />
+    <Content Include="Assets\Flags\flags_style1_small\France.png" />
+    <Content Include="Assets\Flags\flags_style1_small\French_Polynesia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Gabon.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Gambia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Georgia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Germany.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Ghana.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Gibraltar.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Greece.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Greenland.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Grenada.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Guam.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Guatemala.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Guinea.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Guinea_Bissau.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Guyana.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Haiti.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Honduras.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Hong_Kong.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Hungary.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Iceland.png" />
+    <Content Include="Assets\Flags\flags_style1_small\India.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Indonesia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Iran.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Iraq.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Ireland.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Israel.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Italy.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Jamaica.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Japan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Jordan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Kazakhstan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Kenya.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Kiribati.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Kuwait.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Kyrgyzstan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Laos.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Latvia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Lebanon.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Lesotho.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Liberia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Libya.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Liechtenstein.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Lithuania.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Luxembourg.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Macao.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Macedonia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Madagascar.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Malawi.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Malaysia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Maldives.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Mali.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Malta.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Marshall_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Martinique.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Mauritania.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Mauritius.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Mexico.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Micronesia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Moldova.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Monaco.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Mongolia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Montserrat.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Morocco.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Mozambique.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Myanmar.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Namibia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Nauru.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Nepal.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Netherlands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Netherlands_Antilles.png" />
+    <Content Include="Assets\Flags\flags_style1_small\New_Zealand.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Nicaragua.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Niger.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Nigeria.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Niue.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Norfolk_Island.png" />
+    <Content Include="Assets\Flags\flags_style1_small\North_Korea.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Norway.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Oman.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Pakistan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Palau.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Panama.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Papua_New_Guinea.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Paraguay.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Peru.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Philippines.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Pitcairn_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Poland.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Portugal.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Puerto_Rico.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Qatar.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Republic_of_the_Congo.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Romania.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Russian_Federation.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Rwanda.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Saint_Kitts_and_Nevis.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Saint_Lucia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Saint_Pierre.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Saint_Vicent_and_the_Grenadines.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Samoa.png" />
+    <Content Include="Assets\Flags\flags_style1_small\San_Marino.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Sao_Tomé_and_Príncipe.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Saudi_Arabia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Senegal.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Serbia_and_Montenegro.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Seychelles.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Sierra_Leone.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Singapore.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Slovakia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Slovenia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Soloman_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Somalia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\South_Africa.png" />
+    <Content Include="Assets\Flags\flags_style1_small\South_Georgia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\South_Korea.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Soviet_Union.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Spain.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Sri_Lanka.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Sudan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Suriname.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Swaziland.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Sweden.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Switzerland.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Syria.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Taiwan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Tajikistan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Tanzania.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Thailand.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Tibet.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Timor-Leste.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Togo.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Tonga.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Trinidad_and_Tobago.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Tunisia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Turkey.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Turkmenistan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Turks_and_Caicos_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Tuvalu.png" />
+    <Content Include="Assets\Flags\flags_style1_small\UAE.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Uganda.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Ukraine.png" />
+    <Content Include="Assets\Flags\flags_style1_small\United_Kingdom.png" />
+    <Content Include="Assets\Flags\flags_style1_small\United_States_of_America.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Uruguay.png" />
+    <Content Include="Assets\Flags\flags_style1_small\US_Virgin_Islands.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Uzbekistan.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Vanuatu.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Vatican_City.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Venezuela.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Vietnam.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Wallis_and_Futuna.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Yemen.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Zambia.png" />
+    <Content Include="Assets\Flags\flags_style1_small\Zimbabwe.png" />
+    <EmbeddedResource Include="Assets\Flags\FR.png" />
+    <EmbeddedResource Include="Assets\Flags\GB.png" />
+    <EmbeddedResource Include="Assets\Flags\GR.png" />
+    <EmbeddedResource Include="Assets\Flags\HR.png" />
+    <EmbeddedResource Include="Assets\Flags\HU.png" />
+    <EmbeddedResource Include="Assets\Flags\JP.png" />
+    <EmbeddedResource Include="Assets\Flags\LT.png" />
+    <EmbeddedResource Include="Assets\Flags\LU.png" />
+    <EmbeddedResource Include="Assets\Flags\LV.png" />
+    <EmbeddedResource Include="Assets\Flags\NO.png" />
+    <EmbeddedResource Include="Assets\Flags\NZ.png" />
+    <EmbeddedResource Include="Assets\Flags\PL.png" />
+    <EmbeddedResource Include="Assets\Flags\RU.png" />
+    <EmbeddedResource Include="Assets\Flags\SE.png" />
+    <EmbeddedResource Include="Assets\Flags\SI.png" />
+    <EmbeddedResource Include="Assets\Flags\TR.png" />
+    <EmbeddedResource Include="Assets\Flags\TW.png" />
+    <EmbeddedResource Include="Assets\Flags\US.png" />
+    <Content Include="Assets\Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
 </Project>

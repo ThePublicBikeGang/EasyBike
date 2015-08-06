@@ -9,7 +9,7 @@ namespace PublicBikes.Models
         public string Title { get; set; }
         public string Subtitle { get; set; }
         public string Description { get; set; }
-        public string ImagePath { get; set; }
+        public object ImageSource { get; set; }
         public int ItemsCounter { get; set; }
         public string ItemsCounterStr
         {

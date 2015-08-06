@@ -1,8 +1,11 @@
 ﻿using PublicBikes.ViewModels;
 using PublicBikes.WinPhone.Common;
+using System.Diagnostics;
+using System.IO;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -80,7 +83,7 @@ namespace PublicBikes.WinPhone.Views.Cities
         /// </summary>
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override  void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
             DataContext = e.Parameter;
@@ -88,6 +91,19 @@ namespace PublicBikes.WinPhone.Views.Cities
             contractCollectionViewSource.IsSourceGrouped = true;
             contractCollectionViewSource.Source = (DataContext as ContractsViewModel).ContractGroups;
             contractCollectionViewSource.ItemsPath = new PropertyPath("Items");
+
+            foreach (var c in (DataContext as ContractsViewModel).ContractGroups)
+            {
+                var bitmap = new BitmapImage();
+                if(c.ImageSource != null)
+                {
+                    using (var ms = new MemoryStream((c.ImageSource as byte[])))
+                    {
+                        bitmap.SetSourceAsync(WindowsRuntimeStreamExtensions.AsRandomAccessStream(ms));
+                    }
+                    c.ImageSource = bitmap;
+                }
+            }
             ContractListView.ItemsSource = contractCollectionViewSource.View;
         }
 

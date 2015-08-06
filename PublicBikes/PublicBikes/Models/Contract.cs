@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Ioc;
+using PublicBikes.Config;
 using PublicBikes.Models.Contracts;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,6 @@ namespace PublicBikes.Models
 {
     public abstract class Contract : ObservableObject
     {
-
 
         public bool DirectDownloadAvailability { get; set; } = true;
         public string AvailabilityUrl { get; set; }
@@ -41,7 +42,7 @@ namespace PublicBikes.Models
             set { storageName = value; }
         }
         public string Id { get; set; }
-        public string Pays { get; set; }
+        public string Country { get; set; }
         public string Description { get; set; }
 
         public bool DownloadingAvailability { get; set; }
@@ -66,8 +67,8 @@ namespace PublicBikes.Models
             }
         }
 
-        public string PaysImage { get; set; }
-
+        public string ISO31661 { get; set; }
+      
         public List<Station> Stations { get; set; }
 
 

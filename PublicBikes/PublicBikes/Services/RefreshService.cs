@@ -11,7 +11,6 @@ namespace PublicBikes.Models
         private List<Contract> contracts = new List<Contract>();
         public event EventHandler ContractRefreshed;
 
-
         public RefreshService()
         {
             StartRefreshAsync();

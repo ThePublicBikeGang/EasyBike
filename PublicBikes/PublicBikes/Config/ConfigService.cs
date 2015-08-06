@@ -9,6 +9,16 @@ namespace PublicBikes.Config
     public class ConfigService : IConfigService
     {
         private ConfigModel _config;
+        public string AssetsPath
+        {
+            get;
+            private set;
+        }
+
+        public ConfigService()
+        {
+            AssetsPath = $"{GetType().Namespace}.Assets.Flag.";
+        }
 
         public async Task<ConfigModel> GetConfigAsync()
         {

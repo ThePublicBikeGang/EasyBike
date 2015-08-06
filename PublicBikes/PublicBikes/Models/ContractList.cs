@@ -22,28 +22,32 @@ namespace PublicBikes.Models
             #region FR
             new JcDecauxContract{Name = "Amiens",
             ServiceProvider="Vélam', JCDecaux",
-            Pays = "France"},
+            ISO31661 = "FR",
+            Country = "France"},
             new JcDecauxContract{Name = "Besancon",
             ServiceProvider="VéloCité, JCDecaux",
-            Pays = "France"},
+            ISO31661 = "FR",
+            Country = "France"},
             new JcDecauxContract{Name = "Paris",
             ServiceProvider="Vélib', JCDecaux",
-            Pays = "France"},
+            ISO31661 = "FR",
+            Country = "France"},
             #endregion
 
             #region PL
             // les stations peuvent etre aussi récup depuis https://www.bikes-srm.pl/LocationsMap.aspx dans la variable js : var mapDataLocations
             new SzczecinContract{Name = "Szczecin",
             ServiceProvider = "Bike_S, BikeU, Smoove",
-            PaysImage = "/PL.png",
-            Pays = "Poland"},
+            ISO31661 = "PL",
+            Country = "Poland"},
             #endregion
 
             #region UK
             
             new BarclayBikes{Name = "London",
             ServiceProvider="Barclay",
-            Pays = "Uk"},
+            ISO31661 = "UK",
+            Country = "United Kingdoms"},
             #endregion
         };
     }
