@@ -52,6 +52,9 @@
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\ContractList.cs" />
     <Compile Include="Models\ContractsGroup.cs" />
+    <Compile Include="Models\Favorites\Favorite.cs" />
+    <Compile Include="Models\Favorites\FavoritesService.cs" />
+    <Compile Include="Models\Favorites\IFavoritesService.cs" />
     <Compile Include="Notification\GoToPageNotification.cs" />
     <Compile Include="Notification\SendEmailNotification.cs" />
     <Compile Include="Services\ContractService.cs" />
@@ -61,7 +64,6 @@
     <Compile Include="Models\Contracts\PL\SzczecinContract.cs" />
     <Compile Include="Models\Contracts\PL\SzczecinModel.cs" />
     <Compile Include="Models\Contracts\StationModelBase.cs" />
-    <Compile Include="Services\FavoritesService.cs" />
     <Compile Include="Services\IContractService.cs" />
     <Compile Include="Services\IRefreshService.cs" />
     <Compile Include="Services\RefreshService.cs" />
@@ -75,14 +77,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Settings\SettingsService.cs" />
     <Compile Include="ViewModels\ContractsViewModel.cs" />
+    <Compile Include="ViewModels\FavoritesViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Config\config.json" />
-    <None Include="app.config" />
     <EmbeddedResource Include="Config\MyConfig.json" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

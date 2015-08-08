@@ -1,35 +1,26 @@
-﻿using PublicBikes.ViewModels;
+﻿using GalaSoft.MvvmLight.Ioc;
+using PublicBikes.ViewModels;
 using PublicBikes.WinPhone.Common;
-using System.Diagnostics;
-using System.IO;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
-// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
-
-namespace PublicBikes.WinPhone.Views.Cities
+namespace PublicBikes.WinPhone.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ContractsPage : Page
+    public sealed partial class FavoritesPage : Page
     {
         private NavigationHelper navigationHelper;
-        private CollectionViewSource contractCollectionViewSource = new CollectionViewSource();
 
-
-        public ContractsPage()
+        public FavoritesPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            this.navigationHelper = new NavigationHelper(this);
-            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
-            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-
-           
+            navigationHelper = new NavigationHelper(this);
+            navigationHelper.LoadState += NavigationHelper_LoadState;
+            navigationHelper.SaveState += NavigationHelper_SaveState;
+            NavigationCacheMode = NavigationCacheMode.Disabled;
         }
 
         /// <summary>
@@ -37,9 +28,8 @@ namespace PublicBikes.WinPhone.Views.Cities
         /// </summary>
         public NavigationHelper NavigationHelper
         {
-            get { return this.navigationHelper; }
+            get { return navigationHelper; }
         }
-
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
@@ -83,35 +73,27 @@ namespace PublicBikes.WinPhone.Views.Cities
         /// </summary>
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
-        protected override  void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedTo(e);
+            navigationHelper.OnNavigatedTo(e);
             DataContext = e.Parameter;
-
-            contractCollectionViewSource.IsSourceGrouped = true;
-            contractCollectionViewSource.Source = (DataContext as ContractsViewModel).ContractGroups;
-            contractCollectionViewSource.ItemsPath = new PropertyPath("Items");
-
-            foreach (var c in (DataContext as ContractsViewModel).ContractGroups)
-            {
-                var bitmap = new BitmapImage();
-                if(c.ImageSource != null)
-                {
-                    using (var ms = new MemoryStream((c.ImageSource as byte[])))
-                    {
-                        bitmap.SetSourceAsync(WindowsRuntimeStreamExtensions.AsRandomAccessStream(ms));
-                    }
-                    c.ImageSource = bitmap;
-                }
-            }
-            ContractListView.ItemsSource = contractCollectionViewSource.View;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedFrom(e);
+            navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion
+
+        private void AppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

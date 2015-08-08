@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Views;
 using PublicBikes.Models.Storage;
 using PublicBikes.Notification;
 using PublicBikes.Services;
+using PublicBikes.Models.Favorites;
 
 namespace PublicBikes.ViewModels
 {
@@ -15,6 +16,7 @@ namespace PublicBikes.ViewModels
         public const string AddCommentPageKey = "AddCommentPage";
         public const string ContractsPageKey = "ContractsPage";
         public const string SettingsPageKey = "SettingsPage";
+        public const string FavoritesPageKey = "Favorites";
 
         public MainViewModel Main
         {
@@ -32,6 +34,13 @@ namespace PublicBikes.ViewModels
             }
         }
 
+        public FavoritesViewModel FavoritesViewModel
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<FavoritesViewModel>();
+            }
+        }
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
@@ -39,6 +48,7 @@ namespace PublicBikes.ViewModels
             SimpleIoc.Default.Register<IStorageService, StorageService>();
             SimpleIoc.Default.Register<IRefreshService, RefreshService>(true);
             SimpleIoc.Default.Register<INotificationService, NotificationService>();
+            SimpleIoc.Default.Register<IFavoritesService, FavoritesService>();
 
             if (GalaSoft.MvvmLight.ViewModelBase.IsInDesignModeStatic)
             {
@@ -55,6 +65,7 @@ namespace PublicBikes.ViewModels
             SimpleIoc.Default.Register<ISettingsService, SettingsService>(true);
 
             // ViewModels
+            SimpleIoc.Default.Register<FavoritesViewModel>();
             SimpleIoc.Default.Register<SettingsViewModel>();
             SimpleIoc.Default.Register<ContractsViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();

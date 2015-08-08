@@ -98,16 +98,21 @@
     <Compile Include="Converters\ItemClickedConverter.cs" />
     <Compile Include="Converters\MemoryStreamToBitmapImageConverter.cs" />
     <Compile Include="Converters\NullOrEmptyToVisibilityConverter.cs" />
+    <Compile Include="Converters\SelectionChangedConverter.cs" />
     <Compile Include="Helpers\ClusterGenerator.cs" />
     <Compile Include="Helpers\MapExtensions.cs" />
     <Compile Include="Helpers\PhonePageBase.cs" />
     <Compile Include="Helpers\StationControl.cs" />
+    <Compile Include="Helpers\VisualStateHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Cities\ContractsPage.xaml.cs">
+    <Compile Include="Views\ContractsPage.xaml.cs">
       <DependentUpon>ContractsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FavoritesPages.xaml.cs">
+      <DependentUpon>FavoritesPages.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -135,7 +140,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Cities\ContractsPage.xaml">
+    <Page Include="Views\ContractsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FavoritesPages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

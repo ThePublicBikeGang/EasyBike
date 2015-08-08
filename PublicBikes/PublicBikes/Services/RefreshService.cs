@@ -25,7 +25,7 @@ namespace PublicBikes.Models
                      await c.RefreshAsync().ConfigureAwait(false);
                      ContractRefreshed?.Invoke(c, EventArgs.Empty);
                  });
-                await Task.Delay(3000);
+                await Task.Delay(3000).ConfigureAwait(false);
             }
         }
 

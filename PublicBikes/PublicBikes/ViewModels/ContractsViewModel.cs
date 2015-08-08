@@ -81,7 +81,9 @@ namespace PublicBikes.ViewModels
                         testt = imageMemoryStream.ToArray();
                 }
                 }
-                catch { }
+                catch (Exception e){
+
+                }
 
                 var group = new ContractGroup() { Title = contract.Country, ImageSource = testt };
                 group.Items = new ObservableCollection<Contract>();

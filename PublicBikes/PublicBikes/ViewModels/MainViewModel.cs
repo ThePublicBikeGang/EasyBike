@@ -7,6 +7,8 @@ using PublicBikes.Models.Storage;
 using PublicBikes.Models;
 using System.Linq;
 using PublicBikes.Notification;
+using System;
+using PublicBikes.Models.Favorites;
 
 namespace PublicBikes.ViewModels
 {
@@ -21,6 +23,7 @@ namespace PublicBikes.ViewModels
         private readonly ISettingsService _settingsService;
         private readonly INotificationService _notificationService;
         private readonly IDialogService _dialogService;
+        public event EventHandler FireGoToFavorite;
 
         public MainViewModel(IDialogService dialogService, INotificationService notificationService, ISettingsService settingsService, INavigationService navigationService, IConfigService configService, IStorageService storageService, IRefreshService refreshService)
         {
@@ -50,6 +53,12 @@ namespace PublicBikes.ViewModels
             MapServiceToken = (await _configService.GetConfigAsync()).WindowsPhoneMapServiceToken;
 
         }
+
+        public void GoToFavorite(Favorite favorite)
+        {
+            FireGoToFavorite?.Invoke(favorite, EventArgs.Empty);
+        }
+
         public RelayCommand ShowContractsCommand
         {
             get
@@ -139,7 +148,7 @@ namespace PublicBikes.ViewModels
                        ?? (goToFavoritsCommand = new RelayCommand(
                            () =>
                            {
-
+                               _navigationService.NavigateTo(ViewModelLocator.FavoritesPageKey, SimpleIoc.Default.GetInstanceWithoutCaching<FavoritesViewModel>());
                            }));
             }
         }

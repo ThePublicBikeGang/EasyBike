@@ -31,7 +31,7 @@ namespace PublicBikes.Config
                     platform = "WinPhone";
                 }
                 var configFile = "config.json";
-#if MYDEBUG
+#if DEBUG
                 configFile = "MyConfig.json";
 #endif
                 var resource = $"{GetType().Namespace}.{configFile}";

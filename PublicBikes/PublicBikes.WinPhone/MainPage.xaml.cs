@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
+using Microsoft.Practices.ServiceLocation;
 using PublicBikes.Config;
 using PublicBikes.Models;
+using PublicBikes.Models.Favorites;
 using PublicBikes.Models.Storage;
 using PublicBikes.Notification;
 using PublicBikes.ViewModels;
@@ -89,6 +91,8 @@ namespace PublicBikes.WinPhone
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _dialogService = SimpleIoc.Default.GetInstance<IDialogService>();
 
+            ServiceLocator.Current.GetInstance<MainViewModel>().FireGoToFavorite += MainPage_FireGoToFavorite;
+
             _notificationService.OnNotify += _notificationService_OnNotify;
 
 
@@ -165,6 +169,7 @@ namespace PublicBikes.WinPhone
 
         }
 
+
         private async void _notificationService_OnNotify(object sender, Notification.Notification e)
         {
             if (e is SendEmailNotification)
@@ -211,6 +216,22 @@ namespace PublicBikes.WinPhone
                 VisualStateManager.GoToState((Control)model.Control, "Click", true);
             }
         }
+        private void MainPage_FireGoToFavorite(object sender, EventArgs e)
+        {
+            var favorite = (sender as Favorite);
+            var destination = new Geopoint(
+                                new BasicGeoposition()
+                                {
+                                    Latitude = favorite.Latitude,
+                                    Longitude = favorite.Longitude
+                                });
+            StopCompassAndUserLocationTracking();
+            MapCtrl.Heading = 0;
+            MapCtrl.Routes.Clear();
+            GetRoute(destination, favorite);
+        }
+
+
         private void FavoriteNameTextBox_KeyUp(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
@@ -218,7 +239,52 @@ namespace PublicBikes.WinPhone
                 (DataContext as MainViewModel).AddToFavCommand.Execute(null);
             }
         }
+        private async void FavoriteNameButtonOk_Click(object sender, RoutedEventArgs e)
+        {
 
+            var name = FavoriteNameTextBox.Text;
+            if (string.IsNullOrWhiteSpace(FavoriteNameTextBox.Text))
+            {
+                var dialog = new MessageDialog("Sorry, favorite name can't be empty.");
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    await dialog.ShowAsync();
+                    FavoriteFlyout.ShowAt(this);
+                });
+                return;
+            }
+            if (PreviousSelectedItem is StationControl)
+            {
+                var control = PreviousSelectedItem as StationControl;
+                var station = control.Stations.FirstOrDefault();
+                if (station != null)
+                {
+                    await ServiceLocator.Current.GetInstance<IFavoritesService>().AddFavoriteAsync(
+                    new Favorite
+                    {
+                        Latitude = station.Latitude,
+                        Longitude = station.Longitude,
+                        Name = name
+                    });
+                }
+            }
+
+            else if (PreviousSelectedItem == SearchLocationPoint)
+            {
+                await ServiceLocator.Current.GetInstance<IFavoritesService>().AddFavoriteAsync(
+                    new Favorite
+                    {
+                        Latitude = LastSearchGeopoint.Position.Latitude,
+                        Longitude = LastSearchGeopoint.Position.Longitude,
+                        Name = name,
+                        Address = SearchLocationText.Text != "Searching address..." ? SearchLocationText.Text : ""
+                    });
+
+                SearchLocationText.Text = name;
+            }
+
+            FavoriteFlyout.Hide();
+        }
 
         private async void LocationButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
@@ -425,16 +491,16 @@ namespace PublicBikes.WinPhone
 
             dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-        // UpdateNorthElementAngle(MapCtrl.Heading);
-        UpdateUserLocationElementAngle(angle - MapCtrl.Heading);
+                // UpdateNorthElementAngle(MapCtrl.Heading);
+                UpdateUserLocationElementAngle(angle - MapCtrl.Heading);
                 if (compassMode)
                 {
-            //.Heading = angle;
-            SetView(userLastLocation, null, angle, null, MapAnimationKind.Linear);
-            //MapCtrl.TrySetViewAsync(userLastLocation, null, angle, null, MapAnimationKind.Linear);
-            //MapCtrl.Heading = angle;
+                    //.Heading = angle;
+                    SetView(userLastLocation, null, angle, null, MapAnimationKind.Linear);
+                    //MapCtrl.TrySetViewAsync(userLastLocation, null, angle, null, MapAnimationKind.Linear);
+                    //MapCtrl.Heading = angle;
 
-        }
+                }
 
 
 
@@ -474,14 +540,14 @@ namespace PublicBikes.WinPhone
                 refreshAccuracyIndicator();
 
                 var pixelDistance = userLastLocation.Position.GetDistancePixel(MapCtrl.Center.Position, MapCtrl.ZoomLevel);
-        // recalculate route if there is any big change in the position
-        if (MapCtrl.Routes.Count > 0)
+                // recalculate route if there is any big change in the position
+                if (MapCtrl.Routes.Count > 0)
                 {
                     if (previousBigChangeInUserLocation.Position.GetDistancePixel(userLastLocation.Position, MapCtrl.ZoomLevel) > 50)
                     {
                         previousBigChangeInUserLocation = userLastLocation;
-                // TODO GetRoute(LastSearchGeopoint);
-            }
+                        GetRoute(LastSearchGeopoint);
+                    }
                 }
                 if (stickToUserLocation)
                 {
@@ -489,12 +555,12 @@ namespace PublicBikes.WinPhone
                         SetView(userLastLocation, null, null, null, MapAnimationKind.None);
                     else
                     {
-                // only move center if the userlocation is far from the center
-                if (pixelDistance > 50)
+                        // only move center if the userlocation is far from the center
+                        if (pixelDistance > 50)
                         {
                             MapCtrl.TrySetViewAsync(userLastLocation, null, null, null, MapAnimationKind.Linear);
-                    //SetView(userLastLocation, null, null, null, MapAnimationKind.Linear);
-                }
+                            //SetView(userLastLocation, null, null, null, MapAnimationKind.Linear);
+                        }
                     }
                 }
                 ShowUserLocation();
@@ -711,15 +777,15 @@ namespace PublicBikes.WinPhone
                 HideSearch();
             }
         }
-        //public void GetRoute(Geopoint point, Favorite favorit = null)
-        //{
-        //    HideSearch();
+        public void GetRoute(Geopoint point, Favorite favorit = null)
+        {
+            HideSearch();
 
-        //    if (SearchRouteCancellationToken != null)
-        //        SearchRouteCancellationToken.Cancel();
-        //    SearchRouteCancellationToken = new CancellationTokenSource();
-        //    GetRouteWithToken(point, SearchRouteCancellationToken.Token, favorit);
-        //}
+            if (SearchRouteCancellationToken != null)
+                SearchRouteCancellationToken.Cancel();
+            SearchRouteCancellationToken = new CancellationTokenSource();
+            GetRouteWithToken(point, SearchRouteCancellationToken.Token, favorit);
+        }
 
 
 
@@ -735,87 +801,87 @@ namespace PublicBikes.WinPhone
         Geopoint previousRouteEndingPoint;
 
 
-        //public async void GetRouteWithToken(Geopoint endPoint, CancellationToken token, Favorite favorite = null, int retry = 0)
-        //{
-        //    if (favorite != null)
-        //    {
-        //        ShowSearchLocationPoint(endPoint, favorite.Name);
-        //        if (userLastLocation == null)
-        //        {
-        //            //var dialog = new MessageDialog(
-        //            //    "To get there, the phone must find your location first. Please wait a bit an try again.");
-        //            //await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-        //            //{
-        //            //    await dialog.ShowAsync();
-        //            //});
+        public async void GetRouteWithToken(Geopoint endPoint, CancellationToken token, Favorite favorite = null, int retry = 0)
+        {
+            if (favorite != null)
+            {
+                ShowSearchLocationPoint(endPoint, favorite.Name);
+                if (userLastLocation == null)
+                {
+                    //var dialog = new MessageDialog(
+                    //    "To get there, the phone must find your location first. Please wait a bit an try again.");
+                    //await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                    //{
+                    //    await dialog.ShowAsync();
+                    //});
 
-        //            await MapCtrl.TrySetViewAsync(endPoint, 15, 0, null);
-        //        }
-        //        else
-        //        {
-        //            // Fit the MapControl to the route.
-        //            await MapCtrl.TrySetViewBoundsAsync(MapExtensions.GetAreaFromLocations(new List<Geopoint>() { userLastLocation, endPoint }),
-        //                new Thickness(40, 40, 40, 40), MapAnimationKind.None);
-        //        }
-        //        return;
+                    await MapCtrl.TrySetViewAsync(endPoint, 15, 0, null);
+                }
+                else
+                {
+                    // Fit the MapControl to the route.
+                    await MapCtrl.TrySetViewBoundsAsync(MapExtensions.GetAreaFromLocations(new List<Geopoint>() { userLastLocation, endPoint }),
+                        new Thickness(40, 40, 40, 40), MapAnimationKind.None);
+                }
+                return;
 
-        //    }
+            }
 
-        //    if (userLastLocation == null)
-        //        return;
+            if (userLastLocation == null)
+                return;
 
-        //    if (previousRouteEndingPoint == endPoint && userLastLocation == previousRouteStartingPoint)
-        //    {
-        //        Debug.WriteLine("Skip route finder : same location provided.");
-        //        return;
-        //    }
-        //    previousRouteStartingPoint = userLastLocation;
-        //    previousRouteEndingPoint = endPoint;
-        //    var task = FindRoute(userLastLocation, endPoint);
-        //    if (task != await Task.WhenAny(task, Task.Delay(2000, token)))
-        //    {
-        //        MapCtrl.Routes.Clear();
-        //        // timout case 
-        //        Debug.WriteLine("get route TIMEOUT or CANCELED !");
-        //        // BUG : apparently MapRouteFinder.GetWalkingRouteAsync is on UI thread. don't recall it again
-        //        //  if (!token.IsCancellationRequested && retry < 5)
-        //        //       GetRouteWithToken(endPoint, token, null, ++retry);
-        //        return;
-        //    }
-        //    var routeResult = task.Result;
-        //    //var routeResult = task.Result;
-        //    Debug.WriteLine("get route ended with result : " + routeResult.Status);
-        //    if (routeResult.Status == MapRouteFinderStatus.Success)
-        //    {
+            if (previousRouteEndingPoint == endPoint && userLastLocation == previousRouteStartingPoint)
+            {
+                Debug.WriteLine("Skip route finder : same location provided.");
+                return;
+            }
+            previousRouteStartingPoint = userLastLocation;
+            previousRouteEndingPoint = endPoint;
+            var task = FindRoute(userLastLocation, endPoint);
+            if (task != await Task.WhenAny(task, Task.Delay(2000, token)))
+            {
+                MapCtrl.Routes.Clear();
+                // timout case 
+                Debug.WriteLine("get route TIMEOUT or CANCELED !");
+                // BUG : apparently MapRouteFinder.GetWalkingRouteAsync is on UI thread. don't recall it again
+                //  if (!token.IsCancellationRequested && retry < 5)
+                //       GetRouteWithToken(endPoint, token, null, ++retry);
+                return;
+            }
+            var routeResult = task.Result;
+            //var routeResult = task.Result;
+            Debug.WriteLine("get route ended with result : " + routeResult.Status);
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
 
-        //        // Use the route to initialize a MapRouteView.
-        //        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
-        //        viewOfRoute.RouteColor = new SolidColorBrush((Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush).Color).Color;
-        //        viewOfRoute.OutlineColor = Colors.Black;
-
-
-        //        if (previousMapRoute == null || previousMapRoute.LengthInMeters != routeResult.Route.LengthInMeters)
-        //        {
-        //            MapCtrl.Routes.Clear();
-        //            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-        //            {
-        //                // Add the new MapRouteView to the Routes collection
-        //                // of the MapControl.
-        //                MapCtrl.Routes.Add(viewOfRoute);
-
-        //                ShowUserLocation();
-
-        //            });
-        //        }
-        //        previousMapRoute = routeResult.Route;
-        //    }
-        //    else
-        //    {
-        //        MapCtrl.Routes.Clear();
-        //    }
+                // Use the route to initialize a MapRouteView.
+                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                viewOfRoute.RouteColor = new SolidColorBrush((Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush).Color).Color;
+                viewOfRoute.OutlineColor = Colors.Black;
 
 
-        //}
+                if (previousMapRoute == null || previousMapRoute.LengthInMeters != routeResult.Route.LengthInMeters)
+                {
+                    MapCtrl.Routes.Clear();
+                    Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                    {
+                        // Add the new MapRouteView to the Routes collection
+                        // of the MapControl.
+                        MapCtrl.Routes.Add(viewOfRoute);
+
+                        ShowUserLocation();
+
+                    });
+                }
+                previousMapRoute = routeResult.Route;
+            }
+            else
+            {
+                MapCtrl.Routes.Clear();
+            }
+
+
+        }
 
         public void HideSearchLocationPoint()
         {
@@ -882,7 +948,7 @@ namespace PublicBikes.WinPhone
             // Show the route if the user is at least 3 KM from the selected item
             if (userLastLocation != null && LastSearchGeopoint != null && LastSearchGeopoint.Position.GetDistanceKM(userLastLocation.Position) < 4)
             {
-                // TODO   GetRoute(LastSearchGeopoint);
+                GetRoute(LastSearchGeopoint);
             }
 
             PreviousSelectedItem = item;
@@ -1175,46 +1241,6 @@ namespace PublicBikes.WinPhone
         //        FavoriteNameButtonOk_Click(null, null);
         //    }
         //}
-
-        private async void FavoriteNameButtonOk_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-
-            //var name = FavoriteNameTextBox.Text;
-            //if (string.IsNullOrWhiteSpace(FavoriteNameTextBox.Text))
-            //{
-            //    var dialog = new MessageDialog("Sorry, favorite name can't be empty.");
-            //    await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
-            //        await dialog.ShowAsync();
-            //        FavoriteFlyout.ShowAt(this);
-            //    });
-            //    return;
-            //}
-            //if (PreviousSelectedItem is StationControl)
-            //{
-            //    var control = PreviousSelectedItem as StationControl;
-            //    var velib = control.Velibs.FirstOrDefault();
-            //    if (velib != null)
-            //    {
-            //        FavoritsViewModel.AddFavorit(new Favorite { Latitude = velib.Latitude, Longitude = velib.Longitude, Name = name, Address = velib.Address });
-            //    }
-            //}
-
-            //else if (PreviousSelectedItem == SearchLocationPoint)
-            //{
-
-            //    FavoritsViewModel.AddFavorit(new Favorite
-            //    {
-            //        Latitude = LastSearchGeopoint.Position.Latitude,
-            //        Longitude = LastSearchGeopoint.Position.Longitude,
-            //        Name = name,
-            //        Address = SearchLocationText.Text != "Searching address..." ? SearchLocationText.Text : ""
-            //    });
-            //    SearchLocationText.Text = name;
-
-            //}
-
-            //FavoriteFlyout.Hide();
-        }
 
 
 

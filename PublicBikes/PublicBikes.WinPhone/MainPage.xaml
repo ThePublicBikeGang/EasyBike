@@ -669,8 +669,6 @@
                                             <TextBlock
 								Style="{StaticResource FlyoutPickerTitleTextBlockStyle}" FontFamily="Global User Interface" Margin="0,19,0,10" FontSize="24">
 								<Run Text="Type a name"/>
-
-
                                             </TextBlock>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>

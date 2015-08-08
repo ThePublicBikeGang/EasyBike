@@ -17,6 +17,7 @@ namespace PublicBikes.WinPhone
             var nav = new WPNavigationService();
             nav.Configure(ViewModelLocator.ContractsPageKey, typeof(ContractsPage));
             nav.Configure(ViewModelLocator.SettingsPageKey, typeof(SettingsPage));
+            nav.Configure(ViewModelLocator.FavoritesPageKey, typeof(FavoritesPage));
 
             SimpleIoc.Default.Register<INavigationService>(() => nav);
             SimpleIoc.Default.Register<IDialogService, DialogService>();

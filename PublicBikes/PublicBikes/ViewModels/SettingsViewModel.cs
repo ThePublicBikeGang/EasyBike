@@ -46,7 +46,5 @@ namespace PublicBikes.ViewModels
         {
             await _settingsService.SetSettingsAsync(_settings);
         }
-
-   
     }
 }

@@ -21,6 +21,27 @@ namespace PublicBikes.Models.Storage
             Locator.CurrentMutable.RegisterConstant(jsonSettings, typeof(JsonSerializerSettings));
         }
 
+        public async Task StoreAsync<T>(string key, T obj)
+        {
+            await BlobCache.LocalMachine.InsertObject(key, obj);
+        }
+
+        public async Task<T> GetAsync<T>(string key)
+        {
+            return await BlobCache.LocalMachine.GetObject<T>(key);
+        }
+
+        public async Task<IEnumerable<T>> GetAsync<T>()
+        {
+            return await BlobCache.LocalMachine.GetAllObjects<T>();
+        }
+
+        public async Task RemoveAsync(string key)
+        {
+            await BlobCache.LocalMachine.Invalidate(key);
+        }
+
+
         public async Task StoreContractAsync(Contract contract)
         {
             await BlobCache.LocalMachine.InsertObject(contract.StorageName, contract);

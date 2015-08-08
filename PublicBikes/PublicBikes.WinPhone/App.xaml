@@ -9,7 +9,9 @@
             <vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:PublicBikes.ViewModels" />
 
 
+            
             <converters:MemoryStreamToBitmapImageConverter x:Key="MemoryStreamToBitmapImageConverter"></converters:MemoryStreamToBitmapImageConverter>
+            <converters:SelectionChangedConverter x:Key="SelectionChangedConverter"></converters:SelectionChangedConverter>
             <converters:ItemClickedConverter x:Key="ItemClickedConverter"></converters:ItemClickedConverter>
             <converters:BoolToVisibilityConverter x:Key="BoolToVisConverter"></converters:BoolToVisibilityConverter>
             <converters:NullOrEmptyToVisibilityConverter x:Key="NullOrEmptyToVisibilityConverter"></converters:NullOrEmptyToVisibilityConverter>
