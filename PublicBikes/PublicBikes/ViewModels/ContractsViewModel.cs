@@ -46,7 +46,7 @@ namespace PublicBikes.ViewModels
             _contractsService = contractsService;
             _refreshService = refreshService;
             _configService = configService;
-            Init();
+           
         }
 
 #if DEBUG
@@ -85,7 +85,7 @@ namespace PublicBikes.ViewModels
 
                 }
 
-                var group = new ContractGroup() { Title = contract.Country, ImageSource = testt };
+                var group = new ContractGroup() { Title = contract.Country, ImageByteArray = testt };
                 group.Items = new ObservableCollection<Contract>();
                 foreach (var c in staticContracts.Where(c => c.Country == contract.Country).OrderBy(c => c.Name).ToList())
                 {

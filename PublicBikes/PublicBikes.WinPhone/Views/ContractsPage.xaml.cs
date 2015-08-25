@@ -3,7 +3,11 @@ using PublicBikes.ViewModels;
 using PublicBikes.WinPhone.Common;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System;
 using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -86,34 +90,52 @@ namespace PublicBikes.WinPhone.Views.Cities
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
         private ObservableCollection<ContractGroup> _contracts;
-        protected override  void OnNavigatedTo(NavigationEventArgs e)
+        protected async override  void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
             DataContext = e.Parameter;
-
+            
             _contracts = (DataContext as ContractsViewModel).ContractGroups;
             _contracts.CollectionChanged += Contracts_CollectionChanged;
+
+
             contractCollectionViewSource.IsSourceGrouped = true;
             contractCollectionViewSource.Source = _contracts;
             contractCollectionViewSource.ItemsPath = new PropertyPath("Items");
             
             
             ContractListView.ItemsSource = contractCollectionViewSource.View;
+
+            (DataContext as ContractsViewModel).Init();
         }
 
-        private void Contracts_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        public async Task<BitmapImage> ByteArrayToImageAsync(byte[] pixeByte)
+        {
+            using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+            {
+                BitmapImage image = new BitmapImage();
+                await stream.WriteAsync(pixeByte.AsBuffer());
+                stream.Seek(0);
+                await image.SetSourceAsync(stream);
+                return image;
+            }
+        }
+
+        private async void Contracts_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             var c = e.NewItems[0] as ContractGroup;
             if(c != null)
             {
-                var bitmap = new BitmapImage();
-                if (c.ImageSource != null)
+                if (c.ImageByteArray != null)
                 {
-                    using (var ms = new MemoryStream((c.ImageSource as byte[])))
-                    {
-                        bitmap.SetSourceAsync(WindowsRuntimeStreamExtensions.AsRandomAccessStream(ms));
-                    }
+                    var bitmap = await ByteArrayToImageAsync(c.ImageByteArray as byte[]);
                     c.ImageSource = bitmap;
+
+                    //using (var ms = new MemoryStream((c.ImageSource as byte[])))
+                    //{
+                    //    bitmap.SetSourceAsync(WindowsRuntimeStreamExtensions.AsRandomAccessStream(ms));
+                    //}
+                    //c.ImageSource = bitmap;
                 }
             }
         }

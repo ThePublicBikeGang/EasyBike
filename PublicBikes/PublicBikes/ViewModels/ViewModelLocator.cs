@@ -17,6 +17,7 @@ namespace PublicBikes.ViewModels
         public const string ContractsPageKey = "ContractsPage";
         public const string SettingsPageKey = "SettingsPage";
         public const string FavoritesPageKey = "Favorites";
+        public const string AboutPageKey = "AboutPage";
 
         public MainViewModel Main
         {
@@ -62,9 +63,11 @@ namespace PublicBikes.ViewModels
             }
 
             SimpleIoc.Default.Register<IConfigService, ConfigService>();
+
             SimpleIoc.Default.Register<ISettingsService, SettingsService>(true);
 
             // ViewModels
+            SimpleIoc.Default.Register<AboutViewModel>();
             SimpleIoc.Default.Register<FavoritesViewModel>();
             SimpleIoc.Default.Register<SettingsViewModel>();
             SimpleIoc.Default.Register<ContractsViewModel>();

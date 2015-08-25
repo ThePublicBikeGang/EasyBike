@@ -1,6 +1,7 @@
 ﻿{
   "ApplicationName": "PBike",
   "SupportEmail": "yourSupport@support.fr",
+  "Twitter": "https://twitter.com/EasyBike_",
   "WindowsPhoneMapServiceToken": "YourWindowsPhoneMapServiceTokenHere",
   "GoogleApiKey": "YourGoogleApiKeyHere",
   "JcDecauxApiKey": "YourJcDecauxApiKeyHere"

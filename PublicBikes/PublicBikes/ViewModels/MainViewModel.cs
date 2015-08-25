@@ -134,7 +134,7 @@ namespace PublicBikes.ViewModels
                        ?? (aboutCommand = new RelayCommand(
                            () =>
                            {
-
+                               _navigationService.NavigateTo(ViewModelLocator.AboutPageKey, SimpleIoc.Default.GetInstanceWithoutCaching<AboutViewModel>());
                            }));
             }
         }

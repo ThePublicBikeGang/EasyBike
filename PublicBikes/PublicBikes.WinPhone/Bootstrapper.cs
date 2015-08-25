@@ -18,6 +18,7 @@ namespace PublicBikes.WinPhone
             nav.Configure(ViewModelLocator.ContractsPageKey, typeof(ContractsPage));
             nav.Configure(ViewModelLocator.SettingsPageKey, typeof(SettingsPage));
             nav.Configure(ViewModelLocator.FavoritesPageKey, typeof(FavoritesPage));
+            nav.Configure(ViewModelLocator.AboutPageKey, typeof(AboutPage));
 
             SimpleIoc.Default.Register<INavigationService>(() => nav);
             SimpleIoc.Default.Register<IDialogService, DialogService>();

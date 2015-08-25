@@ -251,7 +251,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Border BorderBrush="Black" Background="{ThemeResource PhoneAccentBrush}" Opacity="0.4" Grid.ColumnSpan="3"/>
-                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding ImageSource}" Margin="8"/>
+                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding ImageSource, TargetNullValue={x:Null}}" Margin="8"/>
 
                 <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
               
