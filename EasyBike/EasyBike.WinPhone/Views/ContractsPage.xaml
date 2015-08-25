@@ -1,0 +1,499 @@
+﻿<Page
+    x:Class="EasyBike.WinPhone.Views.Cities.ContractsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EasyBike.WinPhone.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:i="using:Microsoft.Xaml.Interactivity" 
+    xmlns:viewModel="using:EasyBike.ViewModels"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:imageExt="using:EasyBike.Extensions"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance Type=viewModel:ContractsViewModel, IsDesignTimeCreatable=True}"
+    
+	
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <!--xmlns:SampleData="using:Blend.SampleData.SampleDataSource"-->
+    <!--d:DataContext="{Binding Source={d:DesignData Source=/Contracts/SampleData.json}}"-->
+    <Page.Resources>
+        <!--<SampleData:SampleDataSource x:Key="SampleDataSource" d:IsDataSource="True"/>-->
+        <FontFamily x:Key="ContentControlThemeFontFamily">Segoe WP</FontFamily>
+        <x:Double x:Key="ControlContentThemeFontSize">12</x:Double>
+        <Thickness x:Key="ListViewItemMargin">0</Thickness>
+        <SolidColorBrush x:Key="CheckBoxBackgroundThemeBrush" Color="Transparent"/>
+        <x:Double x:Key="CheckBoxBorderThemeThickness">2.5</x:Double>
+        <x:Double x:Key="ListViewItemContentOffsetX">-40.5</x:Double>
+        <Thickness x:Key="ListViewItemMultiselectCheckBoxMargin">0,9.5,0,0</Thickness>
+        <Thickness x:Key="GridViewItemMultiselectBorderThickness">2.5</Thickness>
+        <x:Double x:Key="ListViewItemDisabledThemeOpacity">0.55</x:Double>
+        <x:Double x:Key="ListViewItemContentTranslateX">40.5</x:Double>
+        <x:Double x:Key="ListViewItemReorderHintThemeOffset">32</x:Double>
+        <Style x:Key="ListViewItemStyle1" TargetType="ListViewItem">
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="TabNavigation" Value="Local"/>
+            <Setter Property="IsHoldingEnabled" Value="False"/>
+            <Setter Property="Margin" Value="{ThemeResource ListViewItemMargin}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem" >
+                        <Border x:Name="OuterContainer" DataContext="{Binding DataContext, ElementName=contentPresenter}" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="ContentScaleTransform"/>
+                            </Border.RenderTransform>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition From="Pressed" To="Normal">
+                                            <Storyboard>
+                                                <PointerUpThemeAnimation Storyboard.TargetName="TiltContainer"/>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="TiltContainer"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckboxPressed">
+                                        <Storyboard>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="CheckboxTiltContainer"/>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="NormalRectangle">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CheckBoxPressedBackgroundThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="CheckGlyph">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CheckBoxPressedForegroundThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="{ThemeResource ListViewItemDisabledThemeOpacity}" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="contentPresenter"/>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Stroke" Storyboard.TargetName="NormalRectangle">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CheckBoxDisabledBorderThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Fill" Storyboard.TargetName="CheckGlyph">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CheckBoxDisabledForegroundThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="SelectedBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Fill" Storyboard.TargetName="SelectedEarmark">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Fill" Storyboard.TargetName="SelectedGlyph">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="CheckGlyph"/>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="SelectedCheckMark"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="CheckGlyph"/>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="SelectedCheckMark"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="DataVirtualizationStates">
+                                    <VisualState x:Name="DataAvailable"/>
+                                    <VisualState x:Name="DataPlaceholder">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PlaceholderTextBlock">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PlaceholderRect">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="MultiSelectStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition From="ListMultiSelect" GeneratedDuration="0:0:0.15" To="NoMultiSelect"/>
+                                        <VisualTransition From="NoMultiSelect" GeneratedDuration="0:0:0.15" To="ListMultiSelect"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="NoMultiSelect"/>
+                                    <VisualState x:Name="ListMultiSelect">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="X" Storyboard.TargetName="CheckboxContainerTranslateTransform"/>
+                                            <DoubleAnimation Duration="0" To="{ThemeResource ListViewItemContentTranslateX}" Storyboard.TargetProperty="X" Storyboard.TargetName="ContentBorderTranslateTransform"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="GridMultiSelect">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="SelectedBorder"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="ReorderModeStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition From="ReorderEnabled" GeneratedDuration="00:00:00.2" To="ReorderDisabled"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="ReorderEnabled">
+                                        <Storyboard>
+                                            <DropTargetItemThemeAnimation Storyboard.TargetName="OuterContainer"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Reorderable">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="ContentScaleTransform">
+                                                <LinearDoubleKeyFrame KeyTime="00:00:00.075" Value="1.05"/>
+                                                <LinearDoubleKeyFrame KeyTime="00:00:00.2" Value="1.0"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="ScaleY" Storyboard.TargetName="ContentScaleTransform">
+                                                <LinearDoubleKeyFrame KeyTime="00:00:00.075" Value="1.05"/>
+                                                <LinearDoubleKeyFrame KeyTime="00:00:00.2" Value="1.0"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="ReorderDisabled"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="ReorderHintStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.2" To="NoReorderHint"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="NoReorderHint"/>
+                                    <VisualState x:Name="BottomReorderHint">
+                                        <Storyboard>
+                                            <DragOverThemeAnimation Direction="Bottom" ToOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" Storyboard.TargetName="ReorderHintContent"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="RightReorderHint">
+                                        <Storyboard>
+                                            <DragOverThemeAnimation Direction="Right" ToOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" Storyboard.TargetName="ReorderHintContent"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="TopReorderHint">
+                                        <Storyboard>
+                                            <DragOverThemeAnimation Direction="Top" ToOffset="0" Storyboard.TargetName="ReorderHintContent"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="LeftReorderHint">
+                                        <Storyboard>
+                                            <DragOverThemeAnimation Direction="Left" ToOffset="0" Storyboard.TargetName="ReorderHintContent"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <i:Interaction.Behaviors>
+                                <core:DataTriggerBehavior Binding="{Binding Downloading}" Value="True">
+                                    <!--									<Core:GoToStateAction StateName="Disabled" />-->
+                                    <core:ChangePropertyAction PropertyName="Opacity" Value="0,5"/>
+                                    <core:ChangePropertyAction PropertyName="IsHitTestVisible" Value="False"/>
+                                </core:DataTriggerBehavior>
+                                <core:DataTriggerBehavior Binding="{Binding Downloading}" Value="False">
+                                    <core:ChangePropertyAction PropertyName="Opacity" Value="1"/>
+                                    <core:ChangePropertyAction PropertyName="IsHitTestVisible" Value="True"/>
+                                </core:DataTriggerBehavior>
+                                <!--<Core:DataTriggerBehavior Binding="{Binding Downloading}" Value="False">
+									<Core:GoToStateAction StateName="Normal"/>
+								</Core:DataTriggerBehavior>-->
+                            </i:Interaction.Behaviors>
+                            <Grid x:Name="ReorderHintContent" Background="Transparent">
+                                <Border x:Name="CheckboxTiltContainer" HorizontalAlignment="Left" Margin="{ThemeResource ListViewItemMultiselectCheckBoxMargin}" VerticalAlignment="Top">
+                                    <Border x:Name="CheckboxOuterContainer">
+                                        <Border.Clip>
+                                            <RectangleGeometry Rect="0,0,25.5,25.5"/>
+                                        </Border.Clip>
+                                        <Grid x:Name="CheckboxContainer">
+                                            <Grid.RenderTransform>
+                                                <TranslateTransform x:Name="CheckboxContainerTranslateTransform" X="{ThemeResource ListViewItemContentOffsetX}"/>
+                                            </Grid.RenderTransform>
+                                            <Rectangle x:Name="NormalRectangle" Fill="{ThemeResource CheckBoxBackgroundThemeBrush}" Height="25.5" Stroke="{ThemeResource CheckBoxBorderThemeBrush}" StrokeThickness="{ThemeResource CheckBoxBorderThemeThickness}" Width="25.5"/>
+                                            <Path x:Name="CheckGlyph" Data="M0,123 L39,93 L124,164 L256,18 L295,49 L124,240 z" Fill="{ThemeResource CheckBoxForegroundThemeBrush}" FlowDirection="LeftToRight" HorizontalAlignment="Center" Height="17" IsHitTestVisible="False" Opacity="0" Stretch="Fill" StrokeThickness="2.5" StrokeLineJoin="Round" VerticalAlignment="Center" Width="18.5"/>
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                                <Border x:Name="ContentContainer">
+                                    <Border x:Name="TiltContainer">
+                                        <Border x:Name="ContentBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                            <Border.RenderTransform>
+                                                <TranslateTransform x:Name="ContentBorderTranslateTransform"/>
+                                            </Border.RenderTransform>
+                                            <Grid>
+                                                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                <TextBlock x:Name="PlaceholderTextBlock" AutomationProperties.AccessibilityView="Raw" Foreground="{x:Null}" IsHitTestVisible="False" Margin="{TemplateBinding Padding}" Opacity="0" Text="Xg"/>
+                                                <Rectangle x:Name="PlaceholderRect" Fill="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" IsHitTestVisible="False" Visibility="Collapsed"/>
+                                            </Grid>
+                                        </Border>
+                                    </Border>
+                                </Border>
+                                <Border x:Name="SelectedBorder" BorderBrush="{ThemeResource ListViewItemSelectedBackgroundThemeBrush}" BorderThickness="{ThemeResource GridViewItemMultiselectBorderThickness}" IsHitTestVisible="False" Opacity="0">
+                                    <Grid x:Name="SelectedCheckMark" HorizontalAlignment="Right" Height="34" Opacity="0" VerticalAlignment="Top" Width="34">
+                                        <Path x:Name="SelectedEarmark" Data="M0,0 L40,0 L40,40 z" Fill="{ThemeResource ListViewItemSelectedBackgroundThemeBrush}" Stretch="Fill"/>
+                                        <Path x:Name="SelectedGlyph" Data="M0,123 L39,93 L124,164 L256,18 L295,49 L124,240 z" Fill="{ThemeResource ListViewItemCheckThemeBrush}" FlowDirection="LeftToRight" HorizontalAlignment="Right" Height="14.5" Margin="0,1,1,0" Stretch="Fill" VerticalAlignment="Top" Width="17"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="GroupHeaderDataTemplate">
+            <Grid Height="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="Black" Background="{ThemeResource PhoneAccentBrush}" Opacity="0.4" Grid.ColumnSpan="3"/>
+                <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding ImageSource, TargetNullValue={x:Null}}" Margin="8"/>
+
+                <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+              
+                <TextBlock Text="{Binding ItemsCounterStr}"  Grid.Column="2"
+								Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" VerticalAlignment="Bottom" Margin="0,0,5,5"/>
+
+            </Grid>
+
+
+        </DataTemplate>
+        <DataTemplate x:Key="ContractItemDataTemplate">
+            <TextBox Text="Test"/>
+        </DataTemplate>
+        <Style x:Key="GroupItemStyle1" TargetType="GroupItem">
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupItem">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <ContentControl x:Name="HeaderContent" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" Content="{TemplateBinding Content}" IsTabStop="False" Margin="{TemplateBinding Padding}" TabIndex="0"/>
+
+                                <ItemsControl x:Name="ItemsControl" IsTabStop="False" ItemsSource="{Binding Items}" Grid.Row="1" TabIndex="1" TabNavigation="Once" ItemTemplate="{StaticResource ContractItemDataTemplate}">
+                                    <ItemsControl.ItemContainerTransitions>
+                                        <TransitionCollection>
+                                            <AddDeleteThemeTransition/>
+                                            <ReorderThemeTransition/>
+                                        </TransitionCollection>
+                                    </ItemsControl.ItemContainerTransitions>
+
+                                </ItemsControl>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SemanticZoomStyle1" TargetType="SemanticZoom">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="TabNavigation" Value="Once"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="SemanticZoom">
+                        <Grid>
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" >
+                                <Grid Margin="{TemplateBinding Padding}">
+                                    <ContentPresenter x:Name="ZoomedInPresenter" Content="{TemplateBinding ZoomedInView}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    <Popup x:Name="Popup">
+                                        <Popup.ChildTransitions>
+                                            <TransitionCollection>
+                                                <PopupThemeTransition/>
+                                            </TransitionCollection>
+                                        </Popup.ChildTransitions>
+                                        <Border x:Name="PopupBorder" Background="{ThemeResource AppBarBackgroundThemeBrush}">
+                                            <ContentPresenter x:Name="ZoomedOutPresenter" Content="{TemplateBinding ZoomedOutView}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="GridViewHeaderItemContainerStyle1" TargetType="ListViewHeaderItem">
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewHeaderItem">
+                        <Border x:Name="TiltContainer" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition From="Pressed" To="PointerOver">
+                                            <Storyboard>
+                                                <PointerUpThemeAnimation Storyboard.TargetName="TiltContainer"/>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                        <VisualTransition From="PointerOver" To="Normal">
+                                            <Storyboard>
+                                                <PointerUpThemeAnimation Storyboard.TargetName="TiltContainer"/>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                        <VisualTransition From="Pressed" To="Normal">
+                                            <Storyboard>
+                                                <PointerUpThemeAnimation Storyboard.TargetName="TiltContainer"/>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Disabled"/>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="TiltContainer"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid x:Name="RootLayout">
+        <Grid.Transitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.Transitions>
+        <SemanticZoom Style="{StaticResource SemanticZoomStyle1}">
+
+            <SemanticZoom.ZoomedInView>
+                <ListView x:Name="ContractListView"
+			SelectionMode="None"
+			IsItemClickEnabled="True"
+			ItemContainerStyle="{StaticResource ListViewItemStyle1}" 
+			Margin="0">
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior  EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding ContractTappedCommand, Mode=OneWay}"
+                                                      
+                                  InputConverter="{StaticResource ItemClickedConverter}"/>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+
+                    <ListView.GroupStyle>
+                        <GroupStyle HeaderTemplate="{StaticResource GroupHeaderDataTemplate}" 
+					ContainerStyle="{StaticResource GroupItemStyle1}" HeaderContainerStyle="{StaticResource GridViewHeaderItemContainerStyle1}"/>
+                    </ListView.GroupStyle>
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="20,0,0,10">
+                                <TextBlock Grid.Row="0" 
+							Style="{StaticResource HeaderTextBlockStyle}" FontFamily="Global User Interface">
+							<Run Text="Download cities"/>
+                                </TextBlock>
+
+                                <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0,10">
+                                    <Paragraph FontSize="21.333">
+                                        <Run  Text="Your city is not in this list ? We work on it but you can ask at"/>
+                                        <Hyperlink NavigateUri="mailto:easybike@outlook.fr"  Foreground="{ThemeResource PhoneAccentBrush}">
+                                            <Run Text="this address."/>
+                                        </Hyperlink>
+
+                                    </Paragraph>
+                                </RichTextBlock>
+                                <TextBlock Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" HorizontalAlignment="Left" FontFamily="Global User Interface">
+							<Run Text="{Binding CityCounter}"/>
+							<Run Text="cities at the moment."/>
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="80" Margin="27,0,0,0">
+                                <Grid.Transitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition/>
+                                    </TransitionCollection>
+                                </Grid.Transitions>
+                                <!--<Interactivity:Interaction.Behaviors>
+							<Core:DataTriggerBehavior Binding="{Binding Downloading}">
+								<Core:GoToStateAction StateName="Disabled"/>
+							</Core:DataTriggerBehavior>
+						</Interactivity:Interaction.Behaviors>-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="27"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox IsChecked="{Binding Downloaded}" MinWidth="0" 
+							VerticalAlignment="Center" Margin="0,0,0,14" 
+							IsHitTestVisible="False" 
+							Visibility="{Binding Downloaded, Converter={StaticResource BoolToVisConverter}}" />
+
+
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="12,0,0,0" Height="87">
+                                    <TextBlock Text="{Binding Name}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
+
+                                    <TextBlock Text="{Binding ServiceProvider}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
+                                    <TextBlock Text="{Binding StationCounterStr}" 
+								Visibility="{Binding Downloaded, Converter={StaticResource BoolToVisConverter}}"
+								Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
+                                    <TextBlock Text="Downloading..." 
+								Visibility="{Binding Downloading, Converter={StaticResource BoolToVisConverter}}"
+								Style="{ThemeResource ListViewItemContentTextBlockStyle}" FontFamily="Global User Interface"/>
+                                    <ProgressBar FontFamily="Global User Interface"
+								Visibility="{Binding Downloading, Converter={StaticResource BoolToVisConverter}}" IsIndeterminate="True"
+							/>
+                                </StackPanel>
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </SemanticZoom.ZoomedInView>
+            <SemanticZoom.ZoomedOutView>
+
+                <ListView
+      ItemsSource="{Binding Group.CollectionGroups}">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel VerticalAlignment="Center" Margin="12,0,0,0" Height="87">
+
+                                <StackPanel Orientation="Horizontal" >
+                                    <Image Source="{Binding Group.ImagePath}" Width="60" Height="40"/>
+                                    <TextBlock Text="{Binding Group.Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" Margin="10,0,0,0"/>
+                                </StackPanel>
+
+                                <TextBlock Text="{Binding Group.ItemsCounterStr}" 
+        			Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
+
+
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+
+    </Grid>
+</Page>

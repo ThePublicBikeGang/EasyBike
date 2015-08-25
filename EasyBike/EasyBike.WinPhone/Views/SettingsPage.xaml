@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="EasyBike.WinPhone.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EasyBike.WinPhone.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <Grid Margin="20,20,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
+
+            <TextBlock Grid.Row="0" 
+     		Style="{StaticResource HeaderTextBlockStyle}" FontFamily="Global User Interface" Text="Settings"/>
+
+            <StackPanel x:Name="stackPanel" Grid.Row="1" Margin="0">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition/>
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
+                <ToggleSwitch Header="Localization" VerticalAlignment="Stretch" OffContent="Off" OnContent="On" IsOn="{Binding IsLocalisationOn, Mode=TwoWay}" />
+                <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Paragraph FontSize="20.333">
+                        <Run Text="Easy Bike uses location service to help you find the nearest stations around your current location."/>
+                        <LineBreak/>
+                        <Run Text="This information stay anonymous and will never be used to identify you personally."/>
+                    </Paragraph>
+
+                </RichTextBlock>
+            </StackPanel>
+
+
+
+        </Grid>
+    </ScrollViewer>
+
+</Page>
