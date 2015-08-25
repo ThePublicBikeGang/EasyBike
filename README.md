@@ -1,6 +1,6 @@
-## PBike: A cross platform app for Public Bikes based on Xamarin. Join the GANG !
+## EasyBike: A cross platform app for Public Bikes based on Xamarin. Join the GANG !
 
-![](https://github.com/ThePbikeGang/PBike/blob/master/PublicBikes/PublicBikes/Assets/Icon.png)
+![](https://github.com/ThePublicBikeGang/EasyBike/blob/master/EasyBike/EasyBike/Assets/Icon.png)
 
 The objective of the project is to store on a shared library all the integration logic of public bike services.
 All services can be easily accessed with common interfaces.
