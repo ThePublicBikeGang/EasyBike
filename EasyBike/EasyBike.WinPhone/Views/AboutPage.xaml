@@ -31,14 +31,28 @@
                 </StackPanel.ChildrenTransitions>
                 <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Paragraph FontSize="20.333">
-                        <Run Text="Created by Marc Magnin and Gaël Guix."/>
+                        <Run Text="Created by "/>
+                            <Hyperlink NavigateUri="http://creativecommons.org/licenses/by-sa/3.0/"  Foreground="{ThemeResource PhoneAccentBrush}">
+                            <Run Text="Marc Magnin "/>
+                        </Hyperlink>
+                        <Run>on behalf of the </Run>
+                        <Hyperlink NavigateUri="http://creativecommons.org/licenses/by-sa/3.0/"  Foreground="{ThemeResource PhoneAccentBrush}">
+                            <Run Text=" Public Bike Gang"/>
+                        </Hyperlink>
+                        <Run>.</Run>
                     </Paragraph>
-                    <Paragraph FontSize="20.333">
-                        <Run Text="Thanks to Florie for her help and patience."/>
+                    <Paragraph FontSize="18.333">
+                        <Run Text="You'll find the open source and cross platform projet on "/>
+                        <Hyperlink NavigateUri="http://creativecommons.org/licenses/by-sa/3.0/"  Foreground="{ThemeResource PhoneAccentBrush}">
+                            <Run Text="Git. Join the gang !"/>
+                        </Hyperlink>
                     </Paragraph>
-
+                    
+                    <Paragraph FontSize="18.333">
+                        <Run Text="Special thanks to Florie for her help and patience waiting for me coding hours and hours every night."/>
+                    </Paragraph>
                 </RichTextBlock>
-                <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0,18">
+                <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0,10,0,18">
                     <Paragraph FontSize="18.333">
                         <Run Text="Any suggestions ?"/>
                     </Paragraph>
@@ -79,7 +93,6 @@
                 <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0,2,0,18" Opacity="0.7">
                     <Paragraph FontSize="18.333">
                         <Run Text="Easy Bike do not collect any personal informations belonging to its users."/>
-                        <LineBreak/>
                         <LineBreak/>
                         <Run Text="Country flags copyright :"/>
                     </Paragraph>

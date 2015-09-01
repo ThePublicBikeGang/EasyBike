@@ -11,7 +11,7 @@
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    DataContext="{Binding Main, Source={StaticResource Locator}}">
+    DataContext="{Binding Main, Source={StaticResource Locator}}" FontFamily="Global User Interface">
 
 
     <Page.Resources>
@@ -362,13 +362,13 @@
                     </Grid.RenderTransform>
                     <!--Source="Assets/WP8AppbarIcons/audio.png"-->
 
-                    <RichTextBlock Grid.Column="1" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" HorizontalAlignment="Left" IsTextSelectionEnabled="False" IsColorFontEnabled="False" Margin="3,3,0,3">
+                    <RichTextBlock Grid.Column="1" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" HorizontalAlignment="Left" IsTextSelectionEnabled="False" IsColorFontEnabled="False" Margin="3,3,0,3" FontFamily="Global User Interface">
                         <Paragraph>
                             <Run Text="{Binding Address}"  FontSize="10"/>
                         </Paragraph>
                         <Paragraph>
                             <Run Text="Vélos disponibles :"  FontSize="12"/>
-                            <Run Text="{Binding AvailableBikesStr}"  FontSize="15"/>
+                            <Run Text="{Binding AvailableBikesStr}"  FontSize="15" FontFamily="Global User Interface"/>
                         </Paragraph>
                     </RichTextBlock>
                     <Rectangle VerticalAlignment="Center" Height="45" Width="45" HorizontalAlignment="Center" Grid.Column="3" Fill="White" Margin="3"/>
@@ -629,7 +629,7 @@
             </CommandBar.SecondaryCommands>
             <AppBarButton x:Name="FavoritsButton"  Label="Favorites" Icon="Favorite" Command="{Binding GoToFavoritsCommand}" />
             <AppBarButton x:Name="LocationButton"  Click="LocationButton_Click" Label="Location" Icon="Target" FontFamily="Global User Interface"/>
-            <AppBarButton x:Name="SearchButton"  Command="{Binding SearchClickCommand}" Label="Search" Icon="Find"/>
+            <AppBarButton x:Name="SearchButton"  Click="SearchButton_Click" Label="Search" Icon="Find"/>
         </CommandBar>
     </Page.BottomAppBar>
 

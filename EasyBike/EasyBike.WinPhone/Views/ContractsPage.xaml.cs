@@ -105,6 +105,7 @@ namespace EasyBike.WinPhone.Views.Cities
             
             
             ContractListView.ItemsSource = contractCollectionViewSource.View;
+            ContractsListViewZoomOut.ItemsSource = contractCollectionViewSource.View.CollectionGroups;
 
             (DataContext as ContractsViewModel).Init();
         }

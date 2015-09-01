@@ -46,7 +46,7 @@ namespace EasyBike.ViewModels
             _contractsService = contractsService;
             _refreshService = refreshService;
             _configService = configService;
-           
+
         }
 
 #if DEBUG
@@ -73,19 +73,21 @@ namespace EasyBike.ViewModels
             foreach (var contract in staticContracts.GroupBy(c => c.Country).Select(c => c.First()).OrderBy(c => c.Country).ToList())
             {
                 var imageMemoryStream = new MemoryStream();
-                byte[] testt = null;
-                try { 
-                using (var stream = assembly.GetManifestResourceStream($"EasyBike.Assets.Flags.{contract.ISO31661}.png"))
+                byte[] imageByteArray = null;
+                try
                 {
-                    stream.CopyTo(imageMemoryStream);
-                        testt = imageMemoryStream.ToArray();
+                    using (var stream = assembly.GetManifestResourceStream($"EasyBike.Assets.Flags.{contract.ISO31661}.png"))
+                    {
+                        stream.CopyTo(imageMemoryStream);
+                        imageByteArray = imageMemoryStream.ToArray();
+                    }
                 }
-                }
-                catch (Exception e){
+                catch (Exception e)
+                {
 
                 }
 
-                var group = new ContractGroup() { Title = contract.Country, ImageByteArray = testt };
+                var group = new ContractGroup() { Title = contract.Country, ImageByteArray = imageByteArray };
                 group.Items = new ObservableCollection<Contract>();
                 foreach (var c in staticContracts.Where(c => c.Country == contract.Country).OrderBy(c => c.Name).ToList())
                 {

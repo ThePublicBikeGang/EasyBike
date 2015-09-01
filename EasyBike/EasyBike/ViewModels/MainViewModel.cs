@@ -5,7 +5,6 @@ using GalaSoft.MvvmLight.Command;
 using EasyBike.Config;
 using EasyBike.Models.Storage;
 using EasyBike.Models;
-using System.Linq;
 using EasyBike.Notification;
 using System;
 using EasyBike.Models.Favorites;
@@ -120,7 +119,7 @@ namespace EasyBike.ViewModels
                        ?? (howToUseThisAppCommand = new RelayCommand(
                            () =>
                            {
-
+                               _navigationService.NavigateTo(ViewModelLocator.HowToPageKey);
                            }));
             }
         }

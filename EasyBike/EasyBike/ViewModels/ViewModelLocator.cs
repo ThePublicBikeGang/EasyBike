@@ -18,7 +18,8 @@ namespace EasyBike.ViewModels
         public const string SettingsPageKey = "SettingsPage";
         public const string FavoritesPageKey = "Favorites";
         public const string AboutPageKey = "AboutPage";
-
+        public const string HowToPageKey = "HowToPage";
+        
         public MainViewModel Main
         {
             get

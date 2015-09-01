@@ -120,6 +120,11 @@
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Tutorial\HowToPage.xaml.cs">
+      <DependentUpon>HowToPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tutorial\HowToModel.cs" />
+    <Compile Include="Views\Tutorial\HowToViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -128,11 +133,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-240.png" />
+    <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.scale-140.png" />
     <Content Include="Assets\SmallLogo.scale-240.png" />
     <Content Include="Assets\SplashScreen.scale-240.png" />
     <Content Include="Assets\Square71x71Logo.scale-240.png" />
     <Content Include="Assets\StoreLogo.scale-240.png" />
     <Content Include="Assets\WideLogo.scale-240.png" />
+    <Content Include="Views\Tutorial\addressSearch.png" />
+    <Content Include="Views\Tutorial\addToFavorites.png" />
+    <Content Include="Views\Tutorial\compass.png" />
+    <Content Include="Views\Tutorial\cyclemode.png" />
+    <Content Include="Views\Tutorial\downloadcities.png" />
+    <Content Include="Views\Tutorial\downloadcities2.png" />
+    <Content Include="Views\Tutorial\favorits.png" />
+    <Content Include="Views\Tutorial\mapHolding.png" />
+    <Content Include="Views\Tutorial\parkingmode.png" />
+    <Content Include="Views\Tutorial\path.PNG" />
+    <Content Include="Views\Tutorial\shareLocation1.jpg" />
+    <Content Include="Views\Tutorial\shareLocation2.jpg" />
+    <Content Include="Views\Tutorial\shareLocation3.jpg" />
+    <Content Include="Views\Tutorial\whereIsMyCar.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -158,6 +179,10 @@
     <Page Include="Views\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tutorial\HowToPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

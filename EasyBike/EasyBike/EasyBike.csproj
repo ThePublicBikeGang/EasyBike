@@ -159,6 +159,7 @@
     <Folder Include="Serialization\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\veloIcon.png" />
     <EmbeddedResource Include="Assets\Flags\AE.png" />
     <EmbeddedResource Include="Assets\Flags\AT.png" />
     <EmbeddedResource Include="Assets\Flags\AU.png" />

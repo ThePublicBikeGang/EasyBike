@@ -60,7 +60,6 @@ namespace EasyBike.WinPhone
         public Geolocator gl;
         private Geopoint userLastLocation;
         public static CoreDispatcher dispatcher = CoreWindow.GetForCurrentThread().Dispatcher;
-        public static bool BikeMode = true;
         private Compass compass = Compass.GetDefault();
         private SymbolIcon SymbolView = new SymbolIcon(Symbol.View);
         private SymbolIcon SymbolTarget = new SymbolIcon(Symbol.Target);
@@ -90,7 +89,7 @@ namespace EasyBike.WinPhone
             _configService = SimpleIoc.Default.GetInstance<IConfigService>();
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _dialogService = SimpleIoc.Default.GetInstance<IDialogService>();
-
+            
             ServiceLocator.Current.GetInstance<MainViewModel>().FireGoToFavorite += MainPage_FireGoToFavorite;
 
             _notificationService.OnNotify += _notificationService_OnNotify;
@@ -487,8 +486,6 @@ namespace EasyBike.WinPhone
 
             angle = Math.Round(angle, 0);
 
-
-
             dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 // UpdateNorthElementAngle(MapCtrl.Heading);
@@ -499,13 +496,8 @@ namespace EasyBike.WinPhone
                     SetView(userLastLocation, null, angle, null, MapAnimationKind.Linear);
                     //MapCtrl.TrySetViewAsync(userLastLocation, null, angle, null, MapAnimationKind.Linear);
                     //MapCtrl.Heading = angle;
-
                 }
-
-
-
             });
-
         }
 
         private void refreshAccuracyIndicator()
@@ -569,38 +561,6 @@ namespace EasyBike.WinPhone
 
         }
 
-
-        //private void RadioButtonParking_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        //{
-        //    if (clusterGenerator == null)
-        //        return;
-        //    BikeMode = false;
-        //    foreach (var control in clusterGenerator.Items.Where(v => v.VelibControl != null && v.VelibControl.Velibs.Count == 1).Select(v=>v.VelibControl).ToList())
-        //    {
-        //        control.SwitchModeVelibParking();
-        //    }
-        //}
-
-        //private void RadioButtonVelib_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        //{
-        //    if (clusterGenerator == null)
-        //        return;
-        //    BikeMode = true;
-        //    foreach (var control in clusterGenerator.Items.Where(v => v.VelibControl != null && v.VelibControl.Velibs.Count == 1).Select(v => v.VelibControl).ToList())
-        //    {
-        //        control.SwitchModeVelibParking();
-        //    }
-        //}
-
-        private void DownloadCitiesButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            // TODO  Frame.Navigate(typeof(ContractsPage));
-        }
-        private void SettingsButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            // TODO Frame.Navigate(typeof(SettingsPage));
-        }
-
         private async void MapCtrl_DoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
         {
             double zoom = MapCtrl.ZoomLevel + 1;
@@ -621,17 +581,15 @@ namespace EasyBike.WinPhone
 
         }
 
-
-
         private void ToggleButtonVelibParking_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             if (clusterGenerator == null)
                 return;
 
             if (ToggleButtonVelibParking.IsChecked.Value)
-                BikeMode = false;
+                _settingsService.Settings.IsBikeMode = false;
             else
-                BikeMode = true;
+                _settingsService.Settings.IsBikeMode = true;
             foreach (var control in clusterGenerator.StationControls.Where(v => v.Stations.Count == 1).ToList())
             {
                 control.SwitchModeVelibParking(control.Stations.FirstOrDefault());
@@ -925,24 +883,17 @@ namespace EasyBike.WinPhone
             if (item is StationControl)
             {
                 var control = item as StationControl;
-
                 //VisualStateManager.GoToState(control, "ShowSelected", true);
-
-
-
                 var velib = control.Stations.FirstOrDefault();
                 if (velib != null)
                 {
                     LastSearchGeopoint = (Geopoint)velib.Location;
                     ReverseGeocode();
-                    if (PreviousSelectedVelibStation != null)
-                    {
-                        // TODO var prevControl = PreviousSelectedVelibStation.VelibControl as Control;
-
-                    }
-
+                    //if (PreviousSelectedVelibStation != null)
+                    //{
+                    //    TODO ? var prevControl = PreviousSelectedVelibStation.VelibControl as Control;
+                    //}
                 }
-
             }
 
             // Show the route if the user is at least 3 KM from the selected item

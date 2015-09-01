@@ -1,4 +1,6 @@
 ﻿using EasyBike.Models;
+using EasyBike.Models.Storage;
+using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +25,15 @@ namespace EasyBike.WinPhone.Helpers
         static SolidColorBrush orangeColorBrush = new SolidColorBrush(Color.FromArgb(255, 230, 178, 0));
         static SolidColorBrush greenColorBrush = new SolidColorBrush(Color.FromArgb(255, 95, 205, 0));
 
+        private ISettingsService _settingsService;
+
         public StationControl(MapControl map)
         {
             StationControl.map = map;
             //this.Tapped += VelibControl_Tapped;
             //this.Holding += VelibControl_Holding;
             this.ManipulationMode = Windows.UI.Xaml.Input.ManipulationModes.All;
-
+            _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
         }
 
         //void VelibControl_Holding(object sender, Windows.UI.Xaml.Input.HoldingRoutedEventArgs e)
@@ -142,30 +146,30 @@ namespace EasyBike.WinPhone.Helpers
             if (station.Loaded)
             {
                 station.IsUiRefreshNeeded = false;
-                //if (MainPage.BikeMode)
-                //{
-                if (station.ImageAvailable != null)
+                if (_settingsService.Settings.IsBikeMode)
                 {
-                    station.ImageNumber = station.ImageAvailable;
+                    if (station.ImageAvailable != null)
+                    {
+                        station.ImageNumber = station.ImageAvailable;
+                    }
+                    else
+                    {
+                        station.AvailableStr = station.AvailableBikes.ToString();
+                        ShowColor(station.AvailableBikes);
+                    }
                 }
                 else
                 {
-                    station.AvailableStr = station.AvailableBikes.ToString();
-                    ShowColor(station.AvailableBikes);
+                    if (station.ImageDocks != null)
+                    {
+                        station.ImageNumber = station.ImageDocks;
+                    }
+                    else
+                    {
+                        station.AvailableStr = station.AvailableBikeStands.HasValue ? station.AvailableBikeStands.ToString() : "?";
+                        ShowColor(station.AvailableBikeStands);
+                    }
                 }
-                //}
-                //else
-                //{
-                //    if (station.ImageDocks != null)
-                //    {
-                //        station.ImageNumber = station.ImageDocks;
-                //    }
-                //    else
-                //    {
-                //        station.AvailableStr = station.AvailableBikeStands.HasValue ? station.AvailableBikeStands.ToString() : "?";
-                //        ShowColor(station.AvailableBikeStands);
-                //    }
-                //}
             }
         }
 
@@ -212,7 +216,7 @@ namespace EasyBike.WinPhone.Helpers
         {
             ShowPulseAnimation();
 
-             var station = Stations.FirstOrDefault();
+            var station = Stations.FirstOrDefault();
             if (station.ImageAvailable != null)
             {
                 VisualStateManager.GoToState(this, "ShowNumberImage", false);
@@ -234,16 +238,16 @@ namespace EasyBike.WinPhone.Helpers
         {
             var station = Stations.FirstOrDefault();
 
-            //if (MainPage.BikeMode)
-            //{
-            station.AvailableStr = station.AvailableBikes.ToString();
-            ShowColor(station.AvailableBikes);
-            //}
-            //else
-            //{
-            //    station.AvailableStr = station.AvailableBikeStands.HasValue ? station.AvailableBikeStands.ToString() : "?";
-            //    ShowColor(station.AvailableBikeStands);
-            //}
+            if (_settingsService.Settings.IsBikeMode)
+            {
+                station.AvailableStr = station.AvailableBikes.ToString();
+                ShowColor(station.AvailableBikes);
+            }
+            else
+            {
+                station.AvailableStr = station.AvailableBikeStands.HasValue ? station.AvailableBikeStands.ToString() : "?";
+                ShowColor(station.AvailableBikeStands);
+            }
         }
 
 
@@ -293,7 +297,7 @@ namespace EasyBike.WinPhone.Helpers
             {
                 return Location = (Geopoint)Stations[0].Location;
             }
-                
+
 
             double x = 0;
             double y = 0;

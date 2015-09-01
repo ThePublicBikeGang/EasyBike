@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using EasyBike.WinPhone.Views.Tutorial;
 
 namespace EasyBike.WinPhone
 {
@@ -19,7 +20,8 @@ namespace EasyBike.WinPhone
             nav.Configure(ViewModelLocator.SettingsPageKey, typeof(SettingsPage));
             nav.Configure(ViewModelLocator.FavoritesPageKey, typeof(FavoritesPage));
             nav.Configure(ViewModelLocator.AboutPageKey, typeof(AboutPage));
-
+            nav.Configure(ViewModelLocator.HowToPageKey, typeof(HowToPage));
+            
             SimpleIoc.Default.Register<INavigationService>(() => nav);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
         }

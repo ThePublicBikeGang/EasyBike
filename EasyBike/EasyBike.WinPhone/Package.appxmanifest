@@ -3,8 +3,8 @@
   <Identity Name="8877204e-d7ab-4c2a-ba85-df930a47ce48" Publisher="CN=joe" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="8877204e-d7ab-4c2a-ba85-df930a47ce48" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>MyNativeApp.WinPhone</DisplayName>
-    <PublisherDisplayName>joe</PublisherDisplayName>
+    <DisplayName>EasyBike</DisplayName>
+    <PublisherDisplayName>Marc Magnin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
