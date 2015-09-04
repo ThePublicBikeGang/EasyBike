@@ -26,7 +26,7 @@ namespace EasyBike.Models.Contracts
             AvailabilityUrl = "https://api.jcdecaux.com/vls/v1/stations/{0}?contract={1}&apiKey={2}";
         }
 
-        public override async Task<List<Station>> GetStationsAsync()
+        public override async Task<List<StationModelBase>> InnerGetStationsAsync()
         {
             if (apiKey == null)
             {
@@ -36,21 +36,7 @@ namespace EasyBike.Models.Contracts
             {
                 HttpResponseMessage response = await client.GetAsync(new Uri(string.Format(StationsUrl, Name, apiKey, DateTime.Now.Ticks))).ConfigureAwait(false);
                 var data = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var serviceProviderModels = JsonConvert.DeserializeObject<List<JcDecauxModel>>(data);
-                var stations = new List<Station>(serviceProviderModels.Count);
-                foreach (var serviceProviderModel in serviceProviderModels)
-                {
-                    stations.Add(new Station()
-                    {
-                        Latitude = serviceProviderModel.Latitude,
-                        Longitude = serviceProviderModel.Longitude,
-                        AvailableBikes = serviceProviderModel.AvailableBikes,
-                        AvailableBikeStands = serviceProviderModel.AvailableBikeStands,
-                        ContractStorageName = StorageName
-                    });
-                }
-
-                return stations;
+                return JsonConvert.DeserializeObject<List<JcDecauxModel>>(data).ToList<StationModelBase>();
             }
         }
 

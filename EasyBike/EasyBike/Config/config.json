@@ -4,5 +4,6 @@
   "Twitter": "https://twitter.com/EasyBike_",
   "WindowsPhoneMapServiceToken": "YourWindowsPhoneMapServiceTokenHere",
   "GoogleApiKey": "YourGoogleApiKeyHere",
-  "JcDecauxApiKey": "YourJcDecauxApiKeyHere"
+  "JcDecauxApiKey": "YourJcDecauxApiKeyHere",
+  "BCycleApiKey": "YourBCycleApiKeyHere"
 }

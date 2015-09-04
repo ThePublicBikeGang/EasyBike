@@ -1,8 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Ioc;
-using EasyBike.Config;
 using EasyBike.Models.Contracts;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,7 +7,6 @@ namespace EasyBike.Models
 {
     public abstract class Contract : ObservableObject
     {
-
         public bool DirectDownloadAvailability { get; set; } = true;
         public string AvailabilityUrl { get; set; }
         public string StationsUrl { get; set; }
@@ -68,7 +64,7 @@ namespace EasyBike.Models
         }
 
         public string ISO31661 { get; set; }
-      
+
         public List<Station> Stations { get; set; }
 
 
@@ -98,14 +94,35 @@ namespace EasyBike.Models
 
         public override bool Equals(object obj)
         {
-            if (obj == null || ! (obj is Contract))
+            if (obj == null || !(obj is Contract))
             {
                 return false;
             }
             return StorageName == ((obj as Contract).StorageName);
         }
 
-        public abstract Task<List<Station>> GetStationsAsync();
+        public async Task<List<Station>> GetStationsAsync()
+        {
+            var serviceProviderModels = await InnerGetStationsAsync().ConfigureAwait(false);
+            var stations = new List<Station>(serviceProviderModels.Count);
+            foreach (var serviceProviderModel in serviceProviderModels)
+            {
+                stations.Add(new Station()
+                {
+                    Latitude = serviceProviderModel.Latitude,
+                    Longitude = serviceProviderModel.Longitude,
+                    AvailableBikes = serviceProviderModel.AvailableBikes,
+                    AvailableBikeStands = serviceProviderModel.AvailableBikeStands,
+                    ContractStorageName = StorageName
+                });
+            }
+            return stations;
+        }
+
+        public virtual async Task<List<StationModelBase>> InnerGetStationsAsync()
+        {
+            return await Task.FromResult(new List<StationModelBase>());
+        }
 
         public async Task<bool> RefreshAsync()
         {
@@ -142,7 +159,7 @@ namespace EasyBike.Models
 
         public virtual async Task<List<StationModelBase>> InnerRefreshAsync()
         {
-            return await Task.FromResult<List<StationModelBase>>(new List<StationModelBase>());
+            return await Task.FromResult(new List<StationModelBase>());
         }
     }
 }

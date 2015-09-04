@@ -16,25 +16,12 @@ namespace EasyBike.Models.Contracts.PL
             StationsUrl = "http://atektura.nazwa.pl/atektura.pl/bike_s";
         }
 
-        public override async Task<List<Station>> GetStationsAsync()
+        public override async Task<List<StationModelBase>> InnerGetStationsAsync()
         {
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
                 HttpResponseMessage response = await client.GetAsync(new Uri(string.Format(StationsUrl))).ConfigureAwait(false);
-                var serviceProviderModels = JsonConvert.DeserializeObject<SzczecinModel>(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).Stations;
-                var stations = new List<Station>(serviceProviderModels.Length);
-                foreach (var serviceProviderModel in serviceProviderModels)
-                {
-                    stations.Add(new Station()
-                    {
-                        Latitude = serviceProviderModel.Latitude,
-                        Longitude = serviceProviderModel.Longitude,
-                        AvailableBikes = serviceProviderModel.AvailableBikes,
-                        AvailableBikeStands = serviceProviderModel.AvailableBikeStands,
-                        ContractStorageName = StorageName
-                    });
-                }
-                return stations;
+                return JsonConvert.DeserializeObject<SzczecinModel>(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).Stations.ToList<StationModelBase>();
             }
         }
 

@@ -9,5 +9,6 @@ namespace EasyBike.Config
         public string WindowsPhoneMapServiceToken { get; set; }
         public string GoogleApiKey { get; set; }
         public string JcDecauxApiKey { get; set; }
+        public string BCycleApiKey { get; set; }
     }
 }

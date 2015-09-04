@@ -6,7 +6,7 @@ namespace EasyBike.Models.Contracts
 {
     class BarclayBikes : Contract
     {
-        public override Task<List<Station>> GetStationsAsync()
+        public override Task<List<StationModelBase>> InnerGetStationsAsync()
         {
             throw new NotImplementedException();
         }

@@ -52,6 +52,4 @@ namespace EasyBike.Models.Contracts
             Status = status == "OPEN" ? true : false;
         }
     }
-
-
 }
