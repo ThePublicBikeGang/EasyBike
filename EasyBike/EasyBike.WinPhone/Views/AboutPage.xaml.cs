@@ -102,7 +102,7 @@ namespace EasyBike.WinPhone.Views
             // string version = XDocument.Load("ms-appx:///WMAppManifest.xml").Root.Element("App").Attribute("Version").Value;
 
             EmailMessage mail = new EmailMessage();
-            mail.Subject = "PBike"; //+ version;
+            mail.Subject = (await _configService.GetConfigAsync()).ApplicationName; //+ version;
             mail.To.Add(sendTo);
             await EmailManager.ShowComposeNewEmailAsync(mail);
         }
