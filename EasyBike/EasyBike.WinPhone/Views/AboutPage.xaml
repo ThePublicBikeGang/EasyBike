@@ -21,7 +21,7 @@
             </Grid.ChildrenTransitions>
 
             <TextBlock Grid.Row="0" 
-     		Style="{StaticResource HeaderTextBlockStyle}" FontFamily="Global User Interface" Text="About"/>
+     		Style="{StaticResource HeaderTextBlockStyle}" FontFamily="Global User Interface" Text="About this app"/>
 
             <StackPanel x:Name="stackPanel" Grid.Row="1" Margin="0">
                 <StackPanel.ChildrenTransitions>
@@ -31,25 +31,24 @@
                 </StackPanel.ChildrenTransitions>
                 <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Paragraph FontSize="20.333">
-                        <Run Text="Created by "/>
-                            <Hyperlink NavigateUri="http://creativecommons.org/licenses/by-sa/3.0/"  Foreground="{ThemeResource PhoneAccentBrush}">
-                            <Run Text="Marc Magnin "/>
+                        <Run Text="Created by"/>
+                        <Hyperlink NavigateUri="https://github.com/MarcMagnin"  Foreground="{ThemeResource PhoneAccentBrush}">
+                            <Run Text="Marc Magnin"/>
                         </Hyperlink>
-                        <Run>on behalf of the </Run>
-                        <Hyperlink NavigateUri="http://creativecommons.org/licenses/by-sa/3.0/"  Foreground="{ThemeResource PhoneAccentBrush}">
-                            <Run Text=" Public Bike Gang"/>
+                        <Run Text="on behalf of the"></Run>
+                        <Hyperlink NavigateUri="https://github.com/ThePublicBikeGang"  Foreground="{ThemeResource PhoneAccentBrush}">
+                            <Run Text="Public Bike Gang."/>
                         </Hyperlink>
-                        <Run>.</Run>
                     </Paragraph>
                     <Paragraph FontSize="18.333">
-                        <Run Text="You'll find the open source and cross platform projet on "/>
-                        <Hyperlink NavigateUri="http://creativecommons.org/licenses/by-sa/3.0/"  Foreground="{ThemeResource PhoneAccentBrush}">
-                            <Run Text="Git. Join the gang !"/>
+                        <Run Text="You'll find the open source and cross platform projet on"/>
+                        <Hyperlink NavigateUri="https://github.com/ThePublicBikeGang/EasyBike"  Foreground="{ThemeResource PhoneAccentBrush}">
+                            <Run Text="Git, join the gang !"/>
                         </Hyperlink>
                     </Paragraph>
                     
                     <Paragraph FontSize="18.333">
-                        <Run Text="Special thanks to Florie for her help and patience waiting for me coding hours and hours every night."/>
+                        <Run Text="Special thanks to Florie for her help and patience waiting for me coding hours and hours."/>
                     </Paragraph>
                 </RichTextBlock>
                 <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0,10,0,18">
@@ -64,7 +63,7 @@
 
                     </Paragraph>
                     <Paragraph FontSize="18.333">
-                        <Run  Text="Twitter : "/>
+                        <Run  Text="Twitter: "/>
                         <Hyperlink NavigateUri="{Binding Twitter}"  Foreground="{ThemeResource PhoneAccentBrush}">
                             <Run Text="{Binding Twitter}"/>
                         </Hyperlink>
@@ -90,13 +89,13 @@
                     </StackPanel>
 
                 </Button>
-                <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0,2,0,18" Opacity="0.7">
-                    <Paragraph FontSize="18.333">
-                        <Run Text="Easy Bike do not collect any personal informations belonging to its users."/>
+                <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0,2,0,5" Opacity="0.7">
+                    <Paragraph FontSize="14.333">
+                        <Run Text="EasyBike do not collect any personal informations belonging to its users."/>
                         <LineBreak/>
-                        <Run Text="Country flags copyright :"/>
+                        <Run Text="Country flags copyright:"/>
                     </Paragraph>
-                    <Paragraph FontSize="18.333">
+                    <Paragraph FontSize="14.333">
                         <Run Text="Free Country Flags ("/>
                         <Hyperlink NavigateUri="http://www.free-country-flags.com/"  Foreground="{ThemeResource PhoneAccentBrush}">
                             <Run Text="Gang of the Coconuts"/>
@@ -107,7 +106,7 @@
                         </Hyperlink>
 
                     </Paragraph>
-                    <Paragraph FontSize="18.333">
+                    <Paragraph FontSize="14.333">
                         <Run Text="Powered by B-cycle. To sign up, go to "/>
                         <Hyperlink NavigateUri="www.bcycle.com"  Foreground="{ThemeResource PhoneAccentBrush}">
                             <Run Text="www.bcycle.com"/>
@@ -127,6 +126,21 @@
                     </StackPanel>
 
                 </Button>
+                <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0,5,0,18">
+                    <Paragraph FontSize="18.333">
+                        <Run FontFamily="Segoe UI Symbol" Text="&#xE0A5;" Foreground="#FFFF2CD9"/>
+                        <Run Text=" Like this app ?"/>
+
+                    </Paragraph>
+
+                    <Paragraph FontSize="18.333">
+                        <Run  Text="Help me and take part of the adventure by making a"/>
+                        <Hyperlink NavigateUri="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=marc%2emagnin%40gmail%2ecom&amp;lc=FR&amp;item_name=Marc%20Magnin&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"  Foreground="{ThemeResource PhoneAccentBrush}">
+                            <Run Text="donation"/>
+                        </Hyperlink>
+
+                    </Paragraph>
+                </RichTextBlock>
             </StackPanel>
 
 

@@ -1,4 +1,5 @@
 ﻿using EasyBike.Models.Contracts;
+using EasyBike.Models.Contracts.ES;
 using EasyBike.Models.Contracts.PL;
 using EasyBike.Models.Contracts.US;
 using System.Collections.Generic;
@@ -26,6 +27,12 @@ namespace EasyBike.Models
             ISO31661 = "CL",
             Country = "Chile", Id= "68"},
             #endregion
+            
+            #region ES
+            new BicimadContract{Name = "Madrid",
+            ISO31661 = "ES",
+            Country = "Spain"},
+            #endregion
 
             #region FR
             new JcDecauxContract{Name = "Amiens",
@@ -49,6 +56,7 @@ namespace EasyBike.Models
             ISO31661 = "PL",
             Country = "Poland"},
             #endregion
+
 
             #region US
 
