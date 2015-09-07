@@ -34,9 +34,10 @@ namespace EasyBike.Models
 
                
           #region AT
-          new NextBikeContract{Name = "Haag",
-               ISO31661 = "AT",
-               Country = "Austria", Id= "167"},
+            // Ended ?
+          //new NextBikeContract{Name = "Haag",
+          //     ISO31661 = "AT",
+          //     Country = "Austria", Id= "167"},
                new NextBikeContract{Name = "Hollabrunn",
                ISO31661 = "AT",
                Country = "Austria", Id= "212"},
@@ -122,9 +123,10 @@ namespace EasyBike.Models
           #endregion
 
                  #region AZ
-          new NextBikeContract{Name = "Baku",
-               ISO31661 = "AZ",
-               Country = "Azerbaijan", Id= "205"},
+               // Ended
+          //new NextBikeContract{Name = "Baku",
+          //     ISO31661 = "AZ",
+          //     Country = "Azerbaijan", Id= "205"},
           #endregion
 
               #region BE

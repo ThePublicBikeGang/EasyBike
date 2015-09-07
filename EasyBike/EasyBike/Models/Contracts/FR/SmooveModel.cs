@@ -89,11 +89,37 @@ namespace EasyBike.Models.Contracts.FR
             }
         }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute("av", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public override int AvailableBikes { get; set; }
+        public int NbBikesField
+        {
+            get
+            {
+                return this.nbBikesField;
+            }
+            set
+            {
+                this.nbBikesField = value;
+            }
+        }
 
+        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute("fr", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public override int? AvailableBikeStands { get; set; }
+        public int NbEmptyDocksField
+        {
+            get
+            {
+                return this.nbEmptyDocksField;
+            }
+            set
+            {
+                this.nbEmptyDocksField = value;
+            }
+        }
+
+        public override int AvailableBikes { get { return nbBikesField; } set { } }
+
+        public override int? AvailableBikeStands { get { return NbEmptyDocksField; } set { } }
 
         public override bool Status { get; set; }
 

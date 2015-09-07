@@ -30,7 +30,7 @@ namespace EasyBike.Models.Contracts.FR
 
                 var models = responseBodyAsText.FromXmlString<vcs>("").Node.Stations.ToList();
                 // for duplicates :/
-                var dupplicates = models.GroupBy(x => x.Latitude).Where(g => g.Count() > 1).ToList();
+                var dupplicates = models.GroupBy(x => x.LatitudeStr).Where(g => g.Count() > 1).ToList();
                 if (dupplicates.Count > 0)
                 {
                     var aggregatedStation = dupplicates.Select(t =>
@@ -39,18 +39,18 @@ namespace EasyBike.Models.Contracts.FR
                             AvailableBikes = t.Sum(b => b.AvailableBikes),
                             AvailableBikeStands = t.Sum(b => b.AvailableBikeStands),
                             Id = t.FirstOrDefault().Id,
-                            Latitude = t.FirstOrDefault().Latitude,
-                            Longitude = t.FirstOrDefault().Longitude,
+                            LatitudeStr = t.FirstOrDefault().LatitudeStr,
+                            LongitudeStr = t.FirstOrDefault().LongitudeStr,
                             TotalDocks = t.Sum(b => b.TotalDocks)
 
                         });
-                    models.RemoveAll(t => aggregatedStation.Any(v => v.Latitude == t.Latitude && v.Longitude == t.Longitude));
+                    models.RemoveAll(t => aggregatedStation.Any(v => v.LatitudeStr == t.LatitudeStr && v.LongitudeStr == t.LongitudeStr));
                     models.Add(aggregatedStation.FirstOrDefault());
                 }
                 foreach (var station in models)
                 {
-                    double latitutde, longitude = 0;
-                    if (!double.TryParse(station.LatitudeStr, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out latitutde))
+                    double latitude, longitude = 0;
+                    if (!double.TryParse(station.LatitudeStr, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out latitude))
                         continue;
                     double.TryParse(station.LongitudeStr, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out longitude);
 
