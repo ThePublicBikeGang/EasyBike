@@ -80,7 +80,8 @@ namespace EasyBike.WinPhone
             navigationHelper = new NavigationHelper(this);
 
             clusterGenerator = new ClusterGenerator(MapCtrl, Resources["StationTemplate"] as ControlTemplate);
-            MapCtrl.Center = new Windows.Devices.Geolocation.Geopoint(new Windows.Devices.Geolocation.BasicGeoposition { Latitude = 48.875162, Longitude = 2.334457 });
+            MapCtrl.Center = new Windows.Devices.Geolocation.Geopoint(
+                new Windows.Devices.Geolocation.BasicGeoposition { Latitude = 51.49313, Longitude = -0.156876 });
             MapCtrl.ZoomLevel = 14.5;
             NavigationCacheMode = NavigationCacheMode.Required;
 

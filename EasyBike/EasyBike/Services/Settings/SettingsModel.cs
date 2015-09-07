@@ -7,7 +7,7 @@ namespace EasyBike.Services.Settings
         /// <summary>
         /// determine if the user wants to show the availability of bikes or slots.
         /// </summary>
-        public bool IsBikeMode { get; set; }
+        public bool IsBikeMode { get; set; } = true;
 
     }
 }
