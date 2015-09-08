@@ -34,7 +34,7 @@ namespace EasyBike.Models
 
                
           #region AT
-            // Ended ?
+            // Todo inform that it is not working
           //new NextBikeContract{Name = "Haag",
           //     ISO31661 = "AT",
           //     Country = "Austria", Id= "167"},
@@ -53,12 +53,16 @@ namespace EasyBike.Models
                new NextBikeContract{Name = "Marchfeld",
                ISO31661 = "AT",
                Country = "Austria", Id= "170"},
+
+               /// Investigate this
                new NextBikeContract{Name = "Mistelbach",
                ISO31661 = "AT",
                Country = "Austria", Id= "169"},
                new NextBikeContract{Name = "Mödling",
                ISO31661 = "AT",
                Country = "Austria", Id= "64"},
+
+               // Todo inform that it is not working
                new NextBikeContract{Name = "Neunkirchen",
                ISO31661 = "AT",
                Country = "Austria", Id= "163"},
@@ -117,13 +121,15 @@ namespace EasyBike.Models
                TechnicalName= "Wr.Neustadt",
                ISO31661 = "AT",
                Country = "Austria", Id= "156"},
+
+               // Todo inform that it is not working
                new NextBikeContract{Name = "Wieselburg",
                ISO31661 = "AT",
                Country = "Austria", Id= "151"},
           #endregion
 
                  #region AZ
-               // Ended
+               // Todo inform that it is not working
           //new NextBikeContract{Name = "Baku",
           //     ISO31661 = "AZ",
           //     Country = "Azerbaijan", Id= "205"},
@@ -193,6 +199,7 @@ namespace EasyBike.Models
                ServiceProvider = "metropolradruhr, NextBike",
                ISO31661 = "DE",
                Country = "Germany", Id= "131"},
+               // Todo inform that it is not working
                new NextBikeContract{Name = "Burghausen",
                ISO31661 = "DE",
                Country = "Germany", Id= "201"},
@@ -419,6 +426,7 @@ namespace EasyBike.Models
                ISO31661 = "FR",
                Country = "France"},
 
+          // Check this
               new VeloPlusContract{Name = "Orléans",
                ISO31661 = "FR",
                Country = "France"},
@@ -493,6 +501,8 @@ namespace EasyBike.Models
             ServiceProvider = "Bike_S, BikeU, Smoove",
             ISO31661 = "PL",
             Country = "Poland"},
+
+            // Todo investigate
                new NextBikeContract{Name = "Bemowo",
                ISO31661 = "PL",
                Country = "Poland", Id= "197"},
@@ -704,3 +714,5 @@ namespace EasyBike.Models
         };
     }
 }
+
+
