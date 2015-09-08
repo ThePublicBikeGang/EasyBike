@@ -12,6 +12,7 @@ using System.Linq;
 using Xamarin.Forms;
 using System.Reflection;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace EasyBike.ViewModels
 {
@@ -137,24 +138,27 @@ namespace EasyBike.ViewModels
                                catch (Exception e)
                                {
                                    var message = $"Sorry, you are currently not able to download {contract.Name}.";
-                                   await _dialogService.ShowMessage(message,
-                                    "Confirmation",
-                                    buttonConfirmText: "Ok", buttonCancelText: "Contact us",
-                                    afterHideCallback: (confirmed) =>
-                                    {
-                                        if (confirmed)
-                                        {
-                                        }
-                                        else
-                                        {
-                                            _notificationService.Notify(new SendEmailNotification()
-                                            {
-                                                Subject = $"Download city: unable to download {contract.Name}",
-                                                Body = $"Hey folks ! I'm unable to download {contract.Name} with the following error: " +
-                                                 $"Message: { e.Message } Inner: {e.InnerException} Stack: {e.StackTrace}",
-                                            });
-                                        }
-                                    });
+                                   try
+                                   {
+                                       // this can throw a application called an interface that was marshalled for a different thread. (Exception from HRESULT: 0x8001010E (RPC_E_WRONG_THREAD))
+                                       // better to catch this as I have found a way to force it to the UI thread from the cross platform library
+                                       await _dialogService.ShowMessage(message,
+                                         "Confirmation",
+                                         buttonConfirmText: "Ok", buttonCancelText: "Contact us",
+                                         afterHideCallback: (confirmed) =>
+                                         {
+                                             if (!confirmed)
+                                             {
+                                                 _notificationService.Notify(new SendEmailNotification()
+                                                 {
+                                                     Subject = $"Download city: unable to download {contract.Name}",
+                                                     Body = $"Hey folks ! I'm unable to download {contract.Name} with the following error: " +
+                                                      $"Message: { e.Message } Inner: {e.InnerException} Stack: {e.StackTrace}",
+                                                 });
+                                             }
+                                         });
+                                   }
+                                   catch { }
                                }
                                finally
                                {
