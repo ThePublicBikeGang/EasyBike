@@ -60,6 +60,8 @@ namespace EasyBike.WinPhone
         public Geolocator gl;
         private Geopoint userLastLocation;
         public static CoreDispatcher dispatcher = CoreWindow.GetForCurrentThread().Dispatcher;
+        // solve this in a better manner
+        public static MainPage mainPage;
         private Compass compass = Compass.GetDefault();
         private SymbolIcon SymbolView = new SymbolIcon(Symbol.View);
         private SymbolIcon SymbolTarget = new SymbolIcon(Symbol.Target);
@@ -73,9 +75,13 @@ namespace EasyBike.WinPhone
         DoubleAnimation AccuracyScaleX;
         DoubleAnimation AccuracyScaleY;
 
+
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            mainPage = this;
 
             navigationHelper = new NavigationHelper(this);
 

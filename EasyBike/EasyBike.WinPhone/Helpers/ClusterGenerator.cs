@@ -120,7 +120,6 @@ namespace EasyBike.WinPhone.Helpers
         private async void _refreshService_ContractRefreshed(object sender, EventArgs e)
         {
             var contract = (sender as Contract);
-            Debug.WriteLine("Contract refreshed (FROM UI) :" + (sender as Contract).Name);
             foreach (var control in StationControls.Where(c=> c.Stations.Count == 1 && c.Stations[0].IsUiRefreshNeeded && c.Stations[0].ContractStorageName == contract.StorageName))
             {
                 var station = control.Stations[0];

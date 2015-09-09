@@ -30,28 +30,26 @@ namespace EasyBike.WinPhone.Helpers
         public StationControl(MapControl map)
         {
             StationControl.map = map;
-            //this.Tapped += VelibControl_Tapped;
-            //this.Holding += VelibControl_Holding;
-            this.ManipulationMode = Windows.UI.Xaml.Input.ManipulationModes.All;
+            Tapped += Control_Tapped;
+            Holding += Control_Holding;
+            ManipulationMode = Windows.UI.Xaml.Input.ManipulationModes.All;
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
         }
 
-        //void VelibControl_Holding(object sender, Windows.UI.Xaml.Input.HoldingRoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (Velibs.Count < 2)
-        //        {
-        //            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-        //            {
-        //                MainPage.mainPage.ShowFlyout(this);
-        //            });
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //    }
-        //}
+        private async void Control_Holding(object sender, Windows.UI.Xaml.Input.HoldingRoutedEventArgs e)
+        {
+            try
+            {
+                if (Stations.Count == 1)
+                {
+                    await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    {
+                        MainPage.mainPage.ShowFlyout(this);
+                    });
+                }
+            }
+            catch { }
+        }
 
         public List<Station> Stations = new List<Station>();
         public TextBlock ClusterTextBlock;
@@ -63,36 +61,33 @@ namespace EasyBike.WinPhone.Helpers
         }
 
         private static StationControl previousVelibTapped;
-        //void VelibControl_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        //{
-        //    try
-        //    {
 
-        //        if (Velibs.Count > 1)
-        //        {
-        //            if (MainPage.mainPage.compassMode)
-        //            {
-        //                MainPage.mainPage.StopCompassAndUserLocationTracking();
-        //            }
-        //            map.TrySetViewBoundsAsync(MapExtensions.GetAreaFromLocations(Velibs.Select(s => s.Location).ToList()), new Thickness(20, 20, 20, 20), MapAnimationKind.Default);
+        private async void Control_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            try
+            {
+                if (Stations.Count > 1)
+                {
+                    if (_settingsService.Settings.IsCompassMode)
+                    {
+                        MainPage.mainPage.StopCompassAndUserLocationTracking();
+                    }
+                    await map.TrySetViewBoundsAsync(MapExtensions.GetAreaFromLocations(Stations.Select(s => (Geopoint)s.Location).ToList()), new Thickness(20, 20, 20, 20), MapAnimationKind.Default);
 
-        //        }
-        //        else
-        //        {
-        //            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-        //            {
-        //                MainPage.mainPage.SelectItem(this, false);
-        //            });
+                }
+                else
+                {
+                    await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    {
+                        MainPage.mainPage.SelectItem(this, false);
+                    });
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //    }
-
-        //}
-
-
+                }
+            }
+            catch 
+            {
+            }
+        }
 
 
         public void AddStation(Station station)
@@ -174,11 +169,11 @@ namespace EasyBike.WinPhone.Helpers
         }
 
         public bool NeedRefresh;
-        public void RemoveVelib(Station station)
+        public async void RemoveVelib(Station station)
         {
             NeedRefresh = true;
             station.Control = null;
-            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 station.ImageNumber = null;
                 station.ImageAvailable = null;

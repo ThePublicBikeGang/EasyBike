@@ -9,5 +9,6 @@ namespace EasyBike.Services.Settings
         /// </summary>
         public bool IsBikeMode { get; set; } = true;
 
+        public bool IsCompassMode { get; set; } = true;
     }
 }

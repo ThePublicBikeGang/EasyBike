@@ -25,7 +25,7 @@ namespace EasyBike.Models
                      await c.RefreshAsync().ConfigureAwait(false);
                      ContractRefreshed?.Invoke(c, EventArgs.Empty);
                  });
-                await Task.Delay(3000).ConfigureAwait(false);
+                await Task.Delay(20000).ConfigureAwait(false);
             }
         }
 
