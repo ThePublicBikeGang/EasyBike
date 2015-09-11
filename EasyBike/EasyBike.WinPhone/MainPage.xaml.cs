@@ -1303,7 +1303,7 @@ namespace EasyBike.WinPhone
             }
             body += "easybike://to/?lt=" + latitude + "&ln=" + longitude;
 
-            body += "\r\n\r\nCan't open this location ? Check out \"Easy Bike\" for Windows Phone ";
+            body += "\r\n\r\nCan't open this location ? Check out \"EasyBike\" for Windows Phone ";
             body += "http://www.windowsphone.com/s?appid=" + CurrentApp.AppId;
 
             body += "\r\n\r\nHave an IPhone ? Check out ";

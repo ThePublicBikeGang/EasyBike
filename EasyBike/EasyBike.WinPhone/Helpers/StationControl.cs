@@ -287,16 +287,16 @@ namespace EasyBike.WinPhone.Helpers
 
         internal Geopoint GetLocation()
         {
-
-            if (Stations.Count == 1)
+            var firstStation = Stations[0];
+            if (Stations.Count == 1 && firstStation != null)
             {
-                return Location = (Geopoint)Stations[0].Location;
+                return Location = (Geopoint)firstStation.Location;
             }
 
 
             double x = 0;
             double y = 0;
-            foreach (var station in Stations)
+            foreach (var station in Stations.ToList())
             {
                 x += ((Geopoint)station.Location).Position.Latitude;
                 y += ((Geopoint)station.Location).Position.Longitude;

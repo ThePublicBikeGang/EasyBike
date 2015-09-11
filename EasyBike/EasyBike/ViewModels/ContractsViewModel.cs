@@ -13,6 +13,7 @@ using Xamarin.Forms;
 using System.Reflection;
 using System.IO;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace EasyBike.ViewModels
 {
@@ -26,6 +27,7 @@ namespace EasyBike.ViewModels
         private readonly IConfigService _configService;
 
         private RelayCommand<Contract> _contractTappedCommand;
+        private bool _stopLoadingContracts = false;
         public ObservableCollection<ContractGroup> ContractGroups = new ObservableCollection<ContractGroup>();
 
         private int cityCounter;
@@ -66,6 +68,7 @@ namespace EasyBike.ViewModels
 
         public async void Init()
         {
+
             var storedContracts = await _contractsService.GetContractsAsync();
             var staticContracts = _contractsService.GetStaticContracts();
             staticContracts = storedContracts.Union(staticContracts).ToList();
@@ -73,6 +76,11 @@ namespace EasyBike.ViewModels
             var assembly = typeof(ContractsViewModel).GetTypeInfo().Assembly;
             foreach (var contract in staticContracts.GroupBy(c => c.Country).Select(c => c.First()).OrderBy(c => c.Country).ToList())
             {
+                if (_stopLoadingContracts)
+                {
+                    Debug.WriteLine("RETURN:!");
+                    return;
+                }
                 var imageMemoryStream = new MemoryStream();
                 byte[] imageByteArray = null;
                 try
@@ -101,7 +109,22 @@ namespace EasyBike.ViewModels
                     group.Items.Add(c);
                     group.ItemsCounter++;
                 }
+                await Task.Delay(1);
                 ContractGroups.Add(group);
+            }
+        }
+
+        RelayCommand _stopLoadingContractsCommand;
+        public RelayCommand StopLoadingContractsCommand
+        {
+            get
+            {
+                return _stopLoadingContractsCommand
+                       ?? (_stopLoadingContractsCommand = new RelayCommand(() =>
+                       {
+                           _stopLoadingContracts = true;
+                       }
+                    ));
             }
         }
 

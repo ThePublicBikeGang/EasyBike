@@ -124,26 +124,40 @@ namespace EasyBike.WinPhone.Views.Cities
 
         private async void Contracts_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            var c = e.NewItems[0] as ContractGroup;
-            if(c != null)
+            try
             {
-                if (c.ImageByteArray != null)
+                var c = e.NewItems[0] as ContractGroup;
+                if (c != null)
                 {
-                    var bitmap = await ByteArrayToImageAsync(c.ImageByteArray as byte[]);
-                    c.ImageSource = bitmap;
+                    if (c.ImageByteArray != null)
+                    {
+                        var bitmap = await ByteArrayToImageAsync(c.ImageByteArray as byte[]);
+                        c.ImageSource = bitmap;
 
-                    //using (var ms = new MemoryStream((c.ImageSource as byte[])))
-                    //{
-                    //    bitmap.SetSourceAsync(WindowsRuntimeStreamExtensions.AsRandomAccessStream(ms));
-                    //}
-                    //c.ImageSource = bitmap;
+                        //using (var ms = new MemoryStream((c.ImageSource as byte[])))
+                        //{
+                        //    bitmap.SetSourceAsync(WindowsRuntimeStreamExtensions.AsRandomAccessStream(ms));
+                        //}
+                        //c.ImageSource = bitmap;
+                    }
                 }
             }
+            catch { }
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        protected async override void OnNavigatedFrom(NavigationEventArgs e)
         {
             _contracts.CollectionChanged -= Contracts_CollectionChanged;
+            // prevent a "value does not fall into the valid within the expected exception"
+            //contractCollectionViewSource.Source = null;
+            //ContractListView.ItemsSource = null;
+            //ContractsListViewZoomOut.ItemsSource= null;
+            var viewModel = (DataContext as ContractsViewModel);
+            if (viewModel != null)
+            {
+                viewModel.StopLoadingContractsCommand.Execute(this);
+            }
+            await Task.Delay(3000);
             this.navigationHelper.OnNavigatedFrom(e);
         }
 

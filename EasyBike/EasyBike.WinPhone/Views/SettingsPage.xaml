@@ -32,7 +32,7 @@
                 <ToggleSwitch Header="Localization" VerticalAlignment="Stretch" OffContent="Off" OnContent="On" IsOn="{Binding IsLocalisationOn, Mode=TwoWay}" />
                 <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Paragraph FontSize="20.333">
-                        <Run Text="Easy Bike uses location service to help you find the nearest stations around your current location."/>
+                        <Run Text="EasyBike uses location service to help you find the nearest stations around your current location."/>
                         <LineBreak/>
                         <Run Text="This information stay anonymous and will never be used to identify you personally."/>
                     </Paragraph>

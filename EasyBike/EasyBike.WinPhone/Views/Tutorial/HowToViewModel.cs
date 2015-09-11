@@ -87,7 +87,7 @@ namespace EasyBike.WinPhone.Views.Tutorial
             Items.Add(new HowToModel()
             {
                 Text = "The message will automatically contains the address if it has been resolved."+
-                " It will also contains direct link to the Easy Bike app, IPhone/IPad native map and Google map.",
+                " It will also contains direct link to the EasyBike app, IPhone/IPad native map and Google map.",
                 ImageUrl = "shareLocation3.jpg",
             });
 
