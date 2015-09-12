@@ -61,7 +61,6 @@ namespace EasyBike.WinPhone.Helpers
         }
 
         private static StationControl previousVelibTapped;
-
         private async void Control_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             try
@@ -73,15 +72,14 @@ namespace EasyBike.WinPhone.Helpers
                         MainPage.mainPage.StopCompassAndUserLocationTracking();
                     }
                     await map.TrySetViewBoundsAsync(MapExtensions.GetAreaFromLocations(Stations.Select(s => (Geopoint)s.Location).ToList()), new Thickness(20, 20, 20, 20), MapAnimationKind.Default);
-
                 }
+              
                 else
                 {
                     await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                     {
                         MainPage.mainPage.SelectItem(this, false);
                     });
-
                 }
             }
             catch 
@@ -97,16 +95,14 @@ namespace EasyBike.WinPhone.Helpers
             NeedRefresh = true;
         }
 
-
         public void FinaliseUiCycle(CoreDispatcher dispatcher, Geopoint location, CancellationToken token)
         {
             if (token.IsCancellationRequested)
                 return;
 
-
             var station = Stations.FirstOrDefault();
-            this.SetValue(MapControl.LocationProperty, location);
-            this.DataContext = station;
+            SetValue(MapControl.LocationProperty, location);
+            DataContext = station;
 
             if (Stations.Count == 1)
             {
@@ -133,6 +129,7 @@ namespace EasyBike.WinPhone.Helpers
             }
             station.IsUiRefreshNeeded = false;
         }
+
         public void SwitchModeVelibParking(Station station)
         {
             if (station == null)
@@ -169,17 +166,11 @@ namespace EasyBike.WinPhone.Helpers
         }
 
         public bool NeedRefresh;
-        public async void RemoveVelib(Station station)
+        public bool ToRemove;
+        public void RemoveVelib(Station station)
         {
             NeedRefresh = true;
             station.Control = null;
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                station.ImageNumber = null;
-                station.ImageAvailable = null;
-                station.ImageDocks = null;
-            });
-
             Stations.Remove(station);
         }
 
@@ -199,8 +190,8 @@ namespace EasyBike.WinPhone.Helpers
             VisualStateManager.GoToState(this, "ShowCluster", false);
             // VisualStateManager.GoToState(this, "Clear", false);
             // VisualStateManager.GoToState(this, "Loaded", false);
-            this.Opacity = 1;
-            this.IsHitTestVisible = true;
+            Opacity = 1;
+            IsHitTestVisible = true;
         }
         public void ShowPulseAnimation()
         {
@@ -219,8 +210,8 @@ namespace EasyBike.WinPhone.Helpers
             // VisualStateManager.GoToState(this, "Clear", false);
             //  VisualStateManager.GoToState(this, "Loaded", false);
             StationPath.Fill = emptyColorBrush;
-            this.Opacity = 1;
-            this.IsHitTestVisible = true;
+            Opacity = 1;
+            IsHitTestVisible = true;
 
             //if(velib!= null && velib.Selected)
             //    VisualStateManager.GoToState(this, "ShowSelected", true);
@@ -276,9 +267,9 @@ namespace EasyBike.WinPhone.Helpers
 
         public void Hide()
         {
-            this.Opacity = 0;
-            this.IsHitTestVisible = false;
-
+            Opacity = 0;
+            IsHitTestVisible = false;
+            NeedRefresh = false;
             //VisualStateManager.GoToState(this, "Hide", false);
         }
 
@@ -287,7 +278,7 @@ namespace EasyBike.WinPhone.Helpers
 
         internal Geopoint GetLocation()
         {
-            var firstStation = Stations[0];
+            var firstStation = Stations.FirstOrDefault();
             if (Stations.Count == 1 && firstStation != null)
             {
                 return Location = (Geopoint)firstStation.Location;
@@ -305,7 +296,7 @@ namespace EasyBike.WinPhone.Helpers
             return Location;
         }
 
-        // store the offsetLocation in order to reuse it for each draw cycC:\Users\Kobs\Source\Repos\velib2\Velib\VelibContext\VelibControl.csle
+        // store the offsetLocation in order to reuse it for each draw cycle
         public Point OffsetLocation;
         public Point GetOffsetLocation(MapControl _map)
         {

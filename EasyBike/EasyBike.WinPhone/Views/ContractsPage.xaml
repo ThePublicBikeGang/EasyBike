@@ -374,6 +374,14 @@
         </Style>
     </Page.Resources>
 
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="clear all" Command="{Binding ClearAllDownloadedContractsCommand}"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    
     <Grid x:Name="RootLayout">
         <Grid.Transitions>
             <TransitionCollection>
@@ -386,7 +394,9 @@
                 <ListView x:Name="ContractListView"
 			SelectionMode="None"
 			IsItemClickEnabled="True"
+            VirtualizingStackPanel.VirtualizationMode="Recycling"
 			ItemContainerStyle="{StaticResource ListViewItemStyle1}" 
+
 			Margin="0">
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior  EventName="ItemClick">
@@ -470,13 +480,13 @@
             </SemanticZoom.ZoomedInView>
             <SemanticZoom.ZoomedOutView>
 
-                <ListView x:Name="ContractsListViewZoomOut">
+                <ListView x:Name="ContractsListViewZoomOut" VirtualizingStackPanel.VirtualizationMode="Recycling">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel VerticalAlignment="Center" Margin="12,0,0,0" Height="87">
 
                                 <StackPanel Orientation="Horizontal" >
-                                    <Image Source="{Binding Group.ImageSource, TargetNullValue={x:Null}}" Width="60" Height="40"/>
+                                    <Image Source="{Binding Group.ImageSource, TargetNullValue={x:Null}}" Width="60" Height="40" />
                                     <TextBlock Text="{Binding Group.Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" Margin="10,0,0,0"/>
                                 </StackPanel>
 

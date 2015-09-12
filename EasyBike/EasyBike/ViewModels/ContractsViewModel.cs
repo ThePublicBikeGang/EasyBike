@@ -78,7 +78,6 @@ namespace EasyBike.ViewModels
             {
                 if (_stopLoadingContracts)
                 {
-                    Debug.WriteLine("RETURN:!");
                     return;
                 }
                 var imageMemoryStream = new MemoryStream();
@@ -110,11 +109,19 @@ namespace EasyBike.ViewModels
                     group.ItemsCounter++;
                 }
                 await Task.Delay(1);
-                ContractGroups.Add(group);
+                try
+                {
+                    ContractGroups.Add(group);
+                }
+                catch 
+                {
+
+                }
+          
             }
         }
 
-        RelayCommand _stopLoadingContractsCommand;
+        private RelayCommand _stopLoadingContractsCommand;
         public RelayCommand StopLoadingContractsCommand
         {
             get
@@ -127,6 +134,28 @@ namespace EasyBike.ViewModels
                     ));
             }
         }
+
+        private RelayCommand _clearAllDownloadedContractsCommand;
+        public RelayCommand ClearAllDownloadedContractsCommand
+        {
+            get
+            {
+                return _clearAllDownloadedContractsCommand
+                       ?? (_clearAllDownloadedContractsCommand = new RelayCommand(async () =>
+                       {
+                           var storedContracts = await _contractsService.GetContractsAsync();
+                           foreach (Contract c in storedContracts)
+                           {
+                               c.Downloaded = false;
+                           }
+
+                           await _contractsService.RemoveAllContractsAsync();
+                       }
+                    ));
+            }
+        }
+
+        
 
         public RelayCommand<Contract> ContractTappedCommand
         {

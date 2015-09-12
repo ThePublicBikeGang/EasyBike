@@ -139,14 +139,15 @@ namespace EasyBike.Models
                             if (Stations[i].AvailableBikes != refreshedStations[y].AvailableBikes || Stations[i].AvailableBikeStands != refreshedStations[y].AvailableBikeStands)
                             {
                                 Stations[i].IsUiRefreshNeeded = true;
+                                Stations[i].AvailableBikes = refreshedStations[y].AvailableBikes;
+                                Stations[i].AvailableBikeStands = refreshedStations[y].AvailableBikeStands;
+                                Stations[i].Loaded = true;
                             }
-                            Stations[i].AvailableBikes = refreshedStations[y].AvailableBikes;
-                            Stations[i].AvailableBikeStands = refreshedStations[y].AvailableBikeStands;
-                            Stations[i].Loaded = true;
                             refreshedStations.Remove(refreshedStations[y]);
                             break;
                         }
                     }
+                    await Task.Delay(1);
                 }
             }
             catch

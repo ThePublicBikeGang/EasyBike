@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using EasyBike.Models.Storage;
+using GalaSoft.MvvmLight.Ioc;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -36,6 +28,18 @@ namespace EasyBike.WinPhone
             Bootstrapper.Start();
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+            UnhandledException += App_UnhandledException;
+        }
+
+        private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            // this can happen when backkeypress is clicked quickly after navigating to the contract list.
+            // can't figure out why
+            if (e is UnhandledExceptionEventArgs && e.Message.Contains("The parameter is incorrect."))
+            {
+                e.Handled = true;
+                return;
+            }
         }
 
         /// <summary>
@@ -121,11 +125,16 @@ namespace EasyBike.WinPhone
         /// </summary>
         /// <param name="sender">The source of the suspend request.</param>
         /// <param name="e">Details about the suspend request.</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
+        private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
 
             // TODO: Save application state and stop any background activity
+            // CAREFULL: This is never reached in DEBUG mode
+            var settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
+            settingsService.Settings.LastLocation = new Models.Location() { Latitude = MainPage.Map.Center.Position.Latitude, Longitude = MainPage.Map.Center.Position.Longitude, ZoomLevel = MainPage.Map.ZoomLevel };
+            await settingsService.SaveSettingAsync();
+            
             deferral.Complete();
         }
     }

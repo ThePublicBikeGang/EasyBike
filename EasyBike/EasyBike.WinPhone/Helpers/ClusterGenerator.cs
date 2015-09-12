@@ -20,12 +20,10 @@ namespace EasyBike.WinPhone.Helpers
         public List<Station> ToAdd { get; set; }
         public List<Station> ToRemove { get; set; }
     }
-    /// <summary>
-    /// TODO : NEED TO ATTACH TO THE REFRESHER TO REFRESH THE STUFF
-    /// </summary>
+
     public class ClusterGenerator
     {
-        private const int MAX_CONTROLS = 30;
+        private const int MAX_CONTROLS = 38;
         private double MAXDISTANCE = 100;
         private IRefreshService _refreshService;
         public readonly List<StationControl> StationControls = new List<StationControl>(MAX_CONTROLS);
@@ -48,12 +46,12 @@ namespace EasyBike.WinPhone.Helpers
 
             _refreshService = SimpleIoc.Default.GetInstance<IRefreshService>();
             _refreshService.ContractRefreshed += _refreshService_ContractRefreshed;
+
             // maps event
             var mapObserver = Observable.FromEventPattern(map, "CenterChanged");
             mapObserver
                 .Do((e) =>
                 {
-
                     cts.Cancel();
                     cts = new CancellationTokenSource();
                 })
@@ -120,13 +118,12 @@ namespace EasyBike.WinPhone.Helpers
         private async void _refreshService_ContractRefreshed(object sender, EventArgs e)
         {
             var contract = (sender as Contract);
-            foreach (var control in StationControls.Where(c=> c.Stations.Count == 1 && c.Stations[0].IsUiRefreshNeeded && c.Stations[0].ContractStorageName == contract.StorageName))
+            foreach (var control in StationControls.Where(c=> c.Stations.Count == 1 && c.Stations.FirstOrDefault().IsUiRefreshNeeded && c.Stations.FirstOrDefault().ContractStorageName == contract.StorageName).ToList())
             {
-                var station = control.Stations[0];
+                var station = control.Stations.FirstOrDefault();
                 if(station != null)
                 {
-                    dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => control.RefreshStation(station));
-                    await Task.Delay(1);
+                   await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => control.RefreshStation(station));
                 }
             }
         }
@@ -163,14 +160,14 @@ namespace EasyBike.WinPhone.Helpers
             {
                 foreach (var control in StationControls.Where(t => t.Stations.Count > 1))
                 {
-                    foreach (var velib in control.Stations.Where(t => t.GetOffsetLocation2(leftCornerLocation, zoomLevel)
+                    foreach (var velib in control.Stations.ToList().Where(t => t.GetOffsetLocation2(leftCornerLocation, zoomLevel)
                         .GetDistanceTo(control.GetOffsetLocation2(leftCornerLocation, zoomLevel)) > MAXDISTANCE).ToList())
                     {
 
                         addRemoveCollection.ToAdd.Add(velib);
                         Items.Remove(velib);
                         control.RemoveVelib(velib);
-
+                        await Task.Delay(1);
                         if (token.IsCancellationRequested)
                         {
                             return;
@@ -207,11 +204,8 @@ namespace EasyBike.WinPhone.Helpers
                             return;
                         }
                     }
-
                 }
-
             }
-
 
 
             previousZoom = zoomLevel;
@@ -225,12 +219,12 @@ namespace EasyBike.WinPhone.Helpers
                 }
             }
 
+            var list = StationControls.Where(c => c.NeedRefresh && c.Stations.Count == 0);
             foreach (var control in StationControls.Where(c => c.NeedRefresh && c.Stations.Count == 0))
             {
-                dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
                     control.Hide();
-                    control.NeedRefresh = false;
                 }
                 );
             }
@@ -252,7 +246,7 @@ namespace EasyBike.WinPhone.Helpers
                     }
                 }
                 var location = control.GetLocation();
-                dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => control.FinaliseUiCycle(dispatcher, location, token));
+                await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => control.FinaliseUiCycle(dispatcher, location, token));
             }
 
             foreach (var station in Items)

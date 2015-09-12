@@ -58,6 +58,38 @@ namespace EasyBike.ViewModels
             FireGoToFavorite?.Invoke(favorite, EventArgs.Empty);
         }
 
+
+        private bool firstLoad;
+        private RelayCommand mainPageLoadedCommand;
+        public RelayCommand MainPageLoadedCommand
+        {
+            get
+            {
+                return mainPageLoadedCommand
+                       ?? (mainPageLoadedCommand = new RelayCommand(
+                           async () =>
+                           {
+                               if (!firstLoad)
+                               {
+                                   var contracts = await SimpleIoc.Default.GetInstance<IContractService>().GetContractsAsync();
+                                   if (contracts.Count == 0)
+                                   {
+                                       try
+                                       {
+                                           // this can throw a application called an interface that was marshalled for a different thread. (Exception from HRESULT: 0x8001010E (RPC_E_WRONG_THREAD))
+                                           // better to catch this as I have found a way to force it to the UI thread from the cross platform library
+                                           await _dialogService.ShowMessage("To get started, you will have to download at least one city. Let's check if your city is in the current list.",
+                                              "Welcome to EasyBike !");
+                                           GoToDownloadCitiesCommand.Execute(null);
+                                       }
+                                       catch { }
+                                   }
+                                   firstLoad = true;
+                               }
+                           }));
+            }
+        }
+
         public RelayCommand ShowContractsCommand
         {
             get

@@ -7,6 +7,7 @@ namespace EasyBike.Models.Storage
     {
         Task<SettingsModel> GetSettingsAsync();
         Task SetSettingsAsync(SettingsModel settings);
+        Task SaveSettingAsync();
         SettingsModel Settings { get; set; }
     }
 }

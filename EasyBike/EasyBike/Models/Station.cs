@@ -23,9 +23,11 @@ namespace EasyBike.Models
         [JsonIgnore]
         public bool Loaded { get; set; }
 
-        public int? AvailableBikeStands { get; set; }
+        [JsonIgnore]
+        public int? AvailableBikeStands { get; set; } = -1;
 
-        public int AvailableBikes { get; set; }
+        [JsonIgnore]
+        public int AvailableBikes { get; set; } = -1;
 
         public string ContractStorageName { get; set; }
         
@@ -61,7 +63,7 @@ namespace EasyBike.Models
                 return false;
             }
 
-            return this.Longitude == ((obj as Station).Longitude) && this.Latitude == ((obj as Station).Latitude);
+            return Longitude == ((obj as Station).Longitude) && Latitude == ((obj as Station).Latitude);
         }
 
 

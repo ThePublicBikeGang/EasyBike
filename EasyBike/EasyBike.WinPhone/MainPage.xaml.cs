@@ -62,10 +62,10 @@ namespace EasyBike.WinPhone
         public static CoreDispatcher dispatcher = CoreWindow.GetForCurrentThread().Dispatcher;
         // solve this in a better manner
         public static MainPage mainPage;
+        public static MapControl Map;
         private Compass compass = Compass.GetDefault();
         private SymbolIcon SymbolView = new SymbolIcon(Symbol.View);
         private SymbolIcon SymbolTarget = new SymbolIcon(Symbol.Target);
-
 
         Storyboard NorthIndicatorStoryboard;
         DoubleAnimation NorthIndicatorRotationAnimation;
@@ -75,20 +75,16 @@ namespace EasyBike.WinPhone
         DoubleAnimation AccuracyScaleX;
         DoubleAnimation AccuracyScaleY;
 
-
-
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             mainPage = this;
-
+            Map = MapCtrl;
             navigationHelper = new NavigationHelper(this);
 
             clusterGenerator = new ClusterGenerator(MapCtrl, Resources["StationTemplate"] as ControlTemplate);
-            MapCtrl.Center = new Windows.Devices.Geolocation.Geopoint(
-                new Windows.Devices.Geolocation.BasicGeoposition { Latitude = 51.49313, Longitude = -0.156876 });
-            MapCtrl.ZoomLevel = 14.5;
+            
             NavigationCacheMode = NavigationCacheMode.Required;
 
             _navigationService = SimpleIoc.Default.GetInstance<INavigationService>();
@@ -96,34 +92,31 @@ namespace EasyBike.WinPhone
             _configService = SimpleIoc.Default.GetInstance<IConfigService>();
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _dialogService = SimpleIoc.Default.GetInstance<IDialogService>();
-            
+
+            if(_settingsService.Settings.LastLocation != null)
+            {
+                MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = _settingsService.Settings.LastLocation.Latitude, Longitude = _settingsService.Settings.LastLocation.Longitude });
+                MapCtrl.ZoomLevel = _settingsService.Settings.LastLocation.ZoomLevel;
+            }
+
+#if DEBUG
+            MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
+            MapCtrl.ZoomLevel = 15.5;
+#endif
+
             ServiceLocator.Current.GetInstance<MainViewModel>().FireGoToFavorite += MainPage_FireGoToFavorite;
 
             _notificationService.OnNotify += _notificationService_OnNotify;
 
-
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-            MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
-
-            //if (Windows.Storage.ApplicationData.Current.LocalSettings.Values["PreviousMapCenterLat"] != null)
-            //{
-            //    MapCtrl.Center = new Geopoint(new BasicGeoposition
-            //    {
-            //        Latitude = (double)localSettings.Values["PreviousMapCenterLat"]
-            //        ,
-            //        Longitude = (double)localSettings.Values["PreviousMapCenterLon"]
-            //    });
-            //    MapCtrl.ZoomLevel = (double)localSettings.Values["PreviousMapZoom"];
-            //}
-
-
-            NorthIndicatorStoryboard = this.Resources["NorthIndicatorStoryboard"] as Storyboard;
+           
+            NorthIndicatorStoryboard = Resources["NorthIndicatorStoryboard"] as Storyboard;
             NorthIndicatorRotationAnimation = NorthIndicatorStoryboard.Children.First() as DoubleAnimation;
 
-            UserLocationStoryboard = this.Resources["UserLocationStoryboard"] as Storyboard;
+            UserLocationStoryboard = Resources["UserLocationStoryboard"] as Storyboard;
             UserLocationRotationAnimation = UserLocationStoryboard.Children.First() as DoubleAnimation;
 
-            AccuracyStoryboard = this.Resources["AccuracyStoryboard"] as Storyboard;
+            AccuracyStoryboard = Resources["AccuracyStoryboard"] as Storyboard;
             AccuracyScaleX = AccuracyStoryboard.Children[0] as DoubleAnimation;
             AccuracyScaleY = AccuracyStoryboard.Children[1] as DoubleAnimation;
 
@@ -171,10 +164,7 @@ namespace EasyBike.WinPhone
             TouchPanel.Holding += TouchPanel_Holding;
             TouchPanel.ManipulationStarted += TouchPanel_ManipulationStarted;
             TouchPanel.ManipulationStarting += TouchPanel_ManipulationStarting;
-
-
         }
-
 
         private async void _notificationService_OnNotify(object sender, Notification.Notification e)
         {
@@ -211,8 +201,6 @@ namespace EasyBike.WinPhone
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-
-
         private void VelibTemplateStationRootCanvas_ManipulationStarting(object sender, Windows.UI.Xaml.Input.ManipulationStartingRoutedEventArgs e)
         {
             var model = (sender as Canvas).DataContext as Station;
@@ -1230,31 +1218,9 @@ namespace EasyBike.WinPhone
         private void SearchLocationPoint_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             SelectItem(SearchLocationPoint, false);
-            //
-            //VelibFlyout.ShowAt(this);
         }
 
         public bool appLaunchedFromProtocolUri = false;
-        // trigger a map center changed to refresh the view
-        internal async void DataSourceLoaded()
-        {
-            //await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-            //{
-            //    if (!appLaunchedFromProtocolUri)
-            //    {
-            //        if (VelibDataSource.StaticVelibs.Count == 0)
-            //        {
-            //            var dialog = new MessageDialog("It's a bit lonely on this map, let's check if your city is in the current list.");
-            //            dialog.Commands.Add(new UICommand("Ok", null));
-            //            await dialog.ShowAsync();
-            //            Frame.Navigate(typeof(ContractsPage));
-            //            return;
-            //        }
-            //        Map.Center = new Geopoint(new BasicGeoposition() { Longitude = Map.Center.Position.Longitude + 0.000001, Latitude = Map.Center.Position.Latitude });
-            //    }
-            //});
-
-        }
 
         private void SearchLocationPoint_ManipulationStarting(object sender, Windows.UI.Xaml.Input.ManipulationStartingRoutedEventArgs e)
         {

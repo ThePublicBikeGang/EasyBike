@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Windows.Phone.UI.Input;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -93,21 +94,46 @@ namespace EasyBike.WinPhone.Views.Cities
         protected async override  void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
-            DataContext = e.Parameter;
-            
+            if (!GalaSoft.MvvmLight.ViewModelBase.IsInDesignModeStatic)
+            {
+                DataContext = e.Parameter;
+
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+
             _contracts = (DataContext as ContractsViewModel).ContractGroups;
             _contracts.CollectionChanged += Contracts_CollectionChanged;
 
 
-            contractCollectionViewSource.IsSourceGrouped = true;
-            contractCollectionViewSource.Source = _contracts;
-            contractCollectionViewSource.ItemsPath = new PropertyPath("Items");
-            
-            
-            ContractListView.ItemsSource = contractCollectionViewSource.View;
-            ContractsListViewZoomOut.ItemsSource = contractCollectionViewSource.View.CollectionGroups;
+                contractCollectionViewSource.IsSourceGrouped = true;
+                contractCollectionViewSource.Source = _contracts;
+                contractCollectionViewSource.ItemsPath = new PropertyPath("Items");
 
-            (DataContext as ContractsViewModel).Init();
+
+                ContractListView.ItemsSource = contractCollectionViewSource.View;
+                ContractsListViewZoomOut.ItemsSource = contractCollectionViewSource.View.CollectionGroups;
+
+
+
+                (DataContext as ContractsViewModel).Init();
+            }
+        
+        }
+
+        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            var viewModel = (DataContext as ContractsViewModel);
+            if (viewModel != null)
+            {
+                viewModel.StopLoadingContractsCommand.Execute(this);
+            }
+            HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
+            _contracts.CollectionChanged -= Contracts_CollectionChanged;
+            //  Try to prevent a "value does not fall into the valid within the expected exception" but this is not working
+            //_contracts.Clear();
+            //DataContext = null;
+            //contractCollectionViewSource.Source = null;
+            //ContractListView.ItemsSource = null;
+            //ContractsListViewZoomOut.ItemsSource = null;
         }
 
         public async Task<BitmapImage> ByteArrayToImageAsync(byte[] pixeByte)
@@ -132,6 +158,7 @@ namespace EasyBike.WinPhone.Views.Cities
                     if (c.ImageByteArray != null)
                     {
                         var bitmap = await ByteArrayToImageAsync(c.ImageByteArray as byte[]);
+                        bitmap.DecodePixelWidth = 60;
                         c.ImageSource = bitmap;
 
                         //using (var ms = new MemoryStream((c.ImageSource as byte[])))
@@ -147,18 +174,7 @@ namespace EasyBike.WinPhone.Views.Cities
 
         protected async override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            _contracts.CollectionChanged -= Contracts_CollectionChanged;
-            // prevent a "value does not fall into the valid within the expected exception"
-            //contractCollectionViewSource.Source = null;
-            //ContractListView.ItemsSource = null;
-            //ContractsListViewZoomOut.ItemsSource= null;
-            var viewModel = (DataContext as ContractsViewModel);
-            if (viewModel != null)
-            {
-                viewModel.StopLoadingContractsCommand.Execute(this);
-            }
-            await Task.Delay(3000);
-            this.navigationHelper.OnNavigatedFrom(e);
+            navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion

@@ -618,6 +618,11 @@
 
         </Style>
     </Page.Resources>
+    <i:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{Binding MainPageLoadedCommand}"/>
+        </core:EventTriggerBehavior>
+    </i:Interaction.Behaviors>
     <Page.BottomAppBar>
         <CommandBar MinHeight="25">
             <CommandBar.SecondaryCommands>

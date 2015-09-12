@@ -14,6 +14,7 @@ namespace EasyBike.Models.Storage
 
         Task StoreContractAsync(Contract contract);
         Task RemoveContractAsync(Contract contract);
+        Task RemoveAllContractsAsync();
         Task ClearAsync();
         Task<IEnumerable<Contract>> LoadStoredContractsAsync();
 

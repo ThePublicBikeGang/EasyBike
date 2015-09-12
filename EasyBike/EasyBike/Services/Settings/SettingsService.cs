@@ -1,7 +1,5 @@
-﻿
-using EasyBike.Models.Storage;
+﻿using EasyBike.Models.Storage;
 using EasyBike.Services.Settings;
-using System;
 using System.Threading.Tasks;
 
 namespace EasyBike.Services
@@ -30,6 +28,11 @@ namespace EasyBike.Services
         public async Task SetSettingsAsync(SettingsModel settings)
         {
             await _storageService.SetSettingsAsync(settings).ConfigureAwait(false);
+        }
+
+        public async Task SaveSettingAsync()
+        {
+            await _storageService.SetSettingsAsync(_settings).ConfigureAwait(false);
         }
     }
 }

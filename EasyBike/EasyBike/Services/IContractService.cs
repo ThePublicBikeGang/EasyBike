@@ -8,6 +8,7 @@ namespace EasyBike.Models
         List<Contract> GetStaticContracts();
         Task<List<Contract>> GetContractsAsync();
         Task RemoveContractAsync(Contract contract);
+        Task RemoveAllContractsAsync();
         Task AddContractAsync(Contract contract);
         List<Station> GetStations();
     }

@@ -9,7 +9,7 @@ namespace EasyBike.Design
     {
         public Task AddContractAsync(Contract contract)
         {
-            throw new NotImplementedException();
+            return Task.FromResult<Contract>(null);
         }
 
         public async Task<List<Contract>> GetContractsAsync()
@@ -19,17 +19,22 @@ namespace EasyBike.Design
 
         public List<Contract> GetStaticContracts()
         {
-            throw new NotImplementedException();
+            return new ContractList().Contracts;
         }
 
         public List<Station> GetStations()
         {
-            throw new NotImplementedException();
+            return new List<Station>();
+        }
+
+        public Task RemoveAllContractsAsync()
+        {
+            return Task.FromResult<Contract>(null);
         }
 
         public Task RemoveContractAsync(Contract contract)
         {
-            throw new NotImplementedException();
+            return Task.FromResult<Contract>(null);
         }
     }
 }

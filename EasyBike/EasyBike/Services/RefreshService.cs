@@ -44,5 +44,10 @@ namespace EasyBike.Models
                 contracts.Remove(contractToRemove);
             }
         }
+
+        public void RemoveAllContracts()
+        {
+            contracts.Clear();
+        }
     }
 }

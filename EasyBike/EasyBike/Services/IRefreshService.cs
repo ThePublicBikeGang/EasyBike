@@ -6,6 +6,7 @@ namespace EasyBike.Models
     {
         void AddContract(Contract contract);
         void RemoveContract(Contract contract);
+        void RemoveAllContracts();
         event EventHandler ContractRefreshed;
     }
 }

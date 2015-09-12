@@ -52,6 +52,11 @@ namespace EasyBike.Models.Storage
             await BlobCache.LocalMachine.Invalidate(contract.StorageName);
         }
 
+        public async Task RemoveAllContractsAsync()
+        {
+            await BlobCache.LocalMachine.InvalidateAllObjects<Contract>();
+        }
+
         public async Task<IEnumerable<Contract>> LoadStoredContractsAsync()
         {
             return await BlobCache.LocalMachine.GetAllObjects<Contract>();

@@ -1,22 +1,25 @@
 ﻿using EasyBike.Models.Storage;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using GalaSoft.MvvmLight.Views;
+
 namespace EasyBike.Models
 {
     public class ContractService : IContractService
     {
         private readonly IStorageService _storageService;
         private readonly IRefreshService _refreshService;
+        private readonly IDialogService _dialogService;
 
         private List<Contract> contracts = new List<Contract>();
         private List<Station> stations = new List<Station>();
 
-        public ContractService(IStorageService storageService, IRefreshService refreshService)
+        public ContractService(IDialogService dialogService, IStorageService storageService, IRefreshService refreshService)
         {
             _storageService = storageService;
             _refreshService = refreshService;
+            _dialogService = dialogService;
             GetContractsAsync().ConfigureAwait(false);
         }
 
@@ -26,6 +29,15 @@ namespace EasyBike.Models
             contracts.Add(contract);
             AggregateStations(contract);
         }
+
+        public async Task RemoveAllContractsAsync()
+        {
+            await _storageService.RemoveAllContractsAsync();
+            stations.Clear();
+            contracts.Clear();
+            _refreshService.RemoveAllContracts();
+        }
+
 
         public async Task RemoveContractAsync(Contract contract)
         {
@@ -54,7 +66,7 @@ namespace EasyBike.Models
             {
                 var storedContracts = await _storageService.LoadStoredContractsAsync().ConfigureAwait(false);
                 contracts = storedContracts.ToList();
-                foreach(var contract in contracts)
+                foreach (var contract in contracts)
                 {
                     AggregateStations(contract);
                 }

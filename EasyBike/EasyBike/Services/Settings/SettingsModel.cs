@@ -1,4 +1,6 @@
 ﻿
+using EasyBike.Models;
+
 namespace EasyBike.Services.Settings
 {
     public class SettingsModel
@@ -9,6 +11,9 @@ namespace EasyBike.Services.Settings
         /// </summary>
         public bool IsBikeMode { get; set; } = true;
 
-        public bool IsCompassMode { get; set; } = true;
+        public bool IsCompassMode { get; set; } = false;
+
+        public Location LastLocation { get; set; }
+        
     }
 }

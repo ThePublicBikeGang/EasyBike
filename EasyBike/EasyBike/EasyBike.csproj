@@ -72,6 +72,7 @@
     <Compile Include="Models\Favorites\Favorite.cs" />
     <Compile Include="Models\Favorites\FavoritesService.cs" />
     <Compile Include="Models\Favorites\IFavoritesService.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Notification\GoToPageNotification.cs" />
     <Compile Include="Notification\SendEmailNotification.cs" />
     <Compile Include="Services\ContractService.cs" />
