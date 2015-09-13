@@ -17,6 +17,8 @@ namespace EasyBike.Models.Contracts
 
         public abstract bool Banking { get; set; }
 
+        public abstract string Id { get; set; }
+
         [OnDeserialized]
         internal void OnDeserializedMethod(StreamingContext context)
         {

@@ -34,11 +34,11 @@ namespace EasyBike.Models.Contracts.FR
         private string idField;
         private int nbBikesField;
         private int nbEmptyDocksField;
-
+        public override string Id { get; set; }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute("id", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string Id
+        public string Id2
         {
             get
             {

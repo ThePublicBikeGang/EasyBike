@@ -12,7 +12,6 @@ namespace EasyBike.Models.Contracts.PL
     {
         public SzczecinContract()
         {
-            DirectDownloadAvailability = true;
             StationsUrl = "http://atektura.nazwa.pl/atektura.pl/bike_s";
         }
 

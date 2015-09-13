@@ -18,6 +18,8 @@ namespace EasyBike.Models.Contracts.FR
 
         public override bool Banking { get; set; }
 
+        public override string Id { get; set; }
+
         public override bool Status { get; set; } = true;
 
         [JsonProperty(PropertyName = "libelle")]

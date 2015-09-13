@@ -25,5 +25,6 @@ namespace EasyBike.Models.Contracts.US
         public string Locked { get; set; }
 
         public override bool Status { get; set; }
+        public override string Id { get; set; }
     }
 }

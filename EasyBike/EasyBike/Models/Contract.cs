@@ -2,16 +2,22 @@
 using EasyBike.Models.Contracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Views;
+using GalaSoft.MvvmLight.Ioc;
+using EasyBike.Notification;
+using System;
 
 namespace EasyBike.Models
 {
     public abstract class Contract : ObservableObject
     {
-        public bool DirectDownloadAvailability { get; set; } = true;
+        public bool StationRefreshGranularity { get; set; } = false;
         public string AvailabilityUrl { get; set; }
         public string StationsUrl { get; set; }
         public string ServiceProvider { get; set; }
         public string Name { get; set; }
+        private int retryStation;
+        private int retryContract;
         private string technicalName;
         public string TechnicalName
         {
@@ -31,7 +37,7 @@ namespace EasyBike.Models
             get
             {
                 if (string.IsNullOrEmpty(storageName))
-                    return Name + this.GetType().Name;
+                    return Name + GetType().Name;
                 else
                     return storageName;
             }
@@ -113,8 +119,11 @@ namespace EasyBike.Models
                     Longitude = serviceProviderModel.Longitude,
                     AvailableBikes = serviceProviderModel.AvailableBikes,
                     AvailableBikeStands = serviceProviderModel.AvailableBikeStands,
-                    ContractStorageName = StorageName
-                });
+                    ContractStorageName = StorageName,
+                    Id = serviceProviderModel.Id,
+                    IsUiRefreshNeeded = true,
+                    Loaded = true
+            });
             }
             return stations;
         }
@@ -132,6 +141,7 @@ namespace EasyBike.Models
 
                 for (int i = 0; i < Stations.Count; i++)
                 {
+                    Stations[i].Loaded = true;
                     for (int y = refreshedStations.Count - 1; y >= 0; y--)
                     {
                         if (Stations[i].Latitude == refreshedStations[y].Latitude && Stations[i].Longitude == refreshedStations[y].Longitude)
@@ -141,18 +151,86 @@ namespace EasyBike.Models
                                 Stations[i].IsUiRefreshNeeded = true;
                                 Stations[i].AvailableBikes = refreshedStations[y].AvailableBikes;
                                 Stations[i].AvailableBikeStands = refreshedStations[y].AvailableBikeStands;
-                                Stations[i].Loaded = true;
                             }
                             refreshedStations.Remove(refreshedStations[y]);
                             break;
                         }
                     }
-                    await Task.Delay(1);
+                   
+
+                    await Task.Delay(1).ConfigureAwait(false);
+                }
+                retryContract = 0;
+            }
+            catch (Exception e)
+            {
+                retryContract++;
+                if (retryContract == 3)
+                {
+                    var notificationService = SimpleIoc.Default.GetInstance<INotificationService>();
+                    try
+                    {
+                        notificationService.Notify(new RefreshFailureNotification()
+                        {
+                            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us to and we will investigate. Thumbs up !",
+                            Subject = "Hey !",
+                            ContractName = Name,
+                            Exception = e
+                        });
+                    }
+                    catch
+                    {
+                        // Ignore
+                    }
                 }
             }
-            catch
+
+            return true;
+        }
+
+        public async Task<bool> RefreshAsync(Station station)
+        {
+            try
             {
-                // ignored
+                var refreshedStation = await InnerRefreshAsync(station).ConfigureAwait(false);
+                if (station.AvailableBikes != refreshedStation.AvailableBikes || station.AvailableBikeStands != refreshedStation.AvailableBikeStands)
+                {
+                    station.IsUiRefreshNeeded = true;
+                    station.AvailableBikes = refreshedStation.AvailableBikes;
+                    station.AvailableBikeStands = refreshedStation.AvailableBikeStands;
+                }
+                if (!station.Loaded)
+                {
+                    station.Loaded = true;
+                    station.IsUiRefreshNeeded = true;
+                }
+               
+                retryStation = 0;
+                return true;
+            }
+            catch(Exception e)
+            {
+                retryStation++;
+                if(retryStation == 20) 
+                {
+                    //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+                    //contractService.
+                    var notificationService = SimpleIoc.Default.GetInstance<INotificationService>();
+                    try
+                    {
+                        notificationService.Notify(new RefreshFailureNotification()
+                        {
+                            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us to and we will investigate. Thumbs up !",
+                            Subject = "Hey !",
+                            ContractName = station.Contract.Name,
+                            Exception = e
+                        });
+                    }
+                    catch
+                    {
+                        // Ignore
+                    }
+                }
             }
 
             return true;
@@ -161,6 +239,11 @@ namespace EasyBike.Models
         public virtual async Task<List<StationModelBase>> InnerRefreshAsync()
         {
             return await Task.FromResult(new List<StationModelBase>());
+        }
+
+        public virtual async Task<StationModelBase> InnerRefreshAsync(Station station)
+        {
+            return null;
         }
     }
 }

@@ -74,6 +74,7 @@
     <Compile Include="Models\Favorites\IFavoritesService.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Notification\GoToPageNotification.cs" />
+    <Compile Include="Notification\MessageNotification.cs" />
     <Compile Include="Notification\SendEmailNotification.cs" />
     <Compile Include="Services\ContractService.cs" />
     <Compile Include="Models\Contracts\FR\JcDecauxContract.cs" />
@@ -82,8 +83,6 @@
     <Compile Include="Models\Contracts\PL\SzczecinModel.cs" />
     <Compile Include="Models\Contracts\StationModelBase.cs" />
     <Compile Include="Services\IContractService.cs" />
-    <Compile Include="Services\IRefreshService.cs" />
-    <Compile Include="Services\RefreshService.cs" />
     <Compile Include="Models\Station.cs" />
     <Compile Include="Services\Settings\ISettingsService.cs" />
     <Compile Include="Services\Settings\SettingsModel.cs" />

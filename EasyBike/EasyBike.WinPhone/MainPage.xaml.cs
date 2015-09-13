@@ -82,7 +82,7 @@ namespace EasyBike.WinPhone
             mainPage = this;
             Map = MapCtrl;
             navigationHelper = new NavigationHelper(this);
-
+          
             clusterGenerator = new ClusterGenerator(MapCtrl, Resources["StationTemplate"] as ControlTemplate);
             
             NavigationCacheMode = NavigationCacheMode.Required;
@@ -93,12 +93,7 @@ namespace EasyBike.WinPhone
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _dialogService = SimpleIoc.Default.GetInstance<IDialogService>();
 
-            if(_settingsService.Settings.LastLocation != null)
-            {
-                MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = _settingsService.Settings.LastLocation.Latitude, Longitude = _settingsService.Settings.LastLocation.Longitude });
-                MapCtrl.ZoomLevel = _settingsService.Settings.LastLocation.ZoomLevel;
-            }
-
+            Init();
 #if DEBUG
             MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
             MapCtrl.ZoomLevel = 15.5;
@@ -166,6 +161,15 @@ namespace EasyBike.WinPhone
             TouchPanel.ManipulationStarting += TouchPanel_ManipulationStarting;
         }
 
+        private async void Init()
+        {
+            if ((await _settingsService.GetSettingsAsync()).LastLocation != null)
+            {
+                MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = _settingsService.Settings.LastLocation.Latitude, Longitude = _settingsService.Settings.LastLocation.Longitude });
+                MapCtrl.ZoomLevel = _settingsService.Settings.LastLocation.ZoomLevel;
+            }
+        }
+
         private async void _notificationService_OnNotify(object sender, Notification.Notification e)
         {
             if (e is SendEmailNotification)
@@ -192,6 +196,28 @@ namespace EasyBike.WinPhone
             {
                 var notification = (e as GoToPageNotification);
 
+            }
+
+            if (e is RefreshFailureNotification)
+            {
+                var message = e as RefreshFailureNotification;
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    await _dialogService.ShowMessage(message.Body, message.Subject,
+                        buttonConfirmText: "Ok", buttonCancelText: "Contact us",
+                        afterHideCallback: (confirmed) =>
+                        {
+                            if (!confirmed)
+                            {
+                                _notificationService.Notify(new SendEmailNotification()
+                                {
+                                    Subject = $"Download city: unable to download {message.ContractName}",
+                                    Body = $"Hey folks ! I'm unable to get information from {message.ContractName}" +
+                                    $"Message: { message.Exception.Message } Inner: {message.Exception.InnerException} Stack: {message.Exception.StackTrace}",
+                                });
+                            }
+                        });
+                });
             }
         }
 

@@ -21,7 +21,6 @@ namespace EasyBike.ViewModels
     {
         private readonly IContractService _contractsService;
         private readonly INavigationService _navigationService;
-        private readonly IRefreshService _refreshService;
         private readonly IDialogService _dialogService;
         private readonly INotificationService _notificationService;
         private readonly IConfigService _configService;
@@ -41,13 +40,12 @@ namespace EasyBike.ViewModels
         }
 
         [PreferredConstructor]
-        public ContractsViewModel(IConfigService configService, INotificationService notificationService, IDialogService dialogService, IContractService contractsService, IRefreshService refreshService, INavigationService navigationService)
+        public ContractsViewModel(IConfigService configService, INotificationService notificationService, IDialogService dialogService, IContractService contractsService, INavigationService navigationService)
         {
             _notificationService = notificationService;
             _dialogService = dialogService;
             _navigationService = navigationService;
             _contractsService = contractsService;
-            _refreshService = refreshService;
             _configService = configService;
 
         }

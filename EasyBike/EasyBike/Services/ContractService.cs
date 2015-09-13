@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using GalaSoft.MvvmLight.Views;
+using System;
+using System.Diagnostics;
+using EasyBike.Notification;
 
 namespace EasyBike.Models
 {
     public class ContractService : IContractService
     {
         private readonly IStorageService _storageService;
-        private readonly IRefreshService _refreshService;
-        private readonly IDialogService _dialogService;
 
         private List<Contract> contracts = new List<Contract>();
         private List<Station> stations = new List<Station>();
+        private List<Station> refreshingPool = new List<Station>();
 
-        public ContractService(IDialogService dialogService, IStorageService storageService, IRefreshService refreshService)
+        public event EventHandler ContractRefreshed;
+        public event EventHandler StationRefreshed;
+
+        public ContractService(IStorageService storageService)
         {
             _storageService = storageService;
-            _refreshService = refreshService;
-            _dialogService = dialogService;
             GetContractsAsync().ConfigureAwait(false);
         }
 
@@ -28,6 +31,7 @@ namespace EasyBike.Models
             await _storageService.StoreContractAsync(contract).ConfigureAwait(false);
             contracts.Add(contract);
             AggregateStations(contract);
+            //ContractRefreshed?.Invoke(contract, EventArgs.Empty);
         }
 
         public async Task RemoveAllContractsAsync()
@@ -35,19 +39,16 @@ namespace EasyBike.Models
             await _storageService.RemoveAllContractsAsync();
             stations.Clear();
             contracts.Clear();
-            _refreshService.RemoveAllContracts();
         }
-
 
         public async Task RemoveContractAsync(Contract contract)
         {
             await _storageService.RemoveContractAsync(contract).ConfigureAwait(false);
-            foreach(var station in stations.Where(s=>s.ContractStorageName == contract.StorageName).ToList())
+            foreach (var station in stations.Where(s => s.ContractStorageName == contract.StorageName).ToList())
             {
                 stations.Remove(station);
             }
             contracts.Remove(contract);
-            _refreshService.RemoveContract(contract);
         }
 
         public List<Station> GetStations()
@@ -60,16 +61,47 @@ namespace EasyBike.Models
             return new ContractList().Contracts;
         }
 
+        public async void AddStationToRefreshingPool(Station station)
+        {
+            station.IsInRefreshPool = true;
+            
+            if (await station.Contract.RefreshAsync(station).ConfigureAwait(false))
+            {
+                if (station.IsUiRefreshNeeded)
+                {
+                    StationRefreshed?.Invoke(station, EventArgs.Empty);
+                }
+            }
+            refreshingPool.Add(station);
+            if (!IsStationWorkerRunning)
+            {
+                StartRefreshStationsAsync();
+            }
+        }
+
+        public void RemoveStationFromRefreshingPool(Station station)
+        {
+            refreshingPool.Remove(station);
+            station.IsInRefreshPool = false;
+        }
+
         public async Task<List<Contract>> GetContractsAsync()
         {
-            if(contracts.Count == 0)
+            if (contracts.Count == 0)
             {
-                var storedContracts = await _storageService.LoadStoredContractsAsync().ConfigureAwait(false);
-                contracts = storedContracts.ToList();
-                foreach (var contract in contracts)
+                var storedContracts = (await _storageService.LoadStoredContractsAsync().ConfigureAwait(false)).ToList();
+
+                foreach (var contract in storedContracts)
                 {
-                    AggregateStations(contract);
+                    foreach (var station in contract.Stations)
+                    {
+                        station.Contract = contract;
+                        station.Loaded = false;
+                        stations.Add(station);
+                    }
                 }
+                contracts = storedContracts;
+                StartRefreshAsync();
             }
             return contracts;
         }
@@ -78,9 +110,49 @@ namespace EasyBike.Models
         {
             foreach (var station in contract.Stations)
             {
+                station.Contract = contract;
                 stations.Add(station);
             }
-            _refreshService.AddContract(contract);
+        }
+
+
+        private int timer = 1000;
+        private async void StartRefreshAsync()
+        {
+            while (true)
+            {
+                contracts.ToList().Where(c=> !c.StationRefreshGranularity).AsParallel().ForAll(async (c) =>
+                {
+                    if (await c.RefreshAsync().ConfigureAwait(false))
+                    {
+                        ContractRefreshed?.Invoke(c, EventArgs.Empty);
+                    }
+                });
+                await Task.Delay(timer).ConfigureAwait(false);
+                timer = timer <= 20000 ? timer + 5000 : timer;
+            }
+        }
+
+        private bool IsStationWorkerRunning = false;
+        private async void StartRefreshStationsAsync()
+        {
+            IsStationWorkerRunning = true;
+            while (refreshingPool.Count > 0)
+            {
+                await Task.Delay(15000).ConfigureAwait(false);
+                refreshingPool.ToList().AsParallel().ForAll(async (station) =>
+                {
+                    if (await station.Contract.RefreshAsync(station).ConfigureAwait(false))
+                    {
+                        if (station.IsUiRefreshNeeded)
+                        {
+                            StationRefreshed?.Invoke(station, EventArgs.Empty);
+                        }
+                    }
+                });
+                await Task.Delay(5000).ConfigureAwait(false);
+            }
+            IsStationWorkerRunning = false;
         }
     }
 }

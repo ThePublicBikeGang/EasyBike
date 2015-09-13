@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using Newtonsoft.Json;
-using EasyBike.Models.Contracts;
+using System.Runtime.Serialization;
 
 namespace EasyBike.Models
 {
@@ -17,21 +17,27 @@ namespace EasyBike.Models
         [JsonIgnore]
         public bool DownloadingAvailability { get; set; }
 
+
+        [JsonIgnore]
+        public bool IsInRefreshPool { get; set; }
+
         [JsonIgnore]
         public object Control;
 
         [JsonIgnore]
         public bool Loaded { get; set; }
 
-        [JsonIgnore]
+        public string Id { get; set; }
+
         public int? AvailableBikeStands { get; set; } = -1;
 
-        [JsonIgnore]
         public int AvailableBikes { get; set; } = -1;
 
         public string ContractStorageName { get; set; }
         
         private string availableStr;
+
+        [JsonIgnore]
         public string AvailableStr
         {
             get { return availableStr; }

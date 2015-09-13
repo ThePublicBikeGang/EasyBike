@@ -3,6 +3,7 @@ using EasyBike.Models.Storage;
 using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using Windows.Devices.Geolocation;
@@ -26,6 +27,8 @@ namespace EasyBike.WinPhone.Helpers
         static SolidColorBrush greenColorBrush = new SolidColorBrush(Color.FromArgb(255, 95, 205, 0));
 
         private ISettingsService _settingsService;
+        private IContractService _contractService;
+
 
         public StationControl(MapControl map)
         {
@@ -34,6 +37,7 @@ namespace EasyBike.WinPhone.Helpers
             Holding += Control_Holding;
             ManipulationMode = Windows.UI.Xaml.Input.ManipulationModes.All;
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
+            _contractService = SimpleIoc.Default.GetInstance<IContractService>();
         }
 
         private async void Control_Holding(object sender, Windows.UI.Xaml.Input.HoldingRoutedEventArgs e)
@@ -115,54 +119,23 @@ namespace EasyBike.WinPhone.Helpers
             }
             NeedRefresh = false;
         }
+
         public void RefreshStation(Station station)
         {
-            ShowPulseAnimation();
-            if (station.ImageAvailable != null)
+            if(StationPath.Fill != emptyColorBrush)
             {
-                station.ImageNumber = station.ImageAvailable;
+                ShowPulseAnimation();
             }
-            else
-            {
-                station.AvailableStr = station.AvailableBikes.ToString();
-                ShowColor(station.AvailableBikes);
-            }
-            station.IsUiRefreshNeeded = false;
+            ShowStationColor(station);
         }
 
         public void SwitchModeVelibParking(Station station)
         {
             if (station == null)
                 return;
+
             ShowVelibStation();
-            if (station.Loaded)
-            {
-                station.IsUiRefreshNeeded = false;
-                if (_settingsService.Settings.IsBikeMode)
-                {
-                    if (station.ImageAvailable != null)
-                    {
-                        station.ImageNumber = station.ImageAvailable;
-                    }
-                    else
-                    {
-                        station.AvailableStr = station.AvailableBikes.ToString();
-                        ShowColor(station.AvailableBikes);
-                    }
-                }
-                else
-                {
-                    if (station.ImageDocks != null)
-                    {
-                        station.ImageNumber = station.ImageDocks;
-                    }
-                    else
-                    {
-                        station.AvailableStr = station.AvailableBikeStands.HasValue ? station.AvailableBikeStands.ToString() : "?";
-                        ShowColor(station.AvailableBikeStands);
-                    }
-                }
-            }
+            ShowStationColor(station);
         }
 
         public bool NeedRefresh;
@@ -172,6 +145,9 @@ namespace EasyBike.WinPhone.Helpers
             NeedRefresh = true;
             station.Control = null;
             Stations.Remove(station);
+            if(station.IsInRefreshPool) {
+                _contractService.RemoveStationFromRefreshingPool(station);
+            }
         }
 
         public Point MapLocation { get; set; }
@@ -198,6 +174,8 @@ namespace EasyBike.WinPhone.Helpers
             VisualStateManager.GoToState(this, "Normal", false);
             VisualStateManager.GoToState(this, "ShowStation", false);
         }
+
+
         public void ShowVelibStation()
         {
             ShowPulseAnimation();
@@ -207,32 +185,39 @@ namespace EasyBike.WinPhone.Helpers
             {
                 VisualStateManager.GoToState(this, "ShowNumberImage", false);
             }
-            // VisualStateManager.GoToState(this, "Clear", false);
-            //  VisualStateManager.GoToState(this, "Loaded", false);
             StationPath.Fill = emptyColorBrush;
             Opacity = 1;
             IsHitTestVisible = true;
-
-            //if(velib!= null && velib.Selected)
-            //    VisualStateManager.GoToState(this, "ShowSelected", true);
-            //else
-            //    VisualStateManager.GoToState(this, "HideSelected", true);
-
-
         }
-        public void ShowStationColor()
-        {
-            var station = Stations.FirstOrDefault();
 
+        public void ShowStationColor(Station station)
+        {
+            if (!station.Loaded)
+                return;
+            station.IsUiRefreshNeeded = false;
             if (_settingsService.Settings.IsBikeMode)
             {
-                station.AvailableStr = station.AvailableBikes.ToString();
-                ShowColor(station.AvailableBikes);
+                if (station.ImageAvailable != null)
+                {
+                    station.ImageNumber = station.ImageAvailable;
+                }
+                else
+                {
+                    station.AvailableStr = station.AvailableBikes.ToString();
+                    ShowColor(station.AvailableBikes);
+                }
             }
             else
             {
-                station.AvailableStr = station.AvailableBikeStands.HasValue ? station.AvailableBikeStands.ToString() : "?";
-                ShowColor(station.AvailableBikeStands);
+                if (station.ImageDocks != null)
+                {
+                    station.ImageNumber = station.ImageDocks;
+                }
+                else
+                {
+                    station.AvailableStr = station.AvailableBikeStands.HasValue ? station.AvailableBikeStands.ToString() : "?";
+                    ShowColor(station.AvailableBikeStands);
+                }
             }
         }
 
@@ -243,25 +228,31 @@ namespace EasyBike.WinPhone.Helpers
             if (Stations.Count != 1)
                 return;
 
+            var color = emptyColorBrush;
             if (number == -1 || !number.HasValue)
             {
-                //CurrentVisualStateColor = VelibControl.VisualStateColor.notLoaded;
-                //VisualStateManager.GoToState(this, "Normal", false);
-                StationPath.Fill = emptyColorBrush;
             }
             else
             {
 
                 if (number == 0)
-                    StationPath.Fill = redColorBrush;
-                //VisualStateManager.GoToState(this, "ShowRedVelib", false);
+                    color = redColorBrush;
                 else if (number < 5)
-                    StationPath.Fill = orangeColorBrush;
-                //VisualStateManager.GoToState(this, "ShowOrangeVelib", false);
+                    color = orangeColorBrush;
                 else if (number >= 5)
-                    StationPath.Fill = greenColorBrush;
-                //VisualStateManager.GoToState(this, "ShowGreenVelib", false);
+                    color = greenColorBrush;
             }
+
+            if(StationPath.Fill != color)
+            {
+                if (StationPath.Fill != emptyColorBrush)
+                {
+                  //  ShowPulseAnimation();
+                }
+                StationPath.Fill = color;
+            }
+            
+
 
         }
 

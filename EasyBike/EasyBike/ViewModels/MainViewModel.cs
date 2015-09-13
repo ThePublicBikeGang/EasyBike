@@ -18,18 +18,16 @@ namespace EasyBike.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IConfigService _configService;
         private readonly IStorageService _storageService;
-        private readonly IRefreshService _refreshService;
         private readonly ISettingsService _settingsService;
         private readonly INotificationService _notificationService;
         private readonly IDialogService _dialogService;
         public event EventHandler FireGoToFavorite;
 
-        public MainViewModel(IDialogService dialogService, INotificationService notificationService, ISettingsService settingsService, INavigationService navigationService, IConfigService configService, IStorageService storageService, IRefreshService refreshService)
+        public MainViewModel(IDialogService dialogService, INotificationService notificationService, ISettingsService settingsService, INavigationService navigationService, IConfigService configService, IStorageService storageService)
         {
             _navigationService = navigationService;
             _configService = configService;
             _storageService = storageService;
-            _refreshService = refreshService;
             _settingsService = settingsService;
             _notificationService = notificationService;
             _dialogService = dialogService;

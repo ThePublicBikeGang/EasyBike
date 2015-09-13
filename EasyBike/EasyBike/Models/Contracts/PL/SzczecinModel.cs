@@ -25,6 +25,7 @@ namespace EasyBike.Models.Contracts.PL
         public override bool Status { get; set; }
 
         public override bool Banking { get; set; }
+        public override string Id { get; set; }
     }
 
 }

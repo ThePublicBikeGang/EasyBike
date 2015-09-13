@@ -14,6 +14,11 @@ namespace EasyBike.Models.Contracts
 
     public class JcDecauxModel : StationModelBase
     {
+        [JsonProperty(PropertyName = "number")]
+        public int id { get; set; }
+
+        public override string Id { get; set; }
+
         [JsonProperty(PropertyName = "available_bike_stands")]
         public override int? AvailableBikeStands { get; set; }
 
@@ -38,9 +43,6 @@ namespace EasyBike.Models.Contracts
         [JsonProperty(PropertyName = "address")]
         public string Address { get; set; }
 
-        [JsonProperty(PropertyName = "number")]
-        public int Number { get; set; }
-
         [JsonProperty(PropertyName = "position")]
         public Position Position { get; set; }
 
@@ -49,6 +51,7 @@ namespace EasyBike.Models.Contracts
         {
             Longitude = Math.Round(Position.Longitude, 5);
             Latitude = Math.Round(Position.Latitude, 5);
+            Id = id.ToString();
             Status = status == "OPEN" ? true : false;
         }
     }

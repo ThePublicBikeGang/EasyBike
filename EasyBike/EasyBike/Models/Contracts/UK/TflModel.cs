@@ -59,7 +59,7 @@ namespace EasyBike.Models.Contracts.UK
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class stationsStation : StationModelBase
     {
-
+        public override string Id { get; set; }
         private int idField;
 
         private string nameField;

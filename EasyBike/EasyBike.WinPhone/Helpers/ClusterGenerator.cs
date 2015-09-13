@@ -25,7 +25,7 @@ namespace EasyBike.WinPhone.Helpers
     {
         private const int MAX_CONTROLS = 38;
         private double MAXDISTANCE = 100;
-        private IRefreshService _refreshService;
+        private IContractService _contractService;
         public readonly List<StationControl> StationControls = new List<StationControl>(MAX_CONTROLS);
         private MapControl _map;
         private TimeSpan throttleTime = TimeSpan.FromMilliseconds(150);
@@ -37,15 +37,16 @@ namespace EasyBike.WinPhone.Helpers
         BasicGeoposition leftCornerLocation;
         List<Geopoint> mapLocations = null;
         double zoomLevel = 20;
-     
+
         public ClusterGenerator(MapControl map, ControlTemplate itemTemplate)
         {
             _map = map;
             ItemTemplate = itemTemplate;
             GenerateMapItems();
 
-            _refreshService = SimpleIoc.Default.GetInstance<IRefreshService>();
-            _refreshService.ContractRefreshed += _refreshService_ContractRefreshed;
+            _contractService = SimpleIoc.Default.GetInstance<IContractService>();
+            _contractService.ContractRefreshed += OnContractRefreshed;
+            _contractService.StationRefreshed += OnStationRefreshed;
 
             // maps event
             var mapObserver = Observable.FromEventPattern(map, "CenterChanged");
@@ -59,7 +60,7 @@ namespace EasyBike.WinPhone.Helpers
                 .Select(async x =>
                 {
                     var stations = SimpleIoc.Default.GetInstance<IContractService>().GetStations();
-                    foreach (var station in stations.Where(s=>s.Location == null))
+                    foreach (var station in stations.Where(s => s.Location == null))
                     {
                         station.Location = new Geopoint(new BasicGeoposition { Latitude = station.Latitude, Longitude = station.Longitude });
                     }
@@ -115,15 +116,25 @@ namespace EasyBike.WinPhone.Helpers
                 });
         }
 
-        private async void _refreshService_ContractRefreshed(object sender, EventArgs e)
+        private async void OnStationRefreshed(object sender, EventArgs e)
+        {
+            var station = (sender as Station);
+            var control = station.Control;
+            if (station != null && control != null)
+            {
+                await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => (control as StationControl).RefreshStation(station));
+            }
+        }
+
+        private async void OnContractRefreshed(object sender, EventArgs e)
         {
             var contract = (sender as Contract);
-            foreach (var control in StationControls.Where(c=> c.Stations.Count == 1 && c.Stations.FirstOrDefault().IsUiRefreshNeeded && c.Stations.FirstOrDefault().ContractStorageName == contract.StorageName).ToList())
+            foreach (var control in StationControls.Where(c => c.Stations.Count == 1 && c.Stations.FirstOrDefault().IsUiRefreshNeeded && c.Stations.FirstOrDefault().ContractStorageName == contract.StorageName).ToList())
             {
                 var station = control.Stations.FirstOrDefault();
-                if(station != null)
+                if (station != null && station.IsUiRefreshNeeded) 
                 {
-                   await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => control.RefreshStation(station));
+                    await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => control.RefreshStation(station));
                 }
             }
         }
@@ -232,7 +243,7 @@ namespace EasyBike.WinPhone.Helpers
             foreach (var control in StationControls.Where(c => c.NeedRefresh && c.Stations.Count != 0))
             {
 
-                await Task.Delay(TimeSpan.FromMilliseconds(35));
+                await Task.Delay(TimeSpan.FromMilliseconds(25));
                 if (token.IsCancellationRequested)
                 {
                     break;
@@ -241,8 +252,15 @@ namespace EasyBike.WinPhone.Helpers
                 if (stations.Count == 1)
                 {
                     var station = stations.FirstOrDefault();
+                    if (station != null)
                     {
-                        // station.GetAvailableBikes(dispatcher);
+                        if (station.Contract.StationRefreshGranularity)
+                        {
+                            if (!station.IsInRefreshPool)
+                            {
+                                _contractService.AddStationToRefreshingPool(station);
+                            }
+                        }
                     }
                 }
                 var location = control.GetLocation();

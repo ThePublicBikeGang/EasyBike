@@ -199,7 +199,7 @@ namespace EasyBike.Models.Contracts.US
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class markersCountryCityPlace : StationModelBase
     {
-
+        public override string Id { get; set; }
         private int uidField;
 
         private double latField;

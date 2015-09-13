@@ -6,6 +6,8 @@ namespace EasyBike.Models.Contracts.US
 {
     public class BCycleModel : StationModelBase
     {
+        public override string Id { get; set; }
+
         [JsonProperty(PropertyName = "BikesAvailable")]
         public override int AvailableBikes { get; set; }
 

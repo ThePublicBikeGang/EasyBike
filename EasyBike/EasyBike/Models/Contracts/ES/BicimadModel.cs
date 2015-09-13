@@ -15,6 +15,8 @@ namespace EasyBike.Models.Contracts.ES
 
     public class BicimadStation : StationModelBase
     {
+        public override string Id { get; set; }
+
         [JsonProperty(PropertyName = "bicis_enganchadas")]
         public override int AvailableBikes { get; set; }
 

@@ -48,7 +48,6 @@ namespace EasyBike.ViewModels
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             SimpleIoc.Default.Register<IStorageService, StorageService>();
-            SimpleIoc.Default.Register<IRefreshService, RefreshService>(true);
             SimpleIoc.Default.Register<INotificationService, NotificationService>();
             SimpleIoc.Default.Register<IFavoritesService, FavoritesService>();
 

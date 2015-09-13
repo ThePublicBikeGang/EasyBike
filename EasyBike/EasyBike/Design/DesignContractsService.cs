@@ -7,9 +7,16 @@ namespace EasyBike.Design
 {
     public class DesignContractsService : IContractService
     {
+        public event EventHandler ContractRefreshed;
+        public event EventHandler StationRefreshed;
+
         public Task AddContractAsync(Contract contract)
         {
             return Task.FromResult<Contract>(null);
+        }
+
+        public void AddStationToRefreshingPool(Station station)
+        {
         }
 
         public async Task<List<Contract>> GetContractsAsync()
@@ -35,6 +42,10 @@ namespace EasyBike.Design
         public Task RemoveContractAsync(Contract contract)
         {
             return Task.FromResult<Contract>(null);
+        }
+
+        public void RemoveStationFromRefreshingPool(Station station)
+        {
         }
     }
 }
