@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight.Ioc;
 using EasyBike.Notification;
 using System;
+using System.Diagnostics;
 
 namespace EasyBike.Models
 {
@@ -184,12 +185,16 @@ namespace EasyBike.Models
                     }
                 }
             }
-
             return true;
         }
 
         public async Task<bool> RefreshAsync(Station station)
         {
+            if(retryStation > 10 && retryStation%30 != 0)
+            {
+                retryStation++;
+                return false;
+            }
             try
             {
                 var refreshedStation = await InnerRefreshAsync(station).ConfigureAwait(false);
@@ -211,7 +216,7 @@ namespace EasyBike.Models
             catch(Exception e)
             {
                 retryStation++;
-                if(retryStation == 20) 
+                if(retryStation == 10) 
                 {
                     //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
                     //contractService.
