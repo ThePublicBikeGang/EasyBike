@@ -6,7 +6,7 @@ namespace EasyBike.Models
 {
     public interface IContractService
     {
-        List<Contract> GetStaticContracts();
+        List<Country> GetCountries();
         Task<List<Contract>> GetContractsAsync();
         Task RemoveContractAsync(Contract contract);
         Task RemoveAllContractsAsync();

@@ -21,12 +21,12 @@ namespace EasyBike.Design
 
         public async Task<List<Contract>> GetContractsAsync()
     {
-        return new ContractList().Contracts;
+        return new List<Contract>();
     }
 
-        public List<Contract> GetStaticContracts()
+        public List<Country> GetCountries()
         {
-            return new ContractList().Contracts;
+            return new List<Country>();
         }
 
         public List<Station> GetStations()

@@ -100,10 +100,14 @@ namespace EasyBike.WinPhone.Views.Cities
 
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 
-            _contracts = (DataContext as ContractsViewModel).ContractGroups;
-            _contracts.CollectionChanged += Contracts_CollectionChanged;
+                _contracts = (DataContext as ContractsViewModel).ContractGroups;
+                _contracts.CollectionChanged += Contracts_CollectionChanged;
 
 
+                await Task.Delay(5);
+                await (DataContext as ContractsViewModel).Init();
+
+             
                 contractCollectionViewSource.IsSourceGrouped = true;
                 contractCollectionViewSource.Source = _contracts;
                 contractCollectionViewSource.ItemsPath = new PropertyPath("Items");
@@ -112,9 +116,7 @@ namespace EasyBike.WinPhone.Views.Cities
                 ContractListView.ItemsSource = contractCollectionViewSource.View;
                 ContractsListViewZoomOut.ItemsSource = contractCollectionViewSource.View.CollectionGroups;
 
-
-
-                (DataContext as ContractsViewModel).Init();
+            
             }
         
         }

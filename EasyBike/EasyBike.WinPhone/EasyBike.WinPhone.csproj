@@ -96,7 +96,6 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ItemClickedConverter.cs" />
-    <Compile Include="Converters\MemoryStreamToBitmapImageConverter.cs" />
     <Compile Include="Converters\NullOrEmptyToVisibilityConverter.cs" />
     <Compile Include="Converters\SelectionChangedConverter.cs" />
     <Compile Include="Helpers\ClusterGenerator.cs" />

@@ -56,9 +56,9 @@ namespace EasyBike.Models
             return stations;
         }
 
-        public List<Contract> GetStaticContracts()
+        public List<Country> GetCountries()
         {
-            return new ContractList().Contracts;
+            return ContractList.Countries;
         }
 
         public async void AddStationToRefreshingPool(Station station)

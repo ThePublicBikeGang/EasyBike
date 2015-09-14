@@ -6,10 +6,7 @@ namespace EasyBike.Models
 {
     public class ContractGroup : ObservableObject
     {
-        public string UniqueId { get; set; }
         public string Title { get; set; }
-        public string Subtitle { get; set; }
-        public string Description { get; set; }
         public object ImageByteArray { get; set; }
         private object _imageSource;
         public object ImageSource

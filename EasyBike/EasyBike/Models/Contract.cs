@@ -2,11 +2,9 @@
 using EasyBike.Models.Contracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight.Ioc;
 using EasyBike.Notification;
 using System;
-using System.Diagnostics;
 
 namespace EasyBike.Models
 {
@@ -173,7 +171,7 @@ namespace EasyBike.Models
                     {
                         notificationService.Notify(new RefreshFailureNotification()
                         {
-                            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us to and we will investigate. Thumbs up !",
+                            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us and we will investigate. Thumbs up !",
                             Subject = "Hey !",
                             ContractName = Name,
                             Exception = e
@@ -225,7 +223,7 @@ namespace EasyBike.Models
                     {
                         notificationService.Notify(new RefreshFailureNotification()
                         {
-                            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us to and we will investigate. Thumbs up !",
+                            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us and we will investigate. Thumbs up !",
                             Subject = "Hey !",
                             ContractName = station.Contract.Name,
                             Exception = e

@@ -69,6 +69,7 @@
     <Compile Include="Models\Contracts\US\NextBikeModel.cs" />
     <Compile Include="Models\Contracts\US\PhiladelphiaContract.cs" />
     <Compile Include="Models\Contracts\US\PhiladelphiaModel.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Favorites\Favorite.cs" />
     <Compile Include="Models\Favorites\FavoritesService.cs" />
     <Compile Include="Models\Favorites\IFavoritesService.cs" />

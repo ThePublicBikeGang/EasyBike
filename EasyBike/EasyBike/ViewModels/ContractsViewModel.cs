@@ -64,58 +64,49 @@ namespace EasyBike.ViewModels
         }
 #endif
 
-        public async void Init()
+        public async Task Init()
         {
-
             var storedContracts = await _contractsService.GetContractsAsync();
-            var staticContracts = _contractsService.GetStaticContracts();
-            staticContracts = storedContracts.Union(staticContracts).ToList();
+            var countries = _contractsService.GetCountries();
+           // staticContracts = storedContracts.Union(staticContracts).ToList();
 
             var assembly = typeof(ContractsViewModel).GetTypeInfo().Assembly;
-            foreach (var contract in staticContracts.GroupBy(c => c.Country).Select(c => c.First()).OrderBy(c => c.Country).ToList())
+            foreach(var country in countries)
             {
-                if (_stopLoadingContracts)
-                {
-                    return;
-                }
-                var imageMemoryStream = new MemoryStream();
                 byte[] imageByteArray = null;
+                var imageMemoryStream = new MemoryStream();
                 try
                 {
-                    using (var stream = assembly.GetManifestResourceStream($"EasyBike.Assets.Flags.{contract.ISO31661}.png"))
+                    using (var stream = assembly.GetManifestResourceStream($"EasyBike.Assets.Flags.{country.ISO31661}.png"))
                     {
                         stream.CopyTo(imageMemoryStream);
                         imageByteArray = imageMemoryStream.ToArray();
                     }
                 }
-                catch (Exception e)
-                {
+                catch { }
 
-                }
-
-                var group = new ContractGroup() { Title = contract.Country, ImageByteArray = imageByteArray };
+                var group = new ContractGroup() { Title = country.Name, ImageByteArray = imageByteArray };
                 group.Items = new ObservableCollection<Contract>();
-                foreach (var c in staticContracts.Where(c => c.Country == contract.Country).OrderBy(c => c.Name).ToList())
+                foreach (var contract in country.Contracts)
                 {
-                    //if (storedContracts.Any(a => a.StorageName == c.StorageName))
-                    //{
-                    //    c.Downloaded = true;
-                    //    c.StationCounter = 
-                    //}
+                    foreach(var storedContract in storedContracts)
+                    {
+                        if(storedContract.Name == contract.Name)
+                        {
+                            contract.Downloaded = true;
+                            contract.StationCounter = storedContract.StationCounter;
+                            break;
+                        }
+                    }
                     CityCounter++;
-                    group.Items.Add(c);
+                    group.Items.Add(contract);
                     group.ItemsCounter++;
+                    if (_stopLoadingContracts)
+                    {
+                        return;
+                    }
                 }
-                await Task.Delay(1);
-                try
-                {
-                    ContractGroups.Add(group);
-                }
-                catch 
-                {
-
-                }
-          
+                ContractGroups.Add(group);
             }
         }
 
