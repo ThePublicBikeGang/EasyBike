@@ -65,6 +65,8 @@
     <Compile Include="Models\Contracts\US\BCycleModel.cs" />
     <Compile Include="Models\Contracts\US\BixxiContract.cs" />
     <Compile Include="Models\Contracts\US\BixxiModel.cs" />
+    <Compile Include="Models\Contracts\US\DivyBikeContract.cs" />
+    <Compile Include="Models\Contracts\US\DivyBikeModel.cs" />
     <Compile Include="Models\Contracts\US\NextBikeContract.cs" />
     <Compile Include="Models\Contracts\US\NextBikeModel.cs" />
     <Compile Include="Models\Contracts\US\PhiladelphiaContract.cs" />

@@ -2,9 +2,7 @@
 using EasyBike.ViewModels;
 using EasyBike.WinPhone.Common;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System;
-using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Storage.Streams;
@@ -14,8 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Windows.Phone.UI.Input;
-
-// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
+using System.Collections.Generic;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace EasyBike.WinPhone.Views.Cities
 {
@@ -25,18 +23,55 @@ namespace EasyBike.WinPhone.Views.Cities
     public sealed partial class ContractsPage : Page
     {
         private NavigationHelper navigationHelper;
-        private CollectionViewSource contractCollectionViewSource = new CollectionViewSource();
-
-
+        private CollectionViewSource contractCollectionViewSource;
+        private TaskCompletionSource<bool> loadedTsc = new TaskCompletionSource<bool>();
+        private List<Country> countries;
         public ContractsPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            this.navigationHelper = new NavigationHelper(this);
-            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
-            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            navigationHelper = new NavigationHelper(this);
+            navigationHelper.LoadState += this.NavigationHelper_LoadState;
+            navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            Loaded += ContractsPage_Loaded;
 
-           
+            Initialize();
+        }
+
+        private void ContractsPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            loadedTsc.SetResult(true);
+        }
+
+        private async void Initialize()
+        {
+            var vm = SimpleIoc.Default.GetInstanceWithoutCaching<ContractsViewModel>();
+            var t = Task.Run(async () =>
+            {
+                countries = await vm.GetCountries().ConfigureAwait(false);
+            });
+            await Task.WhenAll(t, loadedTsc.Task);
+            DataContext = vm;
+            contractCollectionViewSource = new CollectionViewSource
+            {
+                IsSourceGrouped = true,
+                Source = countries,
+                ItemsPath = new PropertyPath("Contracts")
+            };
+
+            ContractListView.ItemsSource = contractCollectionViewSource.View;
+            ContractsListViewZoomOut.ItemsSource = contractCollectionViewSource.View.CollectionGroups;
+
+            foreach (var country in countries)
+            {
+                if (country.ImageByteArray != null)
+                {
+                    var bitmap = await ByteArrayToImageAsync(country.ImageByteArray as byte[]);
+                    bitmap.DecodePixelWidth = 60;
+                    country.ImageSource = bitmap;
+                }
+                await Task.Delay(1);
+            }
         }
 
         /// <summary>
@@ -91,34 +126,14 @@ namespace EasyBike.WinPhone.Views.Cities
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
         private ObservableCollection<ContractGroup> _contracts;
-        protected async override  void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
             if (!GalaSoft.MvvmLight.ViewModelBase.IsInDesignModeStatic)
             {
-                DataContext = e.Parameter;
-
-            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-
-                _contracts = (DataContext as ContractsViewModel).ContractGroups;
-                _contracts.CollectionChanged += Contracts_CollectionChanged;
-
-
-                await Task.Delay(5);
-                await (DataContext as ContractsViewModel).Init();
-
-             
-                contractCollectionViewSource.IsSourceGrouped = true;
-                contractCollectionViewSource.Source = _contracts;
-                contractCollectionViewSource.ItemsPath = new PropertyPath("Items");
-
-
-                ContractListView.ItemsSource = contractCollectionViewSource.View;
-                ContractsListViewZoomOut.ItemsSource = contractCollectionViewSource.View.CollectionGroups;
-
-            
+                HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             }
-        
+
         }
 
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
@@ -129,7 +144,7 @@ namespace EasyBike.WinPhone.Views.Cities
                 viewModel.StopLoadingContractsCommand.Execute(this);
             }
             HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
-            _contracts.CollectionChanged -= Contracts_CollectionChanged;
+            //_contracts.CollectionChanged -= Contracts_CollectionChanged;
             //  Try to prevent a "value does not fall into the valid within the expected exception" but this is not working
             //_contracts.Clear();
             //DataContext = null;
@@ -150,29 +165,29 @@ namespace EasyBike.WinPhone.Views.Cities
             }
         }
 
-        private async void Contracts_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            try
-            {
-                var c = e.NewItems[0] as ContractGroup;
-                if (c != null)
-                {
-                    if (c.ImageByteArray != null)
-                    {
-                        var bitmap = await ByteArrayToImageAsync(c.ImageByteArray as byte[]);
-                        bitmap.DecodePixelWidth = 60;
-                        c.ImageSource = bitmap;
+        //private async void Contracts_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        //{
+        //    //try
+        //    //{
+        //    //    var c = e.NewItems[0] as ContractGroup;
+        //    //    if (c != null)
+        //    //    {
+        //    //        if (c.ImageByteArray != null)
+        //    //        {
+        //    //            var bitmap = await ByteArrayToImageAsync(c.ImageByteArray as byte[]);
+        //    //            bitmap.DecodePixelWidth = 60;
+        //    //            c.ImageSource = bitmap;
 
-                        //using (var ms = new MemoryStream((c.ImageSource as byte[])))
-                        //{
-                        //    bitmap.SetSourceAsync(WindowsRuntimeStreamExtensions.AsRandomAccessStream(ms));
-                        //}
-                        //c.ImageSource = bitmap;
-                    }
-                }
-            }
-            catch { }
-        }
+        //    //            //using (var ms = new MemoryStream((c.ImageSource as byte[])))
+        //    //            //{
+        //    //            //    bitmap.SetSourceAsync(WindowsRuntimeStreamExtensions.AsRandomAccessStream(ms));
+        //    //            //}
+        //    //            //c.ImageSource = bitmap;
+        //    //        }
+        //    //    }
+        //    //}
+        //    //catch { }
+        //}
 
         protected async override void OnNavigatedFrom(NavigationEventArgs e)
         {

@@ -254,7 +254,7 @@
                 <Image HorizontalAlignment="Center" VerticalAlignment="Center" 
                        Source="{Binding ImageSource, TargetNullValue={x:Null}}" Margin="8"/>
 
-                <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                <TextBlock Text="{Binding Name}" Style="{ThemeResource ListViewItemTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
               
                 <TextBlock Text="{Binding ItemsCounterStr}"  Grid.Column="2"
 								Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" VerticalAlignment="Bottom" Margin="0,0,5,5"/>
@@ -487,7 +487,7 @@
 
                                 <StackPanel Orientation="Horizontal" >
                                     <Image Source="{Binding Group.ImageSource, TargetNullValue={x:Null}}" Width="60" Height="40" />
-                                    <TextBlock Text="{Binding Group.Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" Margin="10,0,0,0"/>
+                                    <TextBlock Text="{Binding Group.Name}" Style="{ThemeResource ListViewItemTextBlockStyle}" Margin="10,0,0,0"/>
                                 </StackPanel>
 
                                 <TextBlock Text="{Binding Group.ItemsCounterStr}" 

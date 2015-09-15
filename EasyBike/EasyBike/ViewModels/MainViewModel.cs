@@ -96,7 +96,7 @@ namespace EasyBike.ViewModels
                        ?? (_showContractsCommand = new RelayCommand(
                            () =>
                            {
-                               _navigationService.NavigateTo(ViewModelLocator.ContractsPageKey, SimpleIoc.Default.GetInstanceWithoutCaching<ContractsViewModel>());
+                               _navigationService.NavigateTo(ViewModelLocator.ContractsPageKey);
                            }));
             }
         }

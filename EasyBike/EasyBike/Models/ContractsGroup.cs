@@ -1,10 +1,9 @@
 ﻿
-using GalaSoft.MvvmLight;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace EasyBike.Models
 {
-    public class ContractGroup : ObservableObject
+    public class ContractGroup
     {
         public string Title { get; set; }
         public object ImageByteArray { get; set; }
@@ -14,7 +13,7 @@ namespace EasyBike.Models
             get { return _imageSource; }
             set
             {
-                Set(() => ImageSource, ref _imageSource, value);
+                _imageSource = value;
             }
         }
         public int ItemsCounter { get; set; }
@@ -25,7 +24,7 @@ namespace EasyBike.Models
                 return $"{ItemsCounter} {(ItemsCounter > 1 ? "cities" : "city")}";
             }
         }
-        public ObservableCollection<Contract> Items { get; set; }
+        public List<Contract> Items { get; set; }
 
         public override string ToString()
         {

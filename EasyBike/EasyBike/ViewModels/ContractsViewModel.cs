@@ -14,6 +14,7 @@ using System.Reflection;
 using System.IO;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace EasyBike.ViewModels
 {
@@ -27,7 +28,6 @@ namespace EasyBike.ViewModels
 
         private RelayCommand<Contract> _contractTappedCommand;
         private bool _stopLoadingContracts = false;
-        public ObservableCollection<ContractGroup> ContractGroups = new ObservableCollection<ContractGroup>();
 
         private int cityCounter;
         public int CityCounter
@@ -58,13 +58,14 @@ namespace EasyBike.ViewModels
         {
             if (IsInDesignMode)
             {
-                _contractsService = new DesignContractsService();
-                Init();
+                
+                   _contractsService = new DesignContractsService();
+                GetCountries();
             }
         }
 #endif
 
-        public async Task Init()
+        public async Task<List<Country>> GetCountries()
         {
             var storedContracts = await _contractsService.GetContractsAsync();
             var countries = _contractsService.GetCountries();
@@ -73,20 +74,19 @@ namespace EasyBike.ViewModels
             var assembly = typeof(ContractsViewModel).GetTypeInfo().Assembly;
             foreach(var country in countries)
             {
-                byte[] imageByteArray = null;
-                var imageMemoryStream = new MemoryStream();
+                
                 try
                 {
                     using (var stream = assembly.GetManifestResourceStream($"EasyBike.Assets.Flags.{country.ISO31661}.png"))
                     {
-                        stream.CopyTo(imageMemoryStream);
-                        imageByteArray = imageMemoryStream.ToArray();
+                        using(var imageMemoryStream = new MemoryStream())
+                        {
+                            stream.CopyTo(imageMemoryStream);
+                            country.ImageByteArray = imageMemoryStream.ToArray();
+                        }
                     }
                 }
                 catch { }
-
-                var group = new ContractGroup() { Title = country.Name, ImageByteArray = imageByteArray };
-                group.Items = new ObservableCollection<Contract>();
                 foreach (var contract in country.Contracts)
                 {
                     foreach(var storedContract in storedContracts)
@@ -99,15 +99,16 @@ namespace EasyBike.ViewModels
                         }
                     }
                     CityCounter++;
-                    group.Items.Add(contract);
-                    group.ItemsCounter++;
+                    //group.Items.Add(contract);
+                    //group.ItemsCounter++;
                     if (_stopLoadingContracts)
                     {
-                        return;
+                        return countries;
                     }
                 }
-                ContractGroups.Add(group);
+                //ContractGroups.Add(group);
             }
+            return countries;
         }
 
         private RelayCommand _stopLoadingContractsCommand;

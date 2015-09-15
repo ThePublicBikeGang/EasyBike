@@ -13,7 +13,6 @@ namespace EasyBike.Models
         public static List<Country> Countries
         {
             get { return countries; }
-            private set { }
         }
         private static List<Country> countries = new List<Country>()
         {
@@ -115,12 +114,10 @@ namespace EasyBike.Models
                 ISO31661 = "CA",
                 Contracts = new List<Contract>()
                 {
-                    ////////new DivyBikeContract{Name = "Toronto, ON",
-                    ////////ApiUrl = "http://www.bikesharetoronto.com/stations/json",
-                    ////////ServiceProvider = "Bike Share Toronto, Alta Bicycle Share, Bixi"},
-                    ////////new CapitalBikeShareContract{Name = "Montréal",
-                    ////////ApiUrl = "https://montreal.bixi.com/data/bikeStations.xml",
-                    ////////ServiceProvider = "Bixi Montreal, Bixi"},
+                    new DivyBikeContract{Name = "Toronto, ON", ApiUrl = "http://www.bikesharetoronto.com/stations/json", ServiceProvider = "Bike Share Toronto, Alta Bicycle Share, Bixi"},
+                    //new CapitalBikeShareContract{Name = "Montréal",
+                    //ApiUrl = "https://montreal.bixi.com/data/bikeStations.xml",
+                    //ServiceProvider = "Bixi Montreal, Bixi"},
                     }
             },            
             #endregion
