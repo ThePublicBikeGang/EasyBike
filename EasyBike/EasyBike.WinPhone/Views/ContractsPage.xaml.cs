@@ -26,6 +26,7 @@ namespace EasyBike.WinPhone.Views.Cities
         private CollectionViewSource contractCollectionViewSource;
         private TaskCompletionSource<bool> loadedTsc = new TaskCompletionSource<bool>();
         private List<Country> countries;
+
         public ContractsPage()
         {
             InitializeComponent();

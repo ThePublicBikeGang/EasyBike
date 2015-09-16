@@ -114,11 +114,9 @@ namespace EasyBike.Models
                 ISO31661 = "CA",
                 Contracts = new List<Contract>()
                 {
-                    new DivyBikeContract{Name = "Toronto, ON", ApiUrl = "http://www.bikesharetoronto.com/stations/json", ServiceProvider = "Bike Share Toronto, Alta Bicycle Share, Bixi"},
-                    //new CapitalBikeShareContract{Name = "Montréal",
-                    //ApiUrl = "https://montreal.bixi.com/data/bikeStations.xml",
-                    //ServiceProvider = "Bixi Montreal, Bixi"},
-                    }
+                    new CapitalBikeShareContract{Name = "Montréal", StationsUrl = "https://montreal.bixi.com/data/bikeStations.xml", ServiceProvider = "Bixi Montreal, Bixi"},
+                    new DivyBikeContract{Name = "Toronto, ON", StationsUrl = "http://www.bikesharetoronto.com/stations/json", ServiceProvider = "Bike Share Toronto, Alta Bicycle Share, Bixi"},
+                }
             },            
             #endregion
             #region CH
@@ -662,21 +660,20 @@ namespace EasyBike.Models
                     //https://secure.niceridemn.org/data2/bikeStations.xml
                     //////new BixxiMinneapolisContract{Name = "Minneapolis, MN", ApiUrl = "https://secure.niceridemn.org/data2/stations.json",ServiceProvider = "Nice Ride Minnesota, Alta Bicycle Share, Bixi"},
                     //////new BixxiMinneapolisContract{Name = "Seattle, WA", ApiUrl = "https://secure.prontocycleshare.com/data/stations.json",ServiceProvider = "Pronto Cycle Share, Alta Bicycle Share, Bixi"},
-                    //////new CapitalBikeShareContract{Name = "Boston, MA", ApiUrl = "http://www.thehubway.com/data/stations/bikeStations.xml",ServiceProvider = "Hubway, Alta Bicycle Share, Bixi"},
-                    //////new CapitalBikeShareContract{Name = "Washington, D.C. area", TechnicalName= "Washington", ServiceProvider = "Capital BikeShare, Alta Bicycle Share, Bixi"},
-                    //////new DivyBikeContract{Name = "Chicago, IL", TechnicalName= "Chicago", ServiceProvider = "Divvy, Alta Bicycle Share, Bixi"},
-                    //////new DivyBikeContract{Name = "San Francisco Bay Area, CA", ApiUrl = "http://www.bayareabikeshare.com/stations/json", ServiceProvider = "Bay Area Bike Share, Alta Bicycle Share, Bixi"},
-                    //////new DivyBikeContract{Name = "Chattanooga, TM", ApiUrl = "http://www.bikechattanooga.com/stations/json", ServiceProvider = "Bike Chattanooga, Alta Bicycle Share, Bixi"},
-                    //////new DivyBikeContract{Name = "Columbus, OH", ApiUrl = "http://cogobikeshare.com/stations/json", ServiceProvider = "CoGo Bike Share, Alta Bicycle Share, Bixi"},
-                    //////new CitiBikeContract{Name = "New York City, NY", TechnicalName= "New York", ServiceProvider= "Citi Bike, Alta Bicycle Share, Bixi"},
+                    new CapitalBikeShareContract{Name = "Boston, MA", StationsUrl= "http://www.thehubway.com/data/stations/bikeStations.xml",ServiceProvider = "Hubway, Alta Bicycle Share, Bixi"},
+                    new CapitalBikeShareContract{Name = "Washington, D.C. area", TechnicalName= "Washington", ServiceProvider = "Capital BikeShare, Alta Bicycle Share, Bixi"},
+
                     new BCycleContract{Name = "Ann Arbor, MI", ServiceProvider= "ArborBike, B-cycle", Id= "76"},
                     new BCycleContract{Name = "Austin, TX", Id= "72"},
                     new BCycleContract{Name = "Battle Creek, MI", Id= "71"},
                     new BCycleContract{Name = "Boulder, CO", Id= "54"},
                     new BCycleContract{Name = "Broward County, FL", Id= "53"},
                     new BCycleContract{Name = "Charlotte, NC", Id= "61"},
+                    new DivyBikeContract{Name = "Chattanooga, TM", StationsUrl = "http://www.bikechattanooga.com/stations/json", ServiceProvider = "Bike Chattanooga, Alta Bicycle Share, Bixi"},
+                    new DivyBikeContract{Name = "Chicago, IL", TechnicalName= "Chicago", ServiceProvider = "Divvy, Alta Bicycle Share, Bixi"},
                     new BCycleContract{Name = "Cincinnati, OH", ServiceProvider= "Red Bike, B-cycle", Id= "80"},
                     new BCycleContract{Name = "Columbia County, GA", Id= "74"},
+                    new DivyBikeContract{Name = "Columbus, OH", StationsUrl = "http://cogobikeshare.com/stations/json", ServiceProvider = "CoGo Bike Share, Alta Bicycle Share, Bixi"},
                     new BCycleContract{Name = "Milwaukee, WI", ServiceProvider= "Bublr Bikes, B-cycle", Id= "70"},
                     new BCycleContract{Name = "Dallas Fair Park, TX", Id= "82"},
                     new BCycleContract{Name = "Denver, CO", Id= "36"},
@@ -693,10 +690,12 @@ namespace EasyBike.Models
                     new BCycleContract{Name = "Kansas City, MO", Id= "62"},
                     new BCycleContract{Name = "Madison, WI", Id= "55"},
                     new BCycleContract{Name = "Nashville, TN", Id= "64"},
+                    new DivyBikeContract{Name = "New York City, NY", TechnicalName= "New York", ServiceProvider= "Citi Bike, Alta Bicycle Share, Bixi", StationsUrl= "http://www.citibikenyc.com/stations/json"},
                     new BCycleContract{Name = "Omaha, NE", ServiceProvider= "Heartland, B-cycle", Id= "56"},
                     new PhiladelphiaContract{Name = "Philadelphia, PA", ServiceProvider= "Philly Indego, B-cycle", StationsUrl = "https://api.phila.gov/bike-share-stations/v1"},
                     new BCycleContract{Name = "Rapid City, SD", Id= "79"},
                     new BCycleContract{Name = "San Antonio, TX", Id= "48"},
+                    new DivyBikeContract{Name = "San Francisco Bay Area, CA", StationsUrl = "http://www.bayareabikeshare.com/stations/json", ServiceProvider = "Bay Area Bike Share, Alta Bicycle Share, Bixi"},
                     new BCycleContract{Name = "Savannah, GA", ServiceProvider= "CAT Bike, B-cycle", Id= "73"},
                     new BCycleContract{Name = "Spartanburg, SC", Id= "57"},
                     new BCycleContract{Name = "Whippany, NJ", Id= "77"},

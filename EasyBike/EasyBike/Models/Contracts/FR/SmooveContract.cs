@@ -27,7 +27,6 @@ namespace EasyBike.Models.Contracts.FR
             {
                 HttpResponseMessage response = await client.GetAsync(new Uri(string.Format(StationsUrl + "?" + Guid.NewGuid().ToString()))).ConfigureAwait(false);
                 var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
                 var models = responseBodyAsText.FromXmlString<vcs>("").Node.Stations.ToList();
                 // for duplicates :/
                 var dupplicates = models.GroupBy(x => x.LatitudeStr).Where(g => g.Count() > 1).ToList();

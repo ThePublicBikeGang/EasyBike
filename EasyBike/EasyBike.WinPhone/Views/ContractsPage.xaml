@@ -396,8 +396,7 @@
 			IsItemClickEnabled="True"
             VirtualizingStackPanel.VirtualizationMode="Recycling"
 			ItemContainerStyle="{StaticResource ListViewItemStyle1}" 
-
-			Margin="0">
+            Margin="0">
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior  EventName="ItemClick">
                             <core:InvokeCommandAction Command="{Binding ContractTappedCommand, Mode=OneWay}"

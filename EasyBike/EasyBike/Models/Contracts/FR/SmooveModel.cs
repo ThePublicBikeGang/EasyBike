@@ -120,10 +120,6 @@ namespace EasyBike.Models.Contracts.FR
         public override int AvailableBikes { get { return nbBikesField; } set { } }
 
         public override int? AvailableBikeStands { get { return NbEmptyDocksField; } set { } }
-
-        public override bool Status { get; set; }
-
-        public override bool Banking { get; set; }
     }
 
 

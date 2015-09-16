@@ -94,19 +94,16 @@ namespace EasyBike.ViewModels
                         if(storedContract.Name == contract.Name)
                         {
                             contract.Downloaded = true;
-                            contract.StationCounter = storedContract.StationCounter;
+                            contract.stationCounter = storedContract.StationCounter;
                             break;
                         }
                     }
-                    CityCounter++;
-                    //group.Items.Add(contract);
-                    //group.ItemsCounter++;
+                    cityCounter++;
                     if (_stopLoadingContracts)
                     {
                         return countries;
                     }
                 }
-                //ContractGroups.Add(group);
             }
             return countries;
         }

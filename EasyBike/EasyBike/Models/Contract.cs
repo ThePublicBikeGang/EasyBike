@@ -73,8 +73,8 @@ namespace EasyBike.Models
         public List<Station> Stations { get; set; }
 
 
-
-        private int stationCounter;
+        // because of dispatcher cross threading
+        public int stationCounter;
         public int StationCounter
         {
             get { return stationCounter; }
