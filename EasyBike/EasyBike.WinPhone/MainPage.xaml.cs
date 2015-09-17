@@ -78,13 +78,9 @@ namespace EasyBike.WinPhone
         public MainPage()
         {
             InitializeComponent();
-
             mainPage = this;
             Map = MapCtrl;
             navigationHelper = new NavigationHelper(this);
-          
-            clusterGenerator = new ClusterGenerator(MapCtrl, Resources["StationTemplate"] as ControlTemplate);
-            
             NavigationCacheMode = NavigationCacheMode.Required;
 
             _navigationService = SimpleIoc.Default.GetInstance<INavigationService>();
@@ -98,13 +94,33 @@ namespace EasyBike.WinPhone
             MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
             MapCtrl.ZoomLevel = 15.5;
 #endif
+          
+        }
+
+     
+        private async void Init()
+        {
+            if ((await _settingsService.GetSettingsAsync()).LastLocation != null)
+            {
+                MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = _settingsService.Settings.LastLocation.Latitude, Longitude = _settingsService.Settings.LastLocation.Longitude });
+                MapCtrl.ZoomLevel = _settingsService.Settings.LastLocation.ZoomLevel;
+            }
+
+            // leave the UI loading the page
+            await Task.Delay(50);
+
+            if (_settingsService.Settings.IsLocalisationOn)
+            {
+                EnableLocalization();
+            }
+            clusterGenerator = new ClusterGenerator(MapCtrl, Resources["StationTemplate"] as ControlTemplate);
 
             ServiceLocator.Current.GetInstance<MainViewModel>().FireGoToFavorite += MainPage_FireGoToFavorite;
 
             _notificationService.OnNotify += _notificationService_OnNotify;
 
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-           
+
             NorthIndicatorStoryboard = Resources["NorthIndicatorStoryboard"] as Storyboard;
             NorthIndicatorRotationAnimation = NorthIndicatorStoryboard.Children.First() as DoubleAnimation;
 
@@ -159,15 +175,6 @@ namespace EasyBike.WinPhone
             TouchPanel.Holding += TouchPanel_Holding;
             TouchPanel.ManipulationStarted += TouchPanel_ManipulationStarted;
             TouchPanel.ManipulationStarting += TouchPanel_ManipulationStarting;
-        }
-
-        private async void Init()
-        {
-            if ((await _settingsService.GetSettingsAsync()).LastLocation != null)
-            {
-                MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = _settingsService.Settings.LastLocation.Latitude, Longitude = _settingsService.Settings.LastLocation.Longitude });
-                MapCtrl.ZoomLevel = _settingsService.Settings.LastLocation.ZoomLevel;
-            }
         }
 
         private async void _notificationService_OnNotify(object sender, Notification.Notification e)

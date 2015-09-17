@@ -196,6 +196,12 @@ namespace EasyBike.Models
             try
             {
                 var refreshedStation = await InnerRefreshAsync(station).ConfigureAwait(false);
+                // case where the availability comes from images (China)
+                if(refreshedStation == null)
+                {
+                    retryStation = 0;
+                    return true;
+                }
                 if (station.AvailableBikes != refreshedStation.AvailableBikes || station.AvailableBikeStands != refreshedStation.AvailableBikeStands)
                 {
                     station.IsUiRefreshNeeded = true;

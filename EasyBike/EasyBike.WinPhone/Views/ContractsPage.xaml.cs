@@ -46,9 +46,11 @@ namespace EasyBike.WinPhone.Views.Cities
 
         private async void Initialize()
         {
-            var vm = SimpleIoc.Default.GetInstanceWithoutCaching<ContractsViewModel>();
+            ContractsViewModel vm = null;
+            await Task.Delay(30);
             var t = Task.Run(async () =>
             {
+                vm = SimpleIoc.Default.GetInstanceWithoutCaching<ContractsViewModel>();
                 countries = await vm.GetCountries().ConfigureAwait(false);
             });
             await Task.WhenAll(t, loadedTsc.Task);

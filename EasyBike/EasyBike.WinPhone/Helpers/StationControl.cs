@@ -4,16 +4,20 @@ using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.Storage.Streams;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
 
 namespace EasyBike.WinPhone.Helpers
@@ -57,11 +61,11 @@ namespace EasyBike.WinPhone.Helpers
 
         public List<Station> Stations = new List<Station>();
         public TextBlock ClusterTextBlock;
-        public Path StationPath;
+        public Windows.UI.Xaml.Shapes.Path StationPath;
         protected override void OnApplyTemplate()
         {
             ClusterTextBlock = GetTemplateChild("textBlockClusterNumber") as TextBlock;
-            StationPath = GetTemplateChild("path") as Path;
+            StationPath = GetTemplateChild("path") as Windows.UI.Xaml.Shapes.Path;
         }
 
         private static StationControl previousVelibTapped;
@@ -126,7 +130,11 @@ namespace EasyBike.WinPhone.Helpers
             {
                 ShowPulseAnimation();
             }
-            ShowStationColor(station);
+            if (station.ImageAvailable != null)
+            {
+                VisualStateManager.GoToState(this, "ShowNumberImage", false);
+            }
+            ShowStationColorAsync(station);
         }
 
         public void SwitchModeVelibParking(Station station)
@@ -135,7 +143,7 @@ namespace EasyBike.WinPhone.Helpers
                 return;
 
             ShowVelibStation();
-            ShowStationColor(station);
+            ShowStationColorAsync(station);
         }
 
         public bool NeedRefresh;
@@ -190,7 +198,7 @@ namespace EasyBike.WinPhone.Helpers
             IsHitTestVisible = true;
         }
 
-        public void ShowStationColor(Station station)
+        public async void ShowStationColorAsync(Station station)
         {
             if (!station.Loaded)
                 return;
@@ -199,7 +207,15 @@ namespace EasyBike.WinPhone.Helpers
             {
                 if (station.ImageAvailable != null)
                 {
-                    station.ImageNumber = station.ImageAvailable;
+                    using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                    {
+                        var image = new BitmapImage();
+                        image.DecodePixelHeight = 15;
+                        await stream.WriteAsync(((byte[])station.ImageAvailable).AsBuffer());
+                        stream.Seek(0);
+                        await image.SetSourceAsync(stream);
+                        station.ImageNumber = image;
+                    }
                 }
                 else
                 {
@@ -211,7 +227,14 @@ namespace EasyBike.WinPhone.Helpers
             {
                 if (station.ImageDocks != null)
                 {
-                    station.ImageNumber = station.ImageDocks;
+                    using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                    {
+                        var image = new BitmapImage();
+                        await stream.WriteAsync(((byte[])station.ImageDocks).AsBuffer());
+                        stream.Seek(0);
+                        await image.SetSourceAsync(stream);
+                        station.ImageNumber = image;
+                    }
                 }
                 else
                 {

@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using Newtonsoft.Json;
-using System.Runtime.Serialization;
 
 namespace EasyBike.Models
 {
