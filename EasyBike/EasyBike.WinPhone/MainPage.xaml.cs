@@ -91,7 +91,8 @@ namespace EasyBike.WinPhone
 
             Init();
 #if DEBUG
-            MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
+            //MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
+            MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude =36.40, Longitude = 119.20});
             MapCtrl.ZoomLevel = 15.5;
 #endif
           
@@ -175,6 +176,9 @@ namespace EasyBike.WinPhone
             TouchPanel.Holding += TouchPanel_Holding;
             TouchPanel.ManipulationStarted += TouchPanel_ManipulationStarted;
             TouchPanel.ManipulationStarting += TouchPanel_ManipulationStarting;
+
+            // trigger a map center changed to refresh the view
+            Map.Center = new Geopoint(new BasicGeoposition() { Longitude = Map.Center.Position.Longitude + 0.000001, Latitude = Map.Center.Position.Latitude });
         }
 
         private async void _notificationService_OnNotify(object sender, Notification.Notification e)

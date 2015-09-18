@@ -64,18 +64,21 @@ namespace EasyBike.Models
         public async void AddStationToRefreshingPool(Station station)
         {
             station.IsInRefreshPool = true;
-            
-            if (await station.Contract.RefreshAsync(station).ConfigureAwait(false))
+            var contract = station.Contract;
+            if(contract != null)
             {
-                if (station.IsUiRefreshNeeded)
+                if (await contract.RefreshAsync(station).ConfigureAwait(false))
                 {
-                    StationRefreshed?.Invoke(station, EventArgs.Empty);
+                    if (station.IsUiRefreshNeeded)
+                    {
+                        StationRefreshed?.Invoke(station, EventArgs.Empty);
+                    }
                 }
-            }
-            refreshingPool.Add(station);
-            if (!IsStationWorkerRunning)
-            {
-                StartRefreshStationsAsync();
+                refreshingPool.Add(station);
+                if (!IsStationWorkerRunning)
+                {
+                    StartRefreshStationsAsync();
+                }
             }
         }
 
@@ -96,7 +99,7 @@ namespace EasyBike.Models
                     foreach (var station in contract.Stations)
                     {
                         station.Contract = contract;
-                        station.Loaded = false;
+                        station.IsUiRefreshNeeded = true;
                         stations.Add(station);
                     }
                 }

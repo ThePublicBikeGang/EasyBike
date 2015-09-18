@@ -57,6 +57,10 @@
     <Compile Include="Models\Contracts\CH\PubliBikeModel.cs" />
     <Compile Include="Models\Contracts\CN\PublicBicycleContract.cs" />
     <Compile Include="Models\Contracts\CN\PublicBicycleModel.cs" />
+    <Compile Include="Models\Contracts\DE\CallABikeContract.cs" />
+    <Compile Include="Models\Contracts\DE\CallABikeModel.cs" />
+    <Compile Include="Models\Contracts\DE\MVGContract.cs" />
+    <Compile Include="Models\Contracts\DE\MVGModel.cs" />
     <Compile Include="Models\Contracts\ES\BicimadContract.cs" />
     <Compile Include="Models\Contracts\ES\BicimadModel.cs" />
     <Compile Include="Models\Contracts\FR\SmooveContract.cs" />

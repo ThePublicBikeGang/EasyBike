@@ -81,7 +81,7 @@ namespace EasyBike.WinPhone.Helpers
                     }
                     await map.TrySetViewBoundsAsync(MapExtensions.GetAreaFromLocations(Stations.Select(s => (Geopoint)s.Location).ToList()), new Thickness(20, 20, 20, 20), MapAnimationKind.Default);
                 }
-              
+
                 else
                 {
                     await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -90,7 +90,7 @@ namespace EasyBike.WinPhone.Helpers
                     });
                 }
             }
-            catch 
+            catch
             {
             }
         }
@@ -126,7 +126,7 @@ namespace EasyBike.WinPhone.Helpers
 
         public void RefreshStation(Station station)
         {
-            if(StationPath.Fill != emptyColorBrush)
+            if (StationPath.Fill != emptyColorBrush)
             {
                 ShowPulseAnimation();
             }
@@ -153,7 +153,8 @@ namespace EasyBike.WinPhone.Helpers
             NeedRefresh = true;
             station.Control = null;
             Stations.Remove(station);
-            if(station.IsInRefreshPool) {
+            if (station.IsInRefreshPool)
+            {
                 _contractService.RemoveStationFromRefreshingPool(station);
             }
         }
@@ -207,15 +208,19 @@ namespace EasyBike.WinPhone.Helpers
             {
                 if (station.ImageAvailable != null)
                 {
-                    using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                    try
                     {
-                        var image = new BitmapImage();
-                        image.DecodePixelHeight = 15;
-                        await stream.WriteAsync(((byte[])station.ImageAvailable).AsBuffer());
-                        stream.Seek(0);
-                        await image.SetSourceAsync(stream);
-                        station.ImageNumber = image;
+                        using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                        {
+                            var image = new BitmapImage();
+                            image.DecodePixelHeight = 15;
+                            await stream.WriteAsync(((byte[])station.ImageAvailable).AsBuffer());
+                            stream.Seek(0);
+                            await image.SetSourceAsync(stream);
+                            station.ImageNumber = image;
+                        }
                     }
+                    catch { }
                 }
                 else
                 {
@@ -227,14 +232,18 @@ namespace EasyBike.WinPhone.Helpers
             {
                 if (station.ImageDocks != null)
                 {
-                    using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                    try
                     {
-                        var image = new BitmapImage();
-                        await stream.WriteAsync(((byte[])station.ImageDocks).AsBuffer());
-                        stream.Seek(0);
-                        await image.SetSourceAsync(stream);
-                        station.ImageNumber = image;
+                        using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                        {
+                            var image = new BitmapImage();
+                            await stream.WriteAsync(((byte[])station.ImageDocks).AsBuffer());
+                            stream.Seek(0);
+                            await image.SetSourceAsync(stream);
+                            station.ImageNumber = image;
+                        }
                     }
+                    catch { }
                 }
                 else
                 {
@@ -266,15 +275,15 @@ namespace EasyBike.WinPhone.Helpers
                     color = greenColorBrush;
             }
 
-            if(StationPath.Fill != color)
+            if (StationPath.Fill != color)
             {
                 if (StationPath.Fill != emptyColorBrush)
                 {
-                  //  ShowPulseAnimation();
+                    //  ShowPulseAnimation();
                 }
                 StationPath.Fill = color;
             }
-            
+
 
 
         }

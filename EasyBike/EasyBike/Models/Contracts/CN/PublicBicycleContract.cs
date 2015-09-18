@@ -20,6 +20,7 @@ namespace EasyBike.Models.Contracts.CN
         {
             ServiceProvider = "Public Bicycle";
             StationRefreshGranularity = true;
+            ImageAvailability = true;
         }
 
         public override async Task<List<StationModelBase>> InnerGetStationsAsync()

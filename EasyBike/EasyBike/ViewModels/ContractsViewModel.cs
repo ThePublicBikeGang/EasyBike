@@ -7,13 +7,10 @@ using EasyBike.Design;
 using EasyBike.Models;
 using EasyBike.Notification;
 using System;
-using System.Collections.ObjectModel;
 using System.Linq;
-using Xamarin.Forms;
 using System.Reflection;
 using System.IO;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using System.Collections.Generic;
 
 namespace EasyBike.ViewModels
@@ -59,7 +56,7 @@ namespace EasyBike.ViewModels
             if (IsInDesignMode)
             {
                 
-                   _contractsService = new DesignContractsService();
+                _contractsService = new DesignContractsService();
                 GetCountries();
             }
         }
@@ -69,8 +66,6 @@ namespace EasyBike.ViewModels
         {
             var storedContracts = await _contractsService.GetContractsAsync();
             var countries = _contractsService.GetCountries();
-           // staticContracts = storedContracts.Union(staticContracts).ToList();
-
             var assembly = typeof(ContractsViewModel).GetTypeInfo().Assembly;
             foreach(var country in countries)
             {
@@ -87,14 +82,15 @@ namespace EasyBike.ViewModels
                     }
                 }
                 catch { }
-                foreach (var contract in country.Contracts)
+
+                country.Contracts = country.Contracts.OrderBy(c => c.Name).ToList();
+                for (int i = 0; i< country.Contracts.Count; i++)
                 {
                     foreach(var storedContract in storedContracts)
                     {
-                        if(storedContract.Name == contract.Name)
+                        if(storedContract.Name == country.Contracts[i].Name)
                         {
-                            contract.Downloaded = true;
-                            contract.stationCounter = storedContract.StationCounter;
+                            country.Contracts[i] = storedContract;
                             break;
                         }
                     }

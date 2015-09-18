@@ -45,7 +45,7 @@ namespace EasyBike.Models
         public string Id { get; set; }
         public string Country { get; set; }
         public string Description { get; set; }
-
+        public bool ImageAvailability { get; set; }
         public bool DownloadingAvailability { get; set; }
 
         private bool downloading;
@@ -120,8 +120,8 @@ namespace EasyBike.Models
                     AvailableBikeStands = serviceProviderModel.AvailableBikeStands,
                     ContractStorageName = StorageName,
                     Id = serviceProviderModel.Id,
-                    IsUiRefreshNeeded = true,
-                    Loaded = true
+                    IsUiRefreshNeeded = StationRefreshGranularity ? false : true,
+                    Loaded = ImageAvailability ? false : true,
             });
             }
             return stations;
