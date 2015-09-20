@@ -204,9 +204,7 @@ namespace EasyBike.Models
                     new PublicBicycleContract{Name = "Anqiu", StationsUrl="http://218.93.33.59:85/map/wfmap/aqibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/wfmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Bin Zhou", StationsUrl="http://map.crsud.cn/bz/map/ibikestation.asp", AvailabilityUrl = "http://map.crsud.cn/bz/map/ibikegif.asp?id={0}&flag={1}"},
                     /// http://www.bike0555.com/index.asp    
-                    //new DangtuContract{Name = "Dangtu",
-                    //ApiUrl="http://218.93.33.59:85/map/maanshanmap/ibikestation.asp",
-                    //AvailabilityUrl = "http://218.93.33.59:85/map/maanshanmap/ibikegif.asp?id={0}&flag={1}"},
+                    new DangtuContract{Name = "Dangtu", AvailabilityUrl = "http://218.93.33.59:85/map/maanshanmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Fuyang", StationsUrl="http://218.93.33.59:85/map/fuyangmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/fuyangmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Guilin", StationsUrl="http://218.93.33.59:85/map/guilinmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/guilinmap/ibikegif.asp?id={0}&flag={1}"},
                   ////////  // ws.uibike.com	/map.php?location=127.5347550,50.2511620&city=%E9%BB%91%E6%B2%B3%E5%B8%82	4,185		text/html;charset=utf-8	chrome:6420			GET	
@@ -214,32 +212,23 @@ namespace EasyBike.Models
                   //////////ApiUrl = "http://www.heihebike.com/hhmap/ibikestation.asp",
                   //////////http://ws.uibike.com/wx.station.php?myloc=127.5347550,50.2511620&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2
 
-                  ////////  new PublicBicycleContract2{Name = "Heihe",
-                  ////////  ApiUrl="http://ws.uibike.com/wx.station.php?myloc=127.5347550,50.2511620&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2",
-                  ////////  AvailabilityUrl = "http://www.heihebike.com/hhmap/ibikegif.asp?id={0}&flag={1}"},
-                  ////////  new PublicBicycleContract2{Name = "HeZe", ApiUrl="http://map.crsud.cn/hz/map/ibikestation.asp"},
+                    new PublicBicycle2Contract{Name = "Heihe", ApiUrl="http://ws.uibike.com/wx.station.php?myloc=127.5347550,50.2511620&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2", AvailabilityUrl = "http://www.heihebike.com/hhmap/ibikegif.asp?id={0}&flag={1}"},
+                    new PublicBicycle2Contract{Name = "HeZe", ApiUrl="http://map.crsud.cn/hz/map/ibikestation.asp"},
                     new PublicBicycleContract{Name = "Huaian", StationsUrl = "http://218.93.33.59:85/map/huaianmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/huaianmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Huaibei", StationsUrl = "http://218.93.33.59:85/map/suiximap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/suiximap/ibikegif.asp?id={0}&flag={1}"},
-                  ////////  new HuiminOperateContract{Name = "Huizhou",
-                  ////////  ApiUrl = "http://hz.2773456.com/zdfb/sz_station.php"},
-                  ////////  new HuiminOperateContract{Name = "Huizhou (Zhong Kai district)",
-                  ////////  ApiUrl = "http://zk.2773456.com/zdfb/sz_station.php"},
-                  ////////  new HuiminOperateContract{Name = "Huizhou (Huiyang district)",
-                  ////////  ApiUrl = "http://hy.2773456.com/zdfb/sz_station.php"},
-                  ////////  new HuiminOperateContract{Name = "Huizhou (Longgang district)",
-                  ////////  ApiUrl = "http://sz.2773456.com/zdfb/sz_station.php"},
-                  ////////  new HuiminOperateContract{Name = "Huizhou (Luohu district)",
-                  ////////  ApiUrl = "http://www.lhggzxc.com/zdfb/sz_station.php"},
-                  ////  new PublicBicycleContract2{Name = "Longwan",
-                  ////  ApiUrl = "http://218.93.33.59:85/map/wzmap/ibikestation.asp"},
+                    new HuiminOperateContract{Name = "Huizhou", ApiUrl = "http://hz.2773456.com/zdfb/sz_station.php"},
+                    new HuiminOperateContract{Name = "Huizhou (Zhong Kai district)", ApiUrl = "http://zk.2773456.com/zdfb/sz_station.php"},
+                    new HuiminOperateContract{Name = "Huizhou (Huiyang district)", ApiUrl = "http://hy.2773456.com/zdfb/sz_station.php"},
+                    new HuiminOperateContract{Name = "Huizhou (Longgang district)", ApiUrl = "http://sz.2773456.com/zdfb/sz_station.php"},
+                    new HuiminOperateContract{Name = "Huizhou (Luohu district)", ApiUrl = "http://www.lhggzxc.com/zdfb/sz_station.php"},
+                    new PublicBicycle2Contract{Name = "Longwan", ApiUrl = "http://218.93.33.59:85/map/wzmap/ibikestation.asp"},
                   ////  ///ApiUrl = "http://ws.uibike.com/wx.station.php?myloc=116.3480570,39.7324840&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2",
-                  ////  ///ApiUrl = "http://www.1km0g.com/api/ibikeJSInterface.asp",
-                  ////  new PublicBicycleContract2{Name = "Daxing",
-                  ////  ApiUrl = "http://ws.uibike.com/wx.station.php?myloc=116.3480570,39.7324840&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=4"},
+                    ///ApiUrl = "http://www.1km0g.com/api/ibikeJSInterface.asp",
+                    new PublicBicycle2Contract{Name = "Daxing", ApiUrl = "http://ws.uibike.com/wx.station.php?myloc=116.3480570,39.7324840&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=4"},
                     new PublicBicycleContract{Name = "Siyang", StationsUrl = "http://218.93.33.59:85/map/siyangmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/siyangmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Suzhou", StationsUrl = "http://218.93.33.59:85/map/szmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/szmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Taizhou", StationsUrl = "http://www.zjtzpb.com/tzmap/ibikestation.asp", AvailabilityUrl = "http://www.zjtzpb.com/tzmap/ibikegif.asp?id={0}&flag={1}"},
-                  ////////  new ShanghaiContract{Name = "Shanghai and districts"},
+                    new ShanghaiContract{Name = "Shanghai and districts"},
                     new PublicBicycleContract{Name = "Weifang", StationsUrl = "http://218.93.33.59:85/map/wfmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/wfmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Shenmu", StationsUrl = "http://www.bike912.com/smmap/ibikestation.asp",AvailabilityUrl = "http://www.bike912.com/smmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Yangzhong", StationsUrl ="http://218.93.33.59:85/map/zjmap/ibikestation.asp",  AvailabilityUrl = "http://218.93.33.59:85/map/zjmap/ibikegif.asp?id={0}&flag={1}"},
@@ -367,7 +356,7 @@ namespace EasyBike.Models
                 ISO31661 = "ES",
                 Contracts = new List<Contract>()
                 {
-                    //////new BarceloneContract{Name = "Barcelona", ApiUrl = "https://www.bicing.cat/availability_map/getJsonObject"},
+                    new BarceloneContract{Name = "Barcelona"},
                     new BicimadContract{Name = "Madrid"},
                     new JcDecauxContract{Name = "Santander"},
                     new JcDecauxContract{Name = "Seville"},
@@ -422,7 +411,7 @@ namespace EasyBike.Models
                 Contracts = new List<Contract>()
                 {
                     //Check trello at ToDo maybe a possiblity for make a list of each citie
-                    //////new EasyBikeContract{Name = "All cities (from Easy Bike)"},
+                    new EasyBikeContract{Name = "All cities (from Easy Bike)"},
                 }
             },
             #endregion 
@@ -597,7 +586,7 @@ namespace EasyBike.Models
                 ISO31661 = "TW",
                 Contracts = new List<Contract>()
                 {
-                    //////new CBikeContract{Name = "Kaohsiung", ServiceProvider="City Bike", ApiUrl ="http://www.c-bike.com.tw/xml/stationlistopendata.aspx"},
+                    new CBikeContract{Name = "Kaohsiung"},
                 }
             },
             #endregion 
@@ -637,8 +626,8 @@ namespace EasyBike.Models
                 {
                   
                     //https://secure.niceridemn.org/data2/bikeStations.xml
-                    //////new BixxiMinneapolisContract{Name = "Minneapolis, MN", ApiUrl = "https://secure.niceridemn.org/data2/stations.json",ServiceProvider = "Nice Ride Minnesota, Alta Bicycle Share, Bixi"},
-                    //////new BixxiMinneapolisContract{Name = "Seattle, WA", ApiUrl = "https://secure.prontocycleshare.com/data/stations.json",ServiceProvider = "Pronto Cycle Share, Alta Bicycle Share, Bixi"},
+                    new BixxiMinneapolisContract{Name = "Minneapolis, MN", StationsUrl = "https://secure.niceridemn.org/data2/stations.json",ServiceProvider = "Nice Ride Minnesota, Alta Bicycle Share, Bixi"},
+                    new BixxiMinneapolisContract{Name = "Seattle, WA", StationsUrl = "https://secure.prontocycleshare.com/data/stations.json",ServiceProvider = "Pronto Cycle Share, Alta Bicycle Share, Bixi"},
                     new CapitalBikeShareContract{Name = "Boston, MA", StationsUrl= "http://www.thehubway.com/data/stations/bikeStations.xml",ServiceProvider = "Hubway, Alta Bicycle Share, Bixi"},
                     new CapitalBikeShareContract{Name = "Washington, D.C. area", TechnicalName= "Washington", ServiceProvider = "Capital BikeShare, Alta Bicycle Share, Bixi"},
 
