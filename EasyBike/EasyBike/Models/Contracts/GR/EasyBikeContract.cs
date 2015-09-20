@@ -1,7 +1,11 @@
-﻿using System;
+﻿using ModernHttpClient;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace EasyBike.Models.Contracts.GR
@@ -37,18 +41,18 @@ namespace EasyBike.Models.Contracts.GR
                         text = text.Replace("icon:", "\"icon\":");
                         text = text.Replace("green_bike", "\"green_bike\"");
                         text = text.Remove(text.LastIndexOf(","), 1);
-                        var stations = text.FromJsonString<List<EasyBikeModel>>();
+                        var stations = JsonConvert.DeserializeObject<List<EasyBikeModel>>(text);
                         foreach (var station in stations)
                         {
                             pattern = @"\d+";
-                            if (Regex.IsMatch(item.Data.Text, pattern))
+                            if (Regex.IsMatch(station.Data.Text, pattern))
                             {
-                                var matches = new Regex(pattern).Matches(item.Data.Text);
+                                var matches = new Regex(pattern).Matches(station.Data.Text);
                                 station.AvailableBikes = int.Parse(matches[2].Value);
                                 station.AvailableBikeStands = int.Parse(matches[1].Value);
                             }
                         }
-                        return stations;
+                        return stations.ToList<StationModelBase>();
 
                     }
 

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ModernHttpClient;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace EasyBike.Models.Contracts.ES
@@ -30,7 +32,7 @@ namespace EasyBike.Models.Contracts.ES
         }
     }
 
-    public class BarceloneModel : StationBaseModel
+    public class BarceloneModel : StationModelBase
     {
         [JsonProperty("bikes")]
         public override int AvailableBikes { get; set; }

@@ -4,6 +4,7 @@ using EasyBike.Models.Contracts.CN;
 using EasyBike.Models.Contracts.DE;
 using EasyBike.Models.Contracts.ES;
 using EasyBike.Models.Contracts.FR;
+using EasyBike.Models.Contracts.GR;
 using EasyBike.Models.Contracts.PL;
 using EasyBike.Models.Contracts.UK;
 using EasyBike.Models.Contracts.US;
@@ -212,19 +213,19 @@ namespace EasyBike.Models
                   //////////ApiUrl = "http://www.heihebike.com/hhmap/ibikestation.asp",
                   //////////http://ws.uibike.com/wx.station.php?myloc=127.5347550,50.2511620&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2
 
-                    new PublicBicycle2Contract{Name = "Heihe", ApiUrl="http://ws.uibike.com/wx.station.php?myloc=127.5347550,50.2511620&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2", AvailabilityUrl = "http://www.heihebike.com/hhmap/ibikegif.asp?id={0}&flag={1}"},
-                    new PublicBicycle2Contract{Name = "HeZe", ApiUrl="http://map.crsud.cn/hz/map/ibikestation.asp"},
+                    new PublicBicycle2Contract{Name = "Heihe", StationsUrl="http://ws.uibike.com/wx.station.php?myloc=127.5347550,50.2511620&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2", AvailabilityUrl = "http://www.heihebike.com/hhmap/ibikegif.asp?id={0}&flag={1}"},
+                    new PublicBicycle2Contract{Name = "HeZe", StationsUrl="http://map.crsud.cn/hz/map/ibikestation.asp"},
                     new PublicBicycleContract{Name = "Huaian", StationsUrl = "http://218.93.33.59:85/map/huaianmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/huaianmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Huaibei", StationsUrl = "http://218.93.33.59:85/map/suiximap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/suiximap/ibikegif.asp?id={0}&flag={1}"},
-                    new HuiminOperateContract{Name = "Huizhou", ApiUrl = "http://hz.2773456.com/zdfb/sz_station.php"},
-                    new HuiminOperateContract{Name = "Huizhou (Zhong Kai district)", ApiUrl = "http://zk.2773456.com/zdfb/sz_station.php"},
-                    new HuiminOperateContract{Name = "Huizhou (Huiyang district)", ApiUrl = "http://hy.2773456.com/zdfb/sz_station.php"},
-                    new HuiminOperateContract{Name = "Huizhou (Longgang district)", ApiUrl = "http://sz.2773456.com/zdfb/sz_station.php"},
-                    new HuiminOperateContract{Name = "Huizhou (Luohu district)", ApiUrl = "http://www.lhggzxc.com/zdfb/sz_station.php"},
-                    new PublicBicycle2Contract{Name = "Longwan", ApiUrl = "http://218.93.33.59:85/map/wzmap/ibikestation.asp"},
+                    new HuiminOperateContract{Name = "Huizhou", StationsUrl = "http://hz.2773456.com/zdfb/sz_station.php"},
+                    new HuiminOperateContract{Name = "Huizhou (Zhong Kai district)", StationsUrl = "http://zk.2773456.com/zdfb/sz_station.php"},
+                    new HuiminOperateContract{Name = "Huizhou (Huiyang district)", StationsUrl = "http://hy.2773456.com/zdfb/sz_station.php"},
+                    new HuiminOperateContract{Name = "Huizhou (Longgang district)", StationsUrl = "http://sz.2773456.com/zdfb/sz_station.php"},
+                    new HuiminOperateContract{Name = "Huizhou (Luohu district)", StationsUrl = "http://www.lhggzxc.com/zdfb/sz_station.php"},
+                    new PublicBicycle2Contract{Name = "Longwan", StationsUrl = "http://218.93.33.59:85/map/wzmap/ibikestation.asp"},
                   ////  ///ApiUrl = "http://ws.uibike.com/wx.station.php?myloc=116.3480570,39.7324840&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2",
                     ///ApiUrl = "http://www.1km0g.com/api/ibikeJSInterface.asp",
-                    new PublicBicycle2Contract{Name = "Daxing", ApiUrl = "http://ws.uibike.com/wx.station.php?myloc=116.3480570,39.7324840&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=4"},
+                    new PublicBicycle2Contract{Name = "Daxing", StationsUrl = "http://ws.uibike.com/wx.station.php?myloc=116.3480570,39.7324840&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=4"},
                     new PublicBicycleContract{Name = "Siyang", StationsUrl = "http://218.93.33.59:85/map/siyangmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/siyangmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Suzhou", StationsUrl = "http://218.93.33.59:85/map/szmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/szmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Taizhou", StationsUrl = "http://www.zjtzpb.com/tzmap/ibikestation.asp", AvailabilityUrl = "http://www.zjtzpb.com/tzmap/ibikegif.asp?id={0}&flag={1}"},

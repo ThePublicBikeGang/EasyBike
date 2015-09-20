@@ -1,7 +1,12 @@
-﻿using System;
+﻿using ModernHttpClient;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace EasyBike.Models.Contracts.CN
@@ -48,7 +53,7 @@ namespace EasyBike.Models.Contracts.CN
                                 Longitude = longitude
                             });
                         }
-                        return stations;
+                        return stations.ToList<StationModelBase>();
                     }
                 }
             }
@@ -61,7 +66,7 @@ namespace EasyBike.Models.Contracts.CN
         }
     }
 
-    public class HuiminOperateModel : StationBaseModel
+    public class HuiminOperateModel : StationModelBase
     {
         [JsonProperty("lat")]
         public override double Latitude { get; set; }

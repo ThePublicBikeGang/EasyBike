@@ -1,6 +1,9 @@
-﻿using System;
+﻿using EasyBike.Extensions;
+using ModernHttpClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,7 +23,7 @@ namespace EasyBike.Models.Contracts
             {
                 HttpResponseMessage response = await client.GetAsync(new Uri(string.Format(StationsUrl + "?" + Guid.NewGuid().ToString()))).ConfigureAwait(false);
                 var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return responseBodyAsText.FromXmlString<BIKEStationData>("").Items.ToList<StationModelBase>();
+                return responseBodyAsText.FromXmlString<BIKEStationData>("").Items.Cast<StationModelBase>().ToList();
             }
         }
 
@@ -56,7 +59,7 @@ namespace EasyBike.Models.Contracts
     }
 
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public class BIKEStationDataBIKEStationStation : StationBaseModel
+    public class BIKEStationDataBIKEStationStation : StationModelBase
     {
         [System.Xml.Serialization.XmlElementAttribute("StationID", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int InnerId { get; set; }

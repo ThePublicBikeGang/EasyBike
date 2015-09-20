@@ -1,17 +1,21 @@
-﻿using System;
+﻿using ModernHttpClient;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
+using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace EasyBike.Models.Contracts.CN
 {
-    public class ShangaiContract : Contract
+    public class ShanghaiContract : Contract
     {
-        public ShangaiContract()
+        public ShanghaiContract()
         {
             ServiceProvider = "Shanghai Forever Bicycle Rental (no availability)";
-            StationsUrls = "http://self.chinarmb.com/FormStations.aspx";
+            StationsUrl = "http://self.chinarmb.com/FormStations.aspx";
         }
 
         public override async Task<List<StationModelBase>> InnerGetStationsAsync()
@@ -44,7 +48,7 @@ namespace EasyBike.Models.Contracts.CN
                             stations.Add(station);
                         }
                     }
-                    return stations;
+                    return stations.ToList<StationModelBase>();
                 }
             }
             return null;
@@ -56,18 +60,18 @@ namespace EasyBike.Models.Contracts.CN
         }
     }
 
-    public class ShangaiModel : StationBaseModel
+    public class ShangaiModel : StationModelBase
     {
-        [JsonProperty(PropertyName = "latitude")]
+        [JsonProperty("latitude")]
         public override double Latitude { get; set; }
 
-        [JsonProperty(PropertyName = "longitude")]
+        [JsonProperty("longitude")]
         public override double Longitude { get; set; }
 
-        [JsonProperty(PropertyName = "bikes_available")]
+        [JsonProperty("bikes_available")]
         public override int AvailableBikes { get; set; }
 
-        [JsonProperty(PropertyName = "docks_available")]
+        [JsonProperty("docks_available")]
         public override int? AvailableBikeStands { get; set; }
     }
 }
