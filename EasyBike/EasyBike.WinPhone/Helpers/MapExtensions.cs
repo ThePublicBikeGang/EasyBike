@@ -1,4 +1,5 @@
-﻿using EasyBike.Models;
+﻿using EasyBike.Helpers;
+using EasyBike.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -189,22 +190,6 @@ namespace EasyBike.WinPhone.Helpers
 
 
 
-        private const double EarthRadius = 6378137;
-        private const double MinLatitude = -85.05112878;
-        private const double MaxLatitude = 85.05112878;
-        private const double MinLongitude = -180;
-        private const double MaxLongitude = 180;
-
-
-        public const double EarthRadiusInMiles = 3956.0;
-        public const double EarthRadiusInKilometers = 6367.0;
-        private const double radius = EarthRadiusInKilometers;
-
-        public static double Rad2deg(double rad)
-        {
-            return (rad / Math.PI * 180.0);
-        }
-
         //helper method to make reading the lambda a bit easier
         public static double ToRadian(double val) { return val * (Math.PI / 180); }
         //helper method for converting Radians, making the lamda easier to read
@@ -214,18 +199,11 @@ namespace EasyBike.WinPhone.Helpers
         /// </summary> 
         public static double CalcDistance(this BasicGeoposition loc1, BasicGeoposition loc2)
         {
-            return CalcDistance(loc1.Latitude, loc1.Longitude, loc2.Latitude, loc2.Longitude);
+            return MapHelper.CalcDistance(loc1.Latitude, loc1.Longitude, loc2.Latitude, loc2.Longitude);
         }
-        /// <summary> 
-        /// Calculate the distance between two geocodes.  (haversine)
-        /// http://www.movable-type.co.uk/scripts/latlong.html
-        /// </summary> 
-        public static double CalcDistance(double lat1, double lng1, double lat2, double lng2)
-        {
-            return radius * Math.Asin(Math.Min(1, Math.Sqrt((Math.Pow(Math.Sin((DiffRadian(lat1, lat2)) / 2.0), 2.0) + Math.Cos(ToRadian(lat1)) * Math.Cos(ToRadian(lat2)) * Math.Pow(Math.Sin((DiffRadian(lng1, lng2)) / 2.0), 2.0)))));
-        }
+      
 
-        private const double EARTH_RADIUS_KM = 6371;
+    
         public static double GetDistanceKM(this BasicGeoposition point1, BasicGeoposition point2)
         {
             double dLat = ToRadian(point2.Latitude - point1.Latitude);
@@ -235,9 +213,8 @@ namespace EasyBike.WinPhone.Helpers
                        Math.Cos(ToRadian(point1.Latitude)) * Math.Cos(ToRadian(point2.Latitude)) *
                        Math.Pow(Math.Sin(dLon / 2), 2);
 
-            return EARTH_RADIUS_KM * 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            return MapHelper.EARTH_RADIUS_KM * 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
         }
-
 
 
         public static double GetDistancePixel(this BasicGeoposition point1, BasicGeoposition point2, double zoomLevel)
@@ -248,7 +225,6 @@ namespace EasyBike.WinPhone.Helpers
             // point1.GetDistanceKM(point2) * 1000 pour obtenir des metres
             return point1.GetDistanceKM(point2) * 1000 / (0.1 * Math.Pow(2, 20 - zoomLevel));
         }
-
 
 
 
@@ -291,8 +267,8 @@ namespace EasyBike.WinPhone.Helpers
         /// <returns>The ground resolution, in meters per pixel.</returns>
         public static double GroundResolution(double latitude, double levelOfDetail)
         {
-            latitude = Clip(latitude, MinLatitude, MaxLatitude);
-            return Math.Cos(latitude * Math.PI / 180) * 2 * Math.PI * EarthRadius / (256 * Math.Pow(2, levelOfDetail));
+            latitude = Clip(latitude, MapHelper.MinLatitude, MapHelper.MaxLatitude);
+            return Math.Cos(latitude * Math.PI / 180) * 2 * Math.PI * MapHelper.EarthRadius / (256 * Math.Pow(2, levelOfDetail));
         }
         public static double CalculateAngle(this BasicGeoposition loc1, BasicGeoposition loc2)
         {

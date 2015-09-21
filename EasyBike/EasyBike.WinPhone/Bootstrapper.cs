@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using EasyBike.WinPhone.Views.Tutorial;
+using EasyBike.Services;
+using EasyBike.WinPhone.Services;
 
 namespace EasyBike.WinPhone
 {
@@ -24,6 +26,7 @@ namespace EasyBike.WinPhone
             
             SimpleIoc.Default.Register<INavigationService>(() => nav);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
+            SimpleIoc.Default.Register<ILocalisationService, LocalisationService>();
         }
     }
 

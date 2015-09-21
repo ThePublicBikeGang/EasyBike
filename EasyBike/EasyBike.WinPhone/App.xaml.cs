@@ -1,4 +1,5 @@
 ﻿using EasyBike.Models.Storage;
+using EasyBike.Services;
 using GalaSoft.MvvmLight.Ioc;
 using System;
 using Windows.ApplicationModel;
@@ -132,7 +133,6 @@ namespace EasyBike.WinPhone
             // TODO: Save application state and stop any background activity
             // CAREFULL: This is never reached in DEBUG mode
             var settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
-            settingsService.Settings.LastLocation = new Models.Location() { Latitude = MainPage.Map.Center.Position.Latitude, Longitude = MainPage.Map.Center.Position.Longitude, ZoomLevel = MainPage.Map.ZoomLevel };
             await settingsService.SaveSettingAsync();
             
             deferral.Complete();

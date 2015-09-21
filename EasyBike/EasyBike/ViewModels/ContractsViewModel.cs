@@ -12,6 +12,7 @@ using System.Reflection;
 using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Connectivity.Plugin;
 
 namespace EasyBike.ViewModels
 {
@@ -161,13 +162,25 @@ namespace EasyBike.ViewModels
                                    }
                                    else
                                    {
-                                       contract.Downloading = true;
-                                       var stations = await contract.GetStationsAsync();
-                                       contract.Stations = stations;
-                                       contract.StationCounter = stations.Count();
-                                       contract.Downloaded = true;
-                                       contract.Downloading = false;
-                                       await _contractsService.AddContractAsync(contract);
+                                       if (CrossConnectivity.Current.IsConnected)
+                                       {
+                                           contract.Downloading = true;
+                                           var stations = await contract.GetStationsAsync();
+                                           contract.Stations = stations;
+                                           contract.StationCounter = stations.Count();
+                                           contract.Downloaded = true;
+                                           contract.Downloading = false;
+                                           await _contractsService.AddContractAsync(contract);
+                                       }
+                                       else
+                                       {
+                                           try
+                                           {
+                                               await _dialogService.ShowMessage("Apparently you network connection is off. I'm afraid you'll not be able to download a city if you don't have any active network connection.", "Oops !");
+                                           }
+                                           catch { }
+                                       }
+                                     
                                    }
                                }
                                catch (Exception e)

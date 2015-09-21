@@ -4,6 +4,6 @@ namespace EasyBike.Services
 {
     public interface ILocalisationService
     {
-        Location GetUserLocation();
+        Location GetCurrentMapCenter();
     }
 }

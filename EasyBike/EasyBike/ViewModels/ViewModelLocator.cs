@@ -64,9 +64,9 @@ namespace EasyBike.ViewModels
 
             SimpleIoc.Default.Register<IConfigService, ConfigService>();
 
+            // This service require an implementation of ILocalisationService in the client
             SimpleIoc.Default.Register<ISettingsService, SettingsService>(true);
 
-            // ViewModels
             SimpleIoc.Default.Register<AboutViewModel>();
             SimpleIoc.Default.Register<FavoritesViewModel>();
             SimpleIoc.Default.Register<SettingsViewModel>();

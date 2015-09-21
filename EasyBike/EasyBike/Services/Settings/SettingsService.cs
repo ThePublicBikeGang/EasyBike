@@ -7,11 +7,13 @@ namespace EasyBike.Services
     public class SettingsService : ISettingsService
     {
         private readonly IStorageService _storageService;
+        private readonly ILocalisationService _localisationService;
         private SettingsModel _settings;
         public SettingsModel Settings { get { return _settings; } set { } }
 
-        public SettingsService(IStorageService storageService)
+        public SettingsService(ILocalisationService localisationService, IStorageService storageService)
         {
+            _localisationService = localisationService;
             _storageService = storageService;
             GetSettingsAsync().ConfigureAwait(false);
         }
@@ -32,6 +34,7 @@ namespace EasyBike.Services
 
         public async Task SaveSettingAsync()
         {
+            (await GetSettingsAsync()).LastLocation = _localisationService.GetCurrentMapCenter();
             await _storageService.SetSettingsAsync(_settings).ConfigureAwait(false);
         }
     }

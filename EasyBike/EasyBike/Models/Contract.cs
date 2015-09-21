@@ -164,24 +164,24 @@ namespace EasyBike.Models
             catch (Exception e)
             {
                 retryContract++;
-                if (retryContract == 3)
-                {
-                    var notificationService = SimpleIoc.Default.GetInstance<INotificationService>();
-                    try
-                    {
-                        notificationService.Notify(new RefreshFailureNotification()
-                        {
-                            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us and we will investigate. Thumbs up !",
-                            Subject = "Hey !",
-                            ContractName = Name,
-                            Exception = e
-                        });
-                    }
-                    catch
-                    {
-                        // Ignore
-                    }
-                }
+                //if (retryContract == 3)
+                //{
+                //    var notificationService = SimpleIoc.Default.GetInstance<INotificationService>();
+                //    try
+                //    {
+                //        notificationService.Notify(new RefreshFailureNotification()
+                //        {
+                //            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us and we will investigate. Thumbs up !",
+                //            Subject = "Hey !",
+                //            ContractName = Name,
+                //            Exception = e
+                //        });
+                //    }
+                //    catch
+                //    {
+                //        // Ignore
+                //    }
+                //}
             }
             return true;
         }
@@ -220,26 +220,26 @@ namespace EasyBike.Models
             catch(Exception e)
             {
                 retryStation++;
-                if(retryStation == 10) 
-                {
-                    //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-                    //contractService.
-                    var notificationService = SimpleIoc.Default.GetInstance<INotificationService>();
-                    try
-                    {
-                        notificationService.Notify(new RefreshFailureNotification()
-                        {
-                            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us and we will investigate. Thumbs up !",
-                            Subject = "Hey !",
-                            ContractName = station.Contract.Name,
-                            Exception = e
-                        });
-                    }
-                    catch
-                    {
-                        // Ignore
-                    }
-                }
+                //if(retryStation == 10) 
+                //{
+                //    //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+                //    //contractService.
+                //    var notificationService = SimpleIoc.Default.GetInstance<INotificationService>();
+                //    try
+                //    {
+                //        notificationService.Notify(new RefreshFailureNotification()
+                //        {
+                //            Body = "You seems to struggle getting the stations information. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us and we will investigate. Thumbs up !",
+                //            Subject = "Hey !",
+                //            ContractName = station.Contract.Name,
+                //            Exception = e
+                //        });
+                //    }
+                //    catch
+                //    {
+                //        // Ignore
+                //    }
+                //}
             }
 
             return true;

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace EasyBike.Models.Contracts.ES
@@ -45,5 +46,16 @@ namespace EasyBike.Models.Contracts.ES
 
         [JsonProperty("lon")]
         public override double Longitude { get; set; }
+
+        [JsonProperty("status")]
+        public string InnerStatus{ get; set; }
+
+        [OnDeserialized]
+        internal new void OnDeserializedMethod(StreamingContext context)
+        {
+            Longitude = Math.Round(Longitude, 5);
+            Latitude = Math.Round(Latitude, 5);
+            Status = InnerStatus == "OPN" ? true : false;
+        }
     }
 }

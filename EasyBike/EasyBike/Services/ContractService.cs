@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using GalaSoft.MvvmLight.Views;
 using System;
+using Connectivity.Plugin;
+using EasyBike.Services;
+using EasyBike.Helpers;
 using System.Diagnostics;
-using EasyBike.Notification;
 
 namespace EasyBike.Models
 {
     public class ContractService : IContractService
     {
         private readonly IStorageService _storageService;
+        private readonly ILocalisationService _localisationService;
 
         private List<Contract> contracts = new List<Contract>();
         private List<Station> stations = new List<Station>();
@@ -20,8 +22,9 @@ namespace EasyBike.Models
         public event EventHandler ContractRefreshed;
         public event EventHandler StationRefreshed;
 
-        public ContractService(IStorageService storageService)
+        public ContractService(ILocalisationService localisationService, IStorageService storageService)
         {
+            _localisationService = localisationService;
             _storageService = storageService;
             GetContractsAsync().ConfigureAwait(false);
         }
@@ -65,7 +68,7 @@ namespace EasyBike.Models
         {
             station.IsInRefreshPool = true;
             var contract = station.Contract;
-            if(contract != null)
+            if (contract != null)
             {
                 if (await contract.RefreshAsync(station).ConfigureAwait(false))
                 {
@@ -124,13 +127,49 @@ namespace EasyBike.Models
         {
             while (true)
             {
-                contracts.ToList().Where(c=> !c.StationRefreshGranularity).AsParallel().ForAll(async (c) =>
+                if (CrossConnectivity.Current.IsConnected)
                 {
-                    if (await c.RefreshAsync().ConfigureAwait(false))
+                    // DispatcherHelper.
+                    // At this time, DispatcherHelper cannot be used in a portable class library. Laurent works on a solution.
+                    // var mapCenter = _localisationService.GetCurrentMapCenter();
+                    contracts.ToList().Where(c => !c.StationRefreshGranularity).AsParallel().ForAll(async (c) =>
                     {
-                        ContractRefreshed?.Invoke(c, EventArgs.Empty);
-                    }
-                });
+                        if (await c.RefreshAsync().ConfigureAwait(false))
+                        {
+                            ContractRefreshed?.Invoke(c, EventArgs.Empty);
+                        }
+
+                        //var station = c.Stations.FirstOrDefault();
+                        //if(station != null)
+                        //{
+                        //    if(mapCenter != null)
+                        //    {
+                        //        var distance = MapHelper.CalcDistance(mapCenter.Latitude, mapCenter.Longitude, station.Latitude, station.Longitude);
+                        //        if (distance > 100)
+                        //        {
+                        //            Debug.WriteLine("DISTANCE : " + distance + " ...");
+                        //            return;
+                        //        }
+                        //        else
+                        //        {
+                        //            Debug.WriteLine("DISTANCE : " + distance + " Refresh!");
+                        //            if (await c.RefreshAsync().ConfigureAwait(false))
+                        //            {
+                        //                ContractRefreshed?.Invoke(c, EventArgs.Empty);
+                        //            }
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        if (await c.RefreshAsync().ConfigureAwait(false))
+                        //        {
+                        //            ContractRefreshed?.Invoke(c, EventArgs.Empty);
+                        //        }
+                        //    }
+                        //}
+                    });
+                }
+
                 await Task.Delay(timer).ConfigureAwait(false);
                 timer = timer <= 20000 ? timer + 5000 : timer;
             }
@@ -143,16 +182,29 @@ namespace EasyBike.Models
             while (refreshingPool.Count > 0)
             {
                 await Task.Delay(15000).ConfigureAwait(false);
-                refreshingPool.ToList().AsParallel().ForAll(async (station) =>
+                if (CrossConnectivity.Current.IsConnected)
                 {
-                    if (await station.Contract.RefreshAsync(station).ConfigureAwait(false))
+                    //Parallel.ForEach(refreshingPool.ToList(), async (station) =>
+                    //{
+                    //    if (await station.Contract.RefreshAsync(station).ConfigureAwait(false))
+                    //    {
+                    //        if (station.IsUiRefreshNeeded)
+                    //        {
+                    //            StationRefreshed?.Invoke(station, EventArgs.Empty);
+                    //        }
+                    //    }
+                    //});
+                    refreshingPool.ToList().AsParallel().ForAll(async (station) =>
                     {
-                        if (station.IsUiRefreshNeeded)
+                        if (await station.Contract.RefreshAsync(station).ConfigureAwait(false))
                         {
-                            StationRefreshed?.Invoke(station, EventArgs.Empty);
+                            if (station.IsUiRefreshNeeded)
+                            {
+                                StationRefreshed?.Invoke(station, EventArgs.Empty);
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 await Task.Delay(5000).ConfigureAwait(false);
             }
             IsStationWorkerRunning = false;
