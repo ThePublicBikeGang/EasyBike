@@ -29,7 +29,7 @@ namespace EasyBike.Models.Contracts.US
         {
             if (apiKey == null)
             {
-                apiKey = (await SimpleIoc.Default.GetInstance<IConfigService>().GetConfigAsync()).BCycleApiKey;
+                apiKey = (await ConfigService.GetConfigAsync()).BCycleApiKey;
             }
             using (var client = new HttpClient(new NativeMessageHandler()))
             {

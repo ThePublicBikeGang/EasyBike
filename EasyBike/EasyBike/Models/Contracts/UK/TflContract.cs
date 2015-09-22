@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using EasyBike.Extensions;
 
@@ -14,7 +13,7 @@ namespace EasyBike.Models.Contracts.UK
         public TflContract()
         {
             ServiceProvider = "TFL, Santander";
-            StationsUrl = "http://www.tfl.gov.uk/tfl/syndication/feeds/cycle-hire/livecyclehireupdates.xml";
+            StationsUrl = "https://www.tfl.gov.uk/tfl/syndication/feeds/cycle-hire/livecyclehireupdates.xml";
         }
 
         public override async Task<List<StationModelBase>> InnerGetStationsAsync()

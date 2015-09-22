@@ -52,6 +52,7 @@
     <Compile Include="Extensions\Serialization.cs" />
     <Compile Include="Helpers\Map.cs" />
     <Compile Include="Models\Contract.cs" />
+    <Compile Include="Models\ContractFactory.cs" />
     <Compile Include="Models\ContractList.cs" />
     <Compile Include="Models\ContractsGroup.cs" />
     <Compile Include="Models\Contracts\CBikeContract.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Models\Contracts\ES\BarceloneContract.cs" />
     <Compile Include="Models\Contracts\ES\BicimadContract.cs" />
     <Compile Include="Models\Contracts\ES\BicimadModel.cs" />
+    <Compile Include="Models\Contracts\FR\GrenobleContract.cs" />
     <Compile Include="Models\Contracts\FR\SmooveContract.cs" />
     <Compile Include="Models\Contracts\FR\SmooveModel.cs" />
     <Compile Include="Models\Contracts\FR\VeloPlusContract.cs" />

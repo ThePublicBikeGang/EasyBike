@@ -386,7 +386,7 @@ namespace EasyBike.Models
                     new JcDecauxContract{Name = "Rouen", ServiceProvider="Cy'clic', JCDecaux"},
                     // SMTC = Syndicat Mixte des Transports en Commun
                     new JcDecauxContract{Name = "Toulouse", ServiceProvider="VélôToulouse', SMTC, JCDecaux", },
-                    new SmooveContract{Name = "Grenoble", ServiceProvider="Métrovélo, SMTC, Smoove", StationsUrl = "http://vms.metrovelo.fr/vcstations.xml"},
+                    new GrenobleContract{Name = "Grenoble", ServiceProvider="Métrovélo, Smoove (No station availability...)"},
                     // 1 station sans la et lg"
                     new SmooveContract{Name = "Avignon", ServiceProvider="Vélopop', Smoove", StationsUrl = "http://www.velopop.fr/vcstations.xml" },
                     // 2 Station sans id, la, lg et une qui n'est pas indiqué sur la carte du site

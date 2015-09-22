@@ -3,13 +3,20 @@ using EasyBike.Models.Contracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Ioc;
-using EasyBike.Notification;
 using System;
+using EasyBike.Config;
 
 namespace EasyBike.Models
 {
     public abstract class Contract : ObservableObject
     {
+        protected IConfigService ConfigService
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<IConfigService>();
+            }
+        }
         public bool StationRefreshGranularity { get; set; } = false;
         public string AvailabilityUrl { get; set; }
         public string StationsUrl { get; set; }

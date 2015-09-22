@@ -36,7 +36,7 @@ namespace EasyBike.Models.Contracts
         {
             if (apiKey == null)
             {
-                apiKey = (await SimpleIoc.Default.GetInstance<IConfigService>().GetConfigAsync()).JcDecauxApiKey;
+                apiKey = (await ConfigService.GetConfigAsync()).JcDecauxApiKey;
             }
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
@@ -50,7 +50,7 @@ namespace EasyBike.Models.Contracts
         {
             if (apiKey == null)
             {
-                apiKey = (await SimpleIoc.Default.GetInstance<IConfigService>().GetConfigAsync()).JcDecauxApiKey;
+                apiKey = (await ConfigService.GetConfigAsync()).JcDecauxApiKey;
             }
             using (var client = new HttpClient(new NativeMessageHandler()))
             {

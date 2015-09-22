@@ -26,7 +26,7 @@ namespace EasyBike.Models
         {
             _localisationService = localisationService;
             _storageService = storageService;
-            GetContractsAsync().ConfigureAwait(false);
+           // GetContractsAsync().ConfigureAwait(false);
         }
 
         public async Task AddContractAsync(Contract contract)

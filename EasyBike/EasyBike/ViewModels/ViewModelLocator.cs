@@ -46,10 +46,12 @@ namespace EasyBike.ViewModels
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
+            SimpleIoc.Default.Register<IConfigService, ConfigService>();
             SimpleIoc.Default.Register<IStorageService, StorageService>();
             SimpleIoc.Default.Register<INotificationService, NotificationService>();
             SimpleIoc.Default.Register<IFavoritesService, FavoritesService>();
+           
+
 
             if (GalaSoft.MvvmLight.ViewModelBase.IsInDesignModeStatic)
             {
@@ -62,7 +64,7 @@ namespace EasyBike.ViewModels
                 // SimpleIoc.Default.Register<ContractsViewModel>();
             }
 
-            SimpleIoc.Default.Register<IConfigService, ConfigService>();
+           
 
             // This service require an implementation of ILocalisationService in the client
             SimpleIoc.Default.Register<ISettingsService, SettingsService>(true);

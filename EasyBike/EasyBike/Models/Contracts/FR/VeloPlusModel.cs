@@ -20,6 +20,10 @@ namespace EasyBike.Models.Contracts.FR
 
         public override string Id { get; set; }
 
+
+        [JsonProperty("status")]
+        public string InnerStatus { get; set; }
+
         public override bool Status { get; set; } = true;
 
         [JsonProperty(PropertyName = "libelle")]
@@ -34,6 +38,7 @@ namespace EasyBike.Models.Contracts.FR
         {
             Longitude = Math.Round(Location.Longitude, 5);
             Latitude = Math.Round(Location.Latitude, 5);
+            Status = InnerStatus == "CONNECTEE" ? true : false;
         }
     }
 

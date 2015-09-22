@@ -20,6 +20,7 @@ namespace EasyBike.ViewModels
         private readonly IStorageService _storageService;
         private readonly ISettingsService _settingsService;
         private readonly INotificationService _notificationService;
+        private readonly IContractService _contractService;
         private readonly IDialogService _dialogService;
         public event EventHandler FireGoToFavorite;
 
@@ -48,7 +49,7 @@ namespace EasyBike.ViewModels
         private async void Init()
         {
             MapServiceToken = (await _configService.GetConfigAsync()).WindowsPhoneMapServiceToken;
-
+            await SimpleIoc.Default.GetInstance<IContractService>().GetContractsAsync().ConfigureAwait(false);
         }
 
         public void GoToFavorite(Favorite favorite)
