@@ -45,7 +45,7 @@ namespace EasyBike.Models.Contracts.FR
         public Properties properties { get; set; }
         public Geometry geometry { get; set; }
 
-        public override int AvailableBikes { get { return properties.DISPO; } set { } }
+        public override int? AvailableBikes { get { return properties.DISPO; } set { } }
 
         public override int? AvailableBikeStands { get { return properties.DISPO; } set { } }
 

@@ -21,8 +21,12 @@ namespace EasyBike.Models.Contracts.US
 
         [JsonProperty(PropertyName = "docksAvailable")]
         public int AvailableBikeStands { get; set; }
+
+        [JsonProperty("kioskPublicStatus")]
+        public string InnerStatus { get; set; }
+
     }
- 
+
     public class Geometry
     {
         [JsonProperty(PropertyName = "coordinates")]
@@ -40,28 +44,20 @@ namespace EasyBike.Models.Contracts.US
         [JsonProperty(PropertyName = "properties")]
         public Properties Properties { get; set; }
 
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get { return Properties.AvailableBikes; } set { } }
 
-        public override int? AvailableBikeStands { get; set; }
-
-        public override bool Banking { get; set; }
+        public override int? AvailableBikeStands { get { return Properties.AvailableBikeStands; } set { } }
 
         public override double Latitude { get; set; }
 
         public override double Longitude { get; set; }
-
-        public override bool Status { get; set; }
-
-        public override string Id { get; set; }
 
         [OnDeserialized]
         internal new void OnDeserializedMethod(StreamingContext context)
         {
             Longitude = Math.Round(Geometry.Location[0], 5);
             Latitude = Math.Round(Geometry.Location[1], 5);
-            AvailableBikes = Properties.AvailableBikes;
-            AvailableBikeStands = Properties.AvailableBikeStands;
-           // Status = status == "OPEN" ? true : false;
+            Status = Properties.InnerStatus == "Active" ? true : false;
         }
     }
 }

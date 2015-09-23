@@ -121,14 +121,15 @@ namespace EasyBike.Models
             {
                 stations.Add(new Station()
                 {
-                    Latitude = serviceProviderModel.Latitude,
-                    Longitude = serviceProviderModel.Longitude,
                     AvailableBikes = serviceProviderModel.AvailableBikes,
                     AvailableBikeStands = serviceProviderModel.AvailableBikeStands,
                     ContractStorageName = StorageName,
                     Id = serviceProviderModel.Id,
                     IsUiRefreshNeeded = StationRefreshGranularity ? false : true,
+                    Latitude = serviceProviderModel.Latitude,
+                    Longitude = serviceProviderModel.Longitude,
                     Loaded = ImageAvailability ? false : true,
+                    Status = serviceProviderModel.Status,
             });
             }
             return stations;
@@ -152,11 +153,12 @@ namespace EasyBike.Models
                     {
                         if (Stations[i].Latitude == refreshedStations[y].Latitude && Stations[i].Longitude == refreshedStations[y].Longitude)
                         {
-                            if (Stations[i].AvailableBikes != refreshedStations[y].AvailableBikes || Stations[i].AvailableBikeStands != refreshedStations[y].AvailableBikeStands)
+                            if (Stations[i].AvailableBikes != refreshedStations[y].AvailableBikes || Stations[i].AvailableBikeStands != refreshedStations[y].AvailableBikeStands || Stations[i].Status != refreshedStations[y].Status)
                             {
                                 Stations[i].IsUiRefreshNeeded = true;
                                 Stations[i].AvailableBikes = refreshedStations[y].AvailableBikes;
                                 Stations[i].AvailableBikeStands = refreshedStations[y].AvailableBikeStands;
+                                Stations[i].Status = refreshedStations[y].Status;
                             }
                             refreshedStations.Remove(refreshedStations[y]);
                             break;

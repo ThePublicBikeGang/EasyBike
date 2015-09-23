@@ -80,7 +80,7 @@ namespace EasyBike.Models.Contracts.CN
         public override double Longitude { get; set; }
 
         [JsonProperty("DQCSZ")]
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get; set; }
 
         [JsonProperty("kzcs")]
         public override int? AvailableBikeStands { get; set; }

@@ -9,7 +9,7 @@ namespace EasyBike.Models.Contracts.US
         public override string Id { get; set; }
 
         [JsonProperty(PropertyName = "BikesAvailable")]
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get; set; }
 
         [JsonProperty(PropertyName = "DocksAvailable")]
         public override int? AvailableBikeStands { get; set; }
@@ -37,7 +37,7 @@ namespace EasyBike.Models.Contracts.US
         {
             Longitude = Math.Round(Location.Longitude, 5);
             Latitude = Math.Round(Location.Latitude, 5);
-            Status = innerStatus == "ACTIVE" ? true : false;
+            Status = innerStatus.ToLower() == "active" ? true : false;
         }
     }
     public class Location

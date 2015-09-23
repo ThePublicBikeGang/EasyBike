@@ -20,7 +20,7 @@ namespace EasyBike.Models.Contracts.DE
         public bool Locked { get; set; }
 
         [JsonProperty(PropertyName = "bikes_available")]
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get; set; }
 
         [JsonProperty(PropertyName = "docks_available")]
         public override int? AvailableBikeStands { get; set; }

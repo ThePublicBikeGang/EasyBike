@@ -117,7 +117,7 @@ namespace EasyBike.Models.Contracts.FR
             }
         }
 
-        public override int AvailableBikes { get { return nbBikesField; } set { } }
+        public override int? AvailableBikes { get { return nbBikesField; } set { } }
 
         public override int? AvailableBikeStands { get { return NbEmptyDocksField; } set { } }
     }

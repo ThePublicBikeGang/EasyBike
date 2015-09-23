@@ -264,7 +264,7 @@ namespace EasyBike.Models.Contracts.UK
         }
 
 
-        public override int AvailableBikes
+        public override int? AvailableBikes
         {
             get
             {
@@ -272,7 +272,7 @@ namespace EasyBike.Models.Contracts.UK
             }
             set
             {
-                this.nbBikesField = value;
+             
             }
         }
 

@@ -256,7 +256,7 @@ namespace EasyBike.Models.Contracts
             }
         }
 
-        public override int AvailableBikes { get { return stationNums1Field; } set { } }
+        public override int? AvailableBikes { get { return stationNums1Field; } set { } }
 
         public override int? AvailableBikeStands { get { return stationNums2Field; } set { } }
 

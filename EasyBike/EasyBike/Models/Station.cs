@@ -30,7 +30,7 @@ namespace EasyBike.Models
 
         public int? AvailableBikeStands { get; set; } = -1;
 
-        public int AvailableBikes { get; set; } = -1;
+        public int? AvailableBikes { get; set; } = -1;
 
         public string ContractStorageName { get; set; }
         
@@ -50,7 +50,7 @@ namespace EasyBike.Models
 
         public double Longitude { get; set; }
 
-        public bool Status { get; set; }
+        public bool Status { get; set; } = true;
 
         public bool Banking { get; set; }
 

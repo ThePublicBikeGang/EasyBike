@@ -17,7 +17,7 @@ namespace EasyBike.Models.Contracts.PL
         public override double Longitude { get; set; }
 
         [JsonProperty(PropertyName = "AvailableBikesCount")]
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get; set; }
 
         [JsonProperty(PropertyName = "FreeLocksCount")]
         public override int? AvailableBikeStands { get; set; }

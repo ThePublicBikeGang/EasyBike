@@ -43,7 +43,7 @@ namespace EasyBike.Models.Contracts.CH
         [JsonProperty(PropertyName = "bikeholders")]
         public List<BikeHolder> AvailableDocks { get; set; }
 
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get; set; }
 
         public override int? AvailableBikeStands { get; set; }
 

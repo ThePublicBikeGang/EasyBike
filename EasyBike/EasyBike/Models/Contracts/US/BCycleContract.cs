@@ -1,6 +1,4 @@
-﻿using EasyBike.Config;
-using GalaSoft.MvvmLight.Ioc;
-using ModernHttpClient;
+﻿using ModernHttpClient;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace EasyBike.Models.Contracts.US
 {
+    /// <summary>
+    /// https://publicapi.bcycle.com/api/1.0/ListProgram
+    /// </summary>
     public class BCycleContract : Contract
     {
         private static string apiKey;

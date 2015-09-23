@@ -11,7 +11,7 @@ namespace EasyBike.Models.Contracts.US
     public class Station : StationModelBase
     {
         [JsonProperty(PropertyName = "availableBikes")]
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get; set; }
 
         [JsonProperty(PropertyName = "availableDocks")]
         public override int? AvailableBikeStands { get; set; }

@@ -327,7 +327,7 @@ namespace EasyBike.Models.Contracts.US
         }
 
 
-        public override int AvailableBikes
+        public override int? AvailableBikes
         {
             get
             {

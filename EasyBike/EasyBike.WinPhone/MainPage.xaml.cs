@@ -105,8 +105,8 @@ namespace EasyBike.WinPhone
             }
 #if DEBUG
             //MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
-            MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 36.40, Longitude = 119.20 });
-            MapCtrl.ZoomLevel = 15.5;
+            //MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 36.40, Longitude = 119.20 });
+            //MapCtrl.ZoomLevel = 15.5;
 #endif
             // leave the UI loading the page
             await Task.Delay(50);

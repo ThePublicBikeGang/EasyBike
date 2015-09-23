@@ -21,7 +21,7 @@ namespace EasyBike.Models.Contracts.DE
         [JsonProperty(PropertyName = "hal2option")]
         public Details Details { get; set; }
 
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get; set; }
 
         public override int? AvailableBikeStands { get; set; }
 

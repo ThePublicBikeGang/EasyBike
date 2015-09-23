@@ -80,7 +80,7 @@ namespace EasyBike.Models.Contracts.GR
 
         public override int? AvailableBikeStands { get; set; }
 
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get; set; }
     }
 
     public class Data

@@ -36,7 +36,7 @@ namespace EasyBike.UITests
                     {
                         failFlag = true;
                         failCounter++;
-                        Debug.WriteLine("FAILED : " + contract.Name + " ("+ contract.ServiceProvider + ") : " + e.Message);
+                        Debug.WriteLine("FAILED : " + contract.Name + " ("+ contract.ServiceProvider + " / "+ country+") : " + e.Message);
                     }
                     return true;
                 });
@@ -50,7 +50,7 @@ namespace EasyBike.UITests
         [Test]
         public async void CheckContractAvailability()
         {
-            var contractToTest = "Daxing";
+            var contractToTest = "Philadelphia, PA";
             SimpleIoc.Default.Register<IConfigService, ConfigService>();
             var contractService = new ContractService(null, new StorageService());
 

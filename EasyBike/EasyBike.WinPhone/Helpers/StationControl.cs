@@ -204,6 +204,13 @@ namespace EasyBike.WinPhone.Helpers
             if (!station.Loaded)
                 return;
             station.IsUiRefreshNeeded = false;
+
+            if(station.Status == false)
+            {
+                station.AvailableStr = "!";
+                return;
+            }
+
             if (_settingsService.Settings.IsBikeMode)
             {
                 if (station.ImageAvailable != null)
@@ -224,7 +231,7 @@ namespace EasyBike.WinPhone.Helpers
                 }
                 else
                 {
-                    station.AvailableStr = station.AvailableBikes.ToString();
+                    station.AvailableStr = station.AvailableBikes.HasValue ? station.AvailableBikes.ToString() : "?";
                     ShowColor(station.AvailableBikes);
                 }
             }

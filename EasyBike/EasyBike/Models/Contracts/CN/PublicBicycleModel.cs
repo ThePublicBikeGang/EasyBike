@@ -19,7 +19,7 @@ namespace EasyBike.Models.Contracts.CN
         public int Capacity { get; set; }
 
         [JsonProperty(PropertyName = "availBike")]
-        public override int AvailableBikes { get; set; }
+        public override int? AvailableBikes { get; set; }
 
         public override int? AvailableBikeStands { get; set; }
 
