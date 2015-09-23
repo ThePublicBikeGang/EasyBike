@@ -35,18 +35,19 @@ namespace EasyBike.Models
                new NextBikeContract{Name = "Krems Ost", Id= "164"},
                new NextBikeContract{Name = "Laa an der Thaya", Id= "184"},
                new NextBikeContract{Name = "Marchfeld", Id= "170"},
-               /// Investigate this
-               new NextBikeContract{Name = "Mistelbach", Id= "169"},
+                 // Todo inform that it is not working
+               //new NextBikeContract{Name = "Mistelbach", Id= "169"},
                new NextBikeContract{Name = "Mödling", Id= "64"},
 
                // Todo inform that it is not working
-               new NextBikeContract{Name = "Neunkirchen", Id= "163"},
+               // new NextBikeContract{Name = "Neunkirchen", Id= "163"},
                new NextBikeContract{Name = "NeusiedlerSee", Id= "23"},
                new NextBikeContract{Name = "Oberes Ybbstal", Id= "181"},
                new NextBikeContract{Name = "ÖBB-Bahnhöfe", Id= "150"},
                new NextBikeContract{Name = "Piestingtal", Id= "168"},
                new NextBikeContract{Name = "Römerland", Id= "149"},
                new NextBikeContract{Name = "Sankt Pölten", TechnicalName= "St.Pölten", Id= "57"},
+               new NextBikeContract{Name = "Serfaus", Id= "286"},
                new NextBikeContract{Name = "Südheide", Id= "185"},
                new NextBikeContract{Name = "Triestingtal", Id= "144"},
                new NextBikeContract{Name = "Tulln an der Donau", TechnicalName= "Tulln", Id= "143"},
@@ -60,7 +61,7 @@ namespace EasyBike.Models
                new NextBikeContract{Name = "Wiener Neustadt", TechnicalName= "Wr.Neustadt", Id= "156"},
 
                // Todo inform that it is not working
-               new NextBikeContract{Name = "Wieselburg", Id= "151"},
+               // new NextBikeContract{Name = "Wieselburg", Id= "151"},
                 }
             },            
             #endregion
@@ -152,7 +153,6 @@ namespace EasyBike.Models
                     new PubliBikeContract{Name = "Lausanne",ServiceProvider="Lausanne-Morges, PubliBike"},
                     new PubliBikeContract{Name = "Lugano"},
                     new PubliBikeContract{Name = "Luzern"},
-                    new NextBikeContract{Name = "Luzern",Id= "126"},
                     new PubliBikeContract{Name = "Marly",ServiceProvider="Agglo Fribourg, PubliBike"},
                     new PubliBikeContract{Name = "Melide",ServiceProvider="Lugano, PubliBike"},
                     new PubliBikeContract{Name = "Monthey",ServiceProvider="Chablais, PubliBike"},
@@ -170,7 +170,6 @@ namespace EasyBike.Models
                     new PubliBikeContract{Name = "Romont",ServiceProvider="Les Lacs-Romont, PubliBike"},
                     new PubliBikeContract{Name = "Sion"},
                     new PubliBikeContract{Name = "Solothurn"},
-                    new NextBikeContract{Name = "Sursee",Id= "88"},
                     new PubliBikeContract{Name = "Tesserete",ServiceProvider="Lugano, PubliBike"},
                     new PubliBikeContract{Name = "Tolochenaz",ServiceProvider="Lausanne-Morges, PubliBike"},
                     new PubliBikeContract{Name = "Vevey",ServiceProvider="Riviera, PubliBike"},
@@ -178,6 +177,8 @@ namespace EasyBike.Models
                     new PubliBikeContract{Name = "Winterthur"},
                     new PubliBikeContract{Name = "Yverdon-les-Bains"},
                     new PubliBikeContract{Name = "Zürich"},
+                    new NextBikeContract{Name = "Luzern",Id= "126"},
+                    new NextBikeContract{Name = "Sursee",Id= "88"},
 
 
                 }
@@ -213,7 +214,7 @@ namespace EasyBike.Models
                   //////////ApiUrl = "http://www.heihebike.com/hhmap/ibikestation.asp",
                   //////////http://ws.uibike.com/wx.station.php?myloc=127.5347550,50.2511620&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2
 
-                    new PublicBicycle2Contract{Name = "Heihe", StationsUrl="http://ws.uibike.com/wx.station.php?myloc=127.5347550,50.2511620&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2", AvailabilityUrl = "http://www.heihebike.com/hhmap/ibikegif.asp?id={0}&flag={1}"},
+                    new PublicBicycle2Contract{Name = "Heihe", StationsUrl="http://www.heihebike.com/hhmap/ibikestation.asp", AvailabilityUrl = "http://www.heihebike.com/hhmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycle2Contract{Name = "HeZe", StationsUrl="http://map.crsud.cn/hz/map/ibikestation.asp"},
                     new PublicBicycleContract{Name = "Huaian", StationsUrl = "http://218.93.33.59:85/map/huaianmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/huaianmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Huaibei", StationsUrl = "http://218.93.33.59:85/map/suiximap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/suiximap/ibikegif.asp?id={0}&flag={1}"},
@@ -223,9 +224,8 @@ namespace EasyBike.Models
                     new HuiminOperateContract{Name = "Huizhou (Longgang district)", StationsUrl = "http://sz.2773456.com/zdfb/sz_station.php"},
                     new HuiminOperateContract{Name = "Huizhou (Luohu district)", StationsUrl = "http://www.lhggzxc.com/zdfb/sz_station.php"},
                     new PublicBicycle2Contract{Name = "Longwan", StationsUrl = "http://218.93.33.59:85/map/wzmap/ibikestation.asp"},
-                  ////  ///ApiUrl = "http://ws.uibike.com/wx.station.php?myloc=116.3480570,39.7324840&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2",
-                    ///ApiUrl = "http://www.1km0g.com/api/ibikeJSInterface.asp",
-                    new PublicBicycle2Contract{Name = "Daxing", StationsUrl = "http://ws.uibike.com/wx.station.php?myloc=116.3480570,39.7324840&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=4"},
+                    ///ApiUrl = "http://ws.uibike.com/wx.station.php?myloc=116.3480570,39.7324840&e=1&k=74f609d5ae49cefb0c99a90ea6326a5b&d=2",
+                    new PublicBicycle2Contract{Name = "Daxing", StationsUrl = "http://www.1km0g.com/api/ibikeJSInterface.asp"},
                     new PublicBicycleContract{Name = "Siyang", StationsUrl = "http://218.93.33.59:85/map/siyangmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/siyangmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Suzhou", StationsUrl = "http://218.93.33.59:85/map/szmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/szmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Taizhou", StationsUrl = "http://www.zjtzpb.com/tzmap/ibikestation.asp", AvailabilityUrl = "http://www.zjtzpb.com/tzmap/ibikegif.asp?id={0}&flag={1}"},
@@ -256,7 +256,8 @@ namespace EasyBike.Models
                 Contracts = new List<Contract>()
                 {
                     new MVGContract{Name = "Mainz"},
-                    new CallABikeContract{Name = "Aachen",Id="100006"},
+                    // 0 stations...
+                    // new CallABikeContract{Name = "Aachen",Id="100006"},
                     new CallABikeContract{Name = "Aschaffenburg",Id="18"},
                     //new CallABikeContract{Name = "Augsburg",       // Ce trouve en plein océan pacifique...
                     //PaysImage = paysImagesRootPath+ "/DE.png",    // DANS LA FUCKING WATER T ENTEND !!!},
@@ -316,7 +317,7 @@ namespace EasyBike.Models
                     new NextBikeContract{Name = "Bochum",ServiceProvider = "metropolradruhr, NextBike",Id= "130"},
                     new NextBikeContract{Name = "Bottrop",ServiceProvider = "metropolradruhr, NextBike",Id= "131"},
                     // Todo inform that it is not working
-                    new NextBikeContract{Name = "Burghausen",Id= "201"},
+                    // new NextBikeContract{Name = "Burghausen",Id= "201"},
                     new NextBikeContract{Name = "Dortmund",ServiceProvider = "metropolradruhr, NextBike",Id= "129"},
                     new NextBikeContract{Name = "Duisburg",ServiceProvider = "metropolradruhr, NextBike",Id= "132"},
                     new NextBikeContract{Name = "Düsseldorf",Id= "50"},
@@ -324,14 +325,22 @@ namespace EasyBike.Models
                     new NextBikeContract{Name = "Essen",ServiceProvider = "metropolradruhr, NextBike",Id= "133"},
                     new NextBikeContract{Name = "Flensburg",Id= "147"},
                     new NextBikeContract{Name = "Frankfurt",Id= "8"},
+                    new NextBikeContract{Name = "Friedrichshafen",Id= "24"},
                     new NextBikeContract{Name = "Gelsenkirchen",ServiceProvider = "metropolradruhr, NextBike",Id= "134"},
                     new NextBikeContract{Name = "Gütersloh",Id= "160"},
                     new NextBikeContract{Name = "Hannover",Id= "87"},
                     new NextBikeContract{Name = "Hamburg",Id= "43"},
                     new NextBikeContract{Name = "Hamm",ServiceProvider = "metropolradruhr, NextBike",Id= "135"},
+                    new NextBikeContract{Name = "Hanau", Id= "301"},
+                    new NextBikeContract{Name = "Heidelberg",Id= "194"},
+                    new NextBikeContract{Name = "Herrenberg",Id= "288"},
                     new NextBikeContract{Name = "Herne",ServiceProvider = "metropolradruhr, NextBike",Id= "136"},
+                    new NextBikeContract{Name = "Holzgerlingen",Id= "292"},
                     new NextBikeContract{Name = "Karlsruhe",ServiceProvider = "Fächerrad, NextBike",Id= "21"},
+                    new NextBikeContract{Name = "Köln",Id= "14"},
                     new NextBikeContract{Name = "Leipzig",Id= "1"},
+                    new NextBikeContract{Name = "Ludwigsburg",Id= "290"},
+                    new NextBikeContract{Name = "Ludwigshafen",Id= "266"},
                     new NextBikeContract{Name = "Magdeburg",Id= "42"},
                     new NextBikeContract{Name = "Mannheim",Id= "195"},
                     new NextBikeContract{Name = "Mülheim an der Ruhr",ServiceProvider = "metropolradruhr, NextBike",TechnicalName= "Mülheim a.d.R.",Id = "137"},
@@ -344,27 +353,17 @@ namespace EasyBike.Models
                     new NextBikeContract{Name = "Postdam",Id= "158"},
                     new NextBikeContract{Name = "Quickborn",Id= "256"},
                     new NextBikeContract{Name = "Schwieberdingen",ServiceProvider = "E-Bike Station, NextBike",Id= "253"},
+                    new NextBikeContract{Name = "Speyer",Id= "278"},
                     new NextBikeContract{Name = "Tübingen",Id= "101"},
                     //8 Stations côté Polonais Uznam,PL
                     new NextBikeContract{Name = "Usedom",ServiceProvider = "UsedomRad, NextBike",Id= "176"},
+                    new NextBikeContract{Name = "Vaihingen an der Enz",Id= "287"},
+                    new NextBikeContract{Name = "Waiblingen",Id= "267"},
+                    new NextBikeContract{Name = "Würzburg",Id= "281"},
                 }
             },            
             #endregion
-            #region ES
-            new Country
-            {
-                Name = "Spain",
-                ISO31661 = "ES",
-                Contracts = new List<Contract>()
-                {
-                    new BarceloneContract{Name = "Barcelona"},
-                    new BicimadContract{Name = "Madrid"},
-                    new JcDecauxContract{Name = "Santander"},
-                    new JcDecauxContract{Name = "Seville"},
-                    new JcDecauxContract{Name = "Valence"},
-                }
-            },            
-            #endregion
+           
 
             #region FR
             new Country
@@ -423,11 +422,25 @@ namespace EasyBike.Models
                 ISO31661 = "HR",
                 Contracts = new List<Contract>()
                 {
+                    new NextBikeContract{Name = "Gospić",Id= "291"},
+                    new NextBikeContract{Name = "Karlovac",Id= "305"},
                     new NextBikeContract{Name = "Šibenik",Id= "248"},
                     new NextBikeContract{Name = "Zagreb",Id= "220"},
                 }
             },
             #endregion 
+            #region Finland
+            new Country
+            {
+                Name = "Finland",
+                ISO31661 = "FI",
+                Contracts = new List<Contract>()
+                {
+                    new NextBikeContract{Name = "Helsinki",Id= "311"},
+                }
+            },
+            #endregion 
+
             #region HU
             new Country
             {
@@ -503,6 +516,7 @@ namespace EasyBike.Models
                 Contracts = new List<Contract>()
                 {
                     new NextBikeContract{Name = "Auckland", Id= "34"},
+                    new NextBikeContract{Name = "Cambridge", Id= "261"},
                     new NextBikeContract{Name = "Christchurch", Id= "193"},
                 }
             },
@@ -520,17 +534,17 @@ namespace EasyBike.Models
                     new NextBikeContract{Name = "Bemowo", Id= "197"},
                     new NextBikeContract{Name = "Białystok", Id= "245"},
                     new NextBikeContract{Name = "Grodzisk Mazowiecki", ServiceProvider = "Grodziski Rower Miejski, NextBike", Id= "255"},
+                    new NextBikeContract{Name = "Juchnowiec Kościelny", ServiceProvider="ROWER GMINNY Poland, NextBike", Id= "300"},
                     new NextBikeContract{Name = "Konstancin Jeziorna", Id= "247"},
+                    new NextBikeContract{Name = "Katowice", Id= "282"},
                     new NextBikeContract{Name = "Kraków", Id= "232"},
                     new NextBikeContract{Name = "Lublin", ServiceProvider = "Lubelski Rower Miejski, NextBike", Id= "251"},
                     new NextBikeContract{Name = "Opole", Id= "202"},
-                    new NextBikeContract{Name = "Poznan", Id= "192"},
+                    new NextBikeContract{Name = "Poznań", Id= "192"},
                     new NextBikeContract{Name = "Sopot", Id= "227"},
                     // Biggest one 199 stations
                     new NextBikeContract{Name = "Warszawa", ServiceProvider = "Veturilo, NextBike", Id= "210"},
                     new NextBikeContract{Name = "Wrocław", Id= "148"},
-                     // Other Stations near & in
-                    new NextBikeContract{Name = "Wroclaw", TechnicalName= "WROCŁAW 61", Id= "187"},
                 }
             },
             #endregion 
@@ -545,18 +559,17 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region SE
+            #region SA
             new Country
             {
-                Name = "Sweden",
-                ISO31661 = "SE",
+                Name = "Saudi Arabia",
+                ISO31661 = "SA",
                 Contracts = new List<Contract>()
                 {
-                    new JcDecauxContract{Name = "Goteborg"},
-                    new JcDecauxContract{Name = "Stockholm"},
+                    new NextBikeContract{Name = "King Abdullah Economic City", Id= "264"}
                 }
-            },
-            #endregion 
+            },            
+            #endregion
             #region SI
             new Country
             {
@@ -565,6 +578,33 @@ namespace EasyBike.Models
                 Contracts = new List<Contract>()
                 {
                     new JcDecauxContract{Name = "Ljubljana"},
+                }
+            },
+            #endregion 
+            #region Spain
+            new Country
+            {
+                Name = "Spain",
+                ISO31661 = "ES",
+                Contracts = new List<Contract>()
+                {
+                    new BarceloneContract{Name = "Barcelona"},
+                    new BicimadContract{Name = "Madrid"},
+                    new JcDecauxContract{Name = "Santander"},
+                    new JcDecauxContract{Name = "Seville"},
+                    new JcDecauxContract{Name = "Valence"},
+                }
+            },            
+            #endregion
+            #region Sweden
+            new Country
+            {
+                Name = "Sweden",
+                ISO31661 = "SE",
+                Contracts = new List<Contract>()
+                {
+                    new JcDecauxContract{Name = "Goteborg"},
+                    new JcDecauxContract{Name = "Stockholm"},
                 }
             },
             #endregion 
@@ -591,18 +631,14 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region UK
+            #region UA
             new Country
             {
-                Name = "United Kingdom",
-                ISO31661 = "GB",
+                Name = "Ukraine",
+                ISO31661 = "UA",
                 Contracts = new List<Contract>()
                 {
-                    new NextBikeContract{Name = "Belfast", ServiceProvider = "Coca-Cola Zero Belfast Bikes, NextBike", Id= "238"},
-                    new NextBikeContract{Name = "Bath", Id= "236"},
-                    new NextBikeContract{Name = "Glasgow", Id= "237"},
-                    new TflContract{Name = "London"},
-                    new NextBikeContract{Name = "Stirling", Id= "243"},
+                    new NextBikeContract{Name = "Lviv", Id= "280"},
                 }
             },
             #endregion 
@@ -618,6 +654,21 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
+            #region UK
+            new Country
+            {
+                Name = "United Kingdom",
+                ISO31661 = "GB",
+                Contracts = new List<Contract>()
+                {
+                    new NextBikeContract{Name = "Belfast", ServiceProvider = "Coca-Cola Zero Belfast Bikes, NextBike", Id= "238"},
+                    new NextBikeContract{Name = "Bath", Id= "236"},
+                    new NextBikeContract{Name = "Glasgow", Id= "237"},
+                    new TflContract{Name = "London"},
+                    new NextBikeContract{Name = "Stirling", Id= "243"},
+                }
+            },
+            #endregion 
             #region US
             new Country
             {
@@ -669,6 +720,9 @@ namespace EasyBike.Models
                     new BCycleContract{Name = "Spartanburg, SC", Id= "57"},
                     new BCycleContract{Name = "Whippany, NJ", Id= "77"},
                     new NextBikeContract{Name = "Hoboken, NJ", ServiceProvider= "Hudson Bike Share, NextBike", Id= "258"},
+                    new NextBikeContract{Name = "Kent State University", ServiceProvider= "Flashfleet Kent State University, NextBike", Id= "306"},
+                    new NextBikeContract{Name = "Pittsburgh", ServiceProvider= "Healthy Ride Pittsburgh, NextBike", Id= "254"},
+                    new NextBikeContract{Name = "West Palm Beach Florida", ServiceProvider= "Skybike West Palm Beach, NextBike", Id= "283"},
                 }
             },
             #endregion 

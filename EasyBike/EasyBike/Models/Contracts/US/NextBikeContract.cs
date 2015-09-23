@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace EasyBike.Models.Contracts.US
 {
+    /// <summary>
+    /// Info : http://nextbike.net/maps/nextbike-live.xml
+    /// or https://nextbike.net/maps/nextbike-official.xml
+    /// </summary>
     public class NextBikeContract : Contract
     {
         public NextBikeContract()

@@ -31,11 +31,15 @@ namespace EasyBike.Models.Contracts.CN
                     var regex = new Regex(pattern).Match(responseBodyAsText);
                     if (regex != null && regex.Captures.Count > 0)
                     {
-                        dynamic stationsModel = JsonConvert.DeserializeObject<dynamic>(regex.Captures[0].Value);
+                        dynamic stationsModel = JsonConvert.DeserializeObject<dynamic>(regex.Captures[0].Value, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
                         var stations = new List<HuiminOperateModel>();
                         foreach (var station in stationsModel)
                         {
+                            if(station.Value["lng"] == null)
+                            {
+                                continue;
+                            }
                             double latitude, longitude;
                             if (!double.TryParse(station.Value["lng"].Value, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out longitude))
                                 continue;
@@ -49,8 +53,8 @@ namespace EasyBike.Models.Contracts.CN
                             {
                                 AvailableBikes = (int)station.Value["DQCSZ"].Value,
                                 AvailableBikeStands = (int)station.Value["kzcs"].Value,
-                                Latitude = latitude,
-                                Longitude = longitude
+                                Latitude =  latitude,
+                                Longitude =  longitude
                             });
                         }
                         return stations.ToList<StationModelBase>();
@@ -65,6 +69,7 @@ namespace EasyBike.Models.Contracts.CN
             return await InnerGetStationsAsync().ConfigureAwait(false);
         }
     }
+
 
     public class HuiminOperateModel : StationModelBase
     {

@@ -28,6 +28,15 @@ namespace EasyBike.Models.Contracts.CN
         {
             Longitude = Math.Round(Longitude, 5);
             Latitude = Math.Round(Latitude, 5);
+
+            // reverse some lat and long as for exemple Daxing have bad values ...
+            if (Latitude > 90 || Latitude < -90)
+            {
+                var tempLat = Latitude;
+                Latitude = Longitude;
+                Longitude = tempLat;
+            }
+
             Id = InnerId.ToString();
         }
     }

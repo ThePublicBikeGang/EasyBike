@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace EasyBike.Models.Contracts.FR
 {
     // Info : http://www.metromobilite.fr/pages/OpenData/OpenDataConsignesMV.html#
+    // https://twitter.com/metromobilite
     public class GrenobleContract : Contract
     {
         public GrenobleContract()

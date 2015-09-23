@@ -90,23 +90,24 @@ namespace EasyBike.WinPhone
             _dialogService = SimpleIoc.Default.GetInstance<IDialogService>();
 
             Init();
-#if DEBUG
-            //MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
-            //MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude =36.40, Longitude = 119.20});
-            //MapCtrl.ZoomLevel = 15.5;
-#endif
-          
+
+
         }
 
-     
+
         private async void Init()
         {
-            if ((await _settingsService.GetSettingsAsync()).LastLocation != null)
+            var settings = await _settingsService.GetSettingsAsync();
+            if (settings.LastLocation != null && settings.LastLocation.ZoomLevel != 0)
             {
                 MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = _settingsService.Settings.LastLocation.Latitude, Longitude = _settingsService.Settings.LastLocation.Longitude });
                 MapCtrl.ZoomLevel = _settingsService.Settings.LastLocation.ZoomLevel;
             }
-
+#if DEBUG
+            //MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
+            MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 36.40, Longitude = 119.20 });
+            MapCtrl.ZoomLevel = 15.5;
+#endif
             // leave the UI loading the page
             await Task.Delay(50);
 

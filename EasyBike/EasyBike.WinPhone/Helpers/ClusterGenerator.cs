@@ -60,10 +60,13 @@ namespace EasyBike.WinPhone.Helpers
                 .Select(async x =>
                 {
                     var stations = SimpleIoc.Default.GetInstance<IContractService>().GetStations();
-                    foreach (var station in stations.Where(s => s.Location == null))
-                    {
-                        station.Location = new Geopoint(new BasicGeoposition { Latitude = station.Latitude, Longitude = station.Longitude });
-                    }
+                    // some services can provide wrong values in lat or lon... just take care of it
+                        foreach (var station in stations.Where(s => s.Location == null))
+                        {
+                            station.Location = new Geopoint(new BasicGeoposition { Latitude = station.Latitude, Longitude = station.Longitude });
+
+                        }
+                  
 
                     await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                     {
