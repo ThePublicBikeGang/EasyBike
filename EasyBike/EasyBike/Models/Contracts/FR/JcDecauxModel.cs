@@ -35,8 +35,6 @@ namespace EasyBike.Models.Contracts
         [JsonProperty(PropertyName = "banking")]
         public override bool Banking { get; set; }
 
-        public override bool Status { get; set; }
-
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 

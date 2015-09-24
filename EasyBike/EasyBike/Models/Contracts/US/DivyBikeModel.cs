@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace EasyBike.Models.Contracts.US
 {
@@ -16,10 +17,6 @@ namespace EasyBike.Models.Contracts.US
         [JsonProperty(PropertyName = "availableDocks")]
         public override int? AvailableBikeStands { get; set; }
 
-        public override bool Banking { get; set; }
-
-        public override string Id { get; set; }
-
         [JsonProperty(PropertyName = "id")]
         public int InnerId { get; set; }
 
@@ -32,6 +29,11 @@ namespace EasyBike.Models.Contracts.US
         [JsonProperty(PropertyName = "longitude")]
         public override double Longitude { get; set; }
 
-        public override bool Status { get; set; }
+        [OnDeserialized]
+        internal new void OnDeserializedMethod(StreamingContext context)
+        {
+            base.OnDeserializedMethod(context);
+            Status = InnerStatus == "1" ? true : false;
+        }
     }
 }

@@ -28,9 +28,9 @@ namespace EasyBike.Models
 
         public string Id { get; set; }
 
-        public int? AvailableBikeStands { get; set; } = -1;
+        public int? AvailableBikeStands { get; set; }
 
-        public int? AvailableBikes { get; set; } = -1;
+        public int? AvailableBikes { get; set; }
 
         public string ContractStorageName { get; set; }
         

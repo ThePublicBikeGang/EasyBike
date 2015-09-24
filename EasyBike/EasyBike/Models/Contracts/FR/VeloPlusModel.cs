@@ -24,8 +24,6 @@ namespace EasyBike.Models.Contracts.FR
         [JsonProperty("status")]
         public string InnerStatus { get; set; }
 
-        public override bool Status { get; set; } = true;
-
         [JsonProperty(PropertyName = "libelle")]
         public string Name { get; set; }
 

@@ -21,11 +21,6 @@ namespace EasyBike.Models.Contracts.PL
 
         [JsonProperty(PropertyName = "FreeLocksCount")]
         public override int? AvailableBikeStands { get; set; }
-
-        public override bool Status { get; set; }
-
-        public override bool Banking { get; set; }
-        public override string Id { get; set; }
     }
 
 }

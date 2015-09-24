@@ -37,12 +37,10 @@ namespace EasyBike.Models.Contracts.ES
         [JsonProperty(PropertyName = "activo")]
         public string innerStatus { get; set; }
 
-        [JsonIgnore]
-        public override bool Status { get; set; }
-
         [OnDeserialized]
         internal new void OnDeserializedMethod(StreamingContext context)
         {
+            base.OnDeserializedMethod(context);
             Status = innerStatus == "1" ? true : false;
         }
     }

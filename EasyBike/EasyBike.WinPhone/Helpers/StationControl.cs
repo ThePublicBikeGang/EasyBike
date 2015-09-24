@@ -268,8 +268,9 @@ namespace EasyBike.WinPhone.Helpers
                 return;
 
             var color = emptyColorBrush;
-            if (number == -1 || !number.HasValue)
+            if (!number.HasValue)
             {
+                return;
             }
             else
             {
