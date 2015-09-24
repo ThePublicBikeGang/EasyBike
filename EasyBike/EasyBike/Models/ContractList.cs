@@ -20,7 +20,17 @@ namespace EasyBike.Models
         }
         private static List<Country> countries = new List<Country>()
         {
-          
+            #region AU
+            new Country
+            {
+                Name = "Australia",
+                ISO31661 = "AU",
+                Contracts = new List<Contract>()
+                {
+                   new BixxiContract {Name = "Melbourne", ServiceProvider="Melbourne Bike Share, Alta Bicycle Share, Bixi"},
+                }
+            },            
+            #endregion
             #region AT
             new Country
             {
@@ -66,17 +76,7 @@ namespace EasyBike.Models
             },            
             #endregion
          
-            #region AU
-            new Country
-            {
-                Name = "Australia",
-                ISO31661 = "AU",
-                Contracts = new List<Contract>()
-                {
-                   new BixxiContract {Name = "Melbourne", ServiceProvider="Melbourne Bike Share, Alta Bicycle Share, Bixi"},
-                }
-            },            
-            #endregion
+          
             //#region AZ
             //new Country
             //{

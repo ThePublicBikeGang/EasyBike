@@ -389,16 +389,5 @@ namespace EasyBike.Models.Contracts.US
             {
             }
         }
-
-        public override bool Status
-        {
-            get; set;
-        }
-
-        public override bool Banking
-        {
-            get; set;
-        }
-
     }
 }

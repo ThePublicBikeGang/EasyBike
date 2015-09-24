@@ -50,7 +50,7 @@ namespace EasyBike.UITests
         [Test]
         public async void CheckContractAvailability()
         {
-            var contractToTest = "Austin, TX";
+            var contractToTest = "Belfast";
             SimpleIoc.Default.Register<IConfigService, ConfigService>();
             var contractService = new ContractService(null, new StorageService());
 

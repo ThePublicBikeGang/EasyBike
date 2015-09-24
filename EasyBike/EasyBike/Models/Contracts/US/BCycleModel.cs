@@ -29,9 +29,6 @@ namespace EasyBike.Models.Contracts.US
         [JsonProperty(PropertyName = "Status")]
         public string innerStatus { get; set; }
 
-        [JsonIgnore]
-        public override bool Status { get; set; }
-
         [OnDeserialized]
         internal new void OnDeserializedMethod(StreamingContext context)
         {
