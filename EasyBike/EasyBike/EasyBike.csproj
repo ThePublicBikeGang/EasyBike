@@ -25,12 +25,15 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
+    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DefineConstants>
+    </DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MyDebug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -50,6 +53,7 @@
     <Compile Include="Design\DesignNavigationService.cs" />
     <Compile Include="Extensions\ImageResourceExtension.cs" />
     <Compile Include="Extensions\Serialization.cs" />
+    <Compile Include="Helpers\FrenchDecimalConverter.cs" />
     <Compile Include="Helpers\Map.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\ContractFactory.cs" />

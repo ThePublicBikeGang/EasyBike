@@ -381,7 +381,7 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
 
-            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Add some favorites by tapping on a station twice or on a searched location. :)" VerticalAlignment="Top" FontSize="29.333" Margin="0,13,0,0" Foreground="#FFC9C7C7" RenderTransformOrigin="0.5,0.5" Opacity="0" >
+            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Add some favorites by holding on a station or tapping on a searched location. :)" VerticalAlignment="Top" FontSize="29.333" Margin="0,13,0,0" Foreground="#FFC9C7C7" RenderTransformOrigin="0.5,0.5" Opacity="0" >
                 <TextBlock.RenderTransform>
                     <CompositeTransform/>
                 </TextBlock.RenderTransform>

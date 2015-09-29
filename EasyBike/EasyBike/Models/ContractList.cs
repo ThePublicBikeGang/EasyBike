@@ -20,7 +20,7 @@ namespace EasyBike.Models
         }
         private static List<Country> countries = new List<Country>()
         {
-            #region AU
+            #region Australia
             new Country
             {
                 Name = "Australia",
@@ -31,7 +31,8 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
-            #region AT
+
+            #region Austria
             new Country
             {
                 Name = "Austria",
@@ -76,7 +77,6 @@ namespace EasyBike.Models
             },            
             #endregion
          
-          
             //#region AZ
             //new Country
             //{
@@ -89,7 +89,8 @@ namespace EasyBike.Models
             //    }
             //},            
             //#endregion
-            #region BE
+
+            #region Belguim
             new Country
             {
                 Name = "Belguim",
@@ -101,7 +102,8 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
-            #region BG
+
+            #region Bulgaria
             new Country
             {
                 Name = "Bulgaria",
@@ -112,7 +114,8 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
-            #region CA
+
+            #region Canada
             new Country
             {
                 Name = "Canada",
@@ -124,69 +127,8 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
-            #region CH
-            new Country
-            {
-                Name = "Switzerland",
-                ISO31661 = "CH",
-                Contracts = new List<Contract>()
-                {
-                    new PubliBikeContract{Name = "Aigle",ServiceProvider="Chablais, PubliBike",},
-                    new PubliBikeContract{Name = "Avenches",ServiceProvider="Les Lacs-Romont, PubliBike"},
-                    new PubliBikeContract{Name = "Basel"},
-                    new PubliBikeContract{Name = "Bern"},
-                    new PubliBikeContract{Name = "Brig"},
-                    new PubliBikeContract{Name = "Bulle"},
-                    new PubliBikeContract{Name = "Chavannes-près-Renens", ServiceProvider="Lausanne-Morges, PubliBike"},
-                    new PubliBikeContract{Name = "Cheyres", ServiceProvider="Les Lacs-Romont, PubliBike"},
-                    new PubliBikeContract{Name = "Delémont"},
-                    new PubliBikeContract{Name = "Divonne-les-Bains", ServiceProvider="La Côte, PubliBike" },
-                    new PubliBikeContract{Name = "Ecublens", ServiceProvider="Lausanne-Morges, PubliBike", TechnicalName= "Ecublens PL4"},
-                    new PubliBikeContract{Name = "Estavayer-le-Lac", ServiceProvider="Les Lacs-Romont, PubliBike"},
-                    new PubliBikeContract{Name = "Frauenfeld"},
-                    new PubliBikeContract{Name = "Fribourg", ServiceProvider="Agglo Fribourg, PubliBike"},
-                    new PubliBikeContract{Name = "Gland", ServiceProvider="La Côte, PubliBike"},
-                    new PubliBikeContract{Name = "Granges-Paccot",ServiceProvider="Agglo Fribourg, PubliBike"},
-                    new PubliBikeContract{Name = "Kreuzlingen"},
-                    new PubliBikeContract{Name = "La Tour-de-Peilz", ServiceProvider="Riviera, PubliBike"},
-                    new PubliBikeContract{Name = "La Tour-de-Trême", ServiceProvider="Bulle, PubliBike"},
-                    new PubliBikeContract{Name = "Lausanne",ServiceProvider="Lausanne-Morges, PubliBike"},
-                    new PubliBikeContract{Name = "Lugano"},
-                    new PubliBikeContract{Name = "Luzern"},
-                    new PubliBikeContract{Name = "Marly",ServiceProvider="Agglo Fribourg, PubliBike"},
-                    new PubliBikeContract{Name = "Melide",ServiceProvider="Lugano, PubliBike"},
-                    new PubliBikeContract{Name = "Monthey",ServiceProvider="Chablais, PubliBike"},
-                    new PubliBikeContract{Name = "Morcote",ServiceProvider="Lugano, PubliBike"},
-                    new PubliBikeContract{Name = "Morges", ServiceProvider="Lausanne-Morges, PubliBike"},
-                    new PubliBikeContract{Name = "Murten Morat",ServiceProvider="Les Lacs-Romont, PubliBike",TechnicalName= "Murten/Morat"},
-                    new PubliBikeContract{Name = "Nyon",ServiceProvider="La Côte, PubliBike"},
-                    new PubliBikeContract{Name = "Payerne",ServiceProvider="Les Lacs-Romont, PubliBike"},
-                    new PubliBikeContract{Name = "Pazzallo",ServiceProvider="Lugano, PubliBike"},
-                    new PubliBikeContract{Name = "Prangins",ServiceProvider="La Côte, PubliBike"},
-                    new PubliBikeContract{Name = "Préverenges",ServiceProvider="Lausanne-Morges, PubliBike"},
-                    new PubliBikeContract{Name = "Prilly",ServiceProvider="Lausanne-Morges, PubliBike"},
-                    new PubliBikeContract{Name = "Rapperswil"},
-                    new PubliBikeContract{Name = "Renens",ServiceProvider="Lausanne-Morges, PubliBike"},
-                    new PubliBikeContract{Name = "Romont",ServiceProvider="Les Lacs-Romont, PubliBike"},
-                    new PubliBikeContract{Name = "Sion"},
-                    // not working atm
-                    // new PubliBikeContract{Name = "Solothurn"},
-                    new PubliBikeContract{Name = "Tesserete",ServiceProvider="Lugano, PubliBike"},
-                    new PubliBikeContract{Name = "Tolochenaz",ServiceProvider="Lausanne-Morges, PubliBike"},
-                    new PubliBikeContract{Name = "Vevey",ServiceProvider="Riviera, PubliBike"},
-                    new PubliBikeContract{Name = "Villars-sur-Glâne",ServiceProvider="Agglo Fribourg, PubliBike"},
-                    // not working atm
-                    // new PubliBikeContract{Name = "Winterthur"},
-                    new PubliBikeContract{Name = "Yverdon-les-Bains"},
-                    new PubliBikeContract{Name = "Zürich"},
-                    new NextBikeContract{Name = "Luzern",Id= "126"},
-                    new NextBikeContract{Name = "Sursee",Id= "88"},
-
-
-                }
-            },            
-            #endregion
-            #region CL
+    
+            #region Chile
             new Country
             {
                 Name = "Chile",
@@ -197,7 +139,8 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
-            #region CN
+
+            #region China
             new Country
             {
                 Name = "China",
@@ -239,7 +182,23 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
-            #region CY
+
+            #region Croatia
+            new Country
+            {
+                Name = "Croatia",
+                ISO31661 = "HR",
+                Contracts = new List<Contract>()
+                {
+                    new NextBikeContract{Name = "Gospić",Id= "291"},
+                    new NextBikeContract{Name = "Karlovac",Id= "305"},
+                    new NextBikeContract{Name = "Šibenik",Id= "248"},
+                    new NextBikeContract{Name = "Zagreb",Id= "220"},
+                }
+            },
+            #endregion 
+
+            #region Cyprus
             new Country
             {
                 Name = "Cyprus",
@@ -250,7 +209,59 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
-            #region DE
+
+            #region Finland
+            new Country
+            {
+                Name = "Finland",
+                ISO31661 = "FI",
+                Contracts = new List<Contract>()
+                {
+                    new NextBikeContract{Name = "Helsinki",Id= "311"},
+                }
+            },
+            #endregion 
+
+            #region France
+            new Country
+            {
+                Name = "France",
+                ISO31661 = "FR",
+                Contracts = new List<Contract>()
+                {
+                    new JcDecauxContract{Name = "Amiens",ServiceProvider="Vélam', JCDecaux"},
+                    new JcDecauxContract{Name = "Besancon",ServiceProvider="VéloCité, JCDecaux"},
+                    new JcDecauxContract{Name = "Cergy-Pontoise",ServiceProvider="VélO2, JCDecaux"},
+                    new JcDecauxContract{Name = "Creteil",ServiceProvider="Cristolib', JCDecaux"},
+                    new JcDecauxContract{Name = "Lyon",ServiceProvider="Vélo'V, JCDecaux"},
+                    new JcDecauxContract{Name = "Marseille", ServiceProvider="Le vélo, JCDecaux"},
+                    new JcDecauxContract{Name = "Mulhouse", ServiceProvider="Vélocité, JCDecaux"},
+                    new JcDecauxContract{Name = "Nancy", ServiceProvider="VélOstan', JCDecaux"},
+                    new JcDecauxContract{Name = "Nantes", ServiceProvider="Bicloo', JCDecaux"},
+                    new JcDecauxContract{Name = "Paris", ServiceProvider="Vélib', JCDecaux"},
+                    new JcDecauxContract{Name = "Rouen", ServiceProvider="Cy'clic', JCDecaux"},
+                    // SMTC = Syndicat Mixte des Transports en Commun
+                    new JcDecauxContract{Name = "Toulouse", ServiceProvider="VélôToulouse', SMTC, JCDecaux", },
+                    new GrenobleContract{Name = "Grenoble", ServiceProvider="Métrovélo, Smoove (No station availability...)"},
+                    // 1 station sans la et lg"
+                    new SmooveContract{Name = "Avignon", ServiceProvider="Vélopop', Smoove", StationsUrl = "http://www.velopop.fr/vcstations.xml" },
+                    // 2 Station sans id, la, lg et une qui n'est pas indiqué sur la carte du site
+                    new SmooveContract{Name = "Belfort", ServiceProvider="Optymo, SMTC, Smoove", StationsUrl = "http://cli-velo-belfort.gir.fr/vcstations.xml"},
+                    // http://en.wikipedia.org/wiki/Transdev
+                    new SmooveContract{Name = "Chalon-sur-Saône",ServiceProvider="Réflex, Transdev, Smoove", StationsUrl = " http://www.reflex-grandchalon.fr/vcstations.xml"},
+                    new SmooveContract{Name = "Clermont-Ferrand", ServiceProvider="C.Vélo, SMTC, Smoove", StationsUrl = "http://www.c-velo.fr/vcstations.xml"},
+                    new SmooveContract{Name = "Lorient", ServiceProvider="Vélo an oriant, Smoove", StationsUrl = "http://www.lorient-velo.fr/vcstations.xml"},
+                    new SmooveContract{Name = "Montpellier", ServiceProvider="Vélomagg', Smoove", StationsUrl = "http://cli-velo-montpellier.gir.fr/vcstations.xml"},
+                    new SmooveContract{Name = "Saint-Étienne", ServiceProvider="Vélivert, Smoove", StationsUrl = "http://www.velivert.fr/vcstations.xml"},
+                    new SmooveContract{Name = "Valence", ServiceProvider="Libélo, Transdev, Smoove", StationsUrl = "http://www.velo-libelo.fr/vcstations.xml"},
+                    new SmooveContract{Name = "Strasbourg", ServiceProvider="Vélhop', Smoove", StationsUrl = "http://www.velhop.strasbourg.eu/vcstations.xml"},
+                    // Check this
+                    new VeloPlusContract{Name = "Orléans"},
+                }
+            },
+            #endregion 
+
+            #region Germany
             new Country
             {
                 Name = "Germany",
@@ -366,46 +377,7 @@ namespace EasyBike.Models
             },            
             #endregion
            
-
-            #region FR
-            new Country
-            {
-                Name = "France",
-                ISO31661 = "FR",
-                Contracts = new List<Contract>()
-                {
-                    new JcDecauxContract{Name = "Amiens",ServiceProvider="Vélam', JCDecaux"},
-                    new JcDecauxContract{Name = "Besancon",ServiceProvider="VéloCité, JCDecaux"},
-                    new JcDecauxContract{Name = "Cergy-Pontoise",ServiceProvider="VélO2, JCDecaux"},
-                    new JcDecauxContract{Name = "Creteil",ServiceProvider="Cristolib', JCDecaux"},
-                    new JcDecauxContract{Name = "Lyon",ServiceProvider="Vélo'V, JCDecaux"},
-                    new JcDecauxContract{Name = "Marseille", ServiceProvider="Le vélo, JCDecaux"},
-                    new JcDecauxContract{Name = "Mulhouse", ServiceProvider="Vélocité, JCDecaux"},
-                    new JcDecauxContract{Name = "Nancy", ServiceProvider="VélOstan', JCDecaux"},
-                    new JcDecauxContract{Name = "Nantes", ServiceProvider="Bicloo', JCDecaux"},
-                    new JcDecauxContract{Name = "Paris", ServiceProvider="Vélib', JCDecaux"},
-                    new JcDecauxContract{Name = "Rouen", ServiceProvider="Cy'clic', JCDecaux"},
-                    // SMTC = Syndicat Mixte des Transports en Commun
-                    new JcDecauxContract{Name = "Toulouse", ServiceProvider="VélôToulouse', SMTC, JCDecaux", },
-                    new GrenobleContract{Name = "Grenoble", ServiceProvider="Métrovélo, Smoove (No station availability...)"},
-                    // 1 station sans la et lg"
-                    new SmooveContract{Name = "Avignon", ServiceProvider="Vélopop', Smoove", StationsUrl = "http://www.velopop.fr/vcstations.xml" },
-                    // 2 Station sans id, la, lg et une qui n'est pas indiqué sur la carte du site
-                    new SmooveContract{Name = "Belfort", ServiceProvider="Optymo, SMTC, Smoove", StationsUrl = "http://cli-velo-belfort.gir.fr/vcstations.xml"},
-                    // http://en.wikipedia.org/wiki/Transdev
-                    new SmooveContract{Name = "Chalon-sur-Saône",ServiceProvider="Réflex, Transdev, Smoove", StationsUrl = " http://www.reflex-grandchalon.fr/vcstations.xml"},
-                    new SmooveContract{Name = "Clermont-Ferrand", ServiceProvider="C.Vélo, SMTC, Smoove", StationsUrl = "http://www.c-velo.fr/vcstations.xml"},
-                    new SmooveContract{Name = "Lorient", ServiceProvider="Vélo an oriant, Smoove", StationsUrl = "http://www.lorient-velo.fr/vcstations.xml"},
-                    new SmooveContract{Name = "Montpellier", ServiceProvider="Vélomagg', Smoove", StationsUrl = "http://cli-velo-montpellier.gir.fr/vcstations.xml"},
-                    new SmooveContract{Name = "Saint-Étienne", ServiceProvider="Vélivert, Smoove", StationsUrl = "http://www.velivert.fr/vcstations.xml"},
-                    new SmooveContract{Name = "Valence", ServiceProvider="Libélo, Transdev, Smoove", StationsUrl = "http://www.velo-libelo.fr/vcstations.xml"},
-                    new SmooveContract{Name = "Strasbourg", ServiceProvider="Vélhop', Smoove", StationsUrl = "http://www.velhop.strasbourg.eu/vcstations.xml"},
-                    // Check this
-                    new VeloPlusContract{Name = "Orléans"},
-                }
-            },
-            #endregion 
-            #region GR
+            #region Greece
             new Country
             {
                 Name = "Greece",
@@ -417,33 +389,8 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region HR
-            new Country
-            {
-                Name = "Croatia",
-                ISO31661 = "HR",
-                Contracts = new List<Contract>()
-                {
-                    new NextBikeContract{Name = "Gospić",Id= "291"},
-                    new NextBikeContract{Name = "Karlovac",Id= "305"},
-                    new NextBikeContract{Name = "Šibenik",Id= "248"},
-                    new NextBikeContract{Name = "Zagreb",Id= "220"},
-                }
-            },
-            #endregion 
-            #region Finland
-            new Country
-            {
-                Name = "Finland",
-                ISO31661 = "FI",
-                Contracts = new List<Contract>()
-                {
-                    new NextBikeContract{Name = "Helsinki",Id= "311"},
-                }
-            },
-            #endregion 
-
-            #region HU
+         
+            #region Hungary
             new Country
             {
                 Name = "Hungary",
@@ -454,7 +401,8 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region JP
+
+            #region Japan
             new Country
             {
                 Name = "Japan",
@@ -465,29 +413,8 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region LT
-            new Country
-            {
-                Name = "Lithuania",
-                ISO31661 = "LT",
-                Contracts = new List<Contract>()
-                {
-                    new JcDecauxContract{Name = "Vilnius"},
-                }
-            },
-            #endregion 
-            #region LU
-            new Country
-            {
-                Name = "Luxembourg",
-                ISO31661 = "LU",
-                Contracts = new List<Contract>()
-                {
-                    new JcDecauxContract{Name = "Luxembourg"},
-                }
-            },
-            #endregion 
-            #region LV
+
+            #region Latvia
             new Country
             {
                 Name = "Latvia",
@@ -499,18 +426,32 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region NO
+
+            #region Lithuania
             new Country
             {
-                Name = "Norway",
-                ISO31661 = "NO",
+                Name = "Lithuania",
+                ISO31661 = "LT",
                 Contracts = new List<Contract>()
                 {
-                      new JcDecauxContract{Name = "Lillestrom"},
+                    new JcDecauxContract{Name = "Vilnius"},
                 }
             },
             #endregion 
-            #region NZ
+
+            #region Luxembourg
+            new Country
+            {
+                Name = "Luxembourg",
+                ISO31661 = "LU",
+                Contracts = new List<Contract>()
+                {
+                    new JcDecauxContract{Name = "Luxembourg"},
+                }
+            },
+            #endregion 
+
+            #region New Zealand
             new Country
             {
                 Name = "New Zealand",
@@ -522,8 +463,21 @@ namespace EasyBike.Models
                     new NextBikeContract{Name = "Christchurch", Id= "193"},
                 }
             },
+            #endregion   
+
+            #region Norway
+            new Country
+            {
+                Name = "Norway",
+                ISO31661 = "NO",
+                Contracts = new List<Contract>()
+                {
+                      new JcDecauxContract{Name = "Lillestrom"},
+                }
+            },
             #endregion 
-            #region PL
+       
+            #region Poland
             new Country
             {
                 Name = "Poland",
@@ -550,7 +504,8 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region RU
+
+            #region Russia
             new Country
             {
                 Name = "Russia",
@@ -561,7 +516,8 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region SA
+
+            #region Saudi Arabia
             new Country
             {
                 Name = "Saudi Arabia",
@@ -572,7 +528,8 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
-            #region SI
+
+            #region Slovenia
             new Country
             {
                 Name = "Slovenia",
@@ -583,6 +540,7 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
+
             #region Spain
             new Country
             {
@@ -598,6 +556,7 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
+
             #region Sweden
             new Country
             {
@@ -610,7 +569,83 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region TR
+
+            #region Switzerland
+            new Country
+            {
+                Name = "Switzerland",
+                ISO31661 = "CH",
+                Contracts = new List<Contract>()
+                {
+                    new PubliBikeContract{Name = "Aigle",ServiceProvider="Chablais, PubliBike",},
+                    new PubliBikeContract{Name = "Avenches",ServiceProvider="Les Lacs-Romont, PubliBike"},
+                    new PubliBikeContract{Name = "Basel"},
+                    new PubliBikeContract{Name = "Bern"},
+                    new PubliBikeContract{Name = "Brig"},
+                    new PubliBikeContract{Name = "Bulle"},
+                    new PubliBikeContract{Name = "Chavannes-près-Renens", ServiceProvider="Lausanne-Morges, PubliBike"},
+                    new PubliBikeContract{Name = "Cheyres", ServiceProvider="Les Lacs-Romont, PubliBike"},
+                    new PubliBikeContract{Name = "Delémont"},
+                    new PubliBikeContract{Name = "Divonne-les-Bains", ServiceProvider="La Côte, PubliBike" },
+                    new PubliBikeContract{Name = "Ecublens", ServiceProvider="Lausanne-Morges, PubliBike", TechnicalName= "Ecublens PL4"},
+                    new PubliBikeContract{Name = "Estavayer-le-Lac", ServiceProvider="Les Lacs-Romont, PubliBike"},
+                    new PubliBikeContract{Name = "Frauenfeld"},
+                    new PubliBikeContract{Name = "Fribourg", ServiceProvider="Agglo Fribourg, PubliBike"},
+                    new PubliBikeContract{Name = "Gland", ServiceProvider="La Côte, PubliBike"},
+                    new PubliBikeContract{Name = "Granges-Paccot",ServiceProvider="Agglo Fribourg, PubliBike"},
+                    new PubliBikeContract{Name = "Kreuzlingen"},
+                    new PubliBikeContract{Name = "La Tour-de-Peilz", ServiceProvider="Riviera, PubliBike"},
+                    new PubliBikeContract{Name = "La Tour-de-Trême", ServiceProvider="Bulle, PubliBike"},
+                    new PubliBikeContract{Name = "Lausanne",ServiceProvider="Lausanne-Morges, PubliBike"},
+                    new PubliBikeContract{Name = "Lugano"},
+                    new PubliBikeContract{Name = "Luzern"},
+                    new PubliBikeContract{Name = "Marly",ServiceProvider="Agglo Fribourg, PubliBike"},
+                    new PubliBikeContract{Name = "Melide",ServiceProvider="Lugano, PubliBike"},
+                    new PubliBikeContract{Name = "Monthey",ServiceProvider="Chablais, PubliBike"},
+                    new PubliBikeContract{Name = "Morcote",ServiceProvider="Lugano, PubliBike"},
+                    new PubliBikeContract{Name = "Morges", ServiceProvider="Lausanne-Morges, PubliBike"},
+                    new PubliBikeContract{Name = "Murten Morat",ServiceProvider="Les Lacs-Romont, PubliBike",TechnicalName= "Murten/Morat"},
+                    new PubliBikeContract{Name = "Nyon",ServiceProvider="La Côte, PubliBike"},
+                    new PubliBikeContract{Name = "Payerne",ServiceProvider="Les Lacs-Romont, PubliBike"},
+                    new PubliBikeContract{Name = "Pazzallo",ServiceProvider="Lugano, PubliBike"},
+                    new PubliBikeContract{Name = "Prangins",ServiceProvider="La Côte, PubliBike"},
+                    new PubliBikeContract{Name = "Préverenges",ServiceProvider="Lausanne-Morges, PubliBike"},
+                    new PubliBikeContract{Name = "Prilly",ServiceProvider="Lausanne-Morges, PubliBike"},
+                    new PubliBikeContract{Name = "Rapperswil"},
+                    new PubliBikeContract{Name = "Renens",ServiceProvider="Lausanne-Morges, PubliBike"},
+                    new PubliBikeContract{Name = "Romont",ServiceProvider="Les Lacs-Romont, PubliBike"},
+                    new PubliBikeContract{Name = "Sion"},
+                    // not working atm
+                    // new PubliBikeContract{Name = "Solothurn"},
+                    new PubliBikeContract{Name = "Tesserete",ServiceProvider="Lugano, PubliBike"},
+                    new PubliBikeContract{Name = "Tolochenaz",ServiceProvider="Lausanne-Morges, PubliBike"},
+                    new PubliBikeContract{Name = "Vevey",ServiceProvider="Riviera, PubliBike"},
+                    new PubliBikeContract{Name = "Villars-sur-Glâne",ServiceProvider="Agglo Fribourg, PubliBike"},
+                    // not working atm
+                    // new PubliBikeContract{Name = "Winterthur"},
+                    new PubliBikeContract{Name = "Yverdon-les-Bains"},
+                    new PubliBikeContract{Name = "Zürich"},
+                    new NextBikeContract{Name = "Luzern",Id= "126"},
+                    new NextBikeContract{Name = "Sursee",Id= "88"},
+
+
+                }
+            },            
+            #endregion
+
+            #region Taiwan
+            new Country
+            {
+                Name = "Taiwan",
+                ISO31661 = "TW",
+                Contracts = new List<Contract>()
+                {
+                    new CBikeContract{Name = "Kaohsiung"},
+                }
+            },
+            #endregion 
+
+            #region Turkey
             new Country
             {
                 Name = "Turkey",
@@ -622,18 +657,8 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region TW
-            new Country
-            {
-                Name = "Taiwan",
-                ISO31661 = "TW",
-                Contracts = new List<Contract>()
-                {
-                    new CBikeContract{Name = "Kaohsiung"},
-                }
-            },
-            #endregion 
-            #region UA
+        
+            #region Ukraine
             new Country
             {
                 Name = "Ukraine",
@@ -644,7 +669,8 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region AE
+
+            #region United Arab Emirates
             new Country
             {
                 Name = "United Arab Emirates",
@@ -656,7 +682,8 @@ namespace EasyBike.Models
                 }
             },            
             #endregion
-            #region UK
+
+            #region United Kingdom
             new Country
             {
                 Name = "United Kingdom",
@@ -671,7 +698,8 @@ namespace EasyBike.Models
                 }
             },
             #endregion 
-            #region US
+
+            #region United States
             new Country
             {
                 Name = "United States",

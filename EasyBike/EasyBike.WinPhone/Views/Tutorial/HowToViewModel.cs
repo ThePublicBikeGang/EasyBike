@@ -77,7 +77,7 @@ namespace EasyBike.WinPhone.Views.Tutorial
             Items.Add(new HowToModel()
             {
                 Title = "Share a location",
-                Text = "By tapping on a bike station or on a searched place, you can share that location by mail or text.",
+                Text = "By holding on a bike station or tapping on a searched location, you can share that position by mail or text.",
                 ImageUrl = "shareLocation1.jpg",
             });
             Items.Add(new HowToModel()

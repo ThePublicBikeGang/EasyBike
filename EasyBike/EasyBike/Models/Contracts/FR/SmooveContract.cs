@@ -52,7 +52,8 @@ namespace EasyBike.Models.Contracts.FR
                     if (!double.TryParse(station.LatitudeStr, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out latitude))
                         continue;
                     double.TryParse(station.LongitudeStr, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out longitude);
-
+                    station.Latitude = latitude;
+                    station.Longitude = longitude;
                 }
 
                 return models.ToList<StationModelBase>();

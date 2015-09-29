@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using Newtonsoft.Json;
+using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -17,6 +19,15 @@ namespace EasyBike.Extensions
             var c = new XmlSerializer(typeof(T), new XmlRootAttribute(defaultNamespaceName));
             var parsedObject = c.Deserialize(xmlStream);
             return ((T)parsedObject);
+        }
+
+        public static T FromJsonString<T>(this string jsonString, CultureInfo culture = null)
+        {
+            if (culture != null)
+            {
+                return JsonConvert.DeserializeObject<T>(jsonString, new JsonSerializerSettings() { Culture = new System.Globalization.CultureInfo("fr-FR") });
+            }
+            return JsonConvert.DeserializeObject<T>(jsonString);
         }
     }
 }

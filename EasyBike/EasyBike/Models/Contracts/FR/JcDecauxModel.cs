@@ -35,17 +35,17 @@ namespace EasyBike.Models.Contracts
         [JsonProperty(PropertyName = "banking")]
         public override bool Banking { get; set; }
 
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        //[JsonProperty(PropertyName = "name")]
+        //public string Name { get; set; }
 
-        [JsonProperty(PropertyName = "address")]
-        public string Address { get; set; }
+        //[JsonProperty(PropertyName = "address")]
+        //public string Address { get; set; }
 
         [JsonProperty(PropertyName = "position")]
         public Position Position { get; set; }
 
         [OnDeserialized]
-        internal new void OnDeserializedMethod(StreamingContext context)
+        internal void OnDeserializedMethod(StreamingContext context)
         {
             Longitude = Math.Round(Position.Longitude, 5);
             Latitude = Math.Round(Position.Latitude, 5);

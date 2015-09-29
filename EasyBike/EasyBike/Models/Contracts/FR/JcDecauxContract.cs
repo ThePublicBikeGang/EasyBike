@@ -1,14 +1,10 @@
-﻿
-using GalaSoft.MvvmLight.Ioc;
-using ModernHttpClient;
-using Newtonsoft.Json;
-using EasyBike.Config;
+﻿using ModernHttpClient;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using EasyBike.Extensions;
 
 namespace EasyBike.Models.Contracts
 {
@@ -42,7 +38,7 @@ namespace EasyBike.Models.Contracts
             {
                 HttpResponseMessage response = await client.GetAsync(new Uri(string.Format(AvailabilityUrl, station.Id, Name, apiKey, DateTime.Now.Ticks))).ConfigureAwait(false);
                 var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonConvert.DeserializeObject<JcDecauxModel>(responseBodyAsText);
+                return responseBodyAsText.FromJsonString<JcDecauxModel>(new System.Globalization.CultureInfo("fr-FR"));
             }
         }
 
@@ -56,7 +52,7 @@ namespace EasyBike.Models.Contracts
             {
                 HttpResponseMessage response = await client.GetAsync(new Uri(string.Format(StationsUrl, Name, apiKey, DateTime.Now.Ticks))).ConfigureAwait(false);
                 var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonConvert.DeserializeObject<List<JcDecauxModel>>(responseBodyAsText).ToList<StationModelBase>();
+                return responseBodyAsText.FromJsonString<JcDecauxModel[]>(new System.Globalization.CultureInfo("fr-FR")).ToList<StationModelBase>();
             }
         }
     }
