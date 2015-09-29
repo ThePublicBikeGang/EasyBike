@@ -30,27 +30,35 @@ namespace EasyBike.UITests
                         var stations = await contract.GetStationsAsync();
                         Assert.Greater(stations.Count, 0);
                         if (stations.Count == 0)
+                        {
                             failCounter++;
+                        }
+                        if (stations.Count > 0)
+                        {
+                            Assert.AreNotEqual(stations.FirstOrDefault().Latitude, 0);
+                            if (stations.FirstOrDefault().Latitude == 0)
+                                failCounter++;
+                        }
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         failFlag = true;
                         failCounter++;
-                        Debug.WriteLine("FAILED : " + contract.Name + " ("+ contract.ServiceProvider + " / "+ country+") : " + e.Message);
+                        Debug.WriteLine("FAILED : " + contract.Name + " (" + contract.ServiceProvider + " / " + country + ") : " + e.Message);
                     }
                     return true;
                 });
                 return true;
             });
 
-            Debug.WriteLine("FAILED " + failCounter+ " / " + counter);
+            Debug.WriteLine("FAILED " + failCounter + " / " + counter);
             Assert.IsFalse(failFlag);
         }
 
         [Test]
         public async void CheckContractAvailability()
         {
-            var contractToTest = "Paris";
+            var contractToTest = "Toulouse";
             SimpleIoc.Default.Register<IConfigService, ConfigService>();
             var contractService = new ContractService(null, new StorageService());
 
@@ -66,7 +74,7 @@ namespace EasyBike.UITests
                 Debug.WriteLine("FAILED : " + contractToTest + " : " + e.Message);
                 Assert.Fail();
             }
-          
+
         }
     }
 }

@@ -30,10 +30,9 @@ namespace EasyBike.Config
                 {
                     platform = "WinPhone";
                 }
-                var configFile = "config.json";
-#if DEBUG
-                configFile = "MyConfig.json";
-#endif
+
+                // you need to create your own "MyConfig.json" which will be a copy of "configExemple.json" to store your own API keys
+                var configFile = "MyConfig.json";
                 var resource = $"{GetType().Namespace}.{configFile}";
                 var assembly = typeof(ConfigService).GetTypeInfo().Assembly;
                 using (var stream = assembly.GetManifestResourceStream(resource))

@@ -130,7 +130,7 @@
     <Compile Include="ViewModels\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Config\config.json" />
+    <EmbeddedResource Include="Config\configExemple.json" />
     <EmbeddedResource Include="Config\MyConfig.json" />
     <None Include="app.config" />
     <None Include="packages.config" />
