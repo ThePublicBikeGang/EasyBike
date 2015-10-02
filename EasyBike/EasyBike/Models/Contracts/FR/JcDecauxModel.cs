@@ -45,7 +45,7 @@ namespace EasyBike.Models.Contracts
         public Position Position { get; set; }
 
         [OnDeserialized]
-        internal void OnDeserializedMethod(StreamingContext context)
+        internal new void OnDeserializedMethod(StreamingContext context)
         {
             Longitude = Math.Round(Position.Longitude, 5);
             Latitude = Math.Round(Position.Latitude, 5);

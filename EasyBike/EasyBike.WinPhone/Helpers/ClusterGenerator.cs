@@ -162,7 +162,7 @@ namespace EasyBike.WinPhone.Helpers
                 }
             }
 
-            if (zoomLevel > 15)
+            if (zoomLevel > 15 || addRemoveCollection.ToAdd.Count < 30)
                 MAXDISTANCE = 1;
             else
                 MAXDISTANCE = 100;
