@@ -1,4 +1,4 @@
-## EasyBike: A cross platform app for Public Bikes based on Xamarin. Join the GANG !
+## EasyBike: A cross platform app for Public Bikes based on Xamarin.
 
 ![](https://github.com/ThePublicBikeGang/EasyBike/blob/master/EasyBike/EasyBike/Assets/Icon.png)
 
