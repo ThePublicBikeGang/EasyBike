@@ -2,6 +2,8 @@ using EasyBike.ViewModels;
 using GalaSoft.MvvmLight.Views;
 using EasyBike.Droid.Views;
 using GalaSoft.MvvmLight.Ioc;
+using EasyBike.Services;
+using EasyBike.Droid.Services;
 
 namespace EasyBike.Droid
 {
@@ -21,6 +23,7 @@ namespace EasyBike.Droid
 
                     SimpleIoc.Default.Register<INavigationService>(() => nav);
                     SimpleIoc.Default.Register<IDialogService, DialogService>();
+                    SimpleIoc.Default.Register<ILocalisationService, LocalisationService>();
 
                     _locator = new ViewModelLocator();
                 }

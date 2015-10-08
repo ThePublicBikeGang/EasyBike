@@ -127,8 +127,9 @@ namespace EasyBike.Models
         {
             while (true)
             {
-                if (CrossConnectivity.Current.IsConnected)
-                {
+                //if (CrossConnectivity.Current.IsConnected)
+                //{
+
                     // DispatcherHelper.
                     // At this time, DispatcherHelper cannot be used in a portable class library. Laurent works on a solution.
                     // var mapCenter = _localisationService.GetCurrentMapCenter();
@@ -168,7 +169,7 @@ namespace EasyBike.Models
                         //    }
                         //}
                     });
-                }
+                //}
 
                 await Task.Delay(timer).ConfigureAwait(false);
                 timer = timer <= 20000 ? timer + 5000 : timer;
@@ -182,8 +183,8 @@ namespace EasyBike.Models
             while (refreshingPool.Count > 0)
             {
                 await Task.Delay(15000).ConfigureAwait(false);
-                if (CrossConnectivity.Current.IsConnected)
-                {
+                //if (CrossConnectivity.Current.IsConnected)
+                //{
                     //Parallel.ForEach(refreshingPool.ToList(), async (station) =>
                     //{
                     //    if (await station.Contract.RefreshAsync(station).ConfigureAwait(false))
@@ -204,7 +205,7 @@ namespace EasyBike.Models
                             }
                         }
                     });
-                }
+                //}
                 await Task.Delay(5000).ConfigureAwait(false);
             }
             IsStationWorkerRunning = false;

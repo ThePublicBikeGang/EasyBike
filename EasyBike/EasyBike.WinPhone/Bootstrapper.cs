@@ -23,7 +23,7 @@ namespace EasyBike.WinPhone
             nav.Configure(ViewModelLocator.FavoritesPageKey, typeof(FavoritesPage));
             nav.Configure(ViewModelLocator.AboutPageKey, typeof(AboutPage));
             nav.Configure(ViewModelLocator.HowToPageKey, typeof(HowToPage));
-            
+  
             SimpleIoc.Default.Register<INavigationService>(() => nav);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<ILocalisationService, LocalisationService>();

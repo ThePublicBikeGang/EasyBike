@@ -1,8 +1,10 @@
+using Android.App;
 using Android.Widget;
 using EasyBike.Droid.Helpers;
 
-namespace EasyBike.Droid.Views
+namespace EasyBike.Droid
 {
+  
     public partial class MainActivity : ActivityBaseEx
     {
         private Button _refreshButton;
