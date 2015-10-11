@@ -5,14 +5,14 @@ namespace EasyBike.Droid.Views
 {
     public partial class ContractsActivity  : ActivityBaseEx
     {
-        private ListView _contractsList;
+        private ExpandableListView _contractsList;
 
-        public ListView ContractsList
+        public ExpandableListView ContractsList
         {
             get
             {
                 return _contractsList
-                       ?? (_contractsList = FindViewById<ListView>(Resource.Id.ContractsList));
+                       ?? (_contractsList = FindViewById<ExpandableListView>(Resource.Id.ContractsList));
             }
         }
 

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
+using PCLCrypto;
 using System;
 using System.Collections.Generic;
 using System.Linq;

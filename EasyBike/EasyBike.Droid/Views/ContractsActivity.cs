@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using Android.Views;
 using GalaSoft.MvvmLight.Helpers;
 using Android.Widget;
+using EasyBike.Droid.Helpers;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace EasyBike.Droid.Views
 {
@@ -26,9 +28,12 @@ namespace EasyBike.Droid.Views
         protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            SetContentView(Resource.Layout.Contracts);
 
-            ContractsViewModel vm = null;
-            await Task.Delay(30);
+            var test = FindViewById<ExpandableListView>(Resource.Id.ContractsList);
+        
+        ContractsViewModel vm = SimpleIoc.Default.GetInstanceWithoutCaching<ContractsViewModel>();
+            //await Task.Delay(30);
             //var t = Task.Run(async () =>
             //{
             //    vm = SimpleIoc.Default.GetInstanceWithoutCaching<ContractsViewModel>();
@@ -40,7 +45,7 @@ namespace EasyBike.Droid.Views
             {
               
             }
-            
+            ContractsList.SetAdapter(new CountryListAdapter(this, countries));
            // ContractsList.Adapter =  countries.GetAdapter(GetContractAdapter);
         }
 
@@ -53,7 +58,7 @@ namespace EasyBike.Droid.Views
         //    title.Text = contract.Name;
 
         //    //var image = convertView.FindViewById<ImageView>(Resource.Id.FlowerImageView);
-        //   // ImageDownloader.AssignImageAsync(image, flower.Model.Image, this);
+        //    // ImageDownloader.AssignImageAsync(image, flower.Model.Image, this);
 
         //    return convertView;
         //}

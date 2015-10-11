@@ -4,6 +4,7 @@ using Android.Views;
 using Android.Widget;
 using EasyBike.Models;
 using Android.App;
+using Java.Lang;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -22,7 +23,7 @@ namespace EasyBike.Droid.Helpers
         {
             get
             {
-                throw new NotImplementedException();
+                return _countries.Count;
             }
         }
 
@@ -30,7 +31,7 @@ namespace EasyBike.Droid.Helpers
         {
             get
             {
-                throw new NotImplementedException();
+                return false;
             }
         }
 
@@ -41,36 +42,31 @@ namespace EasyBike.Droid.Helpers
 
         public override long GetChildId(int groupPosition, int childPosition)
         {
-            throw new NotImplementedException();
+            return Convert.ToInt32(groupPosition.ToString() + childPosition.ToString());
         }
 
         public override int GetChildrenCount(int groupPosition)
         {
-            throw new NotImplementedException();
+            return _countries[groupPosition].Contracts.Count;
         }
 
         public override View GetChildView(int groupPosition, int childPosition, bool isLastChild, View convertView, ViewGroup parent)
         {
             View row = convertView;
-            //if (row == null)
-            //{
-            //    row = Context.LayoutInflater.Inflate(Resource.Layout.DataListItem, null);
-            //}
-            //string newId = "", newValue = "";
-            //GetChildViewHelper(groupPosition, childPosition, out newId, out newValue);
-            //row.FindViewById<TextView>(Resource.Id.DataId).Text = newId;
-            //row.FindViewById<TextView>(Resource.Id.DataValue).Text = newValue;
-
+            if (row == null)
+            {
+                row = Context.LayoutInflater.Inflate(Resource.Layout.ContractTemplate, null);
+            }
+            row.FindViewById<TextView>(Resource.Id.NameTextView).Text = _countries[groupPosition].Contracts[childPosition].Name;
             return row;
         }
 
-        //private void GetChildViewHelper(int groupPosition, int childPosition, out string Id, out string Value)
-        //{
-        //    //char letter = (char)(65 + groupPosition);
-        //    //List<Data> results = _countries.FindAll(c => c.Name[0].Equals(letter));
-        //    //Id = results[childPosition].Id;
-        //    //Value = results[childPosition].Value;
-        //}
+        private void GetChildViewHelper(int groupPosition, int childPosition, out string contractName)
+        {
+            char letter = (char)(65 + groupPosition);
+            List<Country> results = _countries.FindAll(c => c.Name[0].Equals(letter));
+            contractName = results[childPosition].Name;
+        }
 
         public override Java.Lang.Object GetGroup(int groupPosition)
         {
@@ -79,7 +75,7 @@ namespace EasyBike.Droid.Helpers
 
         public override long GetGroupId(int groupPosition)
         {
-            throw new NotImplementedException();
+            return groupPosition;
         }
 
         public override View GetGroupView(int groupPosition, bool isExpanded, View convertView, ViewGroup parent)
@@ -89,12 +85,37 @@ namespace EasyBike.Droid.Helpers
             {
                 header = Context.LayoutInflater.Inflate(Resource.Layout.ContractGroup, null);
             }
-            header.FindViewById<TextView>(Resource.Id.DataHeader).Text = ((char)(65 + groupPosition)).ToString();
+            header.FindViewById<TextView>(Resource.Id.DataHeader).Text = _countries[groupPosition].Name;
 
             return header;
         }
 
         public override bool IsChildSelectable(int groupPosition, int childPosition)
+        {
+            return true;
+        }
+
+        public bool IsEnabled(int position)
+        {
+            return true;
+        }
+
+        public Java.Lang.Object GetItem(int position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public long GetItemId(int position)
+        {
+            return position;
+        }
+
+        public int GetItemViewType(int position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public View GetView(int position, View convertView, ViewGroup parent)
         {
             throw new NotImplementedException();
         }
