@@ -162,8 +162,8 @@ namespace EasyBike.ViewModels
                                    }
                                    else
                                    {
-                                       if (CrossConnectivity.Current.IsConnected)
-                                       {
+                                       //if (CrossConnectivity.Current.IsConnected)
+                                       //{
                                            contract.Downloading = true;
                                            var stations = await contract.GetStationsAsync();
                                            contract.Stations = stations;
@@ -171,15 +171,15 @@ namespace EasyBike.ViewModels
                                            contract.Downloaded = true;
                                            contract.Downloading = false;
                                            await _contractsService.AddContractAsync(contract);
-                                       }
-                                       else
-                                       {
-                                           try
-                                           {
-                                               await _dialogService.ShowMessage("Apparently you network connection is off. I'm afraid you'll not be able to download a city if you don't have any active network connection.", "Oops !");
-                                           }
-                                           catch { }
-                                       }
+                                       //}
+                                       //else
+                                       //{
+                                       //    try
+                                       //    {
+                                       //        await _dialogService.ShowMessage("Apparently you network connection is off. I'm afraid you'll not be able to download a city if you don't have any active network connection.", "Oops !");
+                                       //    }
+                                       //    catch { }
+                                       //}
                                      
                                    }
                                }

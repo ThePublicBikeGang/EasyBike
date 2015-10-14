@@ -1,28 +1,19 @@
 using Android.App;
 using Android.OS;
-using EasyBike.ViewModels;
-using System.Threading.Tasks;
 using EasyBike.Models;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Android.Views;
-using GalaSoft.MvvmLight.Helpers;
 using Android.Widget;
 using EasyBike.Droid.Helpers;
-using GalaSoft.MvvmLight.Ioc;
+using Android.Views;
+using Android.Graphics;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace EasyBike.Droid.Views
 {
     [Activity(Label = "ContractsActivity")]
     public partial class ContractsActivity 
     {
-        public MainViewModel Vm
-        {
-            get
-            {
-                return App.Locator.Main;
-            }
-        }
+     
         private List<Country> countries;
 
         protected override async void OnCreate(Bundle bundle)
@@ -32,22 +23,37 @@ namespace EasyBike.Droid.Views
 
             var test = FindViewById<ExpandableListView>(Resource.Id.ContractsList);
         
-        ContractsViewModel vm = SimpleIoc.Default.GetInstanceWithoutCaching<ContractsViewModel>();
             //await Task.Delay(30);
             //var t = Task.Run(async () =>
             //{
             //    vm = SimpleIoc.Default.GetInstanceWithoutCaching<ContractsViewModel>();
             //   // countries = await vm.GetCountries().ConfigureAwait(false);
             //};
-            countries = await vm.GetCountries();
+            countries = await ViewModel.GetCountries();
 
-            foreach (var country in countries)
-            {
-              
-            }
             ContractsList.SetAdapter(new CountryListAdapter(this, countries));
+            ContractsList.ChildClick += ContractsList_ChildClick;
+
            // ContractsList.Adapter =  countries.GetAdapter(GetContractAdapter);
         }
+
+
+        private void ContractsList_ChildClick(object sender, ExpandableListView.ChildClickEventArgs e)
+        {
+            var contract = countries[e.GroupPosition].Contracts[e.ChildPosition];
+            ViewModel.ContractTappedCommand.Execute(contract);
+            //(ContractsList.Adapter as CountryListAdapter).GetChildView(e.GroupPosition)
+            e.ClickedView.SetBackgroundColor(Color.ParseColor("#676767"));
+            //_countries[groupPosition].Contracts[childPosition].
+
+            var checkBox = e.ClickedView.FindViewById<CheckBox>(Resource.Id.ContractCheckBox);
+
+            //checkBox.SetBinding(
+            //     () => contract.Downloaded,
+            //     () => checkBox.Checked);
+
+        }
+
 
         //private View GetContractAdapter(int position, Contract contract, View convertView, View view2)
         //{

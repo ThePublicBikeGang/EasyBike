@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/ContractTemplateRoot"
@@ -13,13 +12,32 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/ContractImageView">
+        <CheckBox
+               android:id="@+id/ContractCheckBox"
+               android:focusable="false"
+               android:clickable="false"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/NameTextView"
             android:textSize="24dp"
             android:textColor="#fffa28d4" />
+      </LinearLayout>
+      
+        <ProgressBar
+        android:id="@+id/ProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"    
+        />
     </LinearLayout>
 </RelativeLayout>
