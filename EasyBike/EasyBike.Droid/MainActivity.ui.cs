@@ -9,13 +9,13 @@ namespace EasyBike.Droid
     {
         private Button _refreshButton;
 
-        //public Button RefreshButton
-        //{
-        //    //get
-        //    //{
-        //    //    //return _refreshButton
-        //    //    //       ?? (_refreshButton = FindViewById<Button>(Resource.Id.GoToContractView));
-        //    //}
-        //}
+        public Button RefreshButton
+        {
+            get
+            {
+                return _refreshButton
+                       ?? (_refreshButton = FindViewById<Button>(Resource.Id.GoToContractView));
+            }
+        }
     }
 }

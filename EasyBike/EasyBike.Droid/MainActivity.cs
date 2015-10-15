@@ -3,6 +3,9 @@ using Android.Widget;
 using Android.OS;
 using EasyBike.ViewModels;
 using GalaSoft.MvvmLight.Helpers;
+using Android.Gms.Maps;
+using Android.Support.V7.App;
+using System;
 
 namespace EasyBike.Droid
 {
@@ -12,10 +15,13 @@ namespace EasyBike.Droid
     // The attribution text is available by making a call to GoogleApiAvailability.getOpenSourceSoftwareLicenseInfo.
 
     [Activity(Label = "EasyBike.Droid", MainLauncher = true, Icon = "@drawable/icon")]
-    public partial class MainActivity
+    public partial class MainActivity : IOnMapReadyCallback
     {
         int count = 1;
         private Binding _lastLoadedBinding;
+
+        private GoogleMap _googleMap;
+        private MapFragment _map;
 
         public MainViewModel Vm
         {
@@ -27,22 +33,44 @@ namespace EasyBike.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            //RefreshButton.SetCommand(
-            //    "Click",
-            //    Vm.GoToDownloadCitiesCommand);
-            // Get our button from the layout resource,
-            // and attach an event to it
-           // Button button = FindViewById<Button>(Resource.Id.GoToContractView);
+            GoogleMapOptions mapOptions = new GoogleMapOptions()
+                .InvokeMapType(GoogleMap.MapTypeNormal)
+                .InvokeZoomControlsEnabled(false)
+                .InvokeCompassEnabled(true);
 
-            //button.Click += delegate
+            FragmentTransaction fragTx = FragmentManager.BeginTransaction();
+            var  _mapFragment = MapFragment.NewInstance(mapOptions);
+            fragTx.Add(Resource.Id.map, _mapFragment, "map");
+            fragTx.Commit();
+
+            //     MapFragment mapFrag = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
+            //GoogleMap _googleMap = mapFrag.Map;
+            //if (_googleMap != null)
             //{
-            //    button.Text = string.Format("{0} clicks!", count++);
-            //};
+            //    // The GoogleMap object is ready to go.
+            //}
+            RefreshButton.SetCommand(
+                "Click",
+                Vm.GoToDownloadCitiesCommand);
+          
+             Button button = FindViewById<Button>(Resource.Id.GoToContractView);
 
+        //button.Click += delegate
+        //{
+        //    button.Text = string.Format("{0} clicks!", count++);
+        //};
+
+    }
+
+        public async void OnMapReady(GoogleMap googleMap)
+        {
+            _googleMap = googleMap;
+            //Setup and customize your Google Map
+            _googleMap.UiSettings.CompassEnabled = true;
+            _googleMap.UiSettings.MyLocationButtonEnabled = true;
+            _googleMap.UiSettings.MapToolbarEnabled = true;
         }
     }
 }
