@@ -1,0 +1,4 @@
+<metadata>
+  <remove-node path="/api/package[starts-with(@name, 'com.google.maps.android.kml')]" />
+  <remove-node path="/api/package[starts-with(@name, 'com.google.maps.android.geojson')]" />
+</metadata>

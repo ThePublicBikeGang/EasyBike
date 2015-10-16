@@ -244,6 +244,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\GoogleMapsUtility\GoogleMapsUtility.csproj">
+      <Project>{ffa56329-e2a1-43c0-9060-343147305394}</Project>
+      <Name>GoogleMapsUtility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EasyBike\EasyBike.csproj">
       <Name>EasyBike</Name>
     </ProjectReference>
@@ -254,6 +258,7 @@
     <Compile Include="Helpers\ActivityBaseEx.cs" />
     <Compile Include="Helpers\CountryListAdapter.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Models\ClusterItem.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LocalisationService.cs" />

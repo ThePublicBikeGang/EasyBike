@@ -64,7 +64,6 @@ namespace EasyBike.WinPhone.Helpers
                         foreach (var station in stations.Where(s => s.Location == null))
                         {
                             station.Location = new Geopoint(new BasicGeoposition { Latitude = station.Latitude, Longitude = station.Longitude });
-
                         }
                   
 
