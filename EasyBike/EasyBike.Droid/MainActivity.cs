@@ -15,6 +15,9 @@ using System.Threading;
 using GalaSoft.MvvmLight.Ioc;
 using EasyBike.Models;
 using System.Linq;
+using EasyBike.Models.Stations;
+using EasyBike.Droid.Helpers;
+using System.Threading.Tasks;
 
 namespace EasyBike.Droid
 {
@@ -138,7 +141,11 @@ namespace EasyBike.Droid
         }
 
 
-
+        public readonly List<Station> Items = new List<Station>();
+        public readonly List<ClusterItem> StationControls = new List<ClusterItem>();
+        private const int MAX_CONTROLS = 38;
+        private double MAXDISTANCE = 100;
+        private IContractService _contractService;
         public async void OnMapReady(GoogleMap googleMap)
         {
             _map = googleMap;
@@ -156,7 +163,7 @@ namespace EasyBike.Droid
             _map.SetOnCameraChangeListener(_clusterManager);
             _map.SetOnMarkerClickListener(_clusterManager);
 
-
+            _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             var mapObserver = Observable.FromEventPattern(_map, "CameraChange");
             mapObserver
                 .Do((e) =>
@@ -167,29 +174,80 @@ namespace EasyBike.Droid
                 .Throttle(throttleTime)
                 .Select(async x =>
                 {
-                    var stations = SimpleIoc.Default.GetInstance<IContractService>().GetStations();
+                    var stations = _contractService.GetStations();
                     // some services can provide wrong values in lat or lon... just take care of it
                     foreach (var station in stations.Where(s => s.Location == null))
                     {
                         station.Location = new LatLng(station.Latitude, station.Longitude);
-
                     }
-                    return stations;
+                    
+                    LatLngBounds bounds = _map.Projection.VisibleRegion.LatLngBounds;
+                    // extends slightly the bound view
+                    // to provide a better experience
+                    bounds = MapHelper.extendLimits(bounds, 3);
+
+                    var collection = new AddRemoveCollection();
+                    collection.ToAdd = stations.Where(t => !Items.Contains(t)
+                        && bounds.Contains((LatLng)t.Location)).Take(MAX_CONTROLS).ToList();
+                    if (Items.Count > MAX_CONTROLS + 5)
+                        collection.ToAdd.Clear();
+                    collection.ToRemove = Items.Where(t => !bounds.Contains((LatLng)t.Location)).ToList();
+
+                    // precalculate the items offset (that deffer well calculation)
+                    //foreach (var velib in collection.ToAdd)
+                    //{
+                    //    velib.GetOffsetLocation2(leftCornerLocation, zoomLevel);
+                    //}
+                    return collection;
                 })
                 .Switch()
                 .Subscribe(x =>
                 {
                     if (x == null)
                         return;
-                    RunOnUiThread(() =>
-                    {
-                        AddClusterItems();
-                    });
+                    RefreshView(x, cts.Token);
+                    //RunOnUiThread(() =>
+                    //{
+                    //    AddClusterItems();
+                    //});
                     
                 });
-
-            AddClusterItems();
         }
+
+        private async void RefreshView(AddRemoveCollection addRemoveCollection, CancellationToken token)
+        {
+            if (token.IsCancellationRequested)
+            {
+                return;
+            }
+
+            // remove out of view items
+            foreach (var station in Items.Where(t => addRemoveCollection.ToRemove.Contains(t)).ToList())
+            {
+
+                _clusterManager.RemoveItem(StationControls.First(c=>c.Station == station));
+                Items.Remove(station);
+                if (token.IsCancellationRequested)
+                {
+                    return;
+                }
+            }
+
+
+            foreach (var station in Items.Where(t => !addRemoveCollection.ToAdd.Contains(t)).ToList())
+            {
+
+                _clusterManager.AddItem(new ClusterItem(station.Latitude, station.Longitude)
+                {
+                    Station = station
+                });
+                if (token.IsCancellationRequested)
+                {
+                    return;
+                }
+            }
+        }
+
 
         private void _map_MapClick(object sender, GoogleMap.MapClickEventArgs e)
         {

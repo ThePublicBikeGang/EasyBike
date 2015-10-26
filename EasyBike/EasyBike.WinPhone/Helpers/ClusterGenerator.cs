@@ -12,15 +12,11 @@ using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
+using EasyBike.Models.Stations;
 
 namespace EasyBike.WinPhone.Helpers
 {
-    public class AddRemoveCollection
-    {
-        public List<Station> ToAdd { get; set; }
-        public List<Station> ToRemove { get; set; }
-    }
-
+   
     public class ClusterGenerator
     {
         private const int MAX_CONTROLS = 38;

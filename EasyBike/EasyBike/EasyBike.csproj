@@ -103,6 +103,7 @@
     <Compile Include="Models\Favorites\IFavoritesService.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ShanghaiContract.cs" />
+    <Compile Include="Models\Stations\AddRemoveCollection.cs" />
     <Compile Include="Notification\GoToPageNotification.cs" />
     <Compile Include="Notification\MessageNotification.cs" />
     <Compile Include="Notification\SendEmailNotification.cs" />
