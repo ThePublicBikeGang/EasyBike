@@ -55,9 +55,10 @@ namespace EasyBike.Droid
             //    // The GoogleMap object is ready to go.
             //}
             RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
-          
+
             Button button = FindViewById<Button>(Resource.Id.GoToContractView);
             var mClusterManager = new ClusterManager(this, _map);
+            mClusterManager.SetRenderer(new StationRenderer(this, _map, mClusterManager));
             //button.Click += delegate
             //{
             //    button.Text = string.Format("{0} clicks!", count++);
@@ -91,30 +92,33 @@ namespace EasyBike.Droid
             }
         }
 
-        private void AddClusterItems()
-        {
-            double lat = 63.430515;
-            double lng = 10.395053;
 
-            List<ClusterItem> items = new List<ClusterItem>();
-
-            for (var i = 0; i < 10; i++)
-            {
-                double offset = i / 60d;
-                lat = lat + offset;
-                lng = lng + offset;
-
-                var item = new ClusterItem(lat, lng);
-                items.Add(item);
-            }
-
-            _clusterManager.AddItems(items);
-            _clusterManager.Cluster();
-        }
         //Cluster override methods
         public bool OnClusterClick(ICluster cluster)
         {
-            Toast.MakeText(this, cluster.Items.Count + " items in cluster", ToastLength.Short).Show();
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            foreach (ClusterItem item in cluster.Items)
+            {
+                builder.Include(item.Position);
+            }
+            var bounds = builder.Build();
+            //Observable.Interval(TimeSpan.FromMilliseconds(300)).Subscribe(t =>
+            //{
+            //    _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
+            //});
+            Task.Run(async () =>
+            {
+                await Task.Delay(300);
+                RunOnUiThread(() =>
+                {
+                    _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
+                });
+            });
+            //new Handler().PostDelayed(() =>
+            //{
+            //    _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
+            //}, 300);
+
             return false;
         }
 
@@ -122,6 +126,8 @@ namespace EasyBike.Droid
         {
             Toast.MakeText(this, "Marker clicked", ToastLength.Short).Show();
             return false;
+
+
         }
         public void SetViewPoint(LatLng latlng, bool animated)
         {
@@ -165,6 +171,7 @@ namespace EasyBike.Droid
 
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             var mapObserver = Observable.FromEventPattern(_map, "CameraChange");
+            TaskCompletionSource<bool> tcs;
             mapObserver
                 .Do((e) =>
                 {
@@ -180,8 +187,16 @@ namespace EasyBike.Droid
                     {
                         station.Location = new LatLng(station.Latitude, station.Longitude);
                     }
-                    
-                    LatLngBounds bounds = _map.Projection.VisibleRegion.LatLngBounds;
+                    LatLngBounds bounds = null;
+                    tcs = new TaskCompletionSource<bool>();
+                    RunOnUiThread(() =>
+                   {
+                       bounds = _map.Projection.VisibleRegion.LatLngBounds;
+                       tcs.SetResult(true);
+                   });
+
+                    await tcs.Task;
+
                     // extends slightly the bound view
                     // to provide a better experience
                     bounds = MapHelper.extendLimits(bounds, 3);
@@ -205,12 +220,13 @@ namespace EasyBike.Droid
                 {
                     if (x == null)
                         return;
-                    RefreshView(x, cts.Token);
-                    //RunOnUiThread(() =>
-                    //{
-                    //    AddClusterItems();
-                    //});
-                    
+
+
+                    RunOnUiThread(() =>
+                    {
+                        RefreshView(x, cts.Token);
+                    });
+
                 });
         }
 
@@ -225,7 +241,9 @@ namespace EasyBike.Droid
             foreach (var station in Items.Where(t => addRemoveCollection.ToRemove.Contains(t)).ToList())
             {
 
-                _clusterManager.RemoveItem(StationControls.First(c=>c.Station == station));
+                var item = StationControls.First(c => c.Station.Latitude == station.Latitude && c.Station.Longitude == station.Longitude);
+                _clusterManager.RemoveItem(item);
+                StationControls.Remove(item);
                 Items.Remove(station);
                 if (token.IsCancellationRequested)
                 {
@@ -234,18 +252,17 @@ namespace EasyBike.Droid
             }
 
 
-            foreach (var station in Items.Where(t => !addRemoveCollection.ToAdd.Contains(t)).ToList())
+            foreach (var station in addRemoveCollection.ToAdd.Where(t => !Items.Contains(t)).ToList())
             {
-
-                _clusterManager.AddItem(new ClusterItem(station.Latitude, station.Longitude)
+                var item = new ClusterItem(station.Latitude, station.Longitude)
                 {
                     Station = station
-                });
-                if (token.IsCancellationRequested)
-                {
-                    return;
-                }
+                };
+                StationControls.Add(item);
+                _clusterManager.AddItem(item);
+                Items.Add(station);
             }
+            _clusterManager.Cluster();
         }
 
 
