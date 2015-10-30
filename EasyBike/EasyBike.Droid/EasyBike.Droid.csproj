@@ -29,9 +29,9 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkSkip />
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
@@ -296,10 +296,10 @@
     <AndroidResource Include="Resources\values\Strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-	<AndroidResource Include="Resources\drawable\stationGris.png" />
-	<AndroidResource Include="Resources\drawable\stationVert.png" />
-	<AndroidResource Include="Resources\drawable\stationOrange.png" />
-	<AndroidResource Include="Resources\drawable\stationRed.png" />	
+    <AndroidResource Include="Resources\drawable\stationGris.png" />
+    <AndroidResource Include="Resources\drawable\stationVert.png" />
+    <AndroidResource Include="Resources\drawable\stationOrange.png" />
+    <AndroidResource Include="Resources\drawable\stationRed.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
