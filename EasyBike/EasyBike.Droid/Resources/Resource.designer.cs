@@ -1525,6 +1525,9 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f040009
 			public const int abc_slide_out_top = 2130968585;
 			
+			// aapt resource value: 0x7f04000a
+			public const int animations = 2130968586;
+			
 			static Animation()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -3219,14 +3222,29 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f020081
 			public const int mr_ic_settings_light = 2130837633;
 			
-			// aapt resource value: 0x7f020084
-			public const int notification_template_icon_bg = 2130837636;
+			// aapt resource value: 0x7f020089
+			public const int notification_template_icon_bg = 2130837641;
 			
 			// aapt resource value: 0x7f020082
 			public const int powered_by_google_dark = 2130837634;
 			
 			// aapt resource value: 0x7f020083
 			public const int powered_by_google_light = 2130837635;
+			
+			// aapt resource value: 0x7f020084
+			public const int station = 2130837636;
+			
+			// aapt resource value: 0x7f020085
+			public const int stationGris = 2130837637;
+			
+			// aapt resource value: 0x7f020086
+			public const int stationOrange = 2130837638;
+			
+			// aapt resource value: 0x7f020087
+			public const int stationRed = 2130837639;
+			
+			// aapt resource value: 0x7f020088
+			public const int stationVert = 2130837640;
 			
 			static Drawable()
 			{
@@ -3805,55 +3823,58 @@ namespace EasyBike.Droid
 			public const int Main = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int mr_media_route_chooser_dialog = 2130903070;
+			public const int MarkerText = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int mr_media_route_controller_material_dialog_b = 2130903071;
+			public const int mr_media_route_chooser_dialog = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int mr_media_route_list_item = 2130903072;
+			public const int mr_media_route_controller_material_dialog_b = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int notification_media_action = 2130903073;
+			public const int mr_media_route_list_item = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int notification_media_cancel_action = 2130903074;
+			public const int notification_media_action = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int notification_template_big_media = 2130903075;
+			public const int notification_media_cancel_action = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int notification_template_big_media_narrow = 2130903076;
+			public const int notification_template_big_media = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int notification_template_lines = 2130903077;
+			public const int notification_template_big_media_narrow = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int notification_template_media = 2130903078;
+			public const int notification_template_lines = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int notification_template_part_chronometer = 2130903079;
+			public const int notification_template_media = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int notification_template_part_time = 2130903080;
+			public const int notification_template_part_chronometer = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int select_dialog_item_material = 2130903081;
+			public const int notification_template_part_time = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int select_dialog_multichoice_material = 2130903082;
+			public const int select_dialog_item_material = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int select_dialog_singlechoice_material = 2130903083;
+			public const int select_dialog_multichoice_material = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int support_simple_spinner_dropdown_item = 2130903084;
+			public const int select_dialog_singlechoice_material = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int text_bubble = 2130903085;
+			public const int support_simple_spinner_dropdown_item = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int webview = 2130903086;
+			public const int text_bubble = 2130903086;
+			
+			// aapt resource value: 0x7f03002f
+			public const int webview = 2130903087;
 			
 			static Layout()
 			{

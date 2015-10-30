@@ -18,6 +18,7 @@ using System.Linq;
 using EasyBike.Models.Stations;
 using EasyBike.Droid.Helpers;
 using System.Threading.Tasks;
+using Com.Google.Maps.Android.Clustering.View;
 
 namespace EasyBike.Droid
 {
@@ -57,13 +58,12 @@ namespace EasyBike.Droid
             RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
 
             Button button = FindViewById<Button>(Resource.Id.GoToContractView);
-            var mClusterManager = new ClusterManager(this, _map);
-            mClusterManager.SetRenderer(new StationRenderer(this, _map, mClusterManager));
+               
+       
             //button.Click += delegate
             //{
             //    button.Text = string.Format("{0} clicks!", count++);
             //};
-
         }
 
 
@@ -159,11 +159,13 @@ namespace EasyBike.Droid
             _map.UiSettings.CompassEnabled = true;
             _map.UiSettings.MyLocationButtonEnabled = true;
             _map.UiSettings.MapToolbarEnabled = true;
+         
 
 
-            SetViewPoint(new LatLng(63.430515, 10.395053), false);
+            SetViewPoint(new LatLng(47.238451, 6.023983), false);
 
             _clusterManager = new ClusterManager(this, _map);
+            _clusterManager.SetRenderer(new StationRenderer(this, _map, _clusterManager));
             _clusterManager.SetOnClusterClickListener(this);
             _clusterManager.SetOnClusterItemClickListener(this);
             _map.SetOnCameraChangeListener(_clusterManager);
