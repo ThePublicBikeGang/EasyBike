@@ -92,7 +92,6 @@ namespace EasyBike.Droid
             }
         }
 
-
         //Cluster override methods
         public bool OnClusterClick(ICluster cluster)
         {

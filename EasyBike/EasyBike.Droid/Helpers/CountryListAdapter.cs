@@ -55,34 +55,38 @@ namespace EasyBike.Droid.Helpers
         }
 
 
-        private class MyViewHolder : Java.Lang.Object
+        private class ViewHolder : Java.Lang.Object
         {
             public TextView Name { get; set; }
+            public TextView ServiceProvider{ get; set; }
             public CheckBox CheckBox { get; set; }
-            public ImageView Image { get; set; }
+            public ProgressBar ProgressBar { get; set; }
         }
 
         public override View GetChildView(int groupPosition, int childPosition, bool isLastChild, View convertView, ViewGroup parent)
         {
-            MyViewHolder holder = null;
+            ViewHolder holder = null;
             View row = convertView;
             if (row != null)
             {
-                holder = row.Tag as MyViewHolder;
+                holder = row.Tag as ViewHolder;
             }
 
             if (holder == null)
             {
-                holder = new MyViewHolder();
+                holder = new ViewHolder();
                 row = Context.LayoutInflater.Inflate(Resource.Layout.ContractTemplate, null);
                 holder.Name = row.FindViewById<TextView>(Resource.Id.NameTextView);
+                holder.ServiceProvider = row.FindViewById<TextView>(Resource.Id.ServiceProvider);
                 holder.CheckBox = row.FindViewById<CheckBox>(Resource.Id.ContractCheckBox);
-                // holder.Image = view.FindViewById<ImageView>(Resource.Id.imageView);
+                holder.ProgressBar = row.FindViewById<ProgressBar>(Resource.Id.ProgressBar);
                 row.Tag = holder;
             }
 
             holder.Name.Text = _countries[groupPosition].Contracts[childPosition].Name;
+            holder.ServiceProvider.Text = _countries[groupPosition].Contracts[childPosition].ServiceProvider;
             holder.CheckBox.Checked = _countries[groupPosition].Contracts[childPosition].Downloaded;
+            holder.ProgressBar.Visibility = _countries[groupPosition].Contracts[childPosition].Downloading ? ViewStates.Visible : ViewStates.Invisible;
             //holder.CheckBox.SetBinding(
             //     () => _countries[groupPosition].Contracts[childPosition].Downloaded,
             //     () => CompoundButton.Checked);

@@ -3259,11 +3259,8 @@ namespace EasyBike.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f09006d
-			public const int ContractCheckBox = 2131296365;
-			
 			// aapt resource value: 0x7f09006c
-			public const int ContractImageView = 2131296364;
+			public const int ContractCheckBox = 2131296364;
 			
 			// aapt resource value: 0x7f09006b
 			public const int ContractTemplateRoot = 2131296363;
@@ -3280,14 +3277,17 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f090072
 			public const int GoToContractView = 2131296370;
 			
-			// aapt resource value: 0x7f09006e
-			public const int NameTextView = 2131296366;
+			// aapt resource value: 0x7f09006d
+			public const int NameTextView = 2131296365;
 			
 			// aapt resource value: 0x7f09006f
 			public const int ProgressBar = 2131296367;
 			
 			// aapt resource value: 0x7f09006a
 			public const int Separator = 2131296362;
+			
+			// aapt resource value: 0x7f09006e
+			public const int ServiceProvider = 2131296366;
 			
 			// aapt resource value: 0x7f090082
 			public const int action0 = 2131296386;

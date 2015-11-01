@@ -38,15 +38,26 @@ namespace EasyBike.Droid.Views
         }
 
 
-        private void ContractsList_ChildClick(object sender, ExpandableListView.ChildClickEventArgs e)
+        private async void ContractsList_ChildClick(object sender, ExpandableListView.ChildClickEventArgs e)
         {
             var contract = countries[e.GroupPosition].Contracts[e.ChildPosition];
-            ViewModel.ContractTappedCommand.Execute(contract);
+
+            var progressBar = e.ClickedView.FindViewById<ProgressBar>(Resource.Id.ProgressBar);
+            // Show the progress bar
+            if (!contract.Downloaded)
+            {
+                progressBar.Visibility = ViewStates.Visible;
+            }
+            ///ViewModel.ContractTappedCommand.Execute(contract);
+            await ViewModel.AddOrRemoveContract(contract);
             //(ContractsList.Adapter as CountryListAdapter).GetChildView(e.GroupPosition)
-            e.ClickedView.SetBackgroundColor(Color.ParseColor("#676767"));
             //_countries[groupPosition].Contracts[childPosition].
 
+            progressBar.Visibility = ViewStates.Invisible;
             var checkBox = e.ClickedView.FindViewById<CheckBox>(Resource.Id.ContractCheckBox);
+            checkBox.Checked = contract.Downloaded;
+            //e.ClickedView.SetBackgroundColor(Color.ParseColor("#676767"));
+            //var checkBox = e.ClickedView.FindViewById<CheckBox>(Resource.Id.ContractCheckBox);
 
             //checkBox.SetBinding(
             //     () => contract.Downloaded,

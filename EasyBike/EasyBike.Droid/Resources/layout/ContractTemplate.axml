@@ -3,43 +3,46 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/ContractTemplateRoot"
-    android:paddingBottom="5dp"
-    android:paddingTop="5dp"
-    android:paddingRight="17dp"
-    android:paddingLeft="17dp">
+    android:padding="20dp">
+  <LinearLayout
+      android:orientation="horizontal"
+      android:minWidth="25px"
+      android:minHeight="150px"
+      android:paddingLeft="44dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <CheckBox
+          android:id="@+id/ContractCheckBox"
+          android:focusable="false"
+          android:clickable="false"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" 
+          android:paddingTop="15dp"
+          android:gravity="center"/>
     <LinearLayout
-        android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-      <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/ContractImageView">
-        <CheckBox
-               android:id="@+id/ContractCheckBox"
-               android:focusable="false"
-               android:clickable="false"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
+     android:orientation="vertical"
+     android:minWidth="25px"
+     android:minHeight="200px"
+     android:paddingLeft="17dp"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/NameTextView"
-            android:textSize="24dp"
-            android:textColor="#fffa28d4" />
-      </LinearLayout>
-      
+            android:textSize="28dp"/>
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ServiceProvider"
+            android:alpha="0.4"
+            android:textSize="17dp"/>
         <ProgressBar
-        android:id="@+id/ProgressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:indeterminateOnly="true" 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"    
-        />
-    </LinearLayout>
+          android:id="@+id/ProgressBar"
+          style="?android:attr/progressBarStyleHorizontal"
+          android:indeterminateOnly="true"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+      </LinearLayout>
+  </LinearLayout>
 </RelativeLayout>
