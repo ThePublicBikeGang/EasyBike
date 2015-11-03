@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Splat;
 using EasyBike.Services.Settings;
-using System;
+using System.Linq;
 
 namespace EasyBike.Models.Storage
 {
@@ -14,6 +14,7 @@ namespace EasyBike.Models.Storage
     /// </summary>
     public class StorageService : IStorageService
     {
+        private const string SettingsKey = "settings";
         public StorageService()
         {
             BlobCache.ApplicationName = "EasyBike";
@@ -71,7 +72,7 @@ namespace EasyBike.Models.Storage
         {
             try
             {
-                return await BlobCache.LocalMachine.GetObject<SettingsModel>("settings");
+                return await BlobCache.LocalMachine.GetObject<SettingsModel>(SettingsKey);
             }
             catch
             {
@@ -81,7 +82,7 @@ namespace EasyBike.Models.Storage
 
         public async Task SetSettingsAsync(SettingsModel settings)
         {
-            await BlobCache.LocalMachine.InsertObject("settings", settings);
+            await BlobCache.LocalMachine.InsertObject(SettingsKey, settings);
         }
     }
 }

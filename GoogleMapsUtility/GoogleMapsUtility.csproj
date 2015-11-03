@@ -148,7 +148,7 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="Jars\android-maps-utils-0.5.aar" />
+    <LibraryProjectZip Include="Jars\android-maps-utils-0.6.aar" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

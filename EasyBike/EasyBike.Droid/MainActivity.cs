@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Widget;
-using Android.OS;
 using EasyBike.ViewModels;
 using GalaSoft.MvvmLight.Helpers;
 using Android.Gms.Maps;
@@ -19,6 +18,8 @@ using EasyBike.Models.Stations;
 using EasyBike.Droid.Helpers;
 using System.Threading.Tasks;
 using Com.Google.Maps.Android.Clustering.View;
+using System.Diagnostics;
+using Android.OS;
 
 namespace EasyBike.Droid
 {
@@ -49,6 +50,7 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
+
             //     MapFragment mapFrag = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
             //GoogleMap _googleMap = mapFrag.Map;
             //if (_googleMap != null)
@@ -58,8 +60,8 @@ namespace EasyBike.Droid
             RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
 
             Button button = FindViewById<Button>(Resource.Id.GoToContractView);
-               
-       
+
+
             //button.Click += delegate
             //{
             //    button.Text = string.Format("{0} clicks!", count++);
@@ -153,15 +155,21 @@ namespace EasyBike.Droid
         private IContractService _contractService;
         public async void OnMapReady(GoogleMap googleMap)
         {
+            // auto download paris to help dev on performances 
+            var contractToTest = "Paris";
+            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+
             _map = googleMap;
             //Setup and customize your Google Map
             _map.UiSettings.CompassEnabled = true;
             _map.UiSettings.MyLocationButtonEnabled = true;
             _map.UiSettings.MapToolbarEnabled = true;
-         
 
 
-            SetViewPoint(new LatLng(47.238451, 6.023983), false);
+
+            SetViewPoint(new LatLng(48.879918, 2.354810), false);
 
             _clusterManager = new ClusterManager(this, _map);
             _clusterManager.SetRenderer(new StationRenderer(this, _map, _clusterManager));
@@ -192,23 +200,34 @@ namespace EasyBike.Droid
                     tcs = new TaskCompletionSource<bool>();
                     RunOnUiThread(() =>
                    {
-                       bounds = _map.Projection.VisibleRegion.LatLngBounds;
+                       try
+                       {
+                           // can return null
+                           bounds = _map.Projection.VisibleRegion.LatLngBounds;
+                       }
+                       catch { }
                        tcs.SetResult(true);
                    });
 
                     await tcs.Task;
 
-                    // extends slightly the bound view
-                    // to provide a better experience
-                    bounds = MapHelper.extendLimits(bounds, 3);
-
+             
                     var collection = new AddRemoveCollection();
-                    collection.ToAdd = stations.Where(t => !Items.Contains(t)
-                        && bounds.Contains((LatLng)t.Location)).Take(MAX_CONTROLS).ToList();
-                    if (Items.Count > MAX_CONTROLS + 5)
-                        collection.ToAdd.Clear();
-                    collection.ToRemove = Items.Where(t => !bounds.Contains((LatLng)t.Location)).ToList();
-
+                    if (bounds != null)
+                    {
+                        // extends slightly the bound view
+                        // to provide a better experience
+                        bounds = MapHelper.extendLimits(bounds, 1);
+                        collection.ToAdd = stations.Where(t => !Items.Contains(t)
+                            && bounds.Contains((LatLng)t.Location)).Take(MAX_CONTROLS).ToList();
+                        if (Items.Count > MAX_CONTROLS + 5)
+                            collection.ToAdd.Clear();
+                        collection.ToRemove = Items.Where(t => !bounds.Contains((LatLng)t.Location)).ToList();
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("bounds NULL !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    }
                     // precalculate the items offset (that deffer well calculation)
                     //foreach (var velib in collection.ToAdd)
                     //{
@@ -262,6 +281,10 @@ namespace EasyBike.Droid
                 StationControls.Add(item);
                 _clusterManager.AddItem(item);
                 Items.Add(station);
+                if (token.IsCancellationRequested)
+                {
+                    return;
+                }
             }
             _clusterManager.Cluster();
         }
