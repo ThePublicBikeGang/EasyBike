@@ -61,11 +61,11 @@ namespace EasyBike.WinPhone.Helpers
                 {
                     var stations = SimpleIoc.Default.GetInstance<IContractService>().GetStations();
                     // some services can provide wrong values in lat or lon... just take care of it
-                        foreach (var station in stations.Where(s => s.Location == null))
-                        {
-                            station.Location = new Geopoint(new BasicGeoposition { Latitude = station.Latitude, Longitude = station.Longitude });
-                        }
-                  
+                    foreach (var station in stations.Where(s => s.Location == null))
+                    {
+                        station.Location = new Geopoint(new BasicGeoposition { Latitude = station.Latitude, Longitude = station.Longitude });
+                    }
+
 
                     await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                     {
@@ -96,11 +96,12 @@ namespace EasyBike.WinPhone.Helpers
                         return null;
 
                     var collection = new AddRemoveCollection();
+                    collection.ToRemove = Items.Where(t => !MapExtensions.Contains(mapLocations, t.Latitude, t.Longitude)).ToList();
                     collection.ToAdd = stations.Where(t => !Items.Contains(t)
                         && MapExtensions.Contains(mapLocations, t.Latitude, t.Longitude)).Take(MAX_CONTROLS).ToList();
-                    if (Items.Count > MAX_CONTROLS + 5)
+                    if (Items.Count > MAX_CONTROLS + collection.ToRemove.Count)
                         collection.ToAdd.Clear();
-                    collection.ToRemove = Items.Where(t => !MapExtensions.Contains(mapLocations, t.Latitude, t.Longitude)).ToList();
+
 
                     // precalculate the items offset (that deffer well calculation)
                     foreach (var velib in collection.ToAdd)
@@ -134,7 +135,7 @@ namespace EasyBike.WinPhone.Helpers
             foreach (var control in StationControls.Where(c => c.Stations.Count == 1 && c.Stations.FirstOrDefault().IsUiRefreshNeeded && c.Stations.FirstOrDefault().ContractStorageName == contract.StorageName).ToList())
             {
                 var station = control.Stations.FirstOrDefault();
-                if (station != null && station.IsUiRefreshNeeded) 
+                if (station != null && station.IsUiRefreshNeeded)
                 {
                     await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => control.RefreshStation(station));
                 }

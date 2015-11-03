@@ -5115,6 +5115,9 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f080008
 			public const int Widget_MediaRouter_MediaRouteButton = 2131230728;
 			
+			// aapt resource value: 0x7f080130
+			public const int iconGenText = 2131231024;
+			
 			static Style()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

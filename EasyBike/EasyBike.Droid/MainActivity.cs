@@ -155,11 +155,11 @@ namespace EasyBike.Droid
         private IContractService _contractService;
         public async void OnMapReady(GoogleMap googleMap)
         {
-            // auto download paris to help dev on performances 
-            var contractToTest = "Paris";
-            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
-            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+            // TO HELP DEBUG auto download paris to help dev on performances 
+            //var contractToTest = "Paris";
+            //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+            //var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+            //await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
 
             _map = googleMap;
             //Setup and customize your Google Map
@@ -217,16 +217,13 @@ namespace EasyBike.Droid
                     {
                         // extends slightly the bound view
                         // to provide a better experience
-                        bounds = MapHelper.extendLimits(bounds, 1);
+                        //bounds = MapHelper.extendLimits(bounds, 1);
+                        collection.ToRemove = Items.Where(t => !bounds.Contains((LatLng)t.Location)).ToList();
                         collection.ToAdd = stations.Where(t => !Items.Contains(t)
                             && bounds.Contains((LatLng)t.Location)).Take(MAX_CONTROLS).ToList();
-                        if (Items.Count > MAX_CONTROLS + 5)
+                        if (Items.Count > MAX_CONTROLS + collection.ToRemove.Count)
                             collection.ToAdd.Clear();
-                        collection.ToRemove = Items.Where(t => !bounds.Contains((LatLng)t.Location)).ToList();
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("bounds NULL !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                        
                     }
                     // precalculate the items offset (that deffer well calculation)
                     //foreach (var velib in collection.ToAdd)
