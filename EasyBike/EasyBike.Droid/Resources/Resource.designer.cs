@@ -28,1466 +28,6 @@ namespace EasyBike.Droid
 		{
 			global::GalaSoft.MvvmLight.Resource.String.ApplicationName = global::EasyBike.Droid.Resource.String.ApplicationName;
 			global::GalaSoft.MvvmLight.Resource.String.Hello = global::EasyBike.Droid.Resource.String.Hello;
-			global::GooglePlayServices.Resource.Animation.abc_fade_in = global::EasyBike.Droid.Resource.Animation.abc_fade_in;
-			global::GooglePlayServices.Resource.Animation.abc_fade_out = global::EasyBike.Droid.Resource.Animation.abc_fade_out;
-			global::GooglePlayServices.Resource.Animation.abc_grow_fade_in_from_bottom = global::EasyBike.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
-			global::GooglePlayServices.Resource.Animation.abc_popup_enter = global::EasyBike.Droid.Resource.Animation.abc_popup_enter;
-			global::GooglePlayServices.Resource.Animation.abc_popup_exit = global::EasyBike.Droid.Resource.Animation.abc_popup_exit;
-			global::GooglePlayServices.Resource.Animation.abc_shrink_fade_out_from_bottom = global::EasyBike.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
-			global::GooglePlayServices.Resource.Animation.abc_slide_in_bottom = global::EasyBike.Droid.Resource.Animation.abc_slide_in_bottom;
-			global::GooglePlayServices.Resource.Animation.abc_slide_in_top = global::EasyBike.Droid.Resource.Animation.abc_slide_in_top;
-			global::GooglePlayServices.Resource.Animation.abc_slide_out_bottom = global::EasyBike.Droid.Resource.Animation.abc_slide_out_bottom;
-			global::GooglePlayServices.Resource.Animation.abc_slide_out_top = global::EasyBike.Droid.Resource.Animation.abc_slide_out_top;
-			global::GooglePlayServices.Resource.Attribute.actionBarDivider = global::EasyBike.Droid.Resource.Attribute.actionBarDivider;
-			global::GooglePlayServices.Resource.Attribute.actionBarItemBackground = global::EasyBike.Droid.Resource.Attribute.actionBarItemBackground;
-			global::GooglePlayServices.Resource.Attribute.actionBarPopupTheme = global::EasyBike.Droid.Resource.Attribute.actionBarPopupTheme;
-			global::GooglePlayServices.Resource.Attribute.actionBarSize = global::EasyBike.Droid.Resource.Attribute.actionBarSize;
-			global::GooglePlayServices.Resource.Attribute.actionBarSplitStyle = global::EasyBike.Droid.Resource.Attribute.actionBarSplitStyle;
-			global::GooglePlayServices.Resource.Attribute.actionBarStyle = global::EasyBike.Droid.Resource.Attribute.actionBarStyle;
-			global::GooglePlayServices.Resource.Attribute.actionBarTabBarStyle = global::EasyBike.Droid.Resource.Attribute.actionBarTabBarStyle;
-			global::GooglePlayServices.Resource.Attribute.actionBarTabStyle = global::EasyBike.Droid.Resource.Attribute.actionBarTabStyle;
-			global::GooglePlayServices.Resource.Attribute.actionBarTabTextStyle = global::EasyBike.Droid.Resource.Attribute.actionBarTabTextStyle;
-			global::GooglePlayServices.Resource.Attribute.actionBarTheme = global::EasyBike.Droid.Resource.Attribute.actionBarTheme;
-			global::GooglePlayServices.Resource.Attribute.actionBarWidgetTheme = global::EasyBike.Droid.Resource.Attribute.actionBarWidgetTheme;
-			global::GooglePlayServices.Resource.Attribute.actionButtonStyle = global::EasyBike.Droid.Resource.Attribute.actionButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.actionDropDownStyle = global::EasyBike.Droid.Resource.Attribute.actionDropDownStyle;
-			global::GooglePlayServices.Resource.Attribute.actionLayout = global::EasyBike.Droid.Resource.Attribute.actionLayout;
-			global::GooglePlayServices.Resource.Attribute.actionMenuTextAppearance = global::EasyBike.Droid.Resource.Attribute.actionMenuTextAppearance;
-			global::GooglePlayServices.Resource.Attribute.actionMenuTextColor = global::EasyBike.Droid.Resource.Attribute.actionMenuTextColor;
-			global::GooglePlayServices.Resource.Attribute.actionModeBackground = global::EasyBike.Droid.Resource.Attribute.actionModeBackground;
-			global::GooglePlayServices.Resource.Attribute.actionModeCloseButtonStyle = global::EasyBike.Droid.Resource.Attribute.actionModeCloseButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.actionModeCloseDrawable = global::EasyBike.Droid.Resource.Attribute.actionModeCloseDrawable;
-			global::GooglePlayServices.Resource.Attribute.actionModeCopyDrawable = global::EasyBike.Droid.Resource.Attribute.actionModeCopyDrawable;
-			global::GooglePlayServices.Resource.Attribute.actionModeCutDrawable = global::EasyBike.Droid.Resource.Attribute.actionModeCutDrawable;
-			global::GooglePlayServices.Resource.Attribute.actionModeFindDrawable = global::EasyBike.Droid.Resource.Attribute.actionModeFindDrawable;
-			global::GooglePlayServices.Resource.Attribute.actionModePasteDrawable = global::EasyBike.Droid.Resource.Attribute.actionModePasteDrawable;
-			global::GooglePlayServices.Resource.Attribute.actionModePopupWindowStyle = global::EasyBike.Droid.Resource.Attribute.actionModePopupWindowStyle;
-			global::GooglePlayServices.Resource.Attribute.actionModeSelectAllDrawable = global::EasyBike.Droid.Resource.Attribute.actionModeSelectAllDrawable;
-			global::GooglePlayServices.Resource.Attribute.actionModeShareDrawable = global::EasyBike.Droid.Resource.Attribute.actionModeShareDrawable;
-			global::GooglePlayServices.Resource.Attribute.actionModeSplitBackground = global::EasyBike.Droid.Resource.Attribute.actionModeSplitBackground;
-			global::GooglePlayServices.Resource.Attribute.actionModeStyle = global::EasyBike.Droid.Resource.Attribute.actionModeStyle;
-			global::GooglePlayServices.Resource.Attribute.actionModeWebSearchDrawable = global::EasyBike.Droid.Resource.Attribute.actionModeWebSearchDrawable;
-			global::GooglePlayServices.Resource.Attribute.actionOverflowButtonStyle = global::EasyBike.Droid.Resource.Attribute.actionOverflowButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.actionOverflowMenuStyle = global::EasyBike.Droid.Resource.Attribute.actionOverflowMenuStyle;
-			global::GooglePlayServices.Resource.Attribute.actionProviderClass = global::EasyBike.Droid.Resource.Attribute.actionProviderClass;
-			global::GooglePlayServices.Resource.Attribute.actionViewClass = global::EasyBike.Droid.Resource.Attribute.actionViewClass;
-			global::GooglePlayServices.Resource.Attribute.activityChooserViewStyle = global::EasyBike.Droid.Resource.Attribute.activityChooserViewStyle;
-			global::GooglePlayServices.Resource.Attribute.adSize = global::EasyBike.Droid.Resource.Attribute.adSize;
-			global::GooglePlayServices.Resource.Attribute.adSizes = global::EasyBike.Droid.Resource.Attribute.adSizes;
-			global::GooglePlayServices.Resource.Attribute.adUnitId = global::EasyBike.Droid.Resource.Attribute.adUnitId;
-			global::GooglePlayServices.Resource.Attribute.alertDialogButtonGroupStyle = global::EasyBike.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
-			global::GooglePlayServices.Resource.Attribute.alertDialogCenterButtons = global::EasyBike.Droid.Resource.Attribute.alertDialogCenterButtons;
-			global::GooglePlayServices.Resource.Attribute.alertDialogStyle = global::EasyBike.Droid.Resource.Attribute.alertDialogStyle;
-			global::GooglePlayServices.Resource.Attribute.alertDialogTheme = global::EasyBike.Droid.Resource.Attribute.alertDialogTheme;
-			global::GooglePlayServices.Resource.Attribute.appTheme = global::EasyBike.Droid.Resource.Attribute.appTheme;
-			global::GooglePlayServices.Resource.Attribute.autoCompleteTextViewStyle = global::EasyBike.Droid.Resource.Attribute.autoCompleteTextViewStyle;
-			global::GooglePlayServices.Resource.Attribute.background = global::EasyBike.Droid.Resource.Attribute.background;
-			global::GooglePlayServices.Resource.Attribute.backgroundSplit = global::EasyBike.Droid.Resource.Attribute.backgroundSplit;
-			global::GooglePlayServices.Resource.Attribute.backgroundStacked = global::EasyBike.Droid.Resource.Attribute.backgroundStacked;
-			global::GooglePlayServices.Resource.Attribute.backgroundTint = global::EasyBike.Droid.Resource.Attribute.backgroundTint;
-			global::GooglePlayServices.Resource.Attribute.backgroundTintMode = global::EasyBike.Droid.Resource.Attribute.backgroundTintMode;
-			global::GooglePlayServices.Resource.Attribute.barSize = global::EasyBike.Droid.Resource.Attribute.barSize;
-			global::GooglePlayServices.Resource.Attribute.borderlessButtonStyle = global::EasyBike.Droid.Resource.Attribute.borderlessButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.buttonBarButtonStyle = global::EasyBike.Droid.Resource.Attribute.buttonBarButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.buttonBarNegativeButtonStyle = global::EasyBike.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.buttonBarNeutralButtonStyle = global::EasyBike.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.buttonBarPositiveButtonStyle = global::EasyBike.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.buttonBarStyle = global::EasyBike.Droid.Resource.Attribute.buttonBarStyle;
-			global::GooglePlayServices.Resource.Attribute.buttonPanelSideLayout = global::EasyBike.Droid.Resource.Attribute.buttonPanelSideLayout;
-			global::GooglePlayServices.Resource.Attribute.buttonStyle = global::EasyBike.Droid.Resource.Attribute.buttonStyle;
-			global::GooglePlayServices.Resource.Attribute.buttonStyleSmall = global::EasyBike.Droid.Resource.Attribute.buttonStyleSmall;
-			global::GooglePlayServices.Resource.Attribute.buyButtonAppearance = global::EasyBike.Droid.Resource.Attribute.buyButtonAppearance;
-			global::GooglePlayServices.Resource.Attribute.buyButtonHeight = global::EasyBike.Droid.Resource.Attribute.buyButtonHeight;
-			global::GooglePlayServices.Resource.Attribute.buyButtonText = global::EasyBike.Droid.Resource.Attribute.buyButtonText;
-			global::GooglePlayServices.Resource.Attribute.buyButtonWidth = global::EasyBike.Droid.Resource.Attribute.buyButtonWidth;
-			global::GooglePlayServices.Resource.Attribute.cameraBearing = global::EasyBike.Droid.Resource.Attribute.cameraBearing;
-			global::GooglePlayServices.Resource.Attribute.cameraTargetLat = global::EasyBike.Droid.Resource.Attribute.cameraTargetLat;
-			global::GooglePlayServices.Resource.Attribute.cameraTargetLng = global::EasyBike.Droid.Resource.Attribute.cameraTargetLng;
-			global::GooglePlayServices.Resource.Attribute.cameraTilt = global::EasyBike.Droid.Resource.Attribute.cameraTilt;
-			global::GooglePlayServices.Resource.Attribute.cameraZoom = global::EasyBike.Droid.Resource.Attribute.cameraZoom;
-			global::GooglePlayServices.Resource.Attribute.checkboxStyle = global::EasyBike.Droid.Resource.Attribute.checkboxStyle;
-			global::GooglePlayServices.Resource.Attribute.checkedTextViewStyle = global::EasyBike.Droid.Resource.Attribute.checkedTextViewStyle;
-			global::GooglePlayServices.Resource.Attribute.circleCrop = global::EasyBike.Droid.Resource.Attribute.circleCrop;
-			global::GooglePlayServices.Resource.Attribute.closeIcon = global::EasyBike.Droid.Resource.Attribute.closeIcon;
-			global::GooglePlayServices.Resource.Attribute.closeItemLayout = global::EasyBike.Droid.Resource.Attribute.closeItemLayout;
-			global::GooglePlayServices.Resource.Attribute.collapseContentDescription = global::EasyBike.Droid.Resource.Attribute.collapseContentDescription;
-			global::GooglePlayServices.Resource.Attribute.collapseIcon = global::EasyBike.Droid.Resource.Attribute.collapseIcon;
-			global::GooglePlayServices.Resource.Attribute.color = global::EasyBike.Droid.Resource.Attribute.color;
-			global::GooglePlayServices.Resource.Attribute.colorAccent = global::EasyBike.Droid.Resource.Attribute.colorAccent;
-			global::GooglePlayServices.Resource.Attribute.colorButtonNormal = global::EasyBike.Droid.Resource.Attribute.colorButtonNormal;
-			global::GooglePlayServices.Resource.Attribute.colorControlActivated = global::EasyBike.Droid.Resource.Attribute.colorControlActivated;
-			global::GooglePlayServices.Resource.Attribute.colorControlHighlight = global::EasyBike.Droid.Resource.Attribute.colorControlHighlight;
-			global::GooglePlayServices.Resource.Attribute.colorControlNormal = global::EasyBike.Droid.Resource.Attribute.colorControlNormal;
-			global::GooglePlayServices.Resource.Attribute.colorPrimary = global::EasyBike.Droid.Resource.Attribute.colorPrimary;
-			global::GooglePlayServices.Resource.Attribute.colorPrimaryDark = global::EasyBike.Droid.Resource.Attribute.colorPrimaryDark;
-			global::GooglePlayServices.Resource.Attribute.colorSwitchThumbNormal = global::EasyBike.Droid.Resource.Attribute.colorSwitchThumbNormal;
-			global::GooglePlayServices.Resource.Attribute.commitIcon = global::EasyBike.Droid.Resource.Attribute.commitIcon;
-			global::GooglePlayServices.Resource.Attribute.contentInsetEnd = global::EasyBike.Droid.Resource.Attribute.contentInsetEnd;
-			global::GooglePlayServices.Resource.Attribute.contentInsetLeft = global::EasyBike.Droid.Resource.Attribute.contentInsetLeft;
-			global::GooglePlayServices.Resource.Attribute.contentInsetRight = global::EasyBike.Droid.Resource.Attribute.contentInsetRight;
-			global::GooglePlayServices.Resource.Attribute.contentInsetStart = global::EasyBike.Droid.Resource.Attribute.contentInsetStart;
-			global::GooglePlayServices.Resource.Attribute.customNavigationLayout = global::EasyBike.Droid.Resource.Attribute.customNavigationLayout;
-			global::GooglePlayServices.Resource.Attribute.defaultQueryHint = global::EasyBike.Droid.Resource.Attribute.defaultQueryHint;
-			global::GooglePlayServices.Resource.Attribute.dialogPreferredPadding = global::EasyBike.Droid.Resource.Attribute.dialogPreferredPadding;
-			global::GooglePlayServices.Resource.Attribute.dialogTheme = global::EasyBike.Droid.Resource.Attribute.dialogTheme;
-			global::GooglePlayServices.Resource.Attribute.disableChildrenWhenDisabled = global::EasyBike.Droid.Resource.Attribute.disableChildrenWhenDisabled;
-			global::GooglePlayServices.Resource.Attribute.displayOptions = global::EasyBike.Droid.Resource.Attribute.displayOptions;
-			global::GooglePlayServices.Resource.Attribute.divider = global::EasyBike.Droid.Resource.Attribute.divider;
-			global::GooglePlayServices.Resource.Attribute.dividerHorizontal = global::EasyBike.Droid.Resource.Attribute.dividerHorizontal;
-			global::GooglePlayServices.Resource.Attribute.dividerPadding = global::EasyBike.Droid.Resource.Attribute.dividerPadding;
-			global::GooglePlayServices.Resource.Attribute.dividerVertical = global::EasyBike.Droid.Resource.Attribute.dividerVertical;
-			global::GooglePlayServices.Resource.Attribute.drawableSize = global::EasyBike.Droid.Resource.Attribute.drawableSize;
-			global::GooglePlayServices.Resource.Attribute.drawerArrowStyle = global::EasyBike.Droid.Resource.Attribute.drawerArrowStyle;
-			global::GooglePlayServices.Resource.Attribute.dropDownListViewStyle = global::EasyBike.Droid.Resource.Attribute.dropDownListViewStyle;
-			global::GooglePlayServices.Resource.Attribute.dropdownListPreferredItemHeight = global::EasyBike.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
-			global::GooglePlayServices.Resource.Attribute.editTextBackground = global::EasyBike.Droid.Resource.Attribute.editTextBackground;
-			global::GooglePlayServices.Resource.Attribute.editTextColor = global::EasyBike.Droid.Resource.Attribute.editTextColor;
-			global::GooglePlayServices.Resource.Attribute.editTextStyle = global::EasyBike.Droid.Resource.Attribute.editTextStyle;
-			global::GooglePlayServices.Resource.Attribute.elevation = global::EasyBike.Droid.Resource.Attribute.elevation;
-			global::GooglePlayServices.Resource.Attribute.environment = global::EasyBike.Droid.Resource.Attribute.environment;
-			global::GooglePlayServices.Resource.Attribute.expandActivityOverflowButtonDrawable = global::EasyBike.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
-			global::GooglePlayServices.Resource.Attribute.externalRouteEnabledDrawable = global::EasyBike.Droid.Resource.Attribute.externalRouteEnabledDrawable;
-			global::GooglePlayServices.Resource.Attribute.fragmentMode = global::EasyBike.Droid.Resource.Attribute.fragmentMode;
-			global::GooglePlayServices.Resource.Attribute.fragmentStyle = global::EasyBike.Droid.Resource.Attribute.fragmentStyle;
-			global::GooglePlayServices.Resource.Attribute.gapBetweenBars = global::EasyBike.Droid.Resource.Attribute.gapBetweenBars;
-			global::GooglePlayServices.Resource.Attribute.goIcon = global::EasyBike.Droid.Resource.Attribute.goIcon;
-			global::GooglePlayServices.Resource.Attribute.height = global::EasyBike.Droid.Resource.Attribute.height;
-			global::GooglePlayServices.Resource.Attribute.hideOnContentScroll = global::EasyBike.Droid.Resource.Attribute.hideOnContentScroll;
-			global::GooglePlayServices.Resource.Attribute.homeAsUpIndicator = global::EasyBike.Droid.Resource.Attribute.homeAsUpIndicator;
-			global::GooglePlayServices.Resource.Attribute.homeLayout = global::EasyBike.Droid.Resource.Attribute.homeLayout;
-			global::GooglePlayServices.Resource.Attribute.icon = global::EasyBike.Droid.Resource.Attribute.icon;
-			global::GooglePlayServices.Resource.Attribute.iconifiedByDefault = global::EasyBike.Droid.Resource.Attribute.iconifiedByDefault;
-			global::GooglePlayServices.Resource.Attribute.imageAspectRatio = global::EasyBike.Droid.Resource.Attribute.imageAspectRatio;
-			global::GooglePlayServices.Resource.Attribute.imageAspectRatioAdjust = global::EasyBike.Droid.Resource.Attribute.imageAspectRatioAdjust;
-			global::GooglePlayServices.Resource.Attribute.indeterminateProgressStyle = global::EasyBike.Droid.Resource.Attribute.indeterminateProgressStyle;
-			global::GooglePlayServices.Resource.Attribute.initialActivityCount = global::EasyBike.Droid.Resource.Attribute.initialActivityCount;
-			global::GooglePlayServices.Resource.Attribute.isLightTheme = global::EasyBike.Droid.Resource.Attribute.isLightTheme;
-			global::GooglePlayServices.Resource.Attribute.itemPadding = global::EasyBike.Droid.Resource.Attribute.itemPadding;
-			global::GooglePlayServices.Resource.Attribute.layout = global::EasyBike.Droid.Resource.Attribute.layout;
-			global::GooglePlayServices.Resource.Attribute.listChoiceBackgroundIndicator = global::EasyBike.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::GooglePlayServices.Resource.Attribute.listDividerAlertDialog = global::EasyBike.Droid.Resource.Attribute.listDividerAlertDialog;
-			global::GooglePlayServices.Resource.Attribute.listItemLayout = global::EasyBike.Droid.Resource.Attribute.listItemLayout;
-			global::GooglePlayServices.Resource.Attribute.listLayout = global::EasyBike.Droid.Resource.Attribute.listLayout;
-			global::GooglePlayServices.Resource.Attribute.listPopupWindowStyle = global::EasyBike.Droid.Resource.Attribute.listPopupWindowStyle;
-			global::GooglePlayServices.Resource.Attribute.listPreferredItemHeight = global::EasyBike.Droid.Resource.Attribute.listPreferredItemHeight;
-			global::GooglePlayServices.Resource.Attribute.listPreferredItemHeightLarge = global::EasyBike.Droid.Resource.Attribute.listPreferredItemHeightLarge;
-			global::GooglePlayServices.Resource.Attribute.listPreferredItemHeightSmall = global::EasyBike.Droid.Resource.Attribute.listPreferredItemHeightSmall;
-			global::GooglePlayServices.Resource.Attribute.listPreferredItemPaddingLeft = global::EasyBike.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
-			global::GooglePlayServices.Resource.Attribute.listPreferredItemPaddingRight = global::EasyBike.Droid.Resource.Attribute.listPreferredItemPaddingRight;
-			global::GooglePlayServices.Resource.Attribute.liteMode = global::EasyBike.Droid.Resource.Attribute.liteMode;
-			global::GooglePlayServices.Resource.Attribute.logo = global::EasyBike.Droid.Resource.Attribute.logo;
-			global::GooglePlayServices.Resource.Attribute.mapType = global::EasyBike.Droid.Resource.Attribute.mapType;
-			global::GooglePlayServices.Resource.Attribute.maskedWalletDetailsBackground = global::EasyBike.Droid.Resource.Attribute.maskedWalletDetailsBackground;
-			global::GooglePlayServices.Resource.Attribute.maskedWalletDetailsButtonBackground = global::EasyBike.Droid.Resource.Attribute.maskedWalletDetailsButtonBackground;
-			global::GooglePlayServices.Resource.Attribute.maskedWalletDetailsButtonTextAppearance = global::EasyBike.Droid.Resource.Attribute.maskedWalletDetailsButtonTextAppearance;
-			global::GooglePlayServices.Resource.Attribute.maskedWalletDetailsHeaderTextAppearance = global::EasyBike.Droid.Resource.Attribute.maskedWalletDetailsHeaderTextAppearance;
-			global::GooglePlayServices.Resource.Attribute.maskedWalletDetailsLogoImageType = global::EasyBike.Droid.Resource.Attribute.maskedWalletDetailsLogoImageType;
-			global::GooglePlayServices.Resource.Attribute.maskedWalletDetailsLogoTextColor = global::EasyBike.Droid.Resource.Attribute.maskedWalletDetailsLogoTextColor;
-			global::GooglePlayServices.Resource.Attribute.maskedWalletDetailsTextAppearance = global::EasyBike.Droid.Resource.Attribute.maskedWalletDetailsTextAppearance;
-			global::GooglePlayServices.Resource.Attribute.maxButtonHeight = global::EasyBike.Droid.Resource.Attribute.maxButtonHeight;
-			global::GooglePlayServices.Resource.Attribute.measureWithLargestChild = global::EasyBike.Droid.Resource.Attribute.measureWithLargestChild;
-			global::GooglePlayServices.Resource.Attribute.mediaRouteButtonStyle = global::EasyBike.Droid.Resource.Attribute.mediaRouteButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.mediaRouteConnectingDrawable = global::EasyBike.Droid.Resource.Attribute.mediaRouteConnectingDrawable;
-			global::GooglePlayServices.Resource.Attribute.mediaRouteOffDrawable = global::EasyBike.Droid.Resource.Attribute.mediaRouteOffDrawable;
-			global::GooglePlayServices.Resource.Attribute.mediaRouteOnDrawable = global::EasyBike.Droid.Resource.Attribute.mediaRouteOnDrawable;
-			global::GooglePlayServices.Resource.Attribute.mediaRoutePauseDrawable = global::EasyBike.Droid.Resource.Attribute.mediaRoutePauseDrawable;
-			global::GooglePlayServices.Resource.Attribute.mediaRoutePlayDrawable = global::EasyBike.Droid.Resource.Attribute.mediaRoutePlayDrawable;
-			global::GooglePlayServices.Resource.Attribute.mediaRouteSettingsDrawable = global::EasyBike.Droid.Resource.Attribute.mediaRouteSettingsDrawable;
-			global::GooglePlayServices.Resource.Attribute.middleBarArrowSize = global::EasyBike.Droid.Resource.Attribute.middleBarArrowSize;
-			global::GooglePlayServices.Resource.Attribute.multiChoiceItemLayout = global::EasyBike.Droid.Resource.Attribute.multiChoiceItemLayout;
-			global::GooglePlayServices.Resource.Attribute.navigationContentDescription = global::EasyBike.Droid.Resource.Attribute.navigationContentDescription;
-			global::GooglePlayServices.Resource.Attribute.navigationIcon = global::EasyBike.Droid.Resource.Attribute.navigationIcon;
-			global::GooglePlayServices.Resource.Attribute.navigationMode = global::EasyBike.Droid.Resource.Attribute.navigationMode;
-			global::GooglePlayServices.Resource.Attribute.overlapAnchor = global::EasyBike.Droid.Resource.Attribute.overlapAnchor;
-			global::GooglePlayServices.Resource.Attribute.paddingEnd = global::EasyBike.Droid.Resource.Attribute.paddingEnd;
-			global::GooglePlayServices.Resource.Attribute.paddingStart = global::EasyBike.Droid.Resource.Attribute.paddingStart;
-			global::GooglePlayServices.Resource.Attribute.panelBackground = global::EasyBike.Droid.Resource.Attribute.panelBackground;
-			global::GooglePlayServices.Resource.Attribute.panelMenuListTheme = global::EasyBike.Droid.Resource.Attribute.panelMenuListTheme;
-			global::GooglePlayServices.Resource.Attribute.panelMenuListWidth = global::EasyBike.Droid.Resource.Attribute.panelMenuListWidth;
-			global::GooglePlayServices.Resource.Attribute.popupMenuStyle = global::EasyBike.Droid.Resource.Attribute.popupMenuStyle;
-			global::GooglePlayServices.Resource.Attribute.popupPromptView = global::EasyBike.Droid.Resource.Attribute.popupPromptView;
-			global::GooglePlayServices.Resource.Attribute.popupTheme = global::EasyBike.Droid.Resource.Attribute.popupTheme;
-			global::GooglePlayServices.Resource.Attribute.popupWindowStyle = global::EasyBike.Droid.Resource.Attribute.popupWindowStyle;
-			global::GooglePlayServices.Resource.Attribute.preserveIconSpacing = global::EasyBike.Droid.Resource.Attribute.preserveIconSpacing;
-			global::GooglePlayServices.Resource.Attribute.progressBarPadding = global::EasyBike.Droid.Resource.Attribute.progressBarPadding;
-			global::GooglePlayServices.Resource.Attribute.progressBarStyle = global::EasyBike.Droid.Resource.Attribute.progressBarStyle;
-			global::GooglePlayServices.Resource.Attribute.prompt = global::EasyBike.Droid.Resource.Attribute.prompt;
-			global::GooglePlayServices.Resource.Attribute.queryBackground = global::EasyBike.Droid.Resource.Attribute.queryBackground;
-			global::GooglePlayServices.Resource.Attribute.queryHint = global::EasyBike.Droid.Resource.Attribute.queryHint;
-			global::GooglePlayServices.Resource.Attribute.radioButtonStyle = global::EasyBike.Droid.Resource.Attribute.radioButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.ratingBarStyle = global::EasyBike.Droid.Resource.Attribute.ratingBarStyle;
-			global::GooglePlayServices.Resource.Attribute.searchHintIcon = global::EasyBike.Droid.Resource.Attribute.searchHintIcon;
-			global::GooglePlayServices.Resource.Attribute.searchIcon = global::EasyBike.Droid.Resource.Attribute.searchIcon;
-			global::GooglePlayServices.Resource.Attribute.searchViewStyle = global::EasyBike.Droid.Resource.Attribute.searchViewStyle;
-			global::GooglePlayServices.Resource.Attribute.selectableItemBackground = global::EasyBike.Droid.Resource.Attribute.selectableItemBackground;
-			global::GooglePlayServices.Resource.Attribute.selectableItemBackgroundBorderless = global::EasyBike.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
-			global::GooglePlayServices.Resource.Attribute.showAsAction = global::EasyBike.Droid.Resource.Attribute.showAsAction;
-			global::GooglePlayServices.Resource.Attribute.showDividers = global::EasyBike.Droid.Resource.Attribute.showDividers;
-			global::GooglePlayServices.Resource.Attribute.showText = global::EasyBike.Droid.Resource.Attribute.showText;
-			global::GooglePlayServices.Resource.Attribute.singleChoiceItemLayout = global::EasyBike.Droid.Resource.Attribute.singleChoiceItemLayout;
-			global::GooglePlayServices.Resource.Attribute.spinBars = global::EasyBike.Droid.Resource.Attribute.spinBars;
-			global::GooglePlayServices.Resource.Attribute.spinnerDropDownItemStyle = global::EasyBike.Droid.Resource.Attribute.spinnerDropDownItemStyle;
-			global::GooglePlayServices.Resource.Attribute.spinnerMode = global::EasyBike.Droid.Resource.Attribute.spinnerMode;
-			global::GooglePlayServices.Resource.Attribute.spinnerStyle = global::EasyBike.Droid.Resource.Attribute.spinnerStyle;
-			global::GooglePlayServices.Resource.Attribute.splitTrack = global::EasyBike.Droid.Resource.Attribute.splitTrack;
-			global::GooglePlayServices.Resource.Attribute.state_above_anchor = global::EasyBike.Droid.Resource.Attribute.state_above_anchor;
-			global::GooglePlayServices.Resource.Attribute.submitBackground = global::EasyBike.Droid.Resource.Attribute.submitBackground;
-			global::GooglePlayServices.Resource.Attribute.subtitle = global::EasyBike.Droid.Resource.Attribute.subtitle;
-			global::GooglePlayServices.Resource.Attribute.subtitleTextAppearance = global::EasyBike.Droid.Resource.Attribute.subtitleTextAppearance;
-			global::GooglePlayServices.Resource.Attribute.subtitleTextStyle = global::EasyBike.Droid.Resource.Attribute.subtitleTextStyle;
-			global::GooglePlayServices.Resource.Attribute.suggestionRowLayout = global::EasyBike.Droid.Resource.Attribute.suggestionRowLayout;
-			global::GooglePlayServices.Resource.Attribute.switchMinWidth = global::EasyBike.Droid.Resource.Attribute.switchMinWidth;
-			global::GooglePlayServices.Resource.Attribute.switchPadding = global::EasyBike.Droid.Resource.Attribute.switchPadding;
-			global::GooglePlayServices.Resource.Attribute.switchStyle = global::EasyBike.Droid.Resource.Attribute.switchStyle;
-			global::GooglePlayServices.Resource.Attribute.switchTextAppearance = global::EasyBike.Droid.Resource.Attribute.switchTextAppearance;
-			global::GooglePlayServices.Resource.Attribute.textAllCaps = global::EasyBike.Droid.Resource.Attribute.textAllCaps;
-			global::GooglePlayServices.Resource.Attribute.textAppearanceLargePopupMenu = global::EasyBike.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
-			global::GooglePlayServices.Resource.Attribute.textAppearanceListItem = global::EasyBike.Droid.Resource.Attribute.textAppearanceListItem;
-			global::GooglePlayServices.Resource.Attribute.textAppearanceListItemSmall = global::EasyBike.Droid.Resource.Attribute.textAppearanceListItemSmall;
-			global::GooglePlayServices.Resource.Attribute.textAppearanceSearchResultSubtitle = global::EasyBike.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
-			global::GooglePlayServices.Resource.Attribute.textAppearanceSearchResultTitle = global::EasyBike.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
-			global::GooglePlayServices.Resource.Attribute.textAppearanceSmallPopupMenu = global::EasyBike.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
-			global::GooglePlayServices.Resource.Attribute.textColorAlertDialogListItem = global::EasyBike.Droid.Resource.Attribute.textColorAlertDialogListItem;
-			global::GooglePlayServices.Resource.Attribute.textColorSearchUrl = global::EasyBike.Droid.Resource.Attribute.textColorSearchUrl;
-			global::GooglePlayServices.Resource.Attribute.theme = global::EasyBike.Droid.Resource.Attribute.theme;
-			global::GooglePlayServices.Resource.Attribute.thickness = global::EasyBike.Droid.Resource.Attribute.thickness;
-			global::GooglePlayServices.Resource.Attribute.thumbTextPadding = global::EasyBike.Droid.Resource.Attribute.thumbTextPadding;
-			global::GooglePlayServices.Resource.Attribute.title = global::EasyBike.Droid.Resource.Attribute.title;
-			global::GooglePlayServices.Resource.Attribute.titleMarginBottom = global::EasyBike.Droid.Resource.Attribute.titleMarginBottom;
-			global::GooglePlayServices.Resource.Attribute.titleMarginEnd = global::EasyBike.Droid.Resource.Attribute.titleMarginEnd;
-			global::GooglePlayServices.Resource.Attribute.titleMarginStart = global::EasyBike.Droid.Resource.Attribute.titleMarginStart;
-			global::GooglePlayServices.Resource.Attribute.titleMarginTop = global::EasyBike.Droid.Resource.Attribute.titleMarginTop;
-			global::GooglePlayServices.Resource.Attribute.titleMargins = global::EasyBike.Droid.Resource.Attribute.titleMargins;
-			global::GooglePlayServices.Resource.Attribute.titleTextAppearance = global::EasyBike.Droid.Resource.Attribute.titleTextAppearance;
-			global::GooglePlayServices.Resource.Attribute.titleTextStyle = global::EasyBike.Droid.Resource.Attribute.titleTextStyle;
-			global::GooglePlayServices.Resource.Attribute.toolbarNavigationButtonStyle = global::EasyBike.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
-			global::GooglePlayServices.Resource.Attribute.toolbarStyle = global::EasyBike.Droid.Resource.Attribute.toolbarStyle;
-			global::GooglePlayServices.Resource.Attribute.topBottomBarArrowSize = global::EasyBike.Droid.Resource.Attribute.topBottomBarArrowSize;
-			global::GooglePlayServices.Resource.Attribute.track = global::EasyBike.Droid.Resource.Attribute.track;
-			global::GooglePlayServices.Resource.Attribute.uiCompass = global::EasyBike.Droid.Resource.Attribute.uiCompass;
-			global::GooglePlayServices.Resource.Attribute.uiMapToolbar = global::EasyBike.Droid.Resource.Attribute.uiMapToolbar;
-			global::GooglePlayServices.Resource.Attribute.uiRotateGestures = global::EasyBike.Droid.Resource.Attribute.uiRotateGestures;
-			global::GooglePlayServices.Resource.Attribute.uiScrollGestures = global::EasyBike.Droid.Resource.Attribute.uiScrollGestures;
-			global::GooglePlayServices.Resource.Attribute.uiTiltGestures = global::EasyBike.Droid.Resource.Attribute.uiTiltGestures;
-			global::GooglePlayServices.Resource.Attribute.uiZoomControls = global::EasyBike.Droid.Resource.Attribute.uiZoomControls;
-			global::GooglePlayServices.Resource.Attribute.uiZoomGestures = global::EasyBike.Droid.Resource.Attribute.uiZoomGestures;
-			global::GooglePlayServices.Resource.Attribute.useViewLifecycle = global::EasyBike.Droid.Resource.Attribute.useViewLifecycle;
-			global::GooglePlayServices.Resource.Attribute.voiceIcon = global::EasyBike.Droid.Resource.Attribute.voiceIcon;
-			global::GooglePlayServices.Resource.Attribute.windowActionBar = global::EasyBike.Droid.Resource.Attribute.windowActionBar;
-			global::GooglePlayServices.Resource.Attribute.windowActionBarOverlay = global::EasyBike.Droid.Resource.Attribute.windowActionBarOverlay;
-			global::GooglePlayServices.Resource.Attribute.windowActionModeOverlay = global::EasyBike.Droid.Resource.Attribute.windowActionModeOverlay;
-			global::GooglePlayServices.Resource.Attribute.windowFixedHeightMajor = global::EasyBike.Droid.Resource.Attribute.windowFixedHeightMajor;
-			global::GooglePlayServices.Resource.Attribute.windowFixedHeightMinor = global::EasyBike.Droid.Resource.Attribute.windowFixedHeightMinor;
-			global::GooglePlayServices.Resource.Attribute.windowFixedWidthMajor = global::EasyBike.Droid.Resource.Attribute.windowFixedWidthMajor;
-			global::GooglePlayServices.Resource.Attribute.windowFixedWidthMinor = global::EasyBike.Droid.Resource.Attribute.windowFixedWidthMinor;
-			global::GooglePlayServices.Resource.Attribute.windowMinWidthMajor = global::EasyBike.Droid.Resource.Attribute.windowMinWidthMajor;
-			global::GooglePlayServices.Resource.Attribute.windowMinWidthMinor = global::EasyBike.Droid.Resource.Attribute.windowMinWidthMinor;
-			global::GooglePlayServices.Resource.Attribute.windowNoTitle = global::EasyBike.Droid.Resource.Attribute.windowNoTitle;
-			global::GooglePlayServices.Resource.Attribute.windowTransitionStyle = global::EasyBike.Droid.Resource.Attribute.windowTransitionStyle;
-			global::GooglePlayServices.Resource.Attribute.zOrderOnTop = global::EasyBike.Droid.Resource.Attribute.zOrderOnTop;
-			global::GooglePlayServices.Resource.Boolean.abc_action_bar_embed_tabs = global::EasyBike.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
-			global::GooglePlayServices.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb = global::EasyBike.Droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb;
-			global::GooglePlayServices.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive = global::EasyBike.Droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive;
-			global::GooglePlayServices.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::EasyBike.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
-			global::GooglePlayServices.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon = global::EasyBike.Droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon;
-			global::GooglePlayServices.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::EasyBike.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
-			global::GooglePlayServices.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::EasyBike.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
-			global::GooglePlayServices.Resource.Color.abc_background_cache_hint_selector_material_dark = global::EasyBike.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
-			global::GooglePlayServices.Resource.Color.abc_background_cache_hint_selector_material_light = global::EasyBike.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
-			global::GooglePlayServices.Resource.Color.abc_input_method_navigation_guard = global::EasyBike.Droid.Resource.Color.abc_input_method_navigation_guard;
-			global::GooglePlayServices.Resource.Color.abc_primary_text_disable_only_material_dark = global::EasyBike.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
-			global::GooglePlayServices.Resource.Color.abc_primary_text_disable_only_material_light = global::EasyBike.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
-			global::GooglePlayServices.Resource.Color.abc_primary_text_material_dark = global::EasyBike.Droid.Resource.Color.abc_primary_text_material_dark;
-			global::GooglePlayServices.Resource.Color.abc_primary_text_material_light = global::EasyBike.Droid.Resource.Color.abc_primary_text_material_light;
-			global::GooglePlayServices.Resource.Color.abc_search_url_text = global::EasyBike.Droid.Resource.Color.abc_search_url_text;
-			global::GooglePlayServices.Resource.Color.abc_search_url_text_normal = global::EasyBike.Droid.Resource.Color.abc_search_url_text_normal;
-			global::GooglePlayServices.Resource.Color.abc_search_url_text_pressed = global::EasyBike.Droid.Resource.Color.abc_search_url_text_pressed;
-			global::GooglePlayServices.Resource.Color.abc_search_url_text_selected = global::EasyBike.Droid.Resource.Color.abc_search_url_text_selected;
-			global::GooglePlayServices.Resource.Color.abc_secondary_text_material_dark = global::EasyBike.Droid.Resource.Color.abc_secondary_text_material_dark;
-			global::GooglePlayServices.Resource.Color.abc_secondary_text_material_light = global::EasyBike.Droid.Resource.Color.abc_secondary_text_material_light;
-			global::GooglePlayServices.Resource.Color.accent_material_dark = global::EasyBike.Droid.Resource.Color.accent_material_dark;
-			global::GooglePlayServices.Resource.Color.accent_material_light = global::EasyBike.Droid.Resource.Color.accent_material_light;
-			global::GooglePlayServices.Resource.Color.background_floating_material_dark = global::EasyBike.Droid.Resource.Color.background_floating_material_dark;
-			global::GooglePlayServices.Resource.Color.background_floating_material_light = global::EasyBike.Droid.Resource.Color.background_floating_material_light;
-			global::GooglePlayServices.Resource.Color.background_material_dark = global::EasyBike.Droid.Resource.Color.background_material_dark;
-			global::GooglePlayServices.Resource.Color.background_material_light = global::EasyBike.Droid.Resource.Color.background_material_light;
-			global::GooglePlayServices.Resource.Color.bright_foreground_disabled_material_dark = global::EasyBike.Droid.Resource.Color.bright_foreground_disabled_material_dark;
-			global::GooglePlayServices.Resource.Color.bright_foreground_disabled_material_light = global::EasyBike.Droid.Resource.Color.bright_foreground_disabled_material_light;
-			global::GooglePlayServices.Resource.Color.bright_foreground_inverse_material_dark = global::EasyBike.Droid.Resource.Color.bright_foreground_inverse_material_dark;
-			global::GooglePlayServices.Resource.Color.bright_foreground_inverse_material_light = global::EasyBike.Droid.Resource.Color.bright_foreground_inverse_material_light;
-			global::GooglePlayServices.Resource.Color.bright_foreground_material_dark = global::EasyBike.Droid.Resource.Color.bright_foreground_material_dark;
-			global::GooglePlayServices.Resource.Color.bright_foreground_material_light = global::EasyBike.Droid.Resource.Color.bright_foreground_material_light;
-			global::GooglePlayServices.Resource.Color.button_material_dark = global::EasyBike.Droid.Resource.Color.button_material_dark;
-			global::GooglePlayServices.Resource.Color.button_material_light = global::EasyBike.Droid.Resource.Color.button_material_light;
-			global::GooglePlayServices.Resource.Color.common_action_bar_splitter = global::EasyBike.Droid.Resource.Color.common_action_bar_splitter;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_dark_text_default = global::EasyBike.Droid.Resource.Color.common_signin_btn_dark_text_default;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_dark_text_disabled = global::EasyBike.Droid.Resource.Color.common_signin_btn_dark_text_disabled;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_dark_text_focused = global::EasyBike.Droid.Resource.Color.common_signin_btn_dark_text_focused;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_dark_text_pressed = global::EasyBike.Droid.Resource.Color.common_signin_btn_dark_text_pressed;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_default_background = global::EasyBike.Droid.Resource.Color.common_signin_btn_default_background;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_light_text_default = global::EasyBike.Droid.Resource.Color.common_signin_btn_light_text_default;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_light_text_disabled = global::EasyBike.Droid.Resource.Color.common_signin_btn_light_text_disabled;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_light_text_focused = global::EasyBike.Droid.Resource.Color.common_signin_btn_light_text_focused;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_light_text_pressed = global::EasyBike.Droid.Resource.Color.common_signin_btn_light_text_pressed;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_text_dark = global::EasyBike.Droid.Resource.Color.common_signin_btn_text_dark;
-			global::GooglePlayServices.Resource.Color.common_signin_btn_text_light = global::EasyBike.Droid.Resource.Color.common_signin_btn_text_light;
-			global::GooglePlayServices.Resource.Color.dim_foreground_disabled_material_dark = global::EasyBike.Droid.Resource.Color.dim_foreground_disabled_material_dark;
-			global::GooglePlayServices.Resource.Color.dim_foreground_disabled_material_light = global::EasyBike.Droid.Resource.Color.dim_foreground_disabled_material_light;
-			global::GooglePlayServices.Resource.Color.dim_foreground_material_dark = global::EasyBike.Droid.Resource.Color.dim_foreground_material_dark;
-			global::GooglePlayServices.Resource.Color.dim_foreground_material_light = global::EasyBike.Droid.Resource.Color.dim_foreground_material_light;
-			global::GooglePlayServices.Resource.Color.highlighted_text_material_dark = global::EasyBike.Droid.Resource.Color.highlighted_text_material_dark;
-			global::GooglePlayServices.Resource.Color.highlighted_text_material_light = global::EasyBike.Droid.Resource.Color.highlighted_text_material_light;
-			global::GooglePlayServices.Resource.Color.hint_foreground_material_dark = global::EasyBike.Droid.Resource.Color.hint_foreground_material_dark;
-			global::GooglePlayServices.Resource.Color.hint_foreground_material_light = global::EasyBike.Droid.Resource.Color.hint_foreground_material_light;
-			global::GooglePlayServices.Resource.Color.link_text_material_dark = global::EasyBike.Droid.Resource.Color.link_text_material_dark;
-			global::GooglePlayServices.Resource.Color.link_text_material_light = global::EasyBike.Droid.Resource.Color.link_text_material_light;
-			global::GooglePlayServices.Resource.Color.material_blue_grey_800 = global::EasyBike.Droid.Resource.Color.material_blue_grey_800;
-			global::GooglePlayServices.Resource.Color.material_blue_grey_900 = global::EasyBike.Droid.Resource.Color.material_blue_grey_900;
-			global::GooglePlayServices.Resource.Color.material_blue_grey_950 = global::EasyBike.Droid.Resource.Color.material_blue_grey_950;
-			global::GooglePlayServices.Resource.Color.material_deep_teal_200 = global::EasyBike.Droid.Resource.Color.material_deep_teal_200;
-			global::GooglePlayServices.Resource.Color.material_deep_teal_500 = global::EasyBike.Droid.Resource.Color.material_deep_teal_500;
-			global::GooglePlayServices.Resource.Color.primary_dark_material_dark = global::EasyBike.Droid.Resource.Color.primary_dark_material_dark;
-			global::GooglePlayServices.Resource.Color.primary_dark_material_light = global::EasyBike.Droid.Resource.Color.primary_dark_material_light;
-			global::GooglePlayServices.Resource.Color.primary_material_dark = global::EasyBike.Droid.Resource.Color.primary_material_dark;
-			global::GooglePlayServices.Resource.Color.primary_material_light = global::EasyBike.Droid.Resource.Color.primary_material_light;
-			global::GooglePlayServices.Resource.Color.primary_text_default_material_dark = global::EasyBike.Droid.Resource.Color.primary_text_default_material_dark;
-			global::GooglePlayServices.Resource.Color.primary_text_default_material_light = global::EasyBike.Droid.Resource.Color.primary_text_default_material_light;
-			global::GooglePlayServices.Resource.Color.primary_text_disabled_material_dark = global::EasyBike.Droid.Resource.Color.primary_text_disabled_material_dark;
-			global::GooglePlayServices.Resource.Color.primary_text_disabled_material_light = global::EasyBike.Droid.Resource.Color.primary_text_disabled_material_light;
-			global::GooglePlayServices.Resource.Color.ripple_material_dark = global::EasyBike.Droid.Resource.Color.ripple_material_dark;
-			global::GooglePlayServices.Resource.Color.ripple_material_light = global::EasyBike.Droid.Resource.Color.ripple_material_light;
-			global::GooglePlayServices.Resource.Color.secondary_text_default_material_dark = global::EasyBike.Droid.Resource.Color.secondary_text_default_material_dark;
-			global::GooglePlayServices.Resource.Color.secondary_text_default_material_light = global::EasyBike.Droid.Resource.Color.secondary_text_default_material_light;
-			global::GooglePlayServices.Resource.Color.secondary_text_disabled_material_dark = global::EasyBike.Droid.Resource.Color.secondary_text_disabled_material_dark;
-			global::GooglePlayServices.Resource.Color.secondary_text_disabled_material_light = global::EasyBike.Droid.Resource.Color.secondary_text_disabled_material_light;
-			global::GooglePlayServices.Resource.Color.switch_thumb_disabled_material_dark = global::EasyBike.Droid.Resource.Color.switch_thumb_disabled_material_dark;
-			global::GooglePlayServices.Resource.Color.switch_thumb_disabled_material_light = global::EasyBike.Droid.Resource.Color.switch_thumb_disabled_material_light;
-			global::GooglePlayServices.Resource.Color.switch_thumb_material_dark = global::EasyBike.Droid.Resource.Color.switch_thumb_material_dark;
-			global::GooglePlayServices.Resource.Color.switch_thumb_material_light = global::EasyBike.Droid.Resource.Color.switch_thumb_material_light;
-			global::GooglePlayServices.Resource.Color.switch_thumb_normal_material_dark = global::EasyBike.Droid.Resource.Color.switch_thumb_normal_material_dark;
-			global::GooglePlayServices.Resource.Color.switch_thumb_normal_material_light = global::EasyBike.Droid.Resource.Color.switch_thumb_normal_material_light;
-			global::GooglePlayServices.Resource.Color.wallet_bright_foreground_disabled_holo_light = global::EasyBike.Droid.Resource.Color.wallet_bright_foreground_disabled_holo_light;
-			global::GooglePlayServices.Resource.Color.wallet_bright_foreground_holo_dark = global::EasyBike.Droid.Resource.Color.wallet_bright_foreground_holo_dark;
-			global::GooglePlayServices.Resource.Color.wallet_bright_foreground_holo_light = global::EasyBike.Droid.Resource.Color.wallet_bright_foreground_holo_light;
-			global::GooglePlayServices.Resource.Color.wallet_dim_foreground_disabled_holo_dark = global::EasyBike.Droid.Resource.Color.wallet_dim_foreground_disabled_holo_dark;
-			global::GooglePlayServices.Resource.Color.wallet_dim_foreground_holo_dark = global::EasyBike.Droid.Resource.Color.wallet_dim_foreground_holo_dark;
-			global::GooglePlayServices.Resource.Color.wallet_dim_foreground_inverse_disabled_holo_dark = global::EasyBike.Droid.Resource.Color.wallet_dim_foreground_inverse_disabled_holo_dark;
-			global::GooglePlayServices.Resource.Color.wallet_dim_foreground_inverse_holo_dark = global::EasyBike.Droid.Resource.Color.wallet_dim_foreground_inverse_holo_dark;
-			global::GooglePlayServices.Resource.Color.wallet_highlighted_text_holo_dark = global::EasyBike.Droid.Resource.Color.wallet_highlighted_text_holo_dark;
-			global::GooglePlayServices.Resource.Color.wallet_highlighted_text_holo_light = global::EasyBike.Droid.Resource.Color.wallet_highlighted_text_holo_light;
-			global::GooglePlayServices.Resource.Color.wallet_hint_foreground_holo_dark = global::EasyBike.Droid.Resource.Color.wallet_hint_foreground_holo_dark;
-			global::GooglePlayServices.Resource.Color.wallet_hint_foreground_holo_light = global::EasyBike.Droid.Resource.Color.wallet_hint_foreground_holo_light;
-			global::GooglePlayServices.Resource.Color.wallet_holo_blue_light = global::EasyBike.Droid.Resource.Color.wallet_holo_blue_light;
-			global::GooglePlayServices.Resource.Color.wallet_link_text_light = global::EasyBike.Droid.Resource.Color.wallet_link_text_light;
-			global::GooglePlayServices.Resource.Color.wallet_primary_text_holo_light = global::EasyBike.Droid.Resource.Color.wallet_primary_text_holo_light;
-			global::GooglePlayServices.Resource.Color.wallet_secondary_text_holo_dark = global::EasyBike.Droid.Resource.Color.wallet_secondary_text_holo_dark;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_content_inset_material = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_default_height_material = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_default_height_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_default_padding_material = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_default_padding_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_navigation_padding_start_material = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_navigation_padding_start_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_progress_bar_size = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_stacked_max_height = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::EasyBike.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_button_min_height_material = global::EasyBike.Droid.Resource.Dimension.abc_action_button_min_height_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_button_min_width_material = global::EasyBike.Droid.Resource.Dimension.abc_action_button_min_width_material;
-			global::GooglePlayServices.Resource.Dimension.abc_action_button_min_width_overflow_material = global::EasyBike.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
-			global::GooglePlayServices.Resource.Dimension.abc_alert_dialog_button_bar_height = global::EasyBike.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
-			global::GooglePlayServices.Resource.Dimension.abc_button_inset_horizontal_material = global::EasyBike.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
-			global::GooglePlayServices.Resource.Dimension.abc_button_inset_vertical_material = global::EasyBike.Droid.Resource.Dimension.abc_button_inset_vertical_material;
-			global::GooglePlayServices.Resource.Dimension.abc_button_padding_horizontal_material = global::EasyBike.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
-			global::GooglePlayServices.Resource.Dimension.abc_button_padding_vertical_material = global::EasyBike.Droid.Resource.Dimension.abc_button_padding_vertical_material;
-			global::GooglePlayServices.Resource.Dimension.abc_config_prefDialogWidth = global::EasyBike.Droid.Resource.Dimension.abc_config_prefDialogWidth;
-			global::GooglePlayServices.Resource.Dimension.abc_control_corner_material = global::EasyBike.Droid.Resource.Dimension.abc_control_corner_material;
-			global::GooglePlayServices.Resource.Dimension.abc_control_inset_material = global::EasyBike.Droid.Resource.Dimension.abc_control_inset_material;
-			global::GooglePlayServices.Resource.Dimension.abc_control_padding_material = global::EasyBike.Droid.Resource.Dimension.abc_control_padding_material;
-			global::GooglePlayServices.Resource.Dimension.abc_dialog_list_padding_vertical_material = global::EasyBike.Droid.Resource.Dimension.abc_dialog_list_padding_vertical_material;
-			global::GooglePlayServices.Resource.Dimension.abc_dialog_min_width_major = global::EasyBike.Droid.Resource.Dimension.abc_dialog_min_width_major;
-			global::GooglePlayServices.Resource.Dimension.abc_dialog_min_width_minor = global::EasyBike.Droid.Resource.Dimension.abc_dialog_min_width_minor;
-			global::GooglePlayServices.Resource.Dimension.abc_dialog_padding_material = global::EasyBike.Droid.Resource.Dimension.abc_dialog_padding_material;
-			global::GooglePlayServices.Resource.Dimension.abc_dialog_padding_top_material = global::EasyBike.Droid.Resource.Dimension.abc_dialog_padding_top_material;
-			global::GooglePlayServices.Resource.Dimension.abc_disabled_alpha_material_dark = global::EasyBike.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
-			global::GooglePlayServices.Resource.Dimension.abc_disabled_alpha_material_light = global::EasyBike.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
-			global::GooglePlayServices.Resource.Dimension.abc_dropdownitem_icon_width = global::EasyBike.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
-			global::GooglePlayServices.Resource.Dimension.abc_dropdownitem_text_padding_left = global::EasyBike.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
-			global::GooglePlayServices.Resource.Dimension.abc_dropdownitem_text_padding_right = global::EasyBike.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
-			global::GooglePlayServices.Resource.Dimension.abc_edit_text_inset_bottom_material = global::EasyBike.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
-			global::GooglePlayServices.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::EasyBike.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
-			global::GooglePlayServices.Resource.Dimension.abc_edit_text_inset_top_material = global::EasyBike.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
-			global::GooglePlayServices.Resource.Dimension.abc_floating_window_z = global::EasyBike.Droid.Resource.Dimension.abc_floating_window_z;
-			global::GooglePlayServices.Resource.Dimension.abc_list_item_padding_horizontal_material = global::EasyBike.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
-			global::GooglePlayServices.Resource.Dimension.abc_panel_menu_list_width = global::EasyBike.Droid.Resource.Dimension.abc_panel_menu_list_width;
-			global::GooglePlayServices.Resource.Dimension.abc_search_view_preferred_width = global::EasyBike.Droid.Resource.Dimension.abc_search_view_preferred_width;
-			global::GooglePlayServices.Resource.Dimension.abc_search_view_text_min_width = global::EasyBike.Droid.Resource.Dimension.abc_search_view_text_min_width;
-			global::GooglePlayServices.Resource.Dimension.abc_switch_padding = global::EasyBike.Droid.Resource.Dimension.abc_switch_padding;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_body_1_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_body_1_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_body_2_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_body_2_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_button_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_button_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_caption_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_caption_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_display_1_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_display_1_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_display_2_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_display_2_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_display_3_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_display_3_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_display_4_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_display_4_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_headline_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_headline_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_large_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_large_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_medium_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_medium_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_menu_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_menu_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_small_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_small_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_subhead_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_subhead_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::EasyBike.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_title_material = global::EasyBike.Droid.Resource.Dimension.abc_text_size_title_material;
-			global::GooglePlayServices.Resource.Dimension.abc_text_size_title_material_toolbar = global::EasyBike.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
-			global::GooglePlayServices.Resource.Dimension.dialog_fixed_height_major = global::EasyBike.Droid.Resource.Dimension.dialog_fixed_height_major;
-			global::GooglePlayServices.Resource.Dimension.dialog_fixed_height_minor = global::EasyBike.Droid.Resource.Dimension.dialog_fixed_height_minor;
-			global::GooglePlayServices.Resource.Dimension.dialog_fixed_width_major = global::EasyBike.Droid.Resource.Dimension.dialog_fixed_width_major;
-			global::GooglePlayServices.Resource.Dimension.dialog_fixed_width_minor = global::EasyBike.Droid.Resource.Dimension.dialog_fixed_width_minor;
-			global::GooglePlayServices.Resource.Dimension.disabled_alpha_material_dark = global::EasyBike.Droid.Resource.Dimension.disabled_alpha_material_dark;
-			global::GooglePlayServices.Resource.Dimension.disabled_alpha_material_light = global::EasyBike.Droid.Resource.Dimension.disabled_alpha_material_light;
-			global::GooglePlayServices.Resource.Dimension.mr_media_route_controller_art_max_height = global::EasyBike.Droid.Resource.Dimension.mr_media_route_controller_art_max_height;
-			global::GooglePlayServices.Resource.Dimension.notification_large_icon_height = global::EasyBike.Droid.Resource.Dimension.notification_large_icon_height;
-			global::GooglePlayServices.Resource.Dimension.notification_large_icon_width = global::EasyBike.Droid.Resource.Dimension.notification_large_icon_width;
-			global::GooglePlayServices.Resource.Dimension.notification_subtext_size = global::EasyBike.Droid.Resource.Dimension.notification_subtext_size;
-			global::GooglePlayServices.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_borderless_material = global::EasyBike.Droid.Resource.Drawable.abc_btn_borderless_material;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_check_material = global::EasyBike.Droid.Resource.Drawable.abc_btn_check_material;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::EasyBike.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::EasyBike.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_default_mtrl_shape = global::EasyBike.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_radio_material = global::EasyBike.Droid.Resource.Drawable.abc_btn_radio_material;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::EasyBike.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::EasyBike.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::EasyBike.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
-			global::GooglePlayServices.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::EasyBike.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
-			global::GooglePlayServices.Resource.Drawable.abc_cab_background_internal_bg = global::EasyBike.Droid.Resource.Drawable.abc_cab_background_internal_bg;
-			global::GooglePlayServices.Resource.Drawable.abc_cab_background_top_material = global::EasyBike.Droid.Resource.Drawable.abc_cab_background_top_material;
-			global::GooglePlayServices.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_dialog_material_background_dark = global::EasyBike.Droid.Resource.Drawable.abc_dialog_material_background_dark;
-			global::GooglePlayServices.Resource.Drawable.abc_dialog_material_background_light = global::EasyBike.Droid.Resource.Drawable.abc_dialog_material_background_light;
-			global::GooglePlayServices.Resource.Drawable.abc_edit_text_material = global::EasyBike.Droid.Resource.Drawable.abc_edit_text_material;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_clear_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_clear_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_search_api_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_item_background_holo_dark = global::EasyBike.Droid.Resource.Drawable.abc_item_background_holo_dark;
-			global::GooglePlayServices.Resource.Drawable.abc_item_background_holo_light = global::EasyBike.Droid.Resource.Drawable.abc_item_background_holo_light;
-			global::GooglePlayServices.Resource.Drawable.abc_list_divider_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_list_focused_holo = global::EasyBike.Droid.Resource.Drawable.abc_list_focused_holo;
-			global::GooglePlayServices.Resource.Drawable.abc_list_longpressed_holo = global::EasyBike.Droid.Resource.Drawable.abc_list_longpressed_holo;
-			global::GooglePlayServices.Resource.Drawable.abc_list_pressed_holo_dark = global::EasyBike.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
-			global::GooglePlayServices.Resource.Drawable.abc_list_pressed_holo_light = global::EasyBike.Droid.Resource.Drawable.abc_list_pressed_holo_light;
-			global::GooglePlayServices.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::EasyBike.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
-			global::GooglePlayServices.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::EasyBike.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
-			global::GooglePlayServices.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::EasyBike.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
-			global::GooglePlayServices.Resource.Drawable.abc_list_selector_disabled_holo_light = global::EasyBike.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
-			global::GooglePlayServices.Resource.Drawable.abc_list_selector_holo_dark = global::EasyBike.Droid.Resource.Drawable.abc_list_selector_holo_dark;
-			global::GooglePlayServices.Resource.Drawable.abc_list_selector_holo_light = global::EasyBike.Droid.Resource.Drawable.abc_list_selector_holo_light;
-			global::GooglePlayServices.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::EasyBike.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
-			global::GooglePlayServices.Resource.Drawable.abc_popup_background_mtrl_mult = global::EasyBike.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
-			global::GooglePlayServices.Resource.Drawable.abc_ratingbar_full_material = global::EasyBike.Droid.Resource.Drawable.abc_ratingbar_full_material;
-			global::GooglePlayServices.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::EasyBike.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_spinner_textfield_background_material = global::EasyBike.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
-			global::GooglePlayServices.Resource.Drawable.abc_switch_thumb_material = global::EasyBike.Droid.Resource.Drawable.abc_switch_thumb_material;
-			global::GooglePlayServices.Resource.Drawable.abc_switch_track_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_tab_indicator_material = global::EasyBike.Droid.Resource.Drawable.abc_tab_indicator_material;
-			global::GooglePlayServices.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_text_cursor_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_text_cursor_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::EasyBike.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::GooglePlayServices.Resource.Drawable.abc_textfield_search_material = global::EasyBike.Droid.Resource.Drawable.abc_textfield_search_material;
-			global::GooglePlayServices.Resource.Drawable.cast_ic_notification_0 = global::EasyBike.Droid.Resource.Drawable.cast_ic_notification_0;
-			global::GooglePlayServices.Resource.Drawable.cast_ic_notification_1 = global::EasyBike.Droid.Resource.Drawable.cast_ic_notification_1;
-			global::GooglePlayServices.Resource.Drawable.cast_ic_notification_2 = global::EasyBike.Droid.Resource.Drawable.cast_ic_notification_2;
-			global::GooglePlayServices.Resource.Drawable.cast_ic_notification_connecting = global::EasyBike.Droid.Resource.Drawable.cast_ic_notification_connecting;
-			global::GooglePlayServices.Resource.Drawable.cast_ic_notification_on = global::EasyBike.Droid.Resource.Drawable.cast_ic_notification_on;
-			global::GooglePlayServices.Resource.Drawable.common_full_open_on_phone = global::EasyBike.Droid.Resource.Drawable.common_full_open_on_phone;
-			global::GooglePlayServices.Resource.Drawable.common_ic_googleplayservices = global::EasyBike.Droid.Resource.Drawable.common_ic_googleplayservices;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_disabled_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_disabled_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_disabled_focus_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_disabled_focus_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_disabled_focus_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_disabled_focus_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_disabled_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_disabled_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_focus_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_focus_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_focus_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_focus_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_normal_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_normal_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_normal_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_normal_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_pressed_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_pressed_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_icon_pressed_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_icon_pressed_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_disabled_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_disabled_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_disabled_focus_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_disabled_focus_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_disabled_focus_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_disabled_focus_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_disabled_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_disabled_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_focus_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_focus_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_focus_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_focus_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_normal_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_normal_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_normal_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_normal_light;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_pressed_dark = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_pressed_dark;
-			global::GooglePlayServices.Resource.Drawable.common_signin_btn_text_pressed_light = global::EasyBike.Droid.Resource.Drawable.common_signin_btn_text_pressed_light;
-			global::GooglePlayServices.Resource.Drawable.ic_cast_dark = global::EasyBike.Droid.Resource.Drawable.ic_cast_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_cast_disabled_light = global::EasyBike.Droid.Resource.Drawable.ic_cast_disabled_light;
-			global::GooglePlayServices.Resource.Drawable.ic_cast_light = global::EasyBike.Droid.Resource.Drawable.ic_cast_light;
-			global::GooglePlayServices.Resource.Drawable.ic_cast_off_light = global::EasyBike.Droid.Resource.Drawable.ic_cast_off_light;
-			global::GooglePlayServices.Resource.Drawable.ic_cast_on_0_light = global::EasyBike.Droid.Resource.Drawable.ic_cast_on_0_light;
-			global::GooglePlayServices.Resource.Drawable.ic_cast_on_1_light = global::EasyBike.Droid.Resource.Drawable.ic_cast_on_1_light;
-			global::GooglePlayServices.Resource.Drawable.ic_cast_on_2_light = global::EasyBike.Droid.Resource.Drawable.ic_cast_on_2_light;
-			global::GooglePlayServices.Resource.Drawable.ic_cast_on_light = global::EasyBike.Droid.Resource.Drawable.ic_cast_on_light;
-			global::GooglePlayServices.Resource.Drawable.ic_media_pause = global::EasyBike.Droid.Resource.Drawable.ic_media_pause;
-			global::GooglePlayServices.Resource.Drawable.ic_media_play = global::EasyBike.Droid.Resource.Drawable.ic_media_play;
-			global::GooglePlayServices.Resource.Drawable.ic_media_route_disabled_mono_dark = global::EasyBike.Droid.Resource.Drawable.ic_media_route_disabled_mono_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_media_route_off_mono_dark = global::EasyBike.Droid.Resource.Drawable.ic_media_route_off_mono_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_media_route_on_0_mono_dark = global::EasyBike.Droid.Resource.Drawable.ic_media_route_on_0_mono_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_media_route_on_1_mono_dark = global::EasyBike.Droid.Resource.Drawable.ic_media_route_on_1_mono_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_media_route_on_2_mono_dark = global::EasyBike.Droid.Resource.Drawable.ic_media_route_on_2_mono_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_media_route_on_mono_dark = global::EasyBike.Droid.Resource.Drawable.ic_media_route_on_mono_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_pause_dark = global::EasyBike.Droid.Resource.Drawable.ic_pause_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_pause_light = global::EasyBike.Droid.Resource.Drawable.ic_pause_light;
-			global::GooglePlayServices.Resource.Drawable.ic_play_dark = global::EasyBike.Droid.Resource.Drawable.ic_play_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_play_light = global::EasyBike.Droid.Resource.Drawable.ic_play_light;
-			global::GooglePlayServices.Resource.Drawable.ic_plusone_medium_off_client = global::EasyBike.Droid.Resource.Drawable.ic_plusone_medium_off_client;
-			global::GooglePlayServices.Resource.Drawable.ic_plusone_small_off_client = global::EasyBike.Droid.Resource.Drawable.ic_plusone_small_off_client;
-			global::GooglePlayServices.Resource.Drawable.ic_plusone_standard_off_client = global::EasyBike.Droid.Resource.Drawable.ic_plusone_standard_off_client;
-			global::GooglePlayServices.Resource.Drawable.ic_plusone_tall_off_client = global::EasyBike.Droid.Resource.Drawable.ic_plusone_tall_off_client;
-			global::GooglePlayServices.Resource.Drawable.ic_setting_dark = global::EasyBike.Droid.Resource.Drawable.ic_setting_dark;
-			global::GooglePlayServices.Resource.Drawable.ic_setting_light = global::EasyBike.Droid.Resource.Drawable.ic_setting_light;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_audio_vol = global::EasyBike.Droid.Resource.Drawable.mr_ic_audio_vol;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_media_route_connecting_mono_dark = global::EasyBike.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_dark;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_media_route_connecting_mono_light = global::EasyBike.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_light;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_media_route_mono_dark = global::EasyBike.Droid.Resource.Drawable.mr_ic_media_route_mono_dark;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_media_route_mono_light = global::EasyBike.Droid.Resource.Drawable.mr_ic_media_route_mono_light;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_pause_dark = global::EasyBike.Droid.Resource.Drawable.mr_ic_pause_dark;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_pause_light = global::EasyBike.Droid.Resource.Drawable.mr_ic_pause_light;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_play_dark = global::EasyBike.Droid.Resource.Drawable.mr_ic_play_dark;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_play_light = global::EasyBike.Droid.Resource.Drawable.mr_ic_play_light;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_settings_dark = global::EasyBike.Droid.Resource.Drawable.mr_ic_settings_dark;
-			global::GooglePlayServices.Resource.Drawable.mr_ic_settings_light = global::EasyBike.Droid.Resource.Drawable.mr_ic_settings_light;
-			global::GooglePlayServices.Resource.Drawable.notification_template_icon_bg = global::EasyBike.Droid.Resource.Drawable.notification_template_icon_bg;
-			global::GooglePlayServices.Resource.Drawable.powered_by_google_dark = global::EasyBike.Droid.Resource.Drawable.powered_by_google_dark;
-			global::GooglePlayServices.Resource.Drawable.powered_by_google_light = global::EasyBike.Droid.Resource.Drawable.powered_by_google_light;
-			global::GooglePlayServices.Resource.Id.action0 = global::EasyBike.Droid.Resource.Id.action0;
-			global::GooglePlayServices.Resource.Id.action_bar = global::EasyBike.Droid.Resource.Id.action_bar;
-			global::GooglePlayServices.Resource.Id.action_bar_activity_content = global::EasyBike.Droid.Resource.Id.action_bar_activity_content;
-			global::GooglePlayServices.Resource.Id.action_bar_container = global::EasyBike.Droid.Resource.Id.action_bar_container;
-			global::GooglePlayServices.Resource.Id.action_bar_root = global::EasyBike.Droid.Resource.Id.action_bar_root;
-			global::GooglePlayServices.Resource.Id.action_bar_spinner = global::EasyBike.Droid.Resource.Id.action_bar_spinner;
-			global::GooglePlayServices.Resource.Id.action_bar_subtitle = global::EasyBike.Droid.Resource.Id.action_bar_subtitle;
-			global::GooglePlayServices.Resource.Id.action_bar_title = global::EasyBike.Droid.Resource.Id.action_bar_title;
-			global::GooglePlayServices.Resource.Id.action_context_bar = global::EasyBike.Droid.Resource.Id.action_context_bar;
-			global::GooglePlayServices.Resource.Id.action_divider = global::EasyBike.Droid.Resource.Id.action_divider;
-			global::GooglePlayServices.Resource.Id.action_menu_divider = global::EasyBike.Droid.Resource.Id.action_menu_divider;
-			global::GooglePlayServices.Resource.Id.action_menu_presenter = global::EasyBike.Droid.Resource.Id.action_menu_presenter;
-			global::GooglePlayServices.Resource.Id.action_mode_bar = global::EasyBike.Droid.Resource.Id.action_mode_bar;
-			global::GooglePlayServices.Resource.Id.action_mode_bar_stub = global::EasyBike.Droid.Resource.Id.action_mode_bar_stub;
-			global::GooglePlayServices.Resource.Id.action_mode_close_button = global::EasyBike.Droid.Resource.Id.action_mode_close_button;
-			global::GooglePlayServices.Resource.Id.activity_chooser_view_content = global::EasyBike.Droid.Resource.Id.activity_chooser_view_content;
-			global::GooglePlayServices.Resource.Id.adjust_height = global::EasyBike.Droid.Resource.Id.adjust_height;
-			global::GooglePlayServices.Resource.Id.adjust_width = global::EasyBike.Droid.Resource.Id.adjust_width;
-			global::GooglePlayServices.Resource.Id.alertTitle = global::EasyBike.Droid.Resource.Id.alertTitle;
-			global::GooglePlayServices.Resource.Id.always = global::EasyBike.Droid.Resource.Id.always;
-			global::GooglePlayServices.Resource.Id.art = global::EasyBike.Droid.Resource.Id.art;
-			global::GooglePlayServices.Resource.Id.beginning = global::EasyBike.Droid.Resource.Id.beginning;
-			global::GooglePlayServices.Resource.Id.book_now = global::EasyBike.Droid.Resource.Id.book_now;
-			global::GooglePlayServices.Resource.Id.buttonPanel = global::EasyBike.Droid.Resource.Id.buttonPanel;
-			global::GooglePlayServices.Resource.Id.buttons = global::EasyBike.Droid.Resource.Id.buttons;
-			global::GooglePlayServices.Resource.Id.buyButton = global::EasyBike.Droid.Resource.Id.buyButton;
-			global::GooglePlayServices.Resource.Id.buy_now = global::EasyBike.Droid.Resource.Id.buy_now;
-			global::GooglePlayServices.Resource.Id.buy_with_google = global::EasyBike.Droid.Resource.Id.buy_with_google;
-			global::GooglePlayServices.Resource.Id.cancel_action = global::EasyBike.Droid.Resource.Id.cancel_action;
-			global::GooglePlayServices.Resource.Id.cast_notification_id = global::EasyBike.Droid.Resource.Id.cast_notification_id;
-			global::GooglePlayServices.Resource.Id.checkbox = global::EasyBike.Droid.Resource.Id.checkbox;
-			global::GooglePlayServices.Resource.Id.chronometer = global::EasyBike.Droid.Resource.Id.chronometer;
-			global::GooglePlayServices.Resource.Id.classic = global::EasyBike.Droid.Resource.Id.classic;
-			global::GooglePlayServices.Resource.Id.collapseActionView = global::EasyBike.Droid.Resource.Id.collapseActionView;
-			global::GooglePlayServices.Resource.Id.contentPanel = global::EasyBike.Droid.Resource.Id.contentPanel;
-			global::GooglePlayServices.Resource.Id.custom = global::EasyBike.Droid.Resource.Id.custom;
-			global::GooglePlayServices.Resource.Id.customPanel = global::EasyBike.Droid.Resource.Id.customPanel;
-			global::GooglePlayServices.Resource.Id.decor_content_parent = global::EasyBike.Droid.Resource.Id.decor_content_parent;
-			global::GooglePlayServices.Resource.Id.default_activity_button = global::EasyBike.Droid.Resource.Id.default_activity_button;
-			global::GooglePlayServices.Resource.Id.default_control_frame = global::EasyBike.Droid.Resource.Id.default_control_frame;
-			global::GooglePlayServices.Resource.Id.dialog = global::EasyBike.Droid.Resource.Id.dialog;
-			global::GooglePlayServices.Resource.Id.disableHome = global::EasyBike.Droid.Resource.Id.disableHome;
-			global::GooglePlayServices.Resource.Id.disconnect = global::EasyBike.Droid.Resource.Id.disconnect;
-			global::GooglePlayServices.Resource.Id.donate_with_google = global::EasyBike.Droid.Resource.Id.donate_with_google;
-			global::GooglePlayServices.Resource.Id.dropdown = global::EasyBike.Droid.Resource.Id.dropdown;
-			global::GooglePlayServices.Resource.Id.edit_query = global::EasyBike.Droid.Resource.Id.edit_query;
-			global::GooglePlayServices.Resource.Id.end = global::EasyBike.Droid.Resource.Id.end;
-			global::GooglePlayServices.Resource.Id.end_padder = global::EasyBike.Droid.Resource.Id.end_padder;
-			global::GooglePlayServices.Resource.Id.expand_activities_button = global::EasyBike.Droid.Resource.Id.expand_activities_button;
-			global::GooglePlayServices.Resource.Id.expanded_menu = global::EasyBike.Droid.Resource.Id.expanded_menu;
-			global::GooglePlayServices.Resource.Id.grayscale = global::EasyBike.Droid.Resource.Id.grayscale;
-			global::GooglePlayServices.Resource.Id.holo_dark = global::EasyBike.Droid.Resource.Id.holo_dark;
-			global::GooglePlayServices.Resource.Id.holo_light = global::EasyBike.Droid.Resource.Id.holo_light;
-			global::GooglePlayServices.Resource.Id.home = global::EasyBike.Droid.Resource.Id.home;
-			global::GooglePlayServices.Resource.Id.homeAsUp = global::EasyBike.Droid.Resource.Id.homeAsUp;
-			global::GooglePlayServices.Resource.Id.hybrid = global::EasyBike.Droid.Resource.Id.hybrid;
-			global::GooglePlayServices.Resource.Id.icon = global::EasyBike.Droid.Resource.Id.icon;
-			global::GooglePlayServices.Resource.Id.ifRoom = global::EasyBike.Droid.Resource.Id.ifRoom;
-			global::GooglePlayServices.Resource.Id.image = global::EasyBike.Droid.Resource.Id.image;
-			global::GooglePlayServices.Resource.Id.info = global::EasyBike.Droid.Resource.Id.info;
-			global::GooglePlayServices.Resource.Id.line1 = global::EasyBike.Droid.Resource.Id.line1;
-			global::GooglePlayServices.Resource.Id.line3 = global::EasyBike.Droid.Resource.Id.line3;
-			global::GooglePlayServices.Resource.Id.listMode = global::EasyBike.Droid.Resource.Id.listMode;
-			global::GooglePlayServices.Resource.Id.list_item = global::EasyBike.Droid.Resource.Id.list_item;
-			global::GooglePlayServices.Resource.Id.match_parent = global::EasyBike.Droid.Resource.Id.match_parent;
-			global::GooglePlayServices.Resource.Id.media_actions = global::EasyBike.Droid.Resource.Id.media_actions;
-			global::GooglePlayServices.Resource.Id.media_route_control_frame = global::EasyBike.Droid.Resource.Id.media_route_control_frame;
-			global::GooglePlayServices.Resource.Id.media_route_list = global::EasyBike.Droid.Resource.Id.media_route_list;
-			global::GooglePlayServices.Resource.Id.media_route_volume_layout = global::EasyBike.Droid.Resource.Id.media_route_volume_layout;
-			global::GooglePlayServices.Resource.Id.media_route_volume_slider = global::EasyBike.Droid.Resource.Id.media_route_volume_slider;
-			global::GooglePlayServices.Resource.Id.middle = global::EasyBike.Droid.Resource.Id.middle;
-			global::GooglePlayServices.Resource.Id.monochrome = global::EasyBike.Droid.Resource.Id.monochrome;
-			global::GooglePlayServices.Resource.Id.multiply = global::EasyBike.Droid.Resource.Id.multiply;
-			global::GooglePlayServices.Resource.Id.never = global::EasyBike.Droid.Resource.Id.never;
-			global::GooglePlayServices.Resource.Id.none = global::EasyBike.Droid.Resource.Id.none;
-			global::GooglePlayServices.Resource.Id.normal = global::EasyBike.Droid.Resource.Id.normal;
-			global::GooglePlayServices.Resource.Id.parentPanel = global::EasyBike.Droid.Resource.Id.parentPanel;
-			global::GooglePlayServices.Resource.Id.play_pause = global::EasyBike.Droid.Resource.Id.play_pause;
-			global::GooglePlayServices.Resource.Id.production = global::EasyBike.Droid.Resource.Id.production;
-			global::GooglePlayServices.Resource.Id.progress_circular = global::EasyBike.Droid.Resource.Id.progress_circular;
-			global::GooglePlayServices.Resource.Id.progress_horizontal = global::EasyBike.Droid.Resource.Id.progress_horizontal;
-			global::GooglePlayServices.Resource.Id.radio = global::EasyBike.Droid.Resource.Id.radio;
-			global::GooglePlayServices.Resource.Id.route_name = global::EasyBike.Droid.Resource.Id.route_name;
-			global::GooglePlayServices.Resource.Id.sandbox = global::EasyBike.Droid.Resource.Id.sandbox;
-			global::GooglePlayServices.Resource.Id.satellite = global::EasyBike.Droid.Resource.Id.satellite;
-			global::GooglePlayServices.Resource.Id.screen = global::EasyBike.Droid.Resource.Id.screen;
-			global::GooglePlayServices.Resource.Id.scrollView = global::EasyBike.Droid.Resource.Id.scrollView;
-			global::GooglePlayServices.Resource.Id.search_badge = global::EasyBike.Droid.Resource.Id.search_badge;
-			global::GooglePlayServices.Resource.Id.search_bar = global::EasyBike.Droid.Resource.Id.search_bar;
-			global::GooglePlayServices.Resource.Id.search_button = global::EasyBike.Droid.Resource.Id.search_button;
-			global::GooglePlayServices.Resource.Id.search_close_btn = global::EasyBike.Droid.Resource.Id.search_close_btn;
-			global::GooglePlayServices.Resource.Id.search_edit_frame = global::EasyBike.Droid.Resource.Id.search_edit_frame;
-			global::GooglePlayServices.Resource.Id.search_go_btn = global::EasyBike.Droid.Resource.Id.search_go_btn;
-			global::GooglePlayServices.Resource.Id.search_mag_icon = global::EasyBike.Droid.Resource.Id.search_mag_icon;
-			global::GooglePlayServices.Resource.Id.search_plate = global::EasyBike.Droid.Resource.Id.search_plate;
-			global::GooglePlayServices.Resource.Id.search_src_text = global::EasyBike.Droid.Resource.Id.search_src_text;
-			global::GooglePlayServices.Resource.Id.search_voice_btn = global::EasyBike.Droid.Resource.Id.search_voice_btn;
-			global::GooglePlayServices.Resource.Id.select_dialog_listview = global::EasyBike.Droid.Resource.Id.select_dialog_listview;
-			global::GooglePlayServices.Resource.Id.selectionDetails = global::EasyBike.Droid.Resource.Id.selectionDetails;
-			global::GooglePlayServices.Resource.Id.settings = global::EasyBike.Droid.Resource.Id.settings;
-			global::GooglePlayServices.Resource.Id.shortcut = global::EasyBike.Droid.Resource.Id.shortcut;
-			global::GooglePlayServices.Resource.Id.showCustom = global::EasyBike.Droid.Resource.Id.showCustom;
-			global::GooglePlayServices.Resource.Id.showHome = global::EasyBike.Droid.Resource.Id.showHome;
-			global::GooglePlayServices.Resource.Id.showTitle = global::EasyBike.Droid.Resource.Id.showTitle;
-			global::GooglePlayServices.Resource.Id.slide = global::EasyBike.Droid.Resource.Id.slide;
-			global::GooglePlayServices.Resource.Id.split_action_bar = global::EasyBike.Droid.Resource.Id.split_action_bar;
-			global::GooglePlayServices.Resource.Id.src_atop = global::EasyBike.Droid.Resource.Id.src_atop;
-			global::GooglePlayServices.Resource.Id.src_in = global::EasyBike.Droid.Resource.Id.src_in;
-			global::GooglePlayServices.Resource.Id.src_over = global::EasyBike.Droid.Resource.Id.src_over;
-			global::GooglePlayServices.Resource.Id.status_bar_latest_event_content = global::EasyBike.Droid.Resource.Id.status_bar_latest_event_content;
-			global::GooglePlayServices.Resource.Id.stop = global::EasyBike.Droid.Resource.Id.stop;
-			global::GooglePlayServices.Resource.Id.strict_sandbox = global::EasyBike.Droid.Resource.Id.strict_sandbox;
-			global::GooglePlayServices.Resource.Id.submit_area = global::EasyBike.Droid.Resource.Id.submit_area;
-			global::GooglePlayServices.Resource.Id.subtitle = global::EasyBike.Droid.Resource.Id.subtitle;
-			global::GooglePlayServices.Resource.Id.tabMode = global::EasyBike.Droid.Resource.Id.tabMode;
-			global::GooglePlayServices.Resource.Id.terrain = global::EasyBike.Droid.Resource.Id.terrain;
-			global::GooglePlayServices.Resource.Id.test = global::EasyBike.Droid.Resource.Id.test;
-			global::GooglePlayServices.Resource.Id.text = global::EasyBike.Droid.Resource.Id.text;
-			global::GooglePlayServices.Resource.Id.text2 = global::EasyBike.Droid.Resource.Id.text2;
-			global::GooglePlayServices.Resource.Id.textSpacerNoButtons = global::EasyBike.Droid.Resource.Id.textSpacerNoButtons;
-			global::GooglePlayServices.Resource.Id.text_wrapper = global::EasyBike.Droid.Resource.Id.text_wrapper;
-			global::GooglePlayServices.Resource.Id.time = global::EasyBike.Droid.Resource.Id.time;
-			global::GooglePlayServices.Resource.Id.title = global::EasyBike.Droid.Resource.Id.title;
-			global::GooglePlayServices.Resource.Id.title_bar = global::EasyBike.Droid.Resource.Id.title_bar;
-			global::GooglePlayServices.Resource.Id.title_template = global::EasyBike.Droid.Resource.Id.title_template;
-			global::GooglePlayServices.Resource.Id.topPanel = global::EasyBike.Droid.Resource.Id.topPanel;
-			global::GooglePlayServices.Resource.Id.up = global::EasyBike.Droid.Resource.Id.up;
-			global::GooglePlayServices.Resource.Id.useLogo = global::EasyBike.Droid.Resource.Id.useLogo;
-			global::GooglePlayServices.Resource.Id.withText = global::EasyBike.Droid.Resource.Id.withText;
-			global::GooglePlayServices.Resource.Id.wrap_content = global::EasyBike.Droid.Resource.Id.wrap_content;
-			global::GooglePlayServices.Resource.Integer.abc_config_activityDefaultDur = global::EasyBike.Droid.Resource.Integer.abc_config_activityDefaultDur;
-			global::GooglePlayServices.Resource.Integer.abc_config_activityShortDur = global::EasyBike.Droid.Resource.Integer.abc_config_activityShortDur;
-			global::GooglePlayServices.Resource.Integer.abc_max_action_buttons = global::EasyBike.Droid.Resource.Integer.abc_max_action_buttons;
-			global::GooglePlayServices.Resource.Integer.cancel_button_image_alpha = global::EasyBike.Droid.Resource.Integer.cancel_button_image_alpha;
-			global::GooglePlayServices.Resource.Integer.google_play_services_version = global::EasyBike.Droid.Resource.Integer.google_play_services_version;
-			global::GooglePlayServices.Resource.Integer.status_bar_notification_info_maxnum = global::EasyBike.Droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::GooglePlayServices.Resource.Layout.abc_action_bar_title_item = global::EasyBike.Droid.Resource.Layout.abc_action_bar_title_item;
-			global::GooglePlayServices.Resource.Layout.abc_action_bar_up_container = global::EasyBike.Droid.Resource.Layout.abc_action_bar_up_container;
-			global::GooglePlayServices.Resource.Layout.abc_action_bar_view_list_nav_layout = global::EasyBike.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
-			global::GooglePlayServices.Resource.Layout.abc_action_menu_item_layout = global::EasyBike.Droid.Resource.Layout.abc_action_menu_item_layout;
-			global::GooglePlayServices.Resource.Layout.abc_action_menu_layout = global::EasyBike.Droid.Resource.Layout.abc_action_menu_layout;
-			global::GooglePlayServices.Resource.Layout.abc_action_mode_bar = global::EasyBike.Droid.Resource.Layout.abc_action_mode_bar;
-			global::GooglePlayServices.Resource.Layout.abc_action_mode_close_item_material = global::EasyBike.Droid.Resource.Layout.abc_action_mode_close_item_material;
-			global::GooglePlayServices.Resource.Layout.abc_activity_chooser_view = global::EasyBike.Droid.Resource.Layout.abc_activity_chooser_view;
-			global::GooglePlayServices.Resource.Layout.abc_activity_chooser_view_list_item = global::EasyBike.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
-			global::GooglePlayServices.Resource.Layout.abc_alert_dialog_material = global::EasyBike.Droid.Resource.Layout.abc_alert_dialog_material;
-			global::GooglePlayServices.Resource.Layout.abc_dialog_title_material = global::EasyBike.Droid.Resource.Layout.abc_dialog_title_material;
-			global::GooglePlayServices.Resource.Layout.abc_expanded_menu_layout = global::EasyBike.Droid.Resource.Layout.abc_expanded_menu_layout;
-			global::GooglePlayServices.Resource.Layout.abc_list_menu_item_checkbox = global::EasyBike.Droid.Resource.Layout.abc_list_menu_item_checkbox;
-			global::GooglePlayServices.Resource.Layout.abc_list_menu_item_icon = global::EasyBike.Droid.Resource.Layout.abc_list_menu_item_icon;
-			global::GooglePlayServices.Resource.Layout.abc_list_menu_item_layout = global::EasyBike.Droid.Resource.Layout.abc_list_menu_item_layout;
-			global::GooglePlayServices.Resource.Layout.abc_list_menu_item_radio = global::EasyBike.Droid.Resource.Layout.abc_list_menu_item_radio;
-			global::GooglePlayServices.Resource.Layout.abc_popup_menu_item_layout = global::EasyBike.Droid.Resource.Layout.abc_popup_menu_item_layout;
-			global::GooglePlayServices.Resource.Layout.abc_screen_content_include = global::EasyBike.Droid.Resource.Layout.abc_screen_content_include;
-			global::GooglePlayServices.Resource.Layout.abc_screen_simple = global::EasyBike.Droid.Resource.Layout.abc_screen_simple;
-			global::GooglePlayServices.Resource.Layout.abc_screen_simple_overlay_action_mode = global::EasyBike.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
-			global::GooglePlayServices.Resource.Layout.abc_screen_toolbar = global::EasyBike.Droid.Resource.Layout.abc_screen_toolbar;
-			global::GooglePlayServices.Resource.Layout.abc_search_dropdown_item_icons_2line = global::EasyBike.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
-			global::GooglePlayServices.Resource.Layout.abc_search_view = global::EasyBike.Droid.Resource.Layout.abc_search_view;
-			global::GooglePlayServices.Resource.Layout.abc_select_dialog_material = global::EasyBike.Droid.Resource.Layout.abc_select_dialog_material;
-			global::GooglePlayServices.Resource.Layout.abc_simple_dropdown_hint = global::EasyBike.Droid.Resource.Layout.abc_simple_dropdown_hint;
-			global::GooglePlayServices.Resource.Layout.mr_media_route_chooser_dialog = global::EasyBike.Droid.Resource.Layout.mr_media_route_chooser_dialog;
-			global::GooglePlayServices.Resource.Layout.mr_media_route_controller_material_dialog_b = global::EasyBike.Droid.Resource.Layout.mr_media_route_controller_material_dialog_b;
-			global::GooglePlayServices.Resource.Layout.mr_media_route_list_item = global::EasyBike.Droid.Resource.Layout.mr_media_route_list_item;
-			global::GooglePlayServices.Resource.Layout.notification_media_action = global::EasyBike.Droid.Resource.Layout.notification_media_action;
-			global::GooglePlayServices.Resource.Layout.notification_media_cancel_action = global::EasyBike.Droid.Resource.Layout.notification_media_cancel_action;
-			global::GooglePlayServices.Resource.Layout.notification_template_big_media = global::EasyBike.Droid.Resource.Layout.notification_template_big_media;
-			global::GooglePlayServices.Resource.Layout.notification_template_big_media_narrow = global::EasyBike.Droid.Resource.Layout.notification_template_big_media_narrow;
-			global::GooglePlayServices.Resource.Layout.notification_template_lines = global::EasyBike.Droid.Resource.Layout.notification_template_lines;
-			global::GooglePlayServices.Resource.Layout.notification_template_media = global::EasyBike.Droid.Resource.Layout.notification_template_media;
-			global::GooglePlayServices.Resource.Layout.notification_template_part_chronometer = global::EasyBike.Droid.Resource.Layout.notification_template_part_chronometer;
-			global::GooglePlayServices.Resource.Layout.notification_template_part_time = global::EasyBike.Droid.Resource.Layout.notification_template_part_time;
-			global::GooglePlayServices.Resource.Layout.select_dialog_item_material = global::EasyBike.Droid.Resource.Layout.select_dialog_item_material;
-			global::GooglePlayServices.Resource.Layout.select_dialog_multichoice_material = global::EasyBike.Droid.Resource.Layout.select_dialog_multichoice_material;
-			global::GooglePlayServices.Resource.Layout.select_dialog_singlechoice_material = global::EasyBike.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::GooglePlayServices.Resource.Layout.support_simple_spinner_dropdown_item = global::EasyBike.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::GooglePlayServices.Resource.Raw.gtm_analytics = global::EasyBike.Droid.Resource.Raw.gtm_analytics;
-			global::GooglePlayServices.Resource.String.abc_action_bar_home_description = global::EasyBike.Droid.Resource.String.abc_action_bar_home_description;
-			global::GooglePlayServices.Resource.String.abc_action_bar_home_description_format = global::EasyBike.Droid.Resource.String.abc_action_bar_home_description_format;
-			global::GooglePlayServices.Resource.String.abc_action_bar_home_subtitle_description_format = global::EasyBike.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
-			global::GooglePlayServices.Resource.String.abc_action_bar_up_description = global::EasyBike.Droid.Resource.String.abc_action_bar_up_description;
-			global::GooglePlayServices.Resource.String.abc_action_menu_overflow_description = global::EasyBike.Droid.Resource.String.abc_action_menu_overflow_description;
-			global::GooglePlayServices.Resource.String.abc_action_mode_done = global::EasyBike.Droid.Resource.String.abc_action_mode_done;
-			global::GooglePlayServices.Resource.String.abc_activity_chooser_view_see_all = global::EasyBike.Droid.Resource.String.abc_activity_chooser_view_see_all;
-			global::GooglePlayServices.Resource.String.abc_activitychooserview_choose_application = global::EasyBike.Droid.Resource.String.abc_activitychooserview_choose_application;
-			global::GooglePlayServices.Resource.String.abc_search_hint = global::EasyBike.Droid.Resource.String.abc_search_hint;
-			global::GooglePlayServices.Resource.String.abc_searchview_description_clear = global::EasyBike.Droid.Resource.String.abc_searchview_description_clear;
-			global::GooglePlayServices.Resource.String.abc_searchview_description_query = global::EasyBike.Droid.Resource.String.abc_searchview_description_query;
-			global::GooglePlayServices.Resource.String.abc_searchview_description_search = global::EasyBike.Droid.Resource.String.abc_searchview_description_search;
-			global::GooglePlayServices.Resource.String.abc_searchview_description_submit = global::EasyBike.Droid.Resource.String.abc_searchview_description_submit;
-			global::GooglePlayServices.Resource.String.abc_searchview_description_voice = global::EasyBike.Droid.Resource.String.abc_searchview_description_voice;
-			global::GooglePlayServices.Resource.String.abc_shareactionprovider_share_with = global::EasyBike.Droid.Resource.String.abc_shareactionprovider_share_with;
-			global::GooglePlayServices.Resource.String.abc_shareactionprovider_share_with_application = global::EasyBike.Droid.Resource.String.abc_shareactionprovider_share_with_application;
-			global::GooglePlayServices.Resource.String.abc_toolbar_collapse_description = global::EasyBike.Droid.Resource.String.abc_toolbar_collapse_description;
-			global::GooglePlayServices.Resource.String.accept = global::EasyBike.Droid.Resource.String.accept;
-			global::GooglePlayServices.Resource.String.auth_google_play_services_client_facebook_display_name = global::EasyBike.Droid.Resource.String.auth_google_play_services_client_facebook_display_name;
-			global::GooglePlayServices.Resource.String.auth_google_play_services_client_google_display_name = global::EasyBike.Droid.Resource.String.auth_google_play_services_client_google_display_name;
-			global::GooglePlayServices.Resource.String.cast_notification_connected_message = global::EasyBike.Droid.Resource.String.cast_notification_connected_message;
-			global::GooglePlayServices.Resource.String.cast_notification_connecting_message = global::EasyBike.Droid.Resource.String.cast_notification_connecting_message;
-			global::GooglePlayServices.Resource.String.cast_notification_disconnect = global::EasyBike.Droid.Resource.String.cast_notification_disconnect;
-			global::GooglePlayServices.Resource.String.common_android_wear_notification_needs_update_text = global::EasyBike.Droid.Resource.String.common_android_wear_notification_needs_update_text;
-			global::GooglePlayServices.Resource.String.common_android_wear_update_text = global::EasyBike.Droid.Resource.String.common_android_wear_update_text;
-			global::GooglePlayServices.Resource.String.common_android_wear_update_title = global::EasyBike.Droid.Resource.String.common_android_wear_update_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_api_unavailable_text = global::EasyBike.Droid.Resource.String.common_google_play_services_api_unavailable_text;
-			global::GooglePlayServices.Resource.String.common_google_play_services_enable_button = global::EasyBike.Droid.Resource.String.common_google_play_services_enable_button;
-			global::GooglePlayServices.Resource.String.common_google_play_services_enable_text = global::EasyBike.Droid.Resource.String.common_google_play_services_enable_text;
-			global::GooglePlayServices.Resource.String.common_google_play_services_enable_title = global::EasyBike.Droid.Resource.String.common_google_play_services_enable_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_error_notification_requested_by_msg = global::EasyBike.Droid.Resource.String.common_google_play_services_error_notification_requested_by_msg;
-			global::GooglePlayServices.Resource.String.common_google_play_services_install_button = global::EasyBike.Droid.Resource.String.common_google_play_services_install_button;
-			global::GooglePlayServices.Resource.String.common_google_play_services_install_text_phone = global::EasyBike.Droid.Resource.String.common_google_play_services_install_text_phone;
-			global::GooglePlayServices.Resource.String.common_google_play_services_install_text_tablet = global::EasyBike.Droid.Resource.String.common_google_play_services_install_text_tablet;
-			global::GooglePlayServices.Resource.String.common_google_play_services_install_title = global::EasyBike.Droid.Resource.String.common_google_play_services_install_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_invalid_account_text = global::EasyBike.Droid.Resource.String.common_google_play_services_invalid_account_text;
-			global::GooglePlayServices.Resource.String.common_google_play_services_invalid_account_title = global::EasyBike.Droid.Resource.String.common_google_play_services_invalid_account_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_needs_enabling_title = global::EasyBike.Droid.Resource.String.common_google_play_services_needs_enabling_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_network_error_text = global::EasyBike.Droid.Resource.String.common_google_play_services_network_error_text;
-			global::GooglePlayServices.Resource.String.common_google_play_services_network_error_title = global::EasyBike.Droid.Resource.String.common_google_play_services_network_error_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_notification_needs_update_title = global::EasyBike.Droid.Resource.String.common_google_play_services_notification_needs_update_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_notification_ticker = global::EasyBike.Droid.Resource.String.common_google_play_services_notification_ticker;
-			global::GooglePlayServices.Resource.String.common_google_play_services_sign_in_failed_text = global::EasyBike.Droid.Resource.String.common_google_play_services_sign_in_failed_text;
-			global::GooglePlayServices.Resource.String.common_google_play_services_sign_in_failed_title = global::EasyBike.Droid.Resource.String.common_google_play_services_sign_in_failed_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_unknown_issue = global::EasyBike.Droid.Resource.String.common_google_play_services_unknown_issue;
-			global::GooglePlayServices.Resource.String.common_google_play_services_unsupported_text = global::EasyBike.Droid.Resource.String.common_google_play_services_unsupported_text;
-			global::GooglePlayServices.Resource.String.common_google_play_services_unsupported_title = global::EasyBike.Droid.Resource.String.common_google_play_services_unsupported_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_update_button = global::EasyBike.Droid.Resource.String.common_google_play_services_update_button;
-			global::GooglePlayServices.Resource.String.common_google_play_services_update_text = global::EasyBike.Droid.Resource.String.common_google_play_services_update_text;
-			global::GooglePlayServices.Resource.String.common_google_play_services_update_title = global::EasyBike.Droid.Resource.String.common_google_play_services_update_title;
-			global::GooglePlayServices.Resource.String.common_google_play_services_updating_text = global::EasyBike.Droid.Resource.String.common_google_play_services_updating_text;
-			global::GooglePlayServices.Resource.String.common_google_play_services_updating_title = global::EasyBike.Droid.Resource.String.common_google_play_services_updating_title;
-			global::GooglePlayServices.Resource.String.common_open_on_phone = global::EasyBike.Droid.Resource.String.common_open_on_phone;
-			global::GooglePlayServices.Resource.String.common_signin_button_text = global::EasyBike.Droid.Resource.String.common_signin_button_text;
-			global::GooglePlayServices.Resource.String.common_signin_button_text_long = global::EasyBike.Droid.Resource.String.common_signin_button_text_long;
-			global::GooglePlayServices.Resource.String.create_calendar_message = global::EasyBike.Droid.Resource.String.create_calendar_message;
-			global::GooglePlayServices.Resource.String.create_calendar_title = global::EasyBike.Droid.Resource.String.create_calendar_title;
-			global::GooglePlayServices.Resource.String.decline = global::EasyBike.Droid.Resource.String.decline;
-			global::GooglePlayServices.Resource.String.library_name = global::EasyBike.Droid.Resource.String.library_name;
-			global::GooglePlayServices.Resource.String.mr_media_route_button_content_description = global::EasyBike.Droid.Resource.String.mr_media_route_button_content_description;
-			global::GooglePlayServices.Resource.String.mr_media_route_chooser_searching = global::EasyBike.Droid.Resource.String.mr_media_route_chooser_searching;
-			global::GooglePlayServices.Resource.String.mr_media_route_chooser_title = global::EasyBike.Droid.Resource.String.mr_media_route_chooser_title;
-			global::GooglePlayServices.Resource.String.mr_media_route_controller_disconnect = global::EasyBike.Droid.Resource.String.mr_media_route_controller_disconnect;
-			global::GooglePlayServices.Resource.String.mr_media_route_controller_pause = global::EasyBike.Droid.Resource.String.mr_media_route_controller_pause;
-			global::GooglePlayServices.Resource.String.mr_media_route_controller_play = global::EasyBike.Droid.Resource.String.mr_media_route_controller_play;
-			global::GooglePlayServices.Resource.String.mr_media_route_controller_settings_description = global::EasyBike.Droid.Resource.String.mr_media_route_controller_settings_description;
-			global::GooglePlayServices.Resource.String.mr_media_route_controller_stop = global::EasyBike.Droid.Resource.String.mr_media_route_controller_stop;
-			global::GooglePlayServices.Resource.String.mr_system_route_name = global::EasyBike.Droid.Resource.String.mr_system_route_name;
-			global::GooglePlayServices.Resource.String.mr_user_route_category_name = global::EasyBike.Droid.Resource.String.mr_user_route_category_name;
-			global::GooglePlayServices.Resource.String.status_bar_notification_info_overflow = global::EasyBike.Droid.Resource.String.status_bar_notification_info_overflow;
-			global::GooglePlayServices.Resource.String.store_picture_message = global::EasyBike.Droid.Resource.String.store_picture_message;
-			global::GooglePlayServices.Resource.String.store_picture_title = global::EasyBike.Droid.Resource.String.store_picture_title;
-			global::GooglePlayServices.Resource.String.wallet_buy_button_place_holder = global::EasyBike.Droid.Resource.String.wallet_buy_button_place_holder;
-			global::GooglePlayServices.Resource.Style.AlertDialog_AppCompat = global::EasyBike.Droid.Resource.Style.AlertDialog_AppCompat;
-			global::GooglePlayServices.Resource.Style.AlertDialog_AppCompat_Light = global::EasyBike.Droid.Resource.Style.AlertDialog_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Animation_AppCompat_Dialog = global::EasyBike.Droid.Resource.Style.Animation_AppCompat_Dialog;
-			global::GooglePlayServices.Resource.Style.Animation_AppCompat_DropDownUp = global::EasyBike.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
-			global::GooglePlayServices.Resource.Style.Base_AlertDialog_AppCompat = global::EasyBike.Droid.Resource.Style.Base_AlertDialog_AppCompat;
-			global::GooglePlayServices.Resource.Style.Base_AlertDialog_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Base_Animation_AppCompat_Dialog = global::EasyBike.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
-			global::GooglePlayServices.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::EasyBike.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
-			global::GooglePlayServices.Resource.Style.Base_DialogWindowTitle_AppCompat = global::EasyBike.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
-			global::GooglePlayServices.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::EasyBike.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Button = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Large = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Small = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Title = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::GooglePlayServices.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::EasyBike.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Dialog = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::GooglePlayServices.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::EasyBike.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::GooglePlayServices.Resource.Style.Base_ThemeOverlay_AppCompat = global::EasyBike.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
-			global::GooglePlayServices.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::EasyBike.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
-			global::GooglePlayServices.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::EasyBike.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
-			global::GooglePlayServices.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::EasyBike.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::GooglePlayServices.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::EasyBike.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
-			global::GooglePlayServices.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::EasyBike.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
-			global::GooglePlayServices.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::EasyBike.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
-			global::GooglePlayServices.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::EasyBike.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
-			global::GooglePlayServices.Resource.Style.Base_V21_Theme_AppCompat = global::EasyBike.Droid.Resource.Style.Base_V21_Theme_AppCompat;
-			global::GooglePlayServices.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::EasyBike.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
-			global::GooglePlayServices.Resource.Style.Base_V21_Theme_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::EasyBike.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
-			global::GooglePlayServices.Resource.Style.Base_V7_Theme_AppCompat = global::EasyBike.Droid.Resource.Style.Base_V7_Theme_AppCompat;
-			global::GooglePlayServices.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::EasyBike.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
-			global::GooglePlayServices.Resource.Style.Base_V7_Theme_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::EasyBike.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
-			global::GooglePlayServices.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::EasyBike.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
-			global::GooglePlayServices.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::EasyBike.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActionBar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActionButton = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActionMode = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Button = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Button;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Button_Small = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_EditText = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ListView = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_RatingBar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_SearchView = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Spinner = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Spinner_DropDown_ActionBar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_DropDown_ActionBar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Toolbar = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
-			global::GooglePlayServices.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::EasyBike.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::GooglePlayServices.Resource.Style.Platform_AppCompat = global::EasyBike.Droid.Resource.Style.Platform_AppCompat;
-			global::GooglePlayServices.Resource.Style.Platform_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Platform_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::EasyBike.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
-			global::GooglePlayServices.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Platform_V11_AppCompat = global::EasyBike.Droid.Resource.Style.Platform_V11_AppCompat;
-			global::GooglePlayServices.Resource.Style.Platform_V11_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Platform_V11_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Platform_V14_AppCompat = global::EasyBike.Droid.Resource.Style.Platform_V14_AppCompat;
-			global::GooglePlayServices.Resource.Style.Platform_V14_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Platform_V14_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::EasyBike.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_ActionButton_Overflow = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionButton_Overflow;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
-			global::GooglePlayServices.Resource.Style.RtlOverlay_Widget_AppCompat_Toolbar_Button_Navigation = global::EasyBike.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Body1 = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Body2 = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Button = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Button;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Caption = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Display1 = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Display2 = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Display3 = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Display4 = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Headline = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Large = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Large;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Medium = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Menu = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Small = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Small;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Subhead = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Title = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Title;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
-			global::GooglePlayServices.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::EasyBike.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::GooglePlayServices.Resource.Style.TextAppearance_StatusBar_EventContent = global::EasyBike.Droid.Resource.Style.TextAppearance_StatusBar_EventContent;
-			global::GooglePlayServices.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::EasyBike.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
-			global::GooglePlayServices.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::EasyBike.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
-			global::GooglePlayServices.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::EasyBike.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
-			global::GooglePlayServices.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::EasyBike.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
-			global::GooglePlayServices.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::EasyBike.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::GooglePlayServices.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::EasyBike.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::GooglePlayServices.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::EasyBike.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat = global::EasyBike.Droid.Resource.Style.Theme_AppCompat;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_CompactMenu = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Dialog = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Dialog;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Dialog_Alert = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Light = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Light_Dialog = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::GooglePlayServices.Resource.Style.Theme_AppCompat_NoActionBar = global::EasyBike.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::GooglePlayServices.Resource.Style.Theme_IAPTheme = global::EasyBike.Droid.Resource.Style.Theme_IAPTheme;
-			global::GooglePlayServices.Resource.Style.Theme_MediaRouter = global::EasyBike.Droid.Resource.Style.Theme_MediaRouter;
-			global::GooglePlayServices.Resource.Style.Theme_MediaRouter_Light = global::EasyBike.Droid.Resource.Style.Theme_MediaRouter_Light;
-			global::GooglePlayServices.Resource.Style.ThemeOverlay_AppCompat = global::EasyBike.Droid.Resource.Style.ThemeOverlay_AppCompat;
-			global::GooglePlayServices.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::EasyBike.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
-			global::GooglePlayServices.Resource.Style.ThemeOverlay_AppCompat_Dark = global::EasyBike.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
-			global::GooglePlayServices.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::EasyBike.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::GooglePlayServices.Resource.Style.ThemeOverlay_AppCompat_Light = global::EasyBike.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
-			global::GooglePlayServices.Resource.Style.WalletFragmentDefaultButtonTextAppearance = global::EasyBike.Droid.Resource.Style.WalletFragmentDefaultButtonTextAppearance;
-			global::GooglePlayServices.Resource.Style.WalletFragmentDefaultDetailsHeaderTextAppearance = global::EasyBike.Droid.Resource.Style.WalletFragmentDefaultDetailsHeaderTextAppearance;
-			global::GooglePlayServices.Resource.Style.WalletFragmentDefaultDetailsTextAppearance = global::EasyBike.Droid.Resource.Style.WalletFragmentDefaultDetailsTextAppearance;
-			global::GooglePlayServices.Resource.Style.WalletFragmentDefaultStyle = global::EasyBike.Droid.Resource.Style.WalletFragmentDefaultStyle;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActionBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActionBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActionButton = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActionButton;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActionMode = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActionMode;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ActivityChooserView = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Button = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Button;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Button_Borderless = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Button_Small = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Button_Small;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ButtonBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_EditText = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_EditText;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionButton = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_SearchView = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ListPopupWindow = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ListView = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ListView;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ListView_DropDown = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ListView_Menu = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_PopupMenu = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_PopupWindow = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ProgressBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_RatingBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_RatingBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_SearchView = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_SearchView;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Spinner = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Spinner;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Toolbar = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Toolbar;
-			global::GooglePlayServices.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::EasyBike.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
-			global::GooglePlayServices.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::EasyBike.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
-			global::GooglePlayServices.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::EasyBike.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
-			global::GooglePlayServices.Resource.Styleable.ActionBar = global::EasyBike.Droid.Resource.Styleable.ActionBar;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_background = global::EasyBike.Droid.Resource.Styleable.ActionBar_background;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_backgroundSplit = global::EasyBike.Droid.Resource.Styleable.ActionBar_backgroundSplit;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_backgroundStacked = global::EasyBike.Droid.Resource.Styleable.ActionBar_backgroundStacked;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_contentInsetEnd = global::EasyBike.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_contentInsetLeft = global::EasyBike.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_contentInsetRight = global::EasyBike.Droid.Resource.Styleable.ActionBar_contentInsetRight;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_contentInsetStart = global::EasyBike.Droid.Resource.Styleable.ActionBar_contentInsetStart;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_customNavigationLayout = global::EasyBike.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_displayOptions = global::EasyBike.Droid.Resource.Styleable.ActionBar_displayOptions;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_divider = global::EasyBike.Droid.Resource.Styleable.ActionBar_divider;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_elevation = global::EasyBike.Droid.Resource.Styleable.ActionBar_elevation;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_height = global::EasyBike.Droid.Resource.Styleable.ActionBar_height;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_hideOnContentScroll = global::EasyBike.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_homeAsUpIndicator = global::EasyBike.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_homeLayout = global::EasyBike.Droid.Resource.Styleable.ActionBar_homeLayout;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_icon = global::EasyBike.Droid.Resource.Styleable.ActionBar_icon;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::EasyBike.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_itemPadding = global::EasyBike.Droid.Resource.Styleable.ActionBar_itemPadding;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_logo = global::EasyBike.Droid.Resource.Styleable.ActionBar_logo;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_navigationMode = global::EasyBike.Droid.Resource.Styleable.ActionBar_navigationMode;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_popupTheme = global::EasyBike.Droid.Resource.Styleable.ActionBar_popupTheme;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_progressBarPadding = global::EasyBike.Droid.Resource.Styleable.ActionBar_progressBarPadding;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_progressBarStyle = global::EasyBike.Droid.Resource.Styleable.ActionBar_progressBarStyle;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_subtitle = global::EasyBike.Droid.Resource.Styleable.ActionBar_subtitle;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_subtitleTextStyle = global::EasyBike.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_title = global::EasyBike.Droid.Resource.Styleable.ActionBar_title;
-			global::GooglePlayServices.Resource.Styleable.ActionBar_titleTextStyle = global::EasyBike.Droid.Resource.Styleable.ActionBar_titleTextStyle;
-			global::GooglePlayServices.Resource.Styleable.ActionBarLayout = global::EasyBike.Droid.Resource.Styleable.ActionBarLayout;
-			global::GooglePlayServices.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::EasyBike.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
-			global::GooglePlayServices.Resource.Styleable.ActionMenuItemView = global::EasyBike.Droid.Resource.Styleable.ActionMenuItemView;
-			global::GooglePlayServices.Resource.Styleable.ActionMenuItemView_android_minWidth = global::EasyBike.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
-			global::GooglePlayServices.Resource.Styleable.ActionMenuView = global::EasyBike.Droid.Resource.Styleable.ActionMenuView;
-			global::GooglePlayServices.Resource.Styleable.ActionMode = global::EasyBike.Droid.Resource.Styleable.ActionMode;
-			global::GooglePlayServices.Resource.Styleable.ActionMode_background = global::EasyBike.Droid.Resource.Styleable.ActionMode_background;
-			global::GooglePlayServices.Resource.Styleable.ActionMode_backgroundSplit = global::EasyBike.Droid.Resource.Styleable.ActionMode_backgroundSplit;
-			global::GooglePlayServices.Resource.Styleable.ActionMode_closeItemLayout = global::EasyBike.Droid.Resource.Styleable.ActionMode_closeItemLayout;
-			global::GooglePlayServices.Resource.Styleable.ActionMode_height = global::EasyBike.Droid.Resource.Styleable.ActionMode_height;
-			global::GooglePlayServices.Resource.Styleable.ActionMode_subtitleTextStyle = global::EasyBike.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
-			global::GooglePlayServices.Resource.Styleable.ActionMode_titleTextStyle = global::EasyBike.Droid.Resource.Styleable.ActionMode_titleTextStyle;
-			global::GooglePlayServices.Resource.Styleable.ActivityChooserView = global::EasyBike.Droid.Resource.Styleable.ActivityChooserView;
-			global::GooglePlayServices.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::EasyBike.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
-			global::GooglePlayServices.Resource.Styleable.ActivityChooserView_initialActivityCount = global::EasyBike.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
-			global::GooglePlayServices.Resource.Styleable.AdsAttrs = global::EasyBike.Droid.Resource.Styleable.AdsAttrs;
-			global::GooglePlayServices.Resource.Styleable.AdsAttrs_adSize = global::EasyBike.Droid.Resource.Styleable.AdsAttrs_adSize;
-			global::GooglePlayServices.Resource.Styleable.AdsAttrs_adSizes = global::EasyBike.Droid.Resource.Styleable.AdsAttrs_adSizes;
-			global::GooglePlayServices.Resource.Styleable.AdsAttrs_adUnitId = global::EasyBike.Droid.Resource.Styleable.AdsAttrs_adUnitId;
-			global::GooglePlayServices.Resource.Styleable.AlertDialog = global::EasyBike.Droid.Resource.Styleable.AlertDialog;
-			global::GooglePlayServices.Resource.Styleable.AlertDialog_android_layout = global::EasyBike.Droid.Resource.Styleable.AlertDialog_android_layout;
-			global::GooglePlayServices.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::EasyBike.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
-			global::GooglePlayServices.Resource.Styleable.AlertDialog_listItemLayout = global::EasyBike.Droid.Resource.Styleable.AlertDialog_listItemLayout;
-			global::GooglePlayServices.Resource.Styleable.AlertDialog_listLayout = global::EasyBike.Droid.Resource.Styleable.AlertDialog_listLayout;
-			global::GooglePlayServices.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::EasyBike.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
-			global::GooglePlayServices.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::EasyBike.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
-			global::GooglePlayServices.Resource.Styleable.AppCompatTextView = global::EasyBike.Droid.Resource.Styleable.AppCompatTextView;
-			global::GooglePlayServices.Resource.Styleable.AppCompatTextView_android_textAppearance = global::EasyBike.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
-			global::GooglePlayServices.Resource.Styleable.AppCompatTextView_textAllCaps = global::EasyBike.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::GooglePlayServices.Resource.Styleable.CustomWalletTheme = global::EasyBike.Droid.Resource.Styleable.CustomWalletTheme;
-			global::GooglePlayServices.Resource.Styleable.CustomWalletTheme_windowTransitionStyle = global::EasyBike.Droid.Resource.Styleable.CustomWalletTheme_windowTransitionStyle;
-			global::GooglePlayServices.Resource.Styleable.DrawerArrowToggle = global::EasyBike.Droid.Resource.Styleable.DrawerArrowToggle;
-			global::GooglePlayServices.Resource.Styleable.DrawerArrowToggle_barSize = global::EasyBike.Droid.Resource.Styleable.DrawerArrowToggle_barSize;
-			global::GooglePlayServices.Resource.Styleable.DrawerArrowToggle_color = global::EasyBike.Droid.Resource.Styleable.DrawerArrowToggle_color;
-			global::GooglePlayServices.Resource.Styleable.DrawerArrowToggle_drawableSize = global::EasyBike.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
-			global::GooglePlayServices.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::EasyBike.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
-			global::GooglePlayServices.Resource.Styleable.DrawerArrowToggle_middleBarArrowSize = global::EasyBike.Droid.Resource.Styleable.DrawerArrowToggle_middleBarArrowSize;
-			global::GooglePlayServices.Resource.Styleable.DrawerArrowToggle_spinBars = global::EasyBike.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
-			global::GooglePlayServices.Resource.Styleable.DrawerArrowToggle_thickness = global::EasyBike.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
-			global::GooglePlayServices.Resource.Styleable.DrawerArrowToggle_topBottomBarArrowSize = global::EasyBike.Droid.Resource.Styleable.DrawerArrowToggle_topBottomBarArrowSize;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_android_gravity = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_android_orientation = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_divider = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_divider;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_showDividers = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_Layout = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
-			global::GooglePlayServices.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::EasyBike.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::GooglePlayServices.Resource.Styleable.ListPopupWindow = global::EasyBike.Droid.Resource.Styleable.ListPopupWindow;
-			global::GooglePlayServices.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::EasyBike.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
-			global::GooglePlayServices.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::EasyBike.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
-			global::GooglePlayServices.Resource.Styleable.LoadingImageView = global::EasyBike.Droid.Resource.Styleable.LoadingImageView;
-			global::GooglePlayServices.Resource.Styleable.LoadingImageView_circleCrop = global::EasyBike.Droid.Resource.Styleable.LoadingImageView_circleCrop;
-			global::GooglePlayServices.Resource.Styleable.LoadingImageView_imageAspectRatio = global::EasyBike.Droid.Resource.Styleable.LoadingImageView_imageAspectRatio;
-			global::GooglePlayServices.Resource.Styleable.LoadingImageView_imageAspectRatioAdjust = global::EasyBike.Droid.Resource.Styleable.LoadingImageView_imageAspectRatioAdjust;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs = global::EasyBike.Droid.Resource.Styleable.MapAttrs;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_cameraBearing = global::EasyBike.Droid.Resource.Styleable.MapAttrs_cameraBearing;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_cameraTargetLat = global::EasyBike.Droid.Resource.Styleable.MapAttrs_cameraTargetLat;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_cameraTargetLng = global::EasyBike.Droid.Resource.Styleable.MapAttrs_cameraTargetLng;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_cameraTilt = global::EasyBike.Droid.Resource.Styleable.MapAttrs_cameraTilt;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_cameraZoom = global::EasyBike.Droid.Resource.Styleable.MapAttrs_cameraZoom;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_liteMode = global::EasyBike.Droid.Resource.Styleable.MapAttrs_liteMode;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_mapType = global::EasyBike.Droid.Resource.Styleable.MapAttrs_mapType;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_uiCompass = global::EasyBike.Droid.Resource.Styleable.MapAttrs_uiCompass;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_uiMapToolbar = global::EasyBike.Droid.Resource.Styleable.MapAttrs_uiMapToolbar;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_uiRotateGestures = global::EasyBike.Droid.Resource.Styleable.MapAttrs_uiRotateGestures;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_uiScrollGestures = global::EasyBike.Droid.Resource.Styleable.MapAttrs_uiScrollGestures;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_uiTiltGestures = global::EasyBike.Droid.Resource.Styleable.MapAttrs_uiTiltGestures;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_uiZoomControls = global::EasyBike.Droid.Resource.Styleable.MapAttrs_uiZoomControls;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_uiZoomGestures = global::EasyBike.Droid.Resource.Styleable.MapAttrs_uiZoomGestures;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_useViewLifecycle = global::EasyBike.Droid.Resource.Styleable.MapAttrs_useViewLifecycle;
-			global::GooglePlayServices.Resource.Styleable.MapAttrs_zOrderOnTop = global::EasyBike.Droid.Resource.Styleable.MapAttrs_zOrderOnTop;
-			global::GooglePlayServices.Resource.Styleable.MediaRouteButton = global::EasyBike.Droid.Resource.Styleable.MediaRouteButton;
-			global::GooglePlayServices.Resource.Styleable.MediaRouteButton_android_minHeight = global::EasyBike.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
-			global::GooglePlayServices.Resource.Styleable.MediaRouteButton_android_minWidth = global::EasyBike.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
-			global::GooglePlayServices.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::EasyBike.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
-			global::GooglePlayServices.Resource.Styleable.MenuGroup = global::EasyBike.Droid.Resource.Styleable.MenuGroup;
-			global::GooglePlayServices.Resource.Styleable.MenuGroup_android_checkableBehavior = global::EasyBike.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
-			global::GooglePlayServices.Resource.Styleable.MenuGroup_android_enabled = global::EasyBike.Droid.Resource.Styleable.MenuGroup_android_enabled;
-			global::GooglePlayServices.Resource.Styleable.MenuGroup_android_id = global::EasyBike.Droid.Resource.Styleable.MenuGroup_android_id;
-			global::GooglePlayServices.Resource.Styleable.MenuGroup_android_menuCategory = global::EasyBike.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
-			global::GooglePlayServices.Resource.Styleable.MenuGroup_android_orderInCategory = global::EasyBike.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
-			global::GooglePlayServices.Resource.Styleable.MenuGroup_android_visible = global::EasyBike.Droid.Resource.Styleable.MenuGroup_android_visible;
-			global::GooglePlayServices.Resource.Styleable.MenuItem = global::EasyBike.Droid.Resource.Styleable.MenuItem;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_actionLayout = global::EasyBike.Droid.Resource.Styleable.MenuItem_actionLayout;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_actionProviderClass = global::EasyBike.Droid.Resource.Styleable.MenuItem_actionProviderClass;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_actionViewClass = global::EasyBike.Droid.Resource.Styleable.MenuItem_actionViewClass;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_checkable = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_checkable;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_checked = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_checked;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_enabled = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_enabled;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_icon = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_icon;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_id = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_id;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_menuCategory = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_menuCategory;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_numericShortcut = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_onClick = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_onClick;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_orderInCategory = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_title = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_title;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_titleCondensed = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_android_visible = global::EasyBike.Droid.Resource.Styleable.MenuItem_android_visible;
-			global::GooglePlayServices.Resource.Styleable.MenuItem_showAsAction = global::EasyBike.Droid.Resource.Styleable.MenuItem_showAsAction;
-			global::GooglePlayServices.Resource.Styleable.MenuView = global::EasyBike.Droid.Resource.Styleable.MenuView;
-			global::GooglePlayServices.Resource.Styleable.MenuView_android_headerBackground = global::EasyBike.Droid.Resource.Styleable.MenuView_android_headerBackground;
-			global::GooglePlayServices.Resource.Styleable.MenuView_android_horizontalDivider = global::EasyBike.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
-			global::GooglePlayServices.Resource.Styleable.MenuView_android_itemBackground = global::EasyBike.Droid.Resource.Styleable.MenuView_android_itemBackground;
-			global::GooglePlayServices.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::EasyBike.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
-			global::GooglePlayServices.Resource.Styleable.MenuView_android_itemTextAppearance = global::EasyBike.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
-			global::GooglePlayServices.Resource.Styleable.MenuView_android_verticalDivider = global::EasyBike.Droid.Resource.Styleable.MenuView_android_verticalDivider;
-			global::GooglePlayServices.Resource.Styleable.MenuView_android_windowAnimationStyle = global::EasyBike.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
-			global::GooglePlayServices.Resource.Styleable.MenuView_preserveIconSpacing = global::EasyBike.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
-			global::GooglePlayServices.Resource.Styleable.PopupWindow = global::EasyBike.Droid.Resource.Styleable.PopupWindow;
-			global::GooglePlayServices.Resource.Styleable.PopupWindow_android_popupBackground = global::EasyBike.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
-			global::GooglePlayServices.Resource.Styleable.PopupWindow_overlapAnchor = global::EasyBike.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
-			global::GooglePlayServices.Resource.Styleable.PopupWindowBackgroundState = global::EasyBike.Droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::GooglePlayServices.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::EasyBike.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
-			global::GooglePlayServices.Resource.Styleable.SearchView = global::EasyBike.Droid.Resource.Styleable.SearchView;
-			global::GooglePlayServices.Resource.Styleable.SearchView_android_focusable = global::EasyBike.Droid.Resource.Styleable.SearchView_android_focusable;
-			global::GooglePlayServices.Resource.Styleable.SearchView_android_imeOptions = global::EasyBike.Droid.Resource.Styleable.SearchView_android_imeOptions;
-			global::GooglePlayServices.Resource.Styleable.SearchView_android_inputType = global::EasyBike.Droid.Resource.Styleable.SearchView_android_inputType;
-			global::GooglePlayServices.Resource.Styleable.SearchView_android_maxWidth = global::EasyBike.Droid.Resource.Styleable.SearchView_android_maxWidth;
-			global::GooglePlayServices.Resource.Styleable.SearchView_closeIcon = global::EasyBike.Droid.Resource.Styleable.SearchView_closeIcon;
-			global::GooglePlayServices.Resource.Styleable.SearchView_commitIcon = global::EasyBike.Droid.Resource.Styleable.SearchView_commitIcon;
-			global::GooglePlayServices.Resource.Styleable.SearchView_defaultQueryHint = global::EasyBike.Droid.Resource.Styleable.SearchView_defaultQueryHint;
-			global::GooglePlayServices.Resource.Styleable.SearchView_goIcon = global::EasyBike.Droid.Resource.Styleable.SearchView_goIcon;
-			global::GooglePlayServices.Resource.Styleable.SearchView_iconifiedByDefault = global::EasyBike.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
-			global::GooglePlayServices.Resource.Styleable.SearchView_layout = global::EasyBike.Droid.Resource.Styleable.SearchView_layout;
-			global::GooglePlayServices.Resource.Styleable.SearchView_queryBackground = global::EasyBike.Droid.Resource.Styleable.SearchView_queryBackground;
-			global::GooglePlayServices.Resource.Styleable.SearchView_queryHint = global::EasyBike.Droid.Resource.Styleable.SearchView_queryHint;
-			global::GooglePlayServices.Resource.Styleable.SearchView_searchHintIcon = global::EasyBike.Droid.Resource.Styleable.SearchView_searchHintIcon;
-			global::GooglePlayServices.Resource.Styleable.SearchView_searchIcon = global::EasyBike.Droid.Resource.Styleable.SearchView_searchIcon;
-			global::GooglePlayServices.Resource.Styleable.SearchView_submitBackground = global::EasyBike.Droid.Resource.Styleable.SearchView_submitBackground;
-			global::GooglePlayServices.Resource.Styleable.SearchView_suggestionRowLayout = global::EasyBike.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
-			global::GooglePlayServices.Resource.Styleable.SearchView_voiceIcon = global::EasyBike.Droid.Resource.Styleable.SearchView_voiceIcon;
-			global::GooglePlayServices.Resource.Styleable.Spinner = global::EasyBike.Droid.Resource.Styleable.Spinner;
-			global::GooglePlayServices.Resource.Styleable.Spinner_android_background = global::EasyBike.Droid.Resource.Styleable.Spinner_android_background;
-			global::GooglePlayServices.Resource.Styleable.Spinner_android_dropDownHorizontalOffset = global::EasyBike.Droid.Resource.Styleable.Spinner_android_dropDownHorizontalOffset;
-			global::GooglePlayServices.Resource.Styleable.Spinner_android_dropDownSelector = global::EasyBike.Droid.Resource.Styleable.Spinner_android_dropDownSelector;
-			global::GooglePlayServices.Resource.Styleable.Spinner_android_dropDownVerticalOffset = global::EasyBike.Droid.Resource.Styleable.Spinner_android_dropDownVerticalOffset;
-			global::GooglePlayServices.Resource.Styleable.Spinner_android_dropDownWidth = global::EasyBike.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
-			global::GooglePlayServices.Resource.Styleable.Spinner_android_gravity = global::EasyBike.Droid.Resource.Styleable.Spinner_android_gravity;
-			global::GooglePlayServices.Resource.Styleable.Spinner_android_popupBackground = global::EasyBike.Droid.Resource.Styleable.Spinner_android_popupBackground;
-			global::GooglePlayServices.Resource.Styleable.Spinner_disableChildrenWhenDisabled = global::EasyBike.Droid.Resource.Styleable.Spinner_disableChildrenWhenDisabled;
-			global::GooglePlayServices.Resource.Styleable.Spinner_popupPromptView = global::EasyBike.Droid.Resource.Styleable.Spinner_popupPromptView;
-			global::GooglePlayServices.Resource.Styleable.Spinner_prompt = global::EasyBike.Droid.Resource.Styleable.Spinner_prompt;
-			global::GooglePlayServices.Resource.Styleable.Spinner_spinnerMode = global::EasyBike.Droid.Resource.Styleable.Spinner_spinnerMode;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat = global::EasyBike.Droid.Resource.Styleable.SwitchCompat;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_android_textOff = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_android_textOff;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_android_textOn = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_android_textOn;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_android_thumb = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_android_thumb;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_showText = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_showText;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_splitTrack = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_splitTrack;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_switchMinWidth = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_switchPadding = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_switchPadding;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_switchTextAppearance = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_thumbTextPadding = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
-			global::GooglePlayServices.Resource.Styleable.SwitchCompat_track = global::EasyBike.Droid.Resource.Styleable.SwitchCompat_track;
-			global::GooglePlayServices.Resource.Styleable.TextAppearance = global::EasyBike.Droid.Resource.Styleable.TextAppearance;
-			global::GooglePlayServices.Resource.Styleable.TextAppearance_android_textColor = global::EasyBike.Droid.Resource.Styleable.TextAppearance_android_textColor;
-			global::GooglePlayServices.Resource.Styleable.TextAppearance_android_textSize = global::EasyBike.Droid.Resource.Styleable.TextAppearance_android_textSize;
-			global::GooglePlayServices.Resource.Styleable.TextAppearance_android_textStyle = global::EasyBike.Droid.Resource.Styleable.TextAppearance_android_textStyle;
-			global::GooglePlayServices.Resource.Styleable.TextAppearance_android_typeface = global::EasyBike.Droid.Resource.Styleable.TextAppearance_android_typeface;
-			global::GooglePlayServices.Resource.Styleable.TextAppearance_textAllCaps = global::EasyBike.Droid.Resource.Styleable.TextAppearance_textAllCaps;
-			global::GooglePlayServices.Resource.Styleable.Theme = global::EasyBike.Droid.Resource.Styleable.Theme;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarDivider = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarDivider;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarItemBackground = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarItemBackground;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarPopupTheme = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarPopupTheme;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarSize = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarSize;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarSplitStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarSplitStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarTabBarStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarTabBarStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarTabStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarTabStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarTabTextStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarTabTextStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarTheme = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarTheme;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionBarWidgetTheme = global::EasyBike.Droid.Resource.Styleable.Theme_actionBarWidgetTheme;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionDropDownStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionDropDownStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionMenuTextAppearance = global::EasyBike.Droid.Resource.Styleable.Theme_actionMenuTextAppearance;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionMenuTextColor = global::EasyBike.Droid.Resource.Styleable.Theme_actionMenuTextColor;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeBackground = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeBackground;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeCloseButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeCloseButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeCloseDrawable = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeCloseDrawable;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeCopyDrawable = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeCopyDrawable;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeCutDrawable = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeCutDrawable;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeFindDrawable = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeFindDrawable;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModePasteDrawable = global::EasyBike.Droid.Resource.Styleable.Theme_actionModePasteDrawable;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModePopupWindowStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionModePopupWindowStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeSelectAllDrawable = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeSelectAllDrawable;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeShareDrawable = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeShareDrawable;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeSplitBackground = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeSplitBackground;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionModeWebSearchDrawable = global::EasyBike.Droid.Resource.Styleable.Theme_actionModeWebSearchDrawable;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionOverflowButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionOverflowButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_actionOverflowMenuStyle = global::EasyBike.Droid.Resource.Styleable.Theme_actionOverflowMenuStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_activityChooserViewStyle = global::EasyBike.Droid.Resource.Styleable.Theme_activityChooserViewStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_alertDialogButtonGroupStyle = global::EasyBike.Droid.Resource.Styleable.Theme_alertDialogButtonGroupStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_alertDialogCenterButtons = global::EasyBike.Droid.Resource.Styleable.Theme_alertDialogCenterButtons;
-			global::GooglePlayServices.Resource.Styleable.Theme_alertDialogStyle = global::EasyBike.Droid.Resource.Styleable.Theme_alertDialogStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_alertDialogTheme = global::EasyBike.Droid.Resource.Styleable.Theme_alertDialogTheme;
-			global::GooglePlayServices.Resource.Styleable.Theme_android_windowAnimationStyle = global::EasyBike.Droid.Resource.Styleable.Theme_android_windowAnimationStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_android_windowIsFloating = global::EasyBike.Droid.Resource.Styleable.Theme_android_windowIsFloating;
-			global::GooglePlayServices.Resource.Styleable.Theme_autoCompleteTextViewStyle = global::EasyBike.Droid.Resource.Styleable.Theme_autoCompleteTextViewStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_borderlessButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_borderlessButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_buttonBarButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_buttonBarButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_buttonBarNegativeButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_buttonBarNegativeButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_buttonBarNeutralButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_buttonBarNeutralButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_buttonBarPositiveButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_buttonBarPositiveButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_buttonBarStyle = global::EasyBike.Droid.Resource.Styleable.Theme_buttonBarStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_buttonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_buttonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_buttonStyleSmall = global::EasyBike.Droid.Resource.Styleable.Theme_buttonStyleSmall;
-			global::GooglePlayServices.Resource.Styleable.Theme_checkboxStyle = global::EasyBike.Droid.Resource.Styleable.Theme_checkboxStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_checkedTextViewStyle = global::EasyBike.Droid.Resource.Styleable.Theme_checkedTextViewStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_colorAccent = global::EasyBike.Droid.Resource.Styleable.Theme_colorAccent;
-			global::GooglePlayServices.Resource.Styleable.Theme_colorButtonNormal = global::EasyBike.Droid.Resource.Styleable.Theme_colorButtonNormal;
-			global::GooglePlayServices.Resource.Styleable.Theme_colorControlActivated = global::EasyBike.Droid.Resource.Styleable.Theme_colorControlActivated;
-			global::GooglePlayServices.Resource.Styleable.Theme_colorControlHighlight = global::EasyBike.Droid.Resource.Styleable.Theme_colorControlHighlight;
-			global::GooglePlayServices.Resource.Styleable.Theme_colorControlNormal = global::EasyBike.Droid.Resource.Styleable.Theme_colorControlNormal;
-			global::GooglePlayServices.Resource.Styleable.Theme_colorPrimary = global::EasyBike.Droid.Resource.Styleable.Theme_colorPrimary;
-			global::GooglePlayServices.Resource.Styleable.Theme_colorPrimaryDark = global::EasyBike.Droid.Resource.Styleable.Theme_colorPrimaryDark;
-			global::GooglePlayServices.Resource.Styleable.Theme_colorSwitchThumbNormal = global::EasyBike.Droid.Resource.Styleable.Theme_colorSwitchThumbNormal;
-			global::GooglePlayServices.Resource.Styleable.Theme_dialogPreferredPadding = global::EasyBike.Droid.Resource.Styleable.Theme_dialogPreferredPadding;
-			global::GooglePlayServices.Resource.Styleable.Theme_dialogTheme = global::EasyBike.Droid.Resource.Styleable.Theme_dialogTheme;
-			global::GooglePlayServices.Resource.Styleable.Theme_dividerHorizontal = global::EasyBike.Droid.Resource.Styleable.Theme_dividerHorizontal;
-			global::GooglePlayServices.Resource.Styleable.Theme_dividerVertical = global::EasyBike.Droid.Resource.Styleable.Theme_dividerVertical;
-			global::GooglePlayServices.Resource.Styleable.Theme_dropDownListViewStyle = global::EasyBike.Droid.Resource.Styleable.Theme_dropDownListViewStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_dropdownListPreferredItemHeight = global::EasyBike.Droid.Resource.Styleable.Theme_dropdownListPreferredItemHeight;
-			global::GooglePlayServices.Resource.Styleable.Theme_editTextBackground = global::EasyBike.Droid.Resource.Styleable.Theme_editTextBackground;
-			global::GooglePlayServices.Resource.Styleable.Theme_editTextColor = global::EasyBike.Droid.Resource.Styleable.Theme_editTextColor;
-			global::GooglePlayServices.Resource.Styleable.Theme_editTextStyle = global::EasyBike.Droid.Resource.Styleable.Theme_editTextStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_homeAsUpIndicator = global::EasyBike.Droid.Resource.Styleable.Theme_homeAsUpIndicator;
-			global::GooglePlayServices.Resource.Styleable.Theme_listChoiceBackgroundIndicator = global::EasyBike.Droid.Resource.Styleable.Theme_listChoiceBackgroundIndicator;
-			global::GooglePlayServices.Resource.Styleable.Theme_listDividerAlertDialog = global::EasyBike.Droid.Resource.Styleable.Theme_listDividerAlertDialog;
-			global::GooglePlayServices.Resource.Styleable.Theme_listPopupWindowStyle = global::EasyBike.Droid.Resource.Styleable.Theme_listPopupWindowStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_listPreferredItemHeight = global::EasyBike.Droid.Resource.Styleable.Theme_listPreferredItemHeight;
-			global::GooglePlayServices.Resource.Styleable.Theme_listPreferredItemHeightLarge = global::EasyBike.Droid.Resource.Styleable.Theme_listPreferredItemHeightLarge;
-			global::GooglePlayServices.Resource.Styleable.Theme_listPreferredItemHeightSmall = global::EasyBike.Droid.Resource.Styleable.Theme_listPreferredItemHeightSmall;
-			global::GooglePlayServices.Resource.Styleable.Theme_listPreferredItemPaddingLeft = global::EasyBike.Droid.Resource.Styleable.Theme_listPreferredItemPaddingLeft;
-			global::GooglePlayServices.Resource.Styleable.Theme_listPreferredItemPaddingRight = global::EasyBike.Droid.Resource.Styleable.Theme_listPreferredItemPaddingRight;
-			global::GooglePlayServices.Resource.Styleable.Theme_panelBackground = global::EasyBike.Droid.Resource.Styleable.Theme_panelBackground;
-			global::GooglePlayServices.Resource.Styleable.Theme_panelMenuListTheme = global::EasyBike.Droid.Resource.Styleable.Theme_panelMenuListTheme;
-			global::GooglePlayServices.Resource.Styleable.Theme_panelMenuListWidth = global::EasyBike.Droid.Resource.Styleable.Theme_panelMenuListWidth;
-			global::GooglePlayServices.Resource.Styleable.Theme_popupMenuStyle = global::EasyBike.Droid.Resource.Styleable.Theme_popupMenuStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_popupWindowStyle = global::EasyBike.Droid.Resource.Styleable.Theme_popupWindowStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_radioButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_radioButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_ratingBarStyle = global::EasyBike.Droid.Resource.Styleable.Theme_ratingBarStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_searchViewStyle = global::EasyBike.Droid.Resource.Styleable.Theme_searchViewStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_selectableItemBackground = global::EasyBike.Droid.Resource.Styleable.Theme_selectableItemBackground;
-			global::GooglePlayServices.Resource.Styleable.Theme_selectableItemBackgroundBorderless = global::EasyBike.Droid.Resource.Styleable.Theme_selectableItemBackgroundBorderless;
-			global::GooglePlayServices.Resource.Styleable.Theme_spinnerDropDownItemStyle = global::EasyBike.Droid.Resource.Styleable.Theme_spinnerDropDownItemStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_spinnerStyle = global::EasyBike.Droid.Resource.Styleable.Theme_spinnerStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_switchStyle = global::EasyBike.Droid.Resource.Styleable.Theme_switchStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_textAppearanceLargePopupMenu = global::EasyBike.Droid.Resource.Styleable.Theme_textAppearanceLargePopupMenu;
-			global::GooglePlayServices.Resource.Styleable.Theme_textAppearanceListItem = global::EasyBike.Droid.Resource.Styleable.Theme_textAppearanceListItem;
-			global::GooglePlayServices.Resource.Styleable.Theme_textAppearanceListItemSmall = global::EasyBike.Droid.Resource.Styleable.Theme_textAppearanceListItemSmall;
-			global::GooglePlayServices.Resource.Styleable.Theme_textAppearanceSearchResultSubtitle = global::EasyBike.Droid.Resource.Styleable.Theme_textAppearanceSearchResultSubtitle;
-			global::GooglePlayServices.Resource.Styleable.Theme_textAppearanceSearchResultTitle = global::EasyBike.Droid.Resource.Styleable.Theme_textAppearanceSearchResultTitle;
-			global::GooglePlayServices.Resource.Styleable.Theme_textAppearanceSmallPopupMenu = global::EasyBike.Droid.Resource.Styleable.Theme_textAppearanceSmallPopupMenu;
-			global::GooglePlayServices.Resource.Styleable.Theme_textColorAlertDialogListItem = global::EasyBike.Droid.Resource.Styleable.Theme_textColorAlertDialogListItem;
-			global::GooglePlayServices.Resource.Styleable.Theme_textColorSearchUrl = global::EasyBike.Droid.Resource.Styleable.Theme_textColorSearchUrl;
-			global::GooglePlayServices.Resource.Styleable.Theme_toolbarNavigationButtonStyle = global::EasyBike.Droid.Resource.Styleable.Theme_toolbarNavigationButtonStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_toolbarStyle = global::EasyBike.Droid.Resource.Styleable.Theme_toolbarStyle;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowActionBar = global::EasyBike.Droid.Resource.Styleable.Theme_windowActionBar;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowActionBarOverlay = global::EasyBike.Droid.Resource.Styleable.Theme_windowActionBarOverlay;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowActionModeOverlay = global::EasyBike.Droid.Resource.Styleable.Theme_windowActionModeOverlay;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowFixedHeightMajor = global::EasyBike.Droid.Resource.Styleable.Theme_windowFixedHeightMajor;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowFixedHeightMinor = global::EasyBike.Droid.Resource.Styleable.Theme_windowFixedHeightMinor;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowFixedWidthMajor = global::EasyBike.Droid.Resource.Styleable.Theme_windowFixedWidthMajor;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowFixedWidthMinor = global::EasyBike.Droid.Resource.Styleable.Theme_windowFixedWidthMinor;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowMinWidthMajor = global::EasyBike.Droid.Resource.Styleable.Theme_windowMinWidthMajor;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowMinWidthMinor = global::EasyBike.Droid.Resource.Styleable.Theme_windowMinWidthMinor;
-			global::GooglePlayServices.Resource.Styleable.Theme_windowNoTitle = global::EasyBike.Droid.Resource.Styleable.Theme_windowNoTitle;
-			global::GooglePlayServices.Resource.Styleable.Toolbar = global::EasyBike.Droid.Resource.Styleable.Toolbar;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_android_gravity = global::EasyBike.Droid.Resource.Styleable.Toolbar_android_gravity;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_android_minHeight = global::EasyBike.Droid.Resource.Styleable.Toolbar_android_minHeight;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_collapseContentDescription = global::EasyBike.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_collapseIcon = global::EasyBike.Droid.Resource.Styleable.Toolbar_collapseIcon;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_contentInsetEnd = global::EasyBike.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_contentInsetLeft = global::EasyBike.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_contentInsetRight = global::EasyBike.Droid.Resource.Styleable.Toolbar_contentInsetRight;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_contentInsetStart = global::EasyBike.Droid.Resource.Styleable.Toolbar_contentInsetStart;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_maxButtonHeight = global::EasyBike.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_navigationContentDescription = global::EasyBike.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_navigationIcon = global::EasyBike.Droid.Resource.Styleable.Toolbar_navigationIcon;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_popupTheme = global::EasyBike.Droid.Resource.Styleable.Toolbar_popupTheme;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_subtitle = global::EasyBike.Droid.Resource.Styleable.Toolbar_subtitle;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_subtitleTextAppearance = global::EasyBike.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_title = global::EasyBike.Droid.Resource.Styleable.Toolbar_title;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_titleMarginBottom = global::EasyBike.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_titleMarginEnd = global::EasyBike.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_titleMarginStart = global::EasyBike.Droid.Resource.Styleable.Toolbar_titleMarginStart;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_titleMarginTop = global::EasyBike.Droid.Resource.Styleable.Toolbar_titleMarginTop;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_titleMargins = global::EasyBike.Droid.Resource.Styleable.Toolbar_titleMargins;
-			global::GooglePlayServices.Resource.Styleable.Toolbar_titleTextAppearance = global::EasyBike.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
-			global::GooglePlayServices.Resource.Styleable.View = global::EasyBike.Droid.Resource.Styleable.View;
-			global::GooglePlayServices.Resource.Styleable.View_android_focusable = global::EasyBike.Droid.Resource.Styleable.View_android_focusable;
-			global::GooglePlayServices.Resource.Styleable.View_android_theme = global::EasyBike.Droid.Resource.Styleable.View_android_theme;
-			global::GooglePlayServices.Resource.Styleable.View_backgroundTint = global::EasyBike.Droid.Resource.Styleable.View_backgroundTint;
-			global::GooglePlayServices.Resource.Styleable.View_backgroundTintMode = global::EasyBike.Droid.Resource.Styleable.View_backgroundTintMode;
-			global::GooglePlayServices.Resource.Styleable.View_paddingEnd = global::EasyBike.Droid.Resource.Styleable.View_paddingEnd;
-			global::GooglePlayServices.Resource.Styleable.View_paddingStart = global::EasyBike.Droid.Resource.Styleable.View_paddingStart;
-			global::GooglePlayServices.Resource.Styleable.View_theme = global::EasyBike.Droid.Resource.Styleable.View_theme;
-			global::GooglePlayServices.Resource.Styleable.ViewStubCompat = global::EasyBike.Droid.Resource.Styleable.ViewStubCompat;
-			global::GooglePlayServices.Resource.Styleable.ViewStubCompat_android_id = global::EasyBike.Droid.Resource.Styleable.ViewStubCompat_android_id;
-			global::GooglePlayServices.Resource.Styleable.ViewStubCompat_android_inflatedId = global::EasyBike.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
-			global::GooglePlayServices.Resource.Styleable.ViewStubCompat_android_layout = global::EasyBike.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentOptions = global::EasyBike.Droid.Resource.Styleable.WalletFragmentOptions;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentOptions_appTheme = global::EasyBike.Droid.Resource.Styleable.WalletFragmentOptions_appTheme;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentOptions_environment = global::EasyBike.Droid.Resource.Styleable.WalletFragmentOptions_environment;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentOptions_fragmentMode = global::EasyBike.Droid.Resource.Styleable.WalletFragmentOptions_fragmentMode;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentOptions_fragmentStyle = global::EasyBike.Droid.Resource.Styleable.WalletFragmentOptions_fragmentStyle;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_buyButtonAppearance = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_buyButtonAppearance;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_buyButtonHeight = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_buyButtonHeight;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_buyButtonText = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_buyButtonText;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_buyButtonWidth = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_buyButtonWidth;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsBackground = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsBackground;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsButtonBackground = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsButtonBackground;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsLogoImageType = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsLogoImageType;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsLogoTextColor = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsLogoTextColor;
-			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsTextAppearance = global::EasyBike.Droid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsTextAppearance;
 			global::ModernHttpClient.Resource.String.library_name = global::EasyBike.Droid.Resource.String.library_name;
 			global::Splat.Resource.String.library_name = global::EasyBike.Droid.Resource.String.library_name;
 		}
@@ -1553,197 +93,188 @@ namespace EasyBike.Droid
 		public partial class Attribute
 		{
 			
-			// aapt resource value: 0x7f010090
-			public const int actionBarDivider = 2130772112;
-			
-			// aapt resource value: 0x7f010091
-			public const int actionBarItemBackground = 2130772113;
-			
-			// aapt resource value: 0x7f01008a
-			public const int actionBarPopupTheme = 2130772106;
-			
-			// aapt resource value: 0x7f01008f
-			public const int actionBarSize = 2130772111;
-			
-			// aapt resource value: 0x7f01008c
-			public const int actionBarSplitStyle = 2130772108;
-			
-			// aapt resource value: 0x7f01008b
-			public const int actionBarStyle = 2130772107;
-			
-			// aapt resource value: 0x7f010086
-			public const int actionBarTabBarStyle = 2130772102;
-			
-			// aapt resource value: 0x7f010085
-			public const int actionBarTabStyle = 2130772101;
-			
-			// aapt resource value: 0x7f010087
-			public const int actionBarTabTextStyle = 2130772103;
-			
 			// aapt resource value: 0x7f01008d
-			public const int actionBarTheme = 2130772109;
+			public const int actionBarDivider = 2130772109;
 			
 			// aapt resource value: 0x7f01008e
-			public const int actionBarWidgetTheme = 2130772110;
+			public const int actionBarItemBackground = 2130772110;
 			
-			// aapt resource value: 0x7f0100aa
-			public const int actionButtonStyle = 2130772138;
+			// aapt resource value: 0x7f010087
+			public const int actionBarPopupTheme = 2130772103;
 			
-			// aapt resource value: 0x7f0100a6
-			public const int actionDropDownStyle = 2130772134;
-			
-			// aapt resource value: 0x7f010061
-			public const int actionLayout = 2130772065;
-			
-			// aapt resource value: 0x7f010092
-			public const int actionMenuTextAppearance = 2130772114;
-			
-			// aapt resource value: 0x7f010093
-			public const int actionMenuTextColor = 2130772115;
-			
-			// aapt resource value: 0x7f010096
-			public const int actionModeBackground = 2130772118;
-			
-			// aapt resource value: 0x7f010095
-			public const int actionModeCloseButtonStyle = 2130772117;
-			
-			// aapt resource value: 0x7f010098
-			public const int actionModeCloseDrawable = 2130772120;
-			
-			// aapt resource value: 0x7f01009a
-			public const int actionModeCopyDrawable = 2130772122;
-			
-			// aapt resource value: 0x7f010099
-			public const int actionModeCutDrawable = 2130772121;
-			
-			// aapt resource value: 0x7f01009e
-			public const int actionModeFindDrawable = 2130772126;
-			
-			// aapt resource value: 0x7f01009b
-			public const int actionModePasteDrawable = 2130772123;
-			
-			// aapt resource value: 0x7f0100a0
-			public const int actionModePopupWindowStyle = 2130772128;
-			
-			// aapt resource value: 0x7f01009c
-			public const int actionModeSelectAllDrawable = 2130772124;
-			
-			// aapt resource value: 0x7f01009d
-			public const int actionModeShareDrawable = 2130772125;
-			
-			// aapt resource value: 0x7f010097
-			public const int actionModeSplitBackground = 2130772119;
-			
-			// aapt resource value: 0x7f010094
-			public const int actionModeStyle = 2130772116;
-			
-			// aapt resource value: 0x7f01009f
-			public const int actionModeWebSearchDrawable = 2130772127;
-			
-			// aapt resource value: 0x7f010088
-			public const int actionOverflowButtonStyle = 2130772104;
+			// aapt resource value: 0x7f01008c
+			public const int actionBarSize = 2130772108;
 			
 			// aapt resource value: 0x7f010089
-			public const int actionOverflowMenuStyle = 2130772105;
+			public const int actionBarSplitStyle = 2130772105;
 			
-			// aapt resource value: 0x7f010063
-			public const int actionProviderClass = 2130772067;
+			// aapt resource value: 0x7f010088
+			public const int actionBarStyle = 2130772104;
 			
-			// aapt resource value: 0x7f010062
-			public const int actionViewClass = 2130772066;
+			// aapt resource value: 0x7f010083
+			public const int actionBarTabBarStyle = 2130772099;
 			
-			// aapt resource value: 0x7f0100b2
-			public const int activityChooserViewStyle = 2130772146;
+			// aapt resource value: 0x7f010082
+			public const int actionBarTabStyle = 2130772098;
 			
-			// aapt resource value: 0x7f010023
-			public const int adSize = 2130772003;
+			// aapt resource value: 0x7f010084
+			public const int actionBarTabTextStyle = 2130772100;
 			
-			// aapt resource value: 0x7f010024
-			public const int adSizes = 2130772004;
+			// aapt resource value: 0x7f01008a
+			public const int actionBarTheme = 2130772106;
 			
-			// aapt resource value: 0x7f010025
-			public const int adUnitId = 2130772005;
+			// aapt resource value: 0x7f01008b
+			public const int actionBarWidgetTheme = 2130772107;
 			
-			// aapt resource value: 0x7f0100d4
-			public const int alertDialogButtonGroupStyle = 2130772180;
+			// aapt resource value: 0x7f0100a7
+			public const int actionButtonStyle = 2130772135;
 			
-			// aapt resource value: 0x7f0100d5
-			public const int alertDialogCenterButtons = 2130772181;
+			// aapt resource value: 0x7f0100a3
+			public const int actionDropDownStyle = 2130772131;
+			
+			// aapt resource value: 0x7f01005e
+			public const int actionLayout = 2130772062;
+			
+			// aapt resource value: 0x7f01008f
+			public const int actionMenuTextAppearance = 2130772111;
+			
+			// aapt resource value: 0x7f010090
+			public const int actionMenuTextColor = 2130772112;
+			
+			// aapt resource value: 0x7f010093
+			public const int actionModeBackground = 2130772115;
+			
+			// aapt resource value: 0x7f010092
+			public const int actionModeCloseButtonStyle = 2130772114;
+			
+			// aapt resource value: 0x7f010095
+			public const int actionModeCloseDrawable = 2130772117;
+			
+			// aapt resource value: 0x7f010097
+			public const int actionModeCopyDrawable = 2130772119;
+			
+			// aapt resource value: 0x7f010096
+			public const int actionModeCutDrawable = 2130772118;
+			
+			// aapt resource value: 0x7f01009b
+			public const int actionModeFindDrawable = 2130772123;
+			
+			// aapt resource value: 0x7f010098
+			public const int actionModePasteDrawable = 2130772120;
+			
+			// aapt resource value: 0x7f01009d
+			public const int actionModePopupWindowStyle = 2130772125;
+			
+			// aapt resource value: 0x7f010099
+			public const int actionModeSelectAllDrawable = 2130772121;
+			
+			// aapt resource value: 0x7f01009a
+			public const int actionModeShareDrawable = 2130772122;
+			
+			// aapt resource value: 0x7f010094
+			public const int actionModeSplitBackground = 2130772116;
+			
+			// aapt resource value: 0x7f010091
+			public const int actionModeStyle = 2130772113;
+			
+			// aapt resource value: 0x7f01009c
+			public const int actionModeWebSearchDrawable = 2130772124;
+			
+			// aapt resource value: 0x7f010085
+			public const int actionOverflowButtonStyle = 2130772101;
+			
+			// aapt resource value: 0x7f010086
+			public const int actionOverflowMenuStyle = 2130772102;
+			
+			// aapt resource value: 0x7f010060
+			public const int actionProviderClass = 2130772064;
+			
+			// aapt resource value: 0x7f01005f
+			public const int actionViewClass = 2130772063;
+			
+			// aapt resource value: 0x7f0100af
+			public const int activityChooserViewStyle = 2130772143;
+			
+			// aapt resource value: 0x7f0100d1
+			public const int alertDialogButtonGroupStyle = 2130772177;
+			
+			// aapt resource value: 0x7f0100d2
+			public const int alertDialogCenterButtons = 2130772178;
+			
+			// aapt resource value: 0x7f0100d0
+			public const int alertDialogStyle = 2130772176;
 			
 			// aapt resource value: 0x7f0100d3
-			public const int alertDialogStyle = 2130772179;
-			
-			// aapt resource value: 0x7f0100d6
-			public const int alertDialogTheme = 2130772182;
+			public const int alertDialogTheme = 2130772179;
 			
 			// aapt resource value: 0x7f010000
 			public const int appTheme = 2130771968;
 			
-			// aapt resource value: 0x7f010059
-			public const int arrowHeadLength = 2130772057;
+			// aapt resource value: 0x7f010056
+			public const int arrowHeadLength = 2130772054;
 			
-			// aapt resource value: 0x7f01005a
-			public const int arrowShaftLength = 2130772058;
-			
-			// aapt resource value: 0x7f0100db
-			public const int autoCompleteTextViewStyle = 2130772187;
-			
-			// aapt resource value: 0x7f01003a
-			public const int background = 2130772026;
-			
-			// aapt resource value: 0x7f01003c
-			public const int backgroundSplit = 2130772028;
-			
-			// aapt resource value: 0x7f01003b
-			public const int backgroundStacked = 2130772027;
-			
-			// aapt resource value: 0x7f0100f7
-			public const int backgroundTint = 2130772215;
-			
-			// aapt resource value: 0x7f0100f8
-			public const int backgroundTintMode = 2130772216;
-			
-			// aapt resource value: 0x7f01005b
-			public const int barLength = 2130772059;
-			
-			// aapt resource value: 0x7f01011c
-			public const int behavior_overlapTop = 2130772252;
-			
-			// aapt resource value: 0x7f010114
-			public const int borderWidth = 2130772244;
-			
-			// aapt resource value: 0x7f0100af
-			public const int borderlessButtonStyle = 2130772143;
-			
-			// aapt resource value: 0x7f0100ac
-			public const int buttonBarButtonStyle = 2130772140;
-			
-			// aapt resource value: 0x7f0100d9
-			public const int buttonBarNegativeButtonStyle = 2130772185;
-			
-			// aapt resource value: 0x7f0100da
-			public const int buttonBarNeutralButtonStyle = 2130772186;
+			// aapt resource value: 0x7f010057
+			public const int arrowShaftLength = 2130772055;
 			
 			// aapt resource value: 0x7f0100d8
-			public const int buttonBarPositiveButtonStyle = 2130772184;
+			public const int autoCompleteTextViewStyle = 2130772184;
 			
-			// aapt resource value: 0x7f0100ab
-			public const int buttonBarStyle = 2130772139;
+			// aapt resource value: 0x7f010037
+			public const int background = 2130772023;
 			
-			// aapt resource value: 0x7f01004d
-			public const int buttonPanelSideLayout = 2130772045;
+			// aapt resource value: 0x7f010039
+			public const int backgroundSplit = 2130772025;
 			
-			// aapt resource value: 0x7f0100dc
-			public const int buttonStyle = 2130772188;
+			// aapt resource value: 0x7f010038
+			public const int backgroundStacked = 2130772024;
 			
-			// aapt resource value: 0x7f0100dd
-			public const int buttonStyleSmall = 2130772189;
+			// aapt resource value: 0x7f0100f4
+			public const int backgroundTint = 2130772212;
 			
-			// aapt resource value: 0x7f010053
-			public const int buttonTint = 2130772051;
+			// aapt resource value: 0x7f0100f5
+			public const int backgroundTintMode = 2130772213;
 			
-			// aapt resource value: 0x7f010054
-			public const int buttonTintMode = 2130772052;
+			// aapt resource value: 0x7f010058
+			public const int barLength = 2130772056;
+			
+			// aapt resource value: 0x7f010119
+			public const int behavior_overlapTop = 2130772249;
+			
+			// aapt resource value: 0x7f010111
+			public const int borderWidth = 2130772241;
+			
+			// aapt resource value: 0x7f0100ac
+			public const int borderlessButtonStyle = 2130772140;
+			
+			// aapt resource value: 0x7f0100a9
+			public const int buttonBarButtonStyle = 2130772137;
+			
+			// aapt resource value: 0x7f0100d6
+			public const int buttonBarNegativeButtonStyle = 2130772182;
+			
+			// aapt resource value: 0x7f0100d7
+			public const int buttonBarNeutralButtonStyle = 2130772183;
+			
+			// aapt resource value: 0x7f0100d5
+			public const int buttonBarPositiveButtonStyle = 2130772181;
+			
+			// aapt resource value: 0x7f0100a8
+			public const int buttonBarStyle = 2130772136;
+			
+			// aapt resource value: 0x7f01004a
+			public const int buttonPanelSideLayout = 2130772042;
+			
+			// aapt resource value: 0x7f0100d9
+			public const int buttonStyle = 2130772185;
+			
+			// aapt resource value: 0x7f0100da
+			public const int buttonStyleSmall = 2130772186;
+			
+			// aapt resource value: 0x7f010050
+			public const int buttonTint = 2130772048;
+			
+			// aapt resource value: 0x7f010051
+			public const int buttonTintMode = 2130772049;
 			
 			// aapt resource value: 0x7f010007
 			public const int buyButtonAppearance = 2130771975;
@@ -1772,173 +303,173 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f010015
 			public const int cameraZoom = 2130771989;
 			
-			// aapt resource value: 0x7f0100de
-			public const int checkboxStyle = 2130772190;
+			// aapt resource value: 0x7f0100db
+			public const int checkboxStyle = 2130772187;
 			
-			// aapt resource value: 0x7f0100df
-			public const int checkedTextViewStyle = 2130772191;
+			// aapt resource value: 0x7f0100dc
+			public const int checkedTextViewStyle = 2130772188;
 			
 			// aapt resource value: 0x7f010022
 			public const int circleCrop = 2130772002;
 			
-			// aapt resource value: 0x7f01006b
-			public const int closeIcon = 2130772075;
-			
-			// aapt resource value: 0x7f01004a
-			public const int closeItemLayout = 2130772042;
-			
-			// aapt resource value: 0x7f0100ee
-			public const int collapseContentDescription = 2130772206;
-			
-			// aapt resource value: 0x7f0100ed
-			public const int collapseIcon = 2130772205;
-			
-			// aapt resource value: 0x7f010108
-			public const int collapsedTitleGravity = 2130772232;
-			
-			// aapt resource value: 0x7f010104
-			public const int collapsedTitleTextAppearance = 2130772228;
-			
-			// aapt resource value: 0x7f010055
-			public const int color = 2130772053;
-			
-			// aapt resource value: 0x7f0100cc
-			public const int colorAccent = 2130772172;
-			
-			// aapt resource value: 0x7f0100d0
-			public const int colorButtonNormal = 2130772176;
-			
-			// aapt resource value: 0x7f0100ce
-			public const int colorControlActivated = 2130772174;
-			
-			// aapt resource value: 0x7f0100cf
-			public const int colorControlHighlight = 2130772175;
-			
-			// aapt resource value: 0x7f0100cd
-			public const int colorControlNormal = 2130772173;
-			
-			// aapt resource value: 0x7f0100ca
-			public const int colorPrimary = 2130772170;
-			
-			// aapt resource value: 0x7f0100cb
-			public const int colorPrimaryDark = 2130772171;
-			
-			// aapt resource value: 0x7f0100d1
-			public const int colorSwitchThumbNormal = 2130772177;
-			
-			// aapt resource value: 0x7f010070
-			public const int commitIcon = 2130772080;
-			
-			// aapt resource value: 0x7f010045
-			public const int contentInsetEnd = 2130772037;
-			
-			// aapt resource value: 0x7f010046
-			public const int contentInsetLeft = 2130772038;
+			// aapt resource value: 0x7f010068
+			public const int closeIcon = 2130772072;
 			
 			// aapt resource value: 0x7f010047
-			public const int contentInsetRight = 2130772039;
+			public const int closeItemLayout = 2130772039;
 			
-			// aapt resource value: 0x7f010044
-			public const int contentInsetStart = 2130772036;
+			// aapt resource value: 0x7f0100eb
+			public const int collapseContentDescription = 2130772203;
+			
+			// aapt resource value: 0x7f0100ea
+			public const int collapseIcon = 2130772202;
 			
 			// aapt resource value: 0x7f010105
-			public const int contentScrim = 2130772229;
+			public const int collapsedTitleGravity = 2130772229;
 			
-			// aapt resource value: 0x7f0100d2
-			public const int controlBackground = 2130772178;
+			// aapt resource value: 0x7f010101
+			public const int collapsedTitleTextAppearance = 2130772225;
 			
-			// aapt resource value: 0x7f01003d
-			public const int customNavigationLayout = 2130772029;
+			// aapt resource value: 0x7f010052
+			public const int color = 2130772050;
 			
-			// aapt resource value: 0x7f01006a
-			public const int defaultQueryHint = 2130772074;
+			// aapt resource value: 0x7f0100c9
+			public const int colorAccent = 2130772169;
+			
+			// aapt resource value: 0x7f0100cd
+			public const int colorButtonNormal = 2130772173;
+			
+			// aapt resource value: 0x7f0100cb
+			public const int colorControlActivated = 2130772171;
+			
+			// aapt resource value: 0x7f0100cc
+			public const int colorControlHighlight = 2130772172;
+			
+			// aapt resource value: 0x7f0100ca
+			public const int colorControlNormal = 2130772170;
+			
+			// aapt resource value: 0x7f0100c7
+			public const int colorPrimary = 2130772167;
+			
+			// aapt resource value: 0x7f0100c8
+			public const int colorPrimaryDark = 2130772168;
+			
+			// aapt resource value: 0x7f0100ce
+			public const int colorSwitchThumbNormal = 2130772174;
+			
+			// aapt resource value: 0x7f01006d
+			public const int commitIcon = 2130772077;
+			
+			// aapt resource value: 0x7f010042
+			public const int contentInsetEnd = 2130772034;
+			
+			// aapt resource value: 0x7f010043
+			public const int contentInsetLeft = 2130772035;
+			
+			// aapt resource value: 0x7f010044
+			public const int contentInsetRight = 2130772036;
+			
+			// aapt resource value: 0x7f010041
+			public const int contentInsetStart = 2130772033;
+			
+			// aapt resource value: 0x7f010102
+			public const int contentScrim = 2130772226;
+			
+			// aapt resource value: 0x7f0100cf
+			public const int controlBackground = 2130772175;
+			
+			// aapt resource value: 0x7f01003a
+			public const int customNavigationLayout = 2130772026;
+			
+			// aapt resource value: 0x7f010067
+			public const int defaultQueryHint = 2130772071;
+			
+			// aapt resource value: 0x7f0100a1
+			public const int dialogPreferredPadding = 2130772129;
+			
+			// aapt resource value: 0x7f0100a0
+			public const int dialogTheme = 2130772128;
+			
+			// aapt resource value: 0x7f010030
+			public const int displayOptions = 2130772016;
+			
+			// aapt resource value: 0x7f010036
+			public const int divider = 2130772022;
+			
+			// aapt resource value: 0x7f0100ae
+			public const int dividerHorizontal = 2130772142;
+			
+			// aapt resource value: 0x7f01005c
+			public const int dividerPadding = 2130772060;
+			
+			// aapt resource value: 0x7f0100ad
+			public const int dividerVertical = 2130772141;
+			
+			// aapt resource value: 0x7f010054
+			public const int drawableSize = 2130772052;
+			
+			// aapt resource value: 0x7f01002b
+			public const int drawerArrowStyle = 2130772011;
+			
+			// aapt resource value: 0x7f0100bf
+			public const int dropDownListViewStyle = 2130772159;
 			
 			// aapt resource value: 0x7f0100a4
-			public const int dialogPreferredPadding = 2130772132;
+			public const int dropdownListPreferredItemHeight = 2130772132;
 			
-			// aapt resource value: 0x7f0100a3
-			public const int dialogTheme = 2130772131;
+			// aapt resource value: 0x7f0100b5
+			public const int editTextBackground = 2130772149;
 			
-			// aapt resource value: 0x7f010033
-			public const int displayOptions = 2130772019;
+			// aapt resource value: 0x7f0100b4
+			public const int editTextColor = 2130772148;
 			
-			// aapt resource value: 0x7f010039
-			public const int divider = 2130772025;
+			// aapt resource value: 0x7f0100dd
+			public const int editTextStyle = 2130772189;
 			
-			// aapt resource value: 0x7f0100b1
-			public const int dividerHorizontal = 2130772145;
-			
-			// aapt resource value: 0x7f01005f
-			public const int dividerPadding = 2130772063;
-			
-			// aapt resource value: 0x7f0100b0
-			public const int dividerVertical = 2130772144;
-			
-			// aapt resource value: 0x7f010057
-			public const int drawableSize = 2130772055;
-			
-			// aapt resource value: 0x7f01002e
-			public const int drawerArrowStyle = 2130772014;
-			
-			// aapt resource value: 0x7f0100c2
-			public const int dropDownListViewStyle = 2130772162;
-			
-			// aapt resource value: 0x7f0100a7
-			public const int dropdownListPreferredItemHeight = 2130772135;
-			
-			// aapt resource value: 0x7f0100b8
-			public const int editTextBackground = 2130772152;
-			
-			// aapt resource value: 0x7f0100b7
-			public const int editTextColor = 2130772151;
-			
-			// aapt resource value: 0x7f0100e0
-			public const int editTextStyle = 2130772192;
-			
-			// aapt resource value: 0x7f010048
-			public const int elevation = 2130772040;
+			// aapt resource value: 0x7f010045
+			public const int elevation = 2130772037;
 			
 			// aapt resource value: 0x7f010001
 			public const int environment = 2130771969;
 			
-			// aapt resource value: 0x7f01012f
-			public const int errorEnabled = 2130772271;
+			// aapt resource value: 0x7f01012c
+			public const int errorEnabled = 2130772268;
 			
-			// aapt resource value: 0x7f010130
-			public const int errorTextAppearance = 2130772272;
+			// aapt resource value: 0x7f01012d
+			public const int errorTextAppearance = 2130772269;
 			
-			// aapt resource value: 0x7f01004c
-			public const int expandActivityOverflowButtonDrawable = 2130772044;
+			// aapt resource value: 0x7f010049
+			public const int expandActivityOverflowButtonDrawable = 2130772041;
 			
-			// aapt resource value: 0x7f0100f9
-			public const int expanded = 2130772217;
+			// aapt resource value: 0x7f0100f6
+			public const int expanded = 2130772214;
 			
-			// aapt resource value: 0x7f010109
-			public const int expandedTitleGravity = 2130772233;
+			// aapt resource value: 0x7f010106
+			public const int expandedTitleGravity = 2130772230;
 			
-			// aapt resource value: 0x7f0100fe
-			public const int expandedTitleMargin = 2130772222;
-			
-			// aapt resource value: 0x7f010102
-			public const int expandedTitleMarginBottom = 2130772226;
-			
-			// aapt resource value: 0x7f010101
-			public const int expandedTitleMarginEnd = 2130772225;
+			// aapt resource value: 0x7f0100fb
+			public const int expandedTitleMargin = 2130772219;
 			
 			// aapt resource value: 0x7f0100ff
-			public const int expandedTitleMarginStart = 2130772223;
+			public const int expandedTitleMarginBottom = 2130772223;
+			
+			// aapt resource value: 0x7f0100fe
+			public const int expandedTitleMarginEnd = 2130772222;
+			
+			// aapt resource value: 0x7f0100fc
+			public const int expandedTitleMarginStart = 2130772220;
+			
+			// aapt resource value: 0x7f0100fd
+			public const int expandedTitleMarginTop = 2130772221;
 			
 			// aapt resource value: 0x7f010100
-			public const int expandedTitleMarginTop = 2130772224;
+			public const int expandedTitleTextAppearance = 2130772224;
 			
-			// aapt resource value: 0x7f010103
-			public const int expandedTitleTextAppearance = 2130772227;
+			// aapt resource value: 0x7f01002a
+			public const int externalRouteEnabledDrawable = 2130772010;
 			
-			// aapt resource value: 0x7f01002d
-			public const int externalRouteEnabledDrawable = 2130772013;
-			
-			// aapt resource value: 0x7f010112
-			public const int fabSize = 2130772242;
+			// aapt resource value: 0x7f01010f
+			public const int fabSize = 2130772239;
 			
 			// aapt resource value: 0x7f010003
 			public const int fragmentMode = 2130771971;
@@ -1946,38 +477,38 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f010002
 			public const int fragmentStyle = 2130771970;
 			
-			// aapt resource value: 0x7f010058
-			public const int gapBetweenBars = 2130772056;
+			// aapt resource value: 0x7f010055
+			public const int gapBetweenBars = 2130772053;
 			
-			// aapt resource value: 0x7f01006c
-			public const int goIcon = 2130772076;
+			// aapt resource value: 0x7f010069
+			public const int goIcon = 2130772073;
 			
-			// aapt resource value: 0x7f01011a
-			public const int headerLayout = 2130772250;
+			// aapt resource value: 0x7f010117
+			public const int headerLayout = 2130772247;
 			
-			// aapt resource value: 0x7f01002f
-			public const int height = 2130772015;
+			// aapt resource value: 0x7f01002c
+			public const int height = 2130772012;
 			
-			// aapt resource value: 0x7f010043
-			public const int hideOnContentScroll = 2130772035;
-			
-			// aapt resource value: 0x7f010131
-			public const int hintAnimationEnabled = 2130772273;
+			// aapt resource value: 0x7f010040
+			public const int hideOnContentScroll = 2130772032;
 			
 			// aapt resource value: 0x7f01012e
-			public const int hintTextAppearance = 2130772270;
+			public const int hintAnimationEnabled = 2130772270;
 			
-			// aapt resource value: 0x7f0100a9
-			public const int homeAsUpIndicator = 2130772137;
+			// aapt resource value: 0x7f01012b
+			public const int hintTextAppearance = 2130772267;
 			
-			// aapt resource value: 0x7f01003e
-			public const int homeLayout = 2130772030;
+			// aapt resource value: 0x7f0100a6
+			public const int homeAsUpIndicator = 2130772134;
 			
-			// aapt resource value: 0x7f010037
-			public const int icon = 2130772023;
+			// aapt resource value: 0x7f01003b
+			public const int homeLayout = 2130772027;
 			
-			// aapt resource value: 0x7f010068
-			public const int iconifiedByDefault = 2130772072;
+			// aapt resource value: 0x7f010034
+			public const int icon = 2130772020;
+			
+			// aapt resource value: 0x7f010065
+			public const int iconifiedByDefault = 2130772069;
 			
 			// aapt resource value: 0x7f010021
 			public const int imageAspectRatio = 2130772001;
@@ -1985,101 +516,101 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f010020
 			public const int imageAspectRatioAdjust = 2130772000;
 			
-			// aapt resource value: 0x7f010040
-			public const int indeterminateProgressStyle = 2130772032;
+			// aapt resource value: 0x7f01003d
+			public const int indeterminateProgressStyle = 2130772029;
 			
-			// aapt resource value: 0x7f01004b
-			public const int initialActivityCount = 2130772043;
-			
-			// aapt resource value: 0x7f01011b
-			public const int insetForeground = 2130772251;
-			
-			// aapt resource value: 0x7f010030
-			public const int isLightTheme = 2130772016;
+			// aapt resource value: 0x7f010048
+			public const int initialActivityCount = 2130772040;
 			
 			// aapt resource value: 0x7f010118
-			public const int itemBackground = 2130772248;
+			public const int insetForeground = 2130772248;
+			
+			// aapt resource value: 0x7f01002d
+			public const int isLightTheme = 2130772013;
+			
+			// aapt resource value: 0x7f010115
+			public const int itemBackground = 2130772245;
+			
+			// aapt resource value: 0x7f010113
+			public const int itemIconTint = 2130772243;
+			
+			// aapt resource value: 0x7f01003f
+			public const int itemPadding = 2130772031;
 			
 			// aapt resource value: 0x7f010116
-			public const int itemIconTint = 2130772246;
+			public const int itemTextAppearance = 2130772246;
 			
-			// aapt resource value: 0x7f010042
-			public const int itemPadding = 2130772034;
+			// aapt resource value: 0x7f010114
+			public const int itemTextColor = 2130772244;
 			
-			// aapt resource value: 0x7f010119
-			public const int itemTextAppearance = 2130772249;
+			// aapt resource value: 0x7f010108
+			public const int keylines = 2130772232;
 			
-			// aapt resource value: 0x7f010117
-			public const int itemTextColor = 2130772247;
+			// aapt resource value: 0x7f010064
+			public const int layout = 2130772068;
 			
 			// aapt resource value: 0x7f01010b
-			public const int keylines = 2130772235;
-			
-			// aapt resource value: 0x7f010067
-			public const int layout = 2130772071;
-			
-			// aapt resource value: 0x7f01010e
-			public const int layout_anchor = 2130772238;
-			
-			// aapt resource value: 0x7f010110
-			public const int layout_anchorGravity = 2130772240;
+			public const int layout_anchor = 2130772235;
 			
 			// aapt resource value: 0x7f01010d
-			public const int layout_behavior = 2130772237;
+			public const int layout_anchorGravity = 2130772237;
 			
-			// aapt resource value: 0x7f0100fc
-			public const int layout_collapseMode = 2130772220;
+			// aapt resource value: 0x7f01010a
+			public const int layout_behavior = 2130772234;
 			
-			// aapt resource value: 0x7f0100fd
-			public const int layout_collapseParallaxMultiplier = 2130772221;
-			
-			// aapt resource value: 0x7f01010f
-			public const int layout_keyline = 2130772239;
+			// aapt resource value: 0x7f0100f9
+			public const int layout_collapseMode = 2130772217;
 			
 			// aapt resource value: 0x7f0100fa
-			public const int layout_scrollFlags = 2130772218;
+			public const int layout_collapseParallaxMultiplier = 2130772218;
 			
-			// aapt resource value: 0x7f0100fb
-			public const int layout_scrollInterpolator = 2130772219;
+			// aapt resource value: 0x7f01010c
+			public const int layout_keyline = 2130772236;
 			
-			// aapt resource value: 0x7f0100c9
-			public const int listChoiceBackgroundIndicator = 2130772169;
+			// aapt resource value: 0x7f0100f7
+			public const int layout_scrollFlags = 2130772215;
 			
-			// aapt resource value: 0x7f0100a5
-			public const int listDividerAlertDialog = 2130772133;
+			// aapt resource value: 0x7f0100f8
+			public const int layout_scrollInterpolator = 2130772216;
 			
-			// aapt resource value: 0x7f010051
-			public const int listItemLayout = 2130772049;
+			// aapt resource value: 0x7f0100c6
+			public const int listChoiceBackgroundIndicator = 2130772166;
+			
+			// aapt resource value: 0x7f0100a2
+			public const int listDividerAlertDialog = 2130772130;
 			
 			// aapt resource value: 0x7f01004e
-			public const int listLayout = 2130772046;
+			public const int listItemLayout = 2130772046;
 			
-			// aapt resource value: 0x7f0100c3
-			public const int listPopupWindowStyle = 2130772163;
-			
-			// aapt resource value: 0x7f0100bd
-			public const int listPreferredItemHeight = 2130772157;
-			
-			// aapt resource value: 0x7f0100bf
-			public const int listPreferredItemHeightLarge = 2130772159;
-			
-			// aapt resource value: 0x7f0100be
-			public const int listPreferredItemHeightSmall = 2130772158;
+			// aapt resource value: 0x7f01004b
+			public const int listLayout = 2130772043;
 			
 			// aapt resource value: 0x7f0100c0
-			public const int listPreferredItemPaddingLeft = 2130772160;
+			public const int listPopupWindowStyle = 2130772160;
 			
-			// aapt resource value: 0x7f0100c1
-			public const int listPreferredItemPaddingRight = 2130772161;
+			// aapt resource value: 0x7f0100ba
+			public const int listPreferredItemHeight = 2130772154;
+			
+			// aapt resource value: 0x7f0100bc
+			public const int listPreferredItemHeightLarge = 2130772156;
+			
+			// aapt resource value: 0x7f0100bb
+			public const int listPreferredItemHeightSmall = 2130772155;
+			
+			// aapt resource value: 0x7f0100bd
+			public const int listPreferredItemPaddingLeft = 2130772157;
+			
+			// aapt resource value: 0x7f0100be
+			public const int listPreferredItemPaddingRight = 2130772158;
 			
 			// aapt resource value: 0x7f010016
 			public const int liteMode = 2130771990;
 			
-			// aapt resource value: 0x7f010038
-			public const int logo = 2130772024;
+			// aapt resource value: 0x7f010035
+			public const int logo = 2130772021;
 			
-			// aapt resource value: 0x7f0100f1
-			public const int logoDescription = 2130772209;
+			// aapt resource value: 0x7f0100ee
+			public const int logoDescription = 2130772206;
 			
 			// aapt resource value: 0x7f010010
 			public const int mapType = 2130771984;
@@ -2105,308 +636,308 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f010008
 			public const int maskedWalletDetailsTextAppearance = 2130771976;
 			
-			// aapt resource value: 0x7f01011d
-			public const int maxActionInlineWidth = 2130772253;
-			
-			// aapt resource value: 0x7f0100ec
-			public const int maxButtonHeight = 2130772204;
-			
-			// aapt resource value: 0x7f01005d
-			public const int measureWithLargestChild = 2130772061;
-			
-			// aapt resource value: 0x7f010026
-			public const int mediaRouteButtonStyle = 2130772006;
-			
-			// aapt resource value: 0x7f010027
-			public const int mediaRouteConnectingDrawable = 2130772007;
-			
-			// aapt resource value: 0x7f010028
-			public const int mediaRouteOffDrawable = 2130772008;
-			
-			// aapt resource value: 0x7f010029
-			public const int mediaRouteOnDrawable = 2130772009;
-			
-			// aapt resource value: 0x7f01002a
-			public const int mediaRoutePauseDrawable = 2130772010;
-			
-			// aapt resource value: 0x7f01002b
-			public const int mediaRoutePlayDrawable = 2130772011;
-			
-			// aapt resource value: 0x7f01002c
-			public const int mediaRouteSettingsDrawable = 2130772012;
-			
-			// aapt resource value: 0x7f010115
-			public const int menu = 2130772245;
-			
-			// aapt resource value: 0x7f01004f
-			public const int multiChoiceItemLayout = 2130772047;
-			
-			// aapt resource value: 0x7f0100f0
-			public const int navigationContentDescription = 2130772208;
-			
-			// aapt resource value: 0x7f0100ef
-			public const int navigationIcon = 2130772207;
-			
-			// aapt resource value: 0x7f010032
-			public const int navigationMode = 2130772018;
-			
-			// aapt resource value: 0x7f010065
-			public const int overlapAnchor = 2130772069;
-			
-			// aapt resource value: 0x7f0100f5
-			public const int paddingEnd = 2130772213;
-			
-			// aapt resource value: 0x7f0100f4
-			public const int paddingStart = 2130772212;
-			
-			// aapt resource value: 0x7f0100c6
-			public const int panelBackground = 2130772166;
-			
-			// aapt resource value: 0x7f0100c8
-			public const int panelMenuListTheme = 2130772168;
-			
-			// aapt resource value: 0x7f0100c7
-			public const int panelMenuListWidth = 2130772167;
-			
-			// aapt resource value: 0x7f0100b5
-			public const int popupMenuStyle = 2130772149;
-			
-			// aapt resource value: 0x7f010049
-			public const int popupTheme = 2130772041;
-			
-			// aapt resource value: 0x7f0100b6
-			public const int popupWindowStyle = 2130772150;
-			
-			// aapt resource value: 0x7f010064
-			public const int preserveIconSpacing = 2130772068;
-			
-			// aapt resource value: 0x7f010113
-			public const int pressedTranslationZ = 2130772243;
-			
-			// aapt resource value: 0x7f010041
-			public const int progressBarPadding = 2130772033;
-			
-			// aapt resource value: 0x7f01003f
-			public const int progressBarStyle = 2130772031;
-			
-			// aapt resource value: 0x7f010072
-			public const int queryBackground = 2130772082;
-			
-			// aapt resource value: 0x7f010069
-			public const int queryHint = 2130772073;
-			
-			// aapt resource value: 0x7f0100e1
-			public const int radioButtonStyle = 2130772193;
-			
-			// aapt resource value: 0x7f0100e2
-			public const int ratingBarStyle = 2130772194;
-			
-			// aapt resource value: 0x7f010111
-			public const int rippleColor = 2130772241;
-			
-			// aapt resource value: 0x7f01006e
-			public const int searchHintIcon = 2130772078;
-			
-			// aapt resource value: 0x7f01006d
-			public const int searchIcon = 2130772077;
-			
-			// aapt resource value: 0x7f0100bc
-			public const int searchViewStyle = 2130772156;
-			
-			// aapt resource value: 0x7f0100ad
-			public const int selectableItemBackground = 2130772141;
-			
-			// aapt resource value: 0x7f0100ae
-			public const int selectableItemBackgroundBorderless = 2130772142;
-			
-			// aapt resource value: 0x7f010060
-			public const int showAsAction = 2130772064;
-			
-			// aapt resource value: 0x7f01005e
-			public const int showDividers = 2130772062;
-			
-			// aapt resource value: 0x7f01007a
-			public const int showText = 2130772090;
-			
-			// aapt resource value: 0x7f010050
-			public const int singleChoiceItemLayout = 2130772048;
-			
-			// aapt resource value: 0x7f010056
-			public const int spinBars = 2130772054;
-			
-			// aapt resource value: 0x7f0100a8
-			public const int spinnerDropDownItemStyle = 2130772136;
-			
-			// aapt resource value: 0x7f0100e3
-			public const int spinnerStyle = 2130772195;
-			
-			// aapt resource value: 0x7f010079
-			public const int splitTrack = 2130772089;
-			
-			// aapt resource value: 0x7f010066
-			public const int state_above_anchor = 2130772070;
-			
-			// aapt resource value: 0x7f01010c
-			public const int statusBarBackground = 2130772236;
-			
-			// aapt resource value: 0x7f010106
-			public const int statusBarScrim = 2130772230;
-			
-			// aapt resource value: 0x7f010073
-			public const int submitBackground = 2130772083;
-			
-			// aapt resource value: 0x7f010034
-			public const int subtitle = 2130772020;
-			
-			// aapt resource value: 0x7f0100e6
-			public const int subtitleTextAppearance = 2130772198;
-			
-			// aapt resource value: 0x7f0100f3
-			public const int subtitleTextColor = 2130772211;
-			
-			// aapt resource value: 0x7f010036
-			public const int subtitleTextStyle = 2130772022;
-			
-			// aapt resource value: 0x7f010071
-			public const int suggestionRowLayout = 2130772081;
-			
-			// aapt resource value: 0x7f010077
-			public const int switchMinWidth = 2130772087;
-			
-			// aapt resource value: 0x7f010078
-			public const int switchPadding = 2130772088;
-			
-			// aapt resource value: 0x7f0100e4
-			public const int switchStyle = 2130772196;
-			
-			// aapt resource value: 0x7f010076
-			public const int switchTextAppearance = 2130772086;
-			
-			// aapt resource value: 0x7f010121
-			public const int tabBackground = 2130772257;
-			
-			// aapt resource value: 0x7f010120
-			public const int tabContentStart = 2130772256;
-			
-			// aapt resource value: 0x7f010123
-			public const int tabGravity = 2130772259;
-			
-			// aapt resource value: 0x7f01011e
-			public const int tabIndicatorColor = 2130772254;
-			
-			// aapt resource value: 0x7f01011f
-			public const int tabIndicatorHeight = 2130772255;
-			
-			// aapt resource value: 0x7f010125
-			public const int tabMaxWidth = 2130772261;
-			
-			// aapt resource value: 0x7f010124
-			public const int tabMinWidth = 2130772260;
-			
-			// aapt resource value: 0x7f010122
-			public const int tabMode = 2130772258;
-			
-			// aapt resource value: 0x7f01012d
-			public const int tabPadding = 2130772269;
-			
-			// aapt resource value: 0x7f01012c
-			public const int tabPaddingBottom = 2130772268;
-			
-			// aapt resource value: 0x7f01012b
-			public const int tabPaddingEnd = 2130772267;
-			
-			// aapt resource value: 0x7f010129
-			public const int tabPaddingStart = 2130772265;
-			
-			// aapt resource value: 0x7f01012a
-			public const int tabPaddingTop = 2130772266;
-			
-			// aapt resource value: 0x7f010128
-			public const int tabSelectedTextColor = 2130772264;
-			
-			// aapt resource value: 0x7f010126
-			public const int tabTextAppearance = 2130772262;
-			
-			// aapt resource value: 0x7f010127
-			public const int tabTextColor = 2130772263;
-			
-			// aapt resource value: 0x7f010052
-			public const int textAllCaps = 2130772050;
-			
-			// aapt resource value: 0x7f0100a1
-			public const int textAppearanceLargePopupMenu = 2130772129;
-			
-			// aapt resource value: 0x7f0100c4
-			public const int textAppearanceListItem = 2130772164;
-			
-			// aapt resource value: 0x7f0100c5
-			public const int textAppearanceListItemSmall = 2130772165;
-			
-			// aapt resource value: 0x7f0100ba
-			public const int textAppearanceSearchResultSubtitle = 2130772154;
-			
-			// aapt resource value: 0x7f0100b9
-			public const int textAppearanceSearchResultTitle = 2130772153;
-			
-			// aapt resource value: 0x7f0100a2
-			public const int textAppearanceSmallPopupMenu = 2130772130;
-			
-			// aapt resource value: 0x7f0100d7
-			public const int textColorAlertDialogListItem = 2130772183;
-			
-			// aapt resource value: 0x7f0100bb
-			public const int textColorSearchUrl = 2130772155;
-			
-			// aapt resource value: 0x7f0100f6
-			public const int theme = 2130772214;
-			
-			// aapt resource value: 0x7f01005c
-			public const int thickness = 2130772060;
-			
-			// aapt resource value: 0x7f010075
-			public const int thumbTextPadding = 2130772085;
-			
-			// aapt resource value: 0x7f010031
-			public const int title = 2130772017;
-			
-			// aapt resource value: 0x7f01010a
-			public const int titleEnabled = 2130772234;
-			
-			// aapt resource value: 0x7f0100eb
-			public const int titleMarginBottom = 2130772203;
+			// aapt resource value: 0x7f01011a
+			public const int maxActionInlineWidth = 2130772250;
 			
 			// aapt resource value: 0x7f0100e9
-			public const int titleMarginEnd = 2130772201;
+			public const int maxButtonHeight = 2130772201;
 			
-			// aapt resource value: 0x7f0100e8
-			public const int titleMarginStart = 2130772200;
+			// aapt resource value: 0x7f01005a
+			public const int measureWithLargestChild = 2130772058;
 			
-			// aapt resource value: 0x7f0100ea
-			public const int titleMarginTop = 2130772202;
+			// aapt resource value: 0x7f010023
+			public const int mediaRouteButtonStyle = 2130772003;
 			
-			// aapt resource value: 0x7f0100e7
-			public const int titleMargins = 2130772199;
+			// aapt resource value: 0x7f010024
+			public const int mediaRouteConnectingDrawable = 2130772004;
 			
-			// aapt resource value: 0x7f0100e5
-			public const int titleTextAppearance = 2130772197;
+			// aapt resource value: 0x7f010025
+			public const int mediaRouteOffDrawable = 2130772005;
+			
+			// aapt resource value: 0x7f010026
+			public const int mediaRouteOnDrawable = 2130772006;
+			
+			// aapt resource value: 0x7f010027
+			public const int mediaRoutePauseDrawable = 2130772007;
+			
+			// aapt resource value: 0x7f010028
+			public const int mediaRoutePlayDrawable = 2130772008;
+			
+			// aapt resource value: 0x7f010029
+			public const int mediaRouteSettingsDrawable = 2130772009;
+			
+			// aapt resource value: 0x7f010112
+			public const int menu = 2130772242;
+			
+			// aapt resource value: 0x7f01004c
+			public const int multiChoiceItemLayout = 2130772044;
+			
+			// aapt resource value: 0x7f0100ed
+			public const int navigationContentDescription = 2130772205;
+			
+			// aapt resource value: 0x7f0100ec
+			public const int navigationIcon = 2130772204;
+			
+			// aapt resource value: 0x7f01002f
+			public const int navigationMode = 2130772015;
+			
+			// aapt resource value: 0x7f010062
+			public const int overlapAnchor = 2130772066;
 			
 			// aapt resource value: 0x7f0100f2
-			public const int titleTextColor = 2130772210;
+			public const int paddingEnd = 2130772210;
 			
-			// aapt resource value: 0x7f010035
-			public const int titleTextStyle = 2130772021;
+			// aapt resource value: 0x7f0100f1
+			public const int paddingStart = 2130772209;
 			
-			// aapt resource value: 0x7f010107
-			public const int toolbarId = 2130772231;
+			// aapt resource value: 0x7f0100c3
+			public const int panelBackground = 2130772163;
 			
-			// aapt resource value: 0x7f0100b4
-			public const int toolbarNavigationButtonStyle = 2130772148;
+			// aapt resource value: 0x7f0100c5
+			public const int panelMenuListTheme = 2130772165;
+			
+			// aapt resource value: 0x7f0100c4
+			public const int panelMenuListWidth = 2130772164;
+			
+			// aapt resource value: 0x7f0100b2
+			public const int popupMenuStyle = 2130772146;
+			
+			// aapt resource value: 0x7f010046
+			public const int popupTheme = 2130772038;
 			
 			// aapt resource value: 0x7f0100b3
-			public const int toolbarStyle = 2130772147;
+			public const int popupWindowStyle = 2130772147;
+			
+			// aapt resource value: 0x7f010061
+			public const int preserveIconSpacing = 2130772065;
+			
+			// aapt resource value: 0x7f010110
+			public const int pressedTranslationZ = 2130772240;
+			
+			// aapt resource value: 0x7f01003e
+			public const int progressBarPadding = 2130772030;
+			
+			// aapt resource value: 0x7f01003c
+			public const int progressBarStyle = 2130772028;
+			
+			// aapt resource value: 0x7f01006f
+			public const int queryBackground = 2130772079;
+			
+			// aapt resource value: 0x7f010066
+			public const int queryHint = 2130772070;
+			
+			// aapt resource value: 0x7f0100de
+			public const int radioButtonStyle = 2130772190;
+			
+			// aapt resource value: 0x7f0100df
+			public const int ratingBarStyle = 2130772191;
+			
+			// aapt resource value: 0x7f01010e
+			public const int rippleColor = 2130772238;
+			
+			// aapt resource value: 0x7f01006b
+			public const int searchHintIcon = 2130772075;
+			
+			// aapt resource value: 0x7f01006a
+			public const int searchIcon = 2130772074;
+			
+			// aapt resource value: 0x7f0100b9
+			public const int searchViewStyle = 2130772153;
+			
+			// aapt resource value: 0x7f0100aa
+			public const int selectableItemBackground = 2130772138;
+			
+			// aapt resource value: 0x7f0100ab
+			public const int selectableItemBackgroundBorderless = 2130772139;
+			
+			// aapt resource value: 0x7f01005d
+			public const int showAsAction = 2130772061;
+			
+			// aapt resource value: 0x7f01005b
+			public const int showDividers = 2130772059;
+			
+			// aapt resource value: 0x7f010077
+			public const int showText = 2130772087;
+			
+			// aapt resource value: 0x7f01004d
+			public const int singleChoiceItemLayout = 2130772045;
+			
+			// aapt resource value: 0x7f010053
+			public const int spinBars = 2130772051;
+			
+			// aapt resource value: 0x7f0100a5
+			public const int spinnerDropDownItemStyle = 2130772133;
+			
+			// aapt resource value: 0x7f0100e0
+			public const int spinnerStyle = 2130772192;
+			
+			// aapt resource value: 0x7f010076
+			public const int splitTrack = 2130772086;
+			
+			// aapt resource value: 0x7f010063
+			public const int state_above_anchor = 2130772067;
+			
+			// aapt resource value: 0x7f010109
+			public const int statusBarBackground = 2130772233;
+			
+			// aapt resource value: 0x7f010103
+			public const int statusBarScrim = 2130772227;
+			
+			// aapt resource value: 0x7f010070
+			public const int submitBackground = 2130772080;
+			
+			// aapt resource value: 0x7f010031
+			public const int subtitle = 2130772017;
+			
+			// aapt resource value: 0x7f0100e3
+			public const int subtitleTextAppearance = 2130772195;
+			
+			// aapt resource value: 0x7f0100f0
+			public const int subtitleTextColor = 2130772208;
+			
+			// aapt resource value: 0x7f010033
+			public const int subtitleTextStyle = 2130772019;
+			
+			// aapt resource value: 0x7f01006e
+			public const int suggestionRowLayout = 2130772078;
 			
 			// aapt resource value: 0x7f010074
-			public const int track = 2130772084;
+			public const int switchMinWidth = 2130772084;
+			
+			// aapt resource value: 0x7f010075
+			public const int switchPadding = 2130772085;
+			
+			// aapt resource value: 0x7f0100e1
+			public const int switchStyle = 2130772193;
+			
+			// aapt resource value: 0x7f010073
+			public const int switchTextAppearance = 2130772083;
+			
+			// aapt resource value: 0x7f01011e
+			public const int tabBackground = 2130772254;
+			
+			// aapt resource value: 0x7f01011d
+			public const int tabContentStart = 2130772253;
+			
+			// aapt resource value: 0x7f010120
+			public const int tabGravity = 2130772256;
+			
+			// aapt resource value: 0x7f01011b
+			public const int tabIndicatorColor = 2130772251;
+			
+			// aapt resource value: 0x7f01011c
+			public const int tabIndicatorHeight = 2130772252;
+			
+			// aapt resource value: 0x7f010122
+			public const int tabMaxWidth = 2130772258;
+			
+			// aapt resource value: 0x7f010121
+			public const int tabMinWidth = 2130772257;
+			
+			// aapt resource value: 0x7f01011f
+			public const int tabMode = 2130772255;
+			
+			// aapt resource value: 0x7f01012a
+			public const int tabPadding = 2130772266;
+			
+			// aapt resource value: 0x7f010129
+			public const int tabPaddingBottom = 2130772265;
+			
+			// aapt resource value: 0x7f010128
+			public const int tabPaddingEnd = 2130772264;
+			
+			// aapt resource value: 0x7f010126
+			public const int tabPaddingStart = 2130772262;
+			
+			// aapt resource value: 0x7f010127
+			public const int tabPaddingTop = 2130772263;
+			
+			// aapt resource value: 0x7f010125
+			public const int tabSelectedTextColor = 2130772261;
+			
+			// aapt resource value: 0x7f010123
+			public const int tabTextAppearance = 2130772259;
+			
+			// aapt resource value: 0x7f010124
+			public const int tabTextColor = 2130772260;
+			
+			// aapt resource value: 0x7f01004f
+			public const int textAllCaps = 2130772047;
+			
+			// aapt resource value: 0x7f01009e
+			public const int textAppearanceLargePopupMenu = 2130772126;
+			
+			// aapt resource value: 0x7f0100c1
+			public const int textAppearanceListItem = 2130772161;
+			
+			// aapt resource value: 0x7f0100c2
+			public const int textAppearanceListItemSmall = 2130772162;
+			
+			// aapt resource value: 0x7f0100b7
+			public const int textAppearanceSearchResultSubtitle = 2130772151;
+			
+			// aapt resource value: 0x7f0100b6
+			public const int textAppearanceSearchResultTitle = 2130772150;
+			
+			// aapt resource value: 0x7f01009f
+			public const int textAppearanceSmallPopupMenu = 2130772127;
+			
+			// aapt resource value: 0x7f0100d4
+			public const int textColorAlertDialogListItem = 2130772180;
+			
+			// aapt resource value: 0x7f0100b8
+			public const int textColorSearchUrl = 2130772152;
+			
+			// aapt resource value: 0x7f0100f3
+			public const int theme = 2130772211;
+			
+			// aapt resource value: 0x7f010059
+			public const int thickness = 2130772057;
+			
+			// aapt resource value: 0x7f010072
+			public const int thumbTextPadding = 2130772082;
+			
+			// aapt resource value: 0x7f01002e
+			public const int title = 2130772014;
+			
+			// aapt resource value: 0x7f010107
+			public const int titleEnabled = 2130772231;
+			
+			// aapt resource value: 0x7f0100e8
+			public const int titleMarginBottom = 2130772200;
+			
+			// aapt resource value: 0x7f0100e6
+			public const int titleMarginEnd = 2130772198;
+			
+			// aapt resource value: 0x7f0100e5
+			public const int titleMarginStart = 2130772197;
+			
+			// aapt resource value: 0x7f0100e7
+			public const int titleMarginTop = 2130772199;
+			
+			// aapt resource value: 0x7f0100e4
+			public const int titleMargins = 2130772196;
+			
+			// aapt resource value: 0x7f0100e2
+			public const int titleTextAppearance = 2130772194;
+			
+			// aapt resource value: 0x7f0100ef
+			public const int titleTextColor = 2130772207;
+			
+			// aapt resource value: 0x7f010032
+			public const int titleTextStyle = 2130772018;
+			
+			// aapt resource value: 0x7f010104
+			public const int toolbarId = 2130772228;
+			
+			// aapt resource value: 0x7f0100b1
+			public const int toolbarNavigationButtonStyle = 2130772145;
+			
+			// aapt resource value: 0x7f0100b0
+			public const int toolbarStyle = 2130772144;
+			
+			// aapt resource value: 0x7f010071
+			public const int track = 2130772081;
 			
 			// aapt resource value: 0x7f010017
 			public const int uiCompass = 2130771991;
@@ -2432,38 +963,38 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f01001d
 			public const int useViewLifecycle = 2130771997;
 			
-			// aapt resource value: 0x7f01006f
-			public const int voiceIcon = 2130772079;
+			// aapt resource value: 0x7f01006c
+			public const int voiceIcon = 2130772076;
+			
+			// aapt resource value: 0x7f010078
+			public const int windowActionBar = 2130772088;
+			
+			// aapt resource value: 0x7f01007a
+			public const int windowActionBarOverlay = 2130772090;
 			
 			// aapt resource value: 0x7f01007b
-			public const int windowActionBar = 2130772091;
-			
-			// aapt resource value: 0x7f01007d
-			public const int windowActionBarOverlay = 2130772093;
-			
-			// aapt resource value: 0x7f01007e
-			public const int windowActionModeOverlay = 2130772094;
-			
-			// aapt resource value: 0x7f010082
-			public const int windowFixedHeightMajor = 2130772098;
-			
-			// aapt resource value: 0x7f010080
-			public const int windowFixedHeightMinor = 2130772096;
+			public const int windowActionModeOverlay = 2130772091;
 			
 			// aapt resource value: 0x7f01007f
-			public const int windowFixedWidthMajor = 2130772095;
+			public const int windowFixedHeightMajor = 2130772095;
 			
-			// aapt resource value: 0x7f010081
-			public const int windowFixedWidthMinor = 2130772097;
-			
-			// aapt resource value: 0x7f010083
-			public const int windowMinWidthMajor = 2130772099;
-			
-			// aapt resource value: 0x7f010084
-			public const int windowMinWidthMinor = 2130772100;
+			// aapt resource value: 0x7f01007d
+			public const int windowFixedHeightMinor = 2130772093;
 			
 			// aapt resource value: 0x7f01007c
-			public const int windowNoTitle = 2130772092;
+			public const int windowFixedWidthMajor = 2130772092;
+			
+			// aapt resource value: 0x7f01007e
+			public const int windowFixedWidthMinor = 2130772094;
+			
+			// aapt resource value: 0x7f010080
+			public const int windowMinWidthMajor = 2130772096;
+			
+			// aapt resource value: 0x7f010081
+			public const int windowMinWidthMinor = 2130772097;
+			
+			// aapt resource value: 0x7f010079
+			public const int windowNoTitle = 2130772089;
 			
 			// aapt resource value: 0x7f01000f
 			public const int windowTransitionStyle = 2130771983;
@@ -4425,31 +2956,28 @@ namespace EasyBike.Droid
 			public const int ground_overlay_color = 2131034121;
 			
 			// aapt resource value: 0x7f05000a
-			public const int gtm_analytics = 2131034122;
+			public const int inline_style = 2131034122;
 			
 			// aapt resource value: 0x7f05000b
-			public const int inline_style = 2131034123;
+			public const int multigeometry_placemarks = 2131034123;
 			
 			// aapt resource value: 0x7f05000c
-			public const int multigeometry_placemarks = 2131034124;
+			public const int multiple_placemarks = 2131034124;
 			
 			// aapt resource value: 0x7f05000d
-			public const int multiple_placemarks = 2131034125;
+			public const int nested_folders = 2131034125;
 			
 			// aapt resource value: 0x7f05000e
-			public const int nested_folders = 2131034126;
+			public const int nested_multigeometry = 2131034126;
 			
 			// aapt resource value: 0x7f05000f
-			public const int nested_multigeometry = 2131034127;
+			public const int unknwown_folder = 2131034127;
 			
 			// aapt resource value: 0x7f050010
-			public const int unknwown_folder = 2131034128;
+			public const int unsupported = 2131034128;
 			
 			// aapt resource value: 0x7f050011
-			public const int unsupported = 2131034129;
-			
-			// aapt resource value: 0x7f050012
-			public const int visibility_ground_overlay = 2131034130;
+			public const int visibility_ground_overlay = 2131034129;
 			
 			static Raw()
 			{
@@ -4464,74 +2992,71 @@ namespace EasyBike.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f07004b
-			public const int ApplicationName = 2131165259;
-			
-			// aapt resource value: 0x7f07004a
-			public const int Hello = 2131165258;
-			
-			// aapt resource value: 0x7f070036
-			public const int abc_action_bar_home_description = 2131165238;
-			
-			// aapt resource value: 0x7f070037
-			public const int abc_action_bar_home_description_format = 2131165239;
-			
-			// aapt resource value: 0x7f070038
-			public const int abc_action_bar_home_subtitle_description_format = 2131165240;
-			
-			// aapt resource value: 0x7f070039
-			public const int abc_action_bar_up_description = 2131165241;
-			
-			// aapt resource value: 0x7f07003a
-			public const int abc_action_menu_overflow_description = 2131165242;
-			
-			// aapt resource value: 0x7f07003b
-			public const int abc_action_mode_done = 2131165243;
-			
-			// aapt resource value: 0x7f07003c
-			public const int abc_activity_chooser_view_see_all = 2131165244;
-			
-			// aapt resource value: 0x7f07003d
-			public const int abc_activitychooserview_choose_application = 2131165245;
-			
-			// aapt resource value: 0x7f07003e
-			public const int abc_search_hint = 2131165246;
-			
-			// aapt resource value: 0x7f07003f
-			public const int abc_searchview_description_clear = 2131165247;
-			
-			// aapt resource value: 0x7f070040
-			public const int abc_searchview_description_query = 2131165248;
-			
-			// aapt resource value: 0x7f070041
-			public const int abc_searchview_description_search = 2131165249;
-			
-			// aapt resource value: 0x7f070042
-			public const int abc_searchview_description_submit = 2131165250;
-			
-			// aapt resource value: 0x7f070043
-			public const int abc_searchview_description_voice = 2131165251;
+			// aapt resource value: 0x7f070045
+			public const int ApplicationName = 2131165253;
 			
 			// aapt resource value: 0x7f070044
-			public const int abc_shareactionprovider_share_with = 2131165252;
+			public const int Hello = 2131165252;
 			
-			// aapt resource value: 0x7f070045
-			public const int abc_shareactionprovider_share_with_application = 2131165253;
+			// aapt resource value: 0x7f070030
+			public const int abc_action_bar_home_description = 2131165232;
 			
-			// aapt resource value: 0x7f070046
-			public const int abc_toolbar_collapse_description = 2131165254;
+			// aapt resource value: 0x7f070031
+			public const int abc_action_bar_home_description_format = 2131165233;
 			
-			// aapt resource value: 0x7f070028
-			public const int accept = 2131165224;
+			// aapt resource value: 0x7f070032
+			public const int abc_action_bar_home_subtitle_description_format = 2131165234;
 			
-			// aapt resource value: 0x7f07004e
-			public const int action_settings = 2131165262;
+			// aapt resource value: 0x7f070033
+			public const int abc_action_bar_up_description = 2131165235;
 			
-			// aapt resource value: 0x7f07004c
-			public const int app_name = 2131165260;
+			// aapt resource value: 0x7f070034
+			public const int abc_action_menu_overflow_description = 2131165236;
+			
+			// aapt resource value: 0x7f070035
+			public const int abc_action_mode_done = 2131165237;
+			
+			// aapt resource value: 0x7f070036
+			public const int abc_activity_chooser_view_see_all = 2131165238;
+			
+			// aapt resource value: 0x7f070037
+			public const int abc_activitychooserview_choose_application = 2131165239;
+			
+			// aapt resource value: 0x7f070038
+			public const int abc_search_hint = 2131165240;
+			
+			// aapt resource value: 0x7f070039
+			public const int abc_searchview_description_clear = 2131165241;
+			
+			// aapt resource value: 0x7f07003a
+			public const int abc_searchview_description_query = 2131165242;
+			
+			// aapt resource value: 0x7f07003b
+			public const int abc_searchview_description_search = 2131165243;
+			
+			// aapt resource value: 0x7f07003c
+			public const int abc_searchview_description_submit = 2131165244;
+			
+			// aapt resource value: 0x7f07003d
+			public const int abc_searchview_description_voice = 2131165245;
+			
+			// aapt resource value: 0x7f07003e
+			public const int abc_shareactionprovider_share_with = 2131165246;
+			
+			// aapt resource value: 0x7f07003f
+			public const int abc_shareactionprovider_share_with_application = 2131165247;
+			
+			// aapt resource value: 0x7f070040
+			public const int abc_toolbar_collapse_description = 2131165248;
 			
 			// aapt resource value: 0x7f070048
-			public const int appbar_scrolling_view_behavior = 2131165256;
+			public const int action_settings = 2131165256;
+			
+			// aapt resource value: 0x7f070046
+			public const int app_name = 2131165254;
+			
+			// aapt resource value: 0x7f070042
+			public const int appbar_scrolling_view_behavior = 2131165250;
 			
 			// aapt resource value: 0x7f070005
 			public const int auth_google_play_services_client_facebook_display_name = 2131165189;
@@ -4644,86 +3169,71 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f070021
 			public const int common_signin_button_text_long = 2131165217;
 			
-			// aapt resource value: 0x7f07002b
-			public const int create_calendar_message = 2131165227;
-			
-			// aapt resource value: 0x7f07002a
-			public const int create_calendar_title = 2131165226;
-			
-			// aapt resource value: 0x7f070029
-			public const int decline = 2131165225;
-			
-			// aapt resource value: 0x7f070055
-			public const int drawer_header_text = 2131165269;
-			
-			// aapt resource value: 0x7f07004d
-			public const int hello = 2131165261;
-			
-			// aapt resource value: 0x7f070049
-			public const int library_name = 2131165257;
-			
-			// aapt resource value: 0x7f07002c
-			public const int mr_media_route_button_content_description = 2131165228;
-			
-			// aapt resource value: 0x7f07002d
-			public const int mr_media_route_chooser_searching = 2131165229;
-			
-			// aapt resource value: 0x7f07002e
-			public const int mr_media_route_chooser_title = 2131165230;
-			
-			// aapt resource value: 0x7f07002f
-			public const int mr_media_route_controller_disconnect = 2131165231;
-			
-			// aapt resource value: 0x7f070032
-			public const int mr_media_route_controller_pause = 2131165234;
-			
-			// aapt resource value: 0x7f070033
-			public const int mr_media_route_controller_play = 2131165235;
-			
-			// aapt resource value: 0x7f070034
-			public const int mr_media_route_controller_settings_description = 2131165236;
-			
-			// aapt resource value: 0x7f070035
-			public const int mr_media_route_controller_stop = 2131165237;
-			
-			// aapt resource value: 0x7f070030
-			public const int mr_system_route_name = 2131165232;
-			
-			// aapt resource value: 0x7f070031
-			public const int mr_user_route_category_name = 2131165233;
-			
 			// aapt resource value: 0x7f07004f
-			public const int nav_item_attachment = 2131165263;
-			
-			// aapt resource value: 0x7f070050
-			public const int nav_item_images = 2131165264;
-			
-			// aapt resource value: 0x7f070051
-			public const int nav_item_location = 2131165265;
-			
-			// aapt resource value: 0x7f070052
-			public const int nav_sub_menu = 2131165266;
-			
-			// aapt resource value: 0x7f070053
-			public const int nav_sub_menu_item01 = 2131165267;
-			
-			// aapt resource value: 0x7f070054
-			public const int nav_sub_menu_item02 = 2131165268;
-			
-			// aapt resource value: 0x7f070056
-			public const int second_activity_text = 2131165270;
+			public const int drawer_header_text = 2131165263;
 			
 			// aapt resource value: 0x7f070047
-			public const int status_bar_notification_info_overflow = 2131165255;
+			public const int hello = 2131165255;
 			
-			// aapt resource value: 0x7f070027
-			public const int store_picture_message = 2131165223;
+			// aapt resource value: 0x7f070043
+			public const int library_name = 2131165251;
 			
 			// aapt resource value: 0x7f070026
-			public const int store_picture_title = 2131165222;
+			public const int mr_media_route_button_content_description = 2131165222;
 			
-			// aapt resource value: 0x7f070057
-			public const int title_activity_second = 2131165271;
+			// aapt resource value: 0x7f070027
+			public const int mr_media_route_chooser_searching = 2131165223;
+			
+			// aapt resource value: 0x7f070028
+			public const int mr_media_route_chooser_title = 2131165224;
+			
+			// aapt resource value: 0x7f070029
+			public const int mr_media_route_controller_disconnect = 2131165225;
+			
+			// aapt resource value: 0x7f07002c
+			public const int mr_media_route_controller_pause = 2131165228;
+			
+			// aapt resource value: 0x7f07002d
+			public const int mr_media_route_controller_play = 2131165229;
+			
+			// aapt resource value: 0x7f07002e
+			public const int mr_media_route_controller_settings_description = 2131165230;
+			
+			// aapt resource value: 0x7f07002f
+			public const int mr_media_route_controller_stop = 2131165231;
+			
+			// aapt resource value: 0x7f07002a
+			public const int mr_system_route_name = 2131165226;
+			
+			// aapt resource value: 0x7f07002b
+			public const int mr_user_route_category_name = 2131165227;
+			
+			// aapt resource value: 0x7f070049
+			public const int nav_item_attachment = 2131165257;
+			
+			// aapt resource value: 0x7f07004a
+			public const int nav_item_images = 2131165258;
+			
+			// aapt resource value: 0x7f07004b
+			public const int nav_item_location = 2131165259;
+			
+			// aapt resource value: 0x7f07004c
+			public const int nav_sub_menu = 2131165260;
+			
+			// aapt resource value: 0x7f07004d
+			public const int nav_sub_menu_item01 = 2131165261;
+			
+			// aapt resource value: 0x7f07004e
+			public const int nav_sub_menu_item02 = 2131165262;
+			
+			// aapt resource value: 0x7f070050
+			public const int second_activity_text = 2131165264;
+			
+			// aapt resource value: 0x7f070041
+			public const int status_bar_notification_info_overflow = 2131165249;
+			
+			// aapt resource value: 0x7f070051
+			public const int title_activity_second = 2131165265;
 			
 			// aapt resource value: 0x7f070000
 			public const int wallet_buy_button_place_holder = 2131165184;
@@ -4741,752 +3251,749 @@ namespace EasyBike.Droid
 		public partial class Style
 		{
 			
+			// aapt resource value: 0x7f080082
+			public const int AlertDialog_AppCompat = 2131230850;
+			
 			// aapt resource value: 0x7f080083
-			public const int AlertDialog_AppCompat = 2131230851;
+			public const int AlertDialog_AppCompat_Light = 2131230851;
 			
 			// aapt resource value: 0x7f080084
-			public const int AlertDialog_AppCompat_Light = 2131230852;
+			public const int Animation_AppCompat_Dialog = 2131230852;
 			
 			// aapt resource value: 0x7f080085
-			public const int Animation_AppCompat_Dialog = 2131230853;
-			
-			// aapt resource value: 0x7f080086
-			public const int Animation_AppCompat_DropDownUp = 2131230854;
-			
-			// aapt resource value: 0x7f080149
-			public const int AppTheme = 2131231049;
-			
-			// aapt resource value: 0x7f080087
-			public const int Base_AlertDialog_AppCompat = 2131230855;
-			
-			// aapt resource value: 0x7f080088
-			public const int Base_AlertDialog_AppCompat_Light = 2131230856;
-			
-			// aapt resource value: 0x7f080089
-			public const int Base_Animation_AppCompat_Dialog = 2131230857;
-			
-			// aapt resource value: 0x7f08008a
-			public const int Base_Animation_AppCompat_DropDownUp = 2131230858;
-			
-			// aapt resource value: 0x7f08008b
-			public const int Base_DialogWindowTitle_AppCompat = 2131230859;
-			
-			// aapt resource value: 0x7f08008c
-			public const int Base_DialogWindowTitleBackground_AppCompat = 2131230860;
-			
-			// aapt resource value: 0x7f080036
-			public const int Base_TextAppearance_AppCompat = 2131230774;
-			
-			// aapt resource value: 0x7f080037
-			public const int Base_TextAppearance_AppCompat_Body1 = 2131230775;
-			
-			// aapt resource value: 0x7f080038
-			public const int Base_TextAppearance_AppCompat_Body2 = 2131230776;
-			
-			// aapt resource value: 0x7f080021
-			public const int Base_TextAppearance_AppCompat_Button = 2131230753;
-			
-			// aapt resource value: 0x7f080039
-			public const int Base_TextAppearance_AppCompat_Caption = 2131230777;
-			
-			// aapt resource value: 0x7f08003a
-			public const int Base_TextAppearance_AppCompat_Display1 = 2131230778;
-			
-			// aapt resource value: 0x7f08003b
-			public const int Base_TextAppearance_AppCompat_Display2 = 2131230779;
-			
-			// aapt resource value: 0x7f08003c
-			public const int Base_TextAppearance_AppCompat_Display3 = 2131230780;
-			
-			// aapt resource value: 0x7f08003d
-			public const int Base_TextAppearance_AppCompat_Display4 = 2131230781;
-			
-			// aapt resource value: 0x7f08003e
-			public const int Base_TextAppearance_AppCompat_Headline = 2131230782;
-			
-			// aapt resource value: 0x7f08000c
-			public const int Base_TextAppearance_AppCompat_Inverse = 2131230732;
-			
-			// aapt resource value: 0x7f08003f
-			public const int Base_TextAppearance_AppCompat_Large = 2131230783;
-			
-			// aapt resource value: 0x7f08000d
-			public const int Base_TextAppearance_AppCompat_Large_Inverse = 2131230733;
-			
-			// aapt resource value: 0x7f080040
-			public const int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131230784;
-			
-			// aapt resource value: 0x7f080041
-			public const int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131230785;
-			
-			// aapt resource value: 0x7f080042
-			public const int Base_TextAppearance_AppCompat_Medium = 2131230786;
-			
-			// aapt resource value: 0x7f08000e
-			public const int Base_TextAppearance_AppCompat_Medium_Inverse = 2131230734;
-			
-			// aapt resource value: 0x7f080043
-			public const int Base_TextAppearance_AppCompat_Menu = 2131230787;
-			
-			// aapt resource value: 0x7f08008d
-			public const int Base_TextAppearance_AppCompat_SearchResult = 2131230861;
-			
-			// aapt resource value: 0x7f080044
-			public const int Base_TextAppearance_AppCompat_SearchResult_Subtitle = 2131230788;
-			
-			// aapt resource value: 0x7f080045
-			public const int Base_TextAppearance_AppCompat_SearchResult_Title = 2131230789;
-			
-			// aapt resource value: 0x7f080046
-			public const int Base_TextAppearance_AppCompat_Small = 2131230790;
-			
-			// aapt resource value: 0x7f08000f
-			public const int Base_TextAppearance_AppCompat_Small_Inverse = 2131230735;
-			
-			// aapt resource value: 0x7f080047
-			public const int Base_TextAppearance_AppCompat_Subhead = 2131230791;
-			
-			// aapt resource value: 0x7f080010
-			public const int Base_TextAppearance_AppCompat_Subhead_Inverse = 2131230736;
-			
-			// aapt resource value: 0x7f080048
-			public const int Base_TextAppearance_AppCompat_Title = 2131230792;
-			
-			// aapt resource value: 0x7f080011
-			public const int Base_TextAppearance_AppCompat_Title_Inverse = 2131230737;
-			
-			// aapt resource value: 0x7f080049
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131230793;
-			
-			// aapt resource value: 0x7f08004a
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2131230794;
-			
-			// aapt resource value: 0x7f08004b
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2131230795;
-			
-			// aapt resource value: 0x7f08004c
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Title = 2131230796;
-			
-			// aapt resource value: 0x7f08004d
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2131230797;
-			
-			// aapt resource value: 0x7f08004e
-			public const int Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2131230798;
-			
-			// aapt resource value: 0x7f08004f
-			public const int Base_TextAppearance_AppCompat_Widget_ActionMode_Title = 2131230799;
-			
-			// aapt resource value: 0x7f080050
-			public const int Base_TextAppearance_AppCompat_Widget_Button = 2131230800;
-			
-			// aapt resource value: 0x7f08007f
-			public const int Base_TextAppearance_AppCompat_Widget_Button_Inverse = 2131230847;
-			
-			// aapt resource value: 0x7f08008e
-			public const int Base_TextAppearance_AppCompat_Widget_DropDownItem = 2131230862;
-			
-			// aapt resource value: 0x7f080051
-			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131230801;
-			
-			// aapt resource value: 0x7f080052
-			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131230802;
-			
-			// aapt resource value: 0x7f080053
-			public const int Base_TextAppearance_AppCompat_Widget_Switch = 2131230803;
-			
-			// aapt resource value: 0x7f080054
-			public const int Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2131230804;
-			
-			// aapt resource value: 0x7f08008f
-			public const int Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131230863;
-			
-			// aapt resource value: 0x7f080055
-			public const int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2131230805;
-			
-			// aapt resource value: 0x7f080056
-			public const int Base_TextAppearance_Widget_AppCompat_Toolbar_Title = 2131230806;
-			
-			// aapt resource value: 0x7f080057
-			public const int Base_Theme_AppCompat = 2131230807;
-			
-			// aapt resource value: 0x7f080090
-			public const int Base_Theme_AppCompat_CompactMenu = 2131230864;
-			
-			// aapt resource value: 0x7f080012
-			public const int Base_Theme_AppCompat_Dialog = 2131230738;
-			
-			// aapt resource value: 0x7f080091
-			public const int Base_Theme_AppCompat_Dialog_Alert = 2131230865;
-			
-			// aapt resource value: 0x7f080092
-			public const int Base_Theme_AppCompat_Dialog_FixedSize = 2131230866;
-			
-			// aapt resource value: 0x7f080093
-			public const int Base_Theme_AppCompat_Dialog_MinWidth = 2131230867;
-			
-			// aapt resource value: 0x7f08000a
-			public const int Base_Theme_AppCompat_DialogWhenLarge = 2131230730;
-			
-			// aapt resource value: 0x7f080058
-			public const int Base_Theme_AppCompat_Light = 2131230808;
-			
-			// aapt resource value: 0x7f080094
-			public const int Base_Theme_AppCompat_Light_DarkActionBar = 2131230868;
-			
-			// aapt resource value: 0x7f080013
-			public const int Base_Theme_AppCompat_Light_Dialog = 2131230739;
-			
-			// aapt resource value: 0x7f080095
-			public const int Base_Theme_AppCompat_Light_Dialog_Alert = 2131230869;
-			
-			// aapt resource value: 0x7f080096
-			public const int Base_Theme_AppCompat_Light_Dialog_FixedSize = 2131230870;
-			
-			// aapt resource value: 0x7f080097
-			public const int Base_Theme_AppCompat_Light_Dialog_MinWidth = 2131230871;
-			
-			// aapt resource value: 0x7f08000b
-			public const int Base_Theme_AppCompat_Light_DialogWhenLarge = 2131230731;
-			
-			// aapt resource value: 0x7f080098
-			public const int Base_ThemeOverlay_AppCompat = 2131230872;
-			
-			// aapt resource value: 0x7f080099
-			public const int Base_ThemeOverlay_AppCompat_ActionBar = 2131230873;
-			
-			// aapt resource value: 0x7f08009a
-			public const int Base_ThemeOverlay_AppCompat_Dark = 2131230874;
-			
-			// aapt resource value: 0x7f08009b
-			public const int Base_ThemeOverlay_AppCompat_Dark_ActionBar = 2131230875;
-			
-			// aapt resource value: 0x7f08009c
-			public const int Base_ThemeOverlay_AppCompat_Light = 2131230876;
-			
-			// aapt resource value: 0x7f080014
-			public const int Base_V11_Theme_AppCompat_Dialog = 2131230740;
-			
-			// aapt resource value: 0x7f080015
-			public const int Base_V11_Theme_AppCompat_Light_Dialog = 2131230741;
-			
-			// aapt resource value: 0x7f08001d
-			public const int Base_V12_Widget_AppCompat_AutoCompleteTextView = 2131230749;
-			
-			// aapt resource value: 0x7f08001e
-			public const int Base_V12_Widget_AppCompat_EditText = 2131230750;
-			
-			// aapt resource value: 0x7f080059
-			public const int Base_V21_Theme_AppCompat = 2131230809;
-			
-			// aapt resource value: 0x7f08005a
-			public const int Base_V21_Theme_AppCompat_Dialog = 2131230810;
-			
-			// aapt resource value: 0x7f08005b
-			public const int Base_V21_Theme_AppCompat_Light = 2131230811;
-			
-			// aapt resource value: 0x7f08005c
-			public const int Base_V21_Theme_AppCompat_Light_Dialog = 2131230812;
-			
-			// aapt resource value: 0x7f08007d
-			public const int Base_V22_Theme_AppCompat = 2131230845;
-			
-			// aapt resource value: 0x7f08007e
-			public const int Base_V22_Theme_AppCompat_Light = 2131230846;
-			
-			// aapt resource value: 0x7f080080
-			public const int Base_V23_Theme_AppCompat = 2131230848;
-			
-			// aapt resource value: 0x7f080081
-			public const int Base_V23_Theme_AppCompat_Light = 2131230849;
-			
-			// aapt resource value: 0x7f08009d
-			public const int Base_V7_Theme_AppCompat = 2131230877;
-			
-			// aapt resource value: 0x7f08009e
-			public const int Base_V7_Theme_AppCompat_Dialog = 2131230878;
-			
-			// aapt resource value: 0x7f08009f
-			public const int Base_V7_Theme_AppCompat_Light = 2131230879;
-			
-			// aapt resource value: 0x7f0800a0
-			public const int Base_V7_Theme_AppCompat_Light_Dialog = 2131230880;
-			
-			// aapt resource value: 0x7f0800a1
-			public const int Base_V7_Widget_AppCompat_AutoCompleteTextView = 2131230881;
-			
-			// aapt resource value: 0x7f0800a2
-			public const int Base_V7_Widget_AppCompat_EditText = 2131230882;
-			
-			// aapt resource value: 0x7f0800a3
-			public const int Base_Widget_AppCompat_ActionBar = 2131230883;
-			
-			// aapt resource value: 0x7f0800a4
-			public const int Base_Widget_AppCompat_ActionBar_Solid = 2131230884;
-			
-			// aapt resource value: 0x7f0800a5
-			public const int Base_Widget_AppCompat_ActionBar_TabBar = 2131230885;
-			
-			// aapt resource value: 0x7f08005d
-			public const int Base_Widget_AppCompat_ActionBar_TabText = 2131230813;
-			
-			// aapt resource value: 0x7f08005e
-			public const int Base_Widget_AppCompat_ActionBar_TabView = 2131230814;
-			
-			// aapt resource value: 0x7f08005f
-			public const int Base_Widget_AppCompat_ActionButton = 2131230815;
-			
-			// aapt resource value: 0x7f080060
-			public const int Base_Widget_AppCompat_ActionButton_CloseMode = 2131230816;
-			
-			// aapt resource value: 0x7f080061
-			public const int Base_Widget_AppCompat_ActionButton_Overflow = 2131230817;
-			
-			// aapt resource value: 0x7f0800a6
-			public const int Base_Widget_AppCompat_ActionMode = 2131230886;
-			
-			// aapt resource value: 0x7f0800a7
-			public const int Base_Widget_AppCompat_ActivityChooserView = 2131230887;
-			
-			// aapt resource value: 0x7f08001f
-			public const int Base_Widget_AppCompat_AutoCompleteTextView = 2131230751;
-			
-			// aapt resource value: 0x7f080062
-			public const int Base_Widget_AppCompat_Button = 2131230818;
-			
-			// aapt resource value: 0x7f080063
-			public const int Base_Widget_AppCompat_Button_Borderless = 2131230819;
-			
-			// aapt resource value: 0x7f080064
-			public const int Base_Widget_AppCompat_Button_Borderless_Colored = 2131230820;
-			
-			// aapt resource value: 0x7f0800a8
-			public const int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = 2131230888;
-			
-			// aapt resource value: 0x7f080082
-			public const int Base_Widget_AppCompat_Button_Colored = 2131230850;
-			
-			// aapt resource value: 0x7f080065
-			public const int Base_Widget_AppCompat_Button_Small = 2131230821;
-			
-			// aapt resource value: 0x7f080066
-			public const int Base_Widget_AppCompat_ButtonBar = 2131230822;
-			
-			// aapt resource value: 0x7f0800a9
-			public const int Base_Widget_AppCompat_ButtonBar_AlertDialog = 2131230889;
-			
-			// aapt resource value: 0x7f080067
-			public const int Base_Widget_AppCompat_CompoundButton_CheckBox = 2131230823;
-			
-			// aapt resource value: 0x7f080068
-			public const int Base_Widget_AppCompat_CompoundButton_RadioButton = 2131230824;
-			
-			// aapt resource value: 0x7f0800aa
-			public const int Base_Widget_AppCompat_CompoundButton_Switch = 2131230890;
-			
-			// aapt resource value: 0x7f080009
-			public const int Base_Widget_AppCompat_DrawerArrowToggle = 2131230729;
-			
-			// aapt resource value: 0x7f0800ab
-			public const int Base_Widget_AppCompat_DrawerArrowToggle_Common = 2131230891;
-			
-			// aapt resource value: 0x7f080069
-			public const int Base_Widget_AppCompat_DropDownItem_Spinner = 2131230825;
-			
-			// aapt resource value: 0x7f080020
-			public const int Base_Widget_AppCompat_EditText = 2131230752;
-			
-			// aapt resource value: 0x7f0800ac
-			public const int Base_Widget_AppCompat_Light_ActionBar = 2131230892;
-			
-			// aapt resource value: 0x7f0800ad
-			public const int Base_Widget_AppCompat_Light_ActionBar_Solid = 2131230893;
-			
-			// aapt resource value: 0x7f0800ae
-			public const int Base_Widget_AppCompat_Light_ActionBar_TabBar = 2131230894;
-			
-			// aapt resource value: 0x7f08006a
-			public const int Base_Widget_AppCompat_Light_ActionBar_TabText = 2131230826;
-			
-			// aapt resource value: 0x7f08006b
-			public const int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2131230827;
-			
-			// aapt resource value: 0x7f08006c
-			public const int Base_Widget_AppCompat_Light_ActionBar_TabView = 2131230828;
-			
-			// aapt resource value: 0x7f08006d
-			public const int Base_Widget_AppCompat_Light_PopupMenu = 2131230829;
-			
-			// aapt resource value: 0x7f08006e
-			public const int Base_Widget_AppCompat_Light_PopupMenu_Overflow = 2131230830;
-			
-			// aapt resource value: 0x7f08006f
-			public const int Base_Widget_AppCompat_ListPopupWindow = 2131230831;
-			
-			// aapt resource value: 0x7f080070
-			public const int Base_Widget_AppCompat_ListView = 2131230832;
-			
-			// aapt resource value: 0x7f080071
-			public const int Base_Widget_AppCompat_ListView_DropDown = 2131230833;
-			
-			// aapt resource value: 0x7f080072
-			public const int Base_Widget_AppCompat_ListView_Menu = 2131230834;
-			
-			// aapt resource value: 0x7f080073
-			public const int Base_Widget_AppCompat_PopupMenu = 2131230835;
-			
-			// aapt resource value: 0x7f080074
-			public const int Base_Widget_AppCompat_PopupMenu_Overflow = 2131230836;
-			
-			// aapt resource value: 0x7f0800af
-			public const int Base_Widget_AppCompat_PopupWindow = 2131230895;
-			
-			// aapt resource value: 0x7f080016
-			public const int Base_Widget_AppCompat_ProgressBar = 2131230742;
-			
-			// aapt resource value: 0x7f080017
-			public const int Base_Widget_AppCompat_ProgressBar_Horizontal = 2131230743;
-			
-			// aapt resource value: 0x7f080075
-			public const int Base_Widget_AppCompat_RatingBar = 2131230837;
-			
-			// aapt resource value: 0x7f0800b0
-			public const int Base_Widget_AppCompat_SearchView = 2131230896;
-			
-			// aapt resource value: 0x7f0800b1
-			public const int Base_Widget_AppCompat_SearchView_ActionBar = 2131230897;
-			
-			// aapt resource value: 0x7f080076
-			public const int Base_Widget_AppCompat_Spinner = 2131230838;
-			
-			// aapt resource value: 0x7f080077
-			public const int Base_Widget_AppCompat_Spinner_Underlined = 2131230839;
-			
-			// aapt resource value: 0x7f080078
-			public const int Base_Widget_AppCompat_TextView_SpinnerItem = 2131230840;
-			
-			// aapt resource value: 0x7f0800b2
-			public const int Base_Widget_AppCompat_Toolbar = 2131230898;
-			
-			// aapt resource value: 0x7f080079
-			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131230841;
-			
-			// aapt resource value: 0x7f080138
-			public const int Base_Widget_Design_TabLayout = 2131231032;
-			
-			// aapt resource value: 0x7f080146
-			public const int Bubble_TextAppearance_Dark = 2131231046;
-			
-			// aapt resource value: 0x7f080147
-			public const int Bubble_TextAppearance_Light = 2131231047;
+			public const int Animation_AppCompat_DropDownUp = 2131230853;
 			
 			// aapt resource value: 0x7f080148
-			public const int ClusterIcon_TextAppearance = 2131231048;
+			public const int AppTheme = 2131231048;
 			
-			// aapt resource value: 0x7f080018
-			public const int Platform_AppCompat = 2131230744;
+			// aapt resource value: 0x7f080086
+			public const int Base_AlertDialog_AppCompat = 2131230854;
 			
-			// aapt resource value: 0x7f080019
-			public const int Platform_AppCompat_Light = 2131230745;
+			// aapt resource value: 0x7f080087
+			public const int Base_AlertDialog_AppCompat_Light = 2131230855;
 			
-			// aapt resource value: 0x7f08007a
-			public const int Platform_ThemeOverlay_AppCompat = 2131230842;
+			// aapt resource value: 0x7f080088
+			public const int Base_Animation_AppCompat_Dialog = 2131230856;
 			
-			// aapt resource value: 0x7f08007b
-			public const int Platform_ThemeOverlay_AppCompat_Dark = 2131230843;
+			// aapt resource value: 0x7f080089
+			public const int Base_Animation_AppCompat_DropDownUp = 2131230857;
 			
-			// aapt resource value: 0x7f08007c
-			public const int Platform_ThemeOverlay_AppCompat_Light = 2131230844;
+			// aapt resource value: 0x7f08008a
+			public const int Base_DialogWindowTitle_AppCompat = 2131230858;
 			
-			// aapt resource value: 0x7f08001a
-			public const int Platform_V11_AppCompat = 2131230746;
-			
-			// aapt resource value: 0x7f08001b
-			public const int Platform_V11_AppCompat_Light = 2131230747;
-			
-			// aapt resource value: 0x7f080022
-			public const int Platform_V14_AppCompat = 2131230754;
-			
-			// aapt resource value: 0x7f080023
-			public const int Platform_V14_AppCompat_Light = 2131230755;
-			
-			// aapt resource value: 0x7f08001c
-			public const int Platform_Widget_AppCompat_Spinner = 2131230748;
-			
-			// aapt resource value: 0x7f080029
-			public const int RtlOverlay_DialogWindowTitle_AppCompat = 2131230761;
-			
-			// aapt resource value: 0x7f08002a
-			public const int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = 2131230762;
-			
-			// aapt resource value: 0x7f08002b
-			public const int RtlOverlay_Widget_AppCompat_ActionButton_Overflow = 2131230763;
-			
-			// aapt resource value: 0x7f08002c
-			public const int RtlOverlay_Widget_AppCompat_DialogTitle_Icon = 2131230764;
-			
-			// aapt resource value: 0x7f08002d
-			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem = 2131230765;
-			
-			// aapt resource value: 0x7f08002e
-			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = 2131230766;
-			
-			// aapt resource value: 0x7f08002f
-			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = 2131230767;
-			
-			// aapt resource value: 0x7f080030
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown = 2131230768;
-			
-			// aapt resource value: 0x7f080031
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = 2131230769;
-			
-			// aapt resource value: 0x7f080032
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = 2131230770;
-			
-			// aapt resource value: 0x7f080033
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Query = 2131230771;
-			
-			// aapt resource value: 0x7f080034
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Text = 2131230772;
+			// aapt resource value: 0x7f08008b
+			public const int Base_DialogWindowTitleBackground_AppCompat = 2131230859;
 			
 			// aapt resource value: 0x7f080035
-			public const int RtlOverlay_Widget_AppCompat_SearchView_MagIcon = 2131230773;
+			public const int Base_TextAppearance_AppCompat = 2131230773;
 			
-			// aapt resource value: 0x7f0800b3
-			public const int TextAppearance_AppCompat = 2131230899;
+			// aapt resource value: 0x7f080036
+			public const int Base_TextAppearance_AppCompat_Body1 = 2131230774;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int TextAppearance_AppCompat_Body1 = 2131230900;
+			// aapt resource value: 0x7f080037
+			public const int Base_TextAppearance_AppCompat_Body2 = 2131230775;
 			
-			// aapt resource value: 0x7f0800b5
-			public const int TextAppearance_AppCompat_Body2 = 2131230901;
+			// aapt resource value: 0x7f080020
+			public const int Base_TextAppearance_AppCompat_Button = 2131230752;
 			
-			// aapt resource value: 0x7f0800b6
-			public const int TextAppearance_AppCompat_Button = 2131230902;
+			// aapt resource value: 0x7f080038
+			public const int Base_TextAppearance_AppCompat_Caption = 2131230776;
 			
-			// aapt resource value: 0x7f0800b7
-			public const int TextAppearance_AppCompat_Caption = 2131230903;
+			// aapt resource value: 0x7f080039
+			public const int Base_TextAppearance_AppCompat_Display1 = 2131230777;
 			
-			// aapt resource value: 0x7f0800b8
-			public const int TextAppearance_AppCompat_Display1 = 2131230904;
+			// aapt resource value: 0x7f08003a
+			public const int Base_TextAppearance_AppCompat_Display2 = 2131230778;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int TextAppearance_AppCompat_Display2 = 2131230905;
+			// aapt resource value: 0x7f08003b
+			public const int Base_TextAppearance_AppCompat_Display3 = 2131230779;
 			
-			// aapt resource value: 0x7f0800ba
-			public const int TextAppearance_AppCompat_Display3 = 2131230906;
+			// aapt resource value: 0x7f08003c
+			public const int Base_TextAppearance_AppCompat_Display4 = 2131230780;
 			
-			// aapt resource value: 0x7f0800bb
-			public const int TextAppearance_AppCompat_Display4 = 2131230907;
+			// aapt resource value: 0x7f08003d
+			public const int Base_TextAppearance_AppCompat_Headline = 2131230781;
 			
-			// aapt resource value: 0x7f0800bc
-			public const int TextAppearance_AppCompat_Headline = 2131230908;
+			// aapt resource value: 0x7f08000b
+			public const int Base_TextAppearance_AppCompat_Inverse = 2131230731;
 			
-			// aapt resource value: 0x7f0800bd
-			public const int TextAppearance_AppCompat_Inverse = 2131230909;
+			// aapt resource value: 0x7f08003e
+			public const int Base_TextAppearance_AppCompat_Large = 2131230782;
 			
-			// aapt resource value: 0x7f0800be
-			public const int TextAppearance_AppCompat_Large = 2131230910;
+			// aapt resource value: 0x7f08000c
+			public const int Base_TextAppearance_AppCompat_Large_Inverse = 2131230732;
 			
-			// aapt resource value: 0x7f0800bf
-			public const int TextAppearance_AppCompat_Large_Inverse = 2131230911;
+			// aapt resource value: 0x7f08003f
+			public const int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131230783;
 			
-			// aapt resource value: 0x7f0800c0
-			public const int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 2131230912;
+			// aapt resource value: 0x7f080040
+			public const int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131230784;
 			
-			// aapt resource value: 0x7f0800c1
-			public const int TextAppearance_AppCompat_Light_SearchResult_Title = 2131230913;
+			// aapt resource value: 0x7f080041
+			public const int Base_TextAppearance_AppCompat_Medium = 2131230785;
 			
-			// aapt resource value: 0x7f0800c2
-			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131230914;
+			// aapt resource value: 0x7f08000d
+			public const int Base_TextAppearance_AppCompat_Medium_Inverse = 2131230733;
 			
-			// aapt resource value: 0x7f0800c3
-			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131230915;
+			// aapt resource value: 0x7f080042
+			public const int Base_TextAppearance_AppCompat_Menu = 2131230786;
 			
-			// aapt resource value: 0x7f0800c4
-			public const int TextAppearance_AppCompat_Medium = 2131230916;
+			// aapt resource value: 0x7f08008c
+			public const int Base_TextAppearance_AppCompat_SearchResult = 2131230860;
 			
-			// aapt resource value: 0x7f0800c5
-			public const int TextAppearance_AppCompat_Medium_Inverse = 2131230917;
+			// aapt resource value: 0x7f080043
+			public const int Base_TextAppearance_AppCompat_SearchResult_Subtitle = 2131230787;
 			
-			// aapt resource value: 0x7f0800c6
-			public const int TextAppearance_AppCompat_Menu = 2131230918;
+			// aapt resource value: 0x7f080044
+			public const int Base_TextAppearance_AppCompat_SearchResult_Title = 2131230788;
 			
-			// aapt resource value: 0x7f0800c7
-			public const int TextAppearance_AppCompat_SearchResult_Subtitle = 2131230919;
+			// aapt resource value: 0x7f080045
+			public const int Base_TextAppearance_AppCompat_Small = 2131230789;
 			
-			// aapt resource value: 0x7f0800c8
-			public const int TextAppearance_AppCompat_SearchResult_Title = 2131230920;
+			// aapt resource value: 0x7f08000e
+			public const int Base_TextAppearance_AppCompat_Small_Inverse = 2131230734;
 			
-			// aapt resource value: 0x7f0800c9
-			public const int TextAppearance_AppCompat_Small = 2131230921;
+			// aapt resource value: 0x7f080046
+			public const int Base_TextAppearance_AppCompat_Subhead = 2131230790;
 			
-			// aapt resource value: 0x7f0800ca
-			public const int TextAppearance_AppCompat_Small_Inverse = 2131230922;
+			// aapt resource value: 0x7f08000f
+			public const int Base_TextAppearance_AppCompat_Subhead_Inverse = 2131230735;
 			
-			// aapt resource value: 0x7f0800cb
-			public const int TextAppearance_AppCompat_Subhead = 2131230923;
+			// aapt resource value: 0x7f080047
+			public const int Base_TextAppearance_AppCompat_Title = 2131230791;
 			
-			// aapt resource value: 0x7f0800cc
-			public const int TextAppearance_AppCompat_Subhead_Inverse = 2131230924;
+			// aapt resource value: 0x7f080010
+			public const int Base_TextAppearance_AppCompat_Title_Inverse = 2131230736;
 			
-			// aapt resource value: 0x7f0800cd
-			public const int TextAppearance_AppCompat_Title = 2131230925;
+			// aapt resource value: 0x7f080048
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131230792;
 			
-			// aapt resource value: 0x7f0800ce
-			public const int TextAppearance_AppCompat_Title_Inverse = 2131230926;
+			// aapt resource value: 0x7f080049
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2131230793;
 			
-			// aapt resource value: 0x7f0800cf
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131230927;
+			// aapt resource value: 0x7f08004a
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2131230794;
 			
-			// aapt resource value: 0x7f0800d0
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2131230928;
+			// aapt resource value: 0x7f08004b
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Title = 2131230795;
 			
-			// aapt resource value: 0x7f0800d1
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2131230929;
+			// aapt resource value: 0x7f08004c
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2131230796;
 			
-			// aapt resource value: 0x7f0800d2
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Title = 2131230930;
+			// aapt resource value: 0x7f08004d
+			public const int Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2131230797;
 			
-			// aapt resource value: 0x7f0800d3
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2131230931;
+			// aapt resource value: 0x7f08004e
+			public const int Base_TextAppearance_AppCompat_Widget_ActionMode_Title = 2131230798;
 			
-			// aapt resource value: 0x7f0800d4
-			public const int TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2131230932;
+			// aapt resource value: 0x7f08004f
+			public const int Base_TextAppearance_AppCompat_Widget_Button = 2131230799;
 			
-			// aapt resource value: 0x7f0800d5
-			public const int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = 2131230933;
+			// aapt resource value: 0x7f08007e
+			public const int Base_TextAppearance_AppCompat_Widget_Button_Inverse = 2131230846;
 			
-			// aapt resource value: 0x7f0800d6
-			public const int TextAppearance_AppCompat_Widget_ActionMode_Title = 2131230934;
+			// aapt resource value: 0x7f08008d
+			public const int Base_TextAppearance_AppCompat_Widget_DropDownItem = 2131230861;
 			
-			// aapt resource value: 0x7f0800d7
-			public const int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = 2131230935;
+			// aapt resource value: 0x7f080050
+			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131230800;
 			
-			// aapt resource value: 0x7f0800d8
-			public const int TextAppearance_AppCompat_Widget_Button = 2131230936;
+			// aapt resource value: 0x7f080051
+			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131230801;
 			
-			// aapt resource value: 0x7f0800d9
-			public const int TextAppearance_AppCompat_Widget_Button_Inverse = 2131230937;
+			// aapt resource value: 0x7f080052
+			public const int Base_TextAppearance_AppCompat_Widget_Switch = 2131230802;
 			
-			// aapt resource value: 0x7f0800da
-			public const int TextAppearance_AppCompat_Widget_DropDownItem = 2131230938;
+			// aapt resource value: 0x7f080053
+			public const int Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2131230803;
 			
-			// aapt resource value: 0x7f0800db
-			public const int TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131230939;
+			// aapt resource value: 0x7f08008e
+			public const int Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131230862;
 			
-			// aapt resource value: 0x7f0800dc
-			public const int TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131230940;
+			// aapt resource value: 0x7f080054
+			public const int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2131230804;
 			
-			// aapt resource value: 0x7f0800dd
-			public const int TextAppearance_AppCompat_Widget_Switch = 2131230941;
+			// aapt resource value: 0x7f080055
+			public const int Base_TextAppearance_Widget_AppCompat_Toolbar_Title = 2131230805;
 			
-			// aapt resource value: 0x7f0800de
-			public const int TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2131230942;
+			// aapt resource value: 0x7f080056
+			public const int Base_Theme_AppCompat = 2131230806;
 			
-			// aapt resource value: 0x7f080139
-			public const int TextAppearance_Design_CollapsingToolbar_Expanded = 2131231033;
+			// aapt resource value: 0x7f08008f
+			public const int Base_Theme_AppCompat_CompactMenu = 2131230863;
 			
-			// aapt resource value: 0x7f08013a
-			public const int TextAppearance_Design_Error = 2131231034;
+			// aapt resource value: 0x7f080011
+			public const int Base_Theme_AppCompat_Dialog = 2131230737;
 			
-			// aapt resource value: 0x7f08013b
-			public const int TextAppearance_Design_Hint = 2131231035;
+			// aapt resource value: 0x7f080090
+			public const int Base_Theme_AppCompat_Dialog_Alert = 2131230864;
 			
-			// aapt resource value: 0x7f08013c
-			public const int TextAppearance_Design_Snackbar_Message = 2131231036;
+			// aapt resource value: 0x7f080091
+			public const int Base_Theme_AppCompat_Dialog_FixedSize = 2131230865;
 			
-			// aapt resource value: 0x7f08013d
-			public const int TextAppearance_Design_Tab = 2131231037;
+			// aapt resource value: 0x7f080092
+			public const int Base_Theme_AppCompat_Dialog_MinWidth = 2131230866;
 			
-			// aapt resource value: 0x7f080024
-			public const int TextAppearance_StatusBar_EventContent = 2131230756;
+			// aapt resource value: 0x7f080009
+			public const int Base_Theme_AppCompat_DialogWhenLarge = 2131230729;
 			
-			// aapt resource value: 0x7f080025
-			public const int TextAppearance_StatusBar_EventContent_Info = 2131230757;
+			// aapt resource value: 0x7f080057
+			public const int Base_Theme_AppCompat_Light = 2131230807;
 			
-			// aapt resource value: 0x7f080026
-			public const int TextAppearance_StatusBar_EventContent_Line2 = 2131230758;
+			// aapt resource value: 0x7f080093
+			public const int Base_Theme_AppCompat_Light_DarkActionBar = 2131230867;
 			
-			// aapt resource value: 0x7f080027
-			public const int TextAppearance_StatusBar_EventContent_Time = 2131230759;
+			// aapt resource value: 0x7f080012
+			public const int Base_Theme_AppCompat_Light_Dialog = 2131230738;
+			
+			// aapt resource value: 0x7f080094
+			public const int Base_Theme_AppCompat_Light_Dialog_Alert = 2131230868;
+			
+			// aapt resource value: 0x7f080095
+			public const int Base_Theme_AppCompat_Light_Dialog_FixedSize = 2131230869;
+			
+			// aapt resource value: 0x7f080096
+			public const int Base_Theme_AppCompat_Light_Dialog_MinWidth = 2131230870;
+			
+			// aapt resource value: 0x7f08000a
+			public const int Base_Theme_AppCompat_Light_DialogWhenLarge = 2131230730;
+			
+			// aapt resource value: 0x7f080097
+			public const int Base_ThemeOverlay_AppCompat = 2131230871;
+			
+			// aapt resource value: 0x7f080098
+			public const int Base_ThemeOverlay_AppCompat_ActionBar = 2131230872;
+			
+			// aapt resource value: 0x7f080099
+			public const int Base_ThemeOverlay_AppCompat_Dark = 2131230873;
+			
+			// aapt resource value: 0x7f08009a
+			public const int Base_ThemeOverlay_AppCompat_Dark_ActionBar = 2131230874;
+			
+			// aapt resource value: 0x7f08009b
+			public const int Base_ThemeOverlay_AppCompat_Light = 2131230875;
+			
+			// aapt resource value: 0x7f080013
+			public const int Base_V11_Theme_AppCompat_Dialog = 2131230739;
+			
+			// aapt resource value: 0x7f080014
+			public const int Base_V11_Theme_AppCompat_Light_Dialog = 2131230740;
+			
+			// aapt resource value: 0x7f08001c
+			public const int Base_V12_Widget_AppCompat_AutoCompleteTextView = 2131230748;
+			
+			// aapt resource value: 0x7f08001d
+			public const int Base_V12_Widget_AppCompat_EditText = 2131230749;
+			
+			// aapt resource value: 0x7f080058
+			public const int Base_V21_Theme_AppCompat = 2131230808;
+			
+			// aapt resource value: 0x7f080059
+			public const int Base_V21_Theme_AppCompat_Dialog = 2131230809;
+			
+			// aapt resource value: 0x7f08005a
+			public const int Base_V21_Theme_AppCompat_Light = 2131230810;
+			
+			// aapt resource value: 0x7f08005b
+			public const int Base_V21_Theme_AppCompat_Light_Dialog = 2131230811;
+			
+			// aapt resource value: 0x7f08007c
+			public const int Base_V22_Theme_AppCompat = 2131230844;
+			
+			// aapt resource value: 0x7f08007d
+			public const int Base_V22_Theme_AppCompat_Light = 2131230845;
+			
+			// aapt resource value: 0x7f08007f
+			public const int Base_V23_Theme_AppCompat = 2131230847;
+			
+			// aapt resource value: 0x7f080080
+			public const int Base_V23_Theme_AppCompat_Light = 2131230848;
+			
+			// aapt resource value: 0x7f08009c
+			public const int Base_V7_Theme_AppCompat = 2131230876;
+			
+			// aapt resource value: 0x7f08009d
+			public const int Base_V7_Theme_AppCompat_Dialog = 2131230877;
+			
+			// aapt resource value: 0x7f08009e
+			public const int Base_V7_Theme_AppCompat_Light = 2131230878;
+			
+			// aapt resource value: 0x7f08009f
+			public const int Base_V7_Theme_AppCompat_Light_Dialog = 2131230879;
+			
+			// aapt resource value: 0x7f0800a0
+			public const int Base_V7_Widget_AppCompat_AutoCompleteTextView = 2131230880;
+			
+			// aapt resource value: 0x7f0800a1
+			public const int Base_V7_Widget_AppCompat_EditText = 2131230881;
+			
+			// aapt resource value: 0x7f0800a2
+			public const int Base_Widget_AppCompat_ActionBar = 2131230882;
+			
+			// aapt resource value: 0x7f0800a3
+			public const int Base_Widget_AppCompat_ActionBar_Solid = 2131230883;
+			
+			// aapt resource value: 0x7f0800a4
+			public const int Base_Widget_AppCompat_ActionBar_TabBar = 2131230884;
+			
+			// aapt resource value: 0x7f08005c
+			public const int Base_Widget_AppCompat_ActionBar_TabText = 2131230812;
+			
+			// aapt resource value: 0x7f08005d
+			public const int Base_Widget_AppCompat_ActionBar_TabView = 2131230813;
+			
+			// aapt resource value: 0x7f08005e
+			public const int Base_Widget_AppCompat_ActionButton = 2131230814;
+			
+			// aapt resource value: 0x7f08005f
+			public const int Base_Widget_AppCompat_ActionButton_CloseMode = 2131230815;
+			
+			// aapt resource value: 0x7f080060
+			public const int Base_Widget_AppCompat_ActionButton_Overflow = 2131230816;
+			
+			// aapt resource value: 0x7f0800a5
+			public const int Base_Widget_AppCompat_ActionMode = 2131230885;
+			
+			// aapt resource value: 0x7f0800a6
+			public const int Base_Widget_AppCompat_ActivityChooserView = 2131230886;
+			
+			// aapt resource value: 0x7f08001e
+			public const int Base_Widget_AppCompat_AutoCompleteTextView = 2131230750;
+			
+			// aapt resource value: 0x7f080061
+			public const int Base_Widget_AppCompat_Button = 2131230817;
+			
+			// aapt resource value: 0x7f080062
+			public const int Base_Widget_AppCompat_Button_Borderless = 2131230818;
+			
+			// aapt resource value: 0x7f080063
+			public const int Base_Widget_AppCompat_Button_Borderless_Colored = 2131230819;
+			
+			// aapt resource value: 0x7f0800a7
+			public const int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = 2131230887;
+			
+			// aapt resource value: 0x7f080081
+			public const int Base_Widget_AppCompat_Button_Colored = 2131230849;
+			
+			// aapt resource value: 0x7f080064
+			public const int Base_Widget_AppCompat_Button_Small = 2131230820;
+			
+			// aapt resource value: 0x7f080065
+			public const int Base_Widget_AppCompat_ButtonBar = 2131230821;
+			
+			// aapt resource value: 0x7f0800a8
+			public const int Base_Widget_AppCompat_ButtonBar_AlertDialog = 2131230888;
+			
+			// aapt resource value: 0x7f080066
+			public const int Base_Widget_AppCompat_CompoundButton_CheckBox = 2131230822;
+			
+			// aapt resource value: 0x7f080067
+			public const int Base_Widget_AppCompat_CompoundButton_RadioButton = 2131230823;
+			
+			// aapt resource value: 0x7f0800a9
+			public const int Base_Widget_AppCompat_CompoundButton_Switch = 2131230889;
+			
+			// aapt resource value: 0x7f080008
+			public const int Base_Widget_AppCompat_DrawerArrowToggle = 2131230728;
+			
+			// aapt resource value: 0x7f0800aa
+			public const int Base_Widget_AppCompat_DrawerArrowToggle_Common = 2131230890;
+			
+			// aapt resource value: 0x7f080068
+			public const int Base_Widget_AppCompat_DropDownItem_Spinner = 2131230824;
+			
+			// aapt resource value: 0x7f08001f
+			public const int Base_Widget_AppCompat_EditText = 2131230751;
+			
+			// aapt resource value: 0x7f0800ab
+			public const int Base_Widget_AppCompat_Light_ActionBar = 2131230891;
+			
+			// aapt resource value: 0x7f0800ac
+			public const int Base_Widget_AppCompat_Light_ActionBar_Solid = 2131230892;
+			
+			// aapt resource value: 0x7f0800ad
+			public const int Base_Widget_AppCompat_Light_ActionBar_TabBar = 2131230893;
+			
+			// aapt resource value: 0x7f080069
+			public const int Base_Widget_AppCompat_Light_ActionBar_TabText = 2131230825;
+			
+			// aapt resource value: 0x7f08006a
+			public const int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2131230826;
+			
+			// aapt resource value: 0x7f08006b
+			public const int Base_Widget_AppCompat_Light_ActionBar_TabView = 2131230827;
+			
+			// aapt resource value: 0x7f08006c
+			public const int Base_Widget_AppCompat_Light_PopupMenu = 2131230828;
+			
+			// aapt resource value: 0x7f08006d
+			public const int Base_Widget_AppCompat_Light_PopupMenu_Overflow = 2131230829;
+			
+			// aapt resource value: 0x7f08006e
+			public const int Base_Widget_AppCompat_ListPopupWindow = 2131230830;
+			
+			// aapt resource value: 0x7f08006f
+			public const int Base_Widget_AppCompat_ListView = 2131230831;
+			
+			// aapt resource value: 0x7f080070
+			public const int Base_Widget_AppCompat_ListView_DropDown = 2131230832;
+			
+			// aapt resource value: 0x7f080071
+			public const int Base_Widget_AppCompat_ListView_Menu = 2131230833;
+			
+			// aapt resource value: 0x7f080072
+			public const int Base_Widget_AppCompat_PopupMenu = 2131230834;
+			
+			// aapt resource value: 0x7f080073
+			public const int Base_Widget_AppCompat_PopupMenu_Overflow = 2131230835;
+			
+			// aapt resource value: 0x7f0800ae
+			public const int Base_Widget_AppCompat_PopupWindow = 2131230894;
+			
+			// aapt resource value: 0x7f080015
+			public const int Base_Widget_AppCompat_ProgressBar = 2131230741;
+			
+			// aapt resource value: 0x7f080016
+			public const int Base_Widget_AppCompat_ProgressBar_Horizontal = 2131230742;
+			
+			// aapt resource value: 0x7f080074
+			public const int Base_Widget_AppCompat_RatingBar = 2131230836;
+			
+			// aapt resource value: 0x7f0800af
+			public const int Base_Widget_AppCompat_SearchView = 2131230895;
+			
+			// aapt resource value: 0x7f0800b0
+			public const int Base_Widget_AppCompat_SearchView_ActionBar = 2131230896;
+			
+			// aapt resource value: 0x7f080075
+			public const int Base_Widget_AppCompat_Spinner = 2131230837;
+			
+			// aapt resource value: 0x7f080076
+			public const int Base_Widget_AppCompat_Spinner_Underlined = 2131230838;
+			
+			// aapt resource value: 0x7f080077
+			public const int Base_Widget_AppCompat_TextView_SpinnerItem = 2131230839;
+			
+			// aapt resource value: 0x7f0800b1
+			public const int Base_Widget_AppCompat_Toolbar = 2131230897;
+			
+			// aapt resource value: 0x7f080078
+			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131230840;
+			
+			// aapt resource value: 0x7f080137
+			public const int Base_Widget_Design_TabLayout = 2131231031;
+			
+			// aapt resource value: 0x7f080145
+			public const int Bubble_TextAppearance_Dark = 2131231045;
+			
+			// aapt resource value: 0x7f080146
+			public const int Bubble_TextAppearance_Light = 2131231046;
+			
+			// aapt resource value: 0x7f080147
+			public const int ClusterIcon_TextAppearance = 2131231047;
+			
+			// aapt resource value: 0x7f080017
+			public const int Platform_AppCompat = 2131230743;
+			
+			// aapt resource value: 0x7f080018
+			public const int Platform_AppCompat_Light = 2131230744;
+			
+			// aapt resource value: 0x7f080079
+			public const int Platform_ThemeOverlay_AppCompat = 2131230841;
+			
+			// aapt resource value: 0x7f08007a
+			public const int Platform_ThemeOverlay_AppCompat_Dark = 2131230842;
+			
+			// aapt resource value: 0x7f08007b
+			public const int Platform_ThemeOverlay_AppCompat_Light = 2131230843;
+			
+			// aapt resource value: 0x7f080019
+			public const int Platform_V11_AppCompat = 2131230745;
+			
+			// aapt resource value: 0x7f08001a
+			public const int Platform_V11_AppCompat_Light = 2131230746;
+			
+			// aapt resource value: 0x7f080021
+			public const int Platform_V14_AppCompat = 2131230753;
+			
+			// aapt resource value: 0x7f080022
+			public const int Platform_V14_AppCompat_Light = 2131230754;
+			
+			// aapt resource value: 0x7f08001b
+			public const int Platform_Widget_AppCompat_Spinner = 2131230747;
 			
 			// aapt resource value: 0x7f080028
-			public const int TextAppearance_StatusBar_EventContent_Title = 2131230760;
+			public const int RtlOverlay_DialogWindowTitle_AppCompat = 2131230760;
+			
+			// aapt resource value: 0x7f080029
+			public const int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = 2131230761;
+			
+			// aapt resource value: 0x7f08002a
+			public const int RtlOverlay_Widget_AppCompat_ActionButton_Overflow = 2131230762;
+			
+			// aapt resource value: 0x7f08002b
+			public const int RtlOverlay_Widget_AppCompat_DialogTitle_Icon = 2131230763;
+			
+			// aapt resource value: 0x7f08002c
+			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem = 2131230764;
+			
+			// aapt resource value: 0x7f08002d
+			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = 2131230765;
+			
+			// aapt resource value: 0x7f08002e
+			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = 2131230766;
+			
+			// aapt resource value: 0x7f08002f
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown = 2131230767;
+			
+			// aapt resource value: 0x7f080030
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = 2131230768;
+			
+			// aapt resource value: 0x7f080031
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = 2131230769;
+			
+			// aapt resource value: 0x7f080032
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Query = 2131230770;
+			
+			// aapt resource value: 0x7f080033
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Text = 2131230771;
+			
+			// aapt resource value: 0x7f080034
+			public const int RtlOverlay_Widget_AppCompat_SearchView_MagIcon = 2131230772;
+			
+			// aapt resource value: 0x7f0800b2
+			public const int TextAppearance_AppCompat = 2131230898;
+			
+			// aapt resource value: 0x7f0800b3
+			public const int TextAppearance_AppCompat_Body1 = 2131230899;
+			
+			// aapt resource value: 0x7f0800b4
+			public const int TextAppearance_AppCompat_Body2 = 2131230900;
+			
+			// aapt resource value: 0x7f0800b5
+			public const int TextAppearance_AppCompat_Button = 2131230901;
+			
+			// aapt resource value: 0x7f0800b6
+			public const int TextAppearance_AppCompat_Caption = 2131230902;
+			
+			// aapt resource value: 0x7f0800b7
+			public const int TextAppearance_AppCompat_Display1 = 2131230903;
+			
+			// aapt resource value: 0x7f0800b8
+			public const int TextAppearance_AppCompat_Display2 = 2131230904;
+			
+			// aapt resource value: 0x7f0800b9
+			public const int TextAppearance_AppCompat_Display3 = 2131230905;
+			
+			// aapt resource value: 0x7f0800ba
+			public const int TextAppearance_AppCompat_Display4 = 2131230906;
+			
+			// aapt resource value: 0x7f0800bb
+			public const int TextAppearance_AppCompat_Headline = 2131230907;
+			
+			// aapt resource value: 0x7f0800bc
+			public const int TextAppearance_AppCompat_Inverse = 2131230908;
+			
+			// aapt resource value: 0x7f0800bd
+			public const int TextAppearance_AppCompat_Large = 2131230909;
+			
+			// aapt resource value: 0x7f0800be
+			public const int TextAppearance_AppCompat_Large_Inverse = 2131230910;
+			
+			// aapt resource value: 0x7f0800bf
+			public const int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 2131230911;
+			
+			// aapt resource value: 0x7f0800c0
+			public const int TextAppearance_AppCompat_Light_SearchResult_Title = 2131230912;
+			
+			// aapt resource value: 0x7f0800c1
+			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131230913;
+			
+			// aapt resource value: 0x7f0800c2
+			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131230914;
+			
+			// aapt resource value: 0x7f0800c3
+			public const int TextAppearance_AppCompat_Medium = 2131230915;
+			
+			// aapt resource value: 0x7f0800c4
+			public const int TextAppearance_AppCompat_Medium_Inverse = 2131230916;
+			
+			// aapt resource value: 0x7f0800c5
+			public const int TextAppearance_AppCompat_Menu = 2131230917;
+			
+			// aapt resource value: 0x7f0800c6
+			public const int TextAppearance_AppCompat_SearchResult_Subtitle = 2131230918;
+			
+			// aapt resource value: 0x7f0800c7
+			public const int TextAppearance_AppCompat_SearchResult_Title = 2131230919;
+			
+			// aapt resource value: 0x7f0800c8
+			public const int TextAppearance_AppCompat_Small = 2131230920;
+			
+			// aapt resource value: 0x7f0800c9
+			public const int TextAppearance_AppCompat_Small_Inverse = 2131230921;
+			
+			// aapt resource value: 0x7f0800ca
+			public const int TextAppearance_AppCompat_Subhead = 2131230922;
+			
+			// aapt resource value: 0x7f0800cb
+			public const int TextAppearance_AppCompat_Subhead_Inverse = 2131230923;
+			
+			// aapt resource value: 0x7f0800cc
+			public const int TextAppearance_AppCompat_Title = 2131230924;
+			
+			// aapt resource value: 0x7f0800cd
+			public const int TextAppearance_AppCompat_Title_Inverse = 2131230925;
+			
+			// aapt resource value: 0x7f0800ce
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131230926;
+			
+			// aapt resource value: 0x7f0800cf
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2131230927;
+			
+			// aapt resource value: 0x7f0800d0
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2131230928;
+			
+			// aapt resource value: 0x7f0800d1
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Title = 2131230929;
+			
+			// aapt resource value: 0x7f0800d2
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2131230930;
+			
+			// aapt resource value: 0x7f0800d3
+			public const int TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2131230931;
+			
+			// aapt resource value: 0x7f0800d4
+			public const int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = 2131230932;
+			
+			// aapt resource value: 0x7f0800d5
+			public const int TextAppearance_AppCompat_Widget_ActionMode_Title = 2131230933;
+			
+			// aapt resource value: 0x7f0800d6
+			public const int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = 2131230934;
+			
+			// aapt resource value: 0x7f0800d7
+			public const int TextAppearance_AppCompat_Widget_Button = 2131230935;
+			
+			// aapt resource value: 0x7f0800d8
+			public const int TextAppearance_AppCompat_Widget_Button_Inverse = 2131230936;
+			
+			// aapt resource value: 0x7f0800d9
+			public const int TextAppearance_AppCompat_Widget_DropDownItem = 2131230937;
+			
+			// aapt resource value: 0x7f0800da
+			public const int TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131230938;
+			
+			// aapt resource value: 0x7f0800db
+			public const int TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131230939;
+			
+			// aapt resource value: 0x7f0800dc
+			public const int TextAppearance_AppCompat_Widget_Switch = 2131230940;
+			
+			// aapt resource value: 0x7f0800dd
+			public const int TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2131230941;
+			
+			// aapt resource value: 0x7f080138
+			public const int TextAppearance_Design_CollapsingToolbar_Expanded = 2131231032;
+			
+			// aapt resource value: 0x7f080139
+			public const int TextAppearance_Design_Error = 2131231033;
+			
+			// aapt resource value: 0x7f08013a
+			public const int TextAppearance_Design_Hint = 2131231034;
+			
+			// aapt resource value: 0x7f08013b
+			public const int TextAppearance_Design_Snackbar_Message = 2131231035;
+			
+			// aapt resource value: 0x7f08013c
+			public const int TextAppearance_Design_Tab = 2131231036;
+			
+			// aapt resource value: 0x7f080023
+			public const int TextAppearance_StatusBar_EventContent = 2131230755;
+			
+			// aapt resource value: 0x7f080024
+			public const int TextAppearance_StatusBar_EventContent_Info = 2131230756;
+			
+			// aapt resource value: 0x7f080025
+			public const int TextAppearance_StatusBar_EventContent_Line2 = 2131230757;
+			
+			// aapt resource value: 0x7f080026
+			public const int TextAppearance_StatusBar_EventContent_Time = 2131230758;
+			
+			// aapt resource value: 0x7f080027
+			public const int TextAppearance_StatusBar_EventContent_Title = 2131230759;
+			
+			// aapt resource value: 0x7f0800de
+			public const int TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131230942;
 			
 			// aapt resource value: 0x7f0800df
-			public const int TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131230943;
+			public const int TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2131230943;
 			
 			// aapt resource value: 0x7f0800e0
-			public const int TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2131230944;
+			public const int TextAppearance_Widget_AppCompat_Toolbar_Title = 2131230944;
 			
 			// aapt resource value: 0x7f0800e1
-			public const int TextAppearance_Widget_AppCompat_Toolbar_Title = 2131230945;
+			public const int Theme_AppCompat = 2131230945;
 			
 			// aapt resource value: 0x7f0800e2
-			public const int Theme_AppCompat = 2131230946;
+			public const int Theme_AppCompat_CompactMenu = 2131230946;
 			
 			// aapt resource value: 0x7f0800e3
-			public const int Theme_AppCompat_CompactMenu = 2131230947;
+			public const int Theme_AppCompat_Dialog = 2131230947;
 			
 			// aapt resource value: 0x7f0800e4
-			public const int Theme_AppCompat_Dialog = 2131230948;
+			public const int Theme_AppCompat_Dialog_Alert = 2131230948;
 			
 			// aapt resource value: 0x7f0800e5
-			public const int Theme_AppCompat_Dialog_Alert = 2131230949;
+			public const int Theme_AppCompat_Dialog_MinWidth = 2131230949;
 			
 			// aapt resource value: 0x7f0800e6
-			public const int Theme_AppCompat_Dialog_MinWidth = 2131230950;
+			public const int Theme_AppCompat_DialogWhenLarge = 2131230950;
 			
 			// aapt resource value: 0x7f0800e7
-			public const int Theme_AppCompat_DialogWhenLarge = 2131230951;
+			public const int Theme_AppCompat_Light = 2131230951;
 			
 			// aapt resource value: 0x7f0800e8
-			public const int Theme_AppCompat_Light = 2131230952;
+			public const int Theme_AppCompat_Light_DarkActionBar = 2131230952;
 			
 			// aapt resource value: 0x7f0800e9
-			public const int Theme_AppCompat_Light_DarkActionBar = 2131230953;
+			public const int Theme_AppCompat_Light_Dialog = 2131230953;
 			
 			// aapt resource value: 0x7f0800ea
-			public const int Theme_AppCompat_Light_Dialog = 2131230954;
+			public const int Theme_AppCompat_Light_Dialog_Alert = 2131230954;
 			
 			// aapt resource value: 0x7f0800eb
-			public const int Theme_AppCompat_Light_Dialog_Alert = 2131230955;
+			public const int Theme_AppCompat_Light_Dialog_MinWidth = 2131230955;
 			
 			// aapt resource value: 0x7f0800ec
-			public const int Theme_AppCompat_Light_Dialog_MinWidth = 2131230956;
+			public const int Theme_AppCompat_Light_DialogWhenLarge = 2131230956;
 			
 			// aapt resource value: 0x7f0800ed
-			public const int Theme_AppCompat_Light_DialogWhenLarge = 2131230957;
+			public const int Theme_AppCompat_Light_NoActionBar = 2131230957;
 			
 			// aapt resource value: 0x7f0800ee
-			public const int Theme_AppCompat_Light_NoActionBar = 2131230958;
-			
-			// aapt resource value: 0x7f0800ef
-			public const int Theme_AppCompat_NoActionBar = 2131230959;
+			public const int Theme_AppCompat_NoActionBar = 2131230958;
 			
 			// aapt resource value: 0x7f080004
-			public const int Theme_IAPTheme = 2131230724;
+			public const int Theme_MediaRouter = 2131230724;
 			
 			// aapt resource value: 0x7f080005
-			public const int Theme_MediaRouter = 2131230725;
+			public const int Theme_MediaRouter_Light = 2131230725;
 			
-			// aapt resource value: 0x7f080006
-			public const int Theme_MediaRouter_Light = 2131230726;
+			// aapt resource value: 0x7f0800ef
+			public const int ThemeOverlay_AppCompat = 2131230959;
 			
 			// aapt resource value: 0x7f0800f0
-			public const int ThemeOverlay_AppCompat = 2131230960;
+			public const int ThemeOverlay_AppCompat_ActionBar = 2131230960;
 			
 			// aapt resource value: 0x7f0800f1
-			public const int ThemeOverlay_AppCompat_ActionBar = 2131230961;
+			public const int ThemeOverlay_AppCompat_Dark = 2131230961;
 			
 			// aapt resource value: 0x7f0800f2
-			public const int ThemeOverlay_AppCompat_Dark = 2131230962;
+			public const int ThemeOverlay_AppCompat_Dark_ActionBar = 2131230962;
 			
 			// aapt resource value: 0x7f0800f3
-			public const int ThemeOverlay_AppCompat_Dark_ActionBar = 2131230963;
-			
-			// aapt resource value: 0x7f0800f4
-			public const int ThemeOverlay_AppCompat_Light = 2131230964;
+			public const int ThemeOverlay_AppCompat_Light = 2131230963;
 			
 			// aapt resource value: 0x7f080002
 			public const int WalletFragmentDefaultButtonTextAppearance = 2131230722;
@@ -5500,239 +4007,239 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f080003
 			public const int WalletFragmentDefaultStyle = 2131230723;
 			
+			// aapt resource value: 0x7f0800f4
+			public const int Widget_AppCompat_ActionBar = 2131230964;
+			
 			// aapt resource value: 0x7f0800f5
-			public const int Widget_AppCompat_ActionBar = 2131230965;
+			public const int Widget_AppCompat_ActionBar_Solid = 2131230965;
 			
 			// aapt resource value: 0x7f0800f6
-			public const int Widget_AppCompat_ActionBar_Solid = 2131230966;
+			public const int Widget_AppCompat_ActionBar_TabBar = 2131230966;
 			
 			// aapt resource value: 0x7f0800f7
-			public const int Widget_AppCompat_ActionBar_TabBar = 2131230967;
+			public const int Widget_AppCompat_ActionBar_TabText = 2131230967;
 			
 			// aapt resource value: 0x7f0800f8
-			public const int Widget_AppCompat_ActionBar_TabText = 2131230968;
+			public const int Widget_AppCompat_ActionBar_TabView = 2131230968;
 			
 			// aapt resource value: 0x7f0800f9
-			public const int Widget_AppCompat_ActionBar_TabView = 2131230969;
+			public const int Widget_AppCompat_ActionButton = 2131230969;
 			
 			// aapt resource value: 0x7f0800fa
-			public const int Widget_AppCompat_ActionButton = 2131230970;
+			public const int Widget_AppCompat_ActionButton_CloseMode = 2131230970;
 			
 			// aapt resource value: 0x7f0800fb
-			public const int Widget_AppCompat_ActionButton_CloseMode = 2131230971;
+			public const int Widget_AppCompat_ActionButton_Overflow = 2131230971;
 			
 			// aapt resource value: 0x7f0800fc
-			public const int Widget_AppCompat_ActionButton_Overflow = 2131230972;
+			public const int Widget_AppCompat_ActionMode = 2131230972;
 			
 			// aapt resource value: 0x7f0800fd
-			public const int Widget_AppCompat_ActionMode = 2131230973;
+			public const int Widget_AppCompat_ActivityChooserView = 2131230973;
 			
 			// aapt resource value: 0x7f0800fe
-			public const int Widget_AppCompat_ActivityChooserView = 2131230974;
+			public const int Widget_AppCompat_AutoCompleteTextView = 2131230974;
 			
 			// aapt resource value: 0x7f0800ff
-			public const int Widget_AppCompat_AutoCompleteTextView = 2131230975;
+			public const int Widget_AppCompat_Button = 2131230975;
 			
 			// aapt resource value: 0x7f080100
-			public const int Widget_AppCompat_Button = 2131230976;
+			public const int Widget_AppCompat_Button_Borderless = 2131230976;
 			
 			// aapt resource value: 0x7f080101
-			public const int Widget_AppCompat_Button_Borderless = 2131230977;
+			public const int Widget_AppCompat_Button_Borderless_Colored = 2131230977;
 			
 			// aapt resource value: 0x7f080102
-			public const int Widget_AppCompat_Button_Borderless_Colored = 2131230978;
+			public const int Widget_AppCompat_Button_ButtonBar_AlertDialog = 2131230978;
 			
 			// aapt resource value: 0x7f080103
-			public const int Widget_AppCompat_Button_ButtonBar_AlertDialog = 2131230979;
+			public const int Widget_AppCompat_Button_Colored = 2131230979;
 			
 			// aapt resource value: 0x7f080104
-			public const int Widget_AppCompat_Button_Colored = 2131230980;
+			public const int Widget_AppCompat_Button_Small = 2131230980;
 			
 			// aapt resource value: 0x7f080105
-			public const int Widget_AppCompat_Button_Small = 2131230981;
+			public const int Widget_AppCompat_ButtonBar = 2131230981;
 			
 			// aapt resource value: 0x7f080106
-			public const int Widget_AppCompat_ButtonBar = 2131230982;
+			public const int Widget_AppCompat_ButtonBar_AlertDialog = 2131230982;
 			
 			// aapt resource value: 0x7f080107
-			public const int Widget_AppCompat_ButtonBar_AlertDialog = 2131230983;
+			public const int Widget_AppCompat_CompoundButton_CheckBox = 2131230983;
 			
 			// aapt resource value: 0x7f080108
-			public const int Widget_AppCompat_CompoundButton_CheckBox = 2131230984;
+			public const int Widget_AppCompat_CompoundButton_RadioButton = 2131230984;
 			
 			// aapt resource value: 0x7f080109
-			public const int Widget_AppCompat_CompoundButton_RadioButton = 2131230985;
+			public const int Widget_AppCompat_CompoundButton_Switch = 2131230985;
 			
 			// aapt resource value: 0x7f08010a
-			public const int Widget_AppCompat_CompoundButton_Switch = 2131230986;
+			public const int Widget_AppCompat_DrawerArrowToggle = 2131230986;
 			
 			// aapt resource value: 0x7f08010b
-			public const int Widget_AppCompat_DrawerArrowToggle = 2131230987;
+			public const int Widget_AppCompat_DropDownItem_Spinner = 2131230987;
 			
 			// aapt resource value: 0x7f08010c
-			public const int Widget_AppCompat_DropDownItem_Spinner = 2131230988;
+			public const int Widget_AppCompat_EditText = 2131230988;
 			
 			// aapt resource value: 0x7f08010d
-			public const int Widget_AppCompat_EditText = 2131230989;
+			public const int Widget_AppCompat_Light_ActionBar = 2131230989;
 			
 			// aapt resource value: 0x7f08010e
-			public const int Widget_AppCompat_Light_ActionBar = 2131230990;
+			public const int Widget_AppCompat_Light_ActionBar_Solid = 2131230990;
 			
 			// aapt resource value: 0x7f08010f
-			public const int Widget_AppCompat_Light_ActionBar_Solid = 2131230991;
+			public const int Widget_AppCompat_Light_ActionBar_Solid_Inverse = 2131230991;
 			
 			// aapt resource value: 0x7f080110
-			public const int Widget_AppCompat_Light_ActionBar_Solid_Inverse = 2131230992;
+			public const int Widget_AppCompat_Light_ActionBar_TabBar = 2131230992;
 			
 			// aapt resource value: 0x7f080111
-			public const int Widget_AppCompat_Light_ActionBar_TabBar = 2131230993;
+			public const int Widget_AppCompat_Light_ActionBar_TabBar_Inverse = 2131230993;
 			
 			// aapt resource value: 0x7f080112
-			public const int Widget_AppCompat_Light_ActionBar_TabBar_Inverse = 2131230994;
+			public const int Widget_AppCompat_Light_ActionBar_TabText = 2131230994;
 			
 			// aapt resource value: 0x7f080113
-			public const int Widget_AppCompat_Light_ActionBar_TabText = 2131230995;
+			public const int Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2131230995;
 			
 			// aapt resource value: 0x7f080114
-			public const int Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2131230996;
+			public const int Widget_AppCompat_Light_ActionBar_TabView = 2131230996;
 			
 			// aapt resource value: 0x7f080115
-			public const int Widget_AppCompat_Light_ActionBar_TabView = 2131230997;
+			public const int Widget_AppCompat_Light_ActionBar_TabView_Inverse = 2131230997;
 			
 			// aapt resource value: 0x7f080116
-			public const int Widget_AppCompat_Light_ActionBar_TabView_Inverse = 2131230998;
+			public const int Widget_AppCompat_Light_ActionButton = 2131230998;
 			
 			// aapt resource value: 0x7f080117
-			public const int Widget_AppCompat_Light_ActionButton = 2131230999;
+			public const int Widget_AppCompat_Light_ActionButton_CloseMode = 2131230999;
 			
 			// aapt resource value: 0x7f080118
-			public const int Widget_AppCompat_Light_ActionButton_CloseMode = 2131231000;
+			public const int Widget_AppCompat_Light_ActionButton_Overflow = 2131231000;
 			
 			// aapt resource value: 0x7f080119
-			public const int Widget_AppCompat_Light_ActionButton_Overflow = 2131231001;
+			public const int Widget_AppCompat_Light_ActionMode_Inverse = 2131231001;
 			
 			// aapt resource value: 0x7f08011a
-			public const int Widget_AppCompat_Light_ActionMode_Inverse = 2131231002;
+			public const int Widget_AppCompat_Light_ActivityChooserView = 2131231002;
 			
 			// aapt resource value: 0x7f08011b
-			public const int Widget_AppCompat_Light_ActivityChooserView = 2131231003;
+			public const int Widget_AppCompat_Light_AutoCompleteTextView = 2131231003;
 			
 			// aapt resource value: 0x7f08011c
-			public const int Widget_AppCompat_Light_AutoCompleteTextView = 2131231004;
+			public const int Widget_AppCompat_Light_DropDownItem_Spinner = 2131231004;
 			
 			// aapt resource value: 0x7f08011d
-			public const int Widget_AppCompat_Light_DropDownItem_Spinner = 2131231005;
+			public const int Widget_AppCompat_Light_ListPopupWindow = 2131231005;
 			
 			// aapt resource value: 0x7f08011e
-			public const int Widget_AppCompat_Light_ListPopupWindow = 2131231006;
+			public const int Widget_AppCompat_Light_ListView_DropDown = 2131231006;
 			
 			// aapt resource value: 0x7f08011f
-			public const int Widget_AppCompat_Light_ListView_DropDown = 2131231007;
+			public const int Widget_AppCompat_Light_PopupMenu = 2131231007;
 			
 			// aapt resource value: 0x7f080120
-			public const int Widget_AppCompat_Light_PopupMenu = 2131231008;
+			public const int Widget_AppCompat_Light_PopupMenu_Overflow = 2131231008;
 			
 			// aapt resource value: 0x7f080121
-			public const int Widget_AppCompat_Light_PopupMenu_Overflow = 2131231009;
+			public const int Widget_AppCompat_Light_SearchView = 2131231009;
 			
 			// aapt resource value: 0x7f080122
-			public const int Widget_AppCompat_Light_SearchView = 2131231010;
+			public const int Widget_AppCompat_Light_Spinner_DropDown_ActionBar = 2131231010;
 			
 			// aapt resource value: 0x7f080123
-			public const int Widget_AppCompat_Light_Spinner_DropDown_ActionBar = 2131231011;
+			public const int Widget_AppCompat_ListPopupWindow = 2131231011;
 			
 			// aapt resource value: 0x7f080124
-			public const int Widget_AppCompat_ListPopupWindow = 2131231012;
+			public const int Widget_AppCompat_ListView = 2131231012;
 			
 			// aapt resource value: 0x7f080125
-			public const int Widget_AppCompat_ListView = 2131231013;
+			public const int Widget_AppCompat_ListView_DropDown = 2131231013;
 			
 			// aapt resource value: 0x7f080126
-			public const int Widget_AppCompat_ListView_DropDown = 2131231014;
+			public const int Widget_AppCompat_ListView_Menu = 2131231014;
 			
 			// aapt resource value: 0x7f080127
-			public const int Widget_AppCompat_ListView_Menu = 2131231015;
+			public const int Widget_AppCompat_PopupMenu = 2131231015;
 			
 			// aapt resource value: 0x7f080128
-			public const int Widget_AppCompat_PopupMenu = 2131231016;
+			public const int Widget_AppCompat_PopupMenu_Overflow = 2131231016;
 			
 			// aapt resource value: 0x7f080129
-			public const int Widget_AppCompat_PopupMenu_Overflow = 2131231017;
+			public const int Widget_AppCompat_PopupWindow = 2131231017;
 			
 			// aapt resource value: 0x7f08012a
-			public const int Widget_AppCompat_PopupWindow = 2131231018;
+			public const int Widget_AppCompat_ProgressBar = 2131231018;
 			
 			// aapt resource value: 0x7f08012b
-			public const int Widget_AppCompat_ProgressBar = 2131231019;
+			public const int Widget_AppCompat_ProgressBar_Horizontal = 2131231019;
 			
 			// aapt resource value: 0x7f08012c
-			public const int Widget_AppCompat_ProgressBar_Horizontal = 2131231020;
+			public const int Widget_AppCompat_RatingBar = 2131231020;
 			
 			// aapt resource value: 0x7f08012d
-			public const int Widget_AppCompat_RatingBar = 2131231021;
+			public const int Widget_AppCompat_SearchView = 2131231021;
 			
 			// aapt resource value: 0x7f08012e
-			public const int Widget_AppCompat_SearchView = 2131231022;
+			public const int Widget_AppCompat_SearchView_ActionBar = 2131231022;
 			
 			// aapt resource value: 0x7f08012f
-			public const int Widget_AppCompat_SearchView_ActionBar = 2131231023;
+			public const int Widget_AppCompat_Spinner = 2131231023;
 			
 			// aapt resource value: 0x7f080130
-			public const int Widget_AppCompat_Spinner = 2131231024;
+			public const int Widget_AppCompat_Spinner_DropDown = 2131231024;
 			
 			// aapt resource value: 0x7f080131
-			public const int Widget_AppCompat_Spinner_DropDown = 2131231025;
+			public const int Widget_AppCompat_Spinner_DropDown_ActionBar = 2131231025;
 			
 			// aapt resource value: 0x7f080132
-			public const int Widget_AppCompat_Spinner_DropDown_ActionBar = 2131231026;
+			public const int Widget_AppCompat_Spinner_Underlined = 2131231026;
 			
 			// aapt resource value: 0x7f080133
-			public const int Widget_AppCompat_Spinner_Underlined = 2131231027;
+			public const int Widget_AppCompat_TextView_SpinnerItem = 2131231027;
 			
 			// aapt resource value: 0x7f080134
-			public const int Widget_AppCompat_TextView_SpinnerItem = 2131231028;
+			public const int Widget_AppCompat_Toolbar = 2131231028;
 			
 			// aapt resource value: 0x7f080135
-			public const int Widget_AppCompat_Toolbar = 2131231029;
+			public const int Widget_AppCompat_Toolbar_Button_Navigation = 2131231029;
 			
-			// aapt resource value: 0x7f080136
-			public const int Widget_AppCompat_Toolbar_Button_Navigation = 2131231030;
+			// aapt resource value: 0x7f08013d
+			public const int Widget_Design_AppBarLayout = 2131231037;
 			
 			// aapt resource value: 0x7f08013e
-			public const int Widget_Design_AppBarLayout = 2131231038;
+			public const int Widget_Design_CollapsingToolbar = 2131231038;
 			
 			// aapt resource value: 0x7f08013f
-			public const int Widget_Design_CollapsingToolbar = 2131231039;
+			public const int Widget_Design_CoordinatorLayout = 2131231039;
 			
 			// aapt resource value: 0x7f080140
-			public const int Widget_Design_CoordinatorLayout = 2131231040;
+			public const int Widget_Design_FloatingActionButton = 2131231040;
 			
 			// aapt resource value: 0x7f080141
-			public const int Widget_Design_FloatingActionButton = 2131231041;
+			public const int Widget_Design_NavigationView = 2131231041;
 			
 			// aapt resource value: 0x7f080142
-			public const int Widget_Design_NavigationView = 2131231042;
+			public const int Widget_Design_ScrimInsetsFrameLayout = 2131231042;
 			
 			// aapt resource value: 0x7f080143
-			public const int Widget_Design_ScrimInsetsFrameLayout = 2131231043;
+			public const int Widget_Design_Snackbar = 2131231043;
+			
+			// aapt resource value: 0x7f080136
+			public const int Widget_Design_TabLayout = 2131231030;
 			
 			// aapt resource value: 0x7f080144
-			public const int Widget_Design_Snackbar = 2131231044;
+			public const int Widget_Design_TextInputLayout = 2131231044;
 			
-			// aapt resource value: 0x7f080137
-			public const int Widget_Design_TabLayout = 2131231031;
-			
-			// aapt resource value: 0x7f080145
-			public const int Widget_Design_TextInputLayout = 2131231045;
+			// aapt resource value: 0x7f080006
+			public const int Widget_MediaRouter_Light_MediaRouteButton = 2131230726;
 			
 			// aapt resource value: 0x7f080007
-			public const int Widget_MediaRouter_Light_MediaRouteButton = 2131230727;
+			public const int Widget_MediaRouter_MediaRouteButton = 2131230727;
 			
-			// aapt resource value: 0x7f080008
-			public const int Widget_MediaRouter_MediaRouteButton = 2131230728;
-			
-			// aapt resource value: 0x7f08014a
-			public const int iconGenText = 2131231050;
+			// aapt resource value: 0x7f080149
+			public const int iconGenText = 2131231049;
 			
 			static Style()
 			{
@@ -5748,7 +4255,10 @@ namespace EasyBike.Droid
 		{
 			
 			public static int[] ActionBar = new int[] {
+					2130772012,
+					2130772014,
 					2130772015,
+					2130772016,
 					2130772017,
 					2130772018,
 					2130772019,
@@ -5771,10 +4281,7 @@ namespace EasyBike.Droid
 					2130772036,
 					2130772037,
 					2130772038,
-					2130772039,
-					2130772040,
-					2130772041,
-					2130772137};
+					2130772134};
 			
 			// aapt resource value: 10
 			public const int ActionBar_background = 10;
@@ -5872,12 +4379,12 @@ namespace EasyBike.Droid
 			public static int[] ActionMenuView;
 			
 			public static int[] ActionMode = new int[] {
-					2130772015,
-					2130772021,
-					2130772022,
-					2130772026,
-					2130772028,
-					2130772042};
+					2130772012,
+					2130772018,
+					2130772019,
+					2130772023,
+					2130772025,
+					2130772039};
 			
 			// aapt resource value: 3
 			public const int ActionMode_background = 3;
@@ -5898,8 +4405,8 @@ namespace EasyBike.Droid
 			public const int ActionMode_titleTextStyle = 1;
 			
 			public static int[] ActivityChooserView = new int[] {
-					2130772043,
-					2130772044};
+					2130772040,
+					2130772041};
 			
 			// aapt resource value: 1
 			public const int ActivityChooserView_expandActivityOverflowButtonDrawable = 1;
@@ -5907,27 +4414,13 @@ namespace EasyBike.Droid
 			// aapt resource value: 0
 			public const int ActivityChooserView_initialActivityCount = 0;
 			
-			public static int[] AdsAttrs = new int[] {
-					2130772003,
-					2130772004,
-					2130772005};
-			
-			// aapt resource value: 0
-			public const int AdsAttrs_adSize = 0;
-			
-			// aapt resource value: 1
-			public const int AdsAttrs_adSizes = 1;
-			
-			// aapt resource value: 2
-			public const int AdsAttrs_adUnitId = 2;
-			
 			public static int[] AlertDialog = new int[] {
 					16842994,
+					2130772042,
+					2130772043,
+					2130772044,
 					2130772045,
-					2130772046,
-					2130772047,
-					2130772048,
-					2130772049};
+					2130772046};
 			
 			// aapt resource value: 0
 			public const int AlertDialog_android_layout = 0;
@@ -5949,8 +4442,8 @@ namespace EasyBike.Droid
 			
 			public static int[] AppBarLayout = new int[] {
 					16842964,
-					2130772040,
-					2130772217};
+					2130772037,
+					2130772214};
 			
 			// aapt resource value: 0
 			public const int AppBarLayout_android_background = 0;
@@ -5962,8 +4455,8 @@ namespace EasyBike.Droid
 			public const int AppBarLayout_expanded = 2;
 			
 			public static int[] AppBarLayout_LayoutParams = new int[] {
-					2130772218,
-					2130772219};
+					2130772215,
+					2130772216};
 			
 			// aapt resource value: 0
 			public const int AppBarLayout_LayoutParams_layout_scrollFlags = 0;
@@ -5973,7 +4466,7 @@ namespace EasyBike.Droid
 			
 			public static int[] AppCompatTextView = new int[] {
 					16842804,
-					2130772050};
+					2130772047};
 			
 			// aapt resource value: 0
 			public const int AppCompatTextView_android_textAppearance = 0;
@@ -5982,8 +4475,8 @@ namespace EasyBike.Droid
 			public const int AppCompatTextView_textAllCaps = 1;
 			
 			public static int[] CollapsingAppBarLayout_LayoutParams = new int[] {
-					2130772220,
-					2130772221};
+					2130772217,
+					2130772218};
 			
 			// aapt resource value: 0
 			public const int CollapsingAppBarLayout_LayoutParams_layout_collapseMode = 0;
@@ -5992,7 +4485,10 @@ namespace EasyBike.Droid
 			public const int CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier = 1;
 			
 			public static int[] CollapsingToolbarLayout = new int[] {
-					2130772017,
+					2130772014,
+					2130772219,
+					2130772220,
+					2130772221,
 					2130772222,
 					2130772223,
 					2130772224,
@@ -6002,10 +4498,7 @@ namespace EasyBike.Droid
 					2130772228,
 					2130772229,
 					2130772230,
-					2130772231,
-					2130772232,
-					2130772233,
-					2130772234};
+					2130772231};
 			
 			// aapt resource value: 11
 			public const int CollapsingToolbarLayout_collapsedTitleGravity = 11;
@@ -6051,8 +4544,8 @@ namespace EasyBike.Droid
 			
 			public static int[] CompoundButton = new int[] {
 					16843015,
-					2130772051,
-					2130772052};
+					2130772048,
+					2130772049};
 			
 			// aapt resource value: 0
 			public const int CompoundButton_android_button = 0;
@@ -6064,8 +4557,8 @@ namespace EasyBike.Droid
 			public const int CompoundButton_buttonTintMode = 2;
 			
 			public static int[] CoordinatorLayout = new int[] {
-					2130772235,
-					2130772236};
+					2130772232,
+					2130772233};
 			
 			// aapt resource value: 0
 			public const int CoordinatorLayout_keylines = 0;
@@ -6075,10 +4568,10 @@ namespace EasyBike.Droid
 			
 			public static int[] CoordinatorLayout_LayoutParams = new int[] {
 					16842931,
-					2130772237,
-					2130772238,
-					2130772239,
-					2130772240};
+					2130772234,
+					2130772235,
+					2130772236,
+					2130772237};
 			
 			// aapt resource value: 0
 			public const int CoordinatorLayout_LayoutParams_android_layout_gravity = 0;
@@ -6102,14 +4595,14 @@ namespace EasyBike.Droid
 			public const int CustomWalletTheme_windowTransitionStyle = 0;
 			
 			public static int[] DrawerArrowToggle = new int[] {
+					2130772050,
+					2130772051,
+					2130772052,
 					2130772053,
 					2130772054,
 					2130772055,
 					2130772056,
-					2130772057,
-					2130772058,
-					2130772059,
-					2130772060};
+					2130772057};
 			
 			// aapt resource value: 4
 			public const int DrawerArrowToggle_arrowHeadLength = 4;
@@ -6137,13 +4630,13 @@ namespace EasyBike.Droid
 			
 			public static int[] FloatingActionButton = new int[] {
 					16842964,
-					2130772040,
-					2130772215,
-					2130772216,
-					2130772241,
-					2130772242,
-					2130772243,
-					2130772244};
+					2130772037,
+					2130772212,
+					2130772213,
+					2130772238,
+					2130772239,
+					2130772240,
+					2130772241};
 			
 			// aapt resource value: 0
 			public const int FloatingActionButton_android_background = 0;
@@ -6175,10 +4668,10 @@ namespace EasyBike.Droid
 					16843046,
 					16843047,
 					16843048,
-					2130772025,
-					2130772061,
-					2130772062,
-					2130772063};
+					2130772022,
+					2130772058,
+					2130772059,
+					2130772060};
 			
 			// aapt resource value: 2
 			public const int LinearLayoutCompat_android_baselineAligned = 2;
@@ -6318,7 +4811,7 @@ namespace EasyBike.Droid
 			public static int[] MediaRouteButton = new int[] {
 					16843071,
 					16843072,
-					2130772013};
+					2130772010};
 			
 			// aapt resource value: 1
 			public const int MediaRouteButton_android_minHeight = 1;
@@ -6369,10 +4862,10 @@ namespace EasyBike.Droid
 					16843236,
 					16843237,
 					16843375,
-					2130772064,
-					2130772065,
-					2130772066,
-					2130772067};
+					2130772061,
+					2130772062,
+					2130772063,
+					2130772064};
 			
 			// aapt resource value: 14
 			public const int MenuItem_actionLayout = 14;
@@ -6433,7 +4926,7 @@ namespace EasyBike.Droid
 					16843055,
 					16843056,
 					16843057,
-					2130772068};
+					2130772065};
 			
 			// aapt resource value: 4
 			public const int MenuView_android_headerBackground = 4;
@@ -6463,13 +4956,13 @@ namespace EasyBike.Droid
 					16842964,
 					16842973,
 					16843039,
-					2130772040,
+					2130772037,
+					2130772242,
+					2130772243,
+					2130772244,
 					2130772245,
 					2130772246,
-					2130772247,
-					2130772248,
-					2130772249,
-					2130772250};
+					2130772247};
 			
 			// aapt resource value: 0
 			public const int NavigationView_android_background = 0;
@@ -6503,7 +4996,7 @@ namespace EasyBike.Droid
 			
 			public static int[] PopupWindow = new int[] {
 					16843126,
-					2130772069};
+					2130772066};
 			
 			// aapt resource value: 0
 			public const int PopupWindow_android_popupBackground = 0;
@@ -6512,19 +5005,19 @@ namespace EasyBike.Droid
 			public const int PopupWindow_overlapAnchor = 1;
 			
 			public static int[] PopupWindowBackgroundState = new int[] {
-					2130772070};
+					2130772067};
 			
 			// aapt resource value: 0
 			public const int PopupWindowBackgroundState_state_above_anchor = 0;
 			
 			public static int[] ScrimInsetsFrameLayout = new int[] {
-					2130772251};
+					2130772248};
 			
 			// aapt resource value: 0
 			public const int ScrimInsetsFrameLayout_insetForeground = 0;
 			
 			public static int[] ScrollingViewBehavior_Params = new int[] {
-					2130772252};
+					2130772249};
 			
 			// aapt resource value: 0
 			public const int ScrollingViewBehavior_Params_behavior_overlapTop = 0;
@@ -6534,6 +5027,9 @@ namespace EasyBike.Droid
 					16843039,
 					16843296,
 					16843364,
+					2130772068,
+					2130772069,
+					2130772070,
 					2130772071,
 					2130772072,
 					2130772073,
@@ -6543,10 +5039,7 @@ namespace EasyBike.Droid
 					2130772077,
 					2130772078,
 					2130772079,
-					2130772080,
-					2130772081,
-					2130772082,
-					2130772083};
+					2130772080};
 			
 			// aapt resource value: 0
 			public const int SearchView_android_focusable = 0;
@@ -6601,8 +5094,8 @@ namespace EasyBike.Droid
 			
 			public static int[] SnackbarLayout = new int[] {
 					16843039,
-					2130772040,
-					2130772253};
+					2130772037,
+					2130772250};
 			
 			// aapt resource value: 0
 			public const int SnackbarLayout_android_maxWidth = 0;
@@ -6617,7 +5110,7 @@ namespace EasyBike.Droid
 					16843126,
 					16843131,
 					16843362,
-					2130772041};
+					2130772038};
 			
 			// aapt resource value: 2
 			public const int Spinner_android_dropDownWidth = 2;
@@ -6635,13 +5128,13 @@ namespace EasyBike.Droid
 					16843044,
 					16843045,
 					16843074,
+					2130772081,
+					2130772082,
+					2130772083,
 					2130772084,
 					2130772085,
 					2130772086,
-					2130772087,
-					2130772088,
-					2130772089,
-					2130772090};
+					2130772087};
 			
 			// aapt resource value: 1
 			public const int SwitchCompat_android_textOff = 1;
@@ -6674,6 +5167,9 @@ namespace EasyBike.Droid
 			public const int SwitchCompat_track = 3;
 			
 			public static int[] TabLayout = new int[] {
+					2130772251,
+					2130772252,
+					2130772253,
 					2130772254,
 					2130772255,
 					2130772256,
@@ -6686,10 +5182,7 @@ namespace EasyBike.Droid
 					2130772263,
 					2130772264,
 					2130772265,
-					2130772266,
-					2130772267,
-					2130772268,
-					2130772269};
+					2130772266};
 			
 			// aapt resource value: 3
 			public const int TabLayout_tabBackground = 3;
@@ -6744,7 +5237,7 @@ namespace EasyBike.Droid
 					16842902,
 					16842903,
 					16842904,
-					2130772050};
+					2130772047};
 			
 			// aapt resource value: 3
 			public const int TextAppearance_android_textColor = 3;
@@ -6764,10 +5257,10 @@ namespace EasyBike.Droid
 			public static int[] TextInputLayout = new int[] {
 					16842906,
 					16843088,
-					2130772270,
-					2130772271,
-					2130772272,
-					2130772273};
+					2130772267,
+					2130772268,
+					2130772269,
+					2130772270};
 			
 			// aapt resource value: 1
 			public const int TextInputLayout_android_hint = 1;
@@ -6790,6 +5283,9 @@ namespace EasyBike.Droid
 			public static int[] Theme = new int[] {
 					16842839,
 					16842926,
+					2130772088,
+					2130772089,
+					2130772090,
 					2130772091,
 					2130772092,
 					2130772093,
@@ -6892,10 +5388,7 @@ namespace EasyBike.Droid
 					2130772190,
 					2130772191,
 					2130772192,
-					2130772193,
-					2130772194,
-					2130772195,
-					2130772196};
+					2130772193};
 			
 			// aapt resource value: 23
 			public const int Theme_actionBarDivider = 23;
@@ -7224,14 +5717,17 @@ namespace EasyBike.Droid
 			public static int[] Toolbar = new int[] {
 					16842927,
 					16843072,
+					2130772014,
 					2130772017,
-					2130772020,
-					2130772024,
+					2130772021,
+					2130772033,
+					2130772034,
+					2130772035,
 					2130772036,
-					2130772037,
 					2130772038,
-					2130772039,
-					2130772041,
+					2130772194,
+					2130772195,
+					2130772196,
 					2130772197,
 					2130772198,
 					2130772199,
@@ -7243,10 +5739,7 @@ namespace EasyBike.Droid
 					2130772205,
 					2130772206,
 					2130772207,
-					2130772208,
-					2130772209,
-					2130772210,
-					2130772211};
+					2130772208};
 			
 			// aapt resource value: 0
 			public const int Toolbar_android_gravity = 0;
@@ -7326,9 +5819,9 @@ namespace EasyBike.Droid
 			public static int[] View = new int[] {
 					16842752,
 					16842970,
-					2130772212,
-					2130772213,
-					2130772214};
+					2130772209,
+					2130772210,
+					2130772211};
 			
 			// aapt resource value: 1
 			public const int View_android_focusable = 1;
@@ -7347,8 +5840,8 @@ namespace EasyBike.Droid
 			
 			public static int[] ViewBackgroundHelper = new int[] {
 					16842964,
-					2130772215,
-					2130772216};
+					2130772212,
+					2130772213};
 			
 			// aapt resource value: 0
 			public const int ViewBackgroundHelper_android_background = 0;
