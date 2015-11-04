@@ -20,6 +20,10 @@ using System.Threading.Tasks;
 using Com.Google.Maps.Android.Clustering.View;
 using System.Diagnostics;
 using Android.OS;
+using Android;
+using Java.Security;
+using Android.Support.V4.Content;
+using Android.Support.V4.Widget;
 
 namespace EasyBike.Droid
 {
@@ -28,6 +32,10 @@ namespace EasyBike.Droid
     // If you use the Google Maps Android API in your application, you must include the Google Play Services attribution text as part of a "Legal Notices" section in your application.Including legal notices as an independent menu item, or as part of an "About" menu item, is recommended.
     // The attribution text is available by making a call to GoogleApiAvailability.getOpenSourceSoftwareLicenseInfo.
 
+    // FOR MARSHMALLOW : check this for Location https://blog.xamarin.com/requesting-runtime-permissions-in-android-marshmallow/
+    // https://developers.google.com/maps/documentation/android-api/location#runtime-permission
+
+    //http://www.sitepoint.com/material-design-android-design-support-library/
     [Activity(Label = "EasyBike.Droid", MainLauncher = true, Icon = "@drawable/icon")]
     public partial class MainActivity : IOnMapReadyCallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
@@ -38,6 +46,7 @@ namespace EasyBike.Droid
         private ClusterManager _clusterManager;
         public CancellationTokenSource cts = new CancellationTokenSource();
         private TimeSpan throttleTime = TimeSpan.FromMilliseconds(150);
+        private DrawerLayout mDrawerLayout;
         public MainViewModel Vm
         {
             get
@@ -50,6 +59,7 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
+            mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout); 
 
             //     MapFragment mapFrag = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
             //GoogleMap _googleMap = mapFrag.Map;
@@ -83,7 +93,8 @@ namespace EasyBike.Droid
                 _gettingMap = true;
                 GoogleMapOptions mapOptions = new GoogleMapOptions()
                 .InvokeMapType(GoogleMap.MapTypeNormal)
-                .InvokeZoomControlsEnabled(true)
+                //.InvokeZoomControlsEnabled(true)
+                .InvokeMapToolbarEnabled(true)
                 .InvokeCompassEnabled(true);
 
                 FragmentTransaction fragTx = FragmentManager.BeginTransaction();
@@ -147,6 +158,11 @@ namespace EasyBike.Droid
             }
         }
 
+        
+
+     
+
+
 
         public readonly List<Station> Items = new List<Station>();
         public readonly List<ClusterItem> StationControls = new List<ClusterItem>();
@@ -164,9 +180,11 @@ namespace EasyBike.Droid
             _map = googleMap;
             //Setup and customize your Google Map
             _map.UiSettings.CompassEnabled = true;
+            _map.MyLocationEnabled = true;
             _map.UiSettings.MyLocationButtonEnabled = true;
             _map.UiSettings.MapToolbarEnabled = true;
 
+         
 
 
             SetViewPoint(new LatLng(48.879918, 2.354810), false);

@@ -5,7 +5,7 @@ using EasyBike.Droid.Helpers;
 namespace EasyBike.Droid
 {
   
-    public partial class MainActivity : ActivityBaseEx
+    public partial class MainActivity : ActivityBaseEx, AppCompatActivity
     {
         private Button _refreshButton;
 
