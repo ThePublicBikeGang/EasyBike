@@ -3,7 +3,6 @@ using Android.Widget;
 using EasyBike.ViewModels;
 using GalaSoft.MvvmLight.Helpers;
 using Android.Gms.Maps;
-using Android.Support.V7.App;
 using System;
 using Com.Google.Maps.Android.Clustering;
 using Android.Gms.Maps.Model;
@@ -25,7 +24,6 @@ using Java.Security;
 using Android.Support.V4.Content;
 using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
-using AlertDialog = Android.Support.V7.App.AlertDialog;
 
 namespace EasyBike.Droid
 {

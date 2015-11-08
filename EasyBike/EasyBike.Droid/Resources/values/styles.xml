@@ -13,10 +13,24 @@
     <item name="android:textSize">16sp</item>
     <item name="android:textStyle">bold</item>
   </style>
-  
-  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="android:windowNoTitle">true</item>
-    <item name="android:windowActionBar">false</item>
+
+  <style name="MyTheme" parent="MyTheme.Base">
+  </style>
+  <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
+    <item name="windowNoTitle">true</item>
+    <!--We will be using the toolbar so no need to show ActionBar-->
+    <item name="windowActionBar">false</item>
+    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">#2196F3</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">#1976D2</item>
+    <!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+    <item name="colorAccent">#FF4081</item>
+    <!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight and colorSwitchThumbNormal. -->
   </style>
 <style name="iconGenText">
     <item name="android:textSize">16sp</item>

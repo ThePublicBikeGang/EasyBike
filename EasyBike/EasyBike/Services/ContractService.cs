@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
-using Connectivity.Plugin;
 using EasyBike.Services;
-using EasyBike.Helpers;
-using System.Diagnostics;
 
 namespace EasyBike.Models
 {
