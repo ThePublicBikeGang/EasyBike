@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
   <group android:checkableBehavior="single">
     <item
-        android:id="@+id/navigation_item_attachment"
-        android:checked="true"
-        android:icon="@drawable/ic_attachment"
-        android:title="@string/nav_item_attachment" />
+      android:id="@+id/nav_home"
+      android:icon="@drawable/ic_done"
+      android:title="Home" />
     <item
-        android:id="@+id/navigation_item_images"
-        android:icon="@drawable/ic_image"
-        android:title="@string/nav_item_images" />
+      android:id="@+id/nav_messages"
+      android:icon="@drawable/ic_done"
+      android:title="Messages" />
     <item
-        android:id="@+id/navigation_item_location"
-        android:icon="@drawable/ic_place"
-        android:title="@string/nav_item_location" />
+      android:id="@+id/nav_friends"
+      android:icon="@drawable/ic_done"
+      android:title="Friends" />
+    <item
+      android:id="@+id/nav_discussion"
+      android:icon="@drawable/ic_done"
+      android:title="Discussion" />
   </group>
-
-  <item android:title="@string/nav_sub_menu">
+  <item android:title="Sub items">
     <menu>
       <item
-          android:icon="@drawable/ic_emoticon"
-          android:title="@string/nav_sub_menu_item01" />
+        android:icon="@drawable/ic_menu"
+        android:title="Sub item 1" />
       <item
-          android:icon="@drawable/ic_emoticon"
-          android:title="@string/nav_sub_menu_item02" />
+        android:icon="@drawable/ic_place"
+        android:title="Sub item 2" />
     </menu>
   </item>
-
 </menu>

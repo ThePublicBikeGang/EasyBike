@@ -24,6 +24,8 @@ using Android;
 using Java.Security;
 using Android.Support.V4.Content;
 using Android.Support.V4.Widget;
+using Android.Support.Design.Widget;
+using AlertDialog = Android.Support.V7.App.AlertDialog;
 
 namespace EasyBike.Droid
 {
@@ -46,7 +48,8 @@ namespace EasyBike.Droid
         private ClusterManager _clusterManager;
         public CancellationTokenSource cts = new CancellationTokenSource();
         private TimeSpan throttleTime = TimeSpan.FromMilliseconds(150);
-        private DrawerLayout mDrawerLayout;
+        DrawerLayout drawerLayout;
+        NavigationView navigationView;
         public MainViewModel Vm
         {
             get
@@ -59,15 +62,31 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
-            mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout); 
 
-            //     MapFragment mapFrag = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
-            //GoogleMap _googleMap = mapFrag.Map;
-            //if (_googleMap != null)
-            //{
-            //    // The GoogleMap object is ready to go.
-            //}
-            RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
+            //var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            //SetSupportActionBar(toolbar);
+
+            //Enable support action bar to display hamburger
+            //SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+
+            navigationView.NavigationItemSelected += (sender, e) => {
+                e.MenuItem.SetChecked(true);
+                //react to click here and swap fragments or navigate
+                drawerLayout.CloseDrawers();
+            };
+
+
+        //     MapFragment mapFrag = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
+        //GoogleMap _googleMap = mapFrag.Map;
+        //if (_googleMap != null)
+        //{
+        //    // The GoogleMap object is ready to go.
+        //}
+        RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
 
             Button button = FindViewById<Button>(Resource.Id.GoToContractView);
 

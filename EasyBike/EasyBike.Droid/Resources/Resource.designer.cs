@@ -2459,17 +2459,20 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f09002d
 			public const int multiply = 2131296301;
 			
-			// aapt resource value: 0x7f0900a8
-			public const int navigation_item_attachment = 2131296424;
-			
-			// aapt resource value: 0x7f0900a9
-			public const int navigation_item_images = 2131296425;
+			// aapt resource value: 0x7f0900ab
+			public const int nav_discussion = 2131296427;
 			
 			// aapt resource value: 0x7f0900aa
-			public const int navigation_item_location = 2131296426;
+			public const int nav_friends = 2131296426;
+			
+			// aapt resource value: 0x7f0900a8
+			public const int nav_home = 2131296424;
+			
+			// aapt resource value: 0x7f0900a9
+			public const int nav_messages = 2131296425;
 			
 			// aapt resource value: 0x7f09008b
-			public const int navigation_view = 2131296395;
+			public const int nav_view = 2131296395;
 			
 			// aapt resource value: 0x7f090038
 			public const int never = 2131296312;

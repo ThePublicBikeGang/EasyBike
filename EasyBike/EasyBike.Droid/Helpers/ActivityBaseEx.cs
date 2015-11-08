@@ -1,3 +1,4 @@
+using Android.Support.V7.App;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 
