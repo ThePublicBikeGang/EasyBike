@@ -1931,9 +1931,6 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c006b
 			public const int CountryName = 2131492971;
 			
-			// aapt resource value: 0x7f0c0078
-			public const int GoToContractView = 2131492984;
-			
 			// aapt resource value: 0x7f0c0070
 			public const int NameTextView = 2131492976;
 			
@@ -1946,8 +1943,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0071
 			public const int ServiceProvider = 2131492977;
 			
-			// aapt resource value: 0x7f0c007a
-			public const int action0 = 2131492986;
+			// aapt resource value: 0x7f0c0079
+			public const int action0 = 2131492985;
 			
 			// aapt resource value: 0x7f0c005b
 			public const int action_bar = 2131492955;
@@ -1973,8 +1970,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c005c
 			public const int action_context_bar = 2131492956;
 			
-			// aapt resource value: 0x7f0c007e
-			public const int action_divider = 2131492990;
+			// aapt resource value: 0x7f0c007d
+			public const int action_divider = 2131492989;
 			
 			// aapt resource value: 0x7f0c0002
 			public const int action_menu_divider = 2131492866;
@@ -2015,8 +2012,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0051
 			public const int buttonPanel = 2131492945;
 			
-			// aapt resource value: 0x7f0c007b
-			public const int cancel_action = 2131492987;
+			// aapt resource value: 0x7f0c007a
+			public const int cancel_action = 2131492986;
 			
 			// aapt resource value: 0x7f0c002f
 			public const int center = 2131492911;
@@ -2030,8 +2027,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0053
 			public const int checkbox = 2131492947;
 			
-			// aapt resource value: 0x7f0c0081
-			public const int chronometer = 2131492993;
+			// aapt resource value: 0x7f0c0080
+			public const int chronometer = 2131492992;
 			
 			// aapt resource value: 0x7f0c0037
 			public const int clip_horizontal = 2131492919;
@@ -2069,8 +2066,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0020
 			public const int end = 2131492896;
 			
-			// aapt resource value: 0x7f0c0085
-			public const int end_padder = 2131492997;
+			// aapt resource value: 0x7f0c0084
+			public const int end_padder = 2131492996;
 			
 			// aapt resource value: 0x7f0c0028
 			public const int enterAlways = 2131492904;
@@ -2117,17 +2114,17 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0043
 			public const int image = 2131492931;
 			
-			// aapt resource value: 0x7f0c0084
-			public const int info = 2131492996;
+			// aapt resource value: 0x7f0c0083
+			public const int info = 2131492995;
 			
 			// aapt resource value: 0x7f0c0033
 			public const int left = 2131492915;
 			
-			// aapt resource value: 0x7f0c007f
-			public const int line1 = 2131492991;
+			// aapt resource value: 0x7f0c007e
+			public const int line1 = 2131492990;
 			
-			// aapt resource value: 0x7f0c0083
-			public const int line3 = 2131492995;
+			// aapt resource value: 0x7f0c0082
+			public const int line3 = 2131492994;
 			
 			// aapt resource value: 0x7f0c0012
 			public const int listMode = 2131492882;
@@ -2138,8 +2135,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0077
 			public const int map = 2131492983;
 			
-			// aapt resource value: 0x7f0c007d
-			public const int media_actions = 2131492989;
+			// aapt resource value: 0x7f0c007c
+			public const int media_actions = 2131492988;
 			
 			// aapt resource value: 0x7f0c0021
 			public const int middle = 2131492897;
@@ -2150,20 +2147,14 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c001a
 			public const int multiply = 2131492890;
 			
-			// aapt resource value: 0x7f0c008b
-			public const int nav_discussion = 2131493003;
-			
-			// aapt resource value: 0x7f0c008a
-			public const int nav_friends = 2131493002;
-			
 			// aapt resource value: 0x7f0c0088
-			public const int nav_home = 2131493000;
+			public const int nav_about = 2131493000;
 			
-			// aapt resource value: 0x7f0c0089
-			public const int nav_messages = 2131493001;
+			// aapt resource value: 0x7f0c0087
+			public const int nav_cities = 2131492999;
 			
-			// aapt resource value: 0x7f0c0079
-			public const int nav_view = 2131492985;
+			// aapt resource value: 0x7f0c0078
+			public const int nav_view = 2131492984;
 			
 			// aapt resource value: 0x7f0c0025
 			public const int never = 2131492901;
@@ -2276,8 +2267,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0035
 			public const int start = 2131492917;
 			
-			// aapt resource value: 0x7f0c007c
-			public const int status_bar_latest_event_content = 2131492988;
+			// aapt resource value: 0x7f0c007b
+			public const int status_bar_latest_event_content = 2131492987;
 			
 			// aapt resource value: 0x7f0c0066
 			public const int submit_area = 2131492966;
@@ -2291,14 +2282,14 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c000a
 			public const int text = 2131492874;
 			
-			// aapt resource value: 0x7f0c0082
-			public const int text2 = 2131492994;
+			// aapt resource value: 0x7f0c0081
+			public const int text2 = 2131492993;
 			
 			// aapt resource value: 0x7f0c004e
 			public const int textSpacerNoButtons = 2131492942;
 			
-			// aapt resource value: 0x7f0c0080
-			public const int time = 2131492992;
+			// aapt resource value: 0x7f0c007f
+			public const int time = 2131492991;
 			
 			// aapt resource value: 0x7f0c0047
 			public const int title = 2131492935;
@@ -2306,8 +2297,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c004a
 			public const int title_template = 2131492938;
 			
-			// aapt resource value: 0x7f0c0086
-			public const int toolbar = 2131492998;
+			// aapt resource value: 0x7f0c0085
+			public const int toolbar = 2131492997;
 			
 			// aapt resource value: 0x7f0c0036
 			public const int top = 2131492918;
@@ -2324,8 +2315,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0009
 			public const int view_offset_helper = 2131492873;
 			
-			// aapt resource value: 0x7f0c0087
-			public const int webview = 2131492999;
+			// aapt resource value: 0x7f0c0086
+			public const int webview = 2131492998;
 			
 			// aapt resource value: 0x7f0c0075
 			public const int window = 2131492981;
@@ -2702,7 +2693,7 @@ namespace EasyBike.Droid
 			public const int abc_toolbar_collapse_description = 2131099698;
 			
 			// aapt resource value: 0x7f06003a
-			public const int action_settings = 2131099706;
+			public const int about = 2131099706;
 			
 			// aapt resource value: 0x7f060038
 			public const int app_name = 2131099704;
@@ -2715,6 +2706,9 @@ namespace EasyBike.Droid
 			
 			// aapt resource value: 0x7f060000
 			public const int auth_google_play_services_client_google_display_name = 2131099648;
+			
+			// aapt resource value: 0x7f060039
+			public const int cities = 2131099705;
 			
 			// aapt resource value: 0x7f060004
 			public const int common_android_wear_notification_needs_update_text = 2131099652;
@@ -2814,9 +2808,6 @@ namespace EasyBike.Droid
 			
 			// aapt resource value: 0x7f060041
 			public const int drawer_header_text = 2131099713;
-			
-			// aapt resource value: 0x7f060039
-			public const int hello = 2131099705;
 			
 			// aapt resource value: 0x7f060035
 			public const int library_name = 2131099701;

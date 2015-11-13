@@ -7,15 +7,15 @@ namespace EasyBike.Droid
   
     public partial class MainActivity : ActivityBaseEx
     {
-        private Button _refreshButton;
+        //private Button _refreshButton;
 
-        public Button RefreshButton
-        {
-            get
-            {
-                return _refreshButton
-                       ?? (_refreshButton = FindViewById<Button>(Resource.Id.GoToContractView));
-            }
-        }
+        //public Button RefreshButton
+        //{
+        //    get
+        //    {
+        //        return _refreshButton
+        //               ?? (_refreshButton = FindViewById<Button>(Resource.Id.GoToContractView));
+        //    }
+        //}
     }
 }

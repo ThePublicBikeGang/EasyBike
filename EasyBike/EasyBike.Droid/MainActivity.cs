@@ -24,6 +24,7 @@ using Java.Security;
 using Android.Support.V4.Content;
 using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
+using Android.Views;
 
 namespace EasyBike.Droid
 {
@@ -55,6 +56,30 @@ namespace EasyBike.Droid
                 return App.Locator.Main;
             }
         }
+
+        public class NavigationItemSelectedListener : Java.Lang.Object, NavigationView.IOnNavigationItemSelectedListener
+        {
+            MainActivity _context;
+            public NavigationItemSelectedListener(MainActivity context)
+            {
+                _context = context;
+            }
+            public bool OnNavigationItemSelected(IMenuItem menuItem)
+            {
+                //Check to see which item was being clicked and perform appropriate action
+                switch (menuItem.ItemId)
+                {
+                    //Replacing the main content with ContentFragment Which is our Inbox View;
+                    case Resource.Id.nav_cities:
+                        _context.Vm.GoToDownloadCitiesCommand.Execute(null);
+                        return true;
+                    case Resource.Id.nav_about:
+                        //_context.Vm.GoToDownloadCitiesCommand.Execute(null);
+                        return true;
+
+                } return true;
+            }
+        }
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -77,17 +102,11 @@ namespace EasyBike.Droid
                 drawerLayout.CloseDrawers();
             };
 
+            navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
 
-        //     MapFragment mapFrag = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
-        //GoogleMap _googleMap = mapFrag.Map;
-        //if (_googleMap != null)
-        //{
-        //    // The GoogleMap object is ready to go.
-        //}
-        RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
+            //RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
 
-            Button button = FindViewById<Button>(Resource.Id.GoToContractView);
-
+            var test = Vm.AboutCommand;
 
             //button.Click += delegate
             //{
