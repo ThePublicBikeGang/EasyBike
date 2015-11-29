@@ -8,6 +8,7 @@ using EasyBike.Models.Storage;
 using EasyBike.Notification;
 using EasyBike.Services;
 using EasyBike.Models.Favorites;
+using EasyBike.Ressources;
 
 namespace EasyBike.ViewModels
 {
@@ -19,7 +20,14 @@ namespace EasyBike.ViewModels
         public const string FavoritesPageKey = "Favorites";
         public const string AboutPageKey = "AboutPage";
         public const string HowToPageKey = "HowToPage";
-        
+
+        public TextRessources TextRessources
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<TextRessources>();
+            }
+        }
         public MainViewModel Main
         {
             get
@@ -46,11 +54,12 @@ namespace EasyBike.ViewModels
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            SimpleIoc.Default.Register<TextRessources, TextRessources>();
             SimpleIoc.Default.Register<IConfigService, ConfigService>();
             SimpleIoc.Default.Register<IStorageService, StorageService>();
             SimpleIoc.Default.Register<INotificationService, NotificationService>();
             SimpleIoc.Default.Register<IFavoritesService, FavoritesService>();
-           
+
 
 
             if (GalaSoft.MvvmLight.ViewModelBase.IsInDesignModeStatic)
@@ -64,7 +73,7 @@ namespace EasyBike.ViewModels
                 // SimpleIoc.Default.Register<ContractsViewModel>();
             }
 
-           
+
 
             // This service require an implementation of ILocalisationService in the client
             SimpleIoc.Default.Register<ISettingsService, SettingsService>(true);

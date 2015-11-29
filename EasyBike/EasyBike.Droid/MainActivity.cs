@@ -74,7 +74,7 @@ namespace EasyBike.Droid
                         _context.Vm.GoToDownloadCitiesCommand.Execute(null);
                         return true;
                     case Resource.Id.nav_about:
-                        //_context.Vm.GoToDownloadCitiesCommand.Execute(null);
+                        _context.Vm.AboutCommand.Execute(null);
                         return true;
 
                 } return true;

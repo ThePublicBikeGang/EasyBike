@@ -20,6 +20,7 @@ namespace EasyBike.Droid
                     // First time initialization
                     var nav = new NavigationService();
                     nav.Configure(ViewModelLocator.ContractsPageKey, typeof(ContractsActivity));
+                    nav.Configure(ViewModelLocator.AboutPageKey, typeof(ContractsActivity));
 
                     SimpleIoc.Default.Register<INavigationService>(() => nav);
                     SimpleIoc.Default.Register<IDialogService, DialogService>();

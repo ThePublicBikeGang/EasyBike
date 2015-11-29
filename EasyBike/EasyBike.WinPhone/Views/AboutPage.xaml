@@ -20,8 +20,8 @@
                 </TransitionCollection>
             </Grid.ChildrenTransitions>
 
-            <TextBlock Grid.Row="0" 
-     		Style="{StaticResource HeaderTextBlockStyle}" FontFamily="Global User Interface" Text="About this app" FontSize="53.333"/>
+            <TextBlock x:Name="Title" Grid.Row="0" 
+     		Style="{StaticResource HeaderTextBlockStyle}" FontFamily="Global User Interface" FontSize="53.333"/>
 
             <StackPanel x:Name="stackPanel" Grid.Row="1" Margin="0">
                 <StackPanel.ChildrenTransitions>
