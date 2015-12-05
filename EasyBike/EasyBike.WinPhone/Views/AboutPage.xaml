@@ -5,9 +5,12 @@
     xmlns:local="using:EasyBike.WinPhone.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:EasyBike.ViewModels" 
+    d:DataContext="{d:DesignInstance Type=vm:ViewModelLocator, IsDesignTimeCreatable=True}"
+    DataContext="{Binding Source={StaticResource Locator}}"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    
     <ScrollViewer>
         <Grid Margin="20,20,20,0">
             <Grid.RowDefinitions>
@@ -20,7 +23,7 @@
                 </TransitionCollection>
             </Grid.ChildrenTransitions>
 
-            <TextBlock x:Name="Title" Grid.Row="0" 
+            <TextBlock x:Name="Title" Grid.Row="0" Text="About this app" 
      		Style="{StaticResource HeaderTextBlockStyle}" FontFamily="Global User Interface" FontSize="53.333"/>
 
             <StackPanel x:Name="stackPanel" Grid.Row="1" Margin="0">
@@ -41,7 +44,7 @@
                         </Hyperlink>
                     </Paragraph>
                     <Paragraph FontSize="18.333">
-                        <Run Text="You'll find the open source cross platform projet on"/>
+                        <Run Text="You'll find the open source cross platform project on"/>
                         <Hyperlink NavigateUri="https://github.com/ThePublicBikeGang/EasyBike"  Foreground="{ThemeResource PhoneAccentBrush}">
                             <Run Text="Git"/>
                         </Hyperlink>

@@ -2,8 +2,7 @@
 <resources>
   <string name="app_name">EasyBike</string>
   <string name="cities">Download cities</string>
-  <string name="about">About</string>
-  
+
   <string name="nav_item_attachment">Attachment</string>
   <string name="nav_item_images">Images</string>
   <string name="nav_item_location">My Location</string>
@@ -17,5 +16,8 @@
 
 
 
-  <string name="aboutTitle">About this app.</string>
+  <string name="aboutTitle">About this app</string>
+  <string name="aboutPresentation">Created by <a href="https://github.com/MarcMagnin">Marc Magnin</a> and <a href="https://github.com/EtienneM">Etienne Michon</a> on behalf of the <a href="https://github.com/ThePublicBikeGang">Public Bike Gang</a></string>
+  <string name="aboutPresentation2">You\'ll find the open source cross platform project on <a href="https://github.com/ThePublicBikeGang/EasyBike">Git</a></string>
+  <string name="aboutPresentation3">Special thanks to Florie for her help and patience waiting for me coding hours and hours.</string>
 </resources>

@@ -34,8 +34,8 @@ namespace EasyBike.Services
 
         public async Task SaveSettingAsync()
         {
-			var settings = await GetSettingsAsync ();
-			settings.LastLocation = _localisationService.GetCurrentMapCenter ();
+            var settings = await GetSettingsAsync();
+            settings.LastLocation = _localisationService.GetCurrentMapCenter();
             await _storageService.SetSettingsAsync(_settings).ConfigureAwait(false);
         }
     }

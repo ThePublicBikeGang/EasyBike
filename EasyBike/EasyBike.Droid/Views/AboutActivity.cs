@@ -12,9 +12,13 @@ namespace EasyBike.Droid.Views
         protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            
             SetContentView(Resource.Layout.About);
+
             //Resource.UpdateIdValues().aboutTitle = "TESTETSTE";
             //FindViewById<TextView>(Resource.Id.textView1).Text = "BLABLALBLAA";
+
+
         }
 
 
