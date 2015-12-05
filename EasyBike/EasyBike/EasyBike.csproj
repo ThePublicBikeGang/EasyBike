@@ -115,7 +115,6 @@
     <Compile Include="Models\Contracts\StationModelBase.cs" />
     <Compile Include="Services\IContractService.cs" />
     <Compile Include="Models\Station.cs" />
-    <Compile Include="Services\IlocalisationService.cs" />
     <Compile Include="Services\Settings\ISettingsService.cs" />
     <Compile Include="Services\Settings\SettingsModel.cs" />
     <Compile Include="Services\Storage\IStorageService.cs" />
@@ -131,6 +130,7 @@
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Services\ILocalisationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Config\configExemple.json" />
