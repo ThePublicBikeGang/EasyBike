@@ -24,7 +24,8 @@ namespace EasyBike.ViewModels
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                ///return new MainViewModel();
+                return SimpleIoc.Default.GetInstance<MainViewModel>();
             }
         }
 
@@ -32,7 +33,7 @@ namespace EasyBike.ViewModels
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<ContractsViewModel>();
+                return SimpleIoc.Default.GetInstance<ContractsViewModel>();
             }
         }
 
@@ -65,14 +66,14 @@ namespace EasyBike.ViewModels
             }
             else
             {
-                SimpleIoc.Default.Register<IContractService, ContractService>(true);
+                SimpleIoc.Default.Register<IContractService, ContractService>();
                 // SimpleIoc.Default.Register<ContractsViewModel>();
             }
 
 
 
             // This service require an implementation of ILocalisationService in the client
-            SimpleIoc.Default.Register<ISettingsService, SettingsService>(true);
+            SimpleIoc.Default.Register<ISettingsService, SettingsService>();
 
             SimpleIoc.Default.Register<AboutViewModel>();
             SimpleIoc.Default.Register<FavoritesViewModel>();

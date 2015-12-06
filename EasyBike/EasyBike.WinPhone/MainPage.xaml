@@ -11,7 +11,7 @@
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    DataContext="{Binding Main, Source={StaticResource Locator}}" FontFamily="Global User Interface">
+    FontFamily="Global User Interface">
 
 
     <Page.Resources>
@@ -618,6 +618,9 @@
 
         </Style>
     </Page.Resources>
+    <Page.DataContext>
+        <Binding Mode="OneWay" Path="Main" Source="{StaticResource Locator}"/>
+    </Page.DataContext>
     <i:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
             <core:InvokeCommandAction Command="{Binding MainPageLoadedCommand}"/>

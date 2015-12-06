@@ -35,7 +35,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace EasyBike.WinPhone
 {
@@ -83,6 +82,7 @@ namespace EasyBike.WinPhone
             navigationHelper = new NavigationHelper(this);
             NavigationCacheMode = NavigationCacheMode.Required;
 
+            this.DataContext = SimpleIoc.Default.GetInstance<MainViewModel>();
             _navigationService = SimpleIoc.Default.GetInstance<INavigationService>();
             _notificationService = SimpleIoc.Default.GetInstance<INotificationService>();
             _configService = SimpleIoc.Default.GetInstance<IConfigService>();
