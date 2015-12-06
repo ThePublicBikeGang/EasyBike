@@ -1,35 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minWidth="25px"
-    android:minHeight="25px">
-    <TextView
-        android:text="@string/aboutTitle"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/aboutTitle" />
-    <TextView
-        android:text="@string/aboutPresentation"
-        android:autoLink="web"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
-    <TextView
-        android:text="@string/aboutPresentation2"
-        android:autoLink="web"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
-    <TextView
-        android:text="@string/aboutPresentation3"
-        android:autoLink="web"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView3" />
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25px"
+            android:paddingTop="25px"
+            android:paddingRight="25px"
+            android:paddingBottom="25px">
+            <TextView
+                android:text="@string/aboutTitle"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/aboutTitle" />
+            <TextView
+                android:text="@string/aboutPresentation1"
+                android:autoLink="web"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textPresentation1" />
+            <TextView
+                android:text="@string/aboutPresentation2"
+                android:autoLink="web"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textPresentation2" />
+            <TextView
+                android:text="@string/aboutPresentation3"
+                android:autoLink="web"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textPresentation3" />
+            <TextView
+                android:text="@string/aboutSuggestion1"
+                android:autoLink="web"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textSuggestion1" />
+            <TextView
+                android:text="@string/aboutSuggestion2"
+                android:autoLink="web"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textSuggestion2" />
+            <TextView
+                android:text="@string/aboutSuggestionTwitter"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textSuggestionTwitter" />
+            <TextView
+                android:text="@string/aboutSuggestionJoin"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textSuggestionJoin" />
+            <TextView
+                android:text="@string/aboutReview1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textReview1"
+                android:layout_marginTop="75px" />
+            <TextView
+                android:text="@string/aboutReviewTitle"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textReviewTitle" />
+            <TextView
+                android:text="@string/aboutReview2"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textReview2" />
+            <TextView
+                android:text="@string/aboutReview3"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textReview3" />
+            <TextView
+                android:text="@string/aboutCopyright1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textCopyright1"
+                android:layout_marginTop="25px"
+                android:textSize="15px" />
+            <TextView
+                android:text="@string/aboutCopyright2"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textCopyright2"
+                android:textSize="15px" />
+            <TextView
+                android:text="@string/aboutCopyright3"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textCopyright3"
+                android:textSize="15px" />
+            <TextView
+                android:text="@string/aboutCopyright4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textCopyright4"
+                android:textSize="15px" />
+            <TextView
+                android:text="@string/aboutCopyright5"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textCopyright5"
+                android:textSize="15px" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
