@@ -1,4 +1,4 @@
-## EasyBike: A cross platform app for Public Bikes based on Xamarin.
+## EasyBike: A cross platform app for Public Bikes powered by Xamarin.
 
 ![](https://github.com/ThePublicBikeGang/EasyBike/blob/master/EasyBike/EasyBike/Assets/Icon.png)
 
@@ -16,7 +16,7 @@ All services can be easily accessed with common interfaces.
 https://docs.google.com/spreadsheets/d/13Tim2Nvd41jKQim8dkglOsFcO_iTW7OBWGuAcSQrQUo/pubhtml
 
 ## ContractService
-This service provide a way to access to the different contracts already implemented within the common library.
+This service provide access to the different contracts already implemented within the common library.
 
 ```C#
 // Returns the list of contracts available.
@@ -51,11 +51,13 @@ more to come... ;)
 
 ## Packages 
 
-PublicBikes take advantage of multiple third parties plugins.
+PublicBikes takes advantage of multiple third parties plugins.
 
 * MVVMLight: https://mvvmlight.codeplex.com/ (doc: http://www.mvvmlight.net/doc)
 * Akavache: https://github.com/akavache/Akavache
 * JSON.NET: http://www.newtonsoft.com/json
+* Splat: https://github.com/paulcbetts/splat
+* PCLCrypto: https://github.com/AArnott/PCLCrypto
 
 
 ## Services already integrated
