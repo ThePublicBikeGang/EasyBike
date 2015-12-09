@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">EasyBike</string>
-	<string name="cities">Download cities</string>
-
+<!-- TODO delete?
 	<string name="nav_item_attachment">Attachment</string>
 	<string name="nav_item_images">Images</string>
 	<string name="nav_item_location">My Location</string>
@@ -11,11 +9,16 @@
 	<string name="nav_sub_menu_item02">Sub Menu Item 2</string>
 	<string name="drawer_header_text">Drawer Header</string>
 	<string name="second_activity_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur diam id aliquam scelerisque. Donec ultrices lacus vel dignissim pharetra. Vivamus pharetra augue quis rhoncus placerat. Sed ultricies at risus non cursus. Nam rutrum leo nec placerat consectetur. Vestibulum feugiat eleifend diam, nec interdum augue tincidunt sit amet. Praesent feugiat est auctor lacus consectetur, vitae pellentesque dolor laoreet.</string>
-	<string name="title_activity_second">SecondActivity</string>
+	<string name="title_activity_second">SecondActivity</string-->
 
+	<string name="app_name">EasyBike</string>
+	<string name="nav_download_cities">Download cities</string>
+	<string name="nav_settings">Settings</string>
+	<string name="nav_about">About</string>
 
-
-
+	<!---
+		About Activity 
+		-->
 	<string name="aboutTitle">About this app</string>
 	<string name="aboutPresentation1">Created by <a href="https://github.com/MarcMagnin">Marc Magnin</a> and <a href="https://github.com/EtienneM">Étienne Michon</a> on behalf of the <a href="https://github.com/ThePublicBikeGang">Public Bike Gang</a>.</string>
 	<string name="aboutPresentation2">You\'ll find the open source cross platform project on <a href="https://github.com/ThePublicBikeGang/EasyBike">Git</a></string>
