@@ -31,6 +31,7 @@
 	<string name="aboutReviewRate">Give a review</string>
 	<string name="aboutReview2">Like it?</string>
 	<string name="aboutReview3">This app will never get any ads. Economy should change and advertising is not the right solution. If you like this app and think that the hard work is worth it, feel free to make a <a href="">donation</a>.</string>
+	<string name="aboutWinPhone">This app is also available on <a href="aboutWinPhone">Windows Phone</a>. Give it a try!</string>
 	<string name="aboutCopyright1">EasyBike do not collect any personal informations belonging to its users.</string>
 	<string name="aboutCopyright2">Country flags copyright:</string>
 	<string name="aboutCopyright3">Free Country Flags (<a href="http://www.free-country-flags.com/">Gang of the Coconuts</a>)/<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a>.</string>

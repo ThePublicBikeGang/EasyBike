@@ -94,41 +94,47 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textReview3" />
             <TextView
+                android:text="@string/aboutWinPhone"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textWinPhone" />
+            <TextView
                 android:text="@string/aboutCopyright1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright1"
                 android:layout_marginTop="25px"
-                android:textSize="15dp" />
+                android:textSize="10dp" />
             <TextView
                 android:text="@string/aboutCopyright2"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright2"
-                android:textSize="15dp" />
+                android:textSize="10dp" />
             <TextView
                 android:text="@string/aboutCopyright3"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright3"
-                android:textSize="15dp" />
+                android:textSize="10dp" />
             <TextView
                 android:text="@string/aboutCopyright4"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright4"
-                android:textSize="15dp" />
+                android:textSize="10dp" />
             <TextView
                 android:text="@string/aboutCopyright5"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright5"
-                android:textSize="15dp" />
+                android:textSize="10dp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
