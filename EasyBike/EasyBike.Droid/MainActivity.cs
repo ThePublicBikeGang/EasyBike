@@ -26,6 +26,7 @@ using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Graphics;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace EasyBike.Droid
 {
@@ -58,6 +59,22 @@ namespace EasyBike.Droid
                 return App.Locator.Main;
             }
         }
+        /// <Docs>The options menu in which you place your items.</Docs>
+		/// <returns>To be added.</returns>
+		/// <summary>
+		/// This is the menu for the Toolbar/Action Bar to use
+		/// </summary>
+		/// <param name="menu">Menu.</param>
+		public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.home, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            Toast.MakeText(this, "Top ActionBar pressed: " + item.TitleFormatted, ToastLength.Short).Show();
+            return base.OnOptionsItemSelected(item);
+        }
 
         public class NavigationItemSelectedListener : Java.Lang.Object, NavigationView.IOnNavigationItemSelectedListener
         {
@@ -88,6 +105,7 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
+            
 
             //var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             //SetSupportActionBar(toolbar);
