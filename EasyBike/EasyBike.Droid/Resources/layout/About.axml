@@ -8,6 +8,7 @@
         android:layout_height="fill_parent"
         android:id="@+id/scrollView1">
         <LinearLayout
+            android:id="@+id/aboutMainLayout"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
