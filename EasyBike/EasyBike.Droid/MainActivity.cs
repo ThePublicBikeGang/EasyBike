@@ -25,6 +25,8 @@ using Android.Support.V4.Content;
 using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
 using Android.Views;
+using Android.Graphics;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace EasyBike.Droid
 {
@@ -47,6 +49,7 @@ namespace EasyBike.Droid
         private ClusterManager _clusterManager;
         public CancellationTokenSource cts = new CancellationTokenSource();
         private TimeSpan throttleTime = TimeSpan.FromMilliseconds(150);
+        private StationRenderer _clusterRender;
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         public MainViewModel Vm
@@ -55,6 +58,22 @@ namespace EasyBike.Droid
             {
                 return App.Locator.Main;
             }
+        }
+        /// <Docs>The options menu in which you place your items.</Docs>
+		/// <returns>To be added.</returns>
+		/// <summary>
+		/// This is the menu for the Toolbar/Action Bar to use
+		/// </summary>
+		/// <param name="menu">Menu.</param>
+		public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.home, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            Toast.MakeText(this, "Top ActionBar pressed: " + item.TitleFormatted, ToastLength.Short).Show();
+            return base.OnOptionsItemSelected(item);
         }
 
         public class NavigationItemSelectedListener : Java.Lang.Object, NavigationView.IOnNavigationItemSelectedListener
@@ -77,7 +96,8 @@ namespace EasyBike.Droid
                         _context.Vm.AboutCommand.Execute(null);
                         return true;
 
-                } return true;
+                }
+                return true;
             }
         }
         protected override void OnCreate(Bundle bundle)
@@ -85,6 +105,7 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
+            
 
             //var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             //SetSupportActionBar(toolbar);
@@ -96,7 +117,8 @@ namespace EasyBike.Droid
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
-            navigationView.NavigationItemSelected += (sender, e) => {
+            navigationView.NavigationItemSelected += (sender, e) =>
+            {
                 e.MenuItem.SetChecked(true);
                 //react to click here and swap fragments or navigate
                 drawerLayout.CloseDrawers();
@@ -194,11 +216,46 @@ namespace EasyBike.Droid
             }
         }
 
-        
-
-     
 
 
+        private void OnStationRefreshed(object sender, EventArgs e)
+        {
+            var station = (sender as Station);
+            var control = (station.Control as Marker);
+            if (station != null && control != null)
+            {
+                RefreshStation(station, control);
+            }
+        }
+
+        private void OnContractRefreshed(object sender, EventArgs e)
+        {
+            var contract = (sender as Contract);
+            foreach (var clusterItem in StationControls.Where(c => c.Station.IsUiRefreshNeeded && c.Station.ContractStorageName == contract.StorageName).ToList())
+            {
+                var station = clusterItem.Station;
+                var control = (station.Control as Marker);
+                if (station != null && control != null)
+                {
+                    RefreshStation(station, control);
+                }
+            }
+        }
+
+        private void RefreshStation(Station station, Marker control)
+        {
+            RunOnUiThread(() =>
+            {
+                try
+                {
+                    station.IsUiRefreshNeeded = false;
+                    // this can raise a IllegalArgumentException: Released unknown imageData reference
+                    // as the marker may not be on the map anymore so better to check again for null ref
+                    control.SetIcon(_clusterRender.CreateBikeIcon(station));
+                }
+                catch { }
+            });
+        }
 
         public readonly List<Station> Items = new List<Station>();
         public readonly List<ClusterItem> StationControls = new List<ClusterItem>();
@@ -213,6 +270,12 @@ namespace EasyBike.Droid
             //var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
             //await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
 
+
+            _contractService = SimpleIoc.Default.GetInstance<IContractService>();
+            _contractService.ContractRefreshed += OnContractRefreshed;
+            _contractService.StationRefreshed += OnStationRefreshed;
+
+
             _map = googleMap;
             //Setup and customize your Google Map
             _map.UiSettings.CompassEnabled = true;
@@ -220,13 +283,14 @@ namespace EasyBike.Droid
             _map.UiSettings.MyLocationButtonEnabled = true;
             _map.UiSettings.MapToolbarEnabled = true;
 
-         
+
 
 
             SetViewPoint(new LatLng(48.879918, 2.354810), false);
 
             _clusterManager = new ClusterManager(this, _map);
-            _clusterManager.SetRenderer(new StationRenderer(this, _map, _clusterManager));
+            _clusterRender = new StationRenderer(this, _map, _clusterManager);
+            _clusterManager.SetRenderer(_clusterRender);
             _clusterManager.SetOnClusterClickListener(this);
             _clusterManager.SetOnClusterItemClickListener(this);
             _map.SetOnCameraChangeListener(_clusterManager);
@@ -265,7 +329,7 @@ namespace EasyBike.Droid
 
                     await tcs.Task;
 
-             
+
                     var collection = new AddRemoveCollection();
                     if (bounds != null)
                     {
@@ -277,7 +341,7 @@ namespace EasyBike.Droid
                             && bounds.Contains((LatLng)t.Location)).Take(MAX_CONTROLS).ToList();
                         if (Items.Count > MAX_CONTROLS + collection.ToRemove.Count)
                             collection.ToAdd.Clear();
-                        
+
                     }
                     // precalculate the items offset (that deffer well calculation)
                     //foreach (var velib in collection.ToAdd)
@@ -316,6 +380,11 @@ namespace EasyBike.Droid
                 _clusterManager.RemoveItem(item);
                 StationControls.Remove(item);
                 Items.Remove(station);
+                station.Control = null;
+                if (station.IsInRefreshPool)
+                {
+                    _contractService.RemoveStationFromRefreshingPool(station);
+                }
                 if (token.IsCancellationRequested)
                 {
                     return;

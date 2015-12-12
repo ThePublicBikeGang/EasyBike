@@ -15,6 +15,8 @@ using Com.Google.Maps.Android.UI;
 using EasyBike.Droid.Models;
 using Java.Lang;
 using Android.Views.Animations;
+using EasyBike.Models;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -42,19 +44,20 @@ namespace EasyBike.Droid.Helpers
         private readonly IconGenerator _iconGenGreen;
         private readonly IconGenerator _iconGenOrange;
         private readonly IconGenerator _iconGenGrey;
-        private readonly Bitmap _iconRed;
-        private readonly Bitmap _iconGreen;
-        private readonly Bitmap _iconOrange;
-        private readonly Bitmap _iconGrey;
+        public readonly Bitmap _iconRed;
+        public readonly Bitmap _iconGreen;
+        public readonly Bitmap _iconOrange;
+        public readonly Bitmap _iconGrey;
+        private IContractService _contractService;
 
-        private readonly Paint _textPaint = new Paint();
+        public readonly Paint _textPaint = new Paint();
         public StationRenderer(Context context, GoogleMap map,
                              ClusterManager clusterManager) : base(context, map, clusterManager)
         {
             _context = context;
             _map = map;
             _clusterManager = clusterManager;
-
+            _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             _iconGenRed = new IconGenerator(_context);
             _iconGenGreen = new IconGenerator(_context);
             _iconGenOrange = new IconGenerator(_context);
@@ -76,11 +79,11 @@ namespace EasyBike.Droid.Helpers
             var textView = new TextView(context);
             textView.SetTextAppearance(_context, Resource.Style.iconGenText);
             _textPaint.AntiAlias = true;
-            _textPaint.SetARGB(255,255,255,255);
+            _textPaint.SetARGB(255, 255, 255, 255);
             _textPaint.TextSize = textView.TextSize;
             _textPaint.TextAlign = Paint.Align.Center;
             _textPaint.SetTypeface(textView.Typeface);
-            
+
         }
 
         //protected override void OnClusterItemRendered(Java.Lang.Object p0, Marker p1)
@@ -106,40 +109,15 @@ namespace EasyBike.Droid.Helpers
         //    //logoIV.startAnimation(logoMoveAnimation);
         //}
 
-
-        protected override bool ShouldRenderAsCluster(ICluster p0)
+        /// <summary>
+        /// Helper method to provide the corresponding Icon for a station
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public BitmapDescriptor CreateBikeIcon(Station station)
         {
-            if (_map.CameraPosition.Zoom > 15)
-            {
-                return false;
-            }
-            return base.ShouldRenderAsCluster(p0);
-        }
-
-        private class ViewHolder : Java.Lang.Object
-        {
-            public TextView Text { get; set; }
-        }
-
-
-        protected override void OnBeforeClusterItemRendered(Java.Lang.Object context, MarkerOptions markerOptions)
-        {
-
-            // BitmapDescriptor markerDescriptor = BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueMagenta);
-            //var tmp = BitmapFactory.DecodeResource(_context.Resources, Resource.Drawable.stationGris);
-            //IconGenerator iconGen = null;
             Bitmap bitmap = null;
-            //// Define the size you want from dimensions file
-            //var shapeDrawable = ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.station, null);
-            //iconGen.SetBackground(shapeDrawable);
-
-
-            ////// Create a view container to set the size
-            //View view = (_context as MainActivity).LayoutInflater.Inflate(Resource.Layout.MarkerText, null);
-            //var text = view.FindViewById<TextView>(Resource.Id.text);
-
-
-            var value = (context as ClusterItem).Station.AvailableBikes;
+            var value = station.AvailableBikes;
             if (value == 0)
             {
                 bitmap = _iconRed;
@@ -157,42 +135,60 @@ namespace EasyBike.Droid.Helpers
                 bitmap = _iconGrey;
             }
 
-            // text.Text = value.ToString();
-
-
-            //  iconGen.SetContentView(view);
-
-
-            //iconGen.SetTextAppearance(Resource.Style.iconGenText);
-            //Bitmap bitmap = iconGen.MakeIcon();
             bitmap = bitmap.Copy(bitmap.GetConfig(), true);
             Canvas canvas = new Canvas(bitmap);
             int xPos = (canvas.Width / 2);
             int yPos = (int)((canvas.Height / 2) - ((_textPaint.Descent() + _textPaint.Ascent()) / 2));
             canvas.DrawText(value.ToString(), xPos, yPos - 7, _textPaint);
-            markerOptions.SetIcon(BitmapDescriptorFactory.FromBitmap(bitmap));
-            //markerOptions.Anchor(0.5f, 0.9f);
+            var icon = BitmapDescriptorFactory.FromBitmap(bitmap);
             bitmap.Recycle();
+            return icon;
+        }
+
+        protected override bool ShouldRenderAsCluster(ICluster p0)
+        {
+            if (_map.CameraPosition.Zoom > 15)
+            {
+                return false;
+            }
+            return base.ShouldRenderAsCluster(p0);
+        }
+
+        private class ViewHolder : Java.Lang.Object
+        {
+            public TextView Text { get; set; }
+        }
 
 
-            //markerOptions.SetIcon(markerDescriptor);
-
-            //Paint textPaint = new Paint() { StrokeWidth = 5};
-            //textPaint.SetARGB(255, 255, 255, 255);
-            //textPaint.TextAlign = Paint.Align.Center;
-
-            //textPaint.TextSize = 35;
-
-            //Canvas canvas = new Canvas(bitmap);
-            //int xPos = (canvas.Width / 2);
-            //int yPos = (int)((canvas.Height / 2) - ((textPaint.Descent() + textPaint.Ascent()) / 2));
-
-            // canvas.DrawText((context as ClusterItem).Station.AvailableBikes.ToString(), xPos, yPos, textPaint);
-            //markerOptions.Anchor(5, 15);
+        protected override void OnClusterItemRendered(Java.Lang.Object context, Marker marker)
+        {
+            (context as ClusterItem).Station.Control = marker;
+            base.OnClusterItemRendered(context, marker);
+        }
 
 
+        protected override void OnBeforeClusterItemRendered(Java.Lang.Object context, MarkerOptions markerOptions)
+        {
+            var station = (context as ClusterItem).Station;
+            if (station.Contract.StationRefreshGranularity)
+            {
+                if (!station.IsInRefreshPool)
+                {
+                    _contractService.AddStationToRefreshingPool(station);
+                }
+            }
+            markerOptions.SetIcon(CreateBikeIcon(station));
+            // BitmapDescriptor markerDescriptor = BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueMagenta);
+            //var tmp = BitmapFactory.DecodeResource(_context.Resources, Resource.Drawable.stationGris);
+            //IconGenerator iconGen = null;
+            //// Define the size you want from dimensions file
+            //var shapeDrawable = ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.station, null);
+            //iconGen.SetBackground(shapeDrawable);
 
 
+            ////// Create a view container to set the size
+            //View view = (_context as MainActivity).LayoutInflater.Inflate(Resource.Layout.MarkerText, null);
+            //var text = view.FindViewById<TextView>(Resource.Id.text);
         }
     }
 
