@@ -76,12 +76,21 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textReview1"
                 android:layout_marginTop="75px" />
-            <TextView
-                android:text="@string/aboutReviewRate"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+        <!--LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textReviewRate" />
+                android:id="@+id/linearLayout1"-->
+            <TextView
+                android:text="@string/aboutReviewRate"
+                android:drawableLeft="@android:drawable/star_on"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textReviewRate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        <!--/LinearLayout-->
             <TextView
                 android:text="@string/aboutReview2"
                 android:textAppearance="?android:attr/textAppearanceSmall"
