@@ -30,14 +30,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/NameTextView"
-                android:textSize="28dp" />
+                android:textSize="28sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ServiceProvider"
                 android:alpha="0.4"
                 android:singleLine="true"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
             <ProgressBar
                 android:id="@+id/ProgressBar"
                 style="?android:attr/progressBarStyleHorizontal"

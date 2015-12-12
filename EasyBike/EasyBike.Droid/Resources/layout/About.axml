@@ -116,35 +116,35 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright1"
                 android:layout_marginTop="25px"
-                android:textSize="10dp" />
+                android:textSize="10sp" />
             <TextView
                 android:text="@string/aboutCopyright2"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright2"
-                android:textSize="10dp" />
+                android:textSize="10sp" />
             <TextView
                 android:text="@string/aboutCopyright3"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright3"
-                android:textSize="10dp" />
+                android:textSize="10sp" />
             <TextView
                 android:text="@string/aboutCopyright4"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright4"
-                android:textSize="10dp" />
+                android:textSize="10sp" />
             <TextView
                 android:text="@string/aboutCopyright5"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textCopyright5"
-                android:textSize="10dp" />
+                android:textSize="10sp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

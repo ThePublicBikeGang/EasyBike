@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:layout_margin="10dp"
         android:textStyle="bold" />
 </LinearLayout>
