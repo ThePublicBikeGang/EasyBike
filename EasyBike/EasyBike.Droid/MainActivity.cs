@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Widget;
+using Android.Preferences;
 using EasyBike.ViewModels;
 using GalaSoft.MvvmLight.Helpers;
 using Android.Gms.Maps;
@@ -26,6 +27,8 @@ using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Graphics;
+using Android.Content;
+using Android.Util;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace EasyBike.Droid
@@ -52,6 +55,9 @@ namespace EasyBike.Droid
         private StationRenderer _clusterRender;
         DrawerLayout drawerLayout;
         NavigationView navigationView;
+
+		private ISharedPreferences preferences;
+
         public MainViewModel Vm
         {
             get
@@ -102,10 +108,11 @@ namespace EasyBike.Droid
         }
         protected override void OnCreate(Bundle bundle)
         {
+			Log.Debug ("MyActivity", "Begin OnCreate");
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
-            
+			preferences = PreferenceManager.GetDefaultSharedPreferences (this);
 
             //var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             //SetSupportActionBar(toolbar);
@@ -128,6 +135,7 @@ namespace EasyBike.Droid
 
             //RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
 
+
             var test = Vm.AboutCommand;
 
             //button.Click += delegate
@@ -136,10 +144,22 @@ namespace EasyBike.Droid
             //};
         }
 
+		protected override void OnPause() 
+		{
+			base.OnPause ();
+			Log.Debug ("MyActivity", "Begin OnPause");
+			CameraPosition camPosition = _map.CameraPosition;
+			ISharedPreferencesEditor editor = preferences.Edit();
+			editor.PutFloat ("Latitude", (float) camPosition.Target.Latitude);
+			editor.PutFloat ("Longitude", (float) camPosition.Target.Longitude);
+			editor.PutFloat ("Zoom", camPosition.Zoom);
+			editor.Apply ();
+		}
 
         protected override void OnResume()
         {
             base.OnResume();
+			Log.Debug ("MyActivity", "Begin OnResume");
             SetupMapIfNeeded();
         }
 
@@ -199,12 +219,11 @@ namespace EasyBike.Droid
 
 
         }
-        public void SetViewPoint(LatLng latlng, bool animated)
+		public void SetViewPoint(LatLng latlng, float zoom, bool animated)
         {
-            CameraPosition.Builder builder = CameraPosition.InvokeBuilder();
-            builder.Target(latlng);
-            builder.Zoom(14.5F);
-            CameraPosition cameraPosition = builder.Build();
+			// As explained here: https://stackoverflow.com/a/14167568
+			// This is the way of intializing the map
+			CameraPosition cameraPosition = new CameraPosition.Builder().Target(latlng).Zoom(zoom).Build();
 
             if (animated)
             {
@@ -264,11 +283,12 @@ namespace EasyBike.Droid
         private IContractService _contractService;
         public async void OnMapReady(GoogleMap googleMap)
         {
-            // TO HELP DEBUG auto download paris to help dev on performances 
-            //var contractToTest = "Paris";
-            //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-            //var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
-            //await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+			Log.Debug ("MyActivity", "Begin OnMapReady");
+            // TODO TO HELP DEBUG auto download paris to help dev on performances 
+//            var contractToTest = "Paris";
+//            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+//            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+//            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
 
 
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
@@ -282,11 +302,8 @@ namespace EasyBike.Droid
             _map.MyLocationEnabled = true;
             _map.UiSettings.MyLocationButtonEnabled = true;
             _map.UiSettings.MapToolbarEnabled = true;
-
-
-
-
-            SetViewPoint(new LatLng(48.879918, 2.354810), false);
+			Log.Debug ("MyActivity", preferences.GetFloat ("Zoom", -1.0F).ToString());
+			SetViewPoint(new LatLng(preferences.GetFloat ("Latitude", 48.879918F), preferences.GetFloat ("Longitude", 2.354810F)), preferences.GetFloat ("Zoom", 14.5F), false);
 
             _clusterManager = new ClusterManager(this, _map);
             _clusterRender = new StationRenderer(this, _map, _clusterManager);

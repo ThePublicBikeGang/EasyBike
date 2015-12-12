@@ -21,7 +21,7 @@ namespace EasyBike.Droid.Views
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Contracts);
 
-            var test = FindViewById<ExpandableListView>(Resource.Id.ContractsList);
+//            var test = FindViewById<ExpandableListView>(Resource.Id.ContractsList);
         
             //await Task.Delay(30);
             //var t = Task.Run(async () =>
