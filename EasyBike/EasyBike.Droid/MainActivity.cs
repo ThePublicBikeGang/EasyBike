@@ -168,12 +168,14 @@ namespace EasyBike.Droid
         {
             if (_map == null && !_gettingMap)
             {
+				// TODO À quoi sert cette variable ? On peut supprimer je pense.
                 _gettingMap = true;
                 GoogleMapOptions mapOptions = new GoogleMapOptions()
-                .InvokeMapType(GoogleMap.MapTypeNormal)
-                //.InvokeZoomControlsEnabled(true)
-                .InvokeMapToolbarEnabled(true)
-                .InvokeCompassEnabled(true);
+	                .InvokeMapType(GoogleMap.MapTypeNormal)
+	                //.InvokeZoomControlsEnabled(true)
+	                .InvokeMapToolbarEnabled(true)
+	                .InvokeCompassEnabled(true)
+					.InvokeCamera(GetStartingCameraPosition());
 
                 FragmentTransaction fragTx = FragmentManager.BeginTransaction();
                 _mapFragment = MapFragment.NewInstance(mapOptions);
@@ -182,6 +184,19 @@ namespace EasyBike.Droid
                 _mapFragment.GetMapAsync(this);
             }
         }
+
+		/// <Docs>Get the camera position when starting the app.</Docs>
+		/// <returns>A CameraPosition with Latitude, Longitude and Zoom set.</returns>
+		/// <summary>
+		/// This is the menu for the Toolbar/Action Bar to use
+		/// </summary>
+		private CameraPosition GetStartingCameraPosition() 
+		{
+			// TODO What to do if the position is not set in the shared preferences? GPS?
+			return new CameraPosition.Builder()
+				.Target(new LatLng(preferences.GetFloat ("Latitude", 48.879918F), preferences.GetFloat ("Longitude", 2.354810F)))
+				.Zoom(preferences.GetFloat ("Zoom", 14.5F)).Build();
+		}
 
         //Cluster override methods
         public bool OnClusterClick(ICluster cluster)
@@ -216,14 +231,13 @@ namespace EasyBike.Droid
         {
             Toast.MakeText(this, "Marker clicked", ToastLength.Short).Show();
             return false;
-
-
         }
-		public void SetViewPoint(LatLng latlng, float zoom, bool animated)
+
+		public void SetViewPoint(CameraPosition cameraPosition, bool animated)
         {
 			// As explained here: https://stackoverflow.com/a/14167568
-			// This is the way of intializing the map
-			CameraPosition cameraPosition = new CameraPosition.Builder().Target(latlng).Zoom(zoom).Build();
+			// This is the way of intializing the map position
+			// CameraPosition cameraPosition = new CameraPosition.Builder().Target(latlng).Zoom(zoom).Build();
 
             if (animated)
             {
@@ -302,8 +316,9 @@ namespace EasyBike.Droid
             _map.MyLocationEnabled = true;
             _map.UiSettings.MyLocationButtonEnabled = true;
             _map.UiSettings.MapToolbarEnabled = true;
-			Log.Debug ("MyActivity", preferences.GetFloat ("Zoom", -1.0F).ToString());
-			SetViewPoint(new LatLng(preferences.GetFloat ("Latitude", 48.879918F), preferences.GetFloat ("Longitude", 2.354810F)), preferences.GetFloat ("Zoom", 14.5F), false);
+
+			// Initialize the camera position
+			SetViewPoint(GetStartingCameraPosition(), false);
 
             _clusterManager = new ClusterManager(this, _map);
             _clusterRender = new StationRenderer(this, _map, _clusterManager);
