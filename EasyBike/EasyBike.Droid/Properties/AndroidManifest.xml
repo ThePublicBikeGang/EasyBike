@@ -18,9 +18,9 @@
 	<!-- These are optional, but recommended. They will allow Maps to use the My Location provider. -->
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<application android:label="EasyBike" android:theme="@style/MyTheme">
+	<application android:label="EasyBike" android:theme="@style/MyTheme" android:icon="@drawable/ic_launcher" android:logo="@drawable/ic_launcher">
 		<!-- Put your Google Maps V2 API Key here. -->
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDlUPKTozMnH9HBZBDxLmeOt0UD4nIvTYI" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBThqscLD8OiAwgEAj_0Q99oJ5qkXZ6sFQ" />
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 	</application>
 </manifest>

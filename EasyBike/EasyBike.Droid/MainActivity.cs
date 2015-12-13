@@ -42,7 +42,7 @@ namespace EasyBike.Droid
     // https://developers.google.com/maps/documentation/android-api/location#runtime-permission
 
     //http://www.sitepoint.com/material-design-android-design-support-library/
-    [Activity(Label = "EasyBike.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "EasyBike.Droid", MainLauncher = true)]
     public partial class MainActivity : IOnMapReadyCallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private Binding _lastLoadedBinding;
@@ -149,11 +149,11 @@ namespace EasyBike.Droid
 			base.OnPause ();
 			Log.Debug ("MyActivity", "Begin OnPause");
 			CameraPosition camPosition = _map.CameraPosition;
-			ISharedPreferencesEditor editor = preferences.Edit();
-			editor.PutFloat ("Latitude", (float) camPosition.Target.Latitude);
-			editor.PutFloat ("Longitude", (float) camPosition.Target.Longitude);
-			editor.PutFloat ("Zoom", camPosition.Zoom);
-			editor.Apply ();
+			preferences.Edit()
+				.PutFloat ("Latitude", (float) camPosition.Target.Latitude)
+				.PutFloat ("Longitude", (float) camPosition.Target.Longitude)
+				.PutFloat ("Zoom", camPosition.Zoom)
+				.Apply ();
 		}
 
         protected override void OnResume()
