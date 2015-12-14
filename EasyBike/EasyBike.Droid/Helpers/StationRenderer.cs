@@ -17,6 +17,7 @@ using Java.Lang;
 using Android.Views.Animations;
 using EasyBike.Models;
 using GalaSoft.MvvmLight.Ioc;
+using EasyBike.Models.Storage;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -49,6 +50,7 @@ namespace EasyBike.Droid.Helpers
         public readonly Bitmap _iconOrange;
         public readonly Bitmap _iconGrey;
         private IContractService _contractService;
+        private ISettingsService _settingsService;
 
         public readonly Paint _textPaint = new Paint();
         public StationRenderer(Context context, GoogleMap map,
@@ -58,6 +60,8 @@ namespace EasyBike.Droid.Helpers
             _map = map;
             _clusterManager = clusterManager;
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
+            _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
+
             _iconGenRed = new IconGenerator(_context);
             _iconGenGreen = new IconGenerator(_context);
             _iconGenOrange = new IconGenerator(_context);
@@ -114,10 +118,11 @@ namespace EasyBike.Droid.Helpers
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>
-        public BitmapDescriptor CreateBikeIcon(Station station)
+        public BitmapDescriptor CreateStationIcon(Station station)
         {
             Bitmap bitmap = null;
-            var value = station.AvailableBikes;
+            var value = _settingsService.Settings.IsBikeMode ? station.AvailableBikes : station.AvailableBikeStands ;
+
             if (value == 0)
             {
                 bitmap = _iconRed;
@@ -177,7 +182,7 @@ namespace EasyBike.Droid.Helpers
                     _contractService.AddStationToRefreshingPool(station);
                 }
             }
-            markerOptions.SetIcon(CreateBikeIcon(station));
+            markerOptions.SetIcon(CreateStationIcon(station));
             // BitmapDescriptor markerDescriptor = BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueMagenta);
             //var tmp = BitmapFactory.DecodeResource(_context.Resources, Resource.Drawable.stationGris);
             //IconGenerator iconGen = null;

@@ -19,17 +19,25 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:layout_scrollFlags="scroll|enterAlways"/>-->
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab1"
+        <ToggleButton
+            android:id="@+id/bikeParkingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_done"
+            android:src="@drawable/bikeIcon"
+            android:layout_marginBottom="60dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="bottom|right" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/bikesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bikeIcon"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="bottom|right"
             app:fabSize="mini" />
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab2"
+            android:id="@+id/parkingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_done"

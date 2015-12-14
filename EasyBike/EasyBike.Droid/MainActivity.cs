@@ -30,6 +30,7 @@ using Android.Graphics;
 using Android.Content;
 using Android.Util;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+using EasyBike.Models.Storage;
 
 namespace EasyBike.Droid
 {
@@ -57,6 +58,8 @@ namespace EasyBike.Droid
         NavigationView navigationView;
 
 		private ISharedPreferences preferences;
+        private ISettingsService _settingsService;
+
 
         public MainViewModel Vm
         {
@@ -113,6 +116,7 @@ namespace EasyBike.Droid
             SetContentView(Resource.Layout.Main);
 
 			preferences = PreferenceManager.GetDefaultSharedPreferences (this);
+           
 
             //var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             //SetSupportActionBar(toolbar);
@@ -120,7 +124,10 @@ namespace EasyBike.Droid
             //Enable support action bar to display hamburger
             //SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
             //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-
+            FloatingActionButton bikesButton = FindViewById<FloatingActionButton>(Resource.Id.bikesButton);
+            bikesButton.Click += BikesButton_Click;
+            FloatingActionButton parkingButton = FindViewById<FloatingActionButton>(Resource.Id.parkingButton);
+            parkingButton.Click += ParkingButton_Click; ;
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
@@ -130,7 +137,7 @@ namespace EasyBike.Droid
                 //react to click here and swap fragments or navigate
                 drawerLayout.CloseDrawers();
             };
-
+             
             navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
 
             //RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
@@ -155,6 +162,35 @@ namespace EasyBike.Droid
 				.PutFloat ("Zoom", camPosition.Zoom)
 				.Apply ();
 		}
+        private void SwitchModeStationParking()
+        {
+            foreach (var clusterItem in StationControls.ToList())
+            {
+                var station = clusterItem.Station;
+                var control = (station.Control as Marker);
+                if (station != null && control != null)
+                {
+                    RefreshStation(station, control);
+                }
+            }
+        }
+        private void ParkingButton_Click(object sender, EventArgs e)
+        {
+            if (_settingsService.Settings.IsBikeMode)
+            {
+                _settingsService.Settings.IsBikeMode = false;
+                SwitchModeStationParking();
+            }
+        }
+
+        private void BikesButton_Click(object sender, EventArgs e)
+        {
+            if (!_settingsService.Settings.IsBikeMode)
+            {
+                _settingsService.Settings.IsBikeMode = true;
+                SwitchModeStationParking();
+            }
+        }
 
         protected override void OnResume()
         {
@@ -284,7 +320,7 @@ namespace EasyBike.Droid
                     station.IsUiRefreshNeeded = false;
                     // this can raise a IllegalArgumentException: Released unknown imageData reference
                     // as the marker may not be on the map anymore so better to check again for null ref
-                    control.SetIcon(_clusterRender.CreateBikeIcon(station));
+                    control.SetIcon(_clusterRender.CreateStationIcon(station));
                 }
                 catch { }
             });
@@ -304,6 +340,7 @@ namespace EasyBike.Droid
 //            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
 //            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
 
+            _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
 
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             _contractService.ContractRefreshed += OnContractRefreshed;
