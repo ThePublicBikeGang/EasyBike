@@ -67,13 +67,13 @@ namespace EasyBike.Models
             var contract = station.Contract;
             if (contract != null)
             {
-                if (await contract.RefreshAsync(station).ConfigureAwait(false))
-                {
-                    if (station.IsUiRefreshNeeded)
-                    {
-                        StationRefreshed?.Invoke(station, EventArgs.Empty);
-                    }
-                }
+                //if (await contract.RefreshAsync(station).ConfigureAwait(false))
+                //{
+                //    if (station.IsUiRefreshNeeded)
+                //    {
+                //        StationRefreshed?.Invoke(station, EventArgs.Empty);
+                //    }
+                //}
                 refreshingPool.Add(station);
                 if (!IsStationWorkerRunning)
                 {
@@ -130,7 +130,7 @@ namespace EasyBike.Models
                     // DispatcherHelper.
                     // At this time, DispatcherHelper cannot be used in a portable class library. Laurent works on a solution.
                     // var mapCenter = _localisationService.GetCurrentMapCenter();
-                    contracts.ToList().Where(c => !c.StationRefreshGranularity).AsParallel().ForAll(async (c) =>
+                    contracts.ToList()/*.Where(c => !c.StationRefreshGranularity)*/.AsParallel().ForAll(async (c) =>
                     {
                         if (await c.RefreshAsync().ConfigureAwait(false))
                         {
@@ -179,7 +179,7 @@ namespace EasyBike.Models
             IsStationWorkerRunning = true;
             while (refreshingPool.Count > 0)
             {
-                await Task.Delay(15000).ConfigureAwait(false);
+                await Task.Delay(2000).ConfigureAwait(false);
                 //if (CrossConnectivity.Current.IsConnected)
                 //{
                     //Parallel.ForEach(refreshingPool.ToList(), async (station) =>
@@ -203,7 +203,7 @@ namespace EasyBike.Models
                         }
                     });
                 //}
-                await Task.Delay(5000).ConfigureAwait(false);
+                await Task.Delay(15000).ConfigureAwait(false);
             }
             IsStationWorkerRunning = false;
         }

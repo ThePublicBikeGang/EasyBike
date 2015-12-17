@@ -444,7 +444,6 @@ namespace EasyBike.Droid
             // remove out of view items
             foreach (var station in Items.Where(t => addRemoveCollection.ToRemove.Contains(t)).ToList())
             {
-
                 var item = StationControls.First(c => c.Station.Latitude == station.Latitude && c.Station.Longitude == station.Longitude);
                 _clusterManager.RemoveItem(item);
                 StationControls.Remove(item);

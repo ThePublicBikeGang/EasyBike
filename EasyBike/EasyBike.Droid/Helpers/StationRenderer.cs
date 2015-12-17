@@ -18,6 +18,7 @@ using Android.Views.Animations;
 using EasyBike.Models;
 using GalaSoft.MvvmLight.Ioc;
 using EasyBike.Models.Storage;
+using System.Threading.Tasks;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -121,7 +122,7 @@ namespace EasyBike.Droid.Helpers
         public BitmapDescriptor CreateStationIcon(Station station)
         {
             Bitmap bitmap = null;
-            var value = _settingsService.Settings.IsBikeMode ? station.AvailableBikes : station.AvailableBikeStands ;
+            var value = _settingsService.Settings.IsBikeMode ? station.AvailableBikes : station.AvailableBikeStands;
 
             if (value == 0)
             {
@@ -175,13 +176,19 @@ namespace EasyBike.Droid.Helpers
         protected override void OnBeforeClusterItemRendered(Java.Lang.Object context, MarkerOptions markerOptions)
         {
             var station = (context as ClusterItem).Station;
+
             if (station.Contract.StationRefreshGranularity)
             {
                 if (!station.IsInRefreshPool)
                 {
-                    _contractService.AddStationToRefreshingPool(station);
+                    Task.Run(() =>
+                    {
+                        _contractService.AddStationToRefreshingPool(station);
+                    });
                 }
             }
+
+
             markerOptions.SetIcon(CreateStationIcon(station));
             // BitmapDescriptor markerDescriptor = BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueMagenta);
             //var tmp = BitmapFactory.DecodeResource(_context.Resources, Resource.Drawable.stationGris);
