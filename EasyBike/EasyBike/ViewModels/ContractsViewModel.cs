@@ -179,7 +179,7 @@ namespace EasyBike.ViewModels
             }
             catch (Exception e)
             {
-                var message = $"You seems to struggle downloading {contract.Name}. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us to and we will investigate. Thumbs up !";
+                var message = $"You seems to struggle downloading {contract.Name}. It may be either that your network connection isn't healthy, the service provider is down or it has changed. If you think it could be the last option, then contact us and we will investigate. Thumbs up!";
                 try
                 {
                     // this can throw a application called an interface that was marshalled for a different thread. (Exception from HRESULT: 0x8001010E (RPC_E_WRONG_THREAD))
