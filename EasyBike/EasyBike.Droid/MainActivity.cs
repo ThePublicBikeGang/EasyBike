@@ -162,6 +162,19 @@ namespace EasyBike.Droid
 				.PutFloat ("Zoom", camPosition.Zoom)
 				.Apply ();
 		}
+
+		public override void OnBackPressed()
+		{
+			if (drawerLayout.IsDrawerOpen(navigationView))
+			{
+				drawerLayout.CloseDrawer(navigationView);
+			}
+			else
+			{
+				base.OnBackPressed();
+			}
+		}
+
         private void SwitchModeStationParking()
         {
             foreach (var clusterItem in StationControls.ToList())
