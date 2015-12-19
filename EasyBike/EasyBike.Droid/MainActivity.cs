@@ -29,6 +29,7 @@ using Android.Views;
 using Android.Graphics;
 using Android.Content;
 using Android.Util;
+using Android.Locations;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using EasyBike.Models.Storage;
 
@@ -44,7 +45,7 @@ namespace EasyBike.Droid
 
     //http://www.sitepoint.com/material-design-android-design-support-library/
     [Activity(Label = "EasyBike.Droid", MainLauncher = true)]
-    public partial class MainActivity : IOnMapReadyCallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
+	public partial class MainActivity : IOnMapReadyCallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private Binding _lastLoadedBinding;
 
@@ -344,6 +345,7 @@ namespace EasyBike.Droid
         private const int MAX_CONTROLS = 38;
         private double MAXDISTANCE = 100;
         private IContractService _contractService;
+
         public async void OnMapReady(GoogleMap googleMap)
         {
 			Log.Debug ("MyActivity", "Begin OnMapReady");
@@ -370,13 +372,45 @@ namespace EasyBike.Droid
 			// Initialize the camera position
 			SetViewPoint(GetStartingCameraPosition(), false);
 
+			// Initialize the marker with the stations
             _clusterManager = new ClusterManager(this, _map);
             _clusterRender = new StationRenderer(this, _map, _clusterManager);
             _clusterManager.SetRenderer(_clusterRender);
             _clusterManager.SetOnClusterClickListener(this);
             _clusterManager.SetOnClusterItemClickListener(this);
-            _map.SetOnCameraChangeListener(_clusterManager);
+			_map.SetOnCameraChangeListener(_clusterManager);
             _map.SetOnMarkerClickListener(_clusterManager);
+
+			// Initialize the behavior when long clicking somewhere on the map
+			Marker longClickMarker = null;
+			_map.MapLongClick += async (sender,  e) => {
+				// On long click, display the address on a info window
+				if (longClickMarker != null)
+				{
+					// Remove a previously created marker
+					longClickMarker.Remove();
+				}
+
+				// Convert latitude and longitude to an address (GeoCoder)
+				MarkerOptions markerOptions = new MarkerOptions().SetPosition(e.Point);
+				IList<Address> addresses = await new Geocoder(this).GetFromLocationAsync(e.Point.Latitude, e.Point.Longitude, 1);
+				if (addresses.Any())
+				{
+					markerOptions.SetTitle(addresses[0].GetAddressLine(0));
+					markerOptions.SetSnippet(addresses[0].Locality);
+				}
+				else
+				{
+					// TODO Use a string in the Strings.xml resource
+					markerOptions.SetTitle("Unknown");
+					markerOptions.SetSnippet("Could not find any addresses.");
+				}
+
+				// Create the marker
+				longClickMarker = _map.AddMarker(markerOptions);
+				longClickMarker.ShowInfoWindow();
+			};
+
 
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             var mapObserver = Observable.FromEventPattern(_map, "CameraChange");
@@ -446,6 +480,9 @@ namespace EasyBike.Droid
 
                 });
         }
+
+
+
 
         private async void RefreshView(AddRemoveCollection addRemoveCollection, CancellationToken token)
         {
