@@ -30,8 +30,13 @@ using Android.Graphics;
 using Android.Content;
 using Android.Util;
 using Android.Locations;
-using Toolbar = Android.Support.V7.Widget.Toolbar;
 using EasyBike.Models.Storage;
+
+// These shortcuts are used to prevent the use by default of these classes in Android.Views
+using MenuItemCompat = Android.Support.V4.View.MenuItemCompat;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using ShareActionProvider = Android.Support.V7.Widget.ShareActionProvider;
+using ActionMode = Android.Support.V7.View.ActionMode;
 
 namespace EasyBike.Droid
 {
@@ -45,7 +50,7 @@ namespace EasyBike.Droid
 
     //http://www.sitepoint.com/material-design-android-design-support-library/
     [Activity(Label = "EasyBike.Droid", MainLauncher = true)]
-	public partial class MainActivity : IOnMapReadyCallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
+	public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private Binding _lastLoadedBinding;
 
@@ -57,6 +62,8 @@ namespace EasyBike.Droid
         private StationRenderer _clusterRender;
         DrawerLayout drawerLayout;
         NavigationView navigationView;
+		private ActionMode _actionMode;
+		private ShareActionProvider _shareActionProvider;
 
 		private ISharedPreferences preferences;
         private ISettingsService _settingsService;
@@ -69,23 +76,7 @@ namespace EasyBike.Droid
                 return App.Locator.Main;
             }
         }
-        /// <Docs>The options menu in which you place your items.</Docs>
-		/// <returns>To be added.</returns>
-		/// <summary>
-		/// This is the menu for the Toolbar/Action Bar to use
-		/// </summary>
-		/// <param name="menu">Menu.</param>
-		public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.home, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            Toast.MakeText(this, "Top ActionBar pressed: " + item.TitleFormatted, ToastLength.Short).Show();
-            return base.OnOptionsItemSelected(item);
-        }
-
+        
         public class NavigationItemSelectedListener : Java.Lang.Object, NavigationView.IOnNavigationItemSelectedListener
         {
             MainActivity _context;
@@ -118,13 +109,11 @@ namespace EasyBike.Droid
 
 			preferences = PreferenceManager.GetDefaultSharedPreferences (this);
            
+            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+			SetSupportActionBar(toolbar);
+//			SupportActionBar.Title = "Test";
+			SupportActionBar.Hide();
 
-            //var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            //SetSupportActionBar(toolbar);
-
-            //Enable support action bar to display hamburger
-            //SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
-            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             FloatingActionButton bikesButton = FindViewById<FloatingActionButton>(Resource.Id.bikesButton);
             bikesButton.Click += BikesButton_Click;
             FloatingActionButton parkingButton = FindViewById<FloatingActionButton>(Resource.Id.parkingButton);
@@ -158,10 +147,10 @@ namespace EasyBike.Droid
 			Log.Debug ("MyActivity", "Begin OnPause");
 			CameraPosition camPosition = _map.CameraPosition;
 			preferences.Edit()
-				.PutFloat ("Latitude", (float) camPosition.Target.Latitude)
-				.PutFloat ("Longitude", (float) camPosition.Target.Longitude)
-				.PutFloat ("Zoom", camPosition.Zoom)
-				.Apply ();
+				.PutFloat("Latitude", (float)camPosition.Target.Latitude)
+				.PutFloat("Longitude", (float)camPosition.Target.Longitude)
+				.PutFloat("Zoom", camPosition.Zoom)
+				.Apply();
 		}
 
 		public override void OnBackPressed()
@@ -174,6 +163,61 @@ namespace EasyBike.Droid
 			{
 				base.OnBackPressed();
 			}
+		}
+
+		/// <Docs>The options menu in which you place your items.</Docs>
+		/// <returns>To be added.</returns>
+		/// <summary>
+		/// This is the menu for the Toolbar/Action Bar to use
+		/// </summary>
+		/// <param name="menu">Menu.</param>
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+			Log.Debug ("MyActivity", "Begin OnCreateOptionsMenu");
+			return base.OnCreateOptionsMenu(menu);
+		}
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			return base.OnOptionsItemSelected(item);
+		}
+
+		public bool OnCreateActionMode (ActionMode mode, IMenu menu)
+		{
+			Log.Debug ("MyActivity", "Begin OnCreateActionMode");
+			MenuInflater.Inflate(Resource.Menu.home, menu);
+
+			_shareActionProvider = (ShareActionProvider) MenuItemCompat.GetActionProvider(menu.FindItem(Resource.Id.menu_share));
+			_setShareIntent(_createShareIntent());
+
+			return true;
+		}
+		public bool OnPrepareActionMode (ActionMode mode, IMenu menu)
+		{
+			return false;
+		}
+		public bool OnActionItemClicked (ActionMode mode, IMenuItem item)
+		{
+			Log.Debug ("MyActivity", "Begin OnActionItemClicked");
+			return false;
+		}
+		public void OnDestroyActionMode (ActionMode mode)
+		{
+			_actionMode = null;
+		}
+		private void _setShareIntent(Intent shareIntent)
+		{
+			if (_shareActionProvider != null)
+			{
+				Log.Debug ("MyActivity", "_setShareIntent");
+				_shareActionProvider.SetShareIntent(shareIntent);
+			}
+		}
+		private Intent _createShareIntent()
+		{
+			Intent shareIntent = new Intent(Intent.ActionSend);
+			shareIntent.PutExtra(Intent.ExtraText, "ActionBarCompat is Awesome! Support Lib v7 #Xamarin");
+			shareIntent.SetType("text/plain");
+			return shareIntent;
 		}
 
         private void SwitchModeStationParking()
@@ -409,6 +453,11 @@ namespace EasyBike.Droid
 				// Create the marker
 				longClickMarker = _map.AddMarker(markerOptions);
 				longClickMarker.ShowInfoWindow();
+				if (_actionMode != null)
+				{
+					return;
+				}
+				_actionMode = StartSupportActionMode(this);
 			};
 
 
