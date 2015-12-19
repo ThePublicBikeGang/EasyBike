@@ -17,6 +17,8 @@
   <style name="MyTheme" parent="MyTheme.Base">
   </style>
   <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--  In order to have the action bar going on top of the app bar  -->
+    <item name="windowActionModeOverlay">true</item>
     <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
     <item name="windowNoTitle">true</item>
     <!--We will be using the toolbar so no need to show ActionBar-->

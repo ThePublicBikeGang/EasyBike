@@ -116,17 +116,18 @@ namespace EasyBike.Droid
             SetContentView(Resource.Layout.Main);
 
             preferences = PreferenceManager.GetDefaultSharedPreferences(this);
-           
+
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
-//			SupportActionBar.Title = "Test";
-            SupportActionBar.Hide();
+            //Enable support action bar to display hamburger
+            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             FloatingActionButton bikesButton = FindViewById<FloatingActionButton>(Resource.Id.bikesButton);
             bikesButton.Click += BikesButton_Click;
             FloatingActionButton parkingButton = FindViewById<FloatingActionButton>(Resource.Id.parkingButton);
             parkingButton.Click += ParkingButton_Click;
-            ;
+
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
@@ -189,6 +190,13 @@ namespace EasyBike.Droid
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
+            Log.Debug("MyActivity", "Begin OnOptionsItemSelected");
+            switch(item.ItemId)
+            {
+            case Android.Resource.Id.Home:
+                drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
+                return true;
+            }
             return base.OnOptionsItemSelected(item);
         }
 
@@ -432,10 +440,10 @@ namespace EasyBike.Droid
         {
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
-            var contractToTest = "Paris";
-            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
-            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+//            var contractToTest = "Paris";
+//            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+//            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+//            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
 
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
 
@@ -608,7 +616,6 @@ namespace EasyBike.Droid
         private void _map_MapClick(object sender, GoogleMap.MapClickEventArgs e)
         {
         }
-
     }
 }
 
