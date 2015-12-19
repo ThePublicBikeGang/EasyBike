@@ -60,6 +60,8 @@ namespace EasyBike.Droid
         public CancellationTokenSource cts = new CancellationTokenSource();
         private TimeSpan throttleTime = TimeSpan.FromMilliseconds(150);
         private StationRenderer _clusterRender;
+        private Marker longClickMarker;
+
         DrawerLayout drawerLayout;
         NavigationView navigationView;
 
@@ -223,6 +225,10 @@ namespace EasyBike.Droid
         public void OnDestroyActionMode(ActionMode mode)
         {
             _actionMode = null;
+            if (longClickMarker != null)
+            {
+                longClickMarker.HideInfoWindow();
+            }
         }
 
         private void _setShareIntent(Intent shareIntent)
@@ -236,8 +242,14 @@ namespace EasyBike.Droid
 
         private Intent _createShareIntent()
         {
+            Log.Debug("MyActivity", "Begin _createShareIntent");
             Intent shareIntent = new Intent(Intent.ActionSend);
-            shareIntent.PutExtra(Intent.ExtraText, "ActionBarCompat is Awesome! Support Lib v7 #Xamarin");
+            String text = "Unknown position";
+            if (currentMarkerPosition != null)
+            {
+                text = currentMarkerPosition.ToString();
+            }
+            shareIntent.PutExtra(Intent.ExtraText, text);
             shareIntent.SetType("text/plain");
             return shareIntent;
         }
@@ -345,7 +357,12 @@ namespace EasyBike.Droid
 
         public bool OnClusterItemClick(Java.Lang.Object marker)
         {
-            Toast.MakeText(this, "Marker clicked", ToastLength.Short).Show();
+            Log.Debug("MyActivity", "Begin OnClusterItemClick");
+            if (marker is ClusterItem)
+            {
+                currentMarkerPosition = ((ClusterItem)marker).Position;
+                _actionMode = StartSupportActionMode(this);
+            }
             return false;
         }
 
@@ -408,24 +425,23 @@ namespace EasyBike.Droid
         public readonly List<Station> Items = new List<Station>();
         public readonly List<ClusterItem> StationControls = new List<ClusterItem>();
         private const int MAX_CONTROLS = 38;
-        private double MAXDISTANCE = 100;
+        private double MAXDISTANCE = 100; // TODO useless?
         private IContractService _contractService;
 
         public async void OnMapReady(GoogleMap googleMap)
         {
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
-//            var contractToTest = "Paris";
-//            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-//            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
-//            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+            var contractToTest = "Paris";
+            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
 
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
 
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             _contractService.ContractRefreshed += OnContractRefreshed;
             _contractService.StationRefreshed += OnStationRefreshed;
-
 
             _map = googleMap;
             //Setup and customize your Google Map
@@ -447,7 +463,6 @@ namespace EasyBike.Droid
             _map.SetOnMarkerClickListener(_clusterManager);
 
             // Initialize the behavior when long clicking somewhere on the map
-            Marker longClickMarker = null;
             _map.MapLongClick += async (sender, e) => {
                 // On long click, display the address on a info window
                 if (longClickMarker != null)
@@ -461,8 +476,8 @@ namespace EasyBike.Droid
                 IList<Address> addresses = await new Geocoder(this).GetFromLocationAsync(e.Point.Latitude, e.Point.Longitude, 1);
                 if (addresses.Any())
                 {
-                    markerOptions.SetTitle(addresses [0].GetAddressLine(0));
-                    markerOptions.SetSnippet(addresses [0].Locality);
+                    markerOptions.SetTitle(addresses[0].GetAddressLine(0));
+                    markerOptions.SetSnippet(addresses[0].Locality);
                 } else
                 {
                     // TODO Use a string in the Strings.xml resource
@@ -480,7 +495,6 @@ namespace EasyBike.Droid
                 _actionMode = StartSupportActionMode(this);
             };
 
-
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             var mapObserver = Observable.FromEventPattern(_map, "CameraChange");
             TaskCompletionSource<bool> tcs;
@@ -488,8 +502,7 @@ namespace EasyBike.Droid
                 .Do((e) => {
                 cts.Cancel();
                 cts = new CancellationTokenSource();
-            })
-                .Throttle(throttleTime)
+            }).Throttle(throttleTime)
                 .Select(async x => {
                 var stations = _contractService.GetStations();
                 // some services can provide wrong values in lat or lon... just take care of it
