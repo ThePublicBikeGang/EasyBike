@@ -151,12 +151,15 @@ namespace EasyBike.Droid
         {
             base.OnPause();
             Log.Debug("MyActivity", "Begin OnPause");
-            CameraPosition camPosition = _map.CameraPosition;
-            preferences.Edit()
-				.PutFloat("Latitude", (float)camPosition.Target.Latitude)
-				.PutFloat("Longitude", (float)camPosition.Target.Longitude)
-				.PutFloat("Zoom", camPosition.Zoom)
-				.Apply();
+            if (_map != null)
+            {
+                CameraPosition camPosition = _map.CameraPosition;
+                preferences.Edit()
+                    .PutFloat("Latitude", (float)camPosition.Target.Latitude)
+                    .PutFloat("Longitude", (float)camPosition.Target.Longitude)
+                    .PutFloat("Zoom", camPosition.Zoom)
+                    .Apply();
+            }
         }
 
         public override void OnBackPressed()
