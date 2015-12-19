@@ -480,27 +480,29 @@ namespace EasyBike.Droid
                 }
                 currentMarkerPosition = e.Point;
                 // Convert latitude and longitude to an address (GeoCoder)
-                MarkerOptions markerOptions = new MarkerOptions().SetPosition(e.Point);
-                IList<Address> addresses = await new Geocoder(this).GetFromLocationAsync(e.Point.Latitude, e.Point.Longitude, 1);
-                if (addresses.Any())
-                {
-                    markerOptions.SetTitle(addresses[0].GetAddressLine(0));
-                    markerOptions.SetSnippet(addresses[0].Locality);
-                } else
-                {
-                    // TODO Use a string in the Strings.xml resource
-                    markerOptions.SetTitle("Unknown");
-                    markerOptions.SetSnippet("Could not find any addresses.");
-                }
+                MarkerOptions markerOptions = new MarkerOptions().SetPosition(currentMarkerPosition);
+                Task<IList<Address>> addressesTask = new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1);
 
                 // Create the marker
                 longClickMarker = _map.AddMarker(markerOptions);
-                longClickMarker.ShowInfoWindow();
-                if (_actionMode != null)
+                if (_actionMode == null)
                 {
-                    return;
+                    _actionMode = StartSupportActionMode(this);
                 }
-                _actionMode = StartSupportActionMode(this);
+
+                IList<Address> addresses = await addressesTask;
+                // When Geocoder finished
+                if (addresses.Any())
+                {
+                    longClickMarker.Title = addresses[0].GetAddressLine(0);
+                    longClickMarker.Snippet = addresses[0].Locality;
+                } else
+                {
+                    // TODO Use a string in the Strings.xml resource
+                    longClickMarker.Title = "Unknown";
+                    longClickMarker.Snippet = "Could not find any addresses.";
+                }
+                longClickMarker.ShowInfoWindow();
             };
 
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
