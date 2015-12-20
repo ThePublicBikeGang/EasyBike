@@ -219,6 +219,11 @@
     <AndroidResource Include="Resources\menu\actionbar.xml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_directions.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_directions.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_directions.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_directions.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_directions.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

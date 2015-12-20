@@ -227,12 +227,7 @@ namespace EasyBike.Droid
                 mode.Finish();
                 return true;
             case Resource.Id.menu_route:
-                String latitude = currentMarkerPosition.Latitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
-                String longitude = currentMarkerPosition.Longitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
-                // mode = b for bicycling
-                Android.Net.Uri uri = Android.Net.Uri.Parse("google.navigation:mode=b&q=" + latitude + "," + longitude);
-                Intent mapIntent = new Intent(Intent.ActionView, uri);
-                StartActivity(mapIntent);
+                StartActivity(_createRouteIntent(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude));
                 return true;
             default: 
                 return false;
@@ -269,6 +264,15 @@ namespace EasyBike.Droid
             shareIntent.PutExtra(Intent.ExtraText, text);
             shareIntent.SetType("text/plain");
             return shareIntent;
+        }
+
+        private Intent _createRouteIntent(double latitude, double longitude)
+        {
+            String strLatitude = latitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
+            String strLongitude = longitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
+            // mode = b for bicycling
+            Android.Net.Uri uri = Android.Net.Uri.Parse("google.navigation:mode=b&q=" + strLatitude + "," + strLongitude);
+            return new Intent(Intent.ActionView, uri);
         }
 
         private void SwitchModeStationParking()
