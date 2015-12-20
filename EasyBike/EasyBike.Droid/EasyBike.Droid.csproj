@@ -224,6 +224,16 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_directions.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_directions.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_directions.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_settings.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_settings.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_settings.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_settings.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_settings.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_info.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_info.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_info.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_info.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_info.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
