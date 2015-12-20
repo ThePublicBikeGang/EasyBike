@@ -441,10 +441,10 @@ namespace EasyBike.Droid
         {
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
-            var contractToTest = "Paris";
-            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
-            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+//            var contractToTest = "Paris";
+//            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+//            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+//            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
 
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
 
@@ -486,10 +486,7 @@ namespace EasyBike.Droid
 
                 // Create the marker
                 longClickMarker = _map.AddMarker(markerOptions);
-                if (_actionMode == null)
-                {
-                    _actionMode = StartSupportActionMode(this);
-                }
+                _actionMode = _actionMode ?? StartSupportActionMode(this);
 
                 IList<Address> addresses = await addressesTask;
                 // When Geocoder finished
