@@ -234,6 +234,11 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_info.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_info.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_info.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_star.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_star.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_star.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_star.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_star.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

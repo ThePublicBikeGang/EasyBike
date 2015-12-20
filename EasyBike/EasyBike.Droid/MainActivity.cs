@@ -227,7 +227,13 @@ namespace EasyBike.Droid
                 mode.Finish();
                 return true;
             case Resource.Id.menu_route:
-                StartActivity(_createRouteIntent(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude));
+                if(currentMarkerPosition != null)
+                {
+                    StartActivity(_createRouteIntent(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude));
+                }
+                return true;
+            case Resource.Id.menu_favorite:
+                Log.Debug("MyActivity", "Add to favorite"); 
                 return true;
             default: 
                 return false;
