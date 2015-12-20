@@ -235,7 +235,7 @@ namespace EasyBike.Droid
             _actionMode = null;
             if (longClickMarker != null)
             {
-                longClickMarker.HideInfoWindow();
+                longClickMarker.Remove();
             }
         }
 
@@ -339,6 +339,7 @@ namespace EasyBike.Droid
         //Cluster override methods
         public bool OnClusterClick(ICluster cluster)
         {
+            Log.Debug("MyActivity", "Begin OnClusterClick");
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             foreach (ClusterItem item in cluster.Items)
             {
@@ -440,10 +441,10 @@ namespace EasyBike.Droid
         {
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
-//            var contractToTest = "Paris";
-//            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-//            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
-//            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+            var contractToTest = "Paris";
+            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
 
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
 
@@ -456,7 +457,7 @@ namespace EasyBike.Droid
             _map.UiSettings.CompassEnabled = true;
             _map.MyLocationEnabled = true;
             _map.UiSettings.MyLocationButtonEnabled = true;
-            _map.UiSettings.MapToolbarEnabled = true;
+//            _map.UiSettings.MapToolbarEnabled = true;
 
             // Initialize the camera position
             SetViewPoint(GetStartingCameraPosition(), false);
@@ -503,6 +504,19 @@ namespace EasyBike.Droid
                     longClickMarker.Snippet = "Could not find any addresses.";
                 }
                 longClickMarker.ShowInfoWindow();
+            };
+
+            _map.MapClick += (sender, e) => {
+                if (longClickMarker != null)
+                {
+                    Log.Debug("MyActivity", "Remove long click marker");
+                    longClickMarker.Remove();
+                }
+                if (_actionMode != null)
+                {
+                    Log.Debug("MyActivity", "Finish action mode");
+                    _actionMode.Finish();
+                }
             };
 
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
@@ -612,11 +626,6 @@ namespace EasyBike.Droid
                 }
             }
             _clusterManager.Cluster();
-        }
-
-
-        private void _map_MapClick(object sender, GoogleMap.MapClickEventArgs e)
-        {
         }
     }
 }
