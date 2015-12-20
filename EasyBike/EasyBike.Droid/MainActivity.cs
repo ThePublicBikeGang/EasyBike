@@ -5,6 +5,7 @@ using EasyBike.ViewModels;
 using GalaSoft.MvvmLight.Helpers;
 using Android.Gms.Maps;
 using System;
+using System.Globalization;
 using Com.Google.Maps.Android.Clustering;
 using Android.Gms.Maps.Model;
 using EasyBike.Droid.Models;
@@ -224,6 +225,14 @@ namespace EasyBike.Droid
             {
             case Resource.Id.menu_share:
                 mode.Finish();
+                return true;
+            case Resource.Id.menu_route:
+                String latitude = currentMarkerPosition.Latitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
+                String longitude = currentMarkerPosition.Longitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
+                // mode = b for bicycling
+                Android.Net.Uri uri = Android.Net.Uri.Parse("google.navigation:mode=b&q=" + latitude + "," + longitude);
+                Intent mapIntent = new Intent(Intent.ActionView, uri);
+                StartActivity(mapIntent);
                 return true;
             default: 
                 return false;
