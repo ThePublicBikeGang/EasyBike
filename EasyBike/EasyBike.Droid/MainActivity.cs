@@ -203,7 +203,7 @@ namespace EasyBike.Droid
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
             Log.Debug("MyActivity", "Begin OnCreateActionMode");
-            MenuInflater.Inflate(Resource.Menu.home, menu);
+            MenuInflater.Inflate(Resource.Menu.actionbar, menu);
 
             _shareActionProvider = (ShareActionProvider)MenuItemCompat.GetActionProvider(menu.FindItem(Resource.Id.menu_share));
             _shareIntent = _createShareIntent();
