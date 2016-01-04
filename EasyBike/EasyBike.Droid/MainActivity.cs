@@ -38,6 +38,7 @@ using MenuItemCompat = Android.Support.V4.View.MenuItemCompat;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using ShareActionProvider = Android.Support.V7.Widget.ShareActionProvider;
 using ActionMode = Android.Support.V7.View.ActionMode;
+using System.Reactive.Subjects;
 
 namespace EasyBike.Droid
 {
@@ -289,8 +290,39 @@ namespace EasyBike.Droid
             return new Intent(Intent.ActionView, uri);
         }
 
+        private void IncreaseButtonVisibility(FloatingActionButton button)
+        {
+            button.Background.SetAlpha(255);
+        }
+        private void DecreaseButtonVisibility(FloatingActionButton button)
+        {
+            button.Background.SetAlpha(100);
+        }
+        /// <summary>
+        /// set the visual state of the bike/parking mode buttons 
+        /// </summary>
+        private void SwitchModeStationParkingVisualState()
+        {
+            if (_settingsService.Settings.IsBikeMode)
+            {
+                IncreaseButtonVisibility(_bikesButton);
+                DecreaseButtonVisibility(_parkingButton);
+            }
+            else
+            {
+                IncreaseButtonVisibility(_parkingButton);
+                DecreaseButtonVisibility(_bikesButton);
+            }
+            _parkingButton.Elevation = 0;
+            _bikesButton.Elevation = 0;
+        }
+
+        /// <summary>
+        /// Switch between Parking view and Bike view
+        /// </summary>
         private void SwitchModeStationParking()
         {
+            
             _settingsService.Settings.IsBikeMode = !_settingsService.Settings.IsBikeMode;
 
             foreach (var clusterItem in StationControls.ToList())
@@ -302,15 +334,8 @@ namespace EasyBike.Droid
                     RefreshStation(station, control);
                 }
             }
-            if (_settingsService.Settings.IsBikeMode)
-            {
-                _parkingButton.Background.SetAlpha(100);
-            }
-            else
-            {
-                _bikesButton.Background.SetAlpha(100);
-            }
 
+            SwitchModeStationParkingVisualState();
         }
 
         private void ParkingButton_Click(object sender, EventArgs e)
@@ -472,8 +497,11 @@ namespace EasyBike.Droid
         private double MAXDISTANCE = 100; // TODO useless?
         private IContractService _contractService;
 
+        private Subject<AddressesFromLocationDTO> AddressesFromLocationStream = new Subject<AddressesFromLocationDTO>();
+      
         public async void OnMapReady(GoogleMap googleMap)
         {
+            
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
             //            var contractToTest = "Paris";
@@ -482,10 +510,12 @@ namespace EasyBike.Droid
             //            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
 
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
-
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             _contractService.ContractRefreshed += OnContractRefreshed;
             _contractService.StationRefreshed += OnStationRefreshed;
+
+            // set the initial visual state of the bike/parking buttons
+            SwitchModeStationParkingVisualState();
 
             _map = googleMap;
             //Setup and customize your Google Map
@@ -506,6 +536,20 @@ namespace EasyBike.Droid
             _map.SetOnCameraChangeListener(_clusterManager);
             _map.SetOnMarkerClickListener(_clusterManager);
 
+            AddressesFromLocationStream.Subscribe(obj =>
+            {
+                if (obj.Addresses.Any())
+                {
+                    longClickMarker.Title = obj.Addresses[0].GetAddressLine(0);
+                    longClickMarker.Snippet = $"{obj.Addresses[0].Locality} {obj.Location}";
+                }
+                else
+                {
+                    // TODO Use a string in the Strings.xml resource
+                    longClickMarker.Snippet = "Could not find any addresses.";
+                }
+                longClickMarker.ShowInfoWindow();
+            });
             // Initialize the behavior when long clicking somewhere on the map
             _map.MapLongClick += async (sender, e) =>
             {
@@ -515,29 +559,34 @@ namespace EasyBike.Droid
                     // Remove a previously created marker
                     longClickMarker.Remove();
                 }
+                
+                IList<Address> addresses = new List<Address>();
                 currentMarkerPosition = e.Point;
-                // Convert latitude and longitude to an address (GeoCoder)
-                MarkerOptions markerOptions = new MarkerOptions().SetPosition(currentMarkerPosition);
-                Task<IList<Address>> addressesTask = new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1);
-
-                // Create the marker
-                longClickMarker = _map.AddMarker(markerOptions);
-                _actionMode = _actionMode ?? StartSupportActionMode(this);
-
-                IList<Address> addresses = await addressesTask;
-                // When Geocoder finished
-                if (addresses.Any())
+                var latLongString = $"(latitude: { Math.Round(currentMarkerPosition.Latitude)}, longitude: { Math.Round(currentMarkerPosition.Longitude, 4)})";
+                try
                 {
-                    longClickMarker.Title = addresses[0].GetAddressLine(0);
-                    longClickMarker.Snippet = addresses[0].Locality;
+                    // Convert latitude and longitude to an address (GeoCoder)
+                    MarkerOptions markerOptions = new MarkerOptions().SetPosition(currentMarkerPosition);
+                    
+                    // Create and show the marker
+                    longClickMarker = _map.AddMarker(markerOptions);
+                    longClickMarker.Title = $"{latLongString}";
+                    longClickMarker.Snippet = "Resolving addresses...";
+                    longClickMarker.ShowInfoWindow();
+
+                    _actionMode = _actionMode ?? StartSupportActionMode(this);
+                    // Resolve the addresses (can throw an exception)
+                    var task = new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1);
+                    AddressesFromLocationStream.OnNext(new AddressesFromLocationDTO { AddressesTask = task, Location = currentMarkerPosition });
                 }
-                else
+                catch (Exception)
                 {
-                    // TODO Use a string in the Strings.xml resource
-                    longClickMarker.Title = "Unknown";
-                    longClickMarker.Snippet = "Could not find any addresses.";
+                    // Ignore
                 }
-                longClickMarker.ShowInfoWindow();
+                finally
+                {
+                    AddressesFromLocationStream.OnNext(new AddressesFromLocationDTO { Addresses = addresses, Location = currentMarkerPosition });
+                }
             };
 
             _map.MapClick += (sender, e) =>
@@ -672,7 +721,12 @@ namespace EasyBike.Droid
     }
 }
 
-
+public class AddressesFromLocationDTO
+{
+    public Task<IList<Address>> AddressesTask { get; set; }
+    public IList<Address> Addresses { get; set; }
+    public LatLng Location { get; set; }
+}
 //private void addColorsToMarkers()
 //{
 //    // Iterate over all the features stored in the layer

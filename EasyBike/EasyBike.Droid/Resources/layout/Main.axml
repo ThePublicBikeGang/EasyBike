@@ -16,30 +16,22 @@
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
-        <ToggleButton
-            android:id="@+id/bikeParkingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bikeIcon"
-            android:layout_marginBottom="60dp"
-            android:layout_marginRight="20dp"
-            android:layout_gravity="bottom|right" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/bikesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/bikeIcon"
             android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="60dp"
             android:layout_gravity="bottom|right"
             app:fabSize="mini" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/parkingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_done"
+            android:src="@drawable/parkingIcon"
             android:layout_marginBottom="20dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginRight="20dp"
             android:layout_gravity="bottom|right"
             app:fabSize="mini" />
     </android.support.design.widget.CoordinatorLayout>
