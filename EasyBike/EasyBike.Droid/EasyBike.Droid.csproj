@@ -163,6 +163,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Helpers\ActivityBaseEx.cs" />
     <Compile Include="Helpers\CountryListAdapter.cs" />
+    <Compile Include="Helpers\ExtendedNavigationService.cs" />
     <Compile Include="Helpers\StationRenderer.cs" />
     <Compile Include="Helpers\MapHelper.cs" />
     <Compile Include="MainActivity.cs" />

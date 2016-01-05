@@ -4,6 +4,7 @@ using EasyBike.Droid.Views;
 using GalaSoft.MvvmLight.Ioc;
 using EasyBike.Services;
 using EasyBike.Droid.Services;
+using EasyBike.Droid.Helpers;
 
 namespace EasyBike.Droid
 {
@@ -18,7 +19,7 @@ namespace EasyBike.Droid
                 if (_locator == null)
                 {
                     // First time initialization
-                    var nav = new NavigationService();
+                    var nav = new ExtendedNavigationService();
                     nav.Configure(ViewModelLocator.ContractsPageKey, typeof(ContractsActivity));
                     nav.Configure(ViewModelLocator.AboutPageKey, typeof(AboutActivity));
 
