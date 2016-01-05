@@ -1,10 +1,9 @@
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
-using Android.Support.V7.App;
 
 namespace EasyBike.Droid.Helpers
 {
-    public class ActivityBaseEx : AppCompatActivity // ActivityBase
+    public class ActivityBaseEx : ActivityBase //AppCompatActivity 
     {
         public IDialogService Dialog
         {

@@ -39,6 +39,7 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 using ShareActionProvider = Android.Support.V7.Widget.ShareActionProvider;
 using ActionMode = Android.Support.V7.View.ActionMode;
 using System.Reactive.Subjects;
+using Android.Support.V7.App;
 
 namespace EasyBike.Droid
 {
@@ -90,6 +91,19 @@ namespace EasyBike.Droid
             }
         }
 
+        public class ToolbarNavigationItemSelectedListener : Java.Lang.Object, View.IOnClickListener
+        {
+            DrawerLayout _drawerLayout;
+            public ToolbarNavigationItemSelectedListener(DrawerLayout drawerLayout)
+            {
+                _drawerLayout = drawerLayout;
+            }
+            public void OnClick(View v)
+            {
+                _drawerLayout.OpenDrawer(v);
+            }
+        }
+
         public class NavigationItemSelectedListener : Java.Lang.Object, NavigationView.IOnNavigationItemSelectedListener
         {
             MainActivity _context;
@@ -117,26 +131,41 @@ namespace EasyBike.Droid
             }
         }
 
+        private AppCompatDelegate _appCompatDelegate;
         protected override void OnCreate(Bundle bundle)
         {
             Log.Debug("MyActivity", "Begin OnCreate");
             base.OnCreate(bundle);
-            SetContentView(Resource.Layout.Main);
+            //SetContentView(Resource.Layout.Main);
 
             preferences = PreferenceManager.GetDefaultSharedPreferences(this);
 
-            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-            //Enable support action bar to display hamburger
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
+            //let's create the delegate, passing the activity at both arguments (Activity, AppCompatCallback)
+            _appCompatDelegate = AppCompatDelegate.Create(this, this);
+            //we need to call the onCreate() of the AppCompatDelegate
+            _appCompatDelegate.OnCreate(bundle);
+            //we use the delegate to inflate the layout
+            _appCompatDelegate.SetContentView(Resource.Layout.Main);
+
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            _appCompatDelegate.SetSupportActionBar(toolbar);
+
+        
             _bikesButton = FindViewById<FloatingActionButton>(Resource.Id.bikesButton);
             _bikesButton.Click += BikesButton_Click;
             _parkingButton = FindViewById<FloatingActionButton>(Resource.Id.parkingButton);
             _parkingButton.Click += ParkingButton_Click;
 
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            
+            //Enable support action bar to display hamburger
+            //SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            toolbar.SetNavigationIcon(Resource.Drawable.ic_menu);
+            toolbar.SetNavigationOnClickListener(new ToolbarNavigationItemSelectedListener(drawerLayout));
+
+            //appCompatDelegate.SetDisplayHomeAsUpEnabled(true);
+
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
             navigationView.NavigationItemSelected += (sender, e) =>
@@ -427,7 +456,7 @@ namespace EasyBike.Droid
             if (marker is ClusterItem)
             {
                 currentMarkerPosition = ((ClusterItem)marker).Position;
-                _actionMode = StartSupportActionMode(this);
+                _actionMode = _appCompatDelegate.StartSupportActionMode(this);
             }
             return false;
         }
@@ -559,7 +588,7 @@ namespace EasyBike.Droid
                         longClickMarker.Snippet = latLongString;
                         longClickMarker.ShowInfoWindow();
 
-                        _actionMode = _actionMode ?? StartSupportActionMode(this);
+                        _actionMode = _actionMode ?? _appCompatDelegate.StartSupportActionMode(this);
 
                     });
 
