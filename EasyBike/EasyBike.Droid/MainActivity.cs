@@ -270,8 +270,8 @@ namespace EasyBike.Droid
         private Intent _createShareIntent()
         {
             Log.Debug("MyActivity", "Begin _createShareIntent");
-            Intent shareIntent = new Intent(Intent.ActionSend);
-            String text = "Unknown position";
+            var shareIntent = new Intent(Intent.ActionSend);
+            var text = "Unknown position";
             if (currentMarkerPosition != null)
             {
                 text = currentMarkerPosition.ToString();
@@ -283,8 +283,8 @@ namespace EasyBike.Droid
 
         private Intent _createRouteIntent(double latitude, double longitude)
         {
-            String strLatitude = latitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
-            String strLongitude = longitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
+            var strLatitude = latitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
+            var strLongitude = longitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
             // mode = b for bicycling
             Android.Net.Uri uri = Android.Net.Uri.Parse("google.navigation:mode=b&q=" + strLatitude + "," + strLongitude);
             return new Intent(Intent.ActionView, uri);
@@ -313,8 +313,8 @@ namespace EasyBike.Droid
                 IncreaseButtonVisibility(_parkingButton);
                 DecreaseButtonVisibility(_bikesButton);
             }
-            _parkingButton.Elevation = 0;
-            _bikesButton.Elevation = 0;
+            //_parkingButton.Elevation = 0;
+            //_bikesButton.Elevation = 0;
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace EasyBike.Droid
         /// </summary>
         private void SwitchModeStationParking()
         {
-            
+
             _settingsService.Settings.IsBikeMode = !_settingsService.Settings.IsBikeMode;
 
             foreach (var clusterItem in StationControls.ToList())
@@ -498,10 +498,10 @@ namespace EasyBike.Droid
         private IContractService _contractService;
 
         private Subject<AddressesFromLocationDTO> AddressesFromLocationStream = new Subject<AddressesFromLocationDTO>();
-      
+
         public async void OnMapReady(GoogleMap googleMap)
         {
-            
+
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
             //            var contractToTest = "Paris";
@@ -536,58 +536,91 @@ namespace EasyBike.Droid
             _map.SetOnCameraChangeListener(_clusterManager);
             _map.SetOnMarkerClickListener(_clusterManager);
 
-            AddressesFromLocationStream.Subscribe(obj =>
-            {
-                if (obj.Addresses.Any())
+            // On long click, display the address on a info window
+            Observable.FromEventPattern<GoogleMap.MapLongClickEventArgs>(_map, "MapLongClick")
+                .Select(e => Observable.FromAsync(token => Task.Run(async () =>
                 {
-                    longClickMarker.Title = obj.Addresses[0].GetAddressLine(0);
-                    longClickMarker.Snippet = $"{obj.Addresses[0].Locality} {obj.Location}";
-                }
-                else
-                {
-                    // TODO Use a string in the Strings.xml resource
-                    longClickMarker.Snippet = "Could not find any addresses.";
-                }
-                longClickMarker.ShowInfoWindow();
-            });
-            // Initialize the behavior when long clicking somewhere on the map
-            _map.MapLongClick += async (sender, e) =>
-            {
-                // On long click, display the address on a info window
-                if (longClickMarker != null)
-                {
-                    // Remove a previously created marker
-                    longClickMarker.Remove();
-                }
-                
-                IList<Address> addresses = new List<Address>();
-                currentMarkerPosition = e.Point;
-                var latLongString = $"(latitude: { Math.Round(currentMarkerPosition.Latitude)}, longitude: { Math.Round(currentMarkerPosition.Longitude, 4)})";
-                try
-                {
-                    // Convert latitude and longitude to an address (GeoCoder)
-                    MarkerOptions markerOptions = new MarkerOptions().SetPosition(currentMarkerPosition);
-                    
-                    // Create and show the marker
-                    longClickMarker = _map.AddMarker(markerOptions);
-                    longClickMarker.Title = $"{latLongString}";
-                    longClickMarker.Snippet = "Resolving addresses...";
-                    longClickMarker.ShowInfoWindow();
+                    currentMarkerPosition = e.EventArgs.Point;
+                    var latLongString = $"(lat: { Math.Round(currentMarkerPosition.Latitude, 4)}, lon: { Math.Round(currentMarkerPosition.Longitude, 4)})";
 
-                    _actionMode = _actionMode ?? StartSupportActionMode(this);
-                    // Resolve the addresses (can throw an exception)
-                    var task = new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1);
-                    AddressesFromLocationStream.OnNext(new AddressesFromLocationDTO { AddressesTask = task, Location = currentMarkerPosition });
-                }
-                catch (Exception)
+                    RunOnUiThread(() =>
+                    {
+                        if (longClickMarker != null)
+                        {
+                            // Remove a previously created marker
+                            longClickMarker.Remove();
+                        }
+
+                        var markerOptions = new MarkerOptions().SetPosition(currentMarkerPosition);
+                        // Create and show the marker
+                        longClickMarker = _map.AddMarker(markerOptions);
+                        // TODO Use a string in the Strings.xml resource
+                        longClickMarker.Title = "Resolving address...";
+                        longClickMarker.Snippet = latLongString;
+                        longClickMarker.ShowInfoWindow();
+
+                        _actionMode = _actionMode ?? StartSupportActionMode(this);
+
+                    });
+
+                    IList<Address> addresses = new List<Address>();
+                    try
+                    {
+                        // Convert latitude and longitude to an address (GeoCoder)
+                        addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
+                    }
+                    catch (Exception) { }
+                    return new AddressesFromLocationDTO { Addresses = addresses, Location = latLongString };
+
+                }, token)))
+                .Switch()
+            .Subscribe(x =>
+            {
+                RunOnUiThread(() =>
                 {
-                    // Ignore
-                }
-                finally
-                {
-                    AddressesFromLocationStream.OnNext(new AddressesFromLocationDTO { Addresses = addresses, Location = currentMarkerPosition });
-                }
-            };
+                    if (x.Addresses.Any())
+                    {
+                        longClickMarker.Title = x.Addresses[0].GetAddressLine(0);
+                        longClickMarker.Snippet = $"{x.Addresses[0].Locality} {x.Location}";
+                    }
+                    else
+                    {
+                        // TODO Use a string in the Strings.xml resource
+                        longClickMarker.Title = "Could not find any address.";
+                    }
+                    longClickMarker.ShowInfoWindow();
+                });
+            });
+
+            // Initialize the behavior when long clicking somewhere on the map
+            //_map.MapLongClick += async (sender, e) =>
+            //{
+            //    // On long click, display the address on a info window
+            //    if (longClickMarker != null)
+            //    {
+            //        // Remove a previously created marker
+            //        longClickMarker.Remove();
+            //    }
+
+            //    IList<Address> addresses = new List<Address>();
+            //    currentMarkerPosition = e.Point;
+            //    var latLongString = $"(latitude: { Math.Round(currentMarkerPosition.Latitude)}, longitude: { Math.Round(currentMarkerPosition.Longitude, 4)})";
+            //    try
+            //    {
+
+            //        // Resolve the addresses (can throw an exception)
+            //        var task = new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1);
+            //        AddressesFromLocationStream.OnNext(new AddressesFromLocationDTO { AddressesTask = task, Location = currentMarkerPosition });
+            //    }
+            //    catch (Exception)
+            //    {
+            //        // Ignore
+            //    }
+            //    finally
+            //    {
+            //        AddressesFromLocationStream.OnNext(new AddressesFromLocationDTO { Addresses = addresses, Location = currentMarkerPosition });
+            //    }
+            //};
 
             _map.MapClick += (sender, e) =>
             {
@@ -673,9 +706,6 @@ namespace EasyBike.Droid
                 });
         }
 
-
-
-
         private async void RefreshView(AddRemoveCollection addRemoveCollection, CancellationToken token)
         {
             if (token.IsCancellationRequested)
@@ -723,9 +753,8 @@ namespace EasyBike.Droid
 
 public class AddressesFromLocationDTO
 {
-    public Task<IList<Address>> AddressesTask { get; set; }
     public IList<Address> Addresses { get; set; }
-    public LatLng Location { get; set; }
+    public string Location { get; set; }
 }
 //private void addColorsToMarkers()
 //{

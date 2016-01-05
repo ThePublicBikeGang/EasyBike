@@ -24,6 +24,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginRight="60dp"
             android:layout_gravity="bottom|right"
+            app:elevation="0dp"
             app:fabSize="mini" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/parkingButton"
@@ -33,6 +34,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="bottom|right"
+            app:elevation="0dp"
             app:fabSize="mini" />
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView

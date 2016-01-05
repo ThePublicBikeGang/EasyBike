@@ -380,7 +380,8 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\SQLitePCL.raw_basic.0.8.4\build\MonoAndroid\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\packages\SQLitePCL.raw_basic.0.8.4\build\MonoAndroid\SQLitePCL.raw_basic.targets')" />
   <Import Project="..\..\packages\SQLitePCL.raw.0.8.4\build\MonoAndroid\SQLitePCL.raw.targets" Condition="Exists('..\..\packages\SQLitePCL.raw.0.8.4\build\MonoAndroid\SQLitePCL.raw.targets')" />
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\values-fr\" />
+    <AndroidResource Include="Resources\drawable\parkingIcon.png" />
   </ItemGroup>
 </Project>
