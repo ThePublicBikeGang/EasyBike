@@ -8,11 +8,10 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <fragment
-            class="com.google.android.gms.maps.MapFragment"
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+      <FrameLayout android:id="@+id/map"
+           android:layout_width="match_parent" 
+           android:layout_height="match_parent"
+           android:name="com.google.android.gms.maps.MapFragment"/>
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />

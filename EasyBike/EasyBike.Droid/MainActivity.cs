@@ -56,6 +56,7 @@ namespace EasyBike.Droid
     {
         private Binding _lastLoadedBinding;
 
+        private FragmentTransaction _fragTx;
         private MapFragment _mapFragment;
         private GoogleMap _map;
         private ClusterManager _clusterManager;
@@ -124,7 +125,6 @@ namespace EasyBike.Droid
             SetContentView(Resource.Layout.Main);
 
             preferences = PreferenceManager.GetDefaultSharedPreferences(this);
-
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
             //Enable support action bar to display hamburger
@@ -370,10 +370,10 @@ namespace EasyBike.Droid
                     .InvokeCompassEnabled(true)
                     .InvokeCamera(GetStartingCameraPosition());
 
-                FragmentTransaction fragTx = FragmentManager.BeginTransaction();
+                _fragTx = FragmentManager.BeginTransaction();
                 _mapFragment = MapFragment.NewInstance(mapOptions);
-                fragTx.Add(Resource.Id.map, _mapFragment, "map");
-                fragTx.Commit();
+                _fragTx.Add(Resource.Id.map, _mapFragment, "map");
+                _fragTx.Commit();
                 _mapFragment.GetMapAsync(this);
             }
         }
