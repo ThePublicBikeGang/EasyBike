@@ -24,7 +24,7 @@ namespace EasyBike.Droid
                     nav.Configure(ViewModelLocator.AboutPageKey, typeof(AboutActivity));
 
                     SimpleIoc.Default.Register<INavigationService>(() => nav);
-                    SimpleIoc.Default.Register<IDialogService, DialogService>();
+                    SimpleIoc.Default.Register<IDialogService, ExtendedDialogService>();
                     SimpleIoc.Default.Register<ILocalisationService, LocalisationService>();
 
                     _locator = new ViewModelLocator();

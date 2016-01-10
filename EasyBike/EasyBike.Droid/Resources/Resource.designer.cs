@@ -1928,14 +1928,14 @@ namespace EasyBike.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f0c0084
+			public const int ContractCheckBox = 2131492996;
+			
 			// aapt resource value: 0x7f0c0083
-			public const int ContractCheckBox = 2131492995;
+			public const int ContractTemplateRoot = 2131492995;
 			
-			// aapt resource value: 0x7f0c0082
-			public const int ContractTemplateRoot = 2131492994;
-			
-			// aapt resource value: 0x7f0c0080
-			public const int ContractsList = 2131492992;
+			// aapt resource value: 0x7f0c0081
+			public const int ContractsList = 2131492993;
 			
 			// aapt resource value: 0x7f0c007e
 			public const int CountryImage = 2131492990;
@@ -1943,17 +1943,17 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c007f
 			public const int CountryName = 2131492991;
 			
-			// aapt resource value: 0x7f0c0084
-			public const int NameTextView = 2131492996;
+			// aapt resource value: 0x7f0c0085
+			public const int NameTextView = 2131492997;
+			
+			// aapt resource value: 0x7f0c0087
+			public const int ProgressBar = 2131492999;
+			
+			// aapt resource value: 0x7f0c0082
+			public const int Separator = 2131492994;
 			
 			// aapt resource value: 0x7f0c0086
-			public const int ProgressBar = 2131492998;
-			
-			// aapt resource value: 0x7f0c0081
-			public const int Separator = 2131492993;
-			
-			// aapt resource value: 0x7f0c0085
-			public const int ServiceProvider = 2131492997;
+			public const int ServiceProvider = 2131492998;
 			
 			// aapt resource value: 0x7f0c006b
 			public const int aboutMainLayout = 2131492971;
@@ -2078,8 +2078,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0014
 			public const int disableHome = 2131492884;
 			
-			// aapt resource value: 0x7f0c008a
-			public const int drawer_layout = 2131493002;
+			// aapt resource value: 0x7f0c008b
+			public const int drawer_layout = 2131493003;
 			
 			// aapt resource value: 0x7f0c005d
 			public const int edit_query = 2131492957;
@@ -2153,8 +2153,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0045
 			public const int list_item = 2131492933;
 			
-			// aapt resource value: 0x7f0c008b
-			public const int map = 2131493003;
+			// aapt resource value: 0x7f0c008c
+			public const int map = 2131493004;
 			
 			// aapt resource value: 0x7f0c0093
 			public const int media_actions = 2131493011;
@@ -2282,11 +2282,11 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0018
 			public const int showTitle = 2131492888;
 			
-			// aapt resource value: 0x7f0c0088
-			public const int snackbar_action = 2131493000;
+			// aapt resource value: 0x7f0c0089
+			public const int snackbar_action = 2131493001;
 			
-			// aapt resource value: 0x7f0c0087
-			public const int snackbar_text = 2131492999;
+			// aapt resource value: 0x7f0c0088
+			public const int snackbar_text = 2131493000;
 			
 			// aapt resource value: 0x7f0c0007
 			public const int split_action_bar = 2131492871;
@@ -2384,8 +2384,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c004a
 			public const int title_template = 2131492938;
 			
-			// aapt resource value: 0x7f0c008c
-			public const int toolbar = 2131493004;
+			// aapt resource value: 0x7f0c0080
+			public const int toolbar = 2131492992;
 			
 			// aapt resource value: 0x7f0c0036
 			public const int top = 2131492918;
@@ -2405,8 +2405,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c009c
 			public const int webview = 2131493020;
 			
-			// aapt resource value: 0x7f0c0089
-			public const int window = 2131493001;
+			// aapt resource value: 0x7f0c008a
+			public const int window = 2131493002;
 			
 			// aapt resource value: 0x7f0c0026
 			public const int withText = 2131492902;
@@ -2646,7 +2646,10 @@ namespace EasyBike.Droid
 			public const int actionbar = 2131558400;
 			
 			// aapt resource value: 0x7f0d0001
-			public const int navigation = 2131558401;
+			public const int contractPageMenu = 2131558401;
+			
+			// aapt resource value: 0x7f0d0002
+			public const int navigation = 2131558402;
 			
 			static Menu()
 			{

@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using Android.Widget;
 using EasyBike.Droid.Helpers;
 using Android.Views;
-using Android.Graphics;
-using GalaSoft.MvvmLight.Helpers;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using System;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace EasyBike.Droid.Views
 {
     [Activity(Label = "ContractsActivity")]
-    public partial class ContractsActivity 
+    public partial class ContractsActivity
     {
-     
         private List<Country> countries;
 
         protected override async void OnCreate(Bundle bundle)
@@ -21,8 +21,12 @@ namespace EasyBike.Droid.Views
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Contracts);
 
-//            var test = FindViewById<ExpandableListView>(Resource.Id.ContractsList);
-        
+            // toolbar setup
+            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            toolbar.SetOnMenuItemClickListener(new MenuItemClickListener(this));
+            //toolbar.InflateMenu(Resource.Menu.contractPageMenu);
+            //toolbar.ShowOverflowMenu();
             //await Task.Delay(30);
             //var t = Task.Run(async () =>
             //{
@@ -34,9 +38,14 @@ namespace EasyBike.Droid.Views
             ContractsList.SetAdapter(new CountryListAdapter(this, countries));
             ContractsList.ChildClick += ContractsList_ChildClick;
 
-           // ContractsList.Adapter =  countries.GetAdapter(GetContractAdapter);
+            // ContractsList.Adapter =  countries.GetAdapter(GetContractAdapter);
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.contractPageMenu, menu);
+            return true;
+        }
 
         private async void ContractsList_ChildClick(object sender, ExpandableListView.ChildClickEventArgs e)
         {
@@ -66,18 +75,22 @@ namespace EasyBike.Droid.Views
         }
 
 
-        //private View GetContractAdapter(int position, Contract contract, View convertView, View view2)
-        //{
-        //    // Not reusing views here
-        //    convertView = LayoutInflater.Inflate(Resource.Layout.FlowerTemplate, null);
+    }
 
-        //    var title = convertView.FindViewById<TextView>(Resource.Id.NameTextView);
-        //    title.Text = contract.Name;
 
-        //    //var image = convertView.FindViewById<ImageView>(Resource.Id.FlowerImageView);
-        //    // ImageDownloader.AssignImageAsync(image, flower.Model.Image, this);
+    public class MenuItemClickListener : Java.Lang.Object, Toolbar.IOnMenuItemClickListener
+    {
+        ContractsActivity _context;
 
-        //    return convertView;
-        //}
+        public MenuItemClickListener(ContractsActivity context)
+        {
+            _context = context;
+        }
+
+        public bool OnMenuItemClick(IMenuItem item)
+        {
+            _context.ViewModel.ClearAllDownloadedContractsCommand.Execute(null);
+            return true;
+        }
     }
 }

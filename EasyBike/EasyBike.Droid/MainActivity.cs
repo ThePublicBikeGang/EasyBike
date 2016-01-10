@@ -83,7 +83,7 @@ namespace EasyBike.Droid
         private ISettingsService _settingsService;
 
 
-        public MainViewModel Vm
+        public MainViewModel MainViewModel
         {
             get
             {
@@ -107,10 +107,10 @@ namespace EasyBike.Droid
                 {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case Resource.Id.nav_cities:
-                        _context.Vm.GoToDownloadCitiesCommand.Execute(null);
+                        _context.MainViewModel.GoToDownloadCitiesCommand.Execute(null);
                         return true;
                     case Resource.Id.nav_about:
-                        _context.Vm.AboutCommand.Execute(null);
+                        _context.MainViewModel.AboutCommand.Execute(null);
                         return true;
 
                 }
@@ -148,16 +148,12 @@ namespace EasyBike.Droid
 
             navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
 
-            //RefreshButton.SetCommand("Click", Vm.GoToDownloadCitiesCommand);
 
-
-            var test = Vm.AboutCommand;
-
-            //button.Click += delegate
-            //{
-            //    button.Text = string.Format("{0} clicks!", count++);
-            //};
+            // check if the app contains a least one city, otherwise, tells the user to download one
+            MainViewModel.MainPageLoadedCommand.Execute(null);
         }
+
+        
 
         protected override void OnPause()
         {
@@ -362,6 +358,7 @@ namespace EasyBike.Droid
             if (_map == null && !_gettingMap)
             {
                 // TODO À quoi sert cette variable ? On peut supprimer je pense.
+                // a priori SetupMapIfNeeded peut-être appelé pluiseurs fois d'affilé, c'est pour prévenir ça
                 _gettingMap = true;
                 GoogleMapOptions mapOptions = new GoogleMapOptions()
                     .InvokeMapType(GoogleMap.MapTypeNormal)

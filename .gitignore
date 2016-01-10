@@ -216,3 +216,4 @@ EasyBike/EasyBike/Config/MyConfig.json
 # MacOS specific
 .DS_Store
 EasyBike/EasyBike.Droid/Resources/Resource.designer.cs
+EasyBike/EasyBike.Droid/Resources/Resource.designer.cs
