@@ -148,9 +148,8 @@ namespace EasyBike.Droid
 
             navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
 
-
-            // check if the app contains a least one city, otherwise, tells the user to download one
-            MainViewModel.MainPageLoadedCommand.Execute(null);
+            // trigger the creation of the injected dependencies
+            var unused = MainViewModel.AboutCommand;
         }
 
         
@@ -532,6 +531,9 @@ namespace EasyBike.Droid
             _clusterManager.SetOnClusterItemClickListener(this);
             _map.SetOnCameraChangeListener(_clusterManager);
             _map.SetOnMarkerClickListener(_clusterManager);
+
+            // check if the app contains a least one city, otherwise, tells the user to download one
+            MainViewModel.MainPageLoadedCommand.Execute(null);
 
             // On long click, display the address on a info window
             Observable.FromEventPattern<GoogleMap.MapLongClickEventArgs>(_map, "MapLongClick")

@@ -90,6 +90,15 @@ namespace EasyBike.Droid.Views
         public bool OnMenuItemClick(IMenuItem item)
         {
             _context.ViewModel.ClearAllDownloadedContractsCommand.Execute(null);
+            for (int i = 0; i < _context.ContractsList.ChildCount; i++)
+            {
+                var listItem = _context.ContractsList.GetChildAt(i);
+                var checkBox = listItem.FindViewById<CheckBox>(Resource.Id.ContractCheckBox);
+                if (checkBox != null)
+                {
+                    checkBox.Checked = false;
+                }
+            }
             return true;
         }
     }
