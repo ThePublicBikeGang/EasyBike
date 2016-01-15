@@ -51,7 +51,7 @@ namespace EasyBike.Droid
     // https://developers.google.com/maps/documentation/android-api/location#runtime-permission
 
     //http://www.sitepoint.com/material-design-android-design-support-library/
-    [Activity(Label = "EasyBike.Droid", MainLauncher = true)]
+    [Activity(Label = "EasyBike", MainLauncher = true)]
     public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private Binding _lastLoadedBinding;
