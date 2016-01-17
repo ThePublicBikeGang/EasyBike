@@ -13,6 +13,7 @@
     <string name="favorite">Favoris</string>
     <string name="mapMarkerResolving">Cherche l\'adresse...</string>
     <string name="mapMarkerImpossible">Impossible de trouver l\'adresse.</string>
+    <string name="favoriteDialogTitle">Ajouter aux favoris</string>
 
 	<!---
 		About Activity 

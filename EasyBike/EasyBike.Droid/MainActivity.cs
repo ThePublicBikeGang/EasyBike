@@ -51,7 +51,7 @@ namespace EasyBike.Droid
     // https://developers.google.com/maps/documentation/android-api/location#runtime-permission
 
     //http://www.sitepoint.com/material-design-android-design-support-library/
-    [Activity(Label = "EasyBike", MainLauncher = true)]
+    [Activity(MainLauncher = true)]
     public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private Binding _lastLoadedBinding;
@@ -227,20 +227,30 @@ namespace EasyBike.Droid
             Log.Debug("MyActivity", "Begin OnActionItemClicked");
             switch (item.ItemId)
             {
-                case Resource.Id.menu_share:
-                    mode.Finish();
+            case Resource.Id.menu_share:
+                mode.Finish();
+                return true;
+            case Resource.Id.menu_route:
+                if (currentMarkerPosition != null)
+                {
+                    StartActivity(_createRouteIntent(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude));
+                }
                     return true;
-                case Resource.Id.menu_route:
-                    if (currentMarkerPosition != null)
-                    {
-                        StartActivity(_createRouteIntent(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude));
-                    }
-                    return true;
-                case Resource.Id.menu_favorite:
-                    Log.Debug("MyActivity", "Add to favorite");
-                    return true;
-                default:
-                    return false;
+            case Resource.Id.menu_favorite:
+                AlertDialog dialog = null;
+                dialog = new AlertDialog.Builder(this)
+                    .SetTitle(Resources.GetString(Resource.String.favoriteDialogTitle))
+                    .SetView(this.LayoutInflater.Inflate(Resource.Layout.DialogAddFavorite, null))
+                    .SetPositiveButton(Android.Resource.String.Ok, (sender, EventArgs) => {
+                        var favoriteName = dialog.FindViewById<EditText>(Resource.Id.favoriteName);
+                        Log.Debug("MyActivity", "Add to favorite: " + favoriteName.Text.ToString());
+                    })
+                    .SetNegativeButton(Android.Resource.String.Cancel, (sender, EventArgs) => { })
+                    .Create();
+                dialog.Show();
+                return true;
+            default:
+                return false;
             }
         }
 

@@ -24,6 +24,7 @@
     <string name="favorite">Favorite</string>
     <string name="mapMarkerResolving">Resolving address...</string>
     <string name="mapMarkerImpossible">Could not find any address.</string>
+    <string name="favoriteDialogTitle">Add to favorites</string>
 
 	<!---
 		About Activity 
