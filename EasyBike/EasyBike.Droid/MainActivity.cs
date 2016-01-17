@@ -553,8 +553,7 @@ namespace EasyBike.Droid
                         var markerOptions = new MarkerOptions().SetPosition(currentMarkerPosition);
                         // Create and show the marker
                         longClickMarker = _map.AddMarker(markerOptions);
-                        // TODO Use a string in the Strings.xml resource
-                        longClickMarker.Title = "Resolving address...";
+                        longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerResolving);
                         longClickMarker.Snippet = latLongString;
                         longClickMarker.ShowInfoWindow();
 
@@ -568,7 +567,10 @@ namespace EasyBike.Droid
                         // Convert latitude and longitude to an address (GeoCoder)
                         addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
                     }
-                    catch (Exception) { }
+                    catch (Exception ex) 
+                    {
+                            Log.Debug("MyActivity", "Geocoder crashed: "+ex.Message);
+                    }
                     return new AddressesFromLocationDTO { Addresses = addresses, Location = latLongString };
 
                 }, token)))
@@ -584,8 +586,7 @@ namespace EasyBike.Droid
                     }
                     else
                     {
-                        // TODO Use a string in the Strings.xml resource
-                        longClickMarker.Title = "Could not find any address.";
+                        longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
                     }
                     longClickMarker.ShowInfoWindow();
                 });

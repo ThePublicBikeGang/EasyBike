@@ -16,9 +16,14 @@
 	<string name="nav_settings">Settings</string>
 	<string name="nav_about">About</string>
 
+    <!---
+        Main Activity 
+        -->
 	<string name="share">Share</string>
     <string name="route">Route</string>
     <string name="favorite">Favorite</string>
+    <string name="mapMarkerResolving">Resolving address...</string>
+    <string name="mapMarkerImpossible">Could not find any address.</string>
 
 	<!---
 		About Activity 

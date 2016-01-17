@@ -5,9 +5,14 @@
 	<string name="nav_settings">Paramètres</string>
 	<string name="nav_about">À propos</string>
 
+    <!---
+        Main Activity 
+        -->
 	<string name="share">Partagez</string>
     <string name="route">Itinéraire</string>
     <string name="favorite">Favoris</string>
+    <string name="mapMarkerResolving">Cherche l\'adresse...</string>
+    <string name="mapMarkerImpossible">Impossible de trouver l\'adresse.</string>
 
 	<!---
 		About Activity 
