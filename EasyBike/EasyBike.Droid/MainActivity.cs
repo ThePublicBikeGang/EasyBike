@@ -32,6 +32,7 @@ using Android.Content;
 using Android.Util;
 using Android.Locations;
 using EasyBike.Models.Storage;
+using EasyBike.Models.Favorites;
 
 // These shortcuts are used to prevent the use by default of these classes in Android.Views
 using MenuItemCompat = Android.Support.V4.View.MenuItemCompat;
@@ -80,6 +81,7 @@ namespace EasyBike.Droid
 
         //
         private ISettingsService _settingsService;
+        private IFavoritesService _favoritesService;
 
 
         public MainViewModel MainViewModel
@@ -111,7 +113,9 @@ namespace EasyBike.Droid
                     case Resource.Id.nav_about:
                         _context.MainViewModel.AboutCommand.Execute(null);
                         return true;
-
+                    case Resource.Id.nav_favorites:
+                        _context.MainViewModel.GoToFavoritsCommand.Execute(null);
+                        return true;
                 }
                 return true;
             }
@@ -149,6 +153,7 @@ namespace EasyBike.Droid
             // trigger the creation of the injected dependencies
             var unused = MainViewModel.AboutCommand;
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
+            _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
         }
 
         protected async override void OnPause()

@@ -13,6 +13,7 @@
 
 	<string name="app_name">EasyBike</string>
 	<string name="nav_download_cities">Download cities</string>
+    <string name="nav_favorites">Favorites</string>
 	<string name="nav_settings">Settings</string>
 	<string name="nav_about">About</string>
 
@@ -25,6 +26,8 @@
     <string name="mapMarkerResolving">Resolving address...</string>
     <string name="mapMarkerImpossible">Could not find any address.</string>
     <string name="favoriteDialogTitle">Add to favorites</string>
+    <string name="favoriteEmptyName">The name cannot be empty.</string>
+    <string name="favoriteAdded">Favorite added.</string>
 
 	<!---
 		About Activity 
