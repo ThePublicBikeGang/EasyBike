@@ -185,11 +185,9 @@
     <Compile Include="Helpers\CountryListAdapter.cs" />
     <Compile Include="Helpers\ExtendedDialogService.cs" />
     <Compile Include="Helpers\ExtendedNavigationService.cs" />
-    <Compile Include="Helpers\MapFragmentExtended.cs" />
     <Compile Include="Helpers\StationRenderer.cs" />
     <Compile Include="Helpers\MapHelper.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="MainApplication.cs" />
     <Compile Include="Models\ClusterItem.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +198,7 @@
     <Compile Include="MainActivity.ui.cs" />
     <Compile Include="Views\ContractsActivity.ui.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Views\FavoritesActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -263,6 +262,8 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_star.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_star.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_star.png" />
+    <AndroidResource Include="Resources\layout\DialogAddFavorite.axml" />
+    <AndroidResource Include="Resources\layout\Favorites.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

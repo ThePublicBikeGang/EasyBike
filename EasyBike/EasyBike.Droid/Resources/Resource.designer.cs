@@ -1964,8 +1964,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c006c
 			public const int aboutTitle = 2131492972;
 			
-			// aapt resource value: 0x7f0c0093
-			public const int action0 = 2131493011;
+			// aapt resource value: 0x7f0c0095
+			public const int action0 = 2131493013;
 			
 			// aapt resource value: 0x7f0c005b
 			public const int action_bar = 2131492955;
@@ -1991,8 +1991,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c005c
 			public const int action_context_bar = 2131492956;
 			
-			// aapt resource value: 0x7f0c0097
-			public const int action_divider = 2131493015;
+			// aapt resource value: 0x7f0c0099
+			public const int action_divider = 2131493017;
 			
 			// aapt resource value: 0x7f0c0002
 			public const int action_menu_divider = 2131492866;
@@ -2027,8 +2027,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c001f
 			public const int beginning = 2131492895;
 			
-			// aapt resource value: 0x7f0c008f
-			public const int bikesButton = 2131493007;
+			// aapt resource value: 0x7f0c0091
+			public const int bikesButton = 2131493009;
 			
 			// aapt resource value: 0x7f0c002e
 			public const int bottom = 2131492910;
@@ -2036,8 +2036,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0051
 			public const int buttonPanel = 2131492945;
 			
-			// aapt resource value: 0x7f0c0094
-			public const int cancel_action = 2131493012;
+			// aapt resource value: 0x7f0c0096
+			public const int cancel_action = 2131493014;
 			
 			// aapt resource value: 0x7f0c002f
 			public const int center = 2131492911;
@@ -2051,8 +2051,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0053
 			public const int checkbox = 2131492947;
 			
-			// aapt resource value: 0x7f0c009a
-			public const int chronometer = 2131493018;
+			// aapt resource value: 0x7f0c009c
+			public const int chronometer = 2131493020;
 			
 			// aapt resource value: 0x7f0c0037
 			public const int clip_horizontal = 2131492919;
@@ -2081,8 +2081,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0014
 			public const int disableHome = 2131492884;
 			
-			// aapt resource value: 0x7f0c008b
-			public const int drawer_layout = 2131493003;
+			// aapt resource value: 0x7f0c008d
+			public const int drawer_layout = 2131493005;
 			
 			// aapt resource value: 0x7f0c005d
 			public const int edit_query = 2131492957;
@@ -2090,8 +2090,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0020
 			public const int end = 2131492896;
 			
-			// aapt resource value: 0x7f0c009e
-			public const int end_padder = 2131493022;
+			// aapt resource value: 0x7f0c00a0
+			public const int end_padder = 2131493024;
 			
 			// aapt resource value: 0x7f0c0028
 			public const int enterAlways = 2131492904;
@@ -2107,6 +2107,12 @@ namespace EasyBike.Droid
 			
 			// aapt resource value: 0x7f0c0052
 			public const int expanded_menu = 2131492946;
+			
+			// aapt resource value: 0x7f0c008b
+			public const int favoriteName = 2131493003;
+			
+			// aapt resource value: 0x7f0c008a
+			public const int favoriteNameTxt = 2131493002;
 			
 			// aapt resource value: 0x7f0c0039
 			public const int fill = 2131492921;
@@ -2138,17 +2144,17 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0043
 			public const int image = 2131492931;
 			
-			// aapt resource value: 0x7f0c009d
-			public const int info = 2131493021;
+			// aapt resource value: 0x7f0c009f
+			public const int info = 2131493023;
 			
 			// aapt resource value: 0x7f0c0033
 			public const int left = 2131492915;
 			
-			// aapt resource value: 0x7f0c0098
-			public const int line1 = 2131493016;
+			// aapt resource value: 0x7f0c009a
+			public const int line1 = 2131493018;
 			
-			// aapt resource value: 0x7f0c009c
-			public const int line3 = 2131493020;
+			// aapt resource value: 0x7f0c009e
+			public const int line3 = 2131493022;
 			
 			// aapt resource value: 0x7f0c0012
 			public const int listMode = 2131492882;
@@ -2156,26 +2162,26 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0045
 			public const int list_item = 2131492933;
 			
+			// aapt resource value: 0x7f0c0090
+			public const int locationButton = 2131493008;
+			
 			// aapt resource value: 0x7f0c008e
-			public const int locationButton = 2131493006;
+			public const int map = 2131493006;
 			
-			// aapt resource value: 0x7f0c008c
-			public const int map = 2131493004;
+			// aapt resource value: 0x7f0c0093
+			public const int map_touch_layer = 2131493011;
 			
-			// aapt resource value: 0x7f0c0091
-			public const int map_touch_layer = 2131493009;
-			
-			// aapt resource value: 0x7f0c0096
-			public const int media_actions = 2131493014;
-			
-			// aapt resource value: 0x7f0c00a0
-			public const int menu_favorite = 2131493024;
-			
-			// aapt resource value: 0x7f0c00a1
-			public const int menu_route = 2131493025;
+			// aapt resource value: 0x7f0c0098
+			public const int media_actions = 2131493016;
 			
 			// aapt resource value: 0x7f0c00a2
-			public const int menu_share = 2131493026;
+			public const int menu_favorite = 2131493026;
+			
+			// aapt resource value: 0x7f0c00a3
+			public const int menu_route = 2131493027;
+			
+			// aapt resource value: 0x7f0c00a4
+			public const int menu_share = 2131493028;
 			
 			// aapt resource value: 0x7f0c0021
 			public const int middle = 2131492897;
@@ -2186,14 +2192,17 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c001a
 			public const int multiply = 2131492890;
 			
-			// aapt resource value: 0x7f0c00a4
-			public const int nav_about = 2131493028;
+			// aapt resource value: 0x7f0c00a7
+			public const int nav_about = 2131493031;
 			
-			// aapt resource value: 0x7f0c00a3
-			public const int nav_cities = 2131493027;
+			// aapt resource value: 0x7f0c00a5
+			public const int nav_cities = 2131493029;
 			
-			// aapt resource value: 0x7f0c0092
-			public const int nav_view = 2131493010;
+			// aapt resource value: 0x7f0c00a6
+			public const int nav_favorites = 2131493030;
+			
+			// aapt resource value: 0x7f0c0094
+			public const int nav_view = 2131493012;
 			
 			// aapt resource value: 0x7f0c0025
 			public const int never = 2131492901;
@@ -2210,8 +2219,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0048
 			public const int parentPanel = 2131492936;
 			
-			// aapt resource value: 0x7f0c0090
-			public const int parkingButton = 2131493008;
+			// aapt resource value: 0x7f0c0092
+			public const int parkingButton = 2131493010;
 			
 			// aapt resource value: 0x7f0c002d
 			public const int pin = 2131492909;
@@ -2312,8 +2321,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0035
 			public const int start = 2131492917;
 			
-			// aapt resource value: 0x7f0c0095
-			public const int status_bar_latest_event_content = 2131493013;
+			// aapt resource value: 0x7f0c0097
+			public const int status_bar_latest_event_content = 2131493015;
 			
 			// aapt resource value: 0x7f0c0066
 			public const int submit_area = 2131492966;
@@ -2327,8 +2336,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c000a
 			public const int text = 2131492874;
 			
-			// aapt resource value: 0x7f0c009b
-			public const int text2 = 2131493019;
+			// aapt resource value: 0x7f0c009d
+			public const int text2 = 2131493021;
 			
 			// aapt resource value: 0x7f0c0079
 			public const int textCopyright1 = 2131492985;
@@ -2384,8 +2393,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0078
 			public const int textWinPhone = 2131492984;
 			
-			// aapt resource value: 0x7f0c0099
-			public const int time = 2131493017;
+			// aapt resource value: 0x7f0c009b
+			public const int time = 2131493019;
 			
 			// aapt resource value: 0x7f0c0047
 			public const int title = 2131492935;
@@ -2402,8 +2411,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0049
 			public const int topPanel = 2131492937;
 			
-			// aapt resource value: 0x7f0c008d
-			public const int txtTextSearch = 2131493005;
+			// aapt resource value: 0x7f0c008f
+			public const int txtTextSearch = 2131493007;
 			
 			// aapt resource value: 0x7f0c0008
 			public const int up = 2131492872;
@@ -2414,11 +2423,11 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f0c0009
 			public const int view_offset_helper = 2131492873;
 			
-			// aapt resource value: 0x7f0c009f
-			public const int webview = 2131493023;
+			// aapt resource value: 0x7f0c00a1
+			public const int webview = 2131493025;
 			
-			// aapt resource value: 0x7f0c008a
-			public const int window = 2131493002;
+			// aapt resource value: 0x7f0c008c
+			public const int window = 2131493004;
 			
 			// aapt resource value: 0x7f0c0026
 			public const int withText = 2131492902;
@@ -2585,61 +2594,67 @@ namespace EasyBike.Droid
 			public const int design_navigation_menu = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int info_window = 2130903077;
+			public const int DialogAddFavorite = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int Main = 2130903078;
+			public const int Favorites = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int MarkerText = 2130903079;
+			public const int info_window = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int navigation_header = 2130903080;
+			public const int Main = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int notification_media_action = 2130903081;
+			public const int MarkerText = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int notification_media_cancel_action = 2130903082;
+			public const int navigation_header = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int notification_template_big_media = 2130903083;
+			public const int notification_media_action = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int notification_template_big_media_narrow = 2130903084;
+			public const int notification_media_cancel_action = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int notification_template_lines = 2130903085;
+			public const int notification_template_big_media = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int notification_template_media = 2130903086;
+			public const int notification_template_big_media_narrow = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int notification_template_part_chronometer = 2130903087;
+			public const int notification_template_lines = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int notification_template_part_time = 2130903088;
+			public const int notification_template_media = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int select_dialog_item_material = 2130903089;
+			public const int notification_template_part_chronometer = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int select_dialog_multichoice_material = 2130903090;
+			public const int notification_template_part_time = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int select_dialog_singlechoice_material = 2130903091;
+			public const int select_dialog_item_material = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int support_simple_spinner_dropdown_item = 2130903092;
+			public const int select_dialog_multichoice_material = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int text_bubble = 2130903093;
+			public const int select_dialog_singlechoice_material = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int toolbar = 2130903094;
+			public const int support_simple_spinner_dropdown_item = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int webview = 2130903095;
+			public const int text_bubble = 2130903095;
+			
+			// aapt resource value: 0x7f030038
+			public const int toolbar = 2130903096;
+			
+			// aapt resource value: 0x7f030039
+			public const int webview = 2130903097;
 			
 			static Layout()
 			{
@@ -2800,59 +2815,59 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f060032
 			public const int abc_toolbar_collapse_description = 2131099698;
 			
-			// aapt resource value: 0x7f06004c
-			public const int aboutCopyright1 = 2131099724;
+			// aapt resource value: 0x7f060052
+			public const int aboutCopyright1 = 2131099730;
 			
-			// aapt resource value: 0x7f06004d
-			public const int aboutCopyright2 = 2131099725;
+			// aapt resource value: 0x7f060053
+			public const int aboutCopyright2 = 2131099731;
 			
-			// aapt resource value: 0x7f06004e
-			public const int aboutCopyright3 = 2131099726;
+			// aapt resource value: 0x7f060054
+			public const int aboutCopyright3 = 2131099732;
 			
-			// aapt resource value: 0x7f06004f
-			public const int aboutCopyright4 = 2131099727;
+			// aapt resource value: 0x7f060055
+			public const int aboutCopyright4 = 2131099733;
 			
-			// aapt resource value: 0x7f060050
-			public const int aboutCopyright5 = 2131099728;
-			
-			// aapt resource value: 0x7f060040
-			public const int aboutPresentation1 = 2131099712;
-			
-			// aapt resource value: 0x7f060041
-			public const int aboutPresentation2 = 2131099713;
-			
-			// aapt resource value: 0x7f060042
-			public const int aboutPresentation3 = 2131099714;
-			
-			// aapt resource value: 0x7f060047
-			public const int aboutReview1 = 2131099719;
-			
-			// aapt resource value: 0x7f060049
-			public const int aboutReview2 = 2131099721;
-			
-			// aapt resource value: 0x7f06004a
-			public const int aboutReview3 = 2131099722;
-			
-			// aapt resource value: 0x7f060048
-			public const int aboutReviewRate = 2131099720;
-			
-			// aapt resource value: 0x7f060043
-			public const int aboutSuggestion1 = 2131099715;
-			
-			// aapt resource value: 0x7f060044
-			public const int aboutSuggestion2 = 2131099716;
+			// aapt resource value: 0x7f060056
+			public const int aboutCopyright5 = 2131099734;
 			
 			// aapt resource value: 0x7f060046
-			public const int aboutSuggestionJoin = 2131099718;
+			public const int aboutPresentation1 = 2131099718;
 			
-			// aapt resource value: 0x7f060045
-			public const int aboutSuggestionTwitter = 2131099717;
+			// aapt resource value: 0x7f060047
+			public const int aboutPresentation2 = 2131099719;
 			
-			// aapt resource value: 0x7f06003f
-			public const int aboutTitle = 2131099711;
+			// aapt resource value: 0x7f060048
+			public const int aboutPresentation3 = 2131099720;
+			
+			// aapt resource value: 0x7f06004d
+			public const int aboutReview1 = 2131099725;
+			
+			// aapt resource value: 0x7f06004f
+			public const int aboutReview2 = 2131099727;
+			
+			// aapt resource value: 0x7f060050
+			public const int aboutReview3 = 2131099728;
+			
+			// aapt resource value: 0x7f06004e
+			public const int aboutReviewRate = 2131099726;
+			
+			// aapt resource value: 0x7f060049
+			public const int aboutSuggestion1 = 2131099721;
+			
+			// aapt resource value: 0x7f06004a
+			public const int aboutSuggestion2 = 2131099722;
+			
+			// aapt resource value: 0x7f06004c
+			public const int aboutSuggestionJoin = 2131099724;
 			
 			// aapt resource value: 0x7f06004b
-			public const int aboutWinPhone = 2131099723;
+			public const int aboutSuggestionTwitter = 2131099723;
+			
+			// aapt resource value: 0x7f060045
+			public const int aboutTitle = 2131099717;
+			
+			// aapt resource value: 0x7f060051
+			public const int aboutWinPhone = 2131099729;
 			
 			// aapt resource value: 0x7f060038
 			public const int app_name = 2131099704;
@@ -2962,26 +2977,44 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f060021
 			public const int common_signin_button_text_long = 2131099681;
 			
-			// aapt resource value: 0x7f06003e
-			public const int favorite = 2131099710;
+			// aapt resource value: 0x7f06003f
+			public const int favorite = 2131099711;
+			
+			// aapt resource value: 0x7f060044
+			public const int favoriteAdded = 2131099716;
+			
+			// aapt resource value: 0x7f060042
+			public const int favoriteDialogTitle = 2131099714;
+			
+			// aapt resource value: 0x7f060043
+			public const int favoriteEmptyName = 2131099715;
 			
 			// aapt resource value: 0x7f060035
 			public const int library_name = 2131099701;
 			
-			// aapt resource value: 0x7f06003b
-			public const int nav_about = 2131099707;
+			// aapt resource value: 0x7f060041
+			public const int mapMarkerImpossible = 2131099713;
+			
+			// aapt resource value: 0x7f060040
+			public const int mapMarkerResolving = 2131099712;
+			
+			// aapt resource value: 0x7f06003c
+			public const int nav_about = 2131099708;
 			
 			// aapt resource value: 0x7f060039
 			public const int nav_download_cities = 2131099705;
 			
 			// aapt resource value: 0x7f06003a
-			public const int nav_settings = 2131099706;
+			public const int nav_favorites = 2131099706;
+			
+			// aapt resource value: 0x7f06003b
+			public const int nav_settings = 2131099707;
+			
+			// aapt resource value: 0x7f06003e
+			public const int route = 2131099710;
 			
 			// aapt resource value: 0x7f06003d
-			public const int route = 2131099709;
-			
-			// aapt resource value: 0x7f06003c
-			public const int share = 2131099708;
+			public const int share = 2131099709;
 			
 			// aapt resource value: 0x7f060033
 			public const int status_bar_notification_info_overflow = 2131099699;
