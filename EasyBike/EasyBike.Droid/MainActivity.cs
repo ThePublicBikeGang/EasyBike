@@ -58,7 +58,7 @@ namespace EasyBike.Droid
 
         private FragmentTransaction _fragTx;
         private MapFragment _mapFragment;
-        private GoogleMap _map;
+        public static GoogleMap map { get; set; }
         private ClusterManager _clusterManager;
         public CancellationTokenSource cts = new CancellationTokenSource();
         private TimeSpan throttleTime = TimeSpan.FromMilliseconds(150);
@@ -79,7 +79,6 @@ namespace EasyBike.Droid
         FloatingActionButton _parkingButton;
 
         //
-        private ISharedPreferences preferences;
         private ISettingsService _settingsService;
 
 
@@ -124,7 +123,6 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
-            preferences = PreferenceManager.GetDefaultSharedPreferences(this);
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
             //Enable support action bar to display hamburger
@@ -150,23 +148,14 @@ namespace EasyBike.Droid
 
             // trigger the creation of the injected dependencies
             var unused = MainViewModel.AboutCommand;
+            _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
         }
 
-        
-
-        protected override void OnPause()
+        protected async override void OnPause()
         {
             base.OnPause();
             Log.Debug("MyActivity", "Begin OnPause");
-            if (_map != null)
-            {
-                CameraPosition camPosition = _map.CameraPosition;
-                preferences.Edit()
-                    .PutFloat("Latitude", (float)camPosition.Target.Latitude)
-                    .PutFloat("Longitude", (float)camPosition.Target.Longitude)
-                    .PutFloat("Zoom", camPosition.Zoom)
-                    .Apply();
-            }
+            await _settingsService.SaveSettingAsync();
         }
 
         public override void OnBackPressed()
@@ -242,10 +231,15 @@ namespace EasyBike.Droid
                     .SetTitle(Resources.GetString(Resource.String.favoriteDialogTitle))
                     .SetView(this.LayoutInflater.Inflate(Resource.Layout.DialogAddFavorite, null))
                     .SetPositiveButton(Android.Resource.String.Ok, (sender, EventArgs) => {
-                        var favoriteName = dialog.FindViewById<EditText>(Resource.Id.favoriteName);
-                        Log.Debug("MyActivity", "Add to favorite: " + favoriteName.Text.ToString());
-                    })
-                    .SetNegativeButton(Android.Resource.String.Cancel, (sender, EventArgs) => { })
+                        var favoriteName = dialog.FindViewById<EditText>(Resource.Id.favoriteName).Text.ToString();
+                        Log.Debug("MyActivity", "Add to favorite: " + favoriteName);
+                        if (favoriteName.Trim() == "") {
+                            Toast.MakeText(this, Resources.GetString(Resource.String.favoriteEmptyName), ToastLength.Short).Show();
+                        } else {
+                            // TODO Ajout à réaliser
+                            Toast.MakeText(this, Resources.GetString(Resource.String.favoriteAdded), ToastLength.Short).Show();
+                        }
+                    }).SetNegativeButton(Android.Resource.String.Cancel, (sender, EventArgs) => { })
                     .Create();
                 dialog.Show();
                 return true;
@@ -362,9 +356,9 @@ namespace EasyBike.Droid
 
         private bool _gettingMap;
 
-        private void SetupMapIfNeeded()
+        private async void SetupMapIfNeeded()
         {
-            if (_map == null && !_gettingMap)
+            if (map == null && !_gettingMap)
             {
                 // TODO À quoi sert cette variable ? On peut supprimer je pense.
                 // a priori SetupMapIfNeeded peut-être appelé pluiseurs fois d'affilé, c'est pour prévenir ça
@@ -374,7 +368,7 @@ namespace EasyBike.Droid
                     //.InvokeZoomControlsEnabled(true)
                     .InvokeMapToolbarEnabled(true)
                     .InvokeCompassEnabled(true)
-                    .InvokeCamera(GetStartingCameraPosition());
+                    .InvokeCamera(await GetStartingCameraPosition());
 
                 _fragTx = FragmentManager.BeginTransaction();
                 _mapFragment = MapFragment.NewInstance(mapOptions);
@@ -389,12 +383,18 @@ namespace EasyBike.Droid
         /// <summary>
         /// This is the menu for the Toolbar/Action Bar to use
         /// </summary>
-        private CameraPosition GetStartingCameraPosition()
+        private async Task<CameraPosition> GetStartingCameraPosition()
         {
-            // TODO What to do if the position is not set in the shared preferences? GPS?
+//            double latitude = 48.879918;
+//            double longitude = 2.354810;
+//            float zoom = 14.5F;
+            var settings = await _settingsService.GetSettingsAsync();
+//            if (settings.LastLocation != null) {
+//                latitude = 
+//            }
             return new CameraPosition.Builder()
-                .Target(new LatLng(preferences.GetFloat("Latitude", 48.879918F), preferences.GetFloat("Longitude", 2.354810F)))
-                .Zoom(preferences.GetFloat("Zoom", 14.5F)).Build();
+                .Target(new LatLng(settings.LastLocation.Latitude, settings.LastLocation.Longitude))
+                .Zoom((float) settings.LastLocation.ZoomLevel).Build();
         }
 
         //Cluster override methods
@@ -416,7 +416,7 @@ namespace EasyBike.Droid
                 await Task.Delay(300);
                 RunOnUiThread(() =>
                 {
-                    _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
+                    map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
                 });
             });
             //new Handler().PostDelayed(() =>
@@ -446,11 +446,11 @@ namespace EasyBike.Droid
 
             if (animated)
             {
-                _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
+                map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
             }
             else
             {
-                _map.MoveCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
+                map.MoveCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
             }
         }
 
@@ -514,8 +514,6 @@ namespace EasyBike.Droid
             //            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
             //            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
             //            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
-
-            _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             _contractService.ContractRefreshed += OnContractRefreshed;
             _contractService.StationRefreshed += OnStationRefreshed;
@@ -523,30 +521,30 @@ namespace EasyBike.Droid
             // set the initial visual state of the bike/parking buttons
             SwitchModeStationParkingVisualState();
 
-            _map = googleMap;
+            map = googleMap;
             //Setup and customize your Google Map
-            _map.UiSettings.CompassEnabled = true;
-            _map.MyLocationEnabled = true;
-            _map.UiSettings.MyLocationButtonEnabled = true;
+            map.UiSettings.CompassEnabled = true;
+            map.MyLocationEnabled = true;
+            map.UiSettings.MyLocationButtonEnabled = true;
             //            _map.UiSettings.MapToolbarEnabled = true;
 
             // Initialize the camera position
-            SetViewPoint(GetStartingCameraPosition(), false);
+            SetViewPoint(await GetStartingCameraPosition(), false);
 
             // Initialize the marker with the stations
-            _clusterManager = new ClusterManager(this, _map);
-            _clusterRender = new StationRenderer(this, _map, _clusterManager);
+            _clusterManager = new ClusterManager(this, map);
+            _clusterRender = new StationRenderer(this, map, _clusterManager);
             _clusterManager.SetRenderer(_clusterRender);
             _clusterManager.SetOnClusterClickListener(this);
             _clusterManager.SetOnClusterItemClickListener(this);
-            _map.SetOnCameraChangeListener(_clusterManager);
-            _map.SetOnMarkerClickListener(_clusterManager);
+            map.SetOnCameraChangeListener(_clusterManager);
+            map.SetOnMarkerClickListener(_clusterManager);
 
             // check if the app contains a least one city, otherwise, tells the user to download one
             MainViewModel.MainPageLoadedCommand.Execute(null);
 
             // On long click, display the address on a info window
-            Observable.FromEventPattern<GoogleMap.MapLongClickEventArgs>(_map, "MapLongClick")
+            Observable.FromEventPattern<GoogleMap.MapLongClickEventArgs>(map, "MapLongClick")
                 .Select(e => Observable.FromAsync(token => Task.Run(async () =>
                 {
                     currentMarkerPosition = e.EventArgs.Point;
@@ -562,7 +560,7 @@ namespace EasyBike.Droid
 
                         var markerOptions = new MarkerOptions().SetPosition(currentMarkerPosition);
                         // Create and show the marker
-                        longClickMarker = _map.AddMarker(markerOptions);
+                        longClickMarker = map.AddMarker(markerOptions);
                         longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerResolving);
                         longClickMarker.Snippet = latLongString;
                         longClickMarker.ShowInfoWindow();
@@ -632,7 +630,7 @@ namespace EasyBike.Droid
             //    }
             //};
 
-            _map.MapClick += (sender, e) =>
+            map.MapClick += (sender, e) =>
             {
                 if (longClickMarker != null)
                 {
@@ -647,7 +645,7 @@ namespace EasyBike.Droid
             };
 
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
-            var mapObserver = Observable.FromEventPattern(_map, "CameraChange");
+            var mapObserver = Observable.FromEventPattern(map, "CameraChange");
             TaskCompletionSource<bool> tcs;
             mapObserver
                 .Do((e) =>
@@ -670,7 +668,7 @@ namespace EasyBike.Droid
                         try
                         {
                             // can return null
-                            bounds = _map.Projection.VisibleRegion.LatLngBounds;
+                            bounds = map.Projection.VisibleRegion.LatLngBounds;
                         }
                         catch
                         {

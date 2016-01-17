@@ -1,5 +1,6 @@
-using EasyBike.Services;
 using EasyBike.Models;
+using EasyBike.Services;
+using Android.Gms.Maps.Model;
 
 namespace EasyBike.Droid.Services
 {
@@ -7,14 +8,13 @@ namespace EasyBike.Droid.Services
     {
         public Location GetCurrentMapCenter()
         {
-            //if (MainPage.Map != null && MainPage.Map.Center != null)
-            //{
-            //    return new Location() { Latitude = MainPage.Map.Center.Position.Latitude, Longitude = MainPage.Map.Center.Position.Longitude, ZoomLevel = MainPage.Map.ZoomLevel };
-            //}
-            //else
-            //{
-                return new Location();
-            //}
+            if (MainActivity.map != null)
+            {
+                CameraPosition camPosition = MainActivity.map.CameraPosition;
+                return new Location() { Latitude = camPosition.Target.Latitude, Longitude = camPosition.Target.Longitude, ZoomLevel = camPosition.Zoom };
+            } else {
+                return new Location() { Latitude = 48.879918, Longitude = 2.354810, ZoomLevel = 14.5 };
+            }
         }
     }
 }
