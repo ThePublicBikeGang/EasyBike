@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">EasyBike</string>
-	<string name="nav_download_cities">Télécharger des villes</string>
+    <string name="app_name">EasyBike</string>
+    <string name="nav_download_cities">Télécharger des villes</string>
     <string name="nav_favorites">Favoris</string>
-	<string name="nav_settings">Paramètres</string>
-	<string name="nav_about">À propos</string>
+    <string name="nav_settings">Paramètres</string>
+    <string name="nav_about">À propos</string>
 
     <!---
         Main Activity 
         -->
-	<string name="share">Partagez</string>
+    <string name="share">Partagez</string>
     <string name="route">Itinéraire</string>
     <string name="favorite">Favoris</string>
     <string name="mapMarkerResolving">Cherche l\'adresse...</string>
@@ -18,25 +18,25 @@
     <string name="favoriteEmptyName">Le nom du favoris doit être renseigné</string>
     <string name="favoriteAdded">Favoris ajouté.</string>
 
-	<!---
-		About Activity 
-		-->
-	<string name="aboutTitle">À propos de l\'application</string>
-	<string name="aboutPresentation1">Créée par <a href="https://github.com/MarcMagnin">Marc Magnin</a> et <a href="https://github.com/EtienneM">Étienne Michon</a> pour le compte du <a href="https://github.com/ThePublicBikeGang">Public Bike Gang</a>.</string>
-	<string name="aboutPresentation2">Le code source du projet est disponible sur ce dépôt <a href="https://github.com/ThePublicBikeGang/EasyBike">Git</a>.</string>
-	<string name="aboutPresentation3">Des remerciements tout particuliers pour Florie : pour son aide et sa patience à m\'attendre pendant mes heures de codage intense.</string>
- 	<string name="aboutSuggestion1">Des suggestions ?</string>
-	<string name="aboutSuggestion2">Contactez-nous à <a href="mailto:easybike@outlook.fr">easybike@outlook.fr</a>.</string>
-	<string name="aboutSuggestionTwitter">Twitter : <a href="https://twitter.com/easybike_">https://twitter.com/easybike_</a></string>
-	<string name="aboutSuggestionJoin">Si le coeur vous en dit, <a href="https://github.com/ThePublicBikeGang">rejoignez-nous</a> !</string>
-	<string name="aboutReview1">Rien ne vaut un commentaire chaleureux, c\'est le carburant de notre travail.</string>
-	<string name="aboutReviewRate">Notez l\'application</string>
-	<string name="aboutReview2">Vous l\'appréciez ?</string>
-	<string name="aboutReview3">Cette application ne contiendra jamais aucune pub. La publicité n\'est pas la bonne solution. Si vous appréciez cette application, vous pouvez nous <a href="">payer une bière</a>.</string>
-	<string name="aboutWinPhone">Cette application est également disponible sur <a href="https://www.microsoft.com/fr-fr/store/apps/easy-bike/9wzdncrdkng9">Windows Phone</a>. Essayez-la !</string>
-	<string name="aboutCopyright1">EasyBike ne collecte aucune information personnelle sur ses utilisateurs.</string>
-	<string name="aboutCopyright2">Copyright des drapeaux de pays :</string>
-	<string name="aboutCopyright3">Free Country Flags (<a href="http://www.free-country-flags.com/">Gang of the Coconuts</a>)/<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a>.</string>
-	<string name="aboutCopyright4">Propulsé par B-cycle. Pour s\'inscrire, allez sur <a href="www.bcycle.com">www.bcycle.com</a>.</string>
-	<string name="aboutCopyright5">Cette application n\'est aucunement affiliée à B-cycle.</string>
+    <!---
+        About Activity 
+        -->
+    <string name="aboutTitle">À propos de l\'application</string>
+    <string name="aboutPresentation1">Créée par <a href="https://github.com/MarcMagnin">Marc Magnin</a> et <a href="https://github.com/EtienneM">Étienne Michon</a> pour le compte du <a href="https://github.com/ThePublicBikeGang">Public Bike Gang</a>.</string>
+    <string name="aboutPresentation2">Le code source du projet est disponible sur ce dépôt <a href="https://github.com/ThePublicBikeGang/EasyBike">Git</a>.</string>
+    <string name="aboutPresentation3">Des remerciements tout particuliers pour Florie : pour son aide et sa patience à m\'attendre pendant mes heures de codage intense.</string>
+    <string name="aboutSuggestion1">Des suggestions ?</string>
+    <string name="aboutSuggestion2">Contactez-nous à <a href="mailto:easybike@outlook.fr">easybike@outlook.fr</a>.</string>
+    <string name="aboutSuggestionTwitter">Twitter : <a href="https://twitter.com/easybike_">https://twitter.com/easybike_</a></string>
+    <string name="aboutSuggestionJoin">Si le coeur vous en dit, <a href="https://github.com/ThePublicBikeGang">rejoignez-nous</a> !</string>
+    <string name="aboutReview1">Rien ne vaut un commentaire chaleureux, c\'est le carburant de notre travail.</string>
+    <string name="aboutReviewRate">Notez l\'application</string>
+    <string name="aboutReview2">Vous l\'appréciez ?</string>
+    <string name="aboutReview3">Cette application ne contiendra jamais aucune pub. La publicité n\'est pas la bonne solution. Si vous appréciez cette application, vous pouvez nous <a href="">payer une bière</a>.</string>
+    <string name="aboutWinPhone">Cette application est également disponible sur <a href="https://www.microsoft.com/fr-fr/store/apps/easy-bike/9wzdncrdkng9">Windows Phone</a>. Essayez-la !</string>
+    <string name="aboutCopyright1">EasyBike ne collecte aucune information personnelle sur ses utilisateurs.</string>
+    <string name="aboutCopyright2">Copyright des drapeaux de pays :</string>
+    <string name="aboutCopyright3">Free Country Flags (<a href="http://www.free-country-flags.com/">Gang of the Coconuts</a>)/<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a>.</string>
+    <string name="aboutCopyright4">Propulsé par B-cycle. Pour s\'inscrire, allez sur <a href="www.bcycle.com">www.bcycle.com</a>.</string>
+    <string name="aboutCopyright5">Cette application n\'est aucunement affiliée à B-cycle.</string>
 </resources>
