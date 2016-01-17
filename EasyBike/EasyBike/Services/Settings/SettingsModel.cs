@@ -18,5 +18,9 @@ namespace EasyBike.Services.Settings
         public bool IsCompassMode { get; set; } = false;
 
         public Location LastLocation { get; set; }
+
+        public SettingsModel() {
+            LastLocation = new Location(){ Latitude = 48.879918, Longitude = 2.354810, ZoomLevel = 14.5 };
+        }
     }
 }
