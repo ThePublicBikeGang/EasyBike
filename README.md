@@ -62,3 +62,7 @@ PublicBikes takes advantage of multiple third parties plugins.
 
 
 ## Services already integrated
+
+
+## Helpfull links
+* Xamarin plugins: https://github.com/xamarin/plugins
