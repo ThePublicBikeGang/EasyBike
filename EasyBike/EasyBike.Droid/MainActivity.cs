@@ -40,6 +40,7 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 using ShareActionProvider = Android.Support.V7.Widget.ShareActionProvider;
 using ActionMode = Android.Support.V7.View.ActionMode;
 using System.Reactive.Subjects;
+using Plugin.Geolocator;
 
 namespace EasyBike.Droid
 {
@@ -59,7 +60,7 @@ namespace EasyBike.Droid
 
         private FragmentTransaction _fragTx;
         private MapFragment _mapFragment;
-        public static GoogleMap map { get; set; }
+        public static GoogleMap _map { get; set; }
         private ClusterManager _clusterManager;
         public CancellationTokenSource cts = new CancellationTokenSource();
         private TimeSpan throttleTime = TimeSpan.FromMilliseconds(150);
@@ -78,6 +79,8 @@ namespace EasyBike.Droid
         // switch mode buttons
         FloatingActionButton _bikesButton;
         FloatingActionButton _parkingButton;
+
+        FloatingActionButton _locationButton;
 
         //
         private ISettingsService _settingsService;
@@ -120,6 +123,29 @@ namespace EasyBike.Droid
                 return true;
             }
         }
+        // helper to detect when the user is moving the map
+        public class FrameOnGenericMotionListener : Java.Lang.Object, View.IOnTouchListener
+        {
+            MainActivity _context;
+
+            public FrameOnGenericMotionListener(MainActivity context)
+            {
+                _context = context;
+            }
+
+
+            public bool OnTouch(View v, MotionEvent e)
+            {
+                if (e.Action == MotionEventActions.Move)
+                {
+                    if (_context._stickToUserLocation)
+                    {
+                        _context.UnStickUserLocation();
+                    }
+                }
+                return false;
+            }
+        }
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -127,16 +153,37 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
-            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-            //Enable support action bar to display hamburger
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            StartLocationTracking();
+
+            //var uiOptions = (int)this.Window.DecorView.SystemUiVisibility;
+            //var newUiOptions = (int)uiOptions;
+            //newUiOptions &= ~(int)SystemUiFlags.LowProfile;
+            //newUiOptions &= ~(int)SystemUiFlags.Fullscreen;
+            //newUiOptions &= ~(int)SystemUiFlags.HideNavigation;
+            //newUiOptions &= ~(int)SystemUiFlags.Immersive;
+            //newUiOptions |= (int)SystemUiFlags.ImmersiveSticky;
+            //this.Window.DecorView.SystemUiVisibility = (StatusBarVisibility)newUiOptions;
+            //Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
+
+
+
+            //Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            //SetSupportActionBar(toolbar);
+            ////Enable support action bar to display hamburger
+            //SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             _bikesButton = FindViewById<FloatingActionButton>(Resource.Id.bikesButton);
             _bikesButton.Click += BikesButton_Click;
             _parkingButton = FindViewById<FloatingActionButton>(Resource.Id.parkingButton);
             _parkingButton.Click += ParkingButton_Click;
+
+            var frame = FindViewById<FrameLayout>(Resource.Id.map_touch_layer);
+            frame.SetOnTouchListener(new FrameOnGenericMotionListener(this));
+
+            _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
+            _locationButton.Click += LocationButton_Click;
+            UnStickUserLocation();
 
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
@@ -165,6 +212,69 @@ namespace EasyBike.Droid
             base.OnPause();
             Log.Debug("MyActivity", "Begin OnPause");
             await _settingsService.SaveSettingAsync();
+        }
+
+        private LatLng _lastUserLocation;
+        private bool _stickToUserLocation;
+        private void StartLocationTracking()
+        {
+            var locator = CrossGeolocator.Current;
+            // New in iOS 9 allowsBackgroundLocationUpdates must be set if you are running a background agent to track location. I have exposed this on the Geolocator via:
+            locator.AllowsBackgroundUpdates = true;
+            locator.DesiredAccuracy = 100; //100 is new default
+            locator.PositionChanged += Locator_PositionChanged;
+            locator.StartListeningAsync(5000, 5000, false);
+        }
+        private void UnStickUserLocation()
+        {
+            _stickToUserLocation = false;
+            _locationButton.Background.SetAlpha(150);
+        }
+
+        private async void LocationButton_Click(object sender, EventArgs e)
+        {
+            _stickToUserLocation = true;
+            _locationButton.Background.SetAlpha(255);
+            if (_lastUserLocation == null)
+            {
+                try
+                {
+                    // Get a quick last known location
+                    var locationManager = (LocationManager)GetSystemService("location");
+                    // Getting the name of the best provider
+                    var provider = locationManager.GetBestProvider(new Criteria(), true);
+                    // Getting Current Location
+                    var previousLocation = locationManager.GetLastKnownLocation(provider);
+                    _lastUserLocation = new LatLng(previousLocation.Latitude, previousLocation.Longitude);
+                    _map.AnimateCamera(CameraUpdateFactory.NewLatLng(new LatLng(_lastUserLocation.Latitude, _lastUserLocation.Longitude)));
+                }
+                catch { }
+            }
+
+            if (_lastUserLocation != null)
+            {
+                _map.AnimateCamera(CameraUpdateFactory.NewLatLng(new LatLng(_lastUserLocation.Latitude, _lastUserLocation.Longitude)));
+            }
+            else
+            {
+                var locator = CrossGeolocator.Current;
+                try
+                {
+                    var location = await locator.GetPositionAsync(15000, null, false);
+                    _map.AnimateCamera(CameraUpdateFactory.NewLatLng(new LatLng(location.Latitude, location.Longitude)));
+                }
+                catch { /*ignore*/ }
+            }
+
+        }
+
+        private void Locator_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        {
+            _lastUserLocation = new LatLng(e.Position.Latitude, e.Position.Longitude);
+            if (_stickToUserLocation)
+            {
+                _map.AnimateCamera(CameraUpdateFactory.NewLatLng(_lastUserLocation));
+            }
         }
 
         public override void OnBackPressed()
@@ -225,35 +335,39 @@ namespace EasyBike.Droid
             Log.Debug("MyActivity", "Begin OnActionItemClicked");
             switch (item.ItemId)
             {
-            case Resource.Id.menu_share:
-                mode.Finish();
-                return true;
-            case Resource.Id.menu_route:
-                if (currentMarkerPosition != null)
-                {
-                    StartActivity(_createRouteIntent(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude));
-                }
+                case Resource.Id.menu_share:
+                    mode.Finish();
                     return true;
-            case Resource.Id.menu_favorite:
-                AlertDialog dialog = null;
-                dialog = new AlertDialog.Builder(this)
-                    .SetTitle(Resources.GetString(Resource.String.favoriteDialogTitle))
-                    .SetView(this.LayoutInflater.Inflate(Resource.Layout.DialogAddFavorite, null))
-                    .SetPositiveButton(Android.Resource.String.Ok, (sender, EventArgs) => {
-                        var favoriteName = dialog.FindViewById<EditText>(Resource.Id.favoriteName).Text.ToString();
-                        Log.Debug("MyActivity", "Add to favorite: " + favoriteName);
-                        if (favoriteName.Trim() == "") {
-                            Toast.MakeText(this, Resources.GetString(Resource.String.favoriteEmptyName), ToastLength.Short).Show();
-                        } else {
-                            // TODO Ajout à réaliser
-                            Toast.MakeText(this, Resources.GetString(Resource.String.favoriteAdded), ToastLength.Short).Show();
-                        }
-                    }).SetNegativeButton(Android.Resource.String.Cancel, (sender, EventArgs) => { })
-                    .Create();
-                dialog.Show();
-                return true;
-            default:
-                return false;
+                case Resource.Id.menu_route:
+                    if (currentMarkerPosition != null)
+                    {
+                        StartActivity(_createRouteIntent(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude));
+                    }
+                    return true;
+                case Resource.Id.menu_favorite:
+                    AlertDialog dialog = null;
+                    dialog = new AlertDialog.Builder(this)
+                        .SetTitle(Resources.GetString(Resource.String.favoriteDialogTitle))
+                        .SetView(this.LayoutInflater.Inflate(Resource.Layout.DialogAddFavorite, null))
+                        .SetPositiveButton(Android.Resource.String.Ok, (sender, EventArgs) =>
+                        {
+                            var favoriteName = dialog.FindViewById<EditText>(Resource.Id.favoriteName).Text.ToString();
+                            Log.Debug("MyActivity", "Add to favorite: " + favoriteName);
+                            if (favoriteName.Trim() == "")
+                            {
+                                Toast.MakeText(this, Resources.GetString(Resource.String.favoriteEmptyName), ToastLength.Short).Show();
+                            }
+                            else
+                            {
+                                // TODO Ajout à réaliser
+                                Toast.MakeText(this, Resources.GetString(Resource.String.favoriteAdded), ToastLength.Short).Show();
+                            }
+                        }).SetNegativeButton(Android.Resource.String.Cancel, (sender, EventArgs) => { })
+                        .Create();
+                    dialog.Show();
+                    return true;
+                default:
+                    return false;
             }
         }
 
@@ -367,7 +481,7 @@ namespace EasyBike.Droid
 
         private async void SetupMapIfNeeded()
         {
-            if (map == null && !_gettingMap)
+            if (_map == null && !_gettingMap)
             {
                 // TODO À quoi sert cette variable ? On peut supprimer je pense.
                 // a priori SetupMapIfNeeded peut-être appelé pluiseurs fois d'affilé, c'est pour prévenir ça
@@ -375,7 +489,7 @@ namespace EasyBike.Droid
                 GoogleMapOptions mapOptions = new GoogleMapOptions()
                     .InvokeMapType(GoogleMap.MapTypeNormal)
                     //.InvokeZoomControlsEnabled(true)
-                    .InvokeMapToolbarEnabled(true)
+                    //.InvokeMapToolbarEnabled(true)
                     .InvokeCompassEnabled(true)
                     .InvokeCamera(await GetStartingCameraPosition());
 
@@ -385,6 +499,7 @@ namespace EasyBike.Droid
                 _fragTx.Commit();
                 _mapFragment.GetMapAsync(this);
             }
+
         }
 
         /// <Docs>Get the camera position when starting the app.</Docs>
@@ -394,16 +509,16 @@ namespace EasyBike.Droid
         /// </summary>
         private async Task<CameraPosition> GetStartingCameraPosition()
         {
-//            double latitude = 48.879918;
-//            double longitude = 2.354810;
-//            float zoom = 14.5F;
+            //            double latitude = 48.879918;
+            //            double longitude = 2.354810;
+            //            float zoom = 14.5F;
             var settings = await _settingsService.GetSettingsAsync();
-//            if (settings.LastLocation != null) {
-//                latitude = 
-//            }
+            //            if (settings.LastLocation != null) {
+            //                latitude = 
+            //            }
             return new CameraPosition.Builder()
                 .Target(new LatLng(settings.LastLocation.Latitude, settings.LastLocation.Longitude))
-                .Zoom((float) settings.LastLocation.ZoomLevel).Build();
+                .Zoom((float)settings.LastLocation.ZoomLevel).Build();
         }
 
         //Cluster override methods
@@ -425,7 +540,7 @@ namespace EasyBike.Droid
                 await Task.Delay(300);
                 RunOnUiThread(() =>
                 {
-                    map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
+                    _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
                 });
             });
             //new Handler().PostDelayed(() =>
@@ -455,11 +570,11 @@ namespace EasyBike.Droid
 
             if (animated)
             {
-                map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
+                _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
             }
             else
             {
-                map.MoveCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
+                _map.MoveCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
             }
         }
 
@@ -467,43 +582,54 @@ namespace EasyBike.Droid
 
         private void OnStationRefreshed(object sender, EventArgs e)
         {
-            var station = (sender as Station);
-            var control = (station.Control as Marker);
-            if (station != null && control != null)
-            {
-                RefreshStation(station, control);
-            }
+            //var station = (sender as Station);
+            //var control = (station.Control as Marker);
+            //if (station != null && control != null)
+            //{
+            //    RefreshStation(station, control);
+            //}
+            //RunOnUiThread(() =>
+            //{
+            //    _clusterManager.Cluster();
+            //});
         }
 
         private void OnContractRefreshed(object sender, EventArgs e)
         {
-            var contract = (sender as Contract);
-            foreach (var clusterItem in StationControls.Where(c => c.Station.IsUiRefreshNeeded && c.Station.ContractStorageName == contract.StorageName).ToList())
+            RunOnUiThread(() =>
             {
-                var station = clusterItem.Station;
-                var control = (station.Control as Marker);
-                if (station != null && control != null)
+                var contract = (sender as Contract);
+                foreach (var clusterItem in StationControls.Where(c => c.Station.IsUiRefreshNeeded && c.Station.ContractStorageName == contract.StorageName).ToList())
                 {
-                    RefreshStation(station, control);
+                    var station = clusterItem.Station;
+                    var control = (station.Control as Marker);
+                    if (station != null && control != null)
+                    {
+                        RefreshStation(station, control);
+                    }
                 }
-            }
+                //RunOnUiThread(() =>
+                //{
+                //    _clusterManager.Cluster();
+                //});
+            });
         }
 
         private void RefreshStation(Station station, Marker control)
         {
-            RunOnUiThread(() =>
+            try
             {
-                try
-                {
-                    station.IsUiRefreshNeeded = false;
-                    // this can raise a IllegalArgumentException: Released unknown imageData reference
-                    // as the marker may not be on the map anymore so better to check again for null ref
-                    control.SetIcon(_clusterRender.CreateStationIcon(station));
-                }
-                catch
-                {
-                }
-            });
+                station.IsUiRefreshNeeded = false;
+                // this can raise a IllegalArgumentException: Released unknown imageData reference
+                // as the marker may not be on the map anymore so better to check again for null ref
+                control.SetIcon(_clusterRender.CreateStationIcon(station));
+
+            }
+            catch
+            {
+                Log.Debug("MyActivity", "Control VISIBILITY: " + control.Visible);
+                Log.Debug("MyActivity", "Control POS: " + control.Position);
+            }
         }
 
         public readonly List<Station> Items = new List<Station>();
@@ -516,7 +642,6 @@ namespace EasyBike.Droid
 
         public async void OnMapReady(GoogleMap googleMap)
         {
-
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
                         var contractToTest = "Paris";
@@ -530,30 +655,43 @@ namespace EasyBike.Droid
             // set the initial visual state of the bike/parking buttons
             SwitchModeStationParkingVisualState();
 
-            map = googleMap;
+            _map = googleMap;
             //Setup and customize your Google Map
-            map.UiSettings.CompassEnabled = true;
-            map.MyLocationEnabled = true;
-            map.UiSettings.MyLocationButtonEnabled = true;
-            //            _map.UiSettings.MapToolbarEnabled = true;
+            _map.UiSettings.CompassEnabled = true;
+            _map.MyLocationEnabled = true;
+
+
+            _map.UiSettings.MyLocationButtonEnabled = false;
+            //_map.UiSettings.MapToolbarEnabled = true;
+
+            // add padding to prevent action bar to hide the position button
+            //var dp = (int)(48 * Resources.DisplayMetrics.Xdpi / Resources.DisplayMetrics.Density);
+            //_map.SetPadding(0, dp, 0, 0);
+            //_map.vie
+            //View locationButton = suppormanagerObj.getView().findViewById(2);
+            //var rlp = (RelativeLayout.LayoutParams)locationButton.getLayoutParams(); 
+            //// position on right bottom 
+            //rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0); rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE); 
+
+
 
             // Initialize the camera position
             SetViewPoint(await GetStartingCameraPosition(), false);
 
             // Initialize the marker with the stations
-            _clusterManager = new ClusterManager(this, map);
-            _clusterRender = new StationRenderer(this, map, _clusterManager);
+            _clusterManager = new ClusterManager(this, _map);
+            _clusterRender = new StationRenderer(this, _map, _clusterManager);
             _clusterManager.SetRenderer(_clusterRender);
             _clusterManager.SetOnClusterClickListener(this);
             _clusterManager.SetOnClusterItemClickListener(this);
-            map.SetOnCameraChangeListener(_clusterManager);
-            map.SetOnMarkerClickListener(_clusterManager);
+            _map.SetOnCameraChangeListener(_clusterManager);
+            _map.SetOnMarkerClickListener(_clusterManager);
 
             // check if the app contains a least one city, otherwise, tells the user to download one
             MainViewModel.MainPageLoadedCommand.Execute(null);
 
             // On long click, display the address on a info window
-            Observable.FromEventPattern<GoogleMap.MapLongClickEventArgs>(map, "MapLongClick")
+            Observable.FromEventPattern<GoogleMap.MapLongClickEventArgs>(_map, "MapLongClick")
                 .Select(e => Observable.FromAsync(token => Task.Run(async () =>
                 {
                     currentMarkerPosition = e.EventArgs.Point;
@@ -569,7 +707,7 @@ namespace EasyBike.Droid
 
                         var markerOptions = new MarkerOptions().SetPosition(currentMarkerPosition);
                         // Create and show the marker
-                        longClickMarker = map.AddMarker(markerOptions);
+                        longClickMarker = _map.AddMarker(markerOptions);
                         longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerResolving);
                         longClickMarker.Snippet = latLongString;
                         longClickMarker.ShowInfoWindow();
@@ -584,29 +722,27 @@ namespace EasyBike.Droid
                         // Convert latitude and longitude to an address (GeoCoder)
                         addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
                     }
-                    catch (Exception ex) 
+                    catch (Exception ex)
                     {
-                            Log.Debug("MyActivity", "Geocoder crashed: "+ex.Message);
+                        Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
                     }
                     return new AddressesFromLocationDTO { Addresses = addresses, Location = latLongString };
 
                 }, token)))
                 .Switch()
+                .ObserveOn(SynchronizationContext.Current)
             .Subscribe(x =>
             {
-                RunOnUiThread(() =>
+                if (x.Addresses.Any())
                 {
-                    if (x.Addresses.Any())
-                    {
-                        longClickMarker.Title = x.Addresses[0].GetAddressLine(0);
-                        longClickMarker.Snippet = $"{x.Addresses[0].Locality} {x.Location}";
-                    }
-                    else
-                    {
-                        longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
-                    }
-                    longClickMarker.ShowInfoWindow();
-                });
+                    longClickMarker.Title = x.Addresses[0].GetAddressLine(0);
+                    longClickMarker.Snippet = $"{x.Addresses[0].Locality} {x.Location}";
+                }
+                else
+                {
+                    longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
+                }
+                longClickMarker.ShowInfoWindow();
             });
 
             // Initialize the behavior when long clicking somewhere on the map
@@ -639,7 +775,7 @@ namespace EasyBike.Droid
             //    }
             //};
 
-            map.MapClick += (sender, e) =>
+            _map.MapClick += (sender, e) =>
             {
                 if (longClickMarker != null)
                 {
@@ -654,11 +790,13 @@ namespace EasyBike.Droid
             };
 
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
-            var mapObserver = Observable.FromEventPattern(map, "CameraChange");
+            var mapObserver = Observable.FromEventPattern(_map, "CameraChange");
             TaskCompletionSource<bool> tcs;
             mapObserver
                 .Do((e) =>
                 {
+
+
                     cts.Cancel();
                     cts = new CancellationTokenSource();
                 }).Throttle(throttleTime)
@@ -677,7 +815,7 @@ namespace EasyBike.Droid
                         try
                         {
                             // can return null
-                            bounds = map.Projection.VisibleRegion.LatLngBounds;
+                            bounds = _map.Projection.VisibleRegion.LatLngBounds;
                         }
                         catch
                         {
@@ -723,7 +861,7 @@ namespace EasyBike.Droid
                 });
         }
 
-        private async void RefreshView(AddRemoveCollection addRemoveCollection, CancellationToken token)
+        private void RefreshView(AddRemoveCollection addRemoveCollection, CancellationToken token)
         {
             if (token.IsCancellationRequested)
             {

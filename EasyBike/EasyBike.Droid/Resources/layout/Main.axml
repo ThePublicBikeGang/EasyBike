@@ -8,13 +8,30 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-      <FrameLayout android:id="@+id/map"
-           android:layout_width="match_parent" 
-           android:layout_height="match_parent"
-           android:name="com.google.android.gms.maps.MapFragment"/>
-        <include
+        <FrameLayout
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.google.android.gms.maps.MapFragment" />
+    <!--<include
             android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
+            layout="@layout/toolbar" />-->
+        <AutoCompleteTextView
+            android:hint="Enter Location"
+            android:id="@+id/txtTextSearch"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/locationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location"
+            android:layout_marginBottom="80dp"
+            android:layout_marginRight="20dp"
+            app:borderWidth="0dp"
+            android:layout_gravity="bottom|right" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/bikesButton"
             android:layout_width="wrap_content"
@@ -35,6 +52,10 @@
             android:layout_gravity="bottom|right"
             app:elevation="0dp"
             app:fabSize="mini" />
+        <FrameLayout
+            android:id="@+id/map_touch_layer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

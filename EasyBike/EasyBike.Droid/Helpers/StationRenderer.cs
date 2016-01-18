@@ -177,16 +177,16 @@ namespace EasyBike.Droid.Helpers
         {
             var station = (context as ClusterItem).Station;
 
-            if (station.Contract.StationRefreshGranularity)
-            {
-                if (!station.IsInRefreshPool)
-                {
-                    Task.Run(() =>
-                    {
-                        _contractService.AddStationToRefreshingPool(station);
-                    });
-                }
-            }
+            //if (station.Contract.StationRefreshGranularity)
+            //{
+            //    if (!station.IsInRefreshPool)
+            //    {
+            //        Task.Run(() =>
+            //        {
+            //            _contractService.AddStationToRefreshingPool(station);
+            //        });
+            //    }
+            //}
 
 
             markerOptions.SetIcon(CreateStationIcon(station));
