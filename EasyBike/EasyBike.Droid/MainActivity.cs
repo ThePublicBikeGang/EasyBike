@@ -86,6 +86,7 @@ namespace EasyBike.Droid
         private ISettingsService _settingsService;
         private IFavoritesService _favoritesService;
 
+        public static bool MapIsTouched;
 
         public MainViewModel MainViewModel
         {
@@ -124,7 +125,7 @@ namespace EasyBike.Droid
             }
         }
         // helper to detect when the user is moving the map
-        public class FrameOnGenericMotionListener : Java.Lang.Object, View.IOnTouchListener
+        public class FrameOnGenericMotionListener : Java.Lang.Object, View.IOnGenericMotionListener
         {
             MainActivity _context;
 
@@ -133,9 +134,14 @@ namespace EasyBike.Droid
                 _context = context;
             }
 
+            public bool OnGenericMotion(View v, MotionEvent e)
+            {
+                throw new NotImplementedException();
+            }
 
             public bool OnTouch(View v, MotionEvent e)
             {
+                System.Diagnostics.Debug.WriteLine(e.Action);
                 if (e.Action == MotionEventActions.Move)
                 {
                     if (_context._stickToUserLocation)
@@ -178,8 +184,7 @@ namespace EasyBike.Droid
             _parkingButton = FindViewById<FloatingActionButton>(Resource.Id.parkingButton);
             _parkingButton.Click += ParkingButton_Click;
 
-            var frame = FindViewById<FrameLayout>(Resource.Id.map_touch_layer);
-            frame.SetOnTouchListener(new FrameOnGenericMotionListener(this));
+         
 
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
             _locationButton.Click += LocationButton_Click;
@@ -211,7 +216,7 @@ namespace EasyBike.Droid
         }
 
         private LatLng _lastUserLocation;
-        private bool _stickToUserLocation;
+        public  bool _stickToUserLocation;
         private void StartLocationTracking()
         {
             var locator = CrossGeolocator.Current;
@@ -221,7 +226,7 @@ namespace EasyBike.Droid
             locator.PositionChanged += Locator_PositionChanged;
             locator.StartListeningAsync(5000, 5000, false);
         }
-        private void UnStickUserLocation()
+        public void UnStickUserLocation()
         {
             _stickToUserLocation = false;
             _locationButton.Background.SetAlpha(150);
@@ -490,9 +495,13 @@ namespace EasyBike.Droid
                     .InvokeCamera(await GetStartingCameraPosition());
 
                 _fragTx = FragmentManager.BeginTransaction();
-                _mapFragment = MapFragment.NewInstance(mapOptions);
+                _mapFragment = MapFragmentExtended.NewInstance(mapOptions);
+
+           
+
                 _fragTx.Add(Resource.Id.map, _mapFragment, "map");
                 _fragTx.Commit();
+
                 _mapFragment.GetMapAsync(this);
             }
 
@@ -521,6 +530,7 @@ namespace EasyBike.Droid
         public bool OnClusterClick(ICluster cluster)
         {
             Log.Debug("MyActivity", "Begin OnClusterClick");
+            UnStickUserLocation();
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             foreach (ClusterItem item in cluster.Items)
             {
@@ -550,6 +560,7 @@ namespace EasyBike.Droid
         public bool OnClusterItemClick(Java.Lang.Object marker)
         {
             Log.Debug("MyActivity", "Begin OnClusterItemClick");
+            UnStickUserLocation();
             if (marker is ClusterItem)
             {
                 currentMarkerPosition = ((ClusterItem)marker).Position;
@@ -638,6 +649,7 @@ namespace EasyBike.Droid
 
         public async void OnMapReady(GoogleMap googleMap)
         {
+            _mapFragment.View.SetOnGenericMotionListener(new FrameOnGenericMotionListener(this));
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
             //            var contractToTest = "Paris";
@@ -658,7 +670,7 @@ namespace EasyBike.Droid
 
 
             _map.UiSettings.MyLocationButtonEnabled = false;
-            //_map.UiSettings.MapToolbarEnabled = true;
+            _map.UiSettings.MapToolbarEnabled = false;
 
             // add padding to prevent action bar to hide the position button
             //var dp = (int)(48 * Resources.DisplayMetrics.Xdpi / Resources.DisplayMetrics.Density);
@@ -791,8 +803,6 @@ namespace EasyBike.Droid
             mapObserver
                 .Do((e) =>
                 {
-
-
                     cts.Cancel();
                     cts = new CancellationTokenSource();
                 }).Throttle(throttleTime)
