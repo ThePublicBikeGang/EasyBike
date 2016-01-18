@@ -206,6 +206,10 @@ namespace EasyBike.Droid
             var unused = MainViewModel.AboutCommand;
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
+            // TODO pour le debug des favoris :
+            _favoritesService.AddFavoriteAsync(new Favorite {
+                Address = "Test address", Latitude = 0.0, Longitude = 0.0, Name = "Test name"
+            });
         }
 
         protected async override void OnPause()
@@ -652,10 +656,10 @@ namespace EasyBike.Droid
             _mapFragment.View.SetOnGenericMotionListener(new FrameOnGenericMotionListener(this));
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
-            //            var contractToTest = "Paris";
-            //            var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-            //            var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
-            //            await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+                        var contractToTest = "Paris";
+                        var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+                        var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+                        await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             _contractService.ContractRefreshed += OnContractRefreshed;
             _contractService.StationRefreshed += OnStationRefreshed;
