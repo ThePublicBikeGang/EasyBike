@@ -5,6 +5,7 @@ using EasyBike.ViewModels;
 using GalaSoft.MvvmLight.Helpers;
 using Android.Gms.Maps;
 using System;
+using System.Net.Http;
 using System.Globalization;
 using Com.Google.Maps.Android.Clustering;
 using Android.Gms.Maps.Model;
@@ -41,6 +42,8 @@ using ShareActionProvider = Android.Support.V7.Widget.ShareActionProvider;
 using ActionMode = Android.Support.V7.View.ActionMode;
 using System.Reactive.Subjects;
 using Plugin.Geolocator;
+using Newtonsoft.Json;
+using ModernHttpClient;
 
 namespace EasyBike.Droid
 {
@@ -81,6 +84,14 @@ namespace EasyBike.Droid
         FloatingActionButton _parkingButton;
 
         FloatingActionButton _locationButton;
+
+        // Place API
+        const string strGoogleApiKey = "AIzaSyBqvI3HInjprFDxlCt97VycSxPq-08m-14";
+        const string strAutoCompleteGoogleApi = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=";
+        const string strGeoCodingUrl = "https://maps.googleapis.com/maps/api/geocode/json";
+        AutoCompleteTextView AutoCompleteSearchPlaceTextView;
+        //GoogleMapPlaceClass objMapClass;
+        //GeoCodeJSONClass objGeoCodeJSONClass;
 
         //
         private ISettingsService _settingsService;
@@ -190,7 +201,48 @@ namespace EasyBike.Droid
             _locationButton.Click += LocationButton_Click;
             UnStickUserLocation();
 
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+
+            AutoCompleteSearchPlaceTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autoCompleteSearchPlaceTextView);
+            AutoCompleteSearchPlaceTextView.ItemClick += AutoCompleteSearchPlaceTextView_ItemClick;
+            AutoCompleteSearchPlaceTextView.TextChanged += async delegate(object sender, Android.Text.TextChangedEventArgs e)
+            {
+                try
+                {
+                    using (var client = new HttpClient(new NativeMessageHandler()))
+                    {
+                        //addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
+                        var response = await client.GetAsync(strAutoCompleteGoogleApi + AutoCompleteSearchPlaceTextView.Text + "&types=geocode&key=" + strGoogleApiKey).ConfigureAwait(false);
+                        var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        System.Diagnostics.Debug.WriteLine("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+                        System.Diagnostics.Debug.WriteLine(strAutoCompleteGoogleApi + AutoCompleteSearchPlaceTextView.Text + "&key=" + strGoogleApiKey);
+                        System.Diagnostics.Debug.WriteLine(responseBodyAsText);
+                        if (responseBodyAsText == "Exception")
+                        {
+                            Toast.MakeText(this, "Unable to connect to server!!!", ToastLength.Short).Show();
+                            return;
+                        }
+                        //objMapClass = JsonConvert.DeserializeObject<string>(autoCompleteOptions);
+                        //strPredictiveText = new string[objMapClass.predictions.Count];
+                        //index = 0;
+                        //foreach (Prediction objPred in objMapClass.predictions)
+                        //{
+                        //    strPredictiveText[index] = objPred.description;
+                        //    index++;
+                        //}
+                        //adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleDropDownItem1Line, strPredictiveText);
+                        //txtSearch.Adapter = adapter;
+                    }
+
+                  
+                }
+                catch
+                {
+                    Toast.MakeText(this, "Unable to process at this moment!!!", ToastLength.Short).Show();
+                }
+
+            };
+
+        drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
             navigationView.NavigationItemSelected += (sender, e) =>
@@ -210,6 +262,11 @@ namespace EasyBike.Droid
             _favoritesService.AddFavoriteAsync(new Favorite {
                 Address = "Test address", Latitude = 0.0, Longitude = 0.0, Name = "Test name"
             });
+        }
+
+        private void AutoCompleteSearchPlaceTextView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+          //  throw new NotImplementedException();
         }
 
         protected async override void OnPause()
@@ -656,10 +713,10 @@ namespace EasyBike.Droid
             _mapFragment.View.SetOnGenericMotionListener(new FrameOnGenericMotionListener(this));
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
-                        var contractToTest = "Paris";
-                        var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-                        var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
-                        await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+                        //var contractToTest = "Paris";
+                        //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+                        //var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+                        //await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             _contractService.ContractRefreshed += OnContractRefreshed;
             _contractService.StationRefreshed += OnStationRefreshed;

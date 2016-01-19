@@ -18,7 +18,7 @@
             layout="@layout/toolbar" />-->
         <AutoCompleteTextView
             android:hint="Enter Location"
-            android:id="@+id/txtTextSearch"
+            android:id="@+id/autoCompleteSearchPlaceTextView"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"

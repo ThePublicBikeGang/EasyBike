@@ -44,7 +44,7 @@ namespace EasyBike.Droid
                 
             }
             var favoritesListView = FindViewById<ListView>(Resource.Id.FavoritesList);
-            favoritesListView.Adapter = new SimpleAdapter(this, list, Resource.Layout.FavoriteItem, new string[]{"FavoriteItemName", "FavoriteItemAddress"}, new int[]{Android.Resource.Id.Text1, Android.Resource.Id.Text2});
+           // favoritesListView.Adapter = new SimpleAdapter(this, list, Resource.Layout.FavoriteItem, new string[]{"FavoriteItemName", "FavoriteItemAddress"}, new int[]{Android.Resource.Id.Text1, Android.Resource.Id.Text2});
         }
     }
 }
