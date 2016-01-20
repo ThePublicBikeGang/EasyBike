@@ -66,3 +66,4 @@ PublicBikes takes advantage of multiple third parties plugins.
 
 ## Helpfull links
 * Xamarin plugins: https://github.com/xamarin/plugins
+* Android icons generator: http://fa2png.io/r/ionicons
