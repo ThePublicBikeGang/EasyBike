@@ -10,7 +10,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:title="@string/app_name">
-    <AutoCompleteTextView
+    <EasyBike.Droid.Helpers.ClearableAutoCompleteTextView
         android:hint="Enter Location"
         android:id="@+id/autoCompleteSearchPlaceTextView"
         android:layout_height="wrap_content"

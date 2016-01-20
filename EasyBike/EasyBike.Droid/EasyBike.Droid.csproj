@@ -191,6 +191,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Helpers\ActivityBaseEx.cs" />
+    <Compile Include="Helpers\ClearableAutoCompleteTextView.cs" />
     <Compile Include="Helpers\CountryListAdapter.cs" />
     <Compile Include="Helpers\ExtendedDialogService.cs" />
     <Compile Include="Helpers\ExtendedNavigationService.cs" />

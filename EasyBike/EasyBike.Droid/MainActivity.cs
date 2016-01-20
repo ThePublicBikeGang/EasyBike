@@ -150,7 +150,7 @@ namespace EasyBike.Droid
 
             public bool OnGenericMotion(View v, MotionEvent e)
             {
-                throw new NotImplementedException();
+                return true;
             }
 
             public bool OnTouch(View v, MotionEvent e)
