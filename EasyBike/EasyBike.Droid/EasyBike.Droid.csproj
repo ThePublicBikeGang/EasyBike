@@ -447,6 +447,11 @@
   <ItemGroup>
     <Content Include="PluginsHelp\GeolocatorReadme.txt" />
     <Content Include="PluginsHelp\PermissionsReadme.txt" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_compass.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_compass.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_compass.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_compass.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_compass.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />

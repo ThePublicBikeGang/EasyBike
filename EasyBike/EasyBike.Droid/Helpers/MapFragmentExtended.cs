@@ -32,6 +32,7 @@ namespace EasyBike.Droid.Helpers
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            // enable a way to detect when the user is actually moving the map to unstick to the current user location for instance
             touchView = new TouchableWrapper(CrossCurrentActivity.Current.Activity);
             touchView.AddView(base.OnCreateView(inflater, container, savedInstanceState));
             return touchView;

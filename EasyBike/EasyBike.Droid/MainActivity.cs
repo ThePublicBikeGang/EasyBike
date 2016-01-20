@@ -45,6 +45,10 @@ using Plugin.Geolocator;
 using Newtonsoft.Json;
 using ModernHttpClient;
 using Android.Views.InputMethods;
+using Com.Google.Maps.Android.UI;
+using Android.Support.V4.Content.Res;
+using Plugin.Compass;
+using Plugin.Compass.Abstractions;
 
 namespace EasyBike.Droid
 {
@@ -141,42 +145,22 @@ namespace EasyBike.Droid
                 return true;
             }
         }
-        // helper to detect when the user is moving the map
-        public class FrameOnGenericMotionListener : Java.Lang.Object, View.IOnGenericMotionListener
-        {
-            MainActivity _context;
 
-            public FrameOnGenericMotionListener(MainActivity context)
-            {
-                _context = context;
-            }
-
-            public bool OnGenericMotion(View v, MotionEvent e)
-            {
-                return true;
-            }
-
-            public bool OnTouch(View v, MotionEvent e)
-            {
-                System.Diagnostics.Debug.WriteLine(e.Action);
-                if (e.Action == MotionEventActions.Move)
-                {
-                    if (_context._stickToUserLocation)
-                    {
-                        _context.UnStickUserLocation();
-                    }
-                }
-                return false;
-            }
-        }
-
+        private Bitmap _iconUserLocation;
+        private Bitmap _iconCompass;
         protected override void OnCreate(Bundle bundle)
         {
             Log.Debug("MyActivity", "Begin OnCreate");
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
-            StartLocationTracking();
+           
+            // prepare icons for location / compass button
+            var iconGenerator = new IconGenerator(this);
+            iconGenerator.SetBackground(ResourcesCompat.GetDrawable(Resources, Resource.Drawable.ic_location, null));
+            _iconUserLocation = iconGenerator.MakeIcon();
+            iconGenerator.SetBackground(ResourcesCompat.GetDrawable(Resources, Resource.Drawable.ic_compass, null));
+            _iconCompass = iconGenerator.MakeIcon();
 
             //var uiOptions = (int)this.Window.DecorView.SystemUiVisibility;
             //var newUiOptions = (int)uiOptions;
@@ -207,6 +191,7 @@ namespace EasyBike.Droid
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
             _locationButton.Click += LocationButton_Click;
             UnStickUserLocation();
+
 
 
             AutoCompleteSearchPlaceTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autoCompleteSearchPlaceTextView);
@@ -300,16 +285,73 @@ namespace EasyBike.Droid
             locator.PositionChanged += Locator_PositionChanged;
             locator.StartListeningAsync(5000, 5000, false);
         }
+
         public void UnStickUserLocation()
         {
-            _stickToUserLocation = false;
+            _stickToUserLocation = _compassMode = false;
             _locationButton.Background.SetAlpha(150);
+            _locationButton.SetImageBitmap(_iconUserLocation);
+            CrossCompass.Current.Stop();
         }
 
+        IObservable<System.Reactive.EventPattern<CompassChangedEventArgs>> CompassChangedStream;
+        private bool _compassMode;
+        // used to reduce the noise provided buy the compass
+        private double _prevHeading = 0d;
         private async void LocationButton_Click(object sender, EventArgs e)
         {
-            _stickToUserLocation = true;
-            _locationButton.Background.SetAlpha(255);
+            if(_compassMode && _stickToUserLocation)
+            {
+                UnStickUserLocation();
+                _map.StopAnimation();
+                _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
+                _map.CameraPosition.Target,
+                _map.CameraPosition.Zoom,
+                _map.CameraPosition.Tilt, 0)), 300, null);
+                _prevHeading = 0;
+                return;
+            }
+
+            if (_stickToUserLocation)
+            {
+                // compass mode
+                _compassMode = true;
+                _locationButton.SetImageBitmap(_iconCompass);
+                if (CompassChangedStream == null)
+                {
+                    var counter = 0;
+
+                    CompassChangedStream = Observable.FromEventPattern<CompassChangedEventArgs>(CrossCompass.Current, "CompassChanged");
+                    // Throttle doesn't work ?!!
+                    CompassChangedStream.Where(c => _compassMode).Subscribe(compassChangedEventArgs =>
+                    {
+                        // Skip some events
+                        if (counter % 5 == 0)
+                        {
+                            if (Math.Abs(_prevHeading - compassChangedEventArgs.EventArgs.Heading) > 10)
+                            {
+                                RunOnUiThread(() =>
+                                {
+                                    _map.StopAnimation();
+                                    _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
+                                    _map.CameraPosition.Target,
+                                    _map.CameraPosition.Zoom,
+                                    _map.CameraPosition.Tilt, (float)compassChangedEventArgs.EventArgs.Heading)), 300, null);
+                                });
+                                _prevHeading = compassChangedEventArgs.EventArgs.Heading;
+                            }
+                        }
+                        counter++;
+                    });
+                }
+                CrossCompass.Current.Start();
+            }
+            else
+            {
+                _stickToUserLocation = true;
+                _locationButton.Background.SetAlpha(255);
+            }
+
             if (_lastUserLocation == null)
             {
                 try
@@ -348,7 +390,7 @@ namespace EasyBike.Droid
             _lastUserLocation = new LatLng(e.Position.Latitude, e.Position.Longitude);
             if (_stickToUserLocation)
             {
-                _map.AnimateCamera(CameraUpdateFactory.NewLatLng(_lastUserLocation));
+                _map.MoveCamera(CameraUpdateFactory.NewLatLng(_lastUserLocation));
             }
         }
 
@@ -723,8 +765,8 @@ namespace EasyBike.Droid
 
         public async void OnMapReady(GoogleMap googleMap)
         {
-            _mapFragment.View.SetOnGenericMotionListener(new FrameOnGenericMotionListener(this));
             Log.Debug("MyActivity", "Begin OnMapReady");
+            StartLocationTracking();
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
             //var contractToTest = "Paris";
             //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
