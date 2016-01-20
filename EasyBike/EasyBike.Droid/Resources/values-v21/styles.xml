@@ -12,7 +12,7 @@
     <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
     <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
     <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-    <item name="android:windowTranslucentStatus">true</item>
+    <item name="android:windowTranslucentStatus">false</item>
     <item name="android:windowTranslucentNavigation">false</item>
   </style>
 </resources>

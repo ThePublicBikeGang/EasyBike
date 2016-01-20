@@ -86,10 +86,13 @@ namespace EasyBike.Droid
         FloatingActionButton _locationButton;
 
         // Place API
-        const string strGoogleApiKey = "AIzaSyBqvI3HInjprFDxlCt97VycSxPq-08m-14";
+        const string strGoogleApiKey = "AIzaSyCwF6w1Zp2nBhXGq277dKOOQqAPBKH1QuM";
         const string strAutoCompleteGoogleApi = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=";
         const string strGeoCodingUrl = "https://maps.googleapis.com/maps/api/geocode/json";
+        const string strPlaceApiDetailsUrl = "https://maps.googleapis.com/maps/api/place/details/json?placeid={0}&key={1}";
+
         AutoCompleteTextView AutoCompleteSearchPlaceTextView;
+        GooglePlacesAutocompleteAdapter googlePlacesAutocompleteAdapter;
         //GoogleMapPlaceClass objMapClass;
         //GeoCodeJSONClass objGeoCodeJSONClass;
 
@@ -184,18 +187,19 @@ namespace EasyBike.Droid
 
 
 
-            //Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            //SetSupportActionBar(toolbar);
-            ////Enable support action bar to display hamburger
-            //SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
-            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            //Enable support action bar to display hamburger
+            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetDisplayShowCustomEnabled(true);
+
 
             _bikesButton = FindViewById<FloatingActionButton>(Resource.Id.bikesButton);
             _bikesButton.Click += BikesButton_Click;
             _parkingButton = FindViewById<FloatingActionButton>(Resource.Id.parkingButton);
             _parkingButton.Click += ParkingButton_Click;
 
-         
 
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
             _locationButton.Click += LocationButton_Click;
@@ -204,45 +208,35 @@ namespace EasyBike.Droid
 
             AutoCompleteSearchPlaceTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autoCompleteSearchPlaceTextView);
             AutoCompleteSearchPlaceTextView.ItemClick += AutoCompleteSearchPlaceTextView_ItemClick;
-            AutoCompleteSearchPlaceTextView.TextChanged += async delegate(object sender, Android.Text.TextChangedEventArgs e)
-            {
-                try
+            googlePlacesAutocompleteAdapter = new GooglePlacesAutocompleteAdapter(this, Android.Resource.Layout.SimpleDropDownItem1Line);
+            AutoCompleteSearchPlaceTextView.Adapter = googlePlacesAutocompleteAdapter;
+            Observable.FromEventPattern(AutoCompleteSearchPlaceTextView, "TextChanged")
+                .Throttle(TimeSpan.FromMilliseconds(300))
+                .Where(x => AutoCompleteSearchPlaceTextView.Text.Length >= 2)
+                .Subscribe(async x =>
                 {
-                    using (var client = new HttpClient(new NativeMessageHandler()))
+                    try
                     {
-                        //addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
-                        var response = await client.GetAsync(strAutoCompleteGoogleApi + AutoCompleteSearchPlaceTextView.Text + "&types=geocode&key=" + strGoogleApiKey).ConfigureAwait(false);
-                        var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                        System.Diagnostics.Debug.WriteLine("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
-                        System.Diagnostics.Debug.WriteLine(strAutoCompleteGoogleApi + AutoCompleteSearchPlaceTextView.Text + "&key=" + strGoogleApiKey);
-                        System.Diagnostics.Debug.WriteLine(responseBodyAsText);
-                        if (responseBodyAsText == "Exception")
+                        using (var client = new HttpClient(new NativeMessageHandler()))
                         {
-                            Toast.MakeText(this, "Unable to connect to server!!!", ToastLength.Short).Show();
-                            return;
+                            var response = await client.GetAsync(strAutoCompleteGoogleApi + AutoCompleteSearchPlaceTextView.Text + "&types=geocode&key=" + strGoogleApiKey).ConfigureAwait(false);
+                            var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var predictions = JsonConvert.DeserializeObject<PlaceApiModel>(responseBodyAsText).predictions.ToList();
+                            googlePlacesAutocompleteAdapter.Results = predictions;
+                            RunOnUiThread(() =>
+                            {
+                                googlePlacesAutocompleteAdapter.NotifyDataSetChanged();
+                            });
                         }
-                        //objMapClass = JsonConvert.DeserializeObject<string>(autoCompleteOptions);
-                        //strPredictiveText = new string[objMapClass.predictions.Count];
-                        //index = 0;
-                        //foreach (Prediction objPred in objMapClass.predictions)
-                        //{
-                        //    strPredictiveText[index] = objPred.description;
-                        //    index++;
-                        //}
-                        //adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleDropDownItem1Line, strPredictiveText);
-                        //txtSearch.Adapter = adapter;
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Debug("AutoCompleteSearchPlaceTextView", e.Message);
                     }
 
-                  
-                }
-                catch
-                {
-                    Toast.MakeText(this, "Unable to process at this moment!!!", ToastLength.Short).Show();
-                }
+                });
 
-            };
-
-        drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
             navigationView.NavigationItemSelected += (sender, e) =>
@@ -259,14 +253,30 @@ namespace EasyBike.Droid
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
             // TODO pour le debug des favoris :
-            _favoritesService.AddFavoriteAsync(new Favorite {
-                Address = "Test address", Latitude = 0.0, Longitude = 0.0, Name = "Test name"
+            _favoritesService.AddFavoriteAsync(new Favorite
+            {
+                Address = "Test address",
+                Latitude = 0.0,
+                Longitude = 0.0,
+                Name = "Test name"
             });
         }
 
-        private void AutoCompleteSearchPlaceTextView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private async void AutoCompleteSearchPlaceTextView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-          //  throw new NotImplementedException();
+            var prediction = googlePlacesAutocompleteAdapter.Results[e.Position];
+            using (var client = new HttpClient(new NativeMessageHandler()))
+            {
+                var response = await client.GetAsync(string.Format(strPlaceApiDetailsUrl, prediction.place_id, strGoogleApiKey)).ConfigureAwait(false);
+                var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var place = JsonConvert.DeserializeObject<PlaceApiDetailModel>(responseBodyAsText);
+                RunOnUiThread(() =>
+                {
+                    var position = new LatLng(place.result.geometry.location.lat, place.result.geometry.location.lng);
+                    AddPlaceMarker(position, place.result.formatted_address, FormatLatLng(position));
+                    _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
+                });
+            }
         }
 
         protected async override void OnPause()
@@ -277,7 +287,7 @@ namespace EasyBike.Droid
         }
 
         private LatLng _lastUserLocation;
-        public  bool _stickToUserLocation;
+        public bool _stickToUserLocation;
         private void StartLocationTracking()
         {
             var locator = CrossGeolocator.Current;
@@ -558,7 +568,7 @@ namespace EasyBike.Droid
                 _fragTx = FragmentManager.BeginTransaction();
                 _mapFragment = MapFragmentExtended.NewInstance(mapOptions);
 
-           
+
 
                 _fragTx.Add(Resource.Id.map, _mapFragment, "map");
                 _fragTx.Commit();
@@ -713,10 +723,10 @@ namespace EasyBike.Droid
             _mapFragment.View.SetOnGenericMotionListener(new FrameOnGenericMotionListener(this));
             Log.Debug("MyActivity", "Begin OnMapReady");
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
-                        //var contractToTest = "Paris";
-                        //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
-                        //var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
-                        //await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
+            //var contractToTest = "Paris";
+            //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
+            //var contract = contractService.GetCountries().First(country => country.Contracts.Any(c => c.Name == contractToTest)).Contracts.First(c => c.Name == contractToTest);
+            //await SimpleIoc.Default.GetInstance<ContractsViewModel>().AddOrRemoveContract(contract);
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             _contractService.ContractRefreshed += OnContractRefreshed;
             _contractService.StationRefreshed += OnStationRefreshed;
@@ -763,27 +773,7 @@ namespace EasyBike.Droid
             Observable.FromEventPattern<GoogleMap.MapLongClickEventArgs>(_map, "MapLongClick")
                 .Select(e => Observable.FromAsync(token => Task.Run(async () =>
                 {
-                    currentMarkerPosition = e.EventArgs.Point;
-                    var latLongString = $"(lat: { Math.Round(currentMarkerPosition.Latitude, 4)}, lon: { Math.Round(currentMarkerPosition.Longitude, 4)})";
-
-                    RunOnUiThread(() =>
-                    {
-                        if (longClickMarker != null)
-                        {
-                            // Remove a previously created marker
-                            longClickMarker.Remove();
-                        }
-
-                        var markerOptions = new MarkerOptions().SetPosition(currentMarkerPosition);
-                        // Create and show the marker
-                        longClickMarker = _map.AddMarker(markerOptions);
-                        longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerResolving);
-                        longClickMarker.Snippet = latLongString;
-                        longClickMarker.ShowInfoWindow();
-
-                        _actionMode = _actionMode ?? StartSupportActionMode(this);
-
-                    });
+                    AddPlaceMarker(e.EventArgs.Point, null, null);
 
                     IList<Address> addresses = new List<Address>();
                     try
@@ -795,7 +785,7 @@ namespace EasyBike.Droid
                     {
                         Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
                     }
-                    return new AddressesFromLocationDTO { Addresses = addresses, Location = latLongString };
+                    return new AddressesFromLocationDTO { Addresses = addresses, Location = FormatLatLng(e.EventArgs.Point) };
 
                 }, token)))
                 .Switch()
@@ -926,6 +916,37 @@ namespace EasyBike.Droid
                     });
 
                 });
+        }
+
+        private string FormatLatLng(LatLng position)
+        {
+            return $"(lat: { Math.Round(position.Latitude, 4)}, lon: { Math.Round(position.Longitude, 4)})";
+        }
+
+        /// <summary>
+        /// add a marker for resolved adresses or map long click
+        /// </summary>
+        /// <param name="position"></param>
+        private void AddPlaceMarker(LatLng position, string title, string snippet)
+        {
+            currentMarkerPosition = position;
+            RunOnUiThread(() =>
+            {
+                if (longClickMarker != null)
+                {
+                    // Remove a previously created marker
+                    longClickMarker.Remove();
+                }
+
+                var markerOptions = new MarkerOptions().SetPosition(position);
+                // Create and show the marker
+                longClickMarker = _map.AddMarker(markerOptions);
+                longClickMarker.Title = title ?? Resources.GetString(Resource.String.mapMarkerResolving);
+                longClickMarker.Snippet = snippet ?? FormatLatLng(position);
+                longClickMarker.ShowInfoWindow();
+
+                _actionMode = _actionMode ?? StartSupportActionMode(this);
+            });
         }
 
         private void RefreshView(AddRemoveCollection addRemoveCollection, CancellationToken token)

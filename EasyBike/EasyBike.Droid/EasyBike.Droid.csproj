@@ -194,6 +194,7 @@
     <Compile Include="Helpers\CountryListAdapter.cs" />
     <Compile Include="Helpers\ExtendedDialogService.cs" />
     <Compile Include="Helpers\ExtendedNavigationService.cs" />
+    <Compile Include="Helpers\GooglePlacesAutocompleteAdapter.cs" />
     <Compile Include="Helpers\MapFragmentExtended.cs" />
     <Compile Include="Helpers\StationRenderer.cs" />
     <Compile Include="Helpers\MapHelper.cs" />
@@ -201,6 +202,8 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Models\ClusterItem.cs" />
+    <Compile Include="Models\PlaceApiDetailModel.cs" />
+    <Compile Include="Models\PlaceApiModel.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LocalisationService.cs" />
