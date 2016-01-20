@@ -493,7 +493,7 @@ namespace EasyBike.Droid
         }
         private void DecreaseButtonVisibility(FloatingActionButton button)
         {
-            button.Background.SetAlpha(100);
+            button.Background.SetAlpha(150);
         }
         /// <summary>
         /// set the visual state of the bike/parking mode buttons 
