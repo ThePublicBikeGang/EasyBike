@@ -253,6 +253,7 @@ namespace EasyBike.Droid
 
         private async void AutoCompleteSearchPlaceTextView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+            ResetMapCameraViewAndStickers();
             var prediction = googlePlacesAutocompleteAdapter.Results[e.Position];
             using (var client = new HttpClient(new NativeMessageHandler()))
             {
@@ -298,6 +299,17 @@ namespace EasyBike.Droid
             CrossCompass.Current.Stop();
         }
 
+        private void ResetMapCameraViewAndStickers()
+        {
+            UnStickUserLocation();
+            _map.StopAnimation();
+            _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
+            _map.CameraPosition.Target,
+            _map.CameraPosition.Zoom,
+            _map.CameraPosition.Tilt, 0)), 300, null);
+            _prevHeading = 0;
+        }
+
         IObservable<System.Reactive.EventPattern<CompassChangedEventArgs>> CompassChangedStream;
         private bool _compassMode;
         // used to reduce the noise provided buy the compass
@@ -308,13 +320,7 @@ namespace EasyBike.Droid
         {
             if(_compassMode && _stickToUserLocation)
             {
-                UnStickUserLocation();
-                _map.StopAnimation();
-                _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                _map.CameraPosition.Target,
-                _map.CameraPosition.Zoom,
-                _map.CameraPosition.Tilt, 0)), 300, null);
-                _prevHeading = 0;
+                ResetMapCameraViewAndStickers();
                 return;
             }
 
@@ -333,13 +339,13 @@ namespace EasyBike.Droid
                         // Skip some events
                         if (_compassEventcounter % 5 == 0)
                         {
-                            if (Math.Abs(_prevHeading - compassChangedEventArgs.EventArgs.Heading) > 10)
+                            if (Math.Abs(_prevHeading - compassChangedEventArgs.EventArgs.Heading) > 2)
                             {
                                 RunOnUiThread(() =>
                                 {
                                     _map.StopAnimation();
                                     _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                                    _map.CameraPosition.Target,
+                                    _lastUserLocation,
                                     _map.CameraPosition.Zoom,
                                     _map.CameraPosition.Tilt, (float)compassChangedEventArgs.EventArgs.Heading)), 300, null);
                                 });
