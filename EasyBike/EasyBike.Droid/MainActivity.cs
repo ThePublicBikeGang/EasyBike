@@ -49,6 +49,7 @@ using Com.Google.Maps.Android.UI;
 using Android.Support.V4.Content.Res;
 using Plugin.Compass;
 using Plugin.Compass.Abstractions;
+using Plugin.CurrentActivity;
 
 namespace EasyBike.Droid
 {
@@ -263,6 +264,9 @@ namespace EasyBike.Droid
                     var position = new LatLng(place.result.geometry.location.lat, place.result.geometry.location.lng);
                     AddPlaceMarker(position, place.result.formatted_address, FormatLatLng(position));
                     _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
+                    // Hide keyboard
+                    InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(Context.InputMethodService);
+                    inputMethodManager.HideSoftInputFromWindow((sender as View).WindowToken, 0);
                 });
             }
         }
@@ -298,6 +302,8 @@ namespace EasyBike.Droid
         private bool _compassMode;
         // used to reduce the noise provided buy the compass
         private double _prevHeading = 0d;
+        // used to skip some events
+        private int _compassEventcounter = 0;
         private async void LocationButton_Click(object sender, EventArgs e)
         {
             if(_compassMode && _stickToUserLocation)
@@ -319,14 +325,13 @@ namespace EasyBike.Droid
                 _locationButton.SetImageBitmap(_iconCompass);
                 if (CompassChangedStream == null)
                 {
-                    var counter = 0;
-
+                    _compassEventcounter = 0;
                     CompassChangedStream = Observable.FromEventPattern<CompassChangedEventArgs>(CrossCompass.Current, "CompassChanged");
                     // Throttle doesn't work ?!!
                     CompassChangedStream.Where(c => _compassMode).Subscribe(compassChangedEventArgs =>
                     {
                         // Skip some events
-                        if (counter % 5 == 0)
+                        if (_compassEventcounter % 5 == 0)
                         {
                             if (Math.Abs(_prevHeading - compassChangedEventArgs.EventArgs.Heading) > 10)
                             {
@@ -341,7 +346,7 @@ namespace EasyBike.Droid
                                 _prevHeading = compassChangedEventArgs.EventArgs.Heading;
                             }
                         }
-                        counter++;
+                        _compassEventcounter++;
                     });
                 }
                 CrossCompass.Current.Start();
