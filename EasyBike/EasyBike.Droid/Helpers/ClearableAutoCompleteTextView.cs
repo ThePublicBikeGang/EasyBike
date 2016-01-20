@@ -1,19 +1,17 @@
+using System;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Support.V4.Content.Res;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Android.Views.InputMethods;
+using Android.App;
 
 namespace EasyBike.Droid.Helpers
 {
     public class CustomOnTouchListener : Java.Lang.Object, View.IOnTouchListener
     {
-
-        public CustomOnTouchListener()
-        {
-        }
-
         public bool OnTouch(View v, MotionEvent e)
         {
             ClearableAutoCompleteTextView et = v as ClearableAutoCompleteTextView;
@@ -35,7 +33,7 @@ namespace EasyBike.Droid.Helpers
     public class ClearableAutoCompleteTextView : AutoCompleteTextView
     {
         public static Drawable imgClearButton;
-
+        private Context _context;
         /* Required methods, not used in this implementation */
         public ClearableAutoCompleteTextView(Context context) : base(context)
         {
@@ -56,12 +54,20 @@ namespace EasyBike.Droid.Helpers
 
         private void Init(Context context)
         {
+            _context = context;
             // The image we defined for the clear button
             imgClearButton = ResourcesCompat.GetDrawable(context.Resources, Resource.Drawable.abc_ic_clear_mtrl_alpha, null);
             SetOnTouchListener(new CustomOnTouchListener());
+            FocusChange += (s, e) =>
+            {
+                if (!e.HasFocus)
+                {
+                    HideKeyboard();
+                }
+            };
             TextChanged += (s, e) =>
             {
-                if(Text.Length > 0)
+                if (Text.Length > 0)
                 {
                     ShowClearButton();
                 }
@@ -71,6 +77,7 @@ namespace EasyBike.Droid.Helpers
                 }
             };
         }
+
 
         private bool IsClearButtonVisible;
         public void HideClearButton()
@@ -97,5 +104,10 @@ namespace EasyBike.Droid.Helpers
             HideClearButton();
         }
 
+        private void HideKeyboard()
+        {
+            InputMethodManager inputMethodManager = (InputMethodManager)_context.GetSystemService(Context.InputMethodService);
+            inputMethodManager.HideSoftInputFromWindow(WindowToken, 0);
+        }
     }
 }

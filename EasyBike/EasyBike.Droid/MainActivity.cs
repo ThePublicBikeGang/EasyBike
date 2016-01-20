@@ -44,6 +44,7 @@ using System.Reactive.Subjects;
 using Plugin.Geolocator;
 using Newtonsoft.Json;
 using ModernHttpClient;
+using Android.Views.InputMethods;
 
 namespace EasyBike.Droid
 {
