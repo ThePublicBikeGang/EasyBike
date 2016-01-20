@@ -128,14 +128,16 @@ namespace EasyBike.Droid
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case Resource.Id.nav_cities:
                         _context.MainViewModel.GoToDownloadCitiesCommand.Execute(null);
-                        return true;
+                        break;
                     case Resource.Id.nav_about:
                         _context.MainViewModel.AboutCommand.Execute(null);
-                        return true;
+                        break;
                     case Resource.Id.nav_favorites:
                         _context.MainViewModel.GoToFavoritsCommand.Execute(null);
-                        return true;
+                        break;
                 }
+                menuItem.SetChecked(false);
+                _context.drawerLayout.CloseDrawers();
                 return true;
             }
         }
