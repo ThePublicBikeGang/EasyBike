@@ -50,6 +50,7 @@ using Android.Support.V4.Content.Res;
 using Plugin.Compass;
 using Plugin.Compass.Abstractions;
 using Plugin.CurrentActivity;
+using EasyBike.Droid.Models.Direction;
 
 namespace EasyBike.Droid
 {
@@ -101,6 +102,9 @@ namespace EasyBike.Droid
         GooglePlacesAutocompleteAdapter googlePlacesAutocompleteAdapter;
         //GoogleMapPlaceClass objMapClass;
         //GeoCodeJSONClass objGeoCodeJSONClass;
+
+        // Directions
+        private Android.Gms.Maps.Model.Polyline _currentPolyline;
 
         //
         private ISettingsService _settingsService;
@@ -155,7 +159,7 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
-           
+
             // prepare icons for location / compass button
             var iconGenerator = new IconGenerator(this);
             iconGenerator.SetBackground(ResourcesCompat.GetDrawable(Resources, Resource.Drawable.ic_location, null));
@@ -318,7 +322,7 @@ namespace EasyBike.Droid
         private int _compassEventcounter = 0;
         private async void LocationButton_Click(object sender, EventArgs e)
         {
-            if(_compassMode && _stickToUserLocation)
+            if (_compassMode && _stickToUserLocation)
             {
                 ResetMapCameraViewAndStickers();
                 return;
@@ -363,21 +367,7 @@ namespace EasyBike.Droid
                 _locationButton.Background.SetAlpha(255);
             }
 
-            if (_lastUserLocation == null)
-            {
-                try
-                {
-                    // Get a quick last known location
-                    var locationManager = (LocationManager)GetSystemService("location");
-                    // Getting the name of the best provider
-                    var provider = locationManager.GetBestProvider(new Criteria(), true);
-                    // Getting Current Location
-                    var previousLocation = locationManager.GetLastKnownLocation(provider);
-                    _lastUserLocation = new LatLng(previousLocation.Latitude, previousLocation.Longitude);
-                    _map.AnimateCamera(CameraUpdateFactory.NewLatLng(new LatLng(_lastUserLocation.Latitude, _lastUserLocation.Longitude)));
-                }
-                catch { }
-            }
+
 
             if (_lastUserLocation != null)
             {
@@ -402,6 +392,7 @@ namespace EasyBike.Droid
             if (_stickToUserLocation)
             {
                 _map.MoveCamera(CameraUpdateFactory.NewLatLng(_lastUserLocation));
+                AddDirections(_lastUserLocation, currentMarkerPosition);
             }
         }
 
@@ -531,6 +522,7 @@ namespace EasyBike.Droid
             return shareIntent;
         }
 
+
         private Intent _createRouteIntent(double latitude, double longitude)
         {
             var strLatitude = latitude.ToString("G", CultureInfo.CreateSpecificCulture("en-US"));
@@ -574,6 +566,9 @@ namespace EasyBike.Droid
         {
 
             _settingsService.Settings.IsBikeMode = !_settingsService.Settings.IsBikeMode;
+            
+            // refresh direction to provide more relevant path
+            AddDirections(_lastUserLocation, currentMarkerPosition);
 
             foreach (var clusterItem in StationControls.ToList())
             {
@@ -690,10 +685,68 @@ namespace EasyBike.Droid
             UnStickUserLocation();
             if (marker is ClusterItem)
             {
-                currentMarkerPosition = ((ClusterItem)marker).Position;
+                SelectItem(((ClusterItem)marker).Position);
                 _actionMode = StartSupportActionMode(this);
             }
             return false;
+        }
+
+        private void ClearPolyline()
+        {
+            if (_currentPolyline != null)
+                _currentPolyline.Remove();
+        }
+
+        private string GetDirectionsUrl(LatLng origin, LatLng dest)
+        {
+            // Origin of route
+            var str_origin = "origin=" + origin.Latitude + "," + origin.Longitude;
+            // Destination of route
+            var str_dest = "destination=" + dest.Latitude + "," + dest.Longitude;
+            // Sensor enabled
+            var sensor = "sensor=false";
+            var mode = "mode=" + (_settingsService.Settings.IsBikeMode ? "walking" : "bicycling");
+            // Building the parameters to the web service
+            var parameters = str_origin + "&" + str_dest + "&" + sensor + "&" + mode;
+            // Output format
+            var output = "json";
+            // Building the url to the web service
+            var url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
+            return url;
+        }
+
+        public async void AddDirections(LatLng start, LatLng end)
+        {
+            if (start != null && end != null)
+            {
+                try
+                {
+                    // Getting URL to the Google Directions API
+                    var url = GetDirectionsUrl(start, end);
+                    using (var client = new HttpClient(new NativeMessageHandler()))
+                    {
+                        var response = await client.GetAsync(url).ConfigureAwait(false);
+                        var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        var directions = JsonConvert.DeserializeObject<DirectionsModel>(responseBodyAsText);
+                        PolylineOptions lineOptions = new PolylineOptions();
+                        lineOptions = lineOptions.InvokeColor(Resources.GetColor(Resource.Color.accent).ToArgb());
+                        var points = MapHelper.DecodePolyline(directions.routes.FirstOrDefault().overview_polyline.points).AsEnumerable();
+                        foreach (var point in points)
+                        {
+                            lineOptions.Add(point);
+                        }
+                        RunOnUiThread(() =>
+                        {
+                            ClearPolyline();
+                            _currentPolyline = _map.AddPolyline(lineOptions);
+                        });
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.Debug("AutoCompleteSearchPlaceTextView", e.Message);
+                }
+            }
         }
 
         public void SetViewPoint(CameraPosition cameraPosition, bool animated)
@@ -711,7 +764,6 @@ namespace EasyBike.Droid
                 _map.MoveCamera(CameraUpdateFactory.NewCameraPosition(cameraPosition));
             }
         }
-
 
 
         private void OnStationRefreshed(object sender, EventArgs e)
@@ -757,7 +809,6 @@ namespace EasyBike.Droid
                 // this can raise a IllegalArgumentException: Released unknown imageData reference
                 // as the marker may not be on the map anymore so better to check again for null ref
                 control.SetIcon(_clusterRender.CreateStationIcon(station));
-
             }
             catch
             {
@@ -808,8 +859,6 @@ namespace EasyBike.Droid
             //// position on right bottom 
             //rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0); rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE); 
 
-
-
             // Initialize the camera position
             SetViewPoint(await GetStartingCameraPosition(), false);
 
@@ -859,6 +908,9 @@ namespace EasyBike.Droid
                 }
                 longClickMarker.ShowInfoWindow();
             });
+
+            // first init of last user location
+            GetPreviousLastUserLocation();
 
             // Initialize the behavior when long clicking somewhere on the map
             //_map.MapLongClick += async (sender, e) =>
@@ -974,9 +1026,41 @@ namespace EasyBike.Droid
                 });
         }
 
+        /// <summary>
+        /// when app launch before geolocator has found out the user location,
+        /// set the last user location to what is in memory
+        /// </summary>
+        private void GetPreviousLastUserLocation()
+        {
+            if (_lastUserLocation == null)
+            {
+                try
+                {
+                    // Get a quick last known location
+                    var locationManager = (LocationManager)GetSystemService("location");
+                    // Getting the name of the best provider
+                    var provider = locationManager.GetBestProvider(new Criteria(), true);
+                    // Getting Current Location
+                    var previousLocation = locationManager.GetLastKnownLocation(provider);
+                    _lastUserLocation = new LatLng(previousLocation.Latitude, previousLocation.Longitude);
+                    _map.AnimateCamera(CameraUpdateFactory.NewLatLng(new LatLng(_lastUserLocation.Latitude, _lastUserLocation.Longitude)));
+                }
+                catch { }
+            }
+        }
+
         private string FormatLatLng(LatLng position)
         {
             return $"(lat: { Math.Round(position.Latitude, 4)}, lon: { Math.Round(position.Longitude, 4)})";
+        }
+
+        /// <summary>
+        /// set the marke as the current marker and add directions
+        /// </summary>
+        private void SelectItem(LatLng position)
+        {
+            currentMarkerPosition = position;
+            AddDirections(_lastUserLocation, currentMarkerPosition);
         }
 
         /// <summary>
@@ -985,7 +1069,7 @@ namespace EasyBike.Droid
         /// <param name="position"></param>
         private void AddPlaceMarker(LatLng position, string title, string snippet)
         {
-            currentMarkerPosition = position;
+            SelectItem(position);
             RunOnUiThread(() =>
             {
                 if (longClickMarker != null)
