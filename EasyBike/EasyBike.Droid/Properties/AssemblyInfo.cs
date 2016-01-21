@@ -26,3 +26,12 @@ using Android.App;
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
 
+// About Xamarin.Plugins/Geolocator/
+// https://github.com/jamesmontemagno/Xamarin.Plugins/tree/master/Geolocator
+//The ACCESS_COARSE_LOCATION & ACCESS_FINE_LOCATION permissions are required, but the library will automatically add this for you.
+//Additionally, if your users are running Marshmallow the Plugin will automatically prompt them for runtime permissions.
+//By adding these permissions Google Play will automatically filter out devices without specific hardward. 
+//You can get around this by adding the following to your AssemblyInfo.cs file in your Android project:
+[assembly: UsesFeature("android.hardware.location", Required = false)]
+[assembly: UsesFeature("android.hardware.location.gps", Required = false)]
+[assembly: UsesFeature("android.hardware.location.network", Required = false)]

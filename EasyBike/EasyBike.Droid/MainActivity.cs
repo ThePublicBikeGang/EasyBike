@@ -285,14 +285,18 @@ namespace EasyBike.Droid
 
         private LatLng _lastUserLocation;
         public bool _stickToUserLocation;
-        private void StartLocationTracking()
+        private async void StartLocationTracking()
         {
             var locator = CrossGeolocator.Current;
             // New in iOS 9 allowsBackgroundLocationUpdates must be set if you are running a background agent to track location. I have exposed this on the Geolocator via:
             locator.AllowsBackgroundUpdates = true;
             locator.DesiredAccuracy = 100; //100 is new default
             locator.PositionChanged += Locator_PositionChanged;
-            locator.StartListeningAsync(5000, 5000, false);
+            var listeningLocationTracking = await locator.StartListeningAsync(1000, 5, false);
+            if (!listeningLocationTracking)
+            {
+                Dialog.ShowError(new Exception(""), "Locationtracking not enable :/", "ok", new Action(() => { }));
+            }
         }
 
         public void UnStickUserLocation()
@@ -391,8 +395,11 @@ namespace EasyBike.Droid
             _lastUserLocation = new LatLng(e.Position.Latitude, e.Position.Longitude);
             if (_stickToUserLocation)
             {
-                _map.MoveCamera(CameraUpdateFactory.NewLatLng(_lastUserLocation));
-                AddDirections(_lastUserLocation, currentMarkerPosition);
+                RunOnUiThread(() =>
+                {
+                    _map.MoveCamera(CameraUpdateFactory.NewLatLng(_lastUserLocation));
+                    AddDirections();
+                });
             }
         }
 
@@ -568,7 +575,7 @@ namespace EasyBike.Droid
             _settingsService.Settings.IsBikeMode = !_settingsService.Settings.IsBikeMode;
             
             // refresh direction to provide more relevant path
-            AddDirections(_lastUserLocation, currentMarkerPosition);
+            AddDirections();
 
             foreach (var clusterItem in StationControls.ToList())
             {
@@ -715,14 +722,14 @@ namespace EasyBike.Droid
             return url;
         }
 
-        public async void AddDirections(LatLng start, LatLng end)
+        public async void AddDirections()
         {
-            if (start != null && end != null)
+            if (_lastUserLocation != null && currentMarkerPosition != null)
             {
                 try
                 {
                     // Getting URL to the Google Directions API
-                    var url = GetDirectionsUrl(start, end);
+                    var url = GetDirectionsUrl(_lastUserLocation, currentMarkerPosition);
                     using (var client = new HttpClient(new NativeMessageHandler()))
                     {
                         var response = await client.GetAsync(url).ConfigureAwait(false);
@@ -1060,7 +1067,7 @@ namespace EasyBike.Droid
         private void SelectItem(LatLng position)
         {
             currentMarkerPosition = position;
-            AddDirections(_lastUserLocation, currentMarkerPosition);
+            AddDirections();
         }
 
         /// <summary>
