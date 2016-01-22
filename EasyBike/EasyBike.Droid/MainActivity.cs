@@ -304,6 +304,11 @@ namespace EasyBike.Droid
                 CrossCompass.Current.Stop();
             }
             CloseKeyboard();
+            if (_actionMode != null)
+            {
+                Log.Debug("MyActivity", "Finish action mode");
+                _actionMode.Finish();
+            }
         }
 
 
@@ -507,10 +512,10 @@ namespace EasyBike.Droid
         public void OnDestroyActionMode(ActionMode mode)
         {
             _actionMode = null;
-            if (longClickMarker != null)
-            {
-                longClickMarker.Remove();
-            }
+            //if (longClickMarker != null)
+            //{
+            //    longClickMarker.Remove();
+            //}
         }
 
         private void _setShareIntent(Intent shareIntent)
@@ -695,14 +700,28 @@ namespace EasyBike.Droid
 
         public bool OnClusterItemClick(Java.Lang.Object marker)
         {
-            Log.Debug("MyActivity", "Begin OnClusterItemClick");
-            UnStickUserLocation();
-            if (marker is ClusterItem)
-            {
-                SelectItem(((ClusterItem)marker).Position);
-                _actionMode = StartSupportActionMode(this);
-            }
+            //Log.Debug("MyActivity", "Begin OnClusterItemClick");
+            //UnStickUserLocation();
+            //if (marker is ClusterItem)
+            //{
+            //    SelectItem(((ClusterItem)marker).Position);
+            //    _actionMode = StartSupportActionMode(this);
+            //}
             return false;
+        }
+
+
+        private void _map_MarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
+        {
+            Log.Debug("MyActivity", "Begin _map_MarkerClick");
+            //UnStickUserLocation();
+            SelectItem(e.Marker.Position);
+            _actionMode = StartSupportActionMode(this);
+            e.Marker.ShowInfoWindow();
+            if (e.Marker == longClickMarker)
+            {
+                longClickMarker.ShowInfoWindow();
+            }
         }
 
         private void ClearPolyline()
@@ -883,8 +902,8 @@ namespace EasyBike.Droid
             _clusterManager.SetOnClusterClickListener(this);
             _clusterManager.SetOnClusterItemClickListener(this);
             _map.SetOnCameraChangeListener(_clusterManager);
-            _map.SetOnMarkerClickListener(_clusterManager);
-
+            //_map.SetOnMarkerClickListener(_clusterManager);
+            _map.MarkerClick += _map_MarkerClick;
             // check if the app contains a least one city, otherwise, tells the user to download one
             MainViewModel.MainPageLoadedCommand.Execute(null);
 
@@ -923,6 +942,19 @@ namespace EasyBike.Droid
                 longClickMarker.ShowInfoWindow();
             });
 
+            _map.MapClick += (sender, e) =>
+            {
+                if (longClickMarker != null)
+                {
+                    longClickMarker.HideInfoWindow();
+                }
+                if (_actionMode != null)
+                {
+                    Log.Debug("MyActivity", "Finish action mode");
+                    _actionMode.Finish();
+                }
+            };
+
             // first init of last user location
             GetPreviousLastUserLocation();
 
@@ -956,20 +988,7 @@ namespace EasyBike.Droid
             //    }
             //};
 
-            _map.MapClick += (sender, e) =>
-            {
-                if (longClickMarker != null)
-                {
-                    Log.Debug("MyActivity", "Remove long click marker");
-                    longClickMarker.Remove();
-                }
-                if (_actionMode != null)
-                {
-                    Log.Debug("MyActivity", "Finish action mode");
-                    _actionMode.Finish();
-                }
-            };
-
+            
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             var mapObserver = Observable.FromEventPattern(_map, "CameraChange");
             TaskCompletionSource<bool> tcs;
@@ -1040,6 +1059,8 @@ namespace EasyBike.Droid
                 });
         }
 
+     
+
         /// <summary>
         /// when app launch before geolocator has found out the user location,
         /// set the last user location to what is in memory
@@ -1076,7 +1097,7 @@ namespace EasyBike.Droid
             currentMarkerPosition = position;
             AddDirections();
         }
-
+        
         /// <summary>
         /// add a marker for resolved adresses or map long click
         /// </summary>
@@ -1091,15 +1112,15 @@ namespace EasyBike.Droid
                     // Remove a previously created marker
                     longClickMarker.Remove();
                 }
-
                 var markerOptions = new MarkerOptions().SetPosition(position);
+                
+                
                 // Create and show the marker
                 longClickMarker = _map.AddMarker(markerOptions);
                 longClickMarker.Title = title ?? Resources.GetString(Resource.String.mapMarkerResolving);
                 longClickMarker.Snippet = snippet ?? FormatLatLng(position);
                 longClickMarker.ShowInfoWindow();
-
-                _actionMode = _actionMode ?? StartSupportActionMode(this);
+                _actionMode = StartSupportActionMode(this);
             });
         }
 
