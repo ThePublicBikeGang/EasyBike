@@ -127,7 +127,7 @@ namespace EasyBike.Droid
             public bool OnNavigationItemSelected(IMenuItem menuItem)
             {
                 menuItem.SetChecked(false);
-                _context._drawerLayout.CloseDrawers();
+                _context.CloseDrawer();
                 // provide a smoother animation of the drawer when closing
                 Task.Run(async () =>
                 {
@@ -159,6 +159,8 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
+            // prevent the soft keyboard from pushing the view up
+            Window.SetSoftInputMode(SoftInput.AdjustNothing);
 
             // prepare icons for location / compass button
             var iconGenerator = new IconGenerator(this);
@@ -443,12 +445,17 @@ namespace EasyBike.Droid
         {
             if (_drawerLayout.IsDrawerOpen(navigationView))
             {
-                _drawerLayout.CloseDrawer(navigationView);
+                CloseDrawer();
             }
             else
             {
                 base.OnBackPressed();
             }
+        }
+
+        public void CloseDrawer()
+        {
+            _drawerLayout.CloseDrawers();
         }
 
         /// <Docs>The options menu in which you place your items.</Docs>

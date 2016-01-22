@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Views.InputMethods;
 using Android.App;
+using Plugin.CurrentActivity;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -64,6 +65,14 @@ namespace EasyBike.Droid.Helpers
                 {
                     HideKeyboard();
                 }
+                else
+                {
+                    if (CrossCurrentActivity.Current.Activity is MainActivity)
+                    {
+                        (CrossCurrentActivity.Current.Activity as MainActivity).CloseDrawer();
+                    }
+                }
+
             };
             TextChanged += (s, e) =>
             {
