@@ -43,6 +43,9 @@ using Android.Support.V4.Content.Res;
 using Plugin.Compass;
 using Plugin.Compass.Abstractions;
 using EasyBike.Droid.Models.Direction;
+using Android.Support.V7.App;
+using EasyBike.Config;
+using Android.Content.Res;
 
 namespace EasyBike.Droid
 {
@@ -67,7 +70,9 @@ namespace EasyBike.Droid
         private StationRenderer _clusterRender;
         private Marker longClickMarker;
 
-        DrawerLayout drawerLayout;
+        // action bars and nav
+        private CustomActionBarDrawerToggle _drawerToggle;
+        DrawerLayout _drawerLayout;
         NavigationView navigationView;
 
         // For the contextual action bar and the share button
@@ -122,7 +127,7 @@ namespace EasyBike.Droid
             public bool OnNavigationItemSelected(IMenuItem menuItem)
             {
                 menuItem.SetChecked(false);
-                _context.drawerLayout.CloseDrawers();
+                _context._drawerLayout.CloseDrawers();
                 // provide a smoother animation of the drawer when closing
                 Task.Run(async () =>
                 {
@@ -173,14 +178,21 @@ namespace EasyBike.Droid
             //Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
 
 
-
-            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
-            //Enable support action bar to display hamburger
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            //Enable support action bar to display hamburger and back arrow
+            // http://stackoverflow.com/questions/28071763/toolbar-navigation-hamburger-icon-missing
+            _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            _drawerToggle = new CustomActionBarDrawerToggle(this, _drawerLayout, toolbar, Resource.String.ApplicationName, Resource.String.ApplicationName);
+            _drawerToggle.DrawerIndicatorEnabled = true;
+            _drawerLayout.SetDrawerListener(_drawerToggle);
+            SupportActionBar.SetHomeButtonEnabled(false);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetDisplayShowCustomEnabled(true);
 
+
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
 
             _bikesButton = FindViewById<FloatingActionButton>(Resource.Id.bikesButton);
             _bikesButton.Click += BikesButton_Click;
@@ -191,8 +203,6 @@ namespace EasyBike.Droid
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
             _locationButton.Click += LocationButton_Click;
             UnStickUserLocation();
-
-
 
             AutoCompleteSearchPlaceTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autoCompleteSearchPlaceTextView);
             AutoCompleteSearchPlaceTextView.ItemClick += AutoCompleteSearchPlaceTextView_ItemClick;
@@ -224,8 +234,6 @@ namespace EasyBike.Droid
 
                 });
 
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
             //navigationView.NavigationItemSelected += (sender, e) =>
             //{
@@ -234,7 +242,6 @@ namespace EasyBike.Droid
             //    drawerLayout.CloseDrawers();
             //};
 
-            navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
 
             // trigger the creation of the injected dependencies
             var unused = MainViewModel.AboutCommand;
@@ -248,6 +255,24 @@ namespace EasyBike.Droid
                 Longitude = 0.0,
                 Name = "Test name"
             });
+
+
+          
+
+
+        }
+
+        
+        protected override void OnPostCreate(Bundle savedInstanceState)
+        {
+            base.OnPostCreate(savedInstanceState);
+            _drawerToggle.SyncState();
+        }
+
+        public override void OnConfigurationChanged(Configuration newConfig)
+        {
+            base.OnConfigurationChanged(newConfig);
+            _drawerToggle.OnConfigurationChanged(newConfig);
         }
 
         private async void AutoCompleteSearchPlaceTextView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -416,9 +441,9 @@ namespace EasyBike.Droid
 
         public override void OnBackPressed()
         {
-            if (drawerLayout.IsDrawerOpen(navigationView))
+            if (_drawerLayout.IsDrawerOpen(navigationView))
             {
-                drawerLayout.CloseDrawer(navigationView);
+                _drawerLayout.CloseDrawer(navigationView);
             }
             else
             {
@@ -445,7 +470,7 @@ namespace EasyBike.Droid
             {
                 case Android.Resource.Id.Home:
                     CloseKeyboard();
-                    drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
+                    _drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
                     return true;
             }
             return base.OnOptionsItemSelected(item);
@@ -483,8 +508,8 @@ namespace EasyBike.Droid
                     }
                     return true;
                 case Resource.Id.menu_favorite:
-                    AlertDialog dialog = null;
-                    dialog = new AlertDialog.Builder(this)
+                    Android.App.AlertDialog dialog = null;
+                    dialog = new Android.App.AlertDialog.Builder(this)
                         .SetTitle(Resources.GetString(Resource.String.favoriteDialogTitle))
                         .SetView(this.LayoutInflater.Inflate(Resource.Layout.DialogAddFavorite, null))
                         .SetPositiveButton(Android.Resource.String.Ok, (sender, EventArgs) =>
@@ -512,10 +537,6 @@ namespace EasyBike.Droid
         public void OnDestroyActionMode(ActionMode mode)
         {
             _actionMode = null;
-            //if (longClickMarker != null)
-            //{
-            //    longClickMarker.Remove();
-            //}
         }
 
         private void _setShareIntent(Intent shareIntent)
@@ -574,8 +595,6 @@ namespace EasyBike.Droid
                 IncreaseButtonVisibility(_parkingButton);
                 DecreaseButtonVisibility(_bikesButton);
             }
-            //_parkingButton.Elevation = 0;
-            //_bikesButton.Elevation = 0;
         }
 
         /// <summary>
@@ -678,10 +697,6 @@ namespace EasyBike.Droid
                 builder.Include(item.Position);
             }
             var bounds = builder.Build();
-            //Observable.Interval(TimeSpan.FromMilliseconds(300)).Subscribe(t =>
-            //{
-            //    _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
-            //});
             Task.Run(async () =>
             {
                 await Task.Delay(300);
@@ -690,10 +705,6 @@ namespace EasyBike.Droid
                     _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
                 });
             });
-            //new Handler().PostDelayed(() =>
-            //{
-            //    _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
-            //}, 300);
 
             return false;
         }
@@ -989,7 +1000,7 @@ namespace EasyBike.Droid
             //    }
             //};
 
-            
+
             _contractService = SimpleIoc.Default.GetInstance<IContractService>();
             var mapObserver = Observable.FromEventPattern(_map, "CameraChange");
             TaskCompletionSource<bool> tcs;
@@ -1060,7 +1071,7 @@ namespace EasyBike.Droid
                 });
         }
 
-     
+
 
         /// <summary>
         /// when app launch before geolocator has found out the user location,
@@ -1098,7 +1109,7 @@ namespace EasyBike.Droid
             currentMarkerPosition = position;
             AddDirections();
         }
-        
+
         /// <summary>
         /// add a marker for resolved adresses or map long click
         /// </summary>
@@ -1114,8 +1125,8 @@ namespace EasyBike.Droid
                     longClickMarker.Remove();
                 }
                 var markerOptions = new MarkerOptions().SetPosition(position);
-                
-                
+
+
                 // Create and show the marker
                 longClickMarker = _map.AddMarker(markerOptions);
                 longClickMarker.Title = title ?? Resources.GetString(Resource.String.mapMarkerResolving);
