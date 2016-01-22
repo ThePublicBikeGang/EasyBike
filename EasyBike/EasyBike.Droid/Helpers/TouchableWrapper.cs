@@ -41,7 +41,7 @@ namespace EasyBike.Droid.Helpers
                     }
                     break;
                 case MotionEventActions.Move:
-                    if (_mainActivity._stickToUserLocation && (Math.Abs(lastX - e.RawX) > 3 || Math.Abs(lastX - e.RawX) > 3) )
+                    if (Math.Abs(lastX - e.RawX) > 3 || Math.Abs(lastX - e.RawX) > 3) 
                     {
                         _mainActivity.UnStickUserLocation();
                     }

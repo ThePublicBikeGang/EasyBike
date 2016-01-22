@@ -131,22 +131,29 @@ namespace EasyBike.Droid
 
             public bool OnNavigationItemSelected(IMenuItem menuItem)
             {
-                //Check to see which item was being clicked and perform appropriate action
-                switch (menuItem.ItemId)
-                {
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
-                    case Resource.Id.nav_cities:
-                        _context.MainViewModel.GoToDownloadCitiesCommand.Execute(null);
-                        break;
-                    case Resource.Id.nav_about:
-                        _context.MainViewModel.AboutCommand.Execute(null);
-                        break;
-                    case Resource.Id.nav_favorites:
-                        _context.MainViewModel.GoToFavoritsCommand.Execute(null);
-                        break;
-                }
                 menuItem.SetChecked(false);
                 _context.drawerLayout.CloseDrawers();
+                // provide a smoother animation of the drawer when closing
+                Task.Run(async () =>
+                {
+                    await Task.Delay(200);
+                    //Check to see which item was being clicked and perform appropriate action
+                    switch (menuItem.ItemId)
+                    {
+                        //Replacing the main content with ContentFragment Which is our Inbox View;
+                        case Resource.Id.nav_cities:
+                            _context.MainViewModel.GoToDownloadCitiesCommand.Execute(null);
+                            break;
+                        case Resource.Id.nav_about:
+                            _context.MainViewModel.AboutCommand.Execute(null);
+                            break;
+                        case Resource.Id.nav_favorites:
+                            _context.MainViewModel.GoToFavoritsCommand.Execute(null);
+                            break;
+                    }
+                });
+
+
                 return true;
             }
         }
@@ -232,12 +239,12 @@ namespace EasyBike.Droid
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
-            navigationView.NavigationItemSelected += (sender, e) =>
-            {
-                e.MenuItem.SetChecked(true);
-                //react to click here and swap fragments or navigate
-                drawerLayout.CloseDrawers();
-            };
+            //navigationView.NavigationItemSelected += (sender, e) =>
+            //{
+            //    e.MenuItem.SetChecked(true);
+            //    //react to click here and swap fragments or navigate
+            //    drawerLayout.CloseDrawers();
+            //};
 
             navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
 
@@ -257,6 +264,7 @@ namespace EasyBike.Droid
 
         private async void AutoCompleteSearchPlaceTextView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+            CloseKeyboard();
             ResetMapCameraViewAndStickers();
             var prediction = googlePlacesAutocompleteAdapter.Results[e.Position];
             using (var client = new HttpClient(new NativeMessageHandler()))
@@ -269,9 +277,6 @@ namespace EasyBike.Droid
                     var position = new LatLng(place.result.geometry.location.lat, place.result.geometry.location.lng);
                     AddPlaceMarker(position, place.result.formatted_address, FormatLatLng(position));
                     _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
-                    // Hide keyboard
-                    InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(Context.InputMethodService);
-                    inputMethodManager.HideSoftInputFromWindow((sender as View).WindowToken, 0);
                 });
             }
         }
@@ -289,22 +294,35 @@ namespace EasyBike.Droid
         {
             var locator = CrossGeolocator.Current;
             // New in iOS 9 allowsBackgroundLocationUpdates must be set if you are running a background agent to track location. I have exposed this on the Geolocator via:
-            locator.AllowsBackgroundUpdates = true;
+            // disable because it drill down the battery very quickly
+            locator.AllowsBackgroundUpdates = false;
             locator.DesiredAccuracy = 100; //100 is new default
             locator.PositionChanged += Locator_PositionChanged;
-            var listeningLocationTracking = await locator.StartListeningAsync(1000, 5, false);
-            if (!listeningLocationTracking)
-            {
-                Dialog.ShowError(new Exception(""), "Locationtracking not enable :/", "ok", new Action(() => { }));
-            }
+            /*var listeningLocationTracking = */
+            await locator.StartListeningAsync(1000, 5, false);
+            //if (!listeningLocationTracking)
+            //{
+            //    Dialog.ShowError(new Exception(""), "Locationtracking not enable :/", "ok", new Action(() => { }));
+            //}
         }
 
         public void UnStickUserLocation()
         {
-            _stickToUserLocation = _compassMode = false;
-            _locationButton.Background.SetAlpha(150);
-            _locationButton.SetImageBitmap(_iconUserLocation);
-            CrossCompass.Current.Stop();
+            if (_stickToUserLocation)
+            {
+                _stickToUserLocation = _compassMode = false;
+                _locationButton.Background.SetAlpha(150);
+                _locationButton.SetImageBitmap(_iconUserLocation);
+                CrossCompass.Current.Stop();
+            }
+            CloseKeyboard();
+        }
+
+
+        private void CloseKeyboard()
+        {
+            InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(Context.InputMethodService);
+            inputMethodManager.HideSoftInputFromWindow(Window.DecorView.RootView.WindowToken, 0);
         }
 
         private void ResetMapCameraViewAndStickers()
@@ -573,7 +591,7 @@ namespace EasyBike.Droid
         {
 
             _settingsService.Settings.IsBikeMode = !_settingsService.Settings.IsBikeMode;
-            
+
             // refresh direction to provide more relevant path
             AddDirections();
 
