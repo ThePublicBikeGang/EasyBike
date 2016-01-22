@@ -953,6 +953,7 @@ namespace EasyBike.Droid
                     Log.Debug("MyActivity", "Finish action mode");
                     _actionMode.Finish();
                 }
+                CloseKeyboard();
             };
 
             // first init of last user location
