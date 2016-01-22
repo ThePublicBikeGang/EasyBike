@@ -1,8 +1,6 @@
 ﻿using Android.App;
 using Android.Widget;
-using Android.Preferences;
 using EasyBike.ViewModels;
-using GalaSoft.MvvmLight.Helpers;
 using Android.Gms.Maps;
 using System;
 using System.Net.Http;
@@ -19,12 +17,7 @@ using System.Linq;
 using EasyBike.Models.Stations;
 using EasyBike.Droid.Helpers;
 using System.Threading.Tasks;
-using Com.Google.Maps.Android.Clustering.View;
-using System.Diagnostics;
 using Android.OS;
-using Android;
-using Java.Security;
-using Android.Support.V4.Content;
 using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
 using Android.Views;
@@ -49,7 +42,6 @@ using Com.Google.Maps.Android.UI;
 using Android.Support.V4.Content.Res;
 using Plugin.Compass;
 using Plugin.Compass.Abstractions;
-using Plugin.CurrentActivity;
 using EasyBike.Droid.Models.Direction;
 
 namespace EasyBike.Droid
@@ -66,8 +58,6 @@ namespace EasyBike.Droid
     [Activity(MainLauncher = true)]
     public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
-        private Binding _lastLoadedBinding;
-
         private FragmentTransaction _fragTx;
         private MapFragment _mapFragment;
         public static GoogleMap _map { get; set; }
@@ -152,8 +142,6 @@ namespace EasyBike.Droid
                             break;
                     }
                 });
-
-
                 return true;
             }
         }
@@ -451,6 +439,7 @@ namespace EasyBike.Droid
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
+                    CloseKeyboard();
                     drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
                     return true;
             }
