@@ -32,6 +32,7 @@ namespace EasyBike.Droid.Helpers
 
         public override bool DispatchTouchEvent(MotionEvent e)
         {
+            
             switch (e.Action)
             {
                 case MotionEventActions.Down:

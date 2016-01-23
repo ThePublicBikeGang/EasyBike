@@ -6,6 +6,18 @@ using Android.OS;
 
 namespace EasyBike.Droid.Helpers
 {
+    public class CompassClickListener : Java.Lang.Object, View.IOnClickListener
+    {
+        // listen to click on compass to stop compass mode
+        public void OnClick(View v)
+        {
+            var activity = CrossCurrentActivity.Current.Activity as MainActivity;
+            if(activity != null)
+            {
+                activity.DisableCompass();
+            }
+        }
+    }
     public class MapFragmentExtended : MapFragment
     {
         public View originalView;
@@ -21,25 +33,44 @@ namespace EasyBike.Droid.Helpers
             return fragment;
         }
 
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            //var mapView = base.OnCreateView(inflater, container, savedInstanceState);
-            // move the compass native button at the same place as in the last google map app
-            // Get the button view 
-            //View test = ((View)mapView.FindViewById(1).Parent);
-            //System.Diagnostics.Debug.WriteLine(test);
-            //View nativeCompassbutton = ((View)mapView.FindViewById(1).Parent).FindViewById(3);
-            //System.Diagnostics.Debug.WriteLine("gesssssssssssssssssssssssssssss");
-            //System.Diagnostics.Debug.WriteLine(nativeCompassbutton);
-            //RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams)nativeCompassbutton.LayoutParameters;
-            //rlp.AddRule(LayoutRules.AlignParentTop, 0);
-            //rlp.AddRule(LayoutRules.AlignParentBottom, 1);
-            //rlp.SetMargins(0, 0, 30, 30);
+            var mapView = base.OnCreateView(inflater, container, savedInstanceState);
+
+            // tags: GoogleMapCompass (id 4)
+            // GoogleMapMyLocationButton 
+            var compassView = mapView.FindViewWithTag("GoogleMapCompass");
+            ViewGroup parent = (ViewGroup)compassView.Parent;
+            
+            RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams)compassView.LayoutParameters;
+            // position on top right
+            rlp.AddRule(LayoutRules.AlignParentEnd);
+            rlp.RemoveRule(LayoutRules.AlignParentStart);
+            rlp.RightMargin = 35;
+            compassView.RequestLayout();
+            // listen to click on compass to stop compass mode
+            compassView.SetOnClickListener(new CompassClickListener());
+
+            //ViewGroup parent = (ViewGroup)mapView.FindViewWithTag("GoogleMapMyLocationButton").Parent;
+            //for (int i = 0, n = parent.ChildCount; i < n; i++)
+            //{
+            //    View view = parent.GetChildAt(i);
+            //    System.Diagnostics.Debug.WriteLine(i);
+            //    System.Diagnostics.Debug.WriteLine(view.Tag);
+            //    RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams)view.LayoutParameters;
+            //    // position on top right
+            //    rlp.AddRule(LayoutRules.AlignParentLeft, 0);
+            //    rlp.AddRule(LayoutRules.AlignParentTop,0);
+            //    rlp.AddRule(LayoutRules.AlignParentRight);
+            //    rlp.AddRule(LayoutRules.AlignParentBottom);
+            //    rlp.RightMargin = rlp.LeftMargin;
+            //    rlp.TopMargin = 25;
+            //    view.RequestLayout();
+            //}
 
             // enable a way to detect when the user is actually moving the map to unstick to the current user location for instance
             touchView = new TouchableWrapper(CrossCurrentActivity.Current.Activity);
-            touchView.AddView(base.OnCreateView(inflater, container, savedInstanceState));
+            touchView.AddView(mapView);
             return touchView;
         }
     }

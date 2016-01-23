@@ -259,12 +259,12 @@ namespace EasyBike.Droid
             });
 
 
-          
+
 
 
         }
 
-        
+
         protected override void OnPostCreate(Bundle savedInstanceState)
         {
             base.OnPostCreate(savedInstanceState);
@@ -301,6 +301,7 @@ namespace EasyBike.Droid
             base.OnPause();
             Log.Debug("MyActivity", "Begin OnPause");
             await _settingsService.SaveSettingAsync();
+
         }
 
         private LatLng _lastUserLocation;
@@ -314,7 +315,7 @@ namespace EasyBike.Droid
             locator.DesiredAccuracy = 100; //100 is new default
             locator.PositionChanged += Locator_PositionChanged;
             /*var listeningLocationTracking = */
-            await locator.StartListeningAsync(1000, 5, false);
+            await locator.StartListeningAsync(3000, 5, false);
             //if (!listeningLocationTracking)
             //{
             //    Dialog.ShowError(new Exception(""), "Locationtracking not enable :/", "ok", new Action(() => { }));
@@ -344,15 +345,19 @@ namespace EasyBike.Droid
             inputMethodManager.HideSoftInputFromWindow(Window.DecorView.RootView.WindowToken, 0);
         }
 
+        public void DisableCompass()
+        {
+            _map.StopAnimation();
+            _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(_map.CameraPosition.Target, 17, 0, 0)), 300, null);
+            _prevHeading = 0;
+            _compassMode = false;
+            _locationButton.SetImageBitmap(_iconUserLocation);
+        }
+
         private void ResetMapCameraViewAndStickers()
         {
             UnStickUserLocation();
-            _map.StopAnimation();
-            _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-            _map.CameraPosition.Target,
-            16,
-            0, 0)), 300, null);
-            _prevHeading = 0;
+            DisableCompass();
         }
 
         IObservable<System.Reactive.EventPattern<CompassChangedEventArgs>> CompassChangedStream;
@@ -381,14 +386,14 @@ namespace EasyBike.Droid
                         _map.StopAnimation();
                         _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
                         _lastUserLocation,
-                        18,
-                        45, (float)compassChangedEventArgs.EventArgs.Heading)), 400,null);
+                        18.5f,
+                        60, (float)compassChangedEventArgs.EventArgs.Heading)), 400, null);
                     });
                     _prevHeading = compassChangedEventArgs.EventArgs.Heading;
                     await Task.Delay(400);
                     // compass mode
                     _compassMode = true;
-                  
+
                 });
 
                 if (CompassChangedStream == null)
@@ -796,6 +801,7 @@ namespace EasyBike.Droid
                         var directions = JsonConvert.DeserializeObject<DirectionsModel>(responseBodyAsText);
                         PolylineOptions lineOptions = new PolylineOptions();
                         lineOptions = lineOptions.InvokeColor(Resources.GetColor(Resource.Color.accent).ToArgb());
+                        lineOptions = lineOptions.InvokeWidth(15);
                         var points = MapHelper.DecodePolyline(directions.routes.FirstOrDefault().overview_polyline.points).AsEnumerable();
                         foreach (var point in points)
                         {
@@ -908,10 +914,9 @@ namespace EasyBike.Droid
             _map = googleMap;
             //Setup and customize your Google Map
             _map.UiSettings.CompassEnabled = true;
-            _map.MyLocationEnabled = true;
-
-            _map.UiSettings.MyLocationButtonEnabled = true;
+            _map.UiSettings.MyLocationButtonEnabled = false;
             _map.UiSettings.MapToolbarEnabled = false;
+            _map.MyLocationEnabled = true;
 
             // add padding to prevent action bar to hide the position button
             //var dp = (int)(48 * Resources.DisplayMetrics.Xdpi / Resources.DisplayMetrics.Density);
@@ -932,6 +937,7 @@ namespace EasyBike.Droid
             _clusterManager.SetOnClusterClickListener(this);
             _clusterManager.SetOnClusterItemClickListener(this);
             _map.SetOnCameraChangeListener(_clusterManager);
+
             //_map.SetOnMarkerClickListener(_clusterManager);
             _map.MarkerClick += _map_MarkerClick;
             // check if the app contains a least one city, otherwise, tells the user to download one
