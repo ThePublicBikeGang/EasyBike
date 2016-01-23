@@ -23,7 +23,7 @@ namespace EasyBike.Droid.Helpers
             if (e.Action == MotionEventActions.Up)
                 return false;
 
-            if (e.GetX() > (et.Width - et.PaddingRight - ClearableAutoCompleteTextView.imgClearButton.IntrinsicWidth))
+            if (e.GetX() > (et.Width - et.PaddingRight - ClearableAutoCompleteTextView.imgClearButton.IntrinsicWidth) - 10)
             {
                 et.Clear();
             }
@@ -64,6 +64,7 @@ namespace EasyBike.Droid.Helpers
                 if (!e.HasFocus)
                 {
                     HideKeyboard();
+                    SetBackgroundColor(Resources.GetColor(Resource.Color.accent));
                 }
                 else
                 {
@@ -71,6 +72,7 @@ namespace EasyBike.Droid.Helpers
                     {
                         (CrossCurrentActivity.Current.Activity as MainActivity).CloseDrawer();
                     }
+                    SetBackgroundColor(Resources.GetColor(Resource.Color.primary_light));
                 }
 
             };

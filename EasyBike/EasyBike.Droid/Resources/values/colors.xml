@@ -2,5 +2,6 @@
 <resources>
   <color name="primary">#4285f4</color>
   <color name="primary_dark">#3469c0</color>
+  <color name="primary_light">#70a1f2</color>
   <color name="accent">#5e97f6</color>
 </resources>

@@ -46,10 +46,12 @@ namespace EasyBike.Droid.Helpers
         private readonly IconGenerator _iconGenGreen;
         private readonly IconGenerator _iconGenOrange;
         private readonly IconGenerator _iconGenGrey;
+        private readonly IconGenerator _iconGenGreyLowAlpha;
         public readonly Bitmap _iconRed;
         public readonly Bitmap _iconGreen;
         public readonly Bitmap _iconOrange;
         public readonly Bitmap _iconGrey;
+        public readonly Bitmap _iconGreyLowAlpha;
         private IContractService _contractService;
         private ISettingsService _settingsService;
 
@@ -67,6 +69,7 @@ namespace EasyBike.Droid.Helpers
             _iconGenGreen = new IconGenerator(_context);
             _iconGenOrange = new IconGenerator(_context);
             _iconGenGrey = new IconGenerator(_context);
+            _iconGenGreyLowAlpha = new IconGenerator(_context);
             //// Define the size you want from dimensions file
             //var shapeDrawable = ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.station, null);
             //iconGen.SetBackground(shapeDrawable);
@@ -75,11 +78,13 @@ namespace EasyBike.Droid.Helpers
             _iconGenOrange.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationOrange, null));
             _iconGenGreen.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationVert, null));
             _iconGenGrey.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationGris, null));
+            _iconGenGreyLowAlpha.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.greyLowAlpha, null));
 
             _iconRed = _iconGenRed.MakeIcon();
             _iconGreen = _iconGenGreen.MakeIcon();
             _iconOrange = _iconGenOrange.MakeIcon();
             _iconGrey = _iconGenGrey.MakeIcon();
+            _iconGreyLowAlpha = _iconGenGreyLowAlpha.MakeIcon();
 
             var textView = new TextView(context);
             textView.SetTextAppearance(_context, Resource.Style.iconGenText);
@@ -123,30 +128,43 @@ namespace EasyBike.Droid.Helpers
         {
             Bitmap bitmap = null;
             var value = _settingsService.Settings.IsBikeMode ? station.AvailableBikes : station.AvailableBikeStands;
-
-            if (value == 0)
+            var printedValue = value.HasValue ? value.Value.ToString() : string.Empty;
+            if (!station.Loaded)
             {
-                bitmap = _iconRed;
+                printedValue = string.Empty;
+                bitmap = _iconGreyLowAlpha;
             }
-            else if (value < 5)
+            else if (station.Status == false)
             {
-                bitmap = _iconOrange;
-            }
-            else if (value >= 5)
-            {
-                bitmap = _iconGreen;
+                printedValue = "!";
+                bitmap = _iconGrey;
             }
             else
             {
-                bitmap = _iconGrey;
+                if (value == 0)
+                {
+                    bitmap = _iconRed;
+                }
+                else if (value < 5)
+                {
+                    bitmap = _iconOrange;
+                }
+                else if (value >= 5)
+                {
+                    bitmap = _iconGreen;
+                }
+                else
+                {
+                    printedValue = "?";
+                    bitmap = _iconGrey;
+                }
             }
-
             bitmap = bitmap.Copy(bitmap.GetConfig(), true);
             Canvas canvas = new Canvas(bitmap);
             int xPos = (canvas.Width / 2);
             int yPos = (int)((canvas.Height / 2) - ((_textPaint.Descent() + _textPaint.Ascent()) / 2));
-            canvas.DrawText(value.ToString(), xPos, yPos - 7, _textPaint);
-            var icon = BitmapDescriptorFactory.FromBitmap(bitmap);
+            canvas.DrawText(printedValue, xPos, yPos - 7, _textPaint);
+            var icon = BitmapDescriptorFactory.FromBitmap(bitmap); 
             bitmap.Recycle();
             return icon;
         }

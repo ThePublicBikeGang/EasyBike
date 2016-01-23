@@ -338,7 +338,6 @@ namespace EasyBike.Droid
             }
         }
 
-
         private void CloseKeyboard()
         {
             InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(Context.InputMethodService);
@@ -351,8 +350,8 @@ namespace EasyBike.Droid
             _map.StopAnimation();
             _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
             _map.CameraPosition.Target,
-            _map.CameraPosition.Zoom,
-            _map.CameraPosition.Tilt, 0)), 300, null);
+            16,
+            0, 0)), 300, null);
             _prevHeading = 0;
         }
 
@@ -372,12 +371,28 @@ namespace EasyBike.Droid
 
             if (_stickToUserLocation)
             {
-                // compass mode
-                _compassMode = true;
+                _compassEventcounter = 0;
                 _locationButton.SetImageBitmap(_iconCompass);
+                // first event, mimic google map app behavior
+                Observable.FromEventPattern<CompassChangedEventArgs>(CrossCompass.Current, "CompassChanged").Take(1).Subscribe(async compassChangedEventArgs =>
+                {
+                    RunOnUiThread(() =>
+                    {
+                        _map.StopAnimation();
+                        _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
+                        _lastUserLocation,
+                        18,
+                        45, (float)compassChangedEventArgs.EventArgs.Heading)), 400,null);
+                    });
+                    _prevHeading = compassChangedEventArgs.EventArgs.Heading;
+                    await Task.Delay(400);
+                    // compass mode
+                    _compassMode = true;
+                  
+                });
+
                 if (CompassChangedStream == null)
                 {
-                    _compassEventcounter = 0;
                     CompassChangedStream = Observable.FromEventPattern<CompassChangedEventArgs>(CrossCompass.Current, "CompassChanged");
                     // Throttle doesn't work ?!!
                     CompassChangedStream.Where(c => _compassMode).Subscribe(compassChangedEventArgs =>
@@ -393,7 +408,7 @@ namespace EasyBike.Droid
                                     _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
                                     _lastUserLocation,
                                     _map.CameraPosition.Zoom,
-                                    _map.CameraPosition.Tilt, (float)compassChangedEventArgs.EventArgs.Heading)), 300, null);
+                                     _map.CameraPosition.Tilt, (float)compassChangedEventArgs.EventArgs.Heading)), 300, null);
                                 });
                                 _prevHeading = compassChangedEventArgs.EventArgs.Heading;
                             }
@@ -863,8 +878,6 @@ namespace EasyBike.Droid
             }
             catch
             {
-                Log.Debug("MyActivity", "Control VISIBILITY: " + control.Visible);
-                Log.Debug("MyActivity", "Control POS: " + control.Position);
             }
         }
 
@@ -897,8 +910,7 @@ namespace EasyBike.Droid
             _map.UiSettings.CompassEnabled = true;
             _map.MyLocationEnabled = true;
 
-
-            _map.UiSettings.MyLocationButtonEnabled = false;
+            _map.UiSettings.MyLocationButtonEnabled = true;
             _map.UiSettings.MapToolbarEnabled = false;
 
             // add padding to prevent action bar to hide the position button

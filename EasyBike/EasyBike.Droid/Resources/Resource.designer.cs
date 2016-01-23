@@ -980,29 +980,29 @@ namespace EasyBike.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f070050
-			public const int abc_background_cache_hint_selector_material_dark = 2131165264;
-			
 			// aapt resource value: 0x7f070051
-			public const int abc_background_cache_hint_selector_material_light = 2131165265;
+			public const int abc_background_cache_hint_selector_material_dark = 2131165265;
+			
+			// aapt resource value: 0x7f070052
+			public const int abc_background_cache_hint_selector_material_light = 2131165266;
 			
 			// aapt resource value: 0x7f07000a
 			public const int abc_input_method_navigation_guard = 2131165194;
 			
-			// aapt resource value: 0x7f070052
-			public const int abc_primary_text_disable_only_material_dark = 2131165266;
-			
 			// aapt resource value: 0x7f070053
-			public const int abc_primary_text_disable_only_material_light = 2131165267;
+			public const int abc_primary_text_disable_only_material_dark = 2131165267;
 			
 			// aapt resource value: 0x7f070054
-			public const int abc_primary_text_material_dark = 2131165268;
+			public const int abc_primary_text_disable_only_material_light = 2131165268;
 			
 			// aapt resource value: 0x7f070055
-			public const int abc_primary_text_material_light = 2131165269;
+			public const int abc_primary_text_material_dark = 2131165269;
 			
 			// aapt resource value: 0x7f070056
-			public const int abc_search_url_text = 2131165270;
+			public const int abc_primary_text_material_light = 2131165270;
+			
+			// aapt resource value: 0x7f070057
+			public const int abc_search_url_text = 2131165271;
 			
 			// aapt resource value: 0x7f07000b
 			public const int abc_search_url_text_normal = 2131165195;
@@ -1013,14 +1013,14 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f07000d
 			public const int abc_search_url_text_selected = 2131165197;
 			
-			// aapt resource value: 0x7f070057
-			public const int abc_secondary_text_material_dark = 2131165271;
-			
 			// aapt resource value: 0x7f070058
-			public const int abc_secondary_text_material_light = 2131165272;
+			public const int abc_secondary_text_material_dark = 2131165272;
 			
-			// aapt resource value: 0x7f07004f
-			public const int accent = 2131165263;
+			// aapt resource value: 0x7f070059
+			public const int abc_secondary_text_material_light = 2131165273;
+			
+			// aapt resource value: 0x7f070050
+			public const int accent = 2131165264;
 			
 			// aapt resource value: 0x7f07000e
 			public const int accent_material_dark = 2131165198;
@@ -1094,11 +1094,11 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f070005
 			public const int common_signin_btn_light_text_pressed = 2131165189;
 			
-			// aapt resource value: 0x7f070059
-			public const int common_signin_btn_text_dark = 2131165273;
-			
 			// aapt resource value: 0x7f07005a
-			public const int common_signin_btn_text_light = 2131165274;
+			public const int common_signin_btn_text_dark = 2131165274;
+			
+			// aapt resource value: 0x7f07005b
+			public const int common_signin_btn_text_light = 2131165275;
 			
 			// aapt resource value: 0x7f070044
 			public const int design_fab_shadow_end_color = 2131165252;
@@ -1205,6 +1205,9 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f070033
 			public const int primary_dark_material_light = 2131165235;
 			
+			// aapt resource value: 0x7f07004f
+			public const int primary_light = 2131165263;
+			
 			// aapt resource value: 0x7f070034
 			public const int primary_material_dark = 2131165236;
 			
@@ -1247,11 +1250,11 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f070041
 			public const int switch_thumb_disabled_material_light = 2131165249;
 			
-			// aapt resource value: 0x7f07005b
-			public const int switch_thumb_material_dark = 2131165275;
-			
 			// aapt resource value: 0x7f07005c
-			public const int switch_thumb_material_light = 2131165276;
+			public const int switch_thumb_material_dark = 2131165276;
+			
+			// aapt resource value: 0x7f07005d
+			public const int switch_thumb_material_light = 2131165277;
 			
 			// aapt resource value: 0x7f070042
 			public const int switch_thumb_normal_material_dark = 2131165250;
@@ -1862,64 +1865,67 @@ namespace EasyBike.Droid
 			public const int design_snackbar_background = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_attachment = 2130837596;
+			public const int greyLowAlpha = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_compass = 2130837597;
+			public const int ic_attachment = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_directions = 2130837598;
+			public const int ic_compass = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_done = 2130837599;
+			public const int ic_directions = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int ic_emoticon = 2130837600;
+			public const int ic_done = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int ic_image = 2130837601;
+			public const int ic_emoticon = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int ic_info = 2130837602;
+			public const int ic_image = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int ic_launcher = 2130837603;
+			public const int ic_info = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int ic_location = 2130837604;
+			public const int ic_launcher = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int ic_menu = 2130837605;
+			public const int ic_location = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int ic_place = 2130837606;
+			public const int ic_menu = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int ic_settings = 2130837607;
+			public const int ic_place = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int ic_star = 2130837608;
-			
-			// aapt resource value: 0x7f02006f
-			public const int notification_template_icon_bg = 2130837615;
+			public const int ic_settings = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int parkingIcon = 2130837609;
+			public const int ic_star = 2130837609;
+			
+			// aapt resource value: 0x7f020070
+			public const int notification_template_icon_bg = 2130837616;
 			
 			// aapt resource value: 0x7f02006a
-			public const int station = 2130837610;
+			public const int parkingIcon = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int stationGris = 2130837611;
+			public const int station = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int stationOrange = 2130837612;
+			public const int stationGris = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int stationRed = 2130837613;
+			public const int stationOrange = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int stationVert = 2130837614;
+			public const int stationRed = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int stationVert = 2130837615;
 			
 			static Drawable()
 			{

@@ -23,8 +23,4 @@
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBThqscLD8OiAwgEAj_0Q99oJ5qkXZ6sFQ" />
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 	</application>
-
-  <activity
-   android:windowSoftInputMode="adjustNothing">
-  </activity>
 </manifest>
