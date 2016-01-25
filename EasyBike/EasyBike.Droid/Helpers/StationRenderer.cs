@@ -183,6 +183,12 @@ namespace EasyBike.Droid.Helpers
             public TextView Text { get; set; }
         }
 
+        protected override void OnClusterRendered(ICluster p0, Marker p1)
+        {
+            // way to determine if the user clicked on a cluster to zoom in
+            p1.Title = "cluster";
+            base.OnClusterRendered(p0, p1); 
+        }
 
         protected override void OnClusterItemRendered(Java.Lang.Object context, Marker marker)
         {

@@ -26,6 +26,7 @@ namespace EasyBike.Droid
         {
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
+            var test = App.Locator.Main;
             //A great place to initialize Xamarin.Insights and Dependency Services!
         }
 

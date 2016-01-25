@@ -168,7 +168,6 @@ namespace EasyBike.Droid
             _iconUserLocation = iconGenerator.MakeIcon();
             iconGenerator.SetBackground(ResourcesCompat.GetDrawable(Resources, Resource.Drawable.ic_compass, null));
             _iconCompass = iconGenerator.MakeIcon();
-
             //var uiOptions = (int)this.Window.DecorView.SystemUiVisibility;
             //var newUiOptions = (int)uiOptions;
             //newUiOptions &= ~(int)SystemUiFlags.LowProfile;
@@ -192,7 +191,6 @@ namespace EasyBike.Droid
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetDisplayShowCustomEnabled(true);
 
-
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
 
@@ -205,7 +203,6 @@ namespace EasyBike.Droid
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
             _locationButton.Click += LocationButton_Click;
             UnStickUserLocation();
-
             AutoCompleteSearchPlaceTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autoCompleteSearchPlaceTextView);
             AutoCompleteSearchPlaceTextView.ItemClick += AutoCompleteSearchPlaceTextView_ItemClick;
             googlePlacesAutocompleteAdapter = new GooglePlacesAutocompleteAdapter(this, Android.Resource.Layout.SimpleDropDownItem1Line);
@@ -233,7 +230,6 @@ namespace EasyBike.Droid
                     {
                         Log.Debug("AutoCompleteSearchPlaceTextView", e.Message);
                     }
-
                 });
 
 
@@ -244,11 +240,13 @@ namespace EasyBike.Droid
             //    drawerLayout.CloseDrawers();
             //};
 
-
             // trigger the creation of the injected dependencies
-            var unused = MainViewModel.AboutCommand;
+            Log.Debug("MyActivity", "Begin 5");
+
+            Log.Debug("MyActivity", "Begin 5.5");
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
+
             // TODO pour le debug des favoris :
             _favoritesService.AddFavoriteAsync(new Favorite
             {
@@ -257,22 +255,19 @@ namespace EasyBike.Droid
                 Longitude = 0.0,
                 Name = "Test name"
             });
-
-
-
-
-
         }
 
 
         protected override void OnPostCreate(Bundle savedInstanceState)
         {
+            Log.Debug("MyActivity", "Begin OnPostCreate");
             base.OnPostCreate(savedInstanceState);
             _drawerToggle.SyncState();
         }
 
         public override void OnConfigurationChanged(Configuration newConfig)
         {
+            Log.Debug("MyActivity", "Begin OnConfigurationChanged");
             base.OnConfigurationChanged(newConfig);
             _drawerToggle.OnConfigurationChanged(newConfig);
         }
@@ -385,7 +380,7 @@ namespace EasyBike.Droid
                     {
                         _map.StopAnimation();
                         _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        _lastUserLocation,
+                        _lastUserLocation == null ? _map.CameraPosition.Target : _lastUserLocation,
                         18.5f,
                         60, (float)compassChangedEventArgs.EventArgs.Heading)), 400, null);
                     });
@@ -411,7 +406,7 @@ namespace EasyBike.Droid
                                 {
                                     _map.StopAnimation();
                                     _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                                    _lastUserLocation,
+                                     _lastUserLocation == null ? _map.CameraPosition.Target : _lastUserLocation,
                                     _map.CameraPosition.Zoom,
                                      _map.CameraPosition.Tilt, (float)compassChangedEventArgs.EventArgs.Heading)), 300, null);
                                 });
@@ -708,34 +703,45 @@ namespace EasyBike.Droid
             //            if (settings.LastLocation != null) {
             //                latitude = 
             //            }
+
             return new CameraPosition.Builder()
                 .Target(new LatLng(settings.LastLocation.Latitude, settings.LastLocation.Longitude))
                 .Zoom((float)settings.LastLocation.ZoomLevel).Build();
         }
 
         //Cluster override methods
+        /// <summary>
+        /// disabled by _map_MarkerClick :/
+        /// </summary>
+        /// <param name="cluster"></param>
+        /// <returns></returns>
         public bool OnClusterClick(ICluster cluster)
         {
             Log.Debug("MyActivity", "Begin OnClusterClick");
-            UnStickUserLocation();
-            LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            foreach (ClusterItem item in cluster.Items)
-            {
-                builder.Include(item.Position);
-            }
-            var bounds = builder.Build();
-            Task.Run(async () =>
-            {
-                await Task.Delay(300);
-                RunOnUiThread(() =>
-                {
-                    _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
-                });
-            });
+            //UnStickUserLocation();
+            //LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            //foreach (ClusterItem item in cluster.Items)
+            //{
+            //    builder.Include(item.Position);
+            //}
+            //var bounds = builder.Build();
+            //Task.Run(async () =>
+            //{
+            //    await Task.Delay(300);
+            //    RunOnUiThread(() =>
+            //    {
+            //        _map.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 100));
+            //    });
+            //});
 
             return false;
         }
 
+        /// <summary>
+        /// disabled by _map_MarkerClick :/
+        /// </summary>
+        /// <param name="marker"></param>
+        /// <returns></returns>
         public bool OnClusterItemClick(Java.Lang.Object marker)
         {
             //Log.Debug("MyActivity", "Begin OnClusterItemClick");
@@ -752,13 +758,16 @@ namespace EasyBike.Droid
         private void _map_MarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
         {
             Log.Debug("MyActivity", "Begin _map_MarkerClick");
-            //UnStickUserLocation();
-            SelectItem(e.Marker.Position);
-            _actionMode = StartSupportActionMode(this);
-            e.Marker.ShowInfoWindow();
-            if (e.Marker == longClickMarker)
+            if (e.Marker.Title == "cluster")
             {
-                longClickMarker.ShowInfoWindow();
+                UnStickUserLocation();
+                _map.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(e.Marker.Position, 17));
+            }
+            else
+            {
+                SelectItem(e.Marker.Position);
+                _actionMode = StartSupportActionMode(this);
+                e.Marker.ShowInfoWindow();
             }
         }
 
@@ -898,7 +907,7 @@ namespace EasyBike.Droid
         public async void OnMapReady(GoogleMap googleMap)
         {
             Log.Debug("MyActivity", "Begin OnMapReady");
-            StartLocationTracking();
+
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
             //var contractToTest = "Paris";
             //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
@@ -934,12 +943,15 @@ namespace EasyBike.Droid
             _clusterManager = new ClusterManager(this, _map);
             _clusterRender = new StationRenderer(this, _map, _clusterManager);
             _clusterManager.SetRenderer(_clusterRender);
-            _clusterManager.SetOnClusterClickListener(this);
-            _clusterManager.SetOnClusterItemClickListener(this);
-            _map.SetOnCameraChangeListener(_clusterManager);
 
-            //_map.SetOnMarkerClickListener(_clusterManager);
+            _map.SetOnCameraChangeListener(_clusterManager);
+            // this disable the rest of the event handlers
+            // so there is no way to distinct a click on a cluster and a marker 
             _map.MarkerClick += _map_MarkerClick;
+            //_map.SetOnMarkerClickListener(new OnMarkerClickListener());
+            //_clusterManager.SetOnClusterClickListener(this);
+            //_clusterManager.SetOnClusterItemClickListener(this);
+
             // check if the app contains a least one city, otherwise, tells the user to download one
             MainViewModel.MainPageLoadedCommand.Execute(null);
 
@@ -994,6 +1006,7 @@ namespace EasyBike.Droid
 
             // first init of last user location
             GetPreviousLastUserLocation();
+            StartLocationTracking();
 
             // Initialize the behavior when long clicking somewhere on the map
             //_map.MapLongClick += async (sender, e) =>
@@ -1097,7 +1110,6 @@ namespace EasyBike.Droid
         }
 
 
-
         /// <summary>
         /// when app launch before geolocator has found out the user location,
         /// set the last user location to what is in memory
@@ -1115,7 +1127,10 @@ namespace EasyBike.Droid
                     // Getting Current Location
                     var previousLocation = locationManager.GetLastKnownLocation(provider);
                     _lastUserLocation = new LatLng(previousLocation.Latitude, previousLocation.Longitude);
-                    _map.AnimateCamera(CameraUpdateFactory.NewLatLng(new LatLng(_lastUserLocation.Latitude, _lastUserLocation.Longitude)));
+                    if (_lastUserLocation != null)
+                    {
+                        _map.AnimateCamera(CameraUpdateFactory.NewLatLng(new LatLng(_lastUserLocation.Latitude, _lastUserLocation.Longitude)));
+                    }
                 }
                 catch { }
             }
