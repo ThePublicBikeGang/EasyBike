@@ -35,6 +35,13 @@
                 android:alpha="0.4"
                 android:singleLine="true"
                 android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/StationQuantity"
+                android:alpha="0.4"
+                android:singleLine="true"
+                android:textSize="16sp" />
             <ProgressBar
                 android:id="@+id/ProgressBar"
                 style="?android:attr/progressBarStyleHorizontal"

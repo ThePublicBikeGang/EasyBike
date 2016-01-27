@@ -58,7 +58,8 @@ namespace EasyBike.Droid.Helpers
         private class ViewHolder : Java.Lang.Object
         {
             public TextView Name { get; set; }
-            public TextView ServiceProvider{ get; set; }
+            public TextView ServiceProvider { get; set; }
+            public TextView StationQuantity { get; set; }
             public CheckBox CheckBox { get; set; }
             public ProgressBar ProgressBar { get; set; }
         }
@@ -78,15 +79,18 @@ namespace EasyBike.Droid.Helpers
                 row = Context.LayoutInflater.Inflate(Resource.Layout.ContractTemplate, null);
                 holder.Name = row.FindViewById<TextView>(Resource.Id.NameTextView);
                 holder.ServiceProvider = row.FindViewById<TextView>(Resource.Id.ServiceProvider);
+                holder.StationQuantity = row.FindViewById<TextView>(Resource.Id.StationQuantity);
                 holder.CheckBox = row.FindViewById<CheckBox>(Resource.Id.ContractCheckBox);
                 holder.ProgressBar = row.FindViewById<ProgressBar>(Resource.Id.ProgressBar);
                 row.Tag = holder;
             }
-
-            holder.Name.Text = _countries[groupPosition].Contracts[childPosition].Name;
-            holder.ServiceProvider.Text = _countries[groupPosition].Contracts[childPosition].ServiceProvider;
-            holder.CheckBox.Checked = _countries[groupPosition].Contracts[childPosition].Downloaded;
-            holder.ProgressBar.Visibility = _countries[groupPosition].Contracts[childPosition].Downloading ? ViewStates.Visible : ViewStates.Invisible;
+            var contract = _countries[groupPosition].Contracts[childPosition];
+            holder.Name.Text = contract.Name;
+            holder.ServiceProvider.Text = contract.ServiceProvider;
+            holder.StationQuantity.Text = contract.StationCounterStr;
+            holder.StationQuantity.Visibility = contract.Downloaded ? ViewStates.Visible : ViewStates.Gone;
+            holder.CheckBox.Checked = contract.Downloaded;
+            holder.ProgressBar.Visibility = contract.Downloading ? ViewStates.Visible : ViewStates.Gone;
             //holder.CheckBox.SetBinding(
             //     () => _countries[groupPosition].Contracts[childPosition].Downloaded,
             //     () => CompoundButton.Checked);

@@ -51,20 +51,33 @@ namespace EasyBike.Droid.Views
         {
             var contract = countries[e.GroupPosition].Contracts[e.ChildPosition];
 
+            if (contract.Downloading)
+            {
+                return;
+            }
             var progressBar = e.ClickedView.FindViewById<ProgressBar>(Resource.Id.ProgressBar);
+            
             // Show the progress bar
             if (!contract.Downloaded)
             {
                 progressBar.Visibility = ViewStates.Visible;
             }
+
+
             ///ViewModel.ContractTappedCommand.Execute(contract);
             await ViewModel.AddOrRemoveContract(contract);
             //(ContractsList.Adapter as CountryListAdapter).GetChildView(e.GroupPosition)
             //_countries[groupPosition].Contracts[childPosition].
 
-            progressBar.Visibility = ViewStates.Invisible;
+            progressBar.Visibility = ViewStates.Gone;
             var checkBox = e.ClickedView.FindViewById<CheckBox>(Resource.Id.ContractCheckBox);
             checkBox.Checked = contract.Downloaded;
+
+            var stationQuantity = e.ClickedView.FindViewById<TextView>(Resource.Id.StationQuantity);
+            stationQuantity.Text = contract.StationCounterStr;
+            stationQuantity.Visibility = contract.Downloaded ? ViewStates.Visible : ViewStates.Gone;
+            
+
             //e.ClickedView.SetBackgroundColor(Color.ParseColor("#676767"));
             //var checkBox = e.ClickedView.FindViewById<CheckBox>(Resource.Id.ContractCheckBox);
 
