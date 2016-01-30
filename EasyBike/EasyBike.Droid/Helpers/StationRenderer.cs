@@ -76,8 +76,8 @@ namespace EasyBike.Droid.Helpers
             ////// Create a view container to set the size
             _iconGenRed.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationRed, null));
             _iconGenOrange.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationOrange, null));
-            _iconGenGreen.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationVert, null));
-            _iconGenGrey.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationGris, null));
+            _iconGenGreen.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationGreen, null));
+            _iconGenGrey.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationGrey, null));
             _iconGenGreyLowAlpha.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.greyLowAlpha, null));
 
             _iconRed = _iconGenRed.MakeIcon();
@@ -163,7 +163,7 @@ namespace EasyBike.Droid.Helpers
             Canvas canvas = new Canvas(bitmap);
             int xPos = (canvas.Width / 2);
             int yPos = (int)((canvas.Height / 2) - ((_textPaint.Descent() + _textPaint.Ascent()) / 2));
-            canvas.DrawText(printedValue, xPos, yPos - 7, _textPaint);
+            canvas.DrawText(printedValue, xPos, yPos - 9, _textPaint);
             var icon = BitmapDescriptorFactory.FromBitmap(bitmap); 
             bitmap.Recycle();
             return icon;

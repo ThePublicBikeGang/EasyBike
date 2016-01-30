@@ -290,15 +290,6 @@
     <AndroidResource Include="Resources\values\Strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\stationGris.png" />
-    <AndroidResource Include="Resources\drawable\stationVert.png" />
-    <AndroidResource Include="Resources\drawable\stationOrange.png" />
-    <AndroidResource Include="Resources\drawable\stationRed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\station.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml">
@@ -460,6 +451,27 @@
     <AndroidResource Include="Resources\drawable-hdpi\greyLowAlpha.png" />
     <AndroidResource Include="Resources\drawable\greyLowAlpha.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\greyLowAlpha.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\stationGreen.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\stationGrey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\stationOrange.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\stationRed.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\stationGreen.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\stationGrey.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\stationOrange.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\stationRed.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\stationGreen.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\stationGrey.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\stationOrange.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\stationRed.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\stationGreen.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\stationGrey.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\stationOrange.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\stationRed.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\stationGreen.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\stationGrey.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\stationOrange.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\stationRed.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_place.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />
