@@ -63,21 +63,27 @@ namespace EasyBike.Models
 
         public async void AddStationToRefreshingPool(Station station)
         {
-            station.IsInRefreshPool = true;
-            var contract = station.Contract;
-            if (contract != null)
+            if (!station.Loaded)
             {
-                //if (await contract.RefreshAsync(station).ConfigureAwait(false))
-                //{
-                //    if (station.IsUiRefreshNeeded)
-                //    {
-                //        StationRefreshed?.Invoke(station, EventArgs.Empty);
-                //    }
-                //}
-                refreshingPool.Add(station);
-                if (!IsStationWorkerRunning)
+                var contract = station.Contract;
+                if (contract != null)
                 {
-                    StartRefreshStationsAsync();
+                    if (await contract.RefreshAsync(station).ConfigureAwait(false))
+                    {
+                        if (station.IsUiRefreshNeeded)
+                        {
+                            StationRefreshed?.Invoke(station, EventArgs.Empty);
+                        }
+                    }
+                    if (contract.ImageAvailability)
+                    {
+                        station.IsInRefreshPool = true;
+                        refreshingPool.Add(station);
+                        if (!IsStationWorkerRunning)
+                        {
+                            StartRefreshStationsAsync();
+                        }
+                    }
                 }
             }
         }
@@ -119,7 +125,7 @@ namespace EasyBike.Models
         }
 
 
-        private int timer = 1000;
+        private int timer = 20000;
         private async void StartRefreshAsync()
         {
             while (true)
@@ -130,7 +136,7 @@ namespace EasyBike.Models
                     // DispatcherHelper.
                     // At this time, DispatcherHelper cannot be used in a portable class library. Laurent works on a solution.
                     // var mapCenter = _localisationService.GetCurrentMapCenter();
-                    contracts.ToList()/*.Where(c => !c.StationRefreshGranularity)*/.AsParallel().ForAll(async (c) =>
+                    contracts.ToList().Where(c => !c.ImageAvailability).AsParallel().ForAll(async (c) =>
                     {
                         if (await c.RefreshAsync().ConfigureAwait(false))
                         {
@@ -167,9 +173,7 @@ namespace EasyBike.Models
                         //}
                     });
                 //}
-
                 await Task.Delay(timer).ConfigureAwait(false);
-                timer = timer <= 20000 ? timer + 5000 : timer;
             }
         }
 

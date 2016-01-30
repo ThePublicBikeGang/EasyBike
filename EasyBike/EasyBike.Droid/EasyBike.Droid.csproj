@@ -220,6 +220,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <AndroidAsset Include="fonts\Roboto-Black.ttf" />
+    <AndroidAsset Include="fonts\Roboto-BlackItalic.ttf" />
+    <AndroidAsset Include="fonts\Roboto-Bold.ttf" />
+    <AndroidAsset Include="fonts\Roboto-BoldCondensed.ttf" />
+    <AndroidAsset Include="fonts\Roboto-BoldCondensedItalic.ttf" />
+    <AndroidAsset Include="fonts\Roboto-BoldItalic.ttf" />
+    <AndroidAsset Include="fonts\Roboto-Condensed.ttf" />
+    <AndroidAsset Include="fonts\Roboto-CondensedItalic.ttf" />
+    <AndroidAsset Include="fonts\Roboto-Italic.ttf" />
+    <AndroidAsset Include="fonts\Roboto-Light.ttf" />
+    <AndroidAsset Include="fonts\Roboto-LightItalic.ttf" />
+    <AndroidAsset Include="fonts\Roboto-Medium.ttf" />
+    <AndroidAsset Include="fonts\Roboto-MediumItalic.ttf" />
+    <AndroidAsset Include="fonts\Roboto-Regular.ttf" />
+    <AndroidAsset Include="fonts\Roboto-Thin.ttf" />
+    <AndroidAsset Include="fonts\Roboto-ThinItalic.ttf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml">
@@ -445,12 +461,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_compass.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_compass.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_compass.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\greyLowAlpha.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\greyLowAlpha.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\greyLowAlpha.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\greyLowAlpha.png" />
-    <AndroidResource Include="Resources\drawable\greyLowAlpha.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\greyLowAlpha.png" />
     <AndroidResource Include="Resources\drawable-hdpi\stationGreen.png" />
     <AndroidResource Include="Resources\drawable-hdpi\stationGrey.png" />
     <AndroidResource Include="Resources\drawable-hdpi\stationOrange.png" />
@@ -472,6 +482,11 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\stationOrange.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\stationRed.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_place.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\stationGreyAlpha.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\stationGreyAlpha.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\stationGreyAlpha.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\stationGreyAlpha.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\stationGreyAlpha.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />

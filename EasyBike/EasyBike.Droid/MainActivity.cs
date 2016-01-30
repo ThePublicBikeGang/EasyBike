@@ -849,16 +849,15 @@ namespace EasyBike.Droid
 
         private void OnStationRefreshed(object sender, EventArgs e)
         {
-            //var station = (sender as Station);
-            //var control = (station.Control as Marker);
-            //if (station != null && control != null)
-            //{
-            //    RefreshStation(station, control);
-            //}
-            //RunOnUiThread(() =>
-            //{
-            //    _clusterManager.Cluster();
-            //});
+            var station = (sender as Station);
+            var control = (station.Control as Marker);
+            if (station != null && control != null)
+            {
+                RunOnUiThread(() =>
+                {
+                    RefreshStation(station, control);
+                });
+            }
         }
 
         private void OnContractRefreshed(object sender, EventArgs e)

@@ -78,7 +78,7 @@ namespace EasyBike.Droid.Helpers
             _iconGenOrange.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationOrange, null));
             _iconGenGreen.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationGreen, null));
             _iconGenGrey.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationGrey, null));
-            _iconGenGreyLowAlpha.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.greyLowAlpha, null));
+            _iconGenGreyLowAlpha.SetBackground(ResourcesCompat.GetDrawable(_context.Resources, Resource.Drawable.stationGreyAlpha, null));
 
             _iconRed = _iconGenRed.MakeIcon();
             _iconGreen = _iconGenGreen.MakeIcon();
@@ -89,10 +89,11 @@ namespace EasyBike.Droid.Helpers
             var textView = new TextView(context);
             textView.SetTextAppearance(_context, Resource.Style.iconGenText);
             _textPaint.AntiAlias = true;
-            _textPaint.SetARGB(255, 255, 255, 255);
+            _textPaint.SetARGB(255, 0, 0, 0);
             _textPaint.TextSize = textView.TextSize;
             _textPaint.TextAlign = Paint.Align.Center;
-            _textPaint.SetTypeface(textView.Typeface);
+            //_textPaint.SetTypeface(textView.Typeface);
+            _textPaint.SetTypeface(Typeface.CreateFromAsset(_context.Assets, "fonts/Roboto-Black.ttf"));
 
         }
 
@@ -163,8 +164,8 @@ namespace EasyBike.Droid.Helpers
             Canvas canvas = new Canvas(bitmap);
             int xPos = (canvas.Width / 2);
             int yPos = (int)((canvas.Height / 2) - ((_textPaint.Descent() + _textPaint.Ascent()) / 2));
-            canvas.DrawText(printedValue, xPos, yPos - 9, _textPaint);
-            var icon = BitmapDescriptorFactory.FromBitmap(bitmap); 
+            canvas.DrawText(printedValue, xPos, yPos - 11, _textPaint);
+            var icon = BitmapDescriptorFactory.FromBitmap(bitmap);
             bitmap.Recycle();
             return icon;
         }
@@ -187,7 +188,7 @@ namespace EasyBike.Droid.Helpers
         {
             // way to determine if the user clicked on a cluster to zoom in
             p1.Title = "cluster";
-            base.OnClusterRendered(p0, p1); 
+            base.OnClusterRendered(p0, p1);
         }
 
         protected override void OnClusterItemRendered(Java.Lang.Object context, Marker marker)
@@ -201,16 +202,13 @@ namespace EasyBike.Droid.Helpers
         {
             var station = (context as ClusterItem).Station;
 
-            //if (station.Contract.StationRefreshGranularity)
-            //{
-            //    if (!station.IsInRefreshPool)
-            //    {
-            //        Task.Run(() =>
-            //        {
-            //            _contractService.AddStationToRefreshingPool(station);
-            //        });
-            //    }
-            //}
+            if (station.Contract.StationRefreshGranularity)
+            {
+                if (!station.IsInRefreshPool)
+                {
+                    _contractService.AddStationToRefreshingPool(station);
+                }
+            }
 
 
             markerOptions.SetIcon(CreateStationIcon(station));

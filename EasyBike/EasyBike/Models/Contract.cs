@@ -164,9 +164,8 @@ namespace EasyBike.Models
                             break;
                         }
                     }
-                   
 
-                    await Task.Delay(1).ConfigureAwait(false);
+                    //await Task.Delay(1).ConfigureAwait(false);
                 }
                 retryContract = 0;
             }
