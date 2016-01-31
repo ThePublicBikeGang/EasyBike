@@ -808,16 +808,19 @@ namespace EasyBike.Droid
                         PolylineOptions lineOptions = new PolylineOptions();
                         lineOptions = lineOptions.InvokeColor(Resources.GetColor(Resource.Color.accent).ToArgb());
                         lineOptions = lineOptions.InvokeWidth(15);
-                        var points = MapHelper.DecodePolyline(directions.routes.FirstOrDefault().overview_polyline.points).AsEnumerable();
-                        foreach (var point in points)
+                        if(directions.routes.FirstOrDefault() != null)
                         {
-                            lineOptions.Add(point);
+                            var points = MapHelper.DecodePolyline(directions.routes.FirstOrDefault().overview_polyline.points).AsEnumerable();
+                            foreach (var point in points)
+                            {
+                                lineOptions.Add(point);
+                            }
+                            RunOnUiThread(() =>
+                            {
+                                ClearPolyline();
+                                _currentPolyline = _map.AddPolyline(lineOptions);
+                            });
                         }
-                        RunOnUiThread(() =>
-                        {
-                            ClearPolyline();
-                            _currentPolyline = _map.AddPolyline(lineOptions);
-                        });
                     }
                 }
                 catch (Exception e)
