@@ -26,8 +26,8 @@ namespace EasyBike.Droid
         {
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
-            var test = App.Locator.Main;
             //A great place to initialize Xamarin.Insights and Dependency Services!
+            var test = App.Locator.Main;
         }
 
         public override void OnTerminate()
@@ -39,6 +39,7 @@ namespace EasyBike.Droid
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {
             CrossCurrentActivity.Current.Activity = activity;
+            activity.RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
         }
 
         public void OnActivityDestroyed(Activity activity)

@@ -128,6 +128,7 @@ namespace EasyBike.Models
         private int timer = 20000;
         private async void StartRefreshAsync()
         {
+            await Task.Delay(3000).ConfigureAwait(false);
             while (true)
             {
                 //if (CrossConnectivity.Current.IsConnected)

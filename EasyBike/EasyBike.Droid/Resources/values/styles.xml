@@ -39,9 +39,9 @@
   
   
 <style name="iconGenText">
-    <item name="android:textSize">15sp</item>
+    <item name="android:textSize">14sp</item>
     <item name="android:textStyle">bold</item>
-    <item name="android:fontFamily">normal</item>
-    <item name="android:typeface">normal</item>
+    <!--<item name="android:fontFamily">normal</item>
+    <item name="android:typeface">normal</item>-->
 </style>
 </resources>

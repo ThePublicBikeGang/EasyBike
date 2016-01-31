@@ -19,6 +19,7 @@ using EasyBike.Models;
 using GalaSoft.MvvmLight.Ioc;
 using EasyBike.Models.Storage;
 using System.Threading.Tasks;
+using Android.Util;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -93,7 +94,7 @@ namespace EasyBike.Droid.Helpers
             _textPaint.TextSize = textView.TextSize;
             _textPaint.TextAlign = Paint.Align.Center;
             //_textPaint.SetTypeface(textView.Typeface);
-            _textPaint.SetTypeface(Typeface.CreateFromAsset(_context.Assets, "fonts/Roboto-Black.ttf"));
+            _textPaint.SetTypeface(Typeface.CreateFromAsset(_context.Assets, "fonts/Roboto-Bold.ttf"));
 
         }
 
@@ -164,7 +165,7 @@ namespace EasyBike.Droid.Helpers
             Canvas canvas = new Canvas(bitmap);
             int xPos = (canvas.Width / 2);
             int yPos = (int)((canvas.Height / 2) - ((_textPaint.Descent() + _textPaint.Ascent()) / 2));
-            canvas.DrawText(printedValue, xPos, yPos - 11, _textPaint);
+            canvas.DrawText(printedValue, xPos + 1, yPos - ConvertDpToPixel(6, _context), _textPaint);
             var icon = BitmapDescriptorFactory.FromBitmap(bitmap);
             bitmap.Recycle();
             return icon;
@@ -224,7 +225,38 @@ namespace EasyBike.Droid.Helpers
             //View view = (_context as MainActivity).LayoutInflater.Inflate(Resource.Layout.MarkerText, null);
             //var text = view.FindViewById<TextView>(Resource.Id.text);
         }
+
+        /**
+* This method converts dp unit to equivalent pixels, depending on device density. 
+* 
+* @param dp A value in dp (density independent pixels) unit. Which we need to convert into pixels
+* @param context Context to get resources and device specific display metrics
+* @return A float value to represent px equivalent to dp depending on device density
+*/
+        public static float ConvertDpToPixel(float dp, Context context)
+        {
+            Resources resources = context.Resources;
+            DisplayMetrics metrics = resources.DisplayMetrics;
+            float px = dp * ((int)metrics.DensityDpi / 160f);
+            return px;
+        }
+
+        /**
+         * This method converts device specific pixels to density independent pixels.
+         * 
+         * @param px A value in px (pixels) unit. Which we need to convert into db
+         * @param context Context to get resources and device specific display metrics
+         * @return A float value to represent dp equivalent to px value
+         */
+        public static float convertPixelsToDp(float px, Context context)
+        {
+            Resources resources = context.Resources;
+            DisplayMetrics metrics = resources.DisplayMetrics;
+            float dp = px / ((int)metrics.DensityDpi / 160f);
+            return dp;
+        }
     }
+
 
     public class Animatorrr : Java.Lang.Object, ValueAnimator.IAnimatorUpdateListener
     {

@@ -241,9 +241,6 @@ namespace EasyBike.Droid
             //};
 
             // trigger the creation of the injected dependencies
-            Log.Debug("MyActivity", "Begin 5");
-
-            Log.Debug("MyActivity", "Begin 5.5");
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
 

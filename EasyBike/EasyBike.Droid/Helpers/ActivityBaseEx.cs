@@ -1,6 +1,7 @@
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using Android.Support.V7.App;
+using Android.OS;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -52,7 +53,7 @@ namespace EasyBike.Droid.Helpers
         protected override void OnResume()
         {
             CurrentActivity = this;
-
+            
             if (string.IsNullOrEmpty(ActivityKey))
             {
                 ActivityKey = NextPageKey;
