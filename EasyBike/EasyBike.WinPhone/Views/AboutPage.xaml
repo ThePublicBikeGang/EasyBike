@@ -122,7 +122,7 @@
 
                     <Paragraph FontSize="18.333">
                         <Run Text="This app will never get any ads. Economy should change and advertising is not the right solution. If you like this app and think that the hard work is worth it, feel free to make a"/>
-                        <Hyperlink NavigateUri="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=marc%2emagnin%40gmail%2ecom&amp;lc=FR&amp;item_name=Marc%20Magnin&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"  Foreground="{ThemeResource PhoneAccentBrush}">
+                        <Hyperlink NavigateUri="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=marc%2emagnin%40gmail%2ecom&amp;lc=FR&amp;item_name=Marc%20Magnin&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"  Foreground="{ThemeResource PhoneAccentBrush}">
                             <Run Text="donation"/>
                         </Hyperlink>
 
