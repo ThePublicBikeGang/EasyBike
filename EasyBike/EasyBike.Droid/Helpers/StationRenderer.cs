@@ -20,6 +20,7 @@ using GalaSoft.MvvmLight.Ioc;
 using EasyBike.Models.Storage;
 using System.Threading.Tasks;
 using Android.Util;
+using Plugin.CurrentActivity;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -126,7 +127,7 @@ namespace EasyBike.Droid.Helpers
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>
-        public BitmapDescriptor CreateStationIcon(Station station)
+        public  BitmapDescriptor CreateStationIcon(Station station)
         {
             Bitmap bitmap = null;
             var value = _settingsService.Settings.IsBikeMode ? station.AvailableBikes : station.AvailableBikeStands;
@@ -135,14 +136,58 @@ namespace EasyBike.Droid.Helpers
             {
                 printedValue = string.Empty;
                 bitmap = _iconGreyLowAlpha;
+                bitmap = bitmap.Copy(bitmap.GetConfig(), true);
             }
             else if (station.Status == false)
             {
                 printedValue = "!";
                 bitmap = _iconGrey;
+                bitmap = bitmap.Copy(bitmap.GetConfig(), true);
             }
-            else
+            else if (station.ImageAvailable != null || station.ImageDocks != null)
             {
+                bitmap = _iconGrey;
+                bitmap = bitmap.Copy(bitmap.GetConfig(), true);
+                try
+                {
+
+               
+                var data = (byte[])(_settingsService.Settings.IsBikeMode ? station.ImageAvailable : station.ImageDocks);
+                GifDecoder gifDecoder = new GifDecoder();
+                gifDecoder.read(data);
+                gifDecoder.advance();
+                var bmp = gifDecoder.getNextFrame();
+                var canvas = new Canvas(bitmap);
+
+                DisplayMetrics metrics = new DisplayMetrics();
+                (CrossCurrentActivity.Current.Activity as MainActivity).WindowManager.DefaultDisplay.GetMetrics(metrics);
+
+                int width = bmp.Width;
+                int height = bmp.Height;
+
+                float scaleWidth = metrics.ScaledDensity;
+                float scaleHeight = metrics.ScaledDensity;
+
+                // create a matrix for the manipulation
+                Matrix matrix = new Matrix();
+                // resize the bit map
+                matrix.PostScale(scaleWidth, scaleHeight);
+
+           
+
+                // recreate the new Bitmap
+                Bitmap resizedBitmap = Bitmap.CreateBitmap(bmp, 0, 0, width, height, matrix, true);
+
+                int xPos = canvas.Width / 2 - resizedBitmap.Width / 2;
+                int yPos = canvas.Height / 2 - resizedBitmap.Height ;
+                canvas.DrawBitmap(resizedBitmap, xPos, yPos, null);
+                }catch(System.Exception e)
+                {
+
+                }
+
+            }
+            else {
                 if (value == 0)
                 {
                     bitmap = _iconRed;
@@ -160,12 +205,15 @@ namespace EasyBike.Droid.Helpers
                     printedValue = "?";
                     bitmap = _iconGrey;
                 }
+
+                bitmap = bitmap.Copy(bitmap.GetConfig(), true);
+                Canvas canvas = new Canvas(bitmap);
+                int xPos = (canvas.Width / 2);
+                int yPos = (int)((canvas.Height / 2) - ((_textPaint.Descent() + _textPaint.Ascent()) / 2));
+                canvas.DrawText(printedValue, xPos + 1, yPos - ConvertDpToPixel(6, _context), _textPaint);
+
             }
-            bitmap = bitmap.Copy(bitmap.GetConfig(), true);
-            Canvas canvas = new Canvas(bitmap);
-            int xPos = (canvas.Width / 2);
-            int yPos = (int)((canvas.Height / 2) - ((_textPaint.Descent() + _textPaint.Ascent()) / 2));
-            canvas.DrawText(printedValue, xPos + 1, yPos - ConvertDpToPixel(6, _context), _textPaint);
+          
             var icon = BitmapDescriptorFactory.FromBitmap(bitmap);
             bitmap.Recycle();
             return icon;
@@ -199,7 +247,7 @@ namespace EasyBike.Droid.Helpers
         }
 
 
-        protected override void OnBeforeClusterItemRendered(Java.Lang.Object context, MarkerOptions markerOptions)
+        protected async override void OnBeforeClusterItemRendered(Java.Lang.Object context, MarkerOptions markerOptions)
         {
             var station = (context as ClusterItem).Station;
 

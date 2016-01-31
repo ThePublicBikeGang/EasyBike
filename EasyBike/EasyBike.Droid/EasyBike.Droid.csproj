@@ -196,6 +196,7 @@
     <Compile Include="Helpers\CustomActionBarDrawerToggle.cs" />
     <Compile Include="Helpers\ExtendedDialogService.cs" />
     <Compile Include="Helpers\ExtendedNavigationService.cs" />
+    <Compile Include="Helpers\GifDecoder.cs" />
     <Compile Include="Helpers\GooglePlacesAutocompleteAdapter.cs" />
     <Compile Include="Helpers\MapFragmentExtended.cs" />
     <Compile Include="Helpers\StationRenderer.cs" />
@@ -487,6 +488,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\stationGreyAlpha.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\stationGreyAlpha.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\stationGreyAlpha.png" />
+    <AndroidResource Include="Resources\drawable\ibikegif.gif" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />

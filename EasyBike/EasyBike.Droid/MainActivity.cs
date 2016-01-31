@@ -758,7 +758,7 @@ namespace EasyBike.Droid
             if (e.Marker.Title == "cluster")
             {
                 UnStickUserLocation();
-                _map.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(e.Marker.Position, 17));
+                _map.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(e.Marker.Position, 16));
             }
             else
             {
@@ -881,7 +881,7 @@ namespace EasyBike.Droid
             });
         }
 
-        private void RefreshStation(Station station, Marker control)
+        private async void RefreshStation(Station station, Marker control)
         {
             try
             {
@@ -1106,6 +1106,9 @@ namespace EasyBike.Droid
                     });
 
                 });
+
+            // Force map to a point (dev purpose)
+            _map.AnimateCamera(CameraUpdateFactory.NewLatLng(new LatLng(36.2978016, 119.1608459)));
         }
 
 
