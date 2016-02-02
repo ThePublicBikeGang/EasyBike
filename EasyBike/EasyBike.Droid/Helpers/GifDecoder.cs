@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Java.Nio;
 using Android.Graphics;
 using Java.IO;
+using System.Diagnostics;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -95,7 +96,7 @@ namespace EasyBike.Droid.Helpers
 
         List<GifFrame> frames; // frames read from current file
         GifFrame currentFrame;
-        protected Bitmap previousImage, currentImage, renderImage;
+        public Bitmap previousImage, currentImage, renderImage;
 
         protected int framePointer;
         protected int frameCount;
@@ -297,7 +298,7 @@ namespace EasyBike.Droid.Helpers
                 rawData = ByteBuffer.Wrap(data);
                 rawData.Rewind();
                 rawData.Order(ByteOrder.LittleEndian);
-
+                
                 readHeader();
                 if (!err())
                 {
@@ -598,6 +599,8 @@ namespace EasyBike.Droid.Helpers
             try
             {
                 curByte = (rawData.Get() & 0xFF);
+                if (curByte == 1)
+                    curByte = 0;
             }
             catch (Exception e)
             {
@@ -613,23 +616,27 @@ namespace EasyBike.Droid.Helpers
          */
         protected int readBlock()
         {
+
             blockSize = read();
+            Debug.WriteLine("blockSize : " + blockSize);
+            int count;
             int n = 0;
             if (blockSize > 0)
             {
                 try
                 {
-                    int count;
-                    while (n < blockSize)
+                    while (n < blockSize && rawData.Position() < rawData.Limit())
                     {
                         count = blockSize - n;
                         rawData.Get(block, n, count);
-
                         n += count;
+                        
+
                     }
                 }
                 catch (Exception e)
                 {
+                    Debug.WriteLine("FACKKKKKKKKKKKKKKKKK: ");
                     status = STATUS_FORMAT_ERROR;
                 }
             }
@@ -779,7 +786,7 @@ namespace EasyBike.Droid.Helpers
          */
         protected void readBitmap()
         {
-            if(currentFrame == null)
+            if (currentFrame == null)
                 currentFrame = new GifFrame();
             currentFrame.ix = readShort(); // (sub)image position & size
             currentFrame.iy = readShort();

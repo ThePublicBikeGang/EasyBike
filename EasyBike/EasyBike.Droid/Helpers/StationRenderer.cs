@@ -122,12 +122,14 @@ namespace EasyBike.Droid.Helpers
         //    //logoIV.startAnimation(logoMoveAnimation);
         //}
 
+        DisplayMetrics _metrics;
+
         /// <summary>
         /// Helper method to provide the corresponding Icon for a station
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>
-        public  BitmapDescriptor CreateStationIcon(Station station)
+        public BitmapDescriptor CreateStationIcon(Station station)
         {
             Bitmap bitmap = null;
             var value = _settingsService.Settings.IsBikeMode ? station.AvailableBikes : station.AvailableBikeStands;
@@ -146,42 +148,45 @@ namespace EasyBike.Droid.Helpers
             }
             else if (station.ImageAvailable != null || station.ImageDocks != null)
             {
+                if(_metrics == null){
+                    _metrics = new DisplayMetrics();
+                    (CrossCurrentActivity.Current.Activity as MainActivity).WindowManager.DefaultDisplay.GetMetrics(_metrics);
+                }
+                
+
                 bitmap = _iconGrey;
                 bitmap = bitmap.Copy(bitmap.GetConfig(), true);
                 try
                 {
+                    var data = (byte[])(_settingsService.Settings.IsBikeMode ? station.ImageAvailable : station.ImageDocks);
+                    var gifDecoder = new GifDecoder();
+                    gifDecoder.read(data);
 
-               
-                var data = (byte[])(_settingsService.Settings.IsBikeMode ? station.ImageAvailable : station.ImageDocks);
-                GifDecoder gifDecoder = new GifDecoder();
-                gifDecoder.read(data);
-                gifDecoder.advance();
-                var bmp = gifDecoder.getNextFrame();
-                var canvas = new Canvas(bitmap);
+                    gifDecoder.advance();
+                    var bmp = gifDecoder.getNextFrame();
+                    var canvas = new Canvas(bitmap);
 
-                DisplayMetrics metrics = new DisplayMetrics();
-                (CrossCurrentActivity.Current.Activity as MainActivity).WindowManager.DefaultDisplay.GetMetrics(metrics);
+                    int width = bmp.Width;
+                    int height = bmp.Height;
 
-                int width = bmp.Width;
-                int height = bmp.Height;
+                    float scaleWidth = _metrics.ScaledDensity;
+                    float scaleHeight = _metrics.ScaledDensity;
 
-                float scaleWidth = metrics.ScaledDensity;
-                float scaleHeight = metrics.ScaledDensity;
+                    // create a matrix for the manipulation
+                    Matrix matrix = new Matrix();
+                    // resize the bit map
+                    matrix.PostScale(scaleWidth, scaleHeight);
 
-                // create a matrix for the manipulation
-                Matrix matrix = new Matrix();
-                // resize the bit map
-                matrix.PostScale(scaleWidth, scaleHeight);
 
-           
 
-                // recreate the new Bitmap
-                Bitmap resizedBitmap = Bitmap.CreateBitmap(bmp, 0, 0, width, height, matrix, true);
+                    // recreate the new Bitmap
+                    Bitmap resizedBitmap = Bitmap.CreateBitmap(bmp, 0, 0, width, height, matrix, true);
 
-                int xPos = canvas.Width / 2 - resizedBitmap.Width / 2;
-                int yPos = canvas.Height / 2 - resizedBitmap.Height ;
-                canvas.DrawBitmap(resizedBitmap, xPos, yPos, null);
-                }catch(System.Exception e)
+                    int xPos = canvas.Width / 2 - resizedBitmap.Width / 2;
+                    int yPos = canvas.Height / 2 - resizedBitmap.Height;
+                    canvas.DrawBitmap(resizedBitmap, xPos, yPos, null);
+                }
+                catch (System.Exception e)
                 {
 
                 }
@@ -213,7 +218,7 @@ namespace EasyBike.Droid.Helpers
                 canvas.DrawText(printedValue, xPos + 1, yPos - ConvertDpToPixel(6, _context), _textPaint);
 
             }
-          
+
             var icon = BitmapDescriptorFactory.FromBitmap(bitmap);
             bitmap.Recycle();
             return icon;
