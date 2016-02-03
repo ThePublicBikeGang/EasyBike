@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using System;
 using EasyBike.Services;
+using System.Threading.Tasks.Dataflow;
+using System.Threading;
+using Plugin.Connectivity;
 
 namespace EasyBike.Models
 {
@@ -23,7 +26,7 @@ namespace EasyBike.Models
         {
             _localisationService = localisationService;
             _storageService = storageService;
-           // GetContractsAsync().ConfigureAwait(false);
+            // GetContractsAsync().ConfigureAwait(false);
         }
 
         public async Task AddContractAsync(Contract contract)
@@ -131,9 +134,8 @@ namespace EasyBike.Models
             await Task.Delay(3000).ConfigureAwait(false);
             while (true)
             {
-                //if (CrossConnectivity.Current.IsConnected)
-                //{
-
+                if (CrossConnectivity.Current.IsConnected)
+                {
                     // DispatcherHelper.
                     // At this time, DispatcherHelper cannot be used in a portable class library. Laurent works on a solution.
                     // var mapCenter = _localisationService.GetCurrentMapCenter();
@@ -173,7 +175,7 @@ namespace EasyBike.Models
                         //    }
                         //}
                     });
-                //}
+                }
                 await Task.Delay(timer).ConfigureAwait(false);
             }
         }
@@ -184,31 +186,42 @@ namespace EasyBike.Models
             IsStationWorkerRunning = true;
             while (refreshingPool.Count > 0)
             {
-                await Task.Delay(2000).ConfigureAwait(false);
-                //if (CrossConnectivity.Current.IsConnected)
-                //{
-                    //Parallel.ForEach(refreshingPool.ToList(), async (station) =>
-                    //{
-                    //    if (await station.Contract.RefreshAsync(station).ConfigureAwait(false))
-                    //    {
-                    //        if (station.IsUiRefreshNeeded)
-                    //        {
-                    //            StationRefreshed?.Invoke(station, EventArgs.Empty);
-                    //        }
-                    //    }
-                    //});
-                    refreshingPool.ToList().AsParallel().ForAll(async (station) =>
-                    {
-                        if (await station.Contract.RefreshAsync(station).ConfigureAwait(false))
-                        {
-                            if (station.IsUiRefreshNeeded)
-                            {
-                                StationRefreshed?.Invoke(station, EventArgs.Empty);
-                            }
-                        }
-                    });
-                //}
                 await Task.Delay(15000).ConfigureAwait(false);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    BatchBlock<Station> batchBlock = new BatchBlock<Station>(5);
+                    var actionBlock = new ActionBlock<Station[]>(
+                       async stations =>
+                       {
+                           foreach (var station in stations)
+                           {
+                               if (await station.Contract.RefreshAsync(station))
+                               {
+                                   if (station.IsUiRefreshNeeded)
+                                   {
+                                       StationRefreshed?.Invoke(station, EventArgs.Empty);
+                                   }
+                               }
+                           }
+                       },
+                new ExecutionDataflowBlockOptions
+                {
+                    MaxDegreeOfParallelism = 5
+                });
+
+                    batchBlock.LinkTo(actionBlock, new DataflowLinkOptions { PropagateCompletion = true });
+
+
+                    foreach (var station in refreshingPool)
+                    {
+                        await batchBlock.SendAsync(station); // wait synchronously for the block to accept.
+                    }
+
+                    batchBlock.Complete();
+                    actionBlock.Completion.Wait(15000);
+
+                }
+
             }
             IsStationWorkerRunning = false;
         }

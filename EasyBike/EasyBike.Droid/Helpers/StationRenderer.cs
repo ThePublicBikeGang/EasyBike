@@ -153,7 +153,6 @@ namespace EasyBike.Droid.Helpers
                     (CrossCurrentActivity.Current.Activity as MainActivity).WindowManager.DefaultDisplay.GetMetrics(_metrics);
                 }
                 
-
                 bitmap = _iconGrey;
                 bitmap = bitmap.Copy(bitmap.GetConfig(), true);
                 try
@@ -161,34 +160,32 @@ namespace EasyBike.Droid.Helpers
                     var data = (byte[])(_settingsService.Settings.IsBikeMode ? station.ImageAvailable : station.ImageDocks);
                     var gifDecoder = new GifDecoder();
                     gifDecoder.read(data);
+                    if(gifDecoder.getFrameCount()!= 0)
+                    {
+                        gifDecoder.advance();
+                        var bmp = gifDecoder.getNextFrame();
+                        var canvas = new Canvas(bitmap);
 
-                    gifDecoder.advance();
-                    var bmp = gifDecoder.getNextFrame();
-                    var canvas = new Canvas(bitmap);
+                        int width = bmp.Width;
+                        int height = bmp.Height;
+                        float scaleWidth = _metrics.ScaledDensity;
+                        float scaleHeight = _metrics.ScaledDensity;
+                        // create a matrix for the scaling manipulation
+                        Matrix matrix = new Matrix();
+                        // resize the bitmap
+                        matrix.PostScale(scaleWidth, scaleHeight);
 
-                    int width = bmp.Width;
-                    int height = bmp.Height;
+                        // recreate the new Bitmap
+                        var resizedBitmap = Bitmap.CreateBitmap(bmp, 0, 0, width, height, matrix, true);
 
-                    float scaleWidth = _metrics.ScaledDensity;
-                    float scaleHeight = _metrics.ScaledDensity;
-
-                    // create a matrix for the manipulation
-                    Matrix matrix = new Matrix();
-                    // resize the bit map
-                    matrix.PostScale(scaleWidth, scaleHeight);
-
-
-
-                    // recreate the new Bitmap
-                    Bitmap resizedBitmap = Bitmap.CreateBitmap(bmp, 0, 0, width, height, matrix, true);
-
-                    int xPos = canvas.Width / 2 - resizedBitmap.Width / 2;
-                    int yPos = canvas.Height / 2 - resizedBitmap.Height;
-                    canvas.DrawBitmap(resizedBitmap, xPos, yPos, null);
+                        int xPos = canvas.Width / 2 - resizedBitmap.Width / 2;
+                        int yPos = canvas.Height / 2 - resizedBitmap.Height;
+                        canvas.DrawBitmap(resizedBitmap, xPos, yPos, null);
+                    }
+                   
                 }
                 catch (System.Exception e)
                 {
-
                 }
 
             }

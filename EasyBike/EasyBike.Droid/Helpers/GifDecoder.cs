@@ -616,9 +616,7 @@ namespace EasyBike.Droid.Helpers
          */
         protected int readBlock()
         {
-
             blockSize = read();
-            Debug.WriteLine("blockSize : " + blockSize);
             int count;
             int n = 0;
             if (blockSize > 0)
@@ -630,13 +628,10 @@ namespace EasyBike.Droid.Helpers
                         count = blockSize - n;
                         rawData.Get(block, n, count);
                         n += count;
-                        
-
                     }
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("FACKKKKKKKKKKKKKKKKK: ");
                     status = STATUS_FORMAT_ERROR;
                 }
             }

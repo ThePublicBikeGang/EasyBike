@@ -304,7 +304,7 @@ namespace EasyBike.Droid
             // New in iOS 9 allowsBackgroundLocationUpdates must be set if you are running a background agent to track location. I have exposed this on the Geolocator via:
             // disable because it drill down the battery very quickly
             locator.AllowsBackgroundUpdates = false;
-            locator.DesiredAccuracy = 100; //100 is new default
+            locator.DesiredAccuracy = 50; 
             locator.PositionChanged += Locator_PositionChanged;
             /*var listeningLocationTracking = */
             await locator.StartListeningAsync(3000, 5, false);
@@ -880,6 +880,9 @@ namespace EasyBike.Droid
                 //});
             });
         }
+
+       
+
 
         private async void RefreshStation(Station station, Marker control)
         {
