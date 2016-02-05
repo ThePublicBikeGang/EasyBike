@@ -180,7 +180,10 @@ namespace EasyBike.Droid
 
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            toolbar.Background.SetAlpha(100);
             SetSupportActionBar(toolbar);
+            
+
             //Enable support action bar to display hamburger and back arrow
             // http://stackoverflow.com/questions/28071763/toolbar-navigation-hamburger-icon-missing
             _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);

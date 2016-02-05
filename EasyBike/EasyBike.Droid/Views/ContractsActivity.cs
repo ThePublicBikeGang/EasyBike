@@ -63,7 +63,6 @@ namespace EasyBike.Droid.Views
                 progressBar.Visibility = ViewStates.Visible;
             }
 
-
             ///ViewModel.ContractTappedCommand.Execute(contract);
             await ViewModel.AddOrRemoveContract(contract);
             //(ContractsList.Adapter as CountryListAdapter).GetChildView(e.GroupPosition)

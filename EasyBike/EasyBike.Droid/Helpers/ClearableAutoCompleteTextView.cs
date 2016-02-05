@@ -64,7 +64,8 @@ namespace EasyBike.Droid.Helpers
                 if (!e.HasFocus)
                 {
                     HideKeyboard();
-                    SetBackgroundColor(Resources.GetColor(Resource.Color.accent));
+                    //SetBackgroundColor(Resources.GetColor(Resource.Color.accent));
+                    this.Background.SetAlpha(100);
                 }
                 else
                 {
@@ -72,7 +73,8 @@ namespace EasyBike.Droid.Helpers
                     {
                         (CrossCurrentActivity.Current.Activity as MainActivity).CloseDrawer();
                     }
-                    SetBackgroundColor(Resources.GetColor(Resource.Color.primary_light));
+                    //SetBackgroundColor(Resources.GetColor(Resource.Color.primary_light));
+                    this.Background.SetAlpha(255);
                 }
 
             };

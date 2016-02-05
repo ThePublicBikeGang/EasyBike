@@ -4,9 +4,10 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="12dp"
     android:layout_weight="0"
     android:minHeight="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
+    android:background="#ffffff"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:title="@string/app_name"
@@ -22,6 +23,6 @@
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
         android:imeOptions="actionSearch"
-        android:background="@color/accent"
+        android:background="#ffffff"
         android:popupBackground="#ffffff" />
 </android.support.v7.widget.Toolbar>

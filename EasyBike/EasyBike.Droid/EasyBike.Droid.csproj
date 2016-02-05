@@ -499,4 +499,13 @@
   <ItemGroup>
     <Folder Include="obj\" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\actionbar_foreground.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\actionbar_background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\actionbar_layer_list.xml" />
+  </ItemGroup>
 </Project>
