@@ -16,7 +16,7 @@
 
   <!-- ActionBar styles -->
   <style name="CustomActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-    <item name="background">@drawable/actionbar_layer_list</item>
+    <item name="android:textColor">@android:color/black</item>
   </style>
 
 
@@ -30,17 +30,26 @@
     <item name="windowNoTitle">true</item>
     <!--We will be using the toolbar so no need to show ActionBar-->
     <item name="windowActionBar">false</item>
-    <!--<item name="android:windowTranslucentStatus">true</item>
-    <item name="android:windowTranslucentNavigation">true</item>-->
+    <item name="android:windowTranslucentStatus">true</item>
+    <item name="android:windowTranslucentNavigation">true</item>
+    <!--<item name="android:windowBackground">@color/primary</item>-->
+    <!--<item name="android:windowDrawsSystemBarBackgrounds">false</item>-->
     
     <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
     <!-- colorPrimary is used for the default action bar background -->
-    <item name="colorPrimary">@color/primary</item>
+    <!--<item name="colorPrimary">@color/primary</item>-->
     <!-- colorPrimaryDark is used for the status bar -->
     <item name="colorPrimaryDark">@color/primary_dark</item>
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
+    <!--<item name="colorPrimary">@android:color/transparent</item>-->
+    <item name="colorPrimary">@color/primary</item>
     <item name="colorAccent">@color/accent</item>
+
+
+    <!--<item name="android:windowContentOverlay">@null</item>-->
+    <item name="windowActionBarOverlay">true</item>
+    
   </style>
   
   

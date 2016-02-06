@@ -5,21 +5,18 @@
         Base application theme for API 21+. This theme replaces
         MyTheme from resources/values/styles.xml on API 21+ devices.
     -->
-
-  <!-- ActionBar styles -->
-  <style name="CustomActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-    <item name="background">@drawable/actionbar_layer_list</item>
-  </style>
   
   <style name="MyTheme" parent="MyTheme.Base">
-    <item name="actionBarStyle">@style/CustomActionBar</item>
     <item name="android:windowContentTransitions">true</item>
     <item name="android:windowAllowEnterTransitionOverlap">true</item>
     <item name="android:windowAllowReturnTransitionOverlap">true</item>
     <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
     <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
-    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-    <item name="android:windowTranslucentStatus">false</item>
-    <item name="android:windowTranslucentNavigation">false</item>
+    <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    <item name="android:windowTranslucentStatus">true</item>
+    <item name="android:windowTranslucentNavigation">true</item>
+    <!--<item name="colorPrimary">@android:color/transparent</item>-->
+    <!--<item name="android:statusBarColor">@color/test</item>-->
+    <!--<item name="android:windowDrawsSystemBarBackgrounds">false</item>-->
   </style>
 </resources>

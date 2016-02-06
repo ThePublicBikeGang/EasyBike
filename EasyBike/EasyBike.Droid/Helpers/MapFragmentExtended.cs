@@ -20,7 +20,6 @@ namespace EasyBike.Droid.Helpers
     }
     public class MapFragmentExtended : MapFragment
     {
-        public View originalView;
         public TouchableWrapper touchView;
 
         public static MapFragmentExtended NewInstance(GoogleMapOptions options)
@@ -33,10 +32,14 @@ namespace EasyBike.Droid.Helpers
             return fragment;
         }
 
+        public override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+        }
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var mapView = base.OnCreateView(inflater, container, savedInstanceState);
-
             // tags: GoogleMapCompass (id 4)
             // GoogleMapMyLocationButton 
             var compassView = mapView.FindViewWithTag("GoogleMapCompass");
@@ -46,7 +49,9 @@ namespace EasyBike.Droid.Helpers
             // position on top right
             rlp.AddRule(LayoutRules.AlignParentEnd);
             rlp.RemoveRule(LayoutRules.AlignParentStart);
-            rlp.RightMargin = 35;
+            rlp.RightMargin = (int)LayoutHelper.ConvertDpToPixel(20);
+            rlp.TopMargin = (int)LayoutHelper.ConvertDpToPixel(105);
+
             compassView.RequestLayout();
             // listen to click on compass to stop compass mode
             compassView.SetOnClickListener(new CompassClickListener());

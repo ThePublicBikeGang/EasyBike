@@ -1,177 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/scrollView1">
-        <LinearLayout
-            android:id="@+id/aboutMainLayout"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="15sp"
-            android:paddingTop="15sp"
-            android:paddingRight="15sp"
-            android:paddingBottom="15sp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="?attr/colorPrimary">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView1">
             <LinearLayout
                 android:id="@+id/aboutMainLayout"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="15sp"
-                android:paddingBottom="15sp">
-                <ImageView
-                    android:id="@+id/logoImage"
-                    android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="15sp"
+                android:paddingTop="5sp"
+                android:paddingRight="15sp">
+                <LinearLayout
+                    android:id="@+id/aboutMainLayout"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:minWidth="35sp"
-                    android:minHeight="35sp"
-                    android:paddingRight="5sp"
-                    android:src="@drawable/ic_launcher" />
+                    android:paddingTop="15sp"
+                    android:paddingBottom="15sp">
+                    <ImageView
+                        android:id="@+id/logoImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="35sp"
+                        android:minHeight="35sp"
+                        android:paddingRight="5sp"
+                        android:src="@drawable/ic_launcher" />
+                    <TextView
+                        android:text="@string/aboutTitle"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:id="@+id/aboutTitle" />
+                </LinearLayout>
                 <TextView
-                    android:text="@string/aboutTitle"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/aboutPresentation1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="30sp"
-                    android:id="@+id/aboutTitle" />
-            </LinearLayout>
-            <TextView
-                android:text="@string/aboutPresentation1"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/textPresentation1" />
-            <TextView
-                android:text="@string/aboutPresentation2"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/textPresentation2" />
-            <TextView
-                android:text="@string/aboutPresentation3"
-                android:autoLink="web"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/textPresentation3" />
-            <TextView
-                android:text="@string/aboutSuggestion1"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/textSuggestion1" />
-            <TextView
-                android:text="@string/aboutSuggestion2"
-                android:autoLink="web|email"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/textSuggestion2" />
-            <TextView
-                android:text="@string/aboutSuggestionTwitter"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/textSuggestionTwitter" />
-            <TextView
-                android:text="@string/aboutSuggestionJoin"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/textSuggestionJoin" />
-            <TextView
-                android:text="@string/aboutReview1"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textReview1"
-                android:textSize="18sp"
-                android:layout_marginTop="25sp" />
-        <!--LinearLayout
+                    android:textSize="18sp"
+                    android:id="@+id/textPresentation1" />
+                <TextView
+                    android:text="@string/aboutPresentation2"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/textPresentation2" />
+                <TextView
+                    android:text="@string/aboutPresentation3"
+                    android:autoLink="web"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/textPresentation3" />
+                <TextView
+                    android:text="@string/aboutSuggestion1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/textSuggestion1" />
+                <TextView
+                    android:text="@string/aboutSuggestion2"
+                    android:autoLink="web|email"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/textSuggestion2" />
+                <TextView
+                    android:text="@string/aboutSuggestionTwitter"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/textSuggestionTwitter" />
+                <TextView
+                    android:text="@string/aboutSuggestionJoin"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/textSuggestionJoin" />
+                <TextView
+                    android:text="@string/aboutReview1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textReview1"
+                    android:textSize="18sp"
+                    android:layout_marginTop="25sp" />
+            <!--LinearLayout
                 android:orientation="horizontal"
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/linearLayout1"-->
-            <TextView
-                android:text="@string/aboutReviewRate"
-                android:drawableLeft="@android:drawable/star_on"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/textReviewRate"
-                android:textSize="18sp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        <!--/LinearLayout-->
-            <TextView
-                android:text="@string/aboutReview2"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_marginTop="25sp"
-                android:id="@+id/textReview2" />
-            <TextView
-                android:text="@string/aboutReview3"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/textReview3" />
-            <TextView
-                android:text="@string/aboutWinPhone"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/textWinPhone" />
-            <TextView
-                android:text="@string/aboutCopyright1"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textCopyright1"
-                android:layout_marginTop="20sp"
-                android:textSize="10sp" />
-            <TextView
-                android:text="@string/aboutCopyright2"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textCopyright2"
-                android:textSize="10sp" />
-            <TextView
-                android:text="@string/aboutCopyright3"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textCopyright3"
-                android:textSize="10sp" />
-            <TextView
-                android:text="@string/aboutCopyright4"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textCopyright4"
-                android:textSize="10sp" />
-            <TextView
-                android:text="@string/aboutCopyright5"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textCopyright5"
-                android:textSize="10sp" />
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:text="@string/aboutReviewRate"
+                    android:drawableLeft="@android:drawable/star_on"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/textReviewRate"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            <!--/LinearLayout-->
+                <TextView
+                    android:text="@string/aboutReview2"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_marginTop="25sp"
+                    android:id="@+id/textReview2" />
+                <TextView
+                    android:text="@string/aboutReview3"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/textReview3" />
+                <TextView
+                    android:text="@string/aboutWinPhone"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/textWinPhone" />
+                <TextView
+                    android:text="@string/aboutCopyright1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textCopyright1"
+                    android:layout_marginTop="20sp"
+                    android:textSize="10sp" />
+                <TextView
+                    android:text="@string/aboutCopyright2"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textCopyright2"
+                    android:textSize="10sp" />
+                <TextView
+                    android:text="@string/aboutCopyright3"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textCopyright3"
+                    android:textSize="10sp" />
+                <TextView
+                    android:text="@string/aboutCopyright4"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textCopyright4"
+                    android:textSize="10sp" />
+                <TextView
+                    android:text="@string/aboutCopyright5"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textCopyright5"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>

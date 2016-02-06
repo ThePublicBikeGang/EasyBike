@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using Android.App;
 using Android.OS;
-using Android.Views;
 using Android.Widget;
 using Android.Text.Method;
 

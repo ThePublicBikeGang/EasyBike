@@ -46,6 +46,8 @@ using EasyBike.Droid.Models.Direction;
 using Android.Support.V7.App;
 using EasyBike.Config;
 using Android.Content.Res;
+using Android.Support.V4.View;
+using Com.Readystatesoftware.Systembartint;
 
 namespace EasyBike.Droid
 {
@@ -71,7 +73,7 @@ namespace EasyBike.Droid
         private Marker longClickMarker;
 
         // action bars and nav
-        private CustomActionBarDrawerToggle _drawerToggle;
+        //private CustomActionBarDrawerToggle _drawerToggle;
         DrawerLayout _drawerLayout;
         NavigationView navigationView;
 
@@ -84,7 +86,6 @@ namespace EasyBike.Droid
         // switch mode buttons
         FloatingActionButton _bikesButton;
         FloatingActionButton _parkingButton;
-
         FloatingActionButton _locationButton;
 
         // Place API
@@ -126,12 +127,13 @@ namespace EasyBike.Droid
 
             public bool OnNavigationItemSelected(IMenuItem menuItem)
             {
-                menuItem.SetChecked(false);
                 _context.CloseDrawer();
+                
                 // provide a smoother animation of the drawer when closing
                 Task.Run(async () =>
                 {
                     await Task.Delay(200);
+                  
                     //Check to see which item was being clicked and perform appropriate action
                     switch (menuItem.ItemId)
                     {
@@ -159,6 +161,12 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
+            var tintManager = new SystemBarTintManager(this);
+            // set the transparent color of the status bar, 30% darker
+            tintManager.SetTintColor(Color.ParseColor("#30000000"));
+            tintManager.SetNavigationBarTintEnabled(true);
+            tintManager.StatusBarTintEnabled = true;
+            
             // prevent the soft keyboard from pushing the view up
             Window.SetSoftInputMode(SoftInput.AdjustNothing);
 
@@ -178,18 +186,19 @@ namespace EasyBike.Droid
             //this.Window.DecorView.SystemUiVisibility = (StatusBarVisibility)newUiOptions;
             //Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
 
-
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            toolbar.Background.SetAlpha(100);
+            //toolbar.Background.SetAlpha(200);
+            ViewCompat.SetElevation(toolbar, 6f);
             SetSupportActionBar(toolbar);
             
-
             //Enable support action bar to display hamburger and back arrow
             // http://stackoverflow.com/questions/28071763/toolbar-navigation-hamburger-icon-missing
             _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            _drawerToggle = new CustomActionBarDrawerToggle(this, _drawerLayout, toolbar, Resource.String.ApplicationName, Resource.String.ApplicationName);
-            _drawerToggle.DrawerIndicatorEnabled = true;
-            _drawerLayout.SetDrawerListener(_drawerToggle);
+            //_drawerToggle = new CustomActionBarDrawerToggle(this, _drawerLayout, toolbar, Resource.String.ApplicationName, Resource.String.ApplicationName);
+            //_drawerToggle.DrawerIndicatorEnabled = true;
+            //_drawerLayout.SetDrawerListener(_drawerToggle);
+            //Enable support action bar to display hamburger
+            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
             SupportActionBar.SetHomeButtonEnabled(false);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetDisplayShowCustomEnabled(true);
@@ -262,14 +271,14 @@ namespace EasyBike.Droid
         {
             Log.Debug("MyActivity", "Begin OnPostCreate");
             base.OnPostCreate(savedInstanceState);
-            _drawerToggle.SyncState();
+            //_drawerToggle.SyncState();
         }
 
         public override void OnConfigurationChanged(Configuration newConfig)
         {
             Log.Debug("MyActivity", "Begin OnConfigurationChanged");
             base.OnConfigurationChanged(newConfig);
-            _drawerToggle.OnConfigurationChanged(newConfig);
+           // _drawerToggle.OnConfigurationChanged(newConfig);
         }
 
         private async void AutoCompleteSearchPlaceTextView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -307,7 +316,7 @@ namespace EasyBike.Droid
             // New in iOS 9 allowsBackgroundLocationUpdates must be set if you are running a background agent to track location. I have exposed this on the Geolocator via:
             // disable because it drill down the battery very quickly
             locator.AllowsBackgroundUpdates = false;
-            locator.DesiredAccuracy = 50; 
+            locator.DesiredAccuracy = 50;
             locator.PositionChanged += Locator_PositionChanged;
             /*var listeningLocationTracking = */
             await locator.StartListeningAsync(3000, 5, false);
@@ -338,6 +347,10 @@ namespace EasyBike.Droid
         {
             InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(Context.InputMethodService);
             inputMethodManager.HideSoftInputFromWindow(Window.DecorView.RootView.WindowToken, 0);
+            if (AutoCompleteSearchPlaceTextView != null)
+            {
+                AutoCompleteSearchPlaceTextView.ClearFocus();
+            }
         }
 
         public void DisableCompass()
@@ -675,15 +688,11 @@ namespace EasyBike.Droid
                     //.InvokeMapToolbarEnabled(true)
                     .InvokeCompassEnabled(true)
                     .InvokeCamera(await GetStartingCameraPosition());
-
+                
                 _fragTx = FragmentManager.BeginTransaction();
                 _mapFragment = MapFragmentExtended.NewInstance(mapOptions);
-
-
-
                 _fragTx.Add(Resource.Id.map, _mapFragment, "map");
                 _fragTx.Commit();
-
                 _mapFragment.GetMapAsync(this);
             }
 
@@ -811,7 +820,7 @@ namespace EasyBike.Droid
                         PolylineOptions lineOptions = new PolylineOptions();
                         lineOptions = lineOptions.InvokeColor(Resources.GetColor(Resource.Color.accent).ToArgb());
                         lineOptions = lineOptions.InvokeWidth(15);
-                        if(directions.routes.FirstOrDefault() != null)
+                        if (directions.routes.FirstOrDefault() != null)
                         {
                             var points = MapHelper.DecodePolyline(directions.routes.FirstOrDefault().overview_polyline.points).AsEnumerable();
                             foreach (var point in points)
@@ -884,7 +893,7 @@ namespace EasyBike.Droid
             });
         }
 
-       
+
 
 
         private async void RefreshStation(Station station, Marker control)
@@ -926,6 +935,7 @@ namespace EasyBike.Droid
             SwitchModeStationParkingVisualState();
 
             _map = googleMap;
+            
             //Setup and customize your Google Map
             _map.UiSettings.CompassEnabled = true;
             _map.UiSettings.MyLocationButtonEnabled = false;

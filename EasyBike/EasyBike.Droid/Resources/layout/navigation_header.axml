@@ -2,13 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:padding="16dp"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingTop="35dp"
+    android:paddingBottom="5dp"
     android:gravity="bottom"
     android:background="?attr/colorPrimary">
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/aboutMainLayout"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:paddingTop="15sp"
+        android:paddingBottom="15sp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="35sp"
+            android:minHeight="35sp"
+            android:paddingRight="5sp"
+            android:src="@drawable/ic_launcher" />
+        <TextView
+            android:text="@string/app_name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp" />
+    </LinearLayout>
 </LinearLayout>

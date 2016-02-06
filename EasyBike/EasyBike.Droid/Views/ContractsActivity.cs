@@ -6,8 +6,8 @@ using Android.Widget;
 using EasyBike.Droid.Helpers;
 using Android.Views;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
-using System;
-using GalaSoft.MvvmLight.Ioc;
+using Android.Content;
+using Android.Util;
 
 namespace EasyBike.Droid.Views
 {
@@ -20,9 +20,9 @@ namespace EasyBike.Droid.Views
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Contracts);
-
+            
             // toolbar setup
-            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
             toolbar.SetOnMenuItemClickListener(new MenuItemClickListener(this));
             //toolbar.InflateMenu(Resource.Menu.contractPageMenu);
@@ -85,8 +85,6 @@ namespace EasyBike.Droid.Views
             //     () => checkBox.Checked);
 
         }
-
-
     }
 
 

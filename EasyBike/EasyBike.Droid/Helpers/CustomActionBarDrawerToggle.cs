@@ -18,7 +18,7 @@ namespace EasyBike.Droid.Helpers
     public class CustomActionBarDrawerToggle : ActionBarDrawerToggle
     {
         MainActivity _context;
-        public CustomActionBarDrawerToggle(Activity activity, DrawerLayout drawerLayout, Toolbar toolbar, int openDrawerContentDescRes, int closeDrawerContentDescRes) : base(activity, drawerLayout, toolbar, openDrawerContentDescRes, closeDrawerContentDescRes)
+        public CustomActionBarDrawerToggle(Activity activity, DrawerLayout drawerLayout, Android.Support.V7.Widget.Toolbar toolbar, int openDrawerContentDescRes, int closeDrawerContentDescRes) : base(activity, drawerLayout, toolbar, openDrawerContentDescRes, closeDrawerContentDescRes)
         {
             _context = activity as MainActivity;
         }

@@ -1,24 +1,19 @@
-using System;
 using Android.Animation;
 using Android.Content;
 using Android.Content.Res;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Graphics;
-using Android.Graphics.Drawables;
 using Android.Support.V4.Content.Res;
-using Android.Views;
 using Android.Widget;
 using Com.Google.Maps.Android.Clustering;
 using Com.Google.Maps.Android.Clustering.View;
 using Com.Google.Maps.Android.UI;
 using EasyBike.Droid.Models;
-using Java.Lang;
 using Android.Views.Animations;
 using EasyBike.Models;
 using GalaSoft.MvvmLight.Ioc;
 using EasyBike.Models.Storage;
-using System.Threading.Tasks;
 using Android.Util;
 using Plugin.CurrentActivity;
 
@@ -148,11 +143,12 @@ namespace EasyBike.Droid.Helpers
             }
             else if (station.ImageAvailable != null || station.ImageDocks != null)
             {
-                if(_metrics == null){
+                if (_metrics == null)
+                {
                     _metrics = new DisplayMetrics();
                     (CrossCurrentActivity.Current.Activity as MainActivity).WindowManager.DefaultDisplay.GetMetrics(_metrics);
                 }
-                
+
                 bitmap = _iconGrey;
                 bitmap = bitmap.Copy(bitmap.GetConfig(), true);
                 try
@@ -160,7 +156,7 @@ namespace EasyBike.Droid.Helpers
                     var data = (byte[])(_settingsService.Settings.IsBikeMode ? station.ImageAvailable : station.ImageDocks);
                     var gifDecoder = new GifDecoder();
                     gifDecoder.read(data);
-                    if(gifDecoder.getFrameCount()!= 0)
+                    if (gifDecoder.getFrameCount() != 0)
                     {
                         gifDecoder.advance();
                         var bmp = gifDecoder.getNextFrame();
@@ -182,7 +178,7 @@ namespace EasyBike.Droid.Helpers
                         int yPos = canvas.Height / 2 - resizedBitmap.Height;
                         canvas.DrawBitmap(resizedBitmap, xPos, yPos, null);
                     }
-                   
+
                 }
                 catch (System.Exception e)
                 {
@@ -212,7 +208,7 @@ namespace EasyBike.Droid.Helpers
                 Canvas canvas = new Canvas(bitmap);
                 int xPos = (canvas.Width / 2);
                 int yPos = (int)((canvas.Height / 2) - ((_textPaint.Descent() + _textPaint.Ascent()) / 2));
-                canvas.DrawText(printedValue, xPos + 1, yPos - ConvertDpToPixel(6, _context), _textPaint);
+                canvas.DrawText(printedValue, xPos + 1, yPos - LayoutHelper.ConvertDpToPixel(6), _textPaint);
 
             }
 
@@ -275,38 +271,8 @@ namespace EasyBike.Droid.Helpers
             //View view = (_context as MainActivity).LayoutInflater.Inflate(Resource.Layout.MarkerText, null);
             //var text = view.FindViewById<TextView>(Resource.Id.text);
         }
-
-        /**
-* This method converts dp unit to equivalent pixels, depending on device density. 
-* 
-* @param dp A value in dp (density independent pixels) unit. Which we need to convert into pixels
-* @param context Context to get resources and device specific display metrics
-* @return A float value to represent px equivalent to dp depending on device density
-*/
-        public static float ConvertDpToPixel(float dp, Context context)
-        {
-            Resources resources = context.Resources;
-            DisplayMetrics metrics = resources.DisplayMetrics;
-            float px = dp * ((int)metrics.DensityDpi / 160f);
-            return px;
-        }
-
-        /**
-         * This method converts device specific pixels to density independent pixels.
-         * 
-         * @param px A value in px (pixels) unit. Which we need to convert into db
-         * @param context Context to get resources and device specific display metrics
-         * @return A float value to represent dp equivalent to px value
-         */
-        public static float convertPixelsToDp(float px, Context context)
-        {
-            Resources resources = context.Resources;
-            DisplayMetrics metrics = resources.DisplayMetrics;
-            float dp = px / ((int)metrics.DensityDpi / 160f);
-            return dp;
-        }
     }
-
+  
 
     public class Animatorrr : Java.Lang.Object, ValueAnimator.IAnimatorUpdateListener
     {

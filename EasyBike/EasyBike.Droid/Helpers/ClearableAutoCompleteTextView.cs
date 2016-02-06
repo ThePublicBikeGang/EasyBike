@@ -1,13 +1,11 @@
-using System;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Support.V4.Content.Res;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Android.Views.InputMethods;
-using Android.App;
 using Plugin.CurrentActivity;
+using Android.Graphics;
 
 namespace EasyBike.Droid.Helpers
 {
@@ -23,7 +21,7 @@ namespace EasyBike.Droid.Helpers
             if (e.Action == MotionEventActions.Up)
                 return false;
 
-            if (e.GetX() > (et.Width - et.PaddingRight - ClearableAutoCompleteTextView.imgClearButton.IntrinsicWidth) - 10)
+            if (e.GetX() > (et.Width - et.PaddingRight - ClearableAutoCompleteTextView.imgClearButton.IntrinsicWidth))
             {
                 et.Clear();
             }
@@ -34,7 +32,6 @@ namespace EasyBike.Droid.Helpers
     public class ClearableAutoCompleteTextView : AutoCompleteTextView
     {
         public static Drawable imgClearButton;
-        private Context _context;
         /* Required methods, not used in this implementation */
         public ClearableAutoCompleteTextView(Context context) : base(context)
         {
@@ -55,29 +52,22 @@ namespace EasyBike.Droid.Helpers
 
         private void Init(Context context)
         {
-            _context = context;
+            // set some styles
+            SetHintTextColor(Color.LightGray);
             // The image we defined for the clear button
-            imgClearButton = ResourcesCompat.GetDrawable(context.Resources, Resource.Drawable.abc_ic_clear_mtrl_alpha, null);
+            imgClearButton = ResourcesCompat.GetDrawable(context.Resources, Resource.Drawable.clear, null);
             SetOnTouchListener(new CustomOnTouchListener());
             FocusChange += (s, e) =>
             {
-                if (!e.HasFocus)
-                {
-                    HideKeyboard();
-                    //SetBackgroundColor(Resources.GetColor(Resource.Color.accent));
-                    this.Background.SetAlpha(100);
-                }
-                else
+                if (e.HasFocus)
                 {
                     if (CrossCurrentActivity.Current.Activity is MainActivity)
                     {
                         (CrossCurrentActivity.Current.Activity as MainActivity).CloseDrawer();
                     }
-                    //SetBackgroundColor(Resources.GetColor(Resource.Color.primary_light));
-                    this.Background.SetAlpha(255);
                 }
-
             };
+
             TextChanged += (s, e) =>
             {
                 if (Text.Length > 0)
@@ -115,12 +105,6 @@ namespace EasyBike.Droid.Helpers
         {
             Text = string.Empty;
             HideClearButton();
-        }
-
-        private void HideKeyboard()
-        {
-            InputMethodManager inputMethodManager = (InputMethodManager)_context.GetSystemService(Context.InputMethodService);
-            inputMethodManager.HideSoftInputFromWindow(WindowToken, 0);
         }
     }
 }
