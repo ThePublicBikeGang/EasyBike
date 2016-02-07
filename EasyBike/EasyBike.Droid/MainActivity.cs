@@ -156,6 +156,12 @@ namespace EasyBike.Droid
             }
         }
 
+        /// <summary>
+        /// when return to the activity from another with parameters
+        /// </summary>
+        /// <param name="requestCode"></param>
+        /// <param name="resultCode"></param>
+        /// <param name="data"></param>
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
@@ -170,7 +176,12 @@ namespace EasyBike.Droid
                             {
                                 var favorite = JsonConvert.DeserializeObject<Favorite>(data.GetStringExtra("favorite"));
                                 var position = new LatLng(favorite.Latitude, favorite.Longitude);
-                                AddPlaceMarker(position, favorite.Name, favorite.Address);
+                                UnStickUserLocation();
+                                if (!favorite.FromStation)
+                                {
+                                    AddPlaceMarker(position, favorite.Name, favorite.Address);
+                                }
+
                                 _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
                             }
                             catch
@@ -304,15 +315,6 @@ namespace EasyBike.Droid
             // trigger the creation of the injected dependencies
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
-
-            // TODO pour le debug des favoris :
-            _favoritesService.AddFavoriteAsync(new Favorite
-            {
-                Address = "Test address",
-                Latitude = 0.0,
-                Longitude = 0.0,
-                Name = "Test name"
-            });
         }
 
 
@@ -605,12 +607,32 @@ namespace EasyBike.Droid
                             }
                             else
                             {
-                                _favoritesService.AddFavoriteAsync(new Favorite()
+                                // add custom location as favorite
+                                if (longClickMarker.Position.Latitude == currentMarkerPosition.Latitude && longClickMarker.Position.Longitude == currentMarkerPosition.Longitude)
                                 {
-                                    Latitude = currentMarkerPosition.Latitude,
-                                    Longitude = currentMarkerPosition.Longitude,
-                                    Name = favoriteName
-                                });
+                                    _favoritesService.AddFavoriteAsync(new Favorite()
+                                    {
+                                        Latitude = currentMarkerPosition.Latitude,
+                                        Longitude = currentMarkerPosition.Longitude,
+                                        Name = favoriteName,
+                                        FromStation = false,
+                                        Address = _lastResolvedAddress
+                                    });
+                                }
+                                // add station as favorite
+                                else
+                                {
+                                    _favoritesService.AddFavoriteAsync(new Favorite()
+                                    {
+                                        Latitude = currentMarkerPosition.Latitude,
+                                        Longitude = currentMarkerPosition.Longitude,
+                                        Name = favoriteName,
+                                        FromStation = true,
+                                        Address = _lastResolvedAddress
+                                    });
+                                }
+
+
                                 Toast.MakeText(this, Resources.GetString(Resource.String.favoriteAdded), ToastLength.Short).Show();
                             }
                         }).SetNegativeButton(Android.Resource.String.Cancel, (sender, EventArgs) => { })
@@ -1175,11 +1197,25 @@ namespace EasyBike.Droid
                     });
 
                 });
-
-            // Force map to a point (dev purpose)
-            _map.AnimateCamera(CameraUpdateFactory.NewLatLng(new LatLng(36.2978016, 119.1608459)));
         }
-
+        private string _lastResolvedAddress;
+        private async void GetAddressAsync()
+        {
+            _lastResolvedAddress = string.Empty;
+            try
+            {
+                // Convert latitude and longitude to an address (GeoCoder)
+                var addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
+                if (addresses.Any())
+                {
+                    _lastResolvedAddress = addresses[0].GetAddressLine(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
+            }
+        }
 
         /// <summary>
         /// when app launch before geolocator has found out the user location,
@@ -1218,6 +1254,7 @@ namespace EasyBike.Droid
         private void SelectItem(LatLng position)
         {
             currentMarkerPosition = position;
+            GetAddressAsync();
             AddDirections();
         }
 
