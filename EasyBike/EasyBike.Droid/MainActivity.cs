@@ -29,7 +29,6 @@ using EasyBike.Models.Storage;
 using EasyBike.Models.Favorites;
 
 // These shortcuts are used to prevent the use by default of these classes in Android.Views
-using MenuItemCompat = Android.Support.V4.View.MenuItemCompat;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using ShareActionProvider = Android.Support.V7.Widget.ShareActionProvider;
 using ActionMode = Android.Support.V7.View.ActionMode;
@@ -48,6 +47,7 @@ using EasyBike.Config;
 using Android.Content.Res;
 using Android.Support.V4.View;
 using Com.Readystatesoftware.Systembartint;
+using Android.Runtime;
 
 namespace EasyBike.Droid
 {
@@ -145,11 +145,43 @@ namespace EasyBike.Droid
                             _context.MainViewModel.AboutCommand.Execute(null);
                             break;
                         case Resource.Id.nav_favorites:
-                            _context.MainViewModel.GoToFavoritsCommand.Execute(null);
+
+                            Intent i = new Intent(_context, typeof(FavoritesActivity));
+                            _context.StartActivityForResult(i, 1);
+                            //_context.MainViewModel.GoToFavoritsCommand.Execute(null);
                             break;
                     }
                 });
                 return true;
+            }
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            switch (requestCode)
+            {
+                // return from favorites
+                case 1:
+                    {
+                        if (data != null && data.GetStringExtra("favorite") != null)
+                        {
+                            try
+                            {
+                                var favorite = JsonConvert.DeserializeObject<Favorite>(data.GetStringExtra("favorite"));
+                                var position = new LatLng(favorite.Latitude, favorite.Longitude);
+                                AddPlaceMarker(position, favorite.Name, favorite.Address);
+                                _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
+                            }
+                            catch
+                            {
+                                // ignore
+                            }
+                        }
+
+                    }
+                    break;
+
             }
         }
 
@@ -563,7 +595,7 @@ namespace EasyBike.Droid
                     Android.App.AlertDialog dialog = null;
                     dialog = new Android.App.AlertDialog.Builder(this)
                         .SetTitle(Resources.GetString(Resource.String.favoriteDialogTitle))
-                        .SetView(this.LayoutInflater.Inflate(Resource.Layout.DialogAddFavorite, null))
+                        .SetView(LayoutInflater.Inflate(Resource.Layout.DialogAddFavorite, null))
                         .SetPositiveButton(Android.Resource.String.Ok, (sender, EventArgs) =>
                         {
                             var favoriteName = dialog.FindViewById<EditText>(Resource.Id.favoriteName).Text.ToString();
@@ -574,7 +606,12 @@ namespace EasyBike.Droid
                             }
                             else
                             {
-                                // TODO Ajout à réaliser
+                                _favoritesService.AddFavoriteAsync(new Favorite()
+                                {
+                                    Latitude = currentMarkerPosition.Latitude,
+                                    Longitude = currentMarkerPosition.Longitude,
+                                    Name = favoriteName
+                                });
                                 Toast.MakeText(this, Resources.GetString(Resource.String.favoriteAdded), ToastLength.Short).Show();
                             }
                         }).SetNegativeButton(Android.Resource.String.Cancel, (sender, EventArgs) => { })

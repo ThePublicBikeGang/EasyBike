@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:id="@+id/FavoriteItemTemplateRoot"
+    android:background="?android:attr/selectableItemBackground"
+    android:focusable="true"
+    android:clickable="true"
     android:padding="10dp"
     android:minWidth="25px">
     <LinearLayout
@@ -10,14 +13,6 @@
         android:paddingLeft="44dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <CheckBox
-            android:id="@+id/FavoriteItemCheckBox"
-            android:focusable="false"
-            android:clickable="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:gravity="center" />
         <LinearLayout
             android:orientation="vertical"
             android:paddingLeft="17dp"

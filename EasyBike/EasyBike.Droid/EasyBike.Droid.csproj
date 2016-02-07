@@ -210,6 +210,10 @@
     <Reference Include="crypto, Version=1.8.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\..\packages\Portable.BouncyCastle.1.8.0\lib\MonoAndroid\crypto.dll</HintPath>
     </Reference>
+    <Reference Include="XamarinItemTouchHelper, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\XamarinItemTouchHelper\XamarinItemTouchHelper\bin\Debug\XamarinItemTouchHelper.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\GoogleMapsUtility\GoogleMapsUtility.csproj">
@@ -233,6 +237,7 @@
     <Compile Include="Helpers\CustomActionBarDrawerToggle.cs" />
     <Compile Include="Helpers\ExtendedDialogService.cs" />
     <Compile Include="Helpers\ExtendedNavigationService.cs" />
+    <Compile Include="Helpers\FavoriteListAdapter.cs" />
     <Compile Include="Helpers\GifDecoder.cs" />
     <Compile Include="Helpers\GooglePlacesAutocompleteAdapter.cs" />
     <Compile Include="Helpers\LayoutHelper.cs" />
@@ -337,6 +342,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_star.png" />
     <AndroidResource Include="Resources\layout\DialogAddFavorite.axml" />
     <AndroidResource Include="Resources\layout\Favorites.axml" />
+    <AndroidResource Include="Resources\layout\FavoriteItem.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

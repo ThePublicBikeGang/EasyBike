@@ -4,13 +4,11 @@ using Android.Views;
 using Android.Widget;
 using EasyBike.Models;
 using Android.App;
-using GalaSoft.MvvmLight.Helpers;
 using Android.Graphics;
-using Android.Media;
 
 namespace EasyBike.Droid.Helpers
 {
-    public class CountryListAdapter : BaseExpandableListAdapter//, AdapterView.IOnItemClickListener
+    public class CountryListAdapter : BaseExpandableListAdapter
     {
         private readonly List<Country> _countries;
         readonly Activity Context;
