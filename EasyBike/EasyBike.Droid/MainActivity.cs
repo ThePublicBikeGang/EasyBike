@@ -178,7 +178,6 @@ namespace EasyBike.Droid
                                 // ignore
                             }
                         }
-
                     }
                     break;
 
