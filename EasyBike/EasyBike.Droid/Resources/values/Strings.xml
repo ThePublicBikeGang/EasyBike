@@ -9,7 +9,7 @@
     <!---
         Main Activity 
         -->
-    <string name="share">Share</string>
+    <string name="share">Share location</string>
     <string name="route">Route</string>
     <string name="favorite">Favorite</string>
     <string name="mapMarkerResolving">Resolving address...</string>

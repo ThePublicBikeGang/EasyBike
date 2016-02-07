@@ -9,7 +9,7 @@
         android:title="@string/route" 
         app:showAsAction="always" />
     <item android:id="@+id/menu_share" 
+        android:icon="@drawable/ic_share"
         android:title="@string/share" 
-        app:showAsAction="always" 
-        app:actionProviderClass="android.support.v7.widget.ShareActionProvider" />
+        app:showAsAction="always" />
 </menu>

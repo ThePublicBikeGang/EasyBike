@@ -26,17 +26,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6568543"
-     inkscape:cx="358.61282"
-     inkscape:cy="468.07261"
+     inkscape:zoom="1.7622378"
+     inkscape:cx="452.1894"
+     inkscape:cy="634.93528"
      inkscape:document-units="px"
-     inkscape:current-layer="g4794"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1858"
      inkscape:window-height="1177"
-     inkscape:window-x="-32000"
-     inkscape:window-y="-32000"
-     inkscape:window-maximized="0" />
+     inkscape:window-x="54"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata4151">
     <rdf:RDF>
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -53,9 +53,38 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="opacity:1">
+     style="display:inline;opacity:1">
+    <g
+       inkscape:groupmode="layer"
+       id="layer4"
+       inkscape:label="Layer 2"
+       sodipodi:insensitive="true"
+       style="display:inline">
+      <rect
+         style="fill:#f50000;fill-opacity:0.58823529;stroke:none;stroke-opacity:1"
+         id="rect4225"
+         width="617.39679"
+         height="554.40875"
+         x="93.630951"
+         y="184.71539" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer5"
+       inkscape:label="Layer 3">
+      <rect
+         style="fill:#ffffff;fill-opacity:0;stroke:none;stroke-opacity:1"
+         id="rect4245"
+         width="192"
+         height="192"
+         x="489.59128"
+         y="338.69556"
+         inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\ic_share.png"
+         inkscape:export-xdpi="67.499992"
+         inkscape:export-ydpi="67.499992" />
+    </g>
     <rect
-       style="fill:#9b9b9b;fill-opacity:1;stroke:none;stroke-opacity:1;opacity:1"
+       style="opacity:1;fill:#9b9b9b;fill-opacity:1;stroke:none;stroke-opacity:1"
        id="rect4703-7"
        width="1.7528937"
        height="31.844236"
@@ -69,60 +98,7 @@
        y="578.52795"
        x="400.14975"
        id="image4758"
-       xlink:href="data:image/png;base64,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
-
-"
+       xlink:href="data:image/png;base64,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  "
        preserveAspectRatio="none"
        height="41.8647"
        width="41.8647"
@@ -134,46 +110,187 @@ AAABACAAAAQAgAAAEAAAAgBAAAAAMAQAAAQAgEY6AAAA//8DAB4Nrgv/bQV8AAAAAElFTkSuQmCC
        height="41.799999"
        x="400.3992"
        y="536.80066"
-       inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-mdpi\ic_menu.png"
-       inkscape:export-xdpi="68.899544"
-       inkscape:export-ydpi="68.899544" />
+       inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\ic_menu.png"
+       inkscape:export-xdpi="301.43549"
+       inkscape:export-ydpi="301.43549" />
     <g
        id="g4794"
        transform="translate(0,-0.08452642)"
        inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\ic_menu.png"
-       inkscape:export-xdpi="275.59818"
-       inkscape:export-ydpi="275.59818">
-      <rect
-         y="549.4325"
-         x="408.92484"
-         height="2.8284271"
-         width="24.748737"
-         id="rect4771"
-         style="opacity:1;fill:#000000;fill-opacity:0.58823532;stroke:none;stroke-opacity:1"
-         inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-mdpi\ic_menu.png"
-         inkscape:export-xdpi="68.899544"
-         inkscape:export-ydpi="68.899544" />
-      <rect
-         y="556.41516"
-         x="408.92484"
-         height="2.8284271"
-         width="24.748737"
-         id="rect4771-3"
-         style="opacity:1;fill:#000000;fill-opacity:0.58823532;stroke:none;stroke-opacity:1"
-         inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-mdpi\ic_menu.png"
-         inkscape:export-xdpi="68.899544"
-         inkscape:export-ydpi="68.899544" />
-      <rect
-         y="563.30945"
-         x="408.92484"
-         height="2.8284271"
-         width="24.748737"
-         id="rect4771-4"
-         style="opacity:1;fill:#000000;fill-opacity:0.58823532;stroke:none;stroke-opacity:1"
-         inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-mdpi\ic_menu.png"
-         inkscape:export-xdpi="68.899544"
-         inkscape:export-ydpi="68.899544" />
+       inkscape:export-xdpi="363.65475"
+       inkscape:export-ydpi="363.65475">
+      <g
+         id="g4151"
+         transform="translate(-3.8146973e-6,-1.1250143)"
+         inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\ic_menu.png"
+         inkscape:export-xdpi="301.43549"
+         inkscape:export-ydpi="301.43549">
+        <rect
+           inkscape:export-ydpi="150.71774"
+           inkscape:export-xdpi="150.71774"
+           inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xhdpi\ic_menu.png"
+           style="opacity:1;fill:#000000;fill-opacity:0.58823529;stroke:none;stroke-opacity:1"
+           id="rect4771"
+           width="24.748737"
+           height="2.4474742"
+           x="408.92484"
+           y="551.6825" />
+        <rect
+           inkscape:export-ydpi="150.71774"
+           inkscape:export-xdpi="150.71774"
+           inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xhdpi\ic_menu.png"
+           style="opacity:1;fill:#000000;fill-opacity:0.58823529;stroke:none;stroke-opacity:1"
+           id="rect4771-3"
+           width="24.748737"
+           height="2.4474742"
+           x="408.92484"
+           y="557.72467" />
+        <rect
+           inkscape:export-ydpi="150.71774"
+           inkscape:export-xdpi="150.71774"
+           inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xhdpi\ic_menu.png"
+           style="opacity:1;fill:#000000;fill-opacity:0.58823529;stroke:none;stroke-opacity:1"
+           id="rect4771-4"
+           width="24.748737"
+           height="2.4474742"
+           x="408.92484"
+           y="563.69043" />
+      </g>
+      <image
+         y="253.78802"
+         x="197.10715"
+         id="image4175"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAAA3NCSVQICAjb4U/gAAAPfklEQVR4
+nO2da3PqNhPHJd+NbzGmSaZN+/0/V2fOcGjADhjju/W82IkeSm4GLInT7O9Fp3NCkXv8z2pXexEh
+CIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgiHwopZTSj34k+WFGcqOP
+9c3RdR3ExBgbhmEYBtVP9CEoIJWAROBfbNuezWaO4xiGYRjGsYD6vm/btqqqoiiapjn5b9WCAlKM
+ZVlBEIRh6DgO38JOlMH/cBiGqqq2222e513XqXnif4MCUoau60mSRFFk2/YwDCCaT4wKyAhEVtd1
+lmVpmio3QiggNURR9Ntvv9m2DXblLB+ZMaZpGqW0LMvValUUhbjn/BJd4drfE03THh8f7+/vdV0H
+w3NuhAXeD2PMNM0oiiilh8NB0NN+CQpIKoZhPD09RVHEfefL4nPuYlNKfd83TbMoCiXbGQpIHoZh
+/Pnnn57n9X0/ybkOfMkwDLPZzLKs/X4vX0MoIElomvb09DShejiUUtCQrut5nk/4zWNAAUni8fEx
+iqLJ1QNwDQ3DUJalzGNrFJAMwjB8eHg4N9o6C3CJZrPZ4XBo21bQKm/RpK30bTEM4/7+XsJCjDFd
+1+/v72VaIBSQcOI4hqNC0e+VUtr3ved5URQJXegYFJBYDMOI41iCejiMsTiONU3Sm0UBiQIUc3d3
+Z5qmtOgavGnXdT3PI1KKQFBAouCnfPKXppQGQUA+zaxNBQpIILZty/F+jgEj5Pu+nF0MBSQQx3Fk
+7l/H6Lruuq6EhVBAAnEcR1W5BaXUcRwi3g1CAQnEsiwlAgL3y7IsCWuhgERBKTUMg6irh4fVRYMC
+Eoi0w5h3ebc6dnJQQALRNE1hyakcy4cCEojkAP4EOdpFAQmk73uFq0M3GUZhvyqMMSirULWLyen7
+QQEJpGkaJVsY1AbVdS1hLRSQEEA3CpslGGNVVRGMwn5RGGO2bUdRpMSPppRCK7SEtWScNX0TeLO6
+aZrz+fzu7s4wDPlzEaDtcLfbyfG9UECTwRgzDOPu7m4+n5umCUMRlJifYRj2+z2RMoABBTQNlNI4
+juM4dhyHS0e+eqAsOs/zsiyJlAAQBXQtlNIwDJMkcV2XMaZKOvxhhmHYbDbSzg5QQFcRBMF8Pvd9
+H6RDlI4SA/OTZZnMcQsooAuZzWZJkgRBAL0QX1od3gwv6HnAd67r+vn5WdAS74ICGgt3SG3bXiwW
+YRhqmgbz576UDqVU13UYqSH08X7+/Cmzq5DgfKCzsCwL4vORk1ngA5CTf3l5gYabyU+G+CrL5TJN
+0wm/eQxogUah6/p8Po/j+Dg+/1I9UA+03+/X6zX4JYyxJEkmPBwC9VBKV6uVfPUQtEBfout6FEVJ
+kkB96pgNixACE8QOh8Nms9ntdscfWCwW0Ol8vSkCjcLOlWXZNV91MSigD6GURlE0n88hPh/zvvnw
+ubqu1+v1brd719hEUfTw8ADG7IIJZeRo26rrerlcKpxyhwJ6nyAIkiSZzWZknKngb7RpGhh/+fk+
+ZVnW/f19GIZwcjMyRuMfA/89y7Ln52e1VUcooFM8z0uSBDpKx9Rkcel0XZdlWZZl4+Mg3/fn87nn
+eeAtcSW9C6xCCOn7Ps/zNE3huFktKKD/4zhOkiQ8Ph8fZPV9v91uN5sNTAE/NwPlum4YhjCm7t1G
+RPjCtm2bpjkcDtvtVk6tzxi+tYD4m7YsC0Y2nxufD8OQ5/lms7neGEAroGmaICMwNuB7gXTatq3r
+Wvlg6BO+tYAIIaZpQhIUSi/GSIe89uvs9/vNZjOJAzveaN3IDQec7ysgTdPiOJ7P55ZljYyG+NFO
+WZZv4/NJ+Egft6Ybzk0I6PMWuMn/7jRNg/w59K6fFZ9XVZWmKRwrT/hIvy6KBST/FwukM5vNQDpk
+dJDVNA1IR23YfGuot0CaptmvmKYJV2URQoZh6LquaZq6ruu65tccXYzneYvFAkZ3nXW0A/F5mqbQ
+KHOzu4kSVArIdd0oiiB8NQzj7XU1fKA/yCjP891uN94A8Dftui6UXlwWn6dpejth862hRkBQTMOn
+aJ0coL11icD/gLMQOKwbKSPbtufz+fXxOVqdj5AtIBiaHEURNwZkXJkVTzuDJ7ter7fb7duP8Tdt
+GEaSJLw14qwgqygKnj9HPkeqgHzff3x85PerXZaL5q85y7LVavU25XTSGjH+aOej/DnyCfIEFMfx
+4+Mj5A6vL2OAjWa/3//48YM3gZ+0Roy3OmDVQDq3fMPtDSJJQEmSPDw8QE3nVPV4UENeluXff//d
+dR1U7ZxVenEcn2dZhtK5AOHD9xljURT98ccfIpxQ0NDhcOj7PgiCc492LsifIycIt0Cz2eyvv/4S
+3Y0ArRFktHSuzJ8jHLE10bquPz4+QsAlSEPgVJFx0oFgfrvdrtfr49kDqJ6LESugxWLhuq7oFvHx
++XM42sH4fEKECAh2BNu2JV9U85bj/Pl6vZZ/I+R/HiECgl/6+Xyu67qSCRXkVTqapmH+XCiitjDT
+NMMwVGJ+uLuD+XMJTC8g2L/CMASPVb6AdF1v23az2fD8OSKO6QUEO4XneUp2Lkrpdrt9fn7G/Lkc
+hMxItCzLtm35PgdsXlD7odBz/1ZMLCB4baZpQiJTyVuEe7LQZZaDEAvEu1LkA8kNXdeVrP4Nmfg1
+8zGlSgwA+O8oIJkIsRNqrzmC4x+FD/CtEPIXrdaB/XJyDzIhQgSk1oEVOkkOOUGIgBSe/EJyHkvD
+pCEkjG/bVlX+ixDS9z3mLqQhxAJ1XafqEIhS2nUdCkgaQsL4pmlUXZVFCOGdXEpW/24IsUAwz0Z+
+nSis6LouT6SgjEQz/YEbvDPDMDzPm7AHYzy2bcMo57ZtcS8TjagT267r7u7uVB3oUUo9zwuCQNf1
+G5zq9V9ClICGYTBN0/M8Vd70MAyGYfi+HwQBIYTLCDe1aRGYM2rbFgZWKtnIwB9ijBmGEQSB7/vD
+MGCR0OSIEhCE05qmwVVIqkJ6PmoISmw9z4OZQ/If5r+K2Kx1VVW+70NyXqiGPv/+42msURQ5jtN1
+HXajToJYATHGyrKMogheoQgN8c5U8qmMjmcOOY4TRZFlWW3bYtH0lQivm4EtI4oiEV/Oe+OrqrJt
++8sWWL6jUUpns1kYhqZp1nU9prcVeRcZhVd1XXddB9HQ5NM5DofDjx8/siyrqsowDMuy+Ib1uTUa
+hkHTNM/zwNNvmgZTsBcgqXKvqqq2bWGm3fUa4p1feZ7z+UBN02y326ZpLMviMhpjjcDTB30fN8wj
+Y5BX+llV1eFwcF0XLt66TEbHje6bzWa5XJ6Yjbqut9tt3/f83omRMjqO9jFMG4/U2uG2bfM8p5Q6
+jsPvEB0pIy4d6FZeLpcfXbEGnjvMGrNtG+a/jgnTGGOmaUZR5LouymgksovPh2HY7/dFUVBKYbov
+/9Enk+oJIbqu81uJl8vl528XysoOhwNMOxwjo+NDI8dxwjDEaH8MKuMOx3F83w/D0LIsCMXfJvDh
+rfd9D2ooiuKC/KjjODDs99w50cMw7Ha79XoNR9g4h+ot6gNXMEXgG4Hzy4dH933fNE1VVWVZct1c
+/Bb5Te/kVZfjx5m9vLykaYqb2lvUC2g8kxgA3/cXi8UFd1nCjPM0TbFE5JgbasB7244jokGnaZqX
+l5emaUzTtG2bHF1E+tFTEUKGYdB1nUf7TdNgbh+4IQHJpK7r3W7Xti3c8DL+0AiifaiVE3RodPJr
+c+Ntbt9UQIQQUMB2ux2G4dxDI9M0QUaT5PZvWR9f8gs/+vUcZ+njOB5/sQZ7vbiDvA7uPBwO1z+M
+bdsQTBiGwe+XgROppmnKsmzb9tbCwG8tIIDLyLZtuLX5gqt9drvdZrO5bFPzPM/3fd/3IQg9Oc7g
+MmKMNU2T5/l+v7+FC78BFNAprusuFgtI2501vLzrOhheDmePY2LGIAjm8/lsNoMUIXtzYxoHnoEv
+tN/vsyy7hXnFKKD38X0/SRJ+vSEZLSN+o9nnlUa2bd/f3wdBAIfmZ6V0uNmDYX5qz8q/rxP9OZDb
+r+saov0LcvuU0o8aQu7u7p6eno7vhRnvR5+UNAVBAF14F/1fTgAK6DMgt9+2LZySX5/bp5Q+PDw8
+PDzQ12uvLgvBjhcKwxDyxxd8z/WggL6mqqo8z7uug0Ojc3P7s9kMcjKEkN9//z1JkourWd5diFIK
+x5vXR4IXgAL6GrAWUCLCGHMc56zcvm3bYRjatu37fhzHMLp/qrMf+lrrDdZOvh1CAZ3BMAxFUez3
+e0KIbdtjSpro62VCrusKvXcGNFRVlWR/CAV0HpRSiKKLooAb77+UETdFQnub4Mtns1me5zKLu1FA
+F9J13W63K8sSKvnHNIQITVmAP2SaJpSKi1voBBTQVbRtC9G+YRhjcvtCAQ05jlOWpbSNDAU0AZDb
+H98QIg5os9R1XdrN5SigaeC5/fENISIA7VqWVRSFnEmVKKApgQM9cGN5tC//GeCePzmZMhTQxFBK
+4eXlea7rOjhGkh+AEGIYxkdtT9OCVwJMDHeioXYW0uzyn8E0TcdxJKyFAhICe711T9UDUErh2ivR
+oIAEouTWPfJ6qAi7p2g/GgUkCkqpaZpE3ZnQcdevOFBAAlF46xQ/QRBtAlFAAlHiQXPkWD4UkEBU
+jTgG5GgXBSQQhSPPJmkDHwMKSBSMMSh3VxWIjWkpuR4UkEAUXlnEGJMzVR0FJATQTVVVCus6oMsR
+o7BfEnhtdV2ruryx73s59dEoIIHUdV1VleRgHkqCpBW2ooBEAfuIzOpSDl9XgvFDAYkCrA6Mrpa2
+i4H5KcsSesQkWD4UkFj6vs+yTPIulqaptCMoFJBwsiyr61qChtjr3Q/SCqIJCkgCfd//888/RLxH
+AsWQq9VKprXDklYZ1HWt67rQC0DB/KxWK8luOwpIEofDASbYidAQqCdN0+fn52m/+UtQQJJgjBVF
+AXfaT6shUM92u/3586f8vBsKSB5wPANj+SfpGmOv116labpcLpVkbVFAUmGM7fd7mIJwZQMrGB7G
+2Gq1AiddCSgg2cBeVte1bdt86hkZHaPxCcOaphVFsVwut9ut4Ef+DByyqQxd1+M4juMYRuXD/Bf4
+0YmYjv8czpPquk7TFKaky37uf4MCUoyu61EUBUHgOA7vqH/7MZBU27bQOg3X6Ul/2HdAAd0KjuPY
+tg3/5JPqwSy1bQuJ/bqu5ZSJjQcFpJ639csfbWEI8hmf+9EKGzwQBEEQBEEQBEEQBEEQBEEQBEEQ
+BEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQ5Gr+B64t68tzyoHgAAAAAElFTkSuQmCC
+"
+         preserveAspectRatio="none"
+         height="192"
+         width="192" />
     </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer3"
+       inkscape:label="Layer 1"
+       style="display:inline">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1"
+         id="path4183"
+         cx="540.67657"
+         cy="433.06262"
+         r="21.125"
+         inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\ic_share.png"
+         inkscape:export-xdpi="67.499992"
+         inkscape:export-ydpi="67.499992" />
+      <circle
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1"
+         id="path4183-7"
+         cx="628.05157"
+         cy="385.68762"
+         r="21.125"
+         inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\ic_share.png"
+         inkscape:export-xdpi="67.499992"
+         inkscape:export-ydpi="67.499992" />
+      <circle
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1"
+         id="path4183-3"
+         cx="628.55157"
+         cy="480.18762"
+         r="21.125"
+         inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\ic_share.png"
+         inkscape:export-xdpi="67.499992"
+         inkscape:export-ydpi="67.499992" />
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1"
+       id="rect4206"
+       width="88.25"
+       height="8.5"
+       x="273.66608"
+       y="634.15649"
+       transform="matrix(0.87965952,-0.47560397,0.47560397,0.87965952,0,0)"
+       inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\ic_share.png"
+       inkscape:export-xdpi="67.499992"
+       inkscape:export-ydpi="67.499992" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1"
+       id="rect4206-8"
+       width="88.25"
+       height="8.5"
+       x="688.01544"
+       y="118.41897"
+       transform="matrix(0.87899098,0.4768384,-0.4768384,0.87899098,0,0)"
+       inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\ic_share.png"
+       inkscape:export-xdpi="67.499992"
+       inkscape:export-ydpi="67.499992" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -183,18 +300,7 @@ AAABACAAAAQAgAAAEAAAAgBAAAAAMAQAAAQAgEY6AAAA//8DAB4Nrgv/bQV8AAAAAElFTkSuQmCC
        y="542.61224"
        x="336.74997"
        id="image4700"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAA3NCSVQICAjb4U/gAAAB9klEQVRI
-ie2Vy66qMBSGi1JAhR0qsSHoDKfq+z+DOPABGCrFCxeJiBHoGfSEEKjgzjlD14AALd/HT7sUgG99
-619ryL87HCKEDMMQRfHxeHQ8P51O2bTX61WWZXuCwKXbtg0hZJdhGB6PRy7dsiyEEDvP89x13TzP
-+xMYhvHz84MxXi6X5/NZURQIYZIkXLogCJvNRhCENE0ppff7vTFNbAvG4zEAYLFYYIwHg8F+v2ev
-Wc9Rp5umKUkSIYQ92J8AQqiqqu/7uq7PZjNVVU+nUz1Hgx4EwW63o5TGcdxOwBGkaSpJkizLhBDm
-mEwmlUPTtDo9DEPHccqyjKKIEPJRAgBAkiR1B8a4coxGozp9u90y+uFw4KL4gncO3/d/Re8ScB2q
-qpqm2fgyHfQeQcOBEGJrzuhFUfTSAQCD7mEAAKWUHbMsY3eezydrWjbUXT0Jqh25Wq0sywqCIE1T
-9q1833/Xg58K2nTHcTzPq9bjE8dbAZdeliWltL7mvQ6+oEGv75ksyxr7qtvBESCEMMZ1en2/c/du
-h4P/a6ooynq9btPZhA7H5XLpF4iiqGmaJEkQwnfd1HBcr9coisIwbCfg/OHIsmzbtiD8Heropvl8
-rut6dem6btUrXQmKorjdbqyV4jj2PI9LZznYe8RxTAhp07/1rf9SfwDjNJBZ8M5uKgAAAABJRU5E
-rkJggg==
-"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAA3NCSVQICAjb4U/gAAAB9klEQVRI ie2Vy66qMBSGi1JAhR0qsSHoDKfq+z+DOPABGCrFCxeJiBHoGfSEEKjgzjlD14AALd/HT7sUgG99 619ryL87HCKEDMMQRfHxeHQ8P51O2bTX61WWZXuCwKXbtg0hZJdhGB6PRy7dsiyEEDvP89x13TzP +xMYhvHz84MxXi6X5/NZURQIYZIkXLogCJvNRhCENE0ppff7vTFNbAvG4zEAYLFYYIwHg8F+v2ev Wc9Rp5umKUkSIYQ92J8AQqiqqu/7uq7PZjNVVU+nUz1Hgx4EwW63o5TGcdxOwBGkaSpJkizLhBDm mEwmlUPTtDo9DEPHccqyjKKIEPJRAgBAkiR1B8a4coxGozp9u90y+uFw4KL4gncO3/d/Re8ScB2q qpqm2fgyHfQeQcOBEGJrzuhFUfTSAQCD7mEAAKWUHbMsY3eezydrWjbUXT0Jqh25Wq0sywqCIE1T 9q1833/Xg58K2nTHcTzPq9bjE8dbAZdeliWltL7mvQ6+oEGv75ksyxr7qtvBESCEMMZ1en2/c/du h4P/a6ooynq9btPZhA7H5XLpF4iiqGmaJEkQwnfd1HBcr9coisIwbCfg/OHIsmzbtiD8Heropvl8 rut6dem6btUrXQmKorjdbqyV4jj2PI9LZznYe8RxTAhp07/1rf9SfwDjNJBZ8M5uKgAAAABJRU5E rkJggg== "
        preserveAspectRatio="none"
        height="32"
        width="32" />
@@ -206,8 +312,8 @@ rkJggg==
        x="-183.04344"
        y="603.01019"
        transform="matrix(0.71434228,-0.69979647,0.71434228,0.69979647,0,0)"
-       inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xhdpi\clear.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-filename="C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.Droid\Resources\drawable-xxxhdpi\clear.png"
+       inkscape:export-xdpi="270"
+       inkscape:export-ydpi="270" />
   </g>
 </svg>

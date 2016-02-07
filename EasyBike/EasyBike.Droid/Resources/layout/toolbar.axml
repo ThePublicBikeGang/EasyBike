@@ -3,26 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     android:layout_weight="0"
     android:layout_marginLeft="12dp"
     android:layout_marginTop="32dp"
     android:layout_marginRight="12dp"
     android:layout_marginBottom="12dp"
     android:background="@drawable/actionbar_background"
-    android:minHeight="60dp"
     app:title="@string/app_name"
     android:focusable="true"
     android:focusableInTouchMode="true">
-    <EasyBike.Droid.Helpers.ClearableAutoCompleteTextView
-        android:hint="Enter Location"
-        android:id="@+id/autoCompleteSearchPlaceTextView"
-        android:background="#ffffff"
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:paddingRight="15dp"
-        android:imeOptions="actionSearch"
-        android:popupBackground="#ffffff" />
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <ImageButton
+            android:id="@+id/burgerImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="0dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_menu"
+            style="@style/Widget.AppCompat.ActionButton" />
+        <EasyBike.Droid.Helpers.ClearableAutoCompleteTextView
+            android:hint="Enter Location"
+            android:id="@+id/autoCompleteSearchPlaceTextView"
+            android:background="#ffffff"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingRight="15dp"
+            android:imeOptions="actionSearch"
+            android:popupBackground="#ffffff" />
+    </LinearLayout>
 </android.support.v7.widget.Toolbar>

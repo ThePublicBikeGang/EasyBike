@@ -128,12 +128,12 @@ namespace EasyBike.Droid
             public bool OnNavigationItemSelected(IMenuItem menuItem)
             {
                 _context.CloseDrawer();
-                
+
                 // provide a smoother animation of the drawer when closing
                 Task.Run(async () =>
                 {
                     await Task.Delay(200);
-                  
+
                     //Check to see which item was being clicked and perform appropriate action
                     switch (menuItem.ItemId)
                     {
@@ -153,6 +153,19 @@ namespace EasyBike.Droid
             }
         }
 
+        public class HomeButtonClickListener : Java.Lang.Object, View.IOnClickListener
+        {
+            private MainActivity _context;
+            public HomeButtonClickListener(MainActivity context)
+            {
+                _context = context;
+            }
+            public void OnClick(View v)
+            {
+                _context._drawerLayout.OpenDrawer(GravityCompat.Start);
+            }
+        }
+
         private Bitmap _iconUserLocation;
         private Bitmap _iconCompass;
         protected override void OnCreate(Bundle bundle)
@@ -166,7 +179,7 @@ namespace EasyBike.Droid
             tintManager.SetTintColor(Color.ParseColor("#30000000"));
             tintManager.SetNavigationBarTintEnabled(true);
             tintManager.StatusBarTintEnabled = true;
-            
+
             // prevent the soft keyboard from pushing the view up
             Window.SetSoftInputMode(SoftInput.AdjustNothing);
 
@@ -190,7 +203,7 @@ namespace EasyBike.Droid
             //toolbar.Background.SetAlpha(200);
             ViewCompat.SetElevation(toolbar, 6f);
             SetSupportActionBar(toolbar);
-            
+
             //Enable support action bar to display hamburger and back arrow
             // http://stackoverflow.com/questions/28071763/toolbar-navigation-hamburger-icon-missing
             _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -198,10 +211,15 @@ namespace EasyBike.Droid
             //_drawerToggle.DrawerIndicatorEnabled = true;
             //_drawerLayout.SetDrawerListener(_drawerToggle);
             //Enable support action bar to display hamburger
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+
+
+            var burgerImage = FindViewById<ImageButton>(Resource.Id.burgerImage);
+            burgerImage.SetOnClickListener(new HomeButtonClickListener(this));
+
+            // SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
             SupportActionBar.SetHomeButtonEnabled(false);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            SupportActionBar.SetDisplayShowCustomEnabled(true);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+            SupportActionBar.SetDisplayShowCustomEnabled(false);
 
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
@@ -278,7 +296,7 @@ namespace EasyBike.Droid
         {
             Log.Debug("MyActivity", "Begin OnConfigurationChanged");
             base.OnConfigurationChanged(newConfig);
-           // _drawerToggle.OnConfigurationChanged(newConfig);
+            // _drawerToggle.OnConfigurationChanged(newConfig);
         }
 
         private async void AutoCompleteSearchPlaceTextView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -498,28 +516,25 @@ namespace EasyBike.Droid
             return base.OnCreateOptionsMenu(menu);
         }
 
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            Log.Debug("MyActivity", "Begin OnOptionsItemSelected");
-            switch (item.ItemId)
-            {
-                case Android.Resource.Id.Home:
-                    CloseKeyboard();
-                    _drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
-                    return true;
-            }
-            return base.OnOptionsItemSelected(item);
-        }
+        //public override bool OnOptionsItemSelected(IMenuItem item)
+        //{
+        //    Log.Debug("MyActivity", "Begin OnOptionsItemSelected");
+        //    switch (item.ItemId)
+        //    {
+        //        case Android.Resource.Id.Home:
+        //            CloseKeyboard();
+        //            _drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
+        //            return true;
+
+
+        //    }
+        //    return base.OnOptionsItemSelected(item);
+        //}
 
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
             Log.Debug("MyActivity", "Begin OnCreateActionMode");
             MenuInflater.Inflate(Resource.Menu.actionbar, menu);
-
-            _shareActionProvider = (ShareActionProvider)MenuItemCompat.GetActionProvider(menu.FindItem(Resource.Id.menu_share));
-            _shareIntent = _createShareIntent();
-            _setShareIntent(_shareIntent);
-
             return true;
         }
 
@@ -534,7 +549,9 @@ namespace EasyBike.Droid
             switch (item.ItemId)
             {
                 case Resource.Id.menu_share:
-                    mode.Finish();
+                    _shareIntent = _createShareIntent();
+                    StartActivity(Intent.CreateChooser(_shareIntent, Resources.GetString(Resource.String.share)));
+                    //mode.Finish();
                     return true;
                 case Resource.Id.menu_route:
                     if (currentMarkerPosition != null)
@@ -688,7 +705,7 @@ namespace EasyBike.Droid
                     //.InvokeMapToolbarEnabled(true)
                     .InvokeCompassEnabled(true)
                     .InvokeCamera(await GetStartingCameraPosition());
-                
+
                 _fragTx = FragmentManager.BeginTransaction();
                 _mapFragment = MapFragmentExtended.NewInstance(mapOptions);
                 _fragTx.Add(Resource.Id.map, _mapFragment, "map");
@@ -935,7 +952,7 @@ namespace EasyBike.Droid
             SwitchModeStationParkingVisualState();
 
             _map = googleMap;
-            
+
             //Setup and customize your Google Map
             _map.UiSettings.CompassEnabled = true;
             _map.UiSettings.MyLocationButtonEnabled = false;

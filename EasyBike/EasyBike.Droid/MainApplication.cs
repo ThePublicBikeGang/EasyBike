@@ -13,12 +13,15 @@ namespace EasyBike.Droid
     /// http://motzcod.es/post/133609925342/access-the-current-android-activity-from-anywhere
     /// 
     /// </summary>
-	//You can specify additional application information in this attribute
-    [Application]
+#if RELEASE
+    [Application(Debuggable = false)]
+#else
+    [Application(Debuggable = true)]
+#endif
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer)
-          :base(handle, transer)
+          : base(handle, transer)
         {
         }
 
