@@ -2,7 +2,6 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace EasyBike.Config
 {
@@ -24,12 +23,12 @@ namespace EasyBike.Config
         {
             if (_config == null)
             {
-                var platform = Device.OnPlatform("iOS", "Droid", "WinPhone");
-                // bug using the emulator, Device.OS is 'Other'
-                if (Device.OS == TargetPlatform.Other)
-                {
-                    platform = "WinPhone";
-                }
+                //var platform = Device.OnPlatform("iOS", "Droid", "WinPhone");
+                //// bug using the emulator, Device.OS is 'Other'
+                //if (Device.OS == TargetPlatform.Other)
+                //{
+                //    platform = "WinPhone";
+                //}
 
                 // you need to create your own "MyConfig.json" which will be a copy of "configExemple.json" to store your own API keys
                 var configFile = "MyConfig.json";

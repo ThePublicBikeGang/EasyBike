@@ -78,8 +78,7 @@ namespace EasyBike.Droid
         NavigationView navigationView;
 
         // For the contextual action bar and the share button
-        private ActionMode _actionMode;
-        private ShareActionProvider _shareActionProvider;
+        public ActionMode ActionMode;
         private Intent _shareIntent = new Intent(Intent.ActionSend);
         private LatLng currentMarkerPosition;
 
@@ -204,7 +203,41 @@ namespace EasyBike.Droid
             }
             public void OnClick(View v)
             {
+                if (_context.ActionMode != null)
+                {
+                    _context.ActionMode.Finish();
+                }
                 _context._drawerLayout.OpenDrawer(GravityCompat.Start);
+
+
+            }
+        }
+
+        private class CustomDrawerToggle : Java.Lang.Object, DrawerLayout.IDrawerListener
+        {
+            private MainActivity _context;
+            public CustomDrawerToggle(MainActivity context)
+            {
+                _context = context;
+            }
+            public void OnDrawerClosed(View drawerView)
+            {
+            }
+
+            public void OnDrawerOpened(View drawerView)
+            {
+            }
+
+            public void OnDrawerSlide(View drawerView, float slideOffset)
+            {
+                if(_context.ActionMode != null)
+                {
+                    _context.ActionMode.Finish();
+                }
+            }
+
+            public void OnDrawerStateChanged(int newState)
+            {
             }
         }
 
@@ -251,7 +284,7 @@ namespace EasyBike.Droid
             _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             //_drawerToggle = new CustomActionBarDrawerToggle(this, _drawerLayout, toolbar, Resource.String.ApplicationName, Resource.String.ApplicationName);
             //_drawerToggle.DrawerIndicatorEnabled = true;
-            //_drawerLayout.SetDrawerListener(_drawerToggle);
+            _drawerLayout.SetDrawerListener(new CustomDrawerToggle(this));
             //Enable support action bar to display hamburger
 
 
@@ -387,10 +420,10 @@ namespace EasyBike.Droid
                 CrossCompass.Current.Stop();
             }
             CloseKeyboard();
-            if (_actionMode != null)
+            if (ActionMode != null)
             {
                 Log.Debug("MyActivity", "Finish action mode");
-                _actionMode.Finish();
+                ActionMode.Finish();
             }
         }
 
@@ -646,16 +679,7 @@ namespace EasyBike.Droid
 
         public void OnDestroyActionMode(ActionMode mode)
         {
-            _actionMode = null;
-        }
-
-        private void _setShareIntent(Intent shareIntent)
-        {
-            if (_shareActionProvider != null)
-            {
-                Log.Debug("MyActivity", "_setShareIntent");
-                _shareActionProvider.SetShareIntent(shareIntent);
-            }
+            ActionMode = null;
         }
 
         private Intent _createShareIntent()
@@ -850,7 +874,11 @@ namespace EasyBike.Droid
             else
             {
                 SelectItem(e.Marker.Position);
-                _actionMode = StartSupportActionMode(this);
+                if (ActionMode != null)
+                {
+                    ActionMode.Finish();
+                }
+                ActionMode = StartSupportActionMode(this);
                 e.Marker.ShowInfoWindow();
             }
         }
@@ -1086,10 +1114,10 @@ namespace EasyBike.Droid
                 {
                     longClickMarker.HideInfoWindow();
                 }
-                if (_actionMode != null)
+                if (ActionMode != null)
                 {
                     Log.Debug("MyActivity", "Finish action mode");
-                    _actionMode.Finish();
+                    ActionMode.Finish();
                 }
                 CloseKeyboard();
             };
@@ -1280,7 +1308,11 @@ namespace EasyBike.Droid
                 longClickMarker.Title = title ?? Resources.GetString(Resource.String.mapMarkerResolving);
                 longClickMarker.Snippet = snippet ?? FormatLatLng(position);
                 longClickMarker.ShowInfoWindow();
-                _actionMode = StartSupportActionMode(this);
+                if (ActionMode != null)
+                {
+                    ActionMode.Finish();
+                }
+                ActionMode = StartSupportActionMode(this);
             });
         }
 

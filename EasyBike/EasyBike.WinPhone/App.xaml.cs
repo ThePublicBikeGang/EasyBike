@@ -1,5 +1,4 @@
 ﻿using EasyBike.Models.Storage;
-using EasyBike.Services;
 using GalaSoft.MvvmLight.Ioc;
 using System;
 using Windows.ApplicationModel;
