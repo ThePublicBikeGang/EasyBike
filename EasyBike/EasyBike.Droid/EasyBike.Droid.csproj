@@ -213,7 +213,7 @@
     </Reference>
     <Reference Include="XamarinItemTouchHelper, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\XamarinItemTouchHelper\XamarinItemTouchHelper\bin\Debug\XamarinItemTouchHelper.dll</HintPath>
+      <HintPath>..\..\staticPackages\XamarinItemTouchHelper.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
