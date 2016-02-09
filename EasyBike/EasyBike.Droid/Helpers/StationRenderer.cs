@@ -203,13 +203,15 @@ namespace EasyBike.Droid.Helpers
                     printedValue = "?";
                     bitmap = _iconGrey;
                 }
+            }
 
+            if (printedValue != string.Empty)
+            {
                 bitmap = bitmap.Copy(bitmap.GetConfig(), true);
                 Canvas canvas = new Canvas(bitmap);
                 int xPos = (canvas.Width / 2);
                 int yPos = (int)((canvas.Height / 2) - ((_textPaint.Descent() + _textPaint.Ascent()) / 2));
                 canvas.DrawText(printedValue, xPos + 1, yPos - LayoutHelper.ConvertDpToPixel(6), _textPaint);
-
             }
 
             var icon = BitmapDescriptorFactory.FromBitmap(bitmap);
@@ -272,7 +274,7 @@ namespace EasyBike.Droid.Helpers
             //var text = view.FindViewById<TextView>(Resource.Id.text);
         }
     }
-  
+
 
     public class Animatorrr : Java.Lang.Object, ValueAnimator.IAnimatorUpdateListener
     {

@@ -61,6 +61,10 @@ namespace EasyBike.Droid
 
     //http://www.sitepoint.com/material-design-android-design-support-library/
     [Activity(MainLauncher = true)]
+    [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryDefault, "easybike.cat" })]
+    [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryBrowsable, "easybike.cat" })]
     public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private FragmentTransaction _fragTx;
@@ -190,7 +194,6 @@ namespace EasyBike.Droid
                         }
                     }
                     break;
-
             }
         }
 
@@ -677,6 +680,7 @@ namespace EasyBike.Droid
             }
         }
 
+
         public void OnDestroyActionMode(ActionMode mode)
         {
             ActionMode = null;
@@ -689,12 +693,36 @@ namespace EasyBike.Droid
             var text = "Unknown position";
             if (currentMarkerPosition != null)
             {
-                text = currentMarkerPosition.ToString();
+                text = FormatShareLocationMessage();
             }
             shareIntent.PutExtra(Intent.ExtraText, text);
             shareIntent.SetType("text/plain");
             return shareIntent;
         }
+
+
+        private string FormatShareLocationMessage()
+        {
+            var latitude = Math.Round(currentMarkerPosition.Latitude, 6).ToString(CultureInfo.InvariantCulture);
+            var longitude = Math.Round(currentMarkerPosition.Longitude, 6).ToString(CultureInfo.InvariantCulture);
+            string body = "Check out this location :\r\n";
+            if (!string.IsNullOrWhiteSpace(_lastResolvedAddress))
+            {
+                body += _lastResolvedAddress + "\r\n";
+            }
+
+            body += "\r\nAndroid: ";
+            body += "\r\nhttp://easybike.com:";///?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\n\r\nWindows Phone: ";
+            body += "easybike://to/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\n\r\nIPhone: ";
+            body += "\r\nhttp://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
+            body += "\r\n\r\n\"EasyBike\" is available on Android and Windows Phone.";
+            body += "market://details?id=" + PackageName;
+
+            return body;
+        }
+
 
 
         private Intent _createRouteIntent(double latitude, double longitude)

@@ -79,6 +79,7 @@
     <Compile Include="Models\Contracts\FR\SmooveModel.cs" />
     <Compile Include="Models\Contracts\FR\VeloPlusContract.cs" />
     <Compile Include="Models\Contracts\FR\VeloPlusModel.cs" />
+    <Compile Include="Models\Contracts\FR\VeoliaContract.cs" />
     <Compile Include="Models\Contracts\GR\EasyBikeContract.cs" />
     <Compile Include="Models\Contracts\UK\TflContract.cs" />
     <Compile Include="Models\Contracts\UK\TflModel.cs" />

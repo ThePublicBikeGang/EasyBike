@@ -5,14 +5,27 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="?attr/colorPrimary">
-    <LinearLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff">
+        <TextView
+            android:text="It's lonely here... \nAdd some favorites by tapping on a station or on a searched location. :)"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="70dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textSize="25sp"
+            android:alpha="0.6"
+            android:visibility="invisible"
+            android:id="@+id/placeHolder" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/FavoritesList"
             android:scrollbars="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:paddingTop="20dp" />
+    </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>

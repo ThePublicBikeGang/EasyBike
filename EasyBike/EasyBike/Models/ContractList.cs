@@ -231,6 +231,7 @@ namespace EasyBike.Models
                 {
                     new JcDecauxContract{Name = "Amiens",ServiceProvider="Vélam', JCDecaux"},
                     new JcDecauxContract{Name = "Besancon",ServiceProvider="VéloCité, JCDecaux"},
+                    new VeoliaContract{Name = "Calais", ServiceProvider=" (Vel-in, Veloway Systems, Veolia)", StationsUrl="http://www.vel-in.fr/cartoV2/libProxyCarto.asp"},
                     new JcDecauxContract{Name = "Cergy-Pontoise",ServiceProvider="VélO2, JCDecaux"},
                     new JcDecauxContract{Name = "Creteil",ServiceProvider="Cristolib', JCDecaux"},
                     new JcDecauxContract{Name = "Lyon",ServiceProvider="Vélo'V, JCDecaux"},
@@ -238,6 +239,7 @@ namespace EasyBike.Models
                     new JcDecauxContract{Name = "Mulhouse", ServiceProvider="Vélocité, JCDecaux"},
                     new JcDecauxContract{Name = "Nancy", ServiceProvider="VélOstan', JCDecaux"},
                     new JcDecauxContract{Name = "Nantes", ServiceProvider="Bicloo', JCDecaux"},
+                    new VeoliaContract{Name = "Nice", ServiceProvider=" (Vélobleu, Veloway Systems, Veolia)", StationsUrl="https://www.velobleu.org/cartoV2/libProxyCarto.asp"},
                     new JcDecauxContract{Name = "Paris", ServiceProvider="Vélib', JCDecaux"},
                     new JcDecauxContract{Name = "Rouen", ServiceProvider="Cy'clic', JCDecaux"},
                     // SMTC = Syndicat Mixte des Transports en Commun
@@ -257,6 +259,8 @@ namespace EasyBike.Models
                     new SmooveContract{Name = "Strasbourg", ServiceProvider="Vélhop', Smoove", StationsUrl = "http://www.velhop.strasbourg.eu/vcstations.xml"},
                     // Check this
                     new VeloPlusContract{Name = "Orléans"},
+
+                    new VeoliaContract{Name = "Vannes", ServiceProvider=" (Vélocéa, Veloway Systems, Veolia)", StationsUrl="http://www.velocea.fr/cartoV2/libProxyCarto.asp"},
                 }
             },
             #endregion 
