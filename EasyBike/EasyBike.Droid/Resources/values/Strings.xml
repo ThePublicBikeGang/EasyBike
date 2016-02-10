@@ -4,6 +4,7 @@
     <string name="nav_download_cities">Download cities</string>
     <string name="nav_favorites">Favorites</string>
     <string name="nav_settings">Settings</string>
+  <string name="nav_tutorial">How to use this app</string>
     <string name="nav_about">About</string>
 
     <!---

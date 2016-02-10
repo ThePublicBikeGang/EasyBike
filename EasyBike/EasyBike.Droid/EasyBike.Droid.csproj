@@ -246,6 +246,7 @@
     <Compile Include="Helpers\StationRenderer.cs" />
     <Compile Include="Helpers\MapHelper.cs" />
     <Compile Include="Helpers\TouchableWrapper.cs" />
+    <Compile Include="Helpers\TutorialListAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Models\ClusterItem.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="Views\ContractsActivity.ui.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Views\FavoritesActivity.cs" />
+    <Compile Include="Views\TutorialActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -344,6 +346,12 @@
     <AndroidResource Include="Resources\layout\DialogAddFavorite.axml" />
     <AndroidResource Include="Resources\layout\Favorites.axml" />
     <AndroidResource Include="Resources\layout\FavoriteItem.axml" />
+    <AndroidResource Include="Resources\layout\Tutorial.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\TutorialItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -533,7 +541,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\stationGreyAlpha.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\stationGreyAlpha.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\stationGreyAlpha.png" />
-    <AndroidResource Include="Resources\drawable\ibikegif.gif" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_share.png" />
@@ -581,5 +588,8 @@
     <AndroidResource Include="Resources\anim\placeholder.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\cyclemode.png" />
   </ItemGroup>
 </Project>

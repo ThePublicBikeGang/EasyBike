@@ -147,6 +147,9 @@ namespace EasyBike.Droid
                         case Resource.Id.nav_about:
                             _context.MainViewModel.AboutCommand.Execute(null);
                             break;
+                        case Resource.Id.nav_tutorial:
+                            _context.MainViewModel.HowToUseThisAppCommand.Execute(null);
+                            break;
                         case Resource.Id.nav_favorites:
 
                             Intent i = new Intent(_context, typeof(FavoritesActivity));
@@ -711,14 +714,17 @@ namespace EasyBike.Droid
                 body += _lastResolvedAddress + "\r\n";
             }
 
-            body += "\r\nAndroid: ";
-            body += "\r\nhttp://easybike.com:";///?lt=" + latitude + "&ln=" + longitude;
-            body += "\r\n\r\nWindows Phone: ";
-            body += "easybike://to/?lt=" + latitude + "&ln=" + longitude;
+            //body += "\r\nAndroid: ";
+            //body += "\r\nhttp://easybike.com:";///?lt=" + latitude + "&ln=" + longitude;
             body += "\r\n\r\nIPhone: ";
             body += "\r\nhttp://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
+            body += "\r\n\r\nAndroid:";
+            body += "\r\nhttps://maps.google.com/maps?q=loc:" + latitude + "," + longitude + "&z=17";
+            body += "\r\n\r\nWindows Phone: ";
+            body += "easybike://to/?lt=" + latitude + "&ln=" + longitude;
             body += "\r\n\r\n\"EasyBike\" is available on Android and Windows Phone.";
-            body += "market://details?id=" + PackageName;
+
+            //body += "market://details?id=" + PackageName;
 
             return body;
         }
