@@ -3,7 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="16dp"
     android:paddingTop="35dp"
     android:paddingBottom="5dp"
     android:gravity="bottom"
@@ -13,20 +12,22 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="15sp"
-        android:paddingBottom="15sp">
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="35sp"
-            android:minHeight="35sp"
-            android:paddingRight="5sp"
+            android:minWidth="45dp"
+            android:minHeight="45dp"
+            android:paddingRight="19dp"
+            android:paddingLeft="10dp"
             android:src="@drawable/ic_launcher" />
         <TextView
             android:text="@string/app_name"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#ffffff"
             android:textSize="25sp" />
     </LinearLayout>
 </LinearLayout>

@@ -25,7 +25,7 @@ namespace EasyBike.Droid.Views
             {
                 Title = "Download a city",
                 Text = "Tap on \"download cities\" on the menu panel",
-                ImageResource = Resource.Drawable.cyclemode,
+                ImageResource = Resource.Drawable.download1,
             });
             _items.Add(new TutorialItem()
             {
@@ -34,13 +34,13 @@ namespace EasyBike.Droid.Views
                 Details = "It will download the stations list from the selected service." +
              " If there is some new stations provided by the public bike service, you can refresh that list by removing and downloading again the city." +
              " This list will get bigger on future updates",
-                ImageResource = Resource.Drawable.cyclemode,
+                ImageResource = Resource.Drawable.download2,
             });
             _items.Add(new TutorialItem()
             {
                 Title = "Switch between bike and station mode",
                 Text = "Tap on the bike icon or (P) icon on the bottom right corner.",
-                ImageResource = Resource.Drawable.cyclemode,
+                ImageResource = Resource.Drawable.switchmode,
             });
             _items.Add(new TutorialItem()
             {
@@ -51,7 +51,7 @@ namespace EasyBike.Droid.Views
                 Details = "If you tapped once on the location button, it will change the location button for the compass button." +
                 "Dragging the map when you are in location or compass mode will deactivate the location or compass mode." +
                 "To reset the north of the map just click on the top right corner button that appear if the north of the map have changed.",
-                ImageResource = Resource.Drawable.cyclemode,
+                ImageResource = Resource.Drawable.compassmode,
             });
             _items.Add(new TutorialItem()
             {
@@ -67,10 +67,10 @@ namespace EasyBike.Droid.Views
             _items.Add(new TutorialItem()
             {
                 Title = "Add some favorites",
-                Text = "Hold on a station or on a searched location to show up a command panel, then press \"Add to favorites\".",
+                Text = "Tao on a station or on a searched location to show up an action bar, then press the star icon.",
                 Details = "It will store the location of the point. You can name it as you like and manage" +
-                            " favorits from the dedicated page.",
-                ImageResource = Resource.Drawable.cyclemode,
+                            " favorites from the dedicated page.",
+                ImageResource = Resource.Drawable.addFavorite,
             });
             _items.Add(new TutorialItem()
             {
@@ -91,11 +91,7 @@ namespace EasyBike.Droid.Views
             {
                 Title = "Share a location",
                 Text = "By holding on a bike station or tapping on a searched location, you can share that position by mail or text.",
-                ImageResource = Resource.Drawable.cyclemode,
-            });
-            _items.Add(new TutorialItem()
-            {
-                ImageResource = Resource.Drawable.cyclemode,
+                ImageResource = Resource.Drawable.shareLocation,
             });
             _items.Add(new TutorialItem()
             {

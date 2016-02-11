@@ -12,6 +12,7 @@ using Android.Widget;
 using Android.Views.Animations;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Android.Webkit;
 
 namespace EasyBike.Droid
 {
@@ -37,6 +38,8 @@ namespace EasyBike.Droid
             _favorites = await _favoritesService.GetFavoritesAsync();
 
             favoritesListView = FindViewById<RecyclerView>(Resource.Id.FavoritesList);
+
+            var WebViewTest = FindViewById<WebView>(Resource.Id.WebViewTest);
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
             favoritesListView.HasFixedSize = true;

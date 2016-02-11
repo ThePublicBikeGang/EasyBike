@@ -36,7 +36,7 @@ namespace EasyBike.Droid.Helpers
             holder.Text.Text = item.Text;
             holder.Image.SetImageResource(item.ImageResource);
             holder.Image.RequestLayout();
-            holder.Details.Text = item.Text;
+            holder.Details.Text = item.Details;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
