@@ -6,11 +6,11 @@ using Android.App;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle ("EasyBike")]
-[assembly: AssemblyDescription ("EasyBike is a mobile app that provides public bikes availabily around the world.")]
+[assembly: AssemblyDescription ("EasyBike is a mobile app that provides public bikes availability around the world.")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("The Public Bike Gang")]
 [assembly: AssemblyProduct ("EasyBike")]
-[assembly: AssemblyCopyright (@"EasyBike is a mobile app that provides public bikes availabily around the world.
+[assembly: AssemblyCopyright (@"EasyBike is a mobile app that provides public bikes availability around the world.
     Copyright(C) 2016 Marc Magnin
 
     This program is free software: you can redistribute it and / or modify
