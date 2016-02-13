@@ -39,7 +39,6 @@ namespace EasyBike.Droid
 
             favoritesListView = FindViewById<RecyclerView>(Resource.Id.FavoritesList);
 
-            var WebViewTest = FindViewById<WebView>(Resource.Id.WebViewTest);
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
             favoritesListView.HasFixedSize = true;

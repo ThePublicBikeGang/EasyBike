@@ -22,11 +22,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/FavoriteItemName"
+                android:textColor="#FAFAFA"
                 android:textSize="24sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/FavoriteItemAddress"
+                android:textColor="#FAFAFA"
                 android:alpha="0.4"
                 android:singleLine="true"
                 android:textSize="16sp" />

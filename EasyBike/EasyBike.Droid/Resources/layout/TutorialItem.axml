@@ -3,17 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/FavoriteItemTemplateRoot"
-    android:background="?android:attr/selectableItemBackground"
-    android:focusable="true"
-    android:clickable="true"
-    android:padding="30dp"
-    android:minWidth="25px">
+    android:focusable="false"
+    android:clickable="false"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -22,11 +19,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/TutorialTitle"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:textColor="#FAFAFA"
+                android:paddingTop="30dp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/TutorialText"
+                android:textColor="#FAFAFA"
                 android:textSize="18sp" />
             <ImageView
                 android:layout_width="match_parent"
@@ -36,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/TutorialDetails"
+                android:textColor="#FAFAFA"
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
