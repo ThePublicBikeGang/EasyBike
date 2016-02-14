@@ -1,12 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
@@ -17,10 +9,9 @@ namespace EasyBike.Droid.Helpers
     public class AboutListAdapter : RecyclerView.Adapter
     {
         private readonly List<StoreLink> _items;
-        readonly Activity _context;
+        readonly AboutActivity _context;
 
-
-        public AboutListAdapter(Activity newContext, List<StoreLink> items) : base()
+        public AboutListAdapter(AboutActivity newContext, List<StoreLink> items) : base()
         {
             _context = newContext;
             _items = items;
@@ -56,12 +47,30 @@ namespace EasyBike.Droid.Helpers
             {
                 holder.Text.Visibility = ViewStates.Gone;
             }
+            holder.ItemView.SetOnClickListener(new ItemClickListener(_context, item));
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            var view = _context.LayoutInflater.Inflate(Resource.Layout.SkareLinkItem, null);
+            var view = _context.LayoutInflater.Inflate(Resource.Layout.ShareLinkItem, null);
+
             return new ShareLinkViewHolder(view);
+        }
+    }
+
+    public class ItemClickListener : Java.Lang.Object, View.IOnClickListener
+    {
+        private StoreLink _item;
+        private AboutActivity _context;
+        public ItemClickListener(AboutActivity context, StoreLink item)
+        {
+            _context = context;
+            _item = item;
+        }
+
+        public void OnClick(View v)
+        {
+            _context.List_Click(_item);
         }
     }
 

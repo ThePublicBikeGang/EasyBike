@@ -15,6 +15,7 @@
             android:id="@+id/ShareLinkImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:minWidth="35sp"
             android:minHeight="35sp"
             android:paddingRight="5sp"
@@ -22,6 +23,7 @@
         <TextView
             android:id="@+id/ShareLinkText"
             android:text="@string/aboutWinPhone"
+            android:autoLink="all"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

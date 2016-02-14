@@ -94,7 +94,7 @@ namespace EasyBike.Droid.Views
                 Text = "Press the direction button, it will start google map with the locations sets.",
                 Details = "You can then get your" +
                 " headphones on, lock your phone, put it in your pocket and listen to the directions" +
-                " from google map :) (take care, it's usally a car itinerary so you might need to tweak it a bit)",
+                " from google map :)",
                 ImageResource = Resource.Drawable.getDirections,
             });
             

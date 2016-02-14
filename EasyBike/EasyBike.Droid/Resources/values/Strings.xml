@@ -23,9 +23,10 @@
         About Activity 
         -->
     <string name="aboutTitle">About EasyBike</string>
-    <string name="aboutPresentation1">Created by <a href="https://github.com/MarcMagnin">Marc Magnin</a> and <a href="https://github.com/EtienneM">Étienne Michon</a> on behalf of the <a href="https://github.com/ThePublicBikeGang">Public Bike Gang</a>.
+    <string name="aboutPresentation1">EasyBike is an open source and cross platform project for public bikes.
+      \r\nCreated by <a href="https://github.com/MarcMagnin">Marc Magnin</a> and <a href="https://github.com/EtienneM">Étienne Michon</a> on behalf of the <a href="https://github.com/ThePublicBikeGang">Public Bike Gang</a>.
     
-    \r\n\r\nAny suggestion?
+      \r\nAny suggestion?
       \r\nPlease contact us at <a href="mailto:easybike@outlook.fr">easybike@outlook.fr</a>.
       \r\nTwitter: <a href="https://twitter.com/easybike_">https://twitter.com/easybike_</a>
     
@@ -37,7 +38,7 @@
     <string name="aboutReviewRate">Give a review</string>
     <string name="aboutReview2">❤ You Like it?</string>
     <string name="aboutReview3">This app will never get any ads. Economy must change and advertising is not a solution. If you like this app and think that the hard work is worth it, feel free to make a <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=marc%2emagnin%40gmail%2ecom&amp;lc=FR&amp;item_name=Marc%20Magnin&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted">donation</a>.</string>
-    <string name="aboutWinPhone">This app is also available on <a href="https://www.microsoft.com/store/apps/9wzdncrdkng9">Windows Phone</a>. Give it a try!</string>
+    <string name="aboutWinPhone">This app is also available on <a href="https://www.microsoft.com/store/apps/9wzdncrdkng9">Windows Phone</a>. Click here to send the link to your friends!</string>
     <string name="aboutCopyright1">EasyBike do not collect any personal informations belonging to its users.
       \r\nCountry flags copyright:
       \r\nFree Country Flags (<a href="http://www.free-country-flags.com/">Gang of the Coconuts</a>)/<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a>.

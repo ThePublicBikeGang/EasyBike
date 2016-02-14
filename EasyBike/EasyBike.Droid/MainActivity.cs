@@ -48,6 +48,8 @@ using Android.Content.Res;
 using Android.Support.V4.View;
 using Com.Readystatesoftware.Systembartint;
 using Android.Runtime;
+using System.Text.RegularExpressions;
+using GalaSoft.MvvmLight.Views;
 
 namespace EasyBike.Droid
 {
@@ -60,11 +62,8 @@ namespace EasyBike.Droid
     // https://developers.google.com/maps/documentation/android-api/location#runtime-permission
 
     //http://www.sitepoint.com/material-design-android-design-support-library/
-    [Activity(MainLauncher = true)]
-    [IntentFilter(new[] { Intent.ActionView },
-        Categories = new[] { Intent.CategoryDefault, "easybike.cat" })]
-    [IntentFilter(new[] { Intent.ActionView },
-        Categories = new[] { Intent.CategoryBrowsable, "easybike.cat" })]
+    [Activity(Label = "EasyBike", MainLauncher = true, LaunchMode = Android.Content.PM.LaunchMode.SingleTop, ScreenOrientation =Android.Content.PM.ScreenOrientation.Portrait)]
+    [IntentFilter(new[] { Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable }, DataScheme ="http", DataHost ="easybike")]
     public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private FragmentTransaction _fragTx;
@@ -236,7 +235,7 @@ namespace EasyBike.Droid
 
             public void OnDrawerSlide(View drawerView, float slideOffset)
             {
-                if(_context.ActionMode != null)
+                if (_context.ActionMode != null)
                 {
                     _context.ActionMode.Finish();
                 }
@@ -254,6 +253,52 @@ namespace EasyBike.Droid
             Log.Debug("MyActivity", "Begin OnCreate");
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
+
+            if(Intent.Data != null)
+            {
+                // Read data from incoming intents
+                var test = Intent.Data.ToString();
+
+                double lat = 0, lon = 0;
+                try
+                {
+
+                    string pattern = @"(?<=lt=)-?[0-9]\d*\.*\,*\d+";
+                    if (Regex.IsMatch(test, pattern))
+                    {
+                        var regex = new Regex(pattern).Match(test);
+                        if (regex != null && regex.Captures.Count > 0)
+                        {
+                            lat = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+                        }
+                    }
+                    pattern = @"(?<=ln=)-?[0-9]\d*\.*\,*\d+";
+                    if (Regex.IsMatch(test, pattern))
+                    {
+                        var regex = new Regex(pattern).Match(test);
+                        if (regex != null && regex.Captures.Count > 0)
+                        {
+                            lon = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+                        }
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    SimpleIoc.Default.GetInstance<IDialogService>().ShowMessage("Unable to find the passed location :(",
+                                              "");
+                 
+                }
+                if (lat != 0 && lon != 0)
+                {
+                    //p.SetViewToLocation(lat, lon);
+                }
+            }
+            
+
+
+
+
 
             var tintManager = new SystemBarTintManager(this);
             // set the transparent color of the status bar, 30% darker
@@ -553,7 +598,7 @@ namespace EasyBike.Droid
             {
                 AddDirections();
             });
-            
+
             if (_stickToUserLocation)
             {
                 RunOnUiThread(() =>
@@ -718,8 +763,8 @@ namespace EasyBike.Droid
                 body += _lastResolvedAddress + "\r\n";
             }
 
-            //body += "\r\nAndroid: ";
-            //body += "\r\nhttp://easybike.com:";///?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\nAndroid: ";
+            body += "\r\nhttp://easybike?lt=" + latitude + "&ln=" + longitude;
             body += "\r\n\r\nIPhone: ";
             body += "\r\nhttp://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
             body += "\r\n\r\nAndroid:";

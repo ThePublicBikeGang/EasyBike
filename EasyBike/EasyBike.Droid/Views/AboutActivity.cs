@@ -9,6 +9,7 @@ using Java.Lang;
 using System.Collections.Generic;
 using Android.Support.V7.Widget;
 using EasyBike.Droid.Helpers;
+using Android.Content;
 
 namespace EasyBike.Droid.Views
 {
@@ -45,12 +46,19 @@ namespace EasyBike.Droid.Views
             layoutManager.Orientation = (int)Orientation.Vertical;
             list.SetLayoutManager(layoutManager);
             list.SetAdapter(new AboutListAdapter(this, links));
-           // list.Click += List_Click;
         }
 
-        private void List_Click(object sender, EventArgs e)
+        public void List_Click(StoreLink item)
         {
-           
+            var shareIntent = new Intent(Intent.ActionSend);
+            var text = string.Empty;
+            if (item.Text.Contains("Windows"))
+            {
+                text = "Hey! Check out EasyBike!\r\nWindows 10: https://www.microsoft.com/store/apps/9wzdncrdkng9 \r\nWindows 8.1: http://windowsphone.com/s?appid=191ef96d-e185-47d1-80a3-377ebfefa325";
+            }
+            shareIntent.PutExtra(Intent.ExtraText, text);
+            shareIntent.SetType("text/plain");
+            StartActivity(Intent.CreateChooser(shareIntent, Resources.GetString(Resource.String.share)));
         }
     }
     public class StoreLink
@@ -59,5 +67,8 @@ namespace EasyBike.Droid.Views
         public int ImageRessourceId { get; set; }
     }
 
-  
+
+
+
+
 }

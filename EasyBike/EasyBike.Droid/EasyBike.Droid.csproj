@@ -353,7 +353,7 @@
     <AndroidResource Include="Resources\layout\TutorialItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\SkareLinkItem.axml">
+    <AndroidResource Include="Resources\layout\ShareLinkItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

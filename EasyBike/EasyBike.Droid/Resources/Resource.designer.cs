@@ -2852,7 +2852,7 @@ namespace EasyBike.Droid
 			public const int select_dialog_singlechoice_material = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int SkareLinkItem = 2130903098;
+			public const int ShareLinkItem = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
 			public const int support_simple_spinner_dropdown_item = 2130903099;

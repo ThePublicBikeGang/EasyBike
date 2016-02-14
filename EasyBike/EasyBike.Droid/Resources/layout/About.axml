@@ -101,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:scrollbars="vertical"
                     android:clickable="true"
+                    android:layout_marginTop="10dp"
                     android:layout_above="@+id/Separator"
                     android:layout_alignParentTop="true"
                     android:minHeight="80dp" />
@@ -110,9 +111,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textCopyright1"
-                    android:layout_marginTop="20sp"
+                    android:layout_marginTop="20dp"
                     android:textColorLink="?attr/colorPrimary"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

@@ -463,6 +463,43 @@ namespace EasyBike.WinPhone
             this.navigationHelper.OnNavigatedTo(e);
             if (DateTime.Now.Hour > 20 || DateTime.Now.Hour < 5)
                 MapCtrl.ColorScheme = MapColorScheme.Dark;
+
+
+            //double lat = 0, lon = 0;
+            //try
+            //{
+
+            //    string pattern = @"(?<=lt=)-?[0-9]\d*\.*\,*\d+";
+            //    if (Regex.IsMatch(protocolArgs.Uri.Query, pattern))
+            //    {
+            //        var regex = new Regex(pattern).Match(protocolArgs.Uri.Query);
+            //        if (regex != null && regex.Captures.Count > 0)
+            //        {
+            //            lat = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+            //        }
+            //    }
+            //    pattern = @"(?<=ln=)-?[0-9]\d*\.*\,*\d+";
+            //    if (Regex.IsMatch(protocolArgs.Uri.Query, pattern))
+            //    {
+            //        var regex = new Regex(pattern).Match(protocolArgs.Uri.Query);
+            //        if (regex != null && regex.Captures.Count > 0)
+            //        {
+            //            lon = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+            //        }
+            //    }
+
+            //}
+            //catch (Exception e)
+            //{
+            //    var dialog = new MessageDialog("Unable to find the passed location :(");
+            //    dialog.ShowAsync();
+            //}
+
+            //if (lat != 0 && lon != 0)
+            //{
+            //    p.SetViewToLocation(lat, lon);
+            //}
+
         }
 
 
