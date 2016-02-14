@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/selectableItemBackground"
+    android:focusable="true"
+    android:clickable="true">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp">
+        <ImageView
+            android:id="@+id/ShareLinkImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="35sp"
+            android:minHeight="35sp"
+            android:paddingRight="5sp"
+            android:src="@drawable/ic_wpstore" />
+        <TextView
+            android:id="@+id/ShareLinkText"
+            android:text="@string/aboutWinPhone"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColorLink="?attr/colorPrimary" />
+    </LinearLayout>
+</RelativeLayout>

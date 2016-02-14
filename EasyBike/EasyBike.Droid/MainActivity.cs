@@ -549,12 +549,16 @@ namespace EasyBike.Droid
         private void Locator_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
         {
             _lastUserLocation = new LatLng(e.Position.Latitude, e.Position.Longitude);
+            RunOnUiThread(() =>
+            {
+                AddDirections();
+            });
+            
             if (_stickToUserLocation)
             {
                 RunOnUiThread(() =>
                 {
                     _map.MoveCamera(CameraUpdateFactory.NewLatLng(_lastUserLocation));
-                    AddDirections();
                 });
             }
         }

@@ -59,6 +59,18 @@ namespace EasyBike.Droid.Views
                 "To reset the north of the map just click on the top right corner button that appear if the north of the map have changed.",
                 ImageResource = Resource.Drawable.compassmode2,
             });
+            _items.Add(new TutorialItem()
+            {
+                Title = "Search for an address",
+                Text = "Start typing what you are looking for in the search bar.",
+                ImageResource = Resource.Drawable.search,
+            });
+            _items.Add(new TutorialItem()
+            {
+                Title = "Get the address from a location",
+                Text = "Hold on the map. It will shows up the found address.",
+                ImageResource = Resource.Drawable.getaddress,
+            });
 
             _items.Add(new TutorialItem()
             {
@@ -85,21 +97,7 @@ namespace EasyBike.Droid.Views
                 " from google map :) (take care, it's usally a car itinerary so you might need to tweak it a bit)",
                 ImageResource = Resource.Drawable.getDirections,
             });
-            _items.Add(new TutorialItem()
-            {
-                Title = "Get the address from a location",
-                Text = "Hold on the map. It will shows up the found address.",
-                Details = "",
-                ImageResource = Resource.Drawable.getaddress,
-            });
-            _items.Add(new TutorialItem()
-            {
-                Title = "Search for an address",
-                Text = "Start typing what you are looking for in the search bar.",
-                Details = "",
-                ImageResource = Resource.Drawable.search,
-            });
-
+            
             _items.Add(new TutorialItem()
             {
                 Title = "Share a location",
@@ -108,7 +106,6 @@ namespace EasyBike.Droid.Views
             });
             _items.Add(new TutorialItem()
             {
-                Title = "",
                 Text = "The message will automatically contains the address if it has been resolved." +
                 " It will also contains direct link to the EasyBike app, IPhone/IPad native map and Google map.",
             });
