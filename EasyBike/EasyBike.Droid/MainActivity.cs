@@ -68,7 +68,7 @@ namespace EasyBike.Droid
     [Activity(Label = "EasyBike", MainLauncher = true,
         LaunchMode = Android.Content.PM.LaunchMode.SingleTask,
         ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
-    [IntentFilter(new[] { Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable }, DataScheme = "http", DataHost = "easybike")]
+    [IntentFilter(new[] { Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable }, DataScheme = "http", DataHost = "easybike.com")]
     public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private FragmentTransaction _fragTx;
@@ -280,15 +280,15 @@ namespace EasyBike.Droid
                             _parameterLon = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
                         }
                     }
-                    pattern = @"(?<=text=)-?.*";
-                    if (Regex.IsMatch(intentDataString, pattern))
-                    {
-                        var regex = new Regex(pattern).Match(intentDataString);
-                        if (regex != null && regex.Captures.Count > 0)
-                        {
-                            _parameterText = (regex.Captures[0].Value).Replace("%20", " ");
-                        }
-                    }
+                    //pattern = @"(?<=text=)-?.*";
+                    //if (Regex.IsMatch(intentDataString, pattern))
+                    //{
+                    //    var regex = new Regex(pattern).Match(intentDataString);
+                    //    if (regex != null && regex.Captures.Count > 0)
+                    //    {
+                    //        _parameterText = (regex.Captures[0].Value).Replace("%20", " ");
+                    //    }
+                    //}
                 }
                 catch (Exception e)
                 {
@@ -310,7 +310,7 @@ namespace EasyBike.Droid
         // Parameters passed as Intent argument to the application
         private double _parameterLat;
         private double _parameterLon;
-        private string _parameterText;
+        //private string _parameterText;
         protected override void OnCreate(Bundle bundle)
         {
             Log.Debug("MyActivity", "Begin OnCreate");
@@ -724,7 +724,7 @@ namespace EasyBike.Droid
                                         Longitude = currentMarkerPosition.Longitude,
                                         Name = favoriteName,
                                         FromStation = false,
-                                        Address = _lastResolvedAddress
+                                        Address = _lastResolvedAddress + (!string.IsNullOrWhiteSpace(_lastResolvedLocality) ? ", " + _lastResolvedLocality : "")
                                     });
                                 }
                                 // add station as favorite
@@ -736,7 +736,7 @@ namespace EasyBike.Droid
                                         Longitude = currentMarkerPosition.Longitude,
                                         Name = favoriteName,
                                         FromStation = true,
-                                        Address = _lastResolvedAddress
+                                        Address = _lastResolvedAddress + (!string.IsNullOrWhiteSpace(_lastResolvedLocality) ? ", " + _lastResolvedLocality : "")
                                     });
                                 }
 
@@ -780,29 +780,39 @@ namespace EasyBike.Droid
             string body = "Check out this location :\r\n";
             if (!string.IsNullOrWhiteSpace(_lastResolvedAddress))
             {
-                body += _lastResolvedAddress + "\r\n";
+                body += _lastResolvedAddress + ", " + _lastResolvedLocality + "\r\n";
             }
-            var currentUsername = GetAndroidUsername();
-            var text = "";
-            if (!string.IsNullOrWhiteSpace(currentUsername))
-            {
-                text += "Shared location by " + currentUsername;
-            }
-            if (!string.IsNullOrWhiteSpace(_lastResolvedAddress))
-            {
-                text += ": " + _lastResolvedAddress;
-            }
-            text = text.Replace(" ", "%20");
-            body += "\r\nAndroid: ";
-            body += "\r\nhttp://easybike?lt=" + latitude + "&ln=" + longitude + "&text=" + text;
+            //var currentUsername = GetAndroidUsername();
+            //var text = "";
+            //if (!string.IsNullOrWhiteSpace(currentUsername))
+            //{
+            //    text += "Shared location by " + currentUsername;
+            //}
+            //if (!string.IsNullOrWhiteSpace(_lastResolvedAddress))
+            //{
+            //    text += ": " + _lastResolvedAddress;
+            //}
+            //text = text.Replace(" ", "%20");
+            body += "\r\nUsing EasyBike? Click on the above links:";
+            body += "\r\nAndroid:";
+            body += "\r\nhttp://easybike.com/?lt=" + latitude + "&ln=" + longitude;
             body += "\r\n\r\nIPhone: ";
             body += "\r\nhttp://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
-            body += "\r\n\r\nAndroid:";
-            body += "\r\nhttps://maps.google.com/maps?q=loc:" + latitude + "," + longitude + "&z=17";
             body += "\r\n\r\nWindows Phone: ";
-            body += "easybike://to/?lt=" + latitude + "&ln=" + longitude;
-            body += "\r\n\r\n\"EasyBike\" is available on Android and Windows Phone.";
+            body += "\r\neasybike://to/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\n\r\nOtherwise:";
+            body += "\r\nhttps://maps.google.com/maps?q=loc:" + latitude + "," + longitude + "&z=17";
 
+            body += "\r\n\r\nDon't have EasyBike? Get it now!";
+            body += "\r\nAndroid:";
+            body += "\r\nhttp://easybike.com/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\n\r\nIPhone: ";
+            body += "\r\nComing soon...";
+            body += "\r\n\r\nWindows Phone 10: ";
+            body += "\r\nhttps://www.microsoft.com/store/apps/9wzdncrdkng9";
+            body += "\r\n\r\nWindows Phone 8.1: ";
+            body += "\r\nhttp://windowsphone.com/s?appid=191ef96d-e185-47d1-80a3-377ebfefa325";
+            body += "easybike://to/?lt=" + latitude + "&ln=" + longitude;
             //body += "market://details?id=" + PackageName;
 
             return body;
@@ -1338,72 +1348,56 @@ namespace EasyBike.Droid
         {
             var position = new LatLng(_parameterLat, _parameterLon);
             // initiate the map on a location passed as parameter 
-            AddPlaceMarker(position, _parameterText, FormatLatLng(position));
+            AddPlaceMarker(position, null, FormatLatLng(position));
             _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
         }
 
-        private string GetAndroidUsername()
-        {
-            AccountManager manager = AccountManager.Get(this);
-            var emails = manager.GetAccountsByType("com.google").Select(t => t.Name).ToList();
-            if (emails.Count > 0 && emails[0] != null)
-            {
-                var chunks = emails[0].Split('@');
-                if (chunks.Length > 1)
-                {
-                    return chunks[0];
-                }
-            }
-            return string.Empty;
-        }
+        //private string GetAndroidUsername()
+        //{
+        //    AccountManager manager = AccountManager.Get(this);
+        //    var emails = manager.GetAccountsByType("com.google").Select(t => t.Name).ToList();
+        //    if (emails.Count > 0 && emails[0] != null)
+        //    {
+        //        var chunks = emails[0].Split('@');
+        //        if (chunks.Length > 1)
+        //        {
+        //            return chunks[0];
+        //        }
+        //    }
+        //    return string.Empty;
+        //}
 
         private string _lastResolvedAddress;
+        private string _lastResolvedLocality;
         private TaskCompletionSource<AddressesFromLocationDTO> addressTCS = new TaskCompletionSource<AddressesFromLocationDTO>();
         private Task<AddressesFromLocationDTO> GetAddressAsync()
         {
             _lastResolvedAddress = string.Empty;
-            try
+            _lastResolvedLocality = string.Empty;
+            if (addressTCS != null)
             {
-                if (addressTCS != null)
+                if (!addressTCS.Task.IsCompleted)
+                    addressTCS.TrySetCanceled();
+                addressTCS = new TaskCompletionSource<AddressesFromLocationDTO>();
+            }
+            // Convert latitude and longitude to an address (GeoCoder)
+            Task.Run(async () =>
+            {
+                try
                 {
-                    try
+                    var addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
+                    addressTCS.TrySetResult(new AddressesFromLocationDTO()
                     {
-                        addressTCS.SetCanceled();
-                    }
-                    catch { }
-                    addressTCS = new TaskCompletionSource<AddressesFromLocationDTO>();
+                        Addresses = addresses,
+                        Location = FormatLatLng(currentMarkerPosition)
+                    });
                 }
-                // Convert latitude and longitude to an address (GeoCoder)
-                Task.Run(async () =>
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        var addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
-                        addressTCS.SetResult(new AddressesFromLocationDTO()
-                        {
-                            Addresses = addresses,
-                            Location = FormatLatLng(currentMarkerPosition)
-                        });
-                    }
-                    catch  (IOException ex)
-                    {
-                        Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
-                        addressTCS.SetException(ex);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
-                        addressTCS.SetException(ex);
-                    }
-                });
-            }
-            catch (Exception ex)
-            {
-                Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
-
-
-                addressTCS.SetException(ex);
-            }
+                    Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
+                    addressTCS.TrySetException(ex);
+                }
+            });
             return addressTCS.Task;
         }
 
@@ -1449,12 +1443,13 @@ namespace EasyBike.Droid
             {
                 var locationDetails = await GetAddressAsync();
                 _lastResolvedAddress = locationDetails.Addresses[0].GetAddressLine(0);
+                _lastResolvedLocality = locationDetails.Addresses[0].Locality;
                 if (longClickMarker != null)
                 {
                     if (locationDetails.Addresses.Any())
                     {
-                        longClickMarker.Title = locationDetails.Addresses[0].GetAddressLine(0);
-                        longClickMarker.Snippet = $"{locationDetails.Addresses[0].Locality} {locationDetails.Location}";
+                        longClickMarker.Title = _lastResolvedAddress;
+                        longClickMarker.Snippet = $"{_lastResolvedLocality} {locationDetails.Location}";
                     }
                     else
                     {

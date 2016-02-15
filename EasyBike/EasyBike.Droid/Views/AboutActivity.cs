@@ -54,7 +54,7 @@ namespace EasyBike.Droid.Views
             var text = string.Empty;
             if (item.Text.Contains("Windows"))
             {
-                text = "Hey! Check out EasyBike!\r\nWindows 10: https://www.microsoft.com/store/apps/9wzdncrdkng9 \r\nWindows 8.1: http://windowsphone.com/s?appid=191ef96d-e185-47d1-80a3-377ebfefa325";
+                text = "Hey! Check out EasyBike!\r\nWindows Phone 10: https://www.microsoft.com/store/apps/9wzdncrdkng9 \r\nWindows Phone 8.1: http://windowsphone.com/s?appid=191ef96d-e185-47d1-80a3-377ebfefa325";
             }
             shareIntent.PutExtra(Intent.ExtraText, text);
             shareIntent.SetType("text/plain");
