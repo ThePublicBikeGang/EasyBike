@@ -379,6 +379,7 @@ namespace EasyBike.Droid
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
             _locationButton.Click += LocationButton_Click;
             UnStickUserLocation();
+            _locationButton.Background.SetAlpha(150);
             AutoCompleteSearchPlaceTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autoCompleteSearchPlaceTextView);
             AutoCompleteSearchPlaceTextView.ItemClick += AutoCompleteSearchPlaceTextView_ItemClick;
             googlePlacesAutocompleteAdapter = new GooglePlacesAutocompleteAdapter(this, Android.Resource.Layout.SimpleDropDownItem1Line);
@@ -541,8 +542,14 @@ namespace EasyBike.Droid
             {
                 _compassEventcounter = 0;
                 _locationButton.SetImageBitmap(_iconCompass);
+
+                if (CompassChangedStream == null)
+                {
+                    CompassChangedStream = Observable.FromEventPattern<CompassChangedEventArgs>(CrossCompass.Current, "CompassChanged");
+                }
+
                 // first event, mimic google map app behavior
-                Observable.FromEventPattern<CompassChangedEventArgs>(CrossCompass.Current, "CompassChanged").Take(1).Subscribe(async compassChangedEventArgs =>
+                CompassChangedStream.Take(1).Subscribe(async compassChangedEventArgs =>
                 {
                     RunOnUiThread(() =>
                     {
@@ -559,31 +566,28 @@ namespace EasyBike.Droid
 
                 });
 
-                if (CompassChangedStream == null)
+                // Throttle doesn't work ?!!
+                // issue open: https://github.com/JarleySoft/Xamarin.Plugins/issues/7
+                CompassChangedStream.Where(c => _compassMode).Subscribe(compassChangedEventArgs =>
                 {
-                    CompassChangedStream = Observable.FromEventPattern<CompassChangedEventArgs>(CrossCompass.Current, "CompassChanged");
-                    // Throttle doesn't work ?!!
-                    CompassChangedStream.Where(c => _compassMode).Subscribe(compassChangedEventArgs =>
+                    // Skip some events
+                    if (_compassEventcounter % 5 == 0)
                     {
-                        // Skip some events
-                        if (_compassEventcounter % 5 == 0)
+                        if (Math.Abs(_prevHeading - compassChangedEventArgs.EventArgs.Heading) > 2)
                         {
-                            if (Math.Abs(_prevHeading - compassChangedEventArgs.EventArgs.Heading) > 2)
+                            RunOnUiThread(() =>
                             {
-                                RunOnUiThread(() =>
-                                {
-                                    _map.StopAnimation();
-                                    _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                                     _lastUserLocation == null ? _map.CameraPosition.Target : _lastUserLocation,
-                                    _map.CameraPosition.Zoom,
-                                     _map.CameraPosition.Tilt, (float)compassChangedEventArgs.EventArgs.Heading)), 300, null);
-                                });
-                                _prevHeading = compassChangedEventArgs.EventArgs.Heading;
-                            }
+                                _map.StopAnimation();
+                                _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
+                                 _lastUserLocation == null ? _map.CameraPosition.Target : _lastUserLocation,
+                                _map.CameraPosition.Zoom,
+                                 _map.CameraPosition.Tilt, (float)compassChangedEventArgs.EventArgs.Heading)), 300, null);
+                            });
+                            _prevHeading = compassChangedEventArgs.EventArgs.Heading;
                         }
-                        _compassEventcounter++;
-                    });
-                }
+                    }
+                    _compassEventcounter++;
+                });
                 CrossCompass.Current.Start();
             }
             else
@@ -697,7 +701,11 @@ namespace EasyBike.Droid
                 case Resource.Id.menu_route:
                     if (currentMarkerPosition != null)
                     {
-                        StartActivity(_createRouteIntent(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude));
+                        try
+                        {
+                            StartActivity(_createRouteIntent(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude));
+                        }
+                        catch { }
                     }
                     return true;
                 case Resource.Id.menu_favorite:
@@ -777,7 +785,7 @@ namespace EasyBike.Droid
         {
             var latitude = Math.Round(currentMarkerPosition.Latitude, 6).ToString(CultureInfo.InvariantCulture);
             var longitude = Math.Round(currentMarkerPosition.Longitude, 6).ToString(CultureInfo.InvariantCulture);
-            string body = "Check out this location :\r\n";
+            string body = "Check out this location:\r\n";
             if (!string.IsNullOrWhiteSpace(_lastResolvedAddress))
             {
                 body += _lastResolvedAddress + ", " + _lastResolvedLocality + "\r\n";
@@ -1046,8 +1054,11 @@ namespace EasyBike.Droid
                         PolylineOptions lineOptions = new PolylineOptions();
                         lineOptions = lineOptions.InvokeColor(Resources.GetColor(Resource.Color.accent).ToArgb());
                         lineOptions = lineOptions.InvokeWidth(15);
+
                         if (directions.routes.FirstOrDefault() != null)
                         {
+                            var duration = directions.routes.FirstOrDefault().legs.FirstOrDefault().duration;
+                            var distance = directions.routes.FirstOrDefault().legs.FirstOrDefault().distance;
                             var points = MapHelper.DecodePolyline(directions.routes.FirstOrDefault().overview_polyline.points).AsEnumerable();
                             foreach (var point in points)
                             {
@@ -1056,6 +1067,8 @@ namespace EasyBike.Droid
                             RunOnUiThread(() =>
                             {
                                 ClearPolyline();
+                                if (ActionMode != null)
+                                    ActionMode.Title = $"{distance.text}, {duration.text} ({(_settingsService.Settings.IsBikeMode ? "walking" : "cycling")})";
                                 _currentPolyline = _map.AddPolyline(lineOptions);
                             });
                         }
@@ -1444,7 +1457,7 @@ namespace EasyBike.Droid
                 var locationDetails = await GetAddressAsync();
                 _lastResolvedAddress = locationDetails.Addresses[0].GetAddressLine(0);
                 _lastResolvedLocality = locationDetails.Addresses[0].Locality;
-                if (longClickMarker != null)
+                if (longClickMarker != null && longClickMarker.Position.Latitude == currentMarkerPosition.Latitude && longClickMarker.Position.Longitude == currentMarkerPosition.Longitude)
                 {
                     if (locationDetails.Addresses.Any())
                     {

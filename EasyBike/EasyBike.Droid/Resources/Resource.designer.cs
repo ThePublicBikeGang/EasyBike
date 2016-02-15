@@ -2035,8 +2035,8 @@ namespace EasyBike.Droid
 			// aapt resource value: 0x7f020080
 			public const int menu = 2130837632;
 			
-			// aapt resource value: 0x7f02008b
-			public const int notification_template_icon_bg = 2130837643;
+			// aapt resource value: 0x7f02008c
+			public const int notification_template_icon_bg = 2130837644;
 			
 			// aapt resource value: 0x7f020081
 			public const int parkingIcon = 2130837633;
@@ -2048,25 +2048,28 @@ namespace EasyBike.Droid
 			public const int shareLocation = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int stationGreen = 2130837636;
+			public const int sharemessage = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int stationGrey = 2130837637;
+			public const int stationGreen = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int stationGreyAlpha = 2130837638;
+			public const int stationGrey = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int stationOrange = 2130837639;
+			public const int stationGreyAlpha = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int stationRed = 2130837640;
+			public const int stationOrange = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int switchmode = 2130837641;
+			public const int stationRed = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int walkmode = 2130837642;
+			public const int switchmode = 2130837642;
+			
+			// aapt resource value: 0x7f02008b
+			public const int walkmode = 2130837643;
 			
 			static Drawable()
 			{

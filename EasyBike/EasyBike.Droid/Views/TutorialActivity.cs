@@ -107,7 +107,8 @@ namespace EasyBike.Droid.Views
             _items.Add(new TutorialItem()
             {
                 Text = "The message will automatically contains the address if it has been resolved." +
-                " It will also contains direct link to the EasyBike app, IPhone/IPad native map and Google map.",
+                " It will also contains direct links to the EasyBike app, IPhone/IPad native map and Google map.",
+                ImageResource = Resource.Drawable.sharemessage,
             });
           
             _tutorialListView = FindViewById<RecyclerView>(Resource.Id.TutorialList);

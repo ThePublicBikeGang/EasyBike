@@ -311,7 +311,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
     <AndroidResource Include="Resources\values-fr\Strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -658,5 +657,8 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_wpstore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\sharemessage.jpg" />
   </ItemGroup>
 </Project>
