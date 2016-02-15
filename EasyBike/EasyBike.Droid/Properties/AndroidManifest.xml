@@ -11,6 +11,8 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<!-- Google Maps for Android v2 needs this permission so that it may check the connection state as it must download data -->
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <!-- Used to get the username of the device when sharing location and present a more friendly message -->
+  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 	<!-- Permission to receive remote notifications from Google Play Services -->
 	<!-- Notice here that we have the package name of our application as a prefix on the permissions. -->
 	<uses-permission android:name="easyBike.Droid.permission.MAPS_RECEIVE" />

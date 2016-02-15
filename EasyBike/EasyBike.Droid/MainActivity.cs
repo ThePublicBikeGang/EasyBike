@@ -50,6 +50,9 @@ using Com.Readystatesoftware.Systembartint;
 using Android.Runtime;
 using System.Text.RegularExpressions;
 using GalaSoft.MvvmLight.Views;
+using Android.Accounts;
+using Android.Text;
+using Java.IO;
 
 namespace EasyBike.Droid
 {
@@ -62,8 +65,10 @@ namespace EasyBike.Droid
     // https://developers.google.com/maps/documentation/android-api/location#runtime-permission
 
     //http://www.sitepoint.com/material-design-android-design-support-library/
-    [Activity(Label = "EasyBike", MainLauncher = true, LaunchMode = Android.Content.PM.LaunchMode.SingleTop, ScreenOrientation =Android.Content.PM.ScreenOrientation.Portrait)]
-    [IntentFilter(new[] { Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable }, DataScheme ="http", DataHost ="easybike")]
+    [Activity(Label = "EasyBike", MainLauncher = true,
+        LaunchMode = Android.Content.PM.LaunchMode.SingleTask,
+        ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [IntentFilter(new[] { Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable }, DataScheme = "http", DataHost = "easybike")]
     public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private FragmentTransaction _fragTx;
@@ -246,59 +251,74 @@ namespace EasyBike.Droid
             }
         }
 
+
+        private void ParseIntent(Intent intent = null)
+        {
+            var intentData = intent == null ? Intent.Data : intent.Data;
+            if (intentData != null)
+            {
+                // Read data from incoming intents
+                var intentDataString = intentData.ToString();
+                try
+                {
+
+                    string pattern = @"(?<=lt=)-?[0-9]\d*\.*\,*\d+";
+                    if (Regex.IsMatch(intentDataString, pattern))
+                    {
+                        var regex = new Regex(pattern).Match(intentDataString);
+                        if (regex != null && regex.Captures.Count > 0)
+                        {
+                            _parameterLat = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+                        }
+                    }
+                    pattern = @"(?<=ln=)-?[0-9]\d*\.*\,*\d+";
+                    if (Regex.IsMatch(intentDataString, pattern))
+                    {
+                        var regex = new Regex(pattern).Match(intentDataString);
+                        if (regex != null && regex.Captures.Count > 0)
+                        {
+                            _parameterLon = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+                        }
+                    }
+                    pattern = @"(?<=text=)-?.*";
+                    if (Regex.IsMatch(intentDataString, pattern))
+                    {
+                        var regex = new Regex(pattern).Match(intentDataString);
+                        if (regex != null && regex.Captures.Count > 0)
+                        {
+                            _parameterText = (regex.Captures[0].Value).Replace("%20", " ");
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    SimpleIoc.Default.GetInstance<IDialogService>().ShowMessage("Unable to find the passed location :(", "");
+                }
+            }
+
+
+        }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            ParseIntent(intent);
+            ShowIntentLocation();
+        }
+
         private Bitmap _iconUserLocation;
         private Bitmap _iconCompass;
+        // Parameters passed as Intent argument to the application
+        private double _parameterLat;
+        private double _parameterLon;
+        private string _parameterText;
         protected override void OnCreate(Bundle bundle)
         {
             Log.Debug("MyActivity", "Begin OnCreate");
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
-            if(Intent.Data != null)
-            {
-                // Read data from incoming intents
-                var test = Intent.Data.ToString();
-
-                double lat = 0, lon = 0;
-                try
-                {
-
-                    string pattern = @"(?<=lt=)-?[0-9]\d*\.*\,*\d+";
-                    if (Regex.IsMatch(test, pattern))
-                    {
-                        var regex = new Regex(pattern).Match(test);
-                        if (regex != null && regex.Captures.Count > 0)
-                        {
-                            lat = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
-                        }
-                    }
-                    pattern = @"(?<=ln=)-?[0-9]\d*\.*\,*\d+";
-                    if (Regex.IsMatch(test, pattern))
-                    {
-                        var regex = new Regex(pattern).Match(test);
-                        if (regex != null && regex.Captures.Count > 0)
-                        {
-                            lon = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
-                        }
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    SimpleIoc.Default.GetInstance<IDialogService>().ShowMessage("Unable to find the passed location :(",
-                                              "");
-                 
-                }
-                if (lat != 0 && lon != 0)
-                {
-                    //p.SetViewToLocation(lat, lon);
-                }
-            }
-            
-
-
-
-
+            // parse params to show any shared location if it exists
+            ParseIntent();
 
             var tintManager = new SystemBarTintManager(this);
             // set the transparent color of the status bar, 30% darker
@@ -762,9 +782,19 @@ namespace EasyBike.Droid
             {
                 body += _lastResolvedAddress + "\r\n";
             }
-
+            var currentUsername = GetAndroidUsername();
+            var text = "";
+            if (!string.IsNullOrWhiteSpace(currentUsername))
+            {
+                text += "Shared location by " + currentUsername;
+            }
+            if (!string.IsNullOrWhiteSpace(_lastResolvedAddress))
+            {
+                text += ": " + _lastResolvedAddress;
+            }
+            text = text.Replace(" ", "%20");
             body += "\r\nAndroid: ";
-            body += "\r\nhttp://easybike?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\nhttp://easybike?lt=" + latitude + "&ln=" + longitude + "&text=" + text;
             body += "\r\n\r\nIPhone: ";
             body += "\r\nhttp://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
             body += "\r\n\r\nAndroid:";
@@ -1158,39 +1188,24 @@ namespace EasyBike.Droid
 
             // On long click, display the address on a info window
             Observable.FromEventPattern<GoogleMap.MapLongClickEventArgs>(_map, "MapLongClick")
-                .Select(e => Observable.FromAsync(token => Task.Run(async () =>
+                .Subscribe(e =>
                 {
                     AddPlaceMarker(e.EventArgs.Point, null, null);
+                    SelectItem(e.EventArgs.Point);
 
-                    IList<Address> addresses = new List<Address>();
-                    try
-                    {
-                        // Convert latitude and longitude to an address (GeoCoder)
-                        addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
-                    }
-                    return new AddressesFromLocationDTO { Addresses = addresses, Location = FormatLatLng(e.EventArgs.Point) };
+                    //IList<Address> addresses = new List<Address>();
+                    //try
+                    //{
+                    //    // Convert latitude and longitude to an address (GeoCoder)
+                    //    addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
+                    //}
+                    //return new AddressesFromLocationDTO { Addresses = addresses, Location = FormatLatLng(e.EventArgs.Point) };
 
-                }, token)))
-                .Switch()
-                .ObserveOn(SynchronizationContext.Current)
-            .Subscribe(x =>
-            {
-                if (x.Addresses.Any())
-                {
-                    longClickMarker.Title = x.Addresses[0].GetAddressLine(0);
-                    longClickMarker.Snippet = $"{x.Addresses[0].Locality} {x.Location}";
-                }
-                else
-                {
-                    longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
-                }
-                longClickMarker.ShowInfoWindow();
-            });
-
+                });
             _map.MapClick += (sender, e) =>
             {
                 if (longClickMarker != null)
@@ -1205,8 +1220,17 @@ namespace EasyBike.Droid
                 CloseKeyboard();
             };
 
-            // first init of last user location
-            GetPreviousLastUserLocation();
+
+            if (_parameterLat != 0 && _parameterLon != 0)
+            {
+                ShowIntentLocation();
+            }
+            else
+            {
+                // center the map on last user location
+                GetPreviousLastUserLocation();
+            }
+
             StartLocationTracking();
 
             // Initialize the behavior when long clicking somewhere on the map
@@ -1309,23 +1333,78 @@ namespace EasyBike.Droid
 
                 });
         }
+
+        private void ShowIntentLocation()
+        {
+            var position = new LatLng(_parameterLat, _parameterLon);
+            // initiate the map on a location passed as parameter 
+            AddPlaceMarker(position, _parameterText, FormatLatLng(position));
+            _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
+        }
+
+        private string GetAndroidUsername()
+        {
+            AccountManager manager = AccountManager.Get(this);
+            var emails = manager.GetAccountsByType("com.google").Select(t => t.Name).ToList();
+            if (emails.Count > 0 && emails[0] != null)
+            {
+                var chunks = emails[0].Split('@');
+                if (chunks.Length > 1)
+                {
+                    return chunks[0];
+                }
+            }
+            return string.Empty;
+        }
+
         private string _lastResolvedAddress;
-        private async void GetAddressAsync()
+        private TaskCompletionSource<AddressesFromLocationDTO> addressTCS = new TaskCompletionSource<AddressesFromLocationDTO>();
+        private Task<AddressesFromLocationDTO> GetAddressAsync()
         {
             _lastResolvedAddress = string.Empty;
             try
             {
-                // Convert latitude and longitude to an address (GeoCoder)
-                var addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
-                if (addresses.Any())
+                if (addressTCS != null)
                 {
-                    _lastResolvedAddress = addresses[0].GetAddressLine(0);
+                    try
+                    {
+                        addressTCS.SetCanceled();
+                    }
+                    catch { }
+                    addressTCS = new TaskCompletionSource<AddressesFromLocationDTO>();
                 }
+                // Convert latitude and longitude to an address (GeoCoder)
+                Task.Run(async () =>
+                {
+                    try
+                    {
+                        var addresses = await (new Geocoder(this).GetFromLocationAsync(currentMarkerPosition.Latitude, currentMarkerPosition.Longitude, 1));
+                        addressTCS.SetResult(new AddressesFromLocationDTO()
+                        {
+                            Addresses = addresses,
+                            Location = FormatLatLng(currentMarkerPosition)
+                        });
+                    }
+                    catch  (IOException ex)
+                    {
+                        Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
+                        addressTCS.SetException(ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
+                        addressTCS.SetException(ex);
+                    }
+                });
             }
             catch (Exception ex)
             {
                 Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
+
+
+                addressTCS.SetException(ex);
             }
+            return addressTCS.Task;
         }
 
         /// <summary>
@@ -1362,11 +1441,41 @@ namespace EasyBike.Droid
         /// <summary>
         /// set the marke as the current marker and add directions
         /// </summary>
-        private void SelectItem(LatLng position)
+        private async void SelectItem(LatLng position)
         {
             currentMarkerPosition = position;
-            GetAddressAsync();
             AddDirections();
+            try
+            {
+                var locationDetails = await GetAddressAsync();
+                _lastResolvedAddress = locationDetails.Addresses[0].GetAddressLine(0);
+                if (longClickMarker != null)
+                {
+                    if (locationDetails.Addresses.Any())
+                    {
+                        longClickMarker.Title = locationDetails.Addresses[0].GetAddressLine(0);
+                        longClickMarker.Snippet = $"{locationDetails.Addresses[0].Locality} {locationDetails.Location}";
+                    }
+                    else
+                    {
+                        longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
+                    }
+                    longClickMarker.ShowInfoWindow();
+                }
+            }
+            catch (TaskCanceledException ex)
+            {
+                // ignore task cancellation and etc
+            }
+            catch (Exception ex)
+            {
+                if (longClickMarker != null)
+                {
+                    longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
+                    longClickMarker.ShowInfoWindow();
+                }
+            }
+
         }
 
         /// <summary>
