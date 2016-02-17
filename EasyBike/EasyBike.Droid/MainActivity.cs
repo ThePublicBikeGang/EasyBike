@@ -68,7 +68,7 @@ namespace EasyBike.Droid
     [Activity(Label = "EasyBike", MainLauncher = true,
         LaunchMode = Android.Content.PM.LaunchMode.SingleTask,
         ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
-    [IntentFilter(new[] { Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable }, DataScheme = "http", DataHost = "easybike.com")]
+    [IntentFilter(new[] { Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable }, DataScheme = "http", DataHost = "easybikeapp.com")]
     public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private FragmentTransaction _fragTx;
@@ -313,7 +313,6 @@ namespace EasyBike.Droid
         //private string _parameterText;
         protected override void OnCreate(Bundle bundle)
         {
-            Log.Debug("MyActivity", "Begin OnCreate");
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
@@ -405,7 +404,6 @@ namespace EasyBike.Droid
                     }
                     catch (Exception e)
                     {
-                        Log.Debug("AutoCompleteSearchPlaceTextView", e.Message);
                     }
                 });
 
@@ -425,14 +423,12 @@ namespace EasyBike.Droid
 
         protected override void OnPostCreate(Bundle savedInstanceState)
         {
-            Log.Debug("MyActivity", "Begin OnPostCreate");
             base.OnPostCreate(savedInstanceState);
             //_drawerToggle.SyncState();
         }
 
         public override void OnConfigurationChanged(Configuration newConfig)
         {
-            Log.Debug("MyActivity", "Begin OnConfigurationChanged");
             base.OnConfigurationChanged(newConfig);
             // _drawerToggle.OnConfigurationChanged(newConfig);
         }
@@ -459,7 +455,6 @@ namespace EasyBike.Droid
         protected async override void OnPause()
         {
             base.OnPause();
-            Log.Debug("MyActivity", "Begin OnPause");
             await _settingsService.SaveSettingAsync();
 
         }
@@ -494,7 +489,6 @@ namespace EasyBike.Droid
             CloseKeyboard();
             if (ActionMode != null)
             {
-                Log.Debug("MyActivity", "Finish action mode");
                 ActionMode.Finish();
             }
         }
@@ -657,7 +651,6 @@ namespace EasyBike.Droid
         /// <param name="menu">Menu.</param>
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            Log.Debug("MyActivity", "Begin OnCreateOptionsMenu");
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -678,7 +671,6 @@ namespace EasyBike.Droid
 
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
-            Log.Debug("MyActivity", "Begin OnCreateActionMode");
             MenuInflater.Inflate(Resource.Menu.actionbar, menu);
             return true;
         }
@@ -690,7 +682,6 @@ namespace EasyBike.Droid
 
         public bool OnActionItemClicked(ActionMode mode, IMenuItem item)
         {
-            Log.Debug("MyActivity", "Begin OnActionItemClicked");
             switch (item.ItemId)
             {
                 case Resource.Id.menu_share:
@@ -716,7 +707,6 @@ namespace EasyBike.Droid
                         .SetPositiveButton(Android.Resource.String.Ok, (sender, EventArgs) =>
                         {
                             var favoriteName = dialog.FindViewById<EditText>(Resource.Id.favoriteName).Text.ToString();
-                            Log.Debug("MyActivity", "Add to favorite: " + favoriteName);
                             if (favoriteName.Trim() == "")
                             {
                                 Toast.MakeText(this, Resources.GetString(Resource.String.favoriteEmptyName), ToastLength.Short).Show();
@@ -768,7 +758,6 @@ namespace EasyBike.Droid
 
         private Intent _createShareIntent()
         {
-            Log.Debug("MyActivity", "Begin _createShareIntent");
             var shareIntent = new Intent(Intent.ActionSend);
             var text = "Unknown position";
             if (currentMarkerPosition != null)
@@ -803,7 +792,7 @@ namespace EasyBike.Droid
             //text = text.Replace(" ", "%20");
             body += "\r\nUsing EasyBike? Click on the above links:";
             body += "\r\nAndroid:";
-            body += "\r\nhttp://easybike.com/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\nhttp://easybikeapp.com/?lt=" + latitude + "&ln=" + longitude;
             body += "\r\n\r\nIPhone: ";
             body += "\r\nhttp://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
             body += "\r\n\r\nWindows Phone: ";
@@ -899,7 +888,6 @@ namespace EasyBike.Droid
         protected override void OnResume()
         {
             base.OnResume();
-            Log.Debug("MyActivity", "Begin OnResume");
             SetupMapIfNeeded();
         }
 
@@ -956,7 +944,6 @@ namespace EasyBike.Droid
         /// <returns></returns>
         public bool OnClusterClick(ICluster cluster)
         {
-            Log.Debug("MyActivity", "Begin OnClusterClick");
             //UnStickUserLocation();
             //LatLngBounds.Builder builder = new LatLngBounds.Builder();
             //foreach (ClusterItem item in cluster.Items)
@@ -996,7 +983,6 @@ namespace EasyBike.Droid
 
         private void _map_MarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
         {
-            Log.Debug("MyActivity", "Begin _map_MarkerClick");
             if (e.Marker.Title == "cluster")
             {
                 UnStickUserLocation();
@@ -1076,7 +1062,6 @@ namespace EasyBike.Droid
                 }
                 catch (Exception e)
                 {
-                    Log.Debug("AutoCompleteSearchPlaceTextView", e.Message);
                 }
             }
         }
@@ -1159,7 +1144,6 @@ namespace EasyBike.Droid
 
         public async void OnMapReady(GoogleMap googleMap)
         {
-            Log.Debug("MyActivity", "Begin OnMapReady");
 
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
             //var contractToTest = "Paris";
@@ -1237,7 +1221,6 @@ namespace EasyBike.Droid
                 }
                 if (ActionMode != null)
                 {
-                    Log.Debug("MyActivity", "Finish action mode");
                     ActionMode.Finish();
                 }
                 CloseKeyboard();
@@ -1407,7 +1390,6 @@ namespace EasyBike.Droid
                 }
                 catch (Exception ex)
                 {
-                    Log.Debug("MyActivity", "Geocoder crashed: " + ex.Message);
                     addressTCS.TrySetException(ex);
                 }
             });

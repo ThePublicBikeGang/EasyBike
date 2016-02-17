@@ -58,16 +58,18 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
-    <AndroidSupportedAbis>armeabi-v7a,x86</AndroidSupportedAbis>
+    <AndroidSupportedAbis>
+    </AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <Debugger>Xamarin</Debugger>
-    <AotAssemblies>True</AotAssemblies>
-    <EnableLLVM>True</EnableLLVM>
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
     <EnableProguard>False</EnableProguard>
-    <DebugSymbols>False</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <DefineConstants>RELEASE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MyDebug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -284,6 +286,11 @@
     <AndroidAsset Include="fonts\Roboto-Regular.ttf" />
     <AndroidAsset Include="fonts\Roboto-Thin.ttf" />
     <AndroidAsset Include="fonts\Roboto-ThinItalic.ttf" />
+    <None Include="build\build.ps1" />
+    <None Include="build\easybike-armeabi-v7a.apk" />
+    <None Include="build\easybike-x86.apk" />
+    <None Include="build\easybike.apk" />
+    <None Include="build\easybike.keystore" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml">
@@ -321,7 +328,7 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\actionbar.xml">
-      <SubType>AndroidResource</SubType>
+      <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable-hdpi\ic_directions.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_directions.png" />
@@ -660,5 +667,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\sharemessage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_wpstore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_wpstore.png" />
   </ItemGroup>
 </Project>

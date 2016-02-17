@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0" package="EasyBike.EasyBike" android:versionCode="1" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0" package="com.easybikeapp" android:versionCode="1" android:installLocation="auto">
 	<uses-sdk android:targetSdkVersion="21" android:minSdkVersion="17" />
 	<!-- Google Maps for Android v2 requires OpenGL ES v2 -->
 	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
@@ -12,7 +12,7 @@
 	<!-- Google Maps for Android v2 needs this permission so that it may check the connection state as it must download data -->
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<!-- Used to get the username of the device when sharing location and present a more friendly message -->
-	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<!--<uses-permission android:name="android.permission.GET_ACCOUNTS" />-->
 	<!-- Permission to receive remote notifications from Google Play Services -->
 	<!-- Notice here that we have the package name of our application as a prefix on the permissions. -->
 	<uses-permission android:name="easyBike.Droid.permission.MAPS_RECEIVE" />
