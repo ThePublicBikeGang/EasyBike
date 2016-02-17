@@ -302,7 +302,11 @@ namespace EasyBike.Droid
         protected override void OnNewIntent(Intent intent)
         {
             ParseIntent(intent);
-            ShowIntentLocation();
+            // show a location if there is values in the intent
+            if (_parameterLat != 0 && _parameterLon != 0)
+            {
+                ShowIntentLocation();
+            }
         }
 
         private Bitmap _iconUserLocation;
@@ -802,7 +806,7 @@ namespace EasyBike.Droid
 
             body += "\r\n\r\nDon't have EasyBike? Get it now!";
             body += "\r\nAndroid:";
-            body += "\r\nhttp://easybike.com/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\nhttps://play.google.com/store/apps/details?id=com.easybikeapp";
             body += "\r\n\r\nIPhone: ";
             body += "\r\nComing soon...";
             body += "\r\n\r\nWindows Phone 10: ";
