@@ -13,6 +13,12 @@ namespace EasyBike.Droid
     /// http://motzcod.es/post/133609925342/access-the-current-android-activity-from-anywhere
     /// 
     /// </summary>
+
+#if DEBUG
+    [Application(Debuggable = true)]
+#else
+    [Application(Debuggable = false)]
+#endif
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer)
