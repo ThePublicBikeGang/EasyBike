@@ -1,10 +1,15 @@
-## EasyBike: Open source and cross platform project for public bikes that covers more than 300 cities. Available on Windows Phone and Android soon. Join the team !
+## EasyBike: Open source and cross platform project for public bikes that covers more than 300 cities. Available on Android and Windows Phone. Join the team !
 
 ![](https://github.com/ThePublicBikeGang/EasyBike/blob/master/EasyBike/EasyBike/Assets/phones.png?raw=true)
 
-
 The objective of the project is to store on a shared library all the integration logic of public bike services.
 All services can be easily accessed with common interfaces.
+
+## Get the apps:
+##### Android:
+https://play.google.com/store/apps/details?id=com.easybikeapp
+##### Windows Phone:
+https://www.microsoft.com/store/apps/9wzdncrdkng9
 
 ### Sources to help integration
 ##### The Bike-sharing map
