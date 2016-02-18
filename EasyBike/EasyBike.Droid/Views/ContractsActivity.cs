@@ -6,8 +6,6 @@ using Android.Widget;
 using EasyBike.Droid.Helpers;
 using Android.Views;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
-using Android.Content;
-using Android.Util;
 
 namespace EasyBike.Droid.Views
 {
@@ -15,6 +13,12 @@ namespace EasyBike.Droid.Views
     public partial class ContractsActivity
     {
         private List<Country> countries;
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            Finish();
+            return base.OnOptionsItemSelected(item);
+        }
 
         protected override async void OnCreate(Bundle bundle)
         {
@@ -25,6 +29,7 @@ namespace EasyBike.Droid.Views
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
             toolbar.SetOnMenuItemClickListener(new MenuItemClickListener(this));
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             //toolbar.InflateMenu(Resource.Menu.contractPageMenu);
             //toolbar.ShowOverflowMenu();
             //await Task.Delay(30);

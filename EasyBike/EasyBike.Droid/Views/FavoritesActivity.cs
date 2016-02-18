@@ -12,18 +12,17 @@ using Android.Widget;
 using Android.Views.Animations;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Android.Webkit;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Views;
 
 namespace EasyBike.Droid
 {
     [Activity(Label = "FavoritesActivity")]
-    public class FavoritesActivity : Activity,  IOnStartDragListener
+    public class FavoritesActivity : ActivityBaseEx, IOnStartDragListener
     {
         private IFavoritesService _favoritesService;
-
         private RecyclerView favoritesListView;
         private RecyclerView.Adapter mAdapter;
-        private RecyclerView.LayoutManager _layoutManager;
         private ItemTouchHelper _itemTouchHelper;
         private TextView _placeHolder;
         private Animation _placeHolderAnimation;
@@ -34,6 +33,11 @@ namespace EasyBike.Droid
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Favorites);
 
+            // toolbar setup
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
             _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
             _favorites = await _favoritesService.GetFavoritesAsync();
 
@@ -43,8 +47,9 @@ namespace EasyBike.Droid
             // in content do not change the layout size of the RecyclerView
             favoritesListView.HasFixedSize = true;
             // use a linear layout manager
-            _layoutManager = new LinearLayoutManager(this);
-            favoritesListView.SetLayoutManager(_layoutManager);
+            var layoutManager = new LinearLayoutManager(this);
+            layoutManager.Orientation = (int)Orientation.Vertical;
+            favoritesListView.SetLayoutManager(layoutManager);
             // specify an adapter (see also next example)
             mAdapter = new FavoriteListAdapter(this, _favorites, this);
             favoritesListView.SetAdapter(mAdapter);
@@ -55,7 +60,7 @@ namespace EasyBike.Droid
 
             _placeHolder = FindViewById<TextView>(Resource.Id.placeHolder);
             _placeHolderAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.placeholder);
-            if(_favorites.Count == 0)
+            if (_favorites.Count == 0)
             {
                 await Task.Delay(200);
                 _placeHolder.StartAnimation(_placeHolderAnimation);
@@ -67,16 +72,22 @@ namespace EasyBike.Droid
         {
             var itemViewHolder = (e.Child.Tag as FavoriteListAdapter.ItemViewHolder);
             await _favoritesService.RemoveFavoriteAsync(itemViewHolder.Favorite);
-            if(_favorites.Count == 0)
+            if (_favorites.Count == 0)
             {
                 _placeHolder.StartAnimation(_placeHolderAnimation);
-                _placeHolder.Visibility = Android.Views.ViewStates.Visible;
+                _placeHolder.Visibility = ViewStates.Visible;
             }
         }
 
         public void OnStartDrag(RecyclerView.ViewHolder viewHolder)
         {
             _itemTouchHelper.StartDrag(viewHolder);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            Finish();
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

@@ -23,14 +23,12 @@ using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Graphics;
 using Android.Content;
-using Android.Util;
 using Android.Locations;
 using EasyBike.Models.Storage;
 using EasyBike.Models.Favorites;
 
 // These shortcuts are used to prevent the use by default of these classes in Android.Views
 using Toolbar = Android.Support.V7.Widget.Toolbar;
-using ShareActionProvider = Android.Support.V7.Widget.ShareActionProvider;
 using ActionMode = Android.Support.V7.View.ActionMode;
 using System.Reactive.Subjects;
 using Plugin.Geolocator;
@@ -42,17 +40,12 @@ using Android.Support.V4.Content.Res;
 using Plugin.Compass;
 using Plugin.Compass.Abstractions;
 using EasyBike.Droid.Models.Direction;
-using Android.Support.V7.App;
-using EasyBike.Config;
 using Android.Content.Res;
 using Android.Support.V4.View;
 using Com.Readystatesoftware.Systembartint;
 using Android.Runtime;
 using System.Text.RegularExpressions;
 using GalaSoft.MvvmLight.Views;
-using Android.Accounts;
-using Android.Text;
-using Java.IO;
 using Plugin.Geolocator.Abstractions;
 
 namespace EasyBike.Droid
@@ -158,10 +151,17 @@ namespace EasyBike.Droid
                             _context.MainViewModel.HowToUseThisAppCommand.Execute(null);
                             break;
                         case Resource.Id.nav_favorites:
-
                             Intent i = new Intent(_context, typeof(FavoritesActivity));
                             _context.StartActivityForResult(i, 1);
                             //_context.MainViewModel.GoToFavoritsCommand.Execute(null);
+                            break;
+                        case Resource.Id.nav_share:
+                            var shareIntent = new Intent(Intent.ActionSend);
+                            shareIntent.PutExtra(Intent.ExtraText, "Do you know EasyBike? Have a try!" +
+                                "\r\nhttps://play.google.com/store/apps/details?id=com.easybikeapp");
+                            shareIntent.SetType("text/plain");
+                            _context.StartActivity(Intent.CreateChooser(shareIntent, _context.Resources.GetString(Resource.String.share)));
+                            //mode.Finish();
                             break;
                     }
                 });
@@ -711,8 +711,8 @@ namespace EasyBike.Droid
                     }
                     return true;
                 case Resource.Id.menu_favorite:
-                    Android.App.AlertDialog dialog = null;
-                    dialog = new Android.App.AlertDialog.Builder(this)
+                    AlertDialog dialog = null;
+                    dialog = new AlertDialog.Builder(this)
                         .SetTitle(Resources.GetString(Resource.String.favoriteDialogTitle))
                         .SetView(LayoutInflater.Inflate(Resource.Layout.DialogAddFavorite, null))
                         .SetPositiveButton(Android.Resource.String.Ok, (sender, EventArgs) =>
