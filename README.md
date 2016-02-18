@@ -5,7 +5,7 @@
 The objective of the project is to store on a shared library all the integration logic of public bike services.
 All services can be easily accessed with common interfaces.
 
-## Get the apps:
+## Get the app:
 ##### Android:
 https://play.google.com/store/apps/details?id=com.easybikeapp
 ##### Windows Phone:
