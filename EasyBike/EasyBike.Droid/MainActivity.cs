@@ -53,6 +53,7 @@ using GalaSoft.MvvmLight.Views;
 using Android.Accounts;
 using Android.Text;
 using Java.IO;
+using Plugin.Geolocator.Abstractions;
 
 namespace EasyBike.Droid
 {
@@ -105,6 +106,8 @@ namespace EasyBike.Droid
         GooglePlacesAutocompleteAdapter googlePlacesAutocompleteAdapter;
         //GoogleMapPlaceClass objMapClass;
         //GeoCodeJSONClass objGeoCodeJSONClass;
+
+        private IGeolocator _locator;
 
         // Directions
         private Android.Gms.Maps.Model.Polyline _currentPolyline;
@@ -320,6 +323,14 @@ namespace EasyBike.Droid
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
+            _locator = CrossGeolocator.Current;
+            // New in iOS 9 allowsBackgroundLocationUpdates must be set if you are running a background agent to track location. I have exposed this on the Geolocator via:
+            // disable because it drill down the battery very quickly
+            _locator.AllowsBackgroundUpdates = false;
+            _locator.DesiredAccuracy = 50;
+            _locator.PositionChanged -= Locator_PositionChanged;
+            _locator.PositionChanged += Locator_PositionChanged;
+
             // parse params to show any shared location if it exists
             ParseIntent();
 
@@ -459,22 +470,18 @@ namespace EasyBike.Droid
         protected async override void OnPause()
         {
             base.OnPause();
+            _locator.StopListeningAsync();
             await _settingsService.SaveSettingAsync();
-
         }
 
         private LatLng _lastUserLocation;
         public bool _stickToUserLocation;
+     
         private async void StartLocationTracking()
         {
-            var locator = CrossGeolocator.Current;
-            // New in iOS 9 allowsBackgroundLocationUpdates must be set if you are running a background agent to track location. I have exposed this on the Geolocator via:
-            // disable because it drill down the battery very quickly
-            locator.AllowsBackgroundUpdates = false;
-            locator.DesiredAccuracy = 50;
-            locator.PositionChanged += Locator_PositionChanged;
+            
             /*var listeningLocationTracking = */
-            await locator.StartListeningAsync(3000, 5, false);
+            await _locator.StartListeningAsync(3000, 5, false);
             //if (!listeningLocationTracking)
             //{
             //    Dialog.ShowError(new Exception(""), "Locationtracking not enable :/", "ok", new Action(() => { }));
@@ -892,6 +899,7 @@ namespace EasyBike.Droid
         protected override void OnResume()
         {
             base.OnResume();
+            StartLocationTracking();
             SetupMapIfNeeded();
         }
 
@@ -1241,7 +1249,9 @@ namespace EasyBike.Droid
                 GetPreviousLastUserLocation();
             }
 
-            StartLocationTracking();
+          
+
+       
 
             // Initialize the behavior when long clicking somewhere on the map
             //_map.MapLongClick += async (sender, e) =>
