@@ -801,7 +801,7 @@ namespace EasyBike.Droid
             //    text += ": " + _lastResolvedAddress;
             //}
             //text = text.Replace(" ", "%20");
-            body += "\r\nUsing EasyBike? Click on the above links:";
+            body += "\r\nUsing EasyBike? Click on the below links:";
             body += "\r\nAndroid:";
             body += "\r\nhttp://easybikeapp.com/?lt=" + latitude + "&ln=" + longitude;
             body += "\r\n\r\nIPhone: ";
