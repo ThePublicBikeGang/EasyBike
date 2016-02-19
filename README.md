@@ -6,10 +6,7 @@ The objective of the project is to store on a shared library all the integration
 All services can be easily accessed with common interfaces.
 
 ## Get the app:
-##### Android:
-https://play.google.com/store/apps/details?id=com.easybikeapp
-##### Windows Phone:
-https://www.microsoft.com/store/apps/9wzdncrdkng9
+https://github.com/ThePublicBikeGang/EasyBike/wiki/Store-links
 
 ### Sources to help integration
 ##### The Bike-sharing map
