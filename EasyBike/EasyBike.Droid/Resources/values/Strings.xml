@@ -1,49 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<resources>   
-    <string name="app_name">EasyBike</string>
-    <string name="nav_download_cities">Download cities</string>
-    <string name="nav_favorites">Favorites</string>
-    <string name="nav_settings">Settings</string>
-    <string name="nav_tutorial">How to use this app</string>
-    <string name="nav_about">About</string>
-    <string name="nav_share">Share this app</string>
-  
-    <!---
+<resources>
+  <string name="app_name">EasyBike</string>
+  <string name="nav_download_cities">Download cities</string>
+  <string name="nav_favorites">Favorites</string>
+  <string name="nav_settings">Settings</string>
+  <string name="nav_tutorial">How to use this app</string>
+  <string name="nav_about">About</string>
+  <string name="nav_share">Share this app</string>
+  <string name="search_hint">Search in Google Maps</string>
+
+  <!---
         Main Activity 
         -->
-    <string name="share">Share location</string>
-    <string name="route">Route</string>
-    <string name="favorite">Favorite</string>
-    <string name="mapMarkerResolving">Resolving address...</string>
-    <string name="mapMarkerImpossible">Could not find any address.</string>
-    <string name="favoriteDialogTitle">Add to favorites</string>
-    <string name="favoriteEmptyName">The name cannot be empty.</string>
-    <string name="favoriteAdded">Favorite added.</string>
+  <string name="share">Share location</string>
+  <string name="route">Route</string>
+  <string name="favorite">Favorite</string>
+  <string name="mapMarkerResolving">Resolving address...</string>
+  <string name="mapMarkerImpossible">Could not find any address.</string>
+  <string name="favoriteDialogTitle">Add to favorites</string>
+  <string name="favoriteEmptyName">The name cannot be empty.</string>
+  <string name="favoriteAdded">Favorite added.</string>
 
-    <!---
+  <!---
+        Share location
+        -->
+  <string name="shareLocationHeader">Check out this location:\r\n</string>
+  <string name="shareLocation1">\r\nUsing EasyBike? Click on the below links:</string>
+  <string name="shareLocation2">\r\n\r\nDon\'t have EasyBike? Get it now! -></string>
+  
+
+  <!---
         About Activity 
         -->
-    <string name="aboutTitle">About EasyBike</string>
-    <string name="aboutPresentation1">EasyBike is an open source and cross platform project for public bikes.
-      \r\nCreated by <a href="https://github.com/MarcMagnin">Marc Magnin</a> and <a href="https://github.com/EtienneM">Étienne Michon</a> on behalf of the <a href="https://github.com/ThePublicBikeGang">Public Bike Gang</a>.
-    
-      \r\nAny suggestion?
-      \r\nPlease contact us at <a href="mailto:easybike@outlook.fr">easybike@outlook.fr</a>.
-      \r\nTwitter: <a href="https://twitter.com/easybike_">https://twitter.com/easybike_</a>
-    
+  <string name="shareMessageHeader">Hey! Check out EasyBike!</string>
+  <string name="aboutTitle">About EasyBike</string>
+  <string name="aboutPresentation1">EasyBike is an open source and cross platform project for public bikes.
+    \r\nCreated by <a href="https://github.com/MarcMagnin">Marc Magnin</a> and <a href="https://github.com/EtienneM">Étienne Michon</a> on behalf of the <a href="https://github.com/ThePublicBikeGang">Public Bike Gang</a>.
+
+    \r\nAny suggestion?
+    \r\nPlease contact us at <a href="mailto:easybike@outlook.fr">easybike@outlook.fr</a>.
+    \r\nTwitter: <a href="https://twitter.com/easybike_">https://twitter.com/easybike_</a>
+
     \r\n\r\nYou\'ll find the open source cross platform project on <a href="https://github.com/ThePublicBikeGang/EasyBike">Git</a>.
-      \r\nIf you feel that you want to be part of it, <a href="https://github.com/ThePublicBikeGang">join</a>!
-      \r\n\r\nA special thanks to Florie for her help and patience waiting for me coding hours and hours.
-    </string>
-    <string name="aboutReview1">There is nothing such a warmfull review, this is the fuel of the hard work.</string>
-    <string name="aboutReviewRate"><a href="market://details?id=com.easybikeapp">Give a review</a></string>
-    <string name="aboutReview2">❤ You Like it?</string>
-    <string name="aboutReview3">This app will never get any ads. Economy must change and advertising is not a solution. If you like this app and think that the hard work is worth it, feel free to make a <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=marc%2emagnin%40gmail%2ecom&amp;lc=FR&amp;item_name=Marc%20Magnin&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted">donation</a>.</string>
-    <string name="aboutWinPhone">This app is also available on <a href="https://www.microsoft.com/store/apps/9wzdncrdkng9">Windows Phone</a>. Click here to send the link to your friends!</string>
-    <string name="aboutCopyright1">EasyBike do not collect any personal informations belonging to its users.
-      \r\nCountry flags copyright:
-      \r\nFree Country Flags (<a href="http://www.free-country-flags.com/">Gang of the Coconuts</a>)/<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a>.
-      \r\nPowered by B-cycle. To sign up, go to <a href="www.bcycle.com">www.bcycle.com</a>.
-      \r\nThis is a third-party app not affiliated with B-cycle.
-    </string>
+    \r\nIf you feel that you want to be part of it, <a href="https://github.com/ThePublicBikeGang">join</a>!
+    \r\n\r\nA special thanks to Florie for her help and patience waiting for me coding hours and hours.
+  </string>
+  <string name="aboutReview1">There is nothing such a warmfull review, this is the fuel of the hard work.</string>
+  <string name="aboutReviewRate">
+    <a href="market://details?id=com.easybikeapp">Give a review</a>
+  </string>
+  <string name="aboutReview2">❤ You Like it?</string>
+  <string name="aboutReview3">This app will never get any ads. Economy must change and advertising is not a solution. If you like this app and think that the hard work is worth it, feel free to <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=marc%2emagnin%40gmail%2ecom&amp;lc=FR&amp;item_name=Marc%20Magnin&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted">offer us a beer</a>.
+  </string>
+  <string name="aboutWinPhone">This app is also available on Windows Phone. Click here to tell your friends!
+  </string>
+  <string name="aboutCopyright1">EasyBike do not collect any personal informations belonging to its users.
+    \r\nCountry flags copyright:
+    \r\nFree Country Flags (<a href="http://www.free-country-flags.com/">Gang of the Coconuts</a>)/<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a>.
+    \r\nPowered by B-cycle. To sign up, go to <a href="www.bcycle.com">www.bcycle.com</a>.
+    \r\nThis is a third-party app not affiliated with B-cycle.
+  </string>
 </resources>

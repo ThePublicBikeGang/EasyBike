@@ -27,7 +27,7 @@
             android:src="@drawable/ic_menu"
             style="@style/Widget.AppCompat.ActionButton" />
         <EasyBike.Droid.Helpers.ClearableAutoCompleteTextView
-            android:hint="Enter Location"
+            android:hint="@string/search_hint"
             android:id="@+id/autoCompleteSearchPlaceTextView"
             android:background="#ffffff"
             android:layout_height="match_parent"

@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24057437"
-     inkscape:cx="642.24581"
-     inkscape:cy="99.766339"
+     inkscape:zoom="4.6821239"
+     inkscape:cx="519.07026"
+     inkscape:cy="831.86335"
      inkscape:document-units="px"
      inkscape:current-layer="layer6"
      showgrid="false"
@@ -258,32 +258,13 @@
        x="442.87881"
        y="176.92281"
        ry="11.4107"
-       inkscape:export-filename="C:\Users\Kobs\Documents\projets\EasyBike\EasyBike\EasyBike.Droid\Resources\drawable-mdpi\ic_help.png"
-       inkscape:export-xdpi="22.5"
-       inkscape:export-ydpi="22.5" />
-    <circle
-       style="opacity:1;fill:#000000;fill-opacity:1"
-       id="path4188"
-       cx="490.87881"
-       cy="224.92281"
-       r="40.171715"
-       inkscape:export-filename="C:\Users\Kobs\Documents\projets\EasyBike\EasyBike\EasyBike.Droid\Resources\drawable-mdpi\ic_help.png"
-       inkscape:export-xdpi="22.5"
-       inkscape:export-ydpi="22.5" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:50px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
-       x="477.16171"
-       y="243.53897"
-       id="text4190"
-       sodipodi:linespacing="125%"
-       inkscape:export-filename="C:\Users\Kobs\Documents\projets\EasyBike\EasyBike\EasyBike.Droid\Resources\drawable-mdpi\ic_help.png"
-       inkscape:export-xdpi="22.5"
-       inkscape:export-ydpi="22.5"><tspan
-         sodipodi:role="line"
-         id="tspan4192"
-         x="477.16171"
-         y="243.53897">?</tspan></text>
+       inkscape:export-filename="C:\Users\Kobs\Documents\projets\EasyBike\EasyBike\EasyBike.Droid\Resources\drawable-xhdpi\ic_help.png"
+       inkscape:export-xdpi="45.000015"
+       inkscape:export-ydpi="45.000015" />
+    <path
+       style="opacity:1;fill:#0000e4;fill-opacity:1"
+       d="M 490.87891 184.75195 A 40.171715 40.171715 0 0 0 450.70703 224.92188 A 40.171715 40.171715 0 0 0 490.87891 265.09375 A 40.171715 40.171715 0 0 0 531.05078 224.92188 A 40.171715 40.171715 0 0 0 490.87891 184.75195 z M 490.71094 206.42969 C 494.68229 206.42969 497.70964 207.24349 499.79297 208.87109 C 501.8763 210.48242 502.91797 212.84245 502.91797 215.95117 C 502.91797 217.54622 502.60156 218.97852 501.9668 220.24805 C 501.33203 221.5013 500.2487 222.85221 498.71875 224.30078 L 497.15625 225.69141 C 496.04948 226.70052 495.32617 227.51432 494.98438 228.13281 C 494.64258 228.73503 494.4707 229.40234 494.4707 230.13477 L 494.4707 231.23438 L 485.6582 231.23438 L 485.6582 230.03711 C 485.6582 228.70247 485.92578 227.52344 486.46289 226.49805 C 487 225.45638 488.13216 224.13802 489.85742 222.54297 L 491.41992 221.12695 C 492.34766 220.2806 493.02214 219.48307 493.44531 218.73438 C 493.88477 217.98568 494.10547 217.23698 494.10547 216.48828 C 494.10547 215.34896 493.71484 214.46094 492.93359 213.82617 C 492.15234 213.17513 491.06185 212.84961 489.66211 212.84961 C 488.34375 212.84961 486.91862 213.1263 485.38867 213.67969 C 483.85872 214.2168 482.26367 215.02344 480.60352 216.09766 L 480.60352 208.43164 C 482.57292 207.74805 484.3724 207.24349 486 206.91797 C 487.6276 206.59245 489.19727 206.42969 490.71094 206.42969 z M 485.6582 234.84766 L 494.4707 234.84766 L 494.4707 243.53906 L 485.6582 243.53906 L 485.6582 234.84766 z "
+       id="path4188" />
     <path
        style="fill:#000000"
        d=""

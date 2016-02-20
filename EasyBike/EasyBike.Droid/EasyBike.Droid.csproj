@@ -259,7 +259,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LocalisationService.cs" />
     <Compile Include="Views\AboutActivity.cs" />
-    <Compile Include="Views\AboutActivity.ui.cs" />
     <Compile Include="Views\ContractsActivity.cs" />
     <Compile Include="MainActivity.ui.cs" />
     <Compile Include="Views\ContractsActivity.ui.cs" />

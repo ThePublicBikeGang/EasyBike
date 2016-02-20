@@ -47,6 +47,7 @@ using Android.Runtime;
 using System.Text.RegularExpressions;
 using GalaSoft.MvvmLight.Views;
 using Plugin.Geolocator.Abstractions;
+using EasyBike.Resources;
 
 namespace EasyBike.Droid
 {
@@ -157,8 +158,7 @@ namespace EasyBike.Droid
                             break;
                         case Resource.Id.nav_share:
                             var shareIntent = new Intent(Intent.ActionSend);
-                            shareIntent.PutExtra(Intent.ExtraText, "Do you know EasyBike? Have a try!" +
-                                "\r\nhttps://play.google.com/store/apps/details?id=com.easybikeapp");
+                            shareIntent.PutExtra(Intent.ExtraText, StringResources.FormatShareMessage());
                             shareIntent.SetType("text/plain");
                             _context.StartActivity(Intent.CreateChooser(shareIntent, _context.Resources.GetString(Resource.String.share)));
                             //mode.Finish();
@@ -476,10 +476,10 @@ namespace EasyBike.Droid
 
         private LatLng _lastUserLocation;
         public bool _stickToUserLocation;
-     
+
         private async void StartLocationTracking()
         {
-            
+
             /*var listeningLocationTracking = */
             await _locator.StartListeningAsync(3000, 5, false);
             //if (!listeningLocationTracking)
@@ -802,25 +802,10 @@ namespace EasyBike.Droid
             //}
             //text = text.Replace(" ", "%20");
             body += "\r\nUsing EasyBike? Click on the below links:";
-            body += "\r\nAndroid:";
-            body += "\r\nhttp://easybikeapp.com/?lt=" + latitude + "&ln=" + longitude;
-            body += "\r\n\r\nIPhone: ";
-            body += "\r\nhttp://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
-            body += "\r\n\r\nWindows Phone: ";
-            body += "\r\neasybike://to/?lt=" + latitude + "&ln=" + longitude;
-            body += "\r\n\r\nOtherwise:";
-            body += "\r\nhttps://maps.google.com/maps?q=loc:" + latitude + "," + longitude + "&z=17";
-
-            body += "\r\n\r\nDon't have EasyBike? Get it now!";
-            body += "\r\nAndroid:";
-            body += "\r\nhttps://play.google.com/store/apps/details?id=com.easybikeapp";
-            body += "\r\n\r\nIPhone: ";
-            body += "\r\nComing soon...";
-            body += "\r\n\r\nWindows Phone 10: ";
-            body += "\r\nhttps://www.microsoft.com/store/apps/9wzdncrdkng9";
-            body += "\r\n\r\nWindows Phone 8.1: ";
-            body += "\r\nhttp://windowsphone.com/s?appid=191ef96d-e185-47d1-80a3-377ebfefa325";
-            body += "easybike://to/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\nAndroid: http://easybikeapp.com/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\n\r\nIPhone: http://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
+            body += "\r\n\r\nWindows Phone: easybike://to/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\n\r\nDon't have EasyBike? Get it now! -> " + StringResources.WebSiteForStoresURLs;
             //body += "market://details?id=" + PackageName;
 
             return body;
@@ -898,9 +883,9 @@ namespace EasyBike.Droid
 
         protected override void OnResume()
         {
-            base.OnResume();
-            StartLocationTracking();
             SetupMapIfNeeded();
+            StartLocationTracking();
+            base.OnResume();
         }
 
         private bool _gettingMap;
@@ -1156,7 +1141,7 @@ namespace EasyBike.Droid
 
         public async void OnMapReady(GoogleMap googleMap)
         {
-
+            _gettingMap = false;
             // TODO TO HELP DEBUG auto download paris to help dev on performances 
             //var contractToTest = "Paris";
             //var contractService = SimpleIoc.Default.GetInstance<IContractService>();
@@ -1249,9 +1234,9 @@ namespace EasyBike.Droid
                 GetPreviousLastUserLocation();
             }
 
-          
 
-       
+
+
 
             // Initialize the behavior when long clicking somewhere on the map
             //_map.MapLongClick += async (sender, e) =>
