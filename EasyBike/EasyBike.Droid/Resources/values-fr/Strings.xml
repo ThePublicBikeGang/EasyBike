@@ -9,8 +9,7 @@
   <string name="nav_share">Partager cette app</string>
   <string name="search_hint">Chercher dans Google Maps</string>
   
-
-  <!---
+  <!--
         Main Activity 
         -->
   <string name="share">Partager une localisation</string>
@@ -47,7 +46,8 @@
   </string>
 
   <string name="aboutReview1">Rien ne vaut un commentaire chaleureux, c\'est le carburant de nos efforts.</string>
-  <string name="aboutReviewRate"><a href="market://details?id=com.easybikeapp">Notez l\'application</a>
+  <string name="aboutReviewRate">
+    <a href="market://details?id=com.easybikeapp">Notez l\'application</a>
   </string>
   <string name="aboutReview2">❤ Vous aimez beaucoup ?</string>
   <string name="aboutReview3">Cette application n\'aura jamais aucune pub. L\'économie doit changer et la publicité n\'est pas une solution. Si vous appréciez cette application, vous pouvez nous <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=marc%2emagnin%40gmail%2ecom&amp;lc=FR&amp;item_name=Marc%20Magnin&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted">payer une bière</a>.
@@ -60,4 +60,44 @@
     \r\nPropulsé par B-cycle. Pour s\'inscrire, allez sur <a href="www.bcycle.com">www.bcycle.com</a>.
     \r\nCette application n\'est aucunement affiliée à B-cycle.
   </string>
+
+  <!---
+        Favorites Activity 
+        -->
+  <string name="favoritesLonely">On se sent seul ici... \nAjoutes des favoris en appuyant sur une station ou un lieu que vous avez cherché. :)</string>
+
+  <!---
+        Contracts Activity 
+        -->
+  <string name="contractsTitle">Télécharger des villes</string>
+
+  <!---
+        Tutorial Activity 
+        -->
+  <string name="tutorialTitle">Télécharger une ville</string>
+  <string name="tutorialDownload1">Appuyer sur "Télécharger des villes" dans le menu</string>
+  <string name="tutorialDownload2">Puis appuyer sur une ville pour la télécharger ou la supprimer. Vous téléchargerez alors une liste des stations. Vous aurez ensuite la position de toutes les stations, même hors ligne.</string>
+  <string name="tutorialDownload2Details">Si de nouvelles stations sont créées par le fournisseur de vélos, vous pouvez rafraichir la liste des stations en supprimant puis en téléchargeant à nouveau la ville. La liste des villes disponibles s\'agrandira dans le futur.</string>
+  <string name="tutorialSwitch1">Passer du mode vélo au mode station</string>
+  <string name="tutorialSwitch1Text">Appuyer sur l\'icône vélo ou (P) dans le coin en bas à droite.</string>
+  <string name="tutorialSwitch1Details">Si vous cherchez un vélo, appuyer sur une station affichera un chemin pour vous y rendre à pied.</string>
+  <string name="tutorialSwitch2">Si vous cherchez à garer votre vélo, le chemin à vélo s\'affichera.</string>
+  <string name="tutorialCompass1">Utiliser la boussole</string>
+  <string name="tutorialCompass1Text">Appuyer une fois sur le bouton de position pour centrer la carte sur votre position. Appuyer une seconde fois pour activer la boussole.</string>
+  <string name="tutorialCompass2">Faire glisser la carte en mode boussole désactivera ce mode. Pour réinitialiser le nord de la carte, appuyer sur le bouton qui est apparu en haut à droite si le nord a changé.</string>
+  <string name="tutorialSearch1">Chercher une adresse</string>
+  <string name="tutorialSearch1Text">Commencer à écrire ce que vous cherchez dans la barre de recherche.</string>
+  <string name="tutorialGetAddr1">Obtenir l\'adresse d\'un lieu</string>
+  <string name="tutorialGetAddr1Text">Rester appuyé sur la carte. L\'adresse du lieu pointé s\'affichera.</string>
+  <string name="tutorialAddFavorite1">Ajouter des favoris</string>
+  <string name="tutorialAddFavorite1Text">Appuyer sur une station ou un lieu recherché pour afficher la barre d\'action, puis appuyer sur l\'icone étoile. Le lieu sera ainsi enregistré dans vos favoris.</string>
+  <string name="tutorialAddFavorite1Details">Comme une application "Dude, where is my car", si vous souhaitez rapidement retrouver votre maison, voiture, n\'importe quel lieu, maintenant simplement votre doigt sur la carte puis enregistrer dans vos favoris.</string>
+  <string name="tutorialManageFavorite1">Gérer les favoris</string>
+  <string name="tutorialManageFavorite1Text">Dans l\'écran dédié aux favoris, appuyer sur un favoris pour l\'afficher sur la carte. Pour le supprimer, glisser le favoris sur la gauche ou la droite.</string>
+  <string name="tutorialDirection1">Obtenir l\'itinéraire pour aller quelque part</string>
+  <string name="tutorialDirection1Text">Appuyer sur le bouton d\'itinéraire, Google Map se lancera avec la bonne destination.</string>
+  <string name="tutorialDirection1Details">Vous pouvez maintenant mettre vos écouteurs, verrouiler le téléphone, le mettre dans votre poche et écouter les directions de Google Map :)</string>
+  <string name="tutorialShare1">Partager une adresse</string>
+  <string name="tutorialShare1Text">En appuyant sur une station ou sur un lieu cherché, vous pouvez partager cette adresse.</string>
+  <string name="tutorialShare2">Le message contiendra l\'adresse si elle a été trouvée. Il contiendra également un lien vers l\'application EasyBike, l\' application de carte native iOS et Google map.</string>
 </resources>

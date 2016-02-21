@@ -15,99 +15,90 @@ namespace EasyBike.Droid.Views
         private RecyclerView.LayoutManager _layoutManager;
         private List<TutorialItem> _items;
 
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Tutorial);
+		protected override void OnCreate(Bundle savedInstanceState)
+		{
+			base.OnCreate(savedInstanceState);
+			SetContentView(Resource.Layout.Tutorial);
 
-            _items = new List<TutorialItem>();
+			_items = new List<TutorialItem>();
+			_items.Add(new TutorialItem()
+			{
+					Title = Resources.GetString(Resource.String.tutorialTitle),
+					Text = Resources.GetString(Resource.String.tutorialDownload1),
+				ImageResource = Resource.Drawable.download1,
+			});
+			_items.Add(new TutorialItem()
+			{
+					Text = Resources.GetString(Resource.String.tutorialDownload2),
+					Details = Resources.GetString(Resource.String.tutorialDownload2Details),
+				ImageResource = Resource.Drawable.download2,
+			});
+			_items.Add(new TutorialItem()
+			{
+					Title = Resources.GetString(Resource.String.tutorialSwitch1),
+					Text = Resources.GetString(Resource.String.tutorialSwitch1Text),
+					Details = Resources.GetString(Resource.String.tutorialSwitch1Details),
+					ImageResource = Resource.Drawable.walkmode,
+			});
+			_items.Add(new TutorialItem()
+			{
+					Text = Resources.GetString(Resource.String.tutorialSwitch2),
+					ImageResource = Resource.Drawable.bikemode,
+			});
             _items.Add(new TutorialItem()
             {
-                Title = "Download a city",
-                Text = "Tap \"download cities\" on the menu panel",
-                ImageResource = Resource.Drawable.download1,
-            });
-            _items.Add(new TutorialItem()
-            {
-                Text = "Then tap on a city to download or remove it. It will download the stations list from the selected service. Then you will have the stations locations even offline.",
-             Details = "If there are some new stations provided by the public bike service, you can refresh that list by removing and downloading again the city." +
-             " This list will get bigger on future updates",
-                ImageResource = Resource.Drawable.download2,
-            });
-            _items.Add(new TutorialItem()
-            {
-                Title = "Switch between bike and station mode",
-                Text = "Tap on the bike icon or (P) icon on the bottom right corner.",
-                Details = "If you are seeking for bikes, after tapping on a station it will provide the walk path to get there.",
-                ImageResource = Resource.Drawable.walkmode,
-            });
-            _items.Add(new TutorialItem()
-            {
-                Text = "Otherwise if you are looking to park your bike, it will provide the cycle path.",
-                ImageResource = Resource.Drawable.bikemode,
-            });
-            _items.Add(new TutorialItem()
-            {
-                Title = "Use the compass",
-                Text = "Tap once on the position button in the command bar, it will focus on your location." +
-                " Tap again on the button to activate the compass.",
+					Title = Resources.GetString(Resource.String.tutorialCompass1),
+					Text = Resources.GetString(Resource.String.tutorialCompass1Text),
                 ImageResource = Resource.Drawable.compassmode,
             });
             _items.Add(new TutorialItem()
             {
-                Text = "Dragging the map when you are in location or compass mode will deactivate the location or compass mode." +
-                "To reset the north of the map just click on the top right corner button that appear if the north of the map have changed.",
+					Text = Resources.GetString(Resource.String.tutorialCompass2),
                 ImageResource = Resource.Drawable.compassmode2,
             });
             _items.Add(new TutorialItem()
             {
-                Title = "Search for an address",
-                Text = "Start typing what you are looking for in the search bar.",
+					Title = Resources.GetString(Resource.String.tutorialSearch1),
+					Text = Resources.GetString(Resource.String.tutorialSearch1Text),
                 ImageResource = Resource.Drawable.search,
             });
             _items.Add(new TutorialItem()
             {
-                Title = "Get the address from a location",
-                Text = "Hold on the map. It will shows up the found address.",
+					Title = Resources.GetString(Resource.String.tutorialGetAddr1),
+					Text = Resources.GetString(Resource.String.tutorialGetAddr1Text),
                 ImageResource = Resource.Drawable.getaddress,
             });
 
             _items.Add(new TutorialItem()
             {
-                Title = "Add some favorites",
-                Text = "Tap on a station or on a searched location to show up an action bar, then press the star icon."+
-                "It will store the location of the point.",
-                Details = "Like a \"Dude, where is my car\" app, if you want to easely get back to your home / car / whereever location, just hold a finger on the" +
-                " map and add it to your favorites. It's then dead easy to get back somewhere.",
+					Title = Resources.GetString(Resource.String.tutorialAddFavorite1),
+					Text = Resources.GetString(Resource.String.tutorialAddFavorite1Text),
+					Details = Resources.GetString(Resource.String.tutorialAddFavorite1Details),
                 ImageResource = Resource.Drawable.addFavorite,
             });
             _items.Add(new TutorialItem()
             {
-                Title = "Manage favorites",
-                Text = "While on the view dedicated to favorites, tap on a favorite to show the location on the map."+ 
-                "To remove a favorite, just slide it to the right or left.",
+					Title = Resources.GetString(Resource.String.tutorialManageFavorite1),
+					Text = Resources.GetString(Resource.String.tutorialManageFavorite1Text),
                 ImageResource = Resource.Drawable.favorites,
             });
             _items.Add(new TutorialItem()
             {
-                Title = "Get directions to go somewhere",
-                Text = "Press the direction button, it will start google map with the locations sets.",
-                Details = "You can then get your" +
-                " headphones on, lock your phone, put it in your pocket and listen to the directions" +
-                " from google map :)",
+					Title = Resources.GetString(Resource.String.tutorialDirection1),
+					Text = Resources.GetString(Resource.String.tutorialDirection1Text),
+					Details = Resources.GetString(Resource.String.tutorialDirection1Details),
                 ImageResource = Resource.Drawable.getDirections,
             });
             
             _items.Add(new TutorialItem()
             {
-                Title = "Share a location",
-                Text = "By tapping on a bike station or on a searched location, you can share that position.",
+					Title = Resources.GetString(Resource.String.tutorialShare1),
+					Text = Resources.GetString(Resource.String.tutorialShare1Text),
                 ImageResource = Resource.Drawable.shareLocation,
             });
             _items.Add(new TutorialItem()
             {
-                Text = "The message will automatically contains the address if it has been resolved." +
-                " It will also contains direct links to the EasyBike app, IPhone/IPad native map and Google map.",
+					Text = Resources.GetString(Resource.String.tutorialShare2),
                 ImageResource = Resource.Drawable.sharemessage,
             });
           

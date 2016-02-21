@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:text="It's lonely here... \nAdd some favorites by tapping on a station or on a searched location. :)"
+            android:text="@string/favoritesLonely"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

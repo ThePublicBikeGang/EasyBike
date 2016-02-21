@@ -60,4 +60,44 @@
     \r\nPowered by B-cycle. To sign up, go to <a href="www.bcycle.com">www.bcycle.com</a>.
     \r\nThis is a third-party app not affiliated with B-cycle.
   </string>
+
+  <!---
+        Favorites Activity 
+        -->
+  <string name="favoritesLonely">It\'s lonely here... \nAdd some favorites by tapping on a station or on a searched location. :)</string>
+
+  <!---
+        Contracts Activity 
+        -->
+  <string name="contractsTitle">Download cities</string>
+
+  <!---
+        Tutorial Activity 
+        -->
+  <string name="tutorialTitle">Download a city</string>
+  <string name="tutorialDownload1">Tap "download cities" on the menu panel</string>
+  <string name="tutorialDownload2">Then tap on a city to download or remove it. It will download the stations list from the selected service. Then you will have the stations locations even offline.</string>
+  <string name="tutorialDownload2Details">If there are some new stations provided by the public bike service, you can refresh that list by removing and downloading again the city. This list will get bigger on future updates.</string>
+  <string name="tutorialSwitch1">Switch between bike and station mode</string>
+  <string name="tutorialSwitch1Text">Tap on the bike icon or (P) icon on the bottom right corner.</string>
+  <string name="tutorialSwitch1Details">If you are seeking for bikes, after tapping on a station it will provide the walk path to get there.</string>
+  <string name="tutorialSwitch2">Otherwise if you are looking to park your bike, it will provide the cycle path.</string>
+  <string name="tutorialCompass1">Use the compass</string>
+  <string name="tutorialCompass1Text">Tap once on the position button in the command bar, it will focus on your location. Tap again on the button to activate the compass.</string>
+  <string name="tutorialCompass2">Dragging the map when you are in location or compass mode will deactivate the location or compass mode. To reset the north of the map just tap on the top right corner button that appear if the north of the map have changed.</string>
+  <string name="tutorialSearch1">Search for an address</string>
+  <string name="tutorialSearch1Text">Start typing what you are looking for in the search bar.</string>
+  <string name="tutorialGetAddr1">Get the address from a location</string>
+  <string name="tutorialGetAddr1Text">Hold on the map. It will shows up the found address.</string>
+  <string name="tutorialAddFavorite1">Add some favorites</string>
+  <string name="tutorialAddFavorite1Text">Tap on a station or on a searched location to show up an action bar, then press the star icon. It will store the location of the point.</string>
+  <string name="tutorialAddFavorite1Details">Like a "Dude, where is my car" app, if you want to easily get back to your home / car / whereever location, just hold a finger on the map and add it to your favorites. It\'s then dead easy to get back somewhere.</string>
+  <string name="tutorialManageFavorite1">Manage favorites</string>
+  <string name="tutorialManageFavorite1Text">While on the view dedicated to favorites, tap on a favorite to show the location on the map. To remove a favorite, just slide it to the right or left.</string>
+  <string name="tutorialDirection1">Get directions to go somewhere</string>
+  <string name="tutorialDirection1Text">Press the direction button, it will start Google Map with the locations sets.</string>
+  <string name="tutorialDirection1Details">You can then get your headphones on, lock your phone, put it in your pocket and listen to the directions from Google Map :)</string>
+  <string name="tutorialShare1">Share a location</string>
+  <string name="tutorialShare1Text">By tapping on a bike station or on a searched location, you can share that position.</string>
+  <string name="tutorialShare2">The message will automatically contains the address if it has been resolved. It will also contains direct links to the EasyBike app, IPhone/IPad native map and Google map.</string>
 </resources>
