@@ -64,6 +64,7 @@ namespace EasyBike.Droid
         LaunchMode = Android.Content.PM.LaunchMode.SingleTask,
         ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     [IntentFilter(new[] { Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable }, DataScheme = "http", DataHost = "easybikeapp.com")]
+
     public partial class MainActivity : IOnMapReadyCallback, ActionMode.ICallback, ClusterManager.IOnClusterClickListener, ClusterManager.IOnClusterItemClickListener
     {
         private FragmentTransaction _fragTx;
@@ -469,9 +470,9 @@ namespace EasyBike.Droid
 
         protected async override void OnPause()
         {
-            base.OnPause();
             _locator.StopListeningAsync();
-            await _settingsService.SaveSettingAsync();
+            _settingsService.SaveSettingAsync();
+            base.OnPause();
         }
 
         private LatLng _lastUserLocation;
@@ -881,6 +882,16 @@ namespace EasyBike.Droid
             SwitchModeStationParking();
         }
 
+        protected override void OnDestroy()
+        {
+            // map doesn't load fine when pressing the back button and opening the app again from the running process list #85
+            // creating the map again works
+            _map.MarkerClick -= _map_MarkerClick;
+            _map.MapClick -= _map_MapClick;
+            _map = null;
+            base.OnDestroy();
+        }
+
         protected override void OnResume()
         {
             SetupMapIfNeeded();
@@ -1210,18 +1221,7 @@ namespace EasyBike.Droid
                     //return new AddressesFromLocationDTO { Addresses = addresses, Location = FormatLatLng(e.EventArgs.Point) };
 
                 });
-            _map.MapClick += (sender, e) =>
-            {
-                if (longClickMarker != null)
-                {
-                    longClickMarker.HideInfoWindow();
-                }
-                if (ActionMode != null)
-                {
-                    ActionMode.Finish();
-                }
-                CloseKeyboard();
-            };
+            _map.MapClick += _map_MapClick;
 
 
             if (_parameterLat != 0 && _parameterLon != 0)
@@ -1337,6 +1337,19 @@ namespace EasyBike.Droid
                     });
 
                 });
+        }
+
+        private void _map_MapClick(object sender, GoogleMap.MapClickEventArgs e)
+        {
+            if (longClickMarker != null)
+            {
+                longClickMarker.HideInfoWindow();
+            }
+            if (ActionMode != null)
+            {
+                ActionMode.Finish();
+            }
+            CloseKeyboard();
         }
 
         private void ShowIntentLocation()
