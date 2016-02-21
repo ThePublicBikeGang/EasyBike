@@ -51,7 +51,7 @@ namespace EasyBike.Droid.Views
         public void List_Click(StoreLink item)
         {
             var shareIntent = new Intent(Intent.ActionSend);
-            var text = StringResources.FormatShareMessage();
+            var text = StaticResources.FormatShareMessage();
             shareIntent.PutExtra(Intent.ExtraText, text);
             shareIntent.SetType("text/plain");
             StartActivity(Intent.CreateChooser(shareIntent, Resources.GetString(Resource.String.share)));
