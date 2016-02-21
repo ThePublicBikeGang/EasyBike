@@ -405,12 +405,12 @@ namespace EasyBike.Droid
             _locationButton.SetColorFilter(Color.Black);
             // Doesn't work on Kitkat 4.4, use SetColorFilter instead
             //_locationButton.ImageTintList = ColorStateList.ValueOf(Color.Black);
-            ViewCompat.SetElevation(_locationButton, 1f);
+            ViewCompat.SetElevation(_locationButton, 2f);
             _locationButton.Click += LocationButton_Click;
 
             _tileButton = FindViewById<FloatingActionButton>(Resource.Id.tileButton);
             _tileButton.Background.SetAlpha(200);
-            ViewCompat.SetElevation(_tileButton, 1f);
+            ViewCompat.SetElevation(_tileButton, 2f);
             _tileButton.Click += TileButton_Click;
 
             _currentTileName = FindViewById<TextView>(Resource.Id.currentTileName);
@@ -860,7 +860,7 @@ namespace EasyBike.Droid
 
         private void IncreaseButtonVisibility(FloatingActionButton button)
         {
-            ViewCompat.SetElevation(button, 1f);
+            ViewCompat.SetElevation(button, 2f);
             button.Background.SetAlpha(255);
         }
         private void DecreaseButtonVisibility(FloatingActionButton button)
