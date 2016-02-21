@@ -64,12 +64,15 @@
   <!---
         Favorites Activity 
         -->
+  <string name="favoritesTitle">Favorites</string>
   <string name="favoritesLonely">It\'s lonely here... \nAdd some favorites by tapping on a station or on a searched location. :)</string>
+  <string name="favoritesDialogText">Favorite name</string>
 
   <!---
         Contracts Activity 
         -->
   <string name="contractsTitle">Download cities</string>
+  <string name="contractsMenuClear">Clear all</string>
 
   <!---
         Tutorial Activity 
