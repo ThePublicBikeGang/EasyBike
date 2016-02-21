@@ -238,6 +238,7 @@
     <Compile Include="Helpers\ClearableAutoCompleteTextView.cs" />
     <Compile Include="Helpers\CountryListAdapter.cs" />
     <Compile Include="Helpers\CustomActionBarDrawerToggle.cs" />
+    <Compile Include="Helpers\CustomTileProvider.cs" />
     <Compile Include="Helpers\ExtendedDialogService.cs" />
     <Compile Include="Helpers\ExtendedNavigationService.cs" />
     <Compile Include="Helpers\FavoriteListAdapter.cs" />
@@ -666,5 +667,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_wpstore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\integers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\donottranslate.xml" />
   </ItemGroup>
 </Project>

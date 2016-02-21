@@ -1,15 +1,17 @@
 ﻿
+using System.Collections.Generic;
+
 namespace EasyBike.Resources
 {
-    public static class StringResources
+    public static class StaticResources
     {
         public static string FormatShareMessage()
         {
             var body = "Do you know EasyBike? Have a try!";
-            body += "\r\nAndroid: " + StringResources.AndroidStoreURL;
-            body += "\r\n\r\nWindows Phone 10: " + StringResources.WindowsPhone10StoreURL;
-            body += "\r\n\r\nWindows Phone 8.1: " + StringResources.WindowsPhone81StoreURL;
-            body += "\r\n\r\nIPhone: " + StringResources.IPhoneStoreURL;
+            body += "\r\nAndroid: " + StaticResources.AndroidStoreURL;
+            body += "\r\n\r\nWindows Phone 10: " + StaticResources.WindowsPhone10StoreURL;
+            body += "\r\n\r\nWindows Phone 8.1: " + StaticResources.WindowsPhone81StoreURL;
+            body += "\r\n\r\nIPhone: " + StaticResources.IPhoneStoreURL;
             return body;
         }
 
@@ -18,5 +20,35 @@ namespace EasyBike.Resources
         public static string WindowsPhone10StoreURL = "https://www.microsoft.com/store/apps/9wzdncrdkng9";
         public static string WindowsPhone81StoreURL = "http://windowsphone.com/s?appid=191ef96d-e185-47d1-80a3-377ebfefa325";
         public static string IPhoneStoreURL = "Coming soon...";
+
+        public static string TilesMapbox = "http://api.tiles.mapbox.com/v4/opentripplannerlow.jcagk4b3/{z}/{x}/{y}.png256?access_token=pk.eyJ1Ijoib3BlbnRyaXBwbGFubmVybG93IiwiYSI6ImRja1VOUjAifQ.1XBo8j8DGWj2EdIsxXGHdQ";
+        public static string TilesMapboxRetina = "http://api.tiles.mapbox.com/v4/opentripplannerhigh.jcah6hla/{z}/{x}/{y}@2x.png256?access_token=pk.eyJ1Ijoib3BlbnRyaXBwbGFubmVyaGlnaCIsImEiOiIyT2xxdVRjIn0.1n9CkukOWpsIgExzdcWfJg";
+        public static string TilesLyrk = "http://tiles.lyrk.org/lr/{z}/{x}/{y}?apikey=ea4f307439474ce99e29662232f80885";
+        public static string TilesMaquest = "http://otile1.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png";
+        public static string TilesMapnik = "http://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
+        public static string TilesCyclemap = "http://a.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png";
+
+        public static string TilesGoogleMapName = "Google Map";
+        public static string TilesOpenStreetMapName = "Open Street Map";
+
+
+        public static LinkedList<TileContainer> TilesList = new LinkedList<TileContainer>();
+
+        
+
+        public static int TilesMaquestMaxZoom = 18;
+        public static int TilesMapnikMaxZoom = 19;
+        public static int TilesCyclemapMaxZoom = 18;
+        public static int TilesLyrkMaxZoom = 18;
+
+
     }
+
+    public class TileContainer
+    {
+        public string Name;
+        public string TilesUrl;
+    }
+
+
 }

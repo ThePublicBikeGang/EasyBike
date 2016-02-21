@@ -18,6 +18,15 @@
         <include
             layout="@layout/toolbar" />
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/tileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_image"
+            android:layout_marginBottom="240dp"
+            android:layout_marginRight="20dp"
+            app:elevation="0dp"
+            android:layout_gravity="bottom|right" />
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/locationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

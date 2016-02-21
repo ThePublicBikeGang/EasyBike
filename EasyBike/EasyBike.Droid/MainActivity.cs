@@ -90,6 +90,7 @@ namespace EasyBike.Droid
         FloatingActionButton _bikesButton;
         FloatingActionButton _parkingButton;
         FloatingActionButton _locationButton;
+        FloatingActionButton _tileButton;
 
         // Place API
         const string strGoogleApiKey = "AIzaSyCwF6w1Zp2nBhXGq277dKOOQqAPBKH1QuM";
@@ -159,7 +160,7 @@ namespace EasyBike.Droid
                             break;
                         case Resource.Id.nav_share:
                             var shareIntent = new Intent(Intent.ActionSend);
-                            shareIntent.PutExtra(Intent.ExtraText, StringResources.FormatShareMessage());
+                            shareIntent.PutExtra(Intent.ExtraText, StaticResources.FormatShareMessage());
                             shareIntent.SetType("text/plain");
                             _context.StartActivity(Intent.CreateChooser(shareIntent, _context.Resources.GetString(Resource.String.share)));
                             //mode.Finish();
@@ -393,6 +394,10 @@ namespace EasyBike.Droid
 
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
             _locationButton.Click += LocationButton_Click;
+
+            _tileButton = FindViewById<FloatingActionButton>(Resource.Id.tileButton);
+            _tileButton.Click += TileButton_Click;
+
             UnStickUserLocation();
             _locationButton.Background.SetAlpha(150);
             AutoCompleteSearchPlaceTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autoCompleteSearchPlaceTextView);
@@ -436,6 +441,11 @@ namespace EasyBike.Droid
             _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
         }
 
+        private string _currentMapOverlay = StaticResources.TilesGoogleMapName;
+        private void TileButton_Click(object sender, EventArgs e)
+        {
+            UpdateOverlay();
+        }
 
         protected override void OnPostCreate(Bundle savedInstanceState)
         {
@@ -806,7 +816,7 @@ namespace EasyBike.Droid
             body += "\r\nAndroid: http://easybikeapp.com/?lt=" + latitude + "&ln=" + longitude;
             body += "\r\n\r\nIPhone: http://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
             body += "\r\n\r\nWindows Phone: easybike://to/?lt=" + latitude + "&ln=" + longitude;
-            body += "\r\n\r\nDon't have EasyBike? Get it now! -> " + StringResources.WebSiteForStoresURLs;
+            body += "\r\n\r\nDon't have EasyBike? Get it now! -> " + StaticResources.WebSiteForStoresURLs;
             //body += "market://details?id=" + PackageName;
 
             return body;
@@ -1552,6 +1562,65 @@ namespace EasyBike.Droid
             }
             _clusterManager.Cluster();
         }
+        /**
+         * Changes the tiles used to display the map and sets max zoom level.
+         *
+         * @param overlayString tiles URL for custom tiles or description for
+         *                      Google ones
+         */
+
+        private TileOverlay _selectedTileOverlay;
+        private LinkedListNode<TileContainer> _selectedTile;
+        public void UpdateOverlay()
+        {
+            int tile_width = 256;
+            int tile_height = 256;
+            var mMaxZoomLevel = _map.MaxZoomLevel;
+            if (_selectedTile == null)
+            {
+                _selectedTile = StaticResources.TilesList.First;
+            }
+            _selectedTile = _selectedTile.Next;
+            if (_selectedTile == null)
+            {
+                _selectedTile = StaticResources.TilesList.First;
+            }
+
+            if (_selectedTile.Value.TilesUrl == StaticResources.TilesMapnik)
+            {
+                mMaxZoomLevel = StaticResources.TilesMapnikMaxZoom;
+            }
+            else if (_selectedTile.Value.TilesUrl == StaticResources.TilesLyrk)
+            {
+                mMaxZoomLevel = StaticResources.TilesLyrkMaxZoom;
+                tile_width = 512;
+                tile_height = 512;
+            }
+            else {
+                mMaxZoomLevel = StaticResources.TilesMaquestMaxZoom;
+            }
+
+            if (_map.CameraPosition.Zoom > mMaxZoomLevel)
+            {
+                _map.MoveCamera(CameraUpdateFactory.ZoomTo(mMaxZoomLevel));
+            }
+
+
+            CustomUrlTileProvider mTileProvider = new CustomUrlTileProvider(
+                        tile_width,
+                        tile_height, _selectedTile.Value.TilesUrl);
+            var options = new TileOverlayOptions();
+            options.InvokeTileProvider(mTileProvider);
+            options.InvokeZIndex(-1);
+            if (_selectedTileOverlay != null)
+            {
+                _selectedTileOverlay.Remove();
+            }
+            _selectedTileOverlay = _map.AddTileOverlay(options);
+
+
+        }
+
     }
 }
 
