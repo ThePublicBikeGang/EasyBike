@@ -9,5 +9,6 @@ namespace EasyBike.Models.Storage
         Task SetSettingsAsync(SettingsModel settings);
         Task SaveSettingAsync();
         SettingsModel Settings { get; set; }
+        string MapTile { get; set; }
     }
 }

@@ -54,18 +54,6 @@ namespace EasyBike.ViewModels
             }
 
 
-            var googleMap = new LinkedListNode<TileContainer>(new TileContainer
-            {
-                Name = StaticResources.TilesGoogleMapName,
-            });
-            var openStreetMap = new LinkedListNode<TileContainer>(new TileContainer
-            {
-                Name = StaticResources.TilesOpenStreetMapName,
-                TilesUrl = StaticResources.TilesMapnik
-            });
-            StaticResources.TilesList.AddLast(googleMap);
-            StaticResources.TilesList.AddLast(openStreetMap);
-
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<IConfigService, ConfigService>();
             SimpleIoc.Default.Register<IStorageService, StorageService>();

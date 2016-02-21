@@ -17,6 +17,8 @@ namespace EasyBike.Services.Settings
         [JsonIgnore]
         public bool IsCompassMode { get; set; } = false;
 
+        public string MapTile { get; set; }
+
         public Location LastLocation { get; set; }
 
         public SettingsModel() {

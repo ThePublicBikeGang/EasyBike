@@ -28,26 +28,75 @@ namespace EasyBike.Resources
         public static string TilesMapnik = "http://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
         public static string TilesCyclemap = "http://a.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png";
 
-        public static string TilesGoogleMapName = "Google Map";
+        public static string TilesGoogleMapNormalName = "Google Map Normal";
+        public static string TilesGoogleMapSatelliteName = "Google Map Satellite";
+        public static string TilesGoogleMapHybridName = "Google Map Hybrid";
+        public static string TilesGoogleMapTerrainName = "Google Map Terrain";
         public static string TilesOpenStreetMapName = "Open Street Map";
-
+        public static string TilesOpenCycleMapName = "Open Cycle Map";
+        public static string TilesMapQuestMapName = "Map Quest";
 
         public static LinkedList<TileContainer> TilesList = new LinkedList<TileContainer>();
-
-        
 
         public static int TilesMaquestMaxZoom = 18;
         public static int TilesMapnikMaxZoom = 19;
         public static int TilesCyclemapMaxZoom = 18;
         public static int TilesLyrkMaxZoom = 18;
 
-
+        static StaticResources()
+        {
+            TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
+            {
+                Name = TilesGoogleMapNormalName,
+                GoogleMapLayer = true
+            }));
+            TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
+            {
+                Name = TilesOpenCycleMapName,
+                TilesUrl = TilesCyclemap,
+                MaxZoom = TilesCyclemapMaxZoom,
+            }));
+            TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
+            {
+                Name = TilesOpenStreetMapName,
+                TilesUrl = TilesMapnik,
+                MaxZoom = TilesMapnikMaxZoom,
+            }));
+            TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
+            {
+                Name = TilesGoogleMapHybridName,
+                GoogleMapLayer = true
+            }));
+           
+           
+            //TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
+            //{
+            //    Name = TilesMapQuestMapName,
+            //    TilesUrl = TilesMaquest,
+            //    MaxZoom = TilesMaquestMaxZoom,
+            //}));
+            //TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
+            //{
+            //    Name = "Map Box",
+            //    TilesUrl = TilesMapbox,
+            //    MaxZoom = TilesMaquestMaxZoom,
+            //}));
+            //TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
+            //{
+            //    Name = "Map Box Retina",
+            //    TilesUrl = TilesMapboxRetina,
+            //    MaxZoom = TilesMaquestMaxZoom,
+            //}));
+        }
     }
 
     public class TileContainer
     {
         public string Name;
         public string TilesUrl;
+        public int MaxZoom;
+        public int TileSize = 256;
+        public bool GoogleMapLayer = false;
     }
 
 

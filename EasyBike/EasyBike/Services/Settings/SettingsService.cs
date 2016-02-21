@@ -11,6 +11,8 @@ namespace EasyBike.Services
         private SettingsModel _settings;
         public SettingsModel Settings { get { return _settings; } set { } }
 
+        public string MapTile { get; set; }
+
         public SettingsService(ILocalisationService localisationService, IStorageService storageService)
         {
             _localisationService = localisationService;
@@ -23,6 +25,7 @@ namespace EasyBike.Services
             if (_settings == null)
             {
                 _settings = await _storageService.GetSettingsAsync().ConfigureAwait(false);
+                MapTile = _settings.MapTile;
             }
             return _settings;
         }
@@ -36,6 +39,7 @@ namespace EasyBike.Services
         {
             var settings = await GetSettingsAsync();
             settings.LastLocation = _localisationService.GetCurrentMapCenter();
+            settings.MapTile = MapTile;
             await _storageService.SetSettingsAsync(_settings).ConfigureAwait(false);
         }
     }

@@ -106,7 +106,7 @@
     <Compile Include="Notification\GoToPageNotification.cs" />
     <Compile Include="Notification\MessageNotification.cs" />
     <Compile Include="Notification\SendEmailNotification.cs" />
-    <Compile Include="Resources\StringResources.cs" />
+    <Compile Include="Resources\StaticResources.cs" />
     <Compile Include="Services\ContractService.cs" />
     <Compile Include="Models\Contracts\FR\JcDecauxContract.cs" />
     <Compile Include="Models\Contracts\FR\JcDecauxModel.cs" />

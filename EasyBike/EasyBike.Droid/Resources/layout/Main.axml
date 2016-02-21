@@ -17,15 +17,30 @@
         android:layout_height="match_parent">
         <include
             layout="@layout/toolbar" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="100dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textSize="35sp"
+            android:alpha="1"
+            android:shadowColor="#000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:textColor="#FFFFFF"
+            android:id="@+id/currentTileName" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/tileButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_image"
-            android:layout_marginBottom="240dp"
+            android:layout_marginTop="100dp"
             android:layout_marginRight="20dp"
             app:elevation="0dp"
-            android:layout_gravity="bottom|right" />
+            android:layout_gravity="top|right" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/locationButton"
             android:layout_width="wrap_content"
@@ -33,6 +48,7 @@
             android:src="@drawable/ic_location"
             android:layout_marginBottom="160dp"
             android:layout_marginRight="20dp"
+            app:backgroundTint="#FFFFFF"
             app:elevation="0dp"
             android:layout_gravity="bottom|right" />
         <android.support.design.widget.FloatingActionButton

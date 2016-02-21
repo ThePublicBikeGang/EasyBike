@@ -48,6 +48,8 @@ using System.Text.RegularExpressions;
 using GalaSoft.MvvmLight.Views;
 using Plugin.Geolocator.Abstractions;
 using EasyBike.Resources;
+using Android.Views.Animations;
+using Android.Graphics.Drawables;
 
 namespace EasyBike.Droid
 {
@@ -87,10 +89,14 @@ namespace EasyBike.Droid
         private LatLng currentMarkerPosition;
 
         // switch mode buttons
-        FloatingActionButton _bikesButton;
-        FloatingActionButton _parkingButton;
-        FloatingActionButton _locationButton;
-        FloatingActionButton _tileButton;
+        private FloatingActionButton _bikesButton;
+        private FloatingActionButton _parkingButton;
+        private FloatingActionButton _locationButton;
+        private FloatingActionButton _tileButton;
+
+        private TextView _currentTileName;
+        private Animation _currentTileNameAnimation;
+        private Animation _disappearTileNameAnimation;
 
         // Place API
         const string strGoogleApiKey = "AIzaSyCwF6w1Zp2nBhXGq277dKOOQqAPBKH1QuM";
@@ -387,19 +393,33 @@ namespace EasyBike.Droid
             navigationView.SetNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
 
             _bikesButton = FindViewById<FloatingActionButton>(Resource.Id.bikesButton);
+            _bikesButton.BackgroundTintList = ColorStateList.ValueOf(Resources.GetColor(Resource.Color.primary_light));
             _bikesButton.Click += BikesButton_Click;
+
             _parkingButton = FindViewById<FloatingActionButton>(Resource.Id.parkingButton);
+            _parkingButton.BackgroundTintList = ColorStateList.ValueOf(Resources.GetColor(Resource.Color.primary_light));
             _parkingButton.Click += ParkingButton_Click;
 
-
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
+            _locationButton.BackgroundTintList = ColorStateList.ValueOf(Color.White);
+            _locationButton.SetColorFilter(Color.Black);
+            // Doesn't work on Kitkat 4.4, use SetColorFilter instead
+            //_locationButton.ImageTintList = ColorStateList.ValueOf(Color.Black);
+            ViewCompat.SetElevation(_locationButton, 1f);
             _locationButton.Click += LocationButton_Click;
 
             _tileButton = FindViewById<FloatingActionButton>(Resource.Id.tileButton);
+            _tileButton.Background.SetAlpha(200);
+            ViewCompat.SetElevation(_tileButton, 1f);
             _tileButton.Click += TileButton_Click;
 
+            _currentTileName = FindViewById<TextView>(Resource.Id.currentTileName);
+            _currentTileNameAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.placeholder);
+            _disappearTileNameAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.disappearAnimation);
+            _currentTileNameAnimation.AnimationEnd += _currentTileNameAnimation_AnimationEnd;
+
             UnStickUserLocation();
-            _locationButton.Background.SetAlpha(150);
+
             AutoCompleteSearchPlaceTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autoCompleteSearchPlaceTextView);
             AutoCompleteSearchPlaceTextView.ItemClick += AutoCompleteSearchPlaceTextView_ItemClick;
             googlePlacesAutocompleteAdapter = new GooglePlacesAutocompleteAdapter(this, Android.Resource.Layout.SimpleDropDownItem1Line);
@@ -441,7 +461,7 @@ namespace EasyBike.Droid
             _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
         }
 
-        private string _currentMapOverlay = StaticResources.TilesGoogleMapName;
+        private string _currentMapOverlay = StaticResources.TilesGoogleMapNormalName;
         private void TileButton_Click(object sender, EventArgs e)
         {
             UpdateOverlay();
@@ -481,6 +501,7 @@ namespace EasyBike.Droid
         protected async override void OnPause()
         {
             _locator.StopListeningAsync();
+            _settingsService.MapTile = _selectedTileName;
             _settingsService.SaveSettingAsync();
             base.OnPause();
         }
@@ -504,7 +525,10 @@ namespace EasyBike.Droid
             if (_stickToUserLocation)
             {
                 _stickToUserLocation = _compassMode = false;
-                _locationButton.Background.SetAlpha(150);
+                //_locationButton.Background.SetAlpha(150);
+                _locationButton.BackgroundTintList = ColorStateList.ValueOf(Color.White);
+                _locationButton.SetColorFilter(Color.Black);
+                //_locationButton.ImageTintList = ColorStateList.ValueOf(Color.Black);
                 _locationButton.SetImageBitmap(_iconUserLocation);
                 CrossCompass.Current.Stop();
             }
@@ -554,11 +578,13 @@ namespace EasyBike.Droid
                 return;
             }
 
+            _locationButton.BackgroundTintList = ColorStateList.ValueOf(Resources.GetColor(Resource.Color.primary_light));
+            //_locationButton.ImageTintList = ColorStateList.ValueOf(Color.White);
+            _locationButton.SetColorFilter(Color.White);
             if (_stickToUserLocation)
             {
                 _compassEventcounter = 0;
                 _locationButton.SetImageBitmap(_iconCompass);
-
                 if (CompassChangedStream == null)
                 {
                     CompassChangedStream = Observable.FromEventPattern<CompassChangedEventArgs>(CrossCompass.Current, "CompassChanged");
@@ -609,7 +635,6 @@ namespace EasyBike.Droid
             else
             {
                 _stickToUserLocation = true;
-                _locationButton.Background.SetAlpha(255);
             }
 
 
@@ -835,10 +860,12 @@ namespace EasyBike.Droid
 
         private void IncreaseButtonVisibility(FloatingActionButton button)
         {
+            ViewCompat.SetElevation(button, 1f);
             button.Background.SetAlpha(255);
         }
         private void DecreaseButtonVisibility(FloatingActionButton button)
         {
+            ViewCompat.SetElevation(button, 0f);
             button.Background.SetAlpha(150);
         }
         /// <summary>
@@ -898,6 +925,7 @@ namespace EasyBike.Droid
             // creating the map again works
             _map.MarkerClick -= _map_MarkerClick;
             _map.MapClick -= _map_MapClick;
+            _currentTileNameAnimation.AnimationEnd -= _currentTileNameAnimation_AnimationEnd;
             _map = null;
             base.OnDestroy();
         }
@@ -1176,6 +1204,8 @@ namespace EasyBike.Droid
             SwitchModeStationParkingVisualState();
 
             _map = googleMap;
+
+            LoadPreviousTile();
 
             //Setup and customize your Google Map
             _map.UiSettings.CompassEnabled = true;
@@ -1571,56 +1601,112 @@ namespace EasyBike.Droid
 
         private TileOverlay _selectedTileOverlay;
         private LinkedListNode<TileContainer> _selectedTile;
-        public void UpdateOverlay()
+        private string _selectedTileName;
+        /// <summary>
+        /// Load the previous map tile choosen during last launch of the app
+        /// </summary>
+        private void LoadPreviousTile()
         {
-            int tile_width = 256;
-            int tile_height = 256;
-            var mMaxZoomLevel = _map.MaxZoomLevel;
-            if (_selectedTile == null)
+            if (string.IsNullOrWhiteSpace(_settingsService.MapTile))
             {
-                _selectedTile = StaticResources.TilesList.First;
-            }
-            _selectedTile = _selectedTile.Next;
-            if (_selectedTile == null)
-            {
-                _selectedTile = StaticResources.TilesList.First;
+                _settingsService.MapTile = StaticResources.TilesGoogleMapNormalName;
+                return;
             }
 
-            if (_selectedTile.Value.TilesUrl == StaticResources.TilesMapnik)
+            _selectedTile = StaticResources.TilesList.First;
+            if (_selectedTile.Value.Name != _settingsService.MapTile)
             {
-                mMaxZoomLevel = StaticResources.TilesMapnikMaxZoom;
+                do
+                {
+                    _selectedTile = _selectedTile.Next;
+                    if(_selectedTile == null)
+                    {
+                        break;
+                    }
+                }
+                while (_selectedTile.Value.Name != _settingsService.MapTile);
             }
-            else if (_selectedTile.Value.TilesUrl == StaticResources.TilesLyrk)
-            {
-                mMaxZoomLevel = StaticResources.TilesLyrkMaxZoom;
-                tile_width = 512;
-                tile_height = 512;
-            }
-            else {
-                mMaxZoomLevel = StaticResources.TilesMaquestMaxZoom;
-            }
-
-            if (_map.CameraPosition.Zoom > mMaxZoomLevel)
-            {
-                _map.MoveCamera(CameraUpdateFactory.ZoomTo(mMaxZoomLevel));
-            }
-
-
-            CustomUrlTileProvider mTileProvider = new CustomUrlTileProvider(
-                        tile_width,
-                        tile_height, _selectedTile.Value.TilesUrl);
-            var options = new TileOverlayOptions();
-            options.InvokeTileProvider(mTileProvider);
-            options.InvokeZIndex(-1);
-            if (_selectedTileOverlay != null)
-            {
-                _selectedTileOverlay.Remove();
-            }
-            _selectedTileOverlay = _map.AddTileOverlay(options);
-
-
+            UpdateOverlay(true);
         }
 
+        /// <summary>
+        /// Set the next Overlay (tile source) from the list of overlays
+        /// programatic = true happens when the update is forced by loading the previous tile source
+        /// from the previous session (stored in settings)
+        /// </summary>
+        /// <param name="programatic"></param>
+        private void UpdateOverlay(bool programatic = false)
+        {
+            if (!programatic)
+            {
+                if (_selectedTile == null)
+                {
+                    _selectedTile = StaticResources.TilesList.First;
+                }
+                _selectedTile = _selectedTile.Next;
+                if (_selectedTile == null)
+                {
+                    _selectedTile = StaticResources.TilesList.First;
+                }
+            }
+
+            // if google map, just remove the previous overlay 
+            if (_selectedTile.Value.GoogleMapLayer)
+            {
+                if (_selectedTile.Value.Name == StaticResources.TilesGoogleMapHybridName)
+                {
+                    _map.MapType = GoogleMap.MapTypeHybrid;
+                }
+                else
+                {
+                    _map.MapType = GoogleMap.MapTypeNormal;
+                }
+                if (_selectedTileOverlay != null)
+                {
+                    _selectedTileOverlay.Remove();
+                }
+            }
+            else
+            {
+                var mMaxZoomLevel = _selectedTile.Value.MaxZoom;
+                if (mMaxZoomLevel == 0)
+                {
+                    mMaxZoomLevel = (int)_map.MaxZoomLevel;
+                }
+                if (_map.CameraPosition.Zoom > mMaxZoomLevel)
+                {
+                    _map.MoveCamera(CameraUpdateFactory.ZoomTo(mMaxZoomLevel));
+                }
+
+                CustomUrlTileProvider mTileProvider = new CustomUrlTileProvider(
+                            _selectedTile.Value.TileSize,
+                            _selectedTile.Value.TileSize, _selectedTile.Value.TilesUrl);
+                var options = new TileOverlayOptions();
+                options.InvokeTileProvider(mTileProvider);
+                options.InvokeZIndex(-1);
+                if (_selectedTileOverlay != null)
+                {
+                    _selectedTileOverlay.Remove();
+                }
+                _map.MapType = GoogleMap.MapTypeNone;
+                _selectedTileOverlay = _map.AddTileOverlay(options);
+
+            }
+
+            _selectedTileName = _selectedTile.Value.Name;
+            if (!programatic)
+            {
+                _currentTileName.Text = _selectedTile.Value.Name;
+                _currentTileName.StartAnimation(_currentTileNameAnimation);
+                _currentTileName.Visibility = Android.Views.ViewStates.Visible;
+            }
+        }
+
+
+        private void _currentTileNameAnimation_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
+        {
+            _currentTileName.StartAnimation(_disappearTileNameAnimation);
+        }
     }
 }
 

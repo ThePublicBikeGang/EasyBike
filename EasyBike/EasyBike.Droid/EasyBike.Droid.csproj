@@ -674,4 +674,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values\donottranslate.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\disappearAnimation.xml" />
+  </ItemGroup>
 </Project>
