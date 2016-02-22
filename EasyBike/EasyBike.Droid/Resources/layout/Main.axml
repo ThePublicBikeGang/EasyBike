@@ -39,7 +39,7 @@
             android:src="@drawable/ic_image"
             android:layout_marginTop="100dp"
             android:layout_marginRight="20dp"
-            app:elevation="0dp"
+            android:alpha="0.7"
             android:layout_gravity="top|right" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/locationButton"

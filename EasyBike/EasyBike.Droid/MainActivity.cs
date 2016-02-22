@@ -410,8 +410,10 @@ namespace EasyBike.Droid
             _locationButton.Click += LocationButton_Click;
 
             _tileButton = FindViewById<FloatingActionButton>(Resource.Id.tileButton);
-            _tileButton.Background.SetAlpha(200);
+            _tileButton.BackgroundTintList = ColorStateList.ValueOf(Color.White);
+            _tileButton.SetColorFilter(Color.Black);
             ViewCompat.SetElevation(_tileButton, 2f);
+
             _tileButton.Click += TileButton_Click;
 
             _currentTileName = FindViewById<TextView>(Resource.Id.currentTileName);
