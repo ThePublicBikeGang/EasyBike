@@ -94,6 +94,8 @@ namespace EasyBike.Droid.Helpers
 
         }
 
+        
+
         //protected override void OnClusterItemRendered(Java.Lang.Object p0, Marker p1)
         //{
         //    // doesn't work, I guess because it needs to be done on the Marker itself
@@ -276,17 +278,5 @@ namespace EasyBike.Droid.Helpers
     }
 
 
-    public class Animatorrr : Java.Lang.Object, ValueAnimator.IAnimatorUpdateListener
-    {
-        private Marker _marker;
-        public Animatorrr(Marker marker)
-        {
-            _marker = marker;
-        }
-
-        public void OnAnimationUpdate(ValueAnimator animation)
-        {
-            _marker.Alpha = (float)animation.AnimatedValue;
-        }
-    }
+ 
 }

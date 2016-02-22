@@ -50,6 +50,7 @@ using Plugin.Geolocator.Abstractions;
 using EasyBike.Resources;
 using Android.Views.Animations;
 using Android.Graphics.Drawables;
+using Android.Animation;
 
 namespace EasyBike.Droid
 {
@@ -1028,6 +1029,37 @@ namespace EasyBike.Droid
         }
 
 
+        //protected override void OnClusterItemRendered(Java.Lang.Object p0, Marker p1)
+        //{
+        //    // doesn't work, I guess because it needs to be done on the Marker itself
+        //    if (p1.Title == "1") return;
+        //    ValueAnimator ani = ValueAnimator.OfFloat(0, 1);
+
+        //    //ani.SetDuration(200);
+        //    //ani.AddUpdateListener(new Animatorrr(p1));
+        //    //ani.Start();
+
+        //    //var test = ObjectAnimator.OfInt(p1, "Icon", 0, 100);
+        //    //test.SetDuration(1000);
+        //    //test.Start();
+        //    //ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f);
+        //    //anim.Interpolator= new MVAccelerateDecelerateInterpolator();
+        //    p1.Title = "1";
+
+
+
+        //    //Animation logoMoveAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.logoanimation);
+        //    //logoIV.startAnimation(logoMoveAnimation);
+        //}
+
+        private void AnimateStation(Marker marker)
+        {
+            ValueAnimator ani = ValueAnimator.OfFloat(0, 1);
+            ani.SetDuration(200);
+            ani.AddUpdateListener(new Animatorrr(marker));
+            ani.Start();
+        }
+
         private void _map_MarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
         {
             if (e.Marker.Title == "cluster")
@@ -1044,6 +1076,7 @@ namespace EasyBike.Droid
                 }
                 ActionMode = StartSupportActionMode(this);
                 e.Marker.ShowInfoWindow();
+                AnimateStation(e.Marker);
             }
         }
 
@@ -1620,7 +1653,7 @@ namespace EasyBike.Droid
                 do
                 {
                     _selectedTile = _selectedTile.Next;
-                    if(_selectedTile == null)
+                    if (_selectedTile == null)
                     {
                         break;
                     }
@@ -1707,6 +1740,20 @@ namespace EasyBike.Droid
         private void _currentTileNameAnimation_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
         {
             _currentTileName.StartAnimation(_disappearTileNameAnimation);
+        }
+    }
+
+    public class Animatorrr : Java.Lang.Object, ValueAnimator.IAnimatorUpdateListener
+    {
+        private Marker _marker;
+        public Animatorrr(Marker marker)
+        {
+            _marker = marker;
+        }
+
+        public void OnAnimationUpdate(ValueAnimator animation)
+        {
+            _marker.Alpha = (float)animation.AnimatedValue;
         }
     }
 }
