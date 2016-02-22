@@ -565,6 +565,27 @@ namespace EasyBike.Droid
             DisableCompass();
         }
 
+        private bool CheckIfLocationIsActive()
+        {
+            var locator = CrossGeolocator.Current;
+            if (locator.IsGeolocationAvailable && !locator.IsGeolocationEnabled)
+            {
+                AlertDialog dialog = null;
+                dialog = new AlertDialog.Builder(this)
+                    .SetTitle(Resources.GetString(Resource.String.activateLocationDialogTitle))
+                    .SetMessage(Resources.GetString(Resource.String.activateLocationDialogMessage))
+                    .SetPositiveButton(Android.Resource.String.Ok, (sender, EventArgs) =>
+                    {
+                        var myIntent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
+                        StartActivity(myIntent);
+                    }).SetNegativeButton(Android.Resource.String.Cancel, (sender, EventArgs) => { })
+                    .Create();
+                dialog.Show();
+                return false;
+            }
+            return true;
+        }
+
         IObservable<System.Reactive.EventPattern<CompassChangedEventArgs>> CompassChangedStream;
         private bool _compassMode;
         // used to reduce the noise provided buy the compass
@@ -573,6 +594,11 @@ namespace EasyBike.Droid
         private int _compassEventcounter = 0;
         private async void LocationButton_Click(object sender, EventArgs e)
         {
+            if (!CheckIfLocationIsActive())
+            {
+                return;
+            }
+
             if (_compassMode && _stickToUserLocation)
             {
                 ResetMapCameraViewAndStickers();
@@ -622,9 +648,9 @@ namespace EasyBike.Droid
                             {
                                 _map.StopAnimation();
                                 _map.AnimateCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                                 _lastUserLocation == null ? _map.CameraPosition.Target : _lastUserLocation,
+                                _lastUserLocation == null ? _map.CameraPosition.Target : _lastUserLocation,
                                 _map.CameraPosition.Zoom,
-                                 _map.CameraPosition.Tilt, (float)compassChangedEventArgs.EventArgs.Heading)), 300, null);
+                                _map.CameraPosition.Tilt, (float)compassChangedEventArgs.EventArgs.Heading)), 300, null);
                             });
                             _prevHeading = compassChangedEventArgs.EventArgs.Heading;
                         }
@@ -647,6 +673,7 @@ namespace EasyBike.Droid
             else
             {
                 var locator = CrossGeolocator.Current;
+
                 try
                 {
                     var location = await locator.GetPositionAsync(15000, null, false);
@@ -908,7 +935,7 @@ namespace EasyBike.Droid
 
             SwitchModeStationParkingVisualState();
 
-           
+
         }
 
         private void ParkingButton_Click(object sender, EventArgs e)
@@ -1095,8 +1122,8 @@ namespace EasyBike.Droid
                 });
             }
             catch { }
-            
         }
+
         private TaskCompletionSource<DirectionHolder> directionsTCS = new TaskCompletionSource<DirectionHolder>();
         public Task<DirectionHolder> GetDirectionsAsync()
         {
@@ -1139,7 +1166,7 @@ namespace EasyBike.Droid
                                     Duration = duration.text,
                                     Polylines = lineOptions
                                 });
-                                
+
                             }
                         }
                     }
@@ -1147,7 +1174,7 @@ namespace EasyBike.Droid
                     {
                     }
                 });
-                
+
             }
             return directionsTCS.Task;
         }

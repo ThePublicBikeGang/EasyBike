@@ -22,6 +22,11 @@
   <string name="favoriteAdded">Favorite added.</string>
 
   <!---
+        Alert messages
+        -->
+  <string name="activateLocationDialogTitle">Activate your location service?</string>
+  <string name="activateLocationDialogMessage">You\'ll need to activate your location service to use this feature.</string>
+  <!---
         Share location
         -->
   <string name="shareLocationHeader">Check out this location:\r\n</string>
