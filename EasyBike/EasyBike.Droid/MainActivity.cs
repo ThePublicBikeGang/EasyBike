@@ -926,6 +926,7 @@ namespace EasyBike.Droid
             _map.MarkerClick -= _map_MarkerClick;
             _map.MapClick -= _map_MapClick;
             _currentTileNameAnimation.AnimationEnd -= _currentTileNameAnimation_AnimationEnd;
+            ClearPolyline();
             _map = null;
             base.OnDestroy();
         }
