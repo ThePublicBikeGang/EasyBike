@@ -662,7 +662,7 @@ namespace EasyBike.Droid
             _lastUserLocation = new LatLng(e.Position.Latitude, e.Position.Longitude);
             RunOnUiThread(() =>
             {
-                AddDirections();
+                AddDirectionsAsync();
             });
 
             if (_stickToUserLocation)
@@ -891,11 +891,10 @@ namespace EasyBike.Droid
         /// </summary>
         private void SwitchModeStationParking()
         {
-
             _settingsService.Settings.IsBikeMode = !_settingsService.Settings.IsBikeMode;
 
             // refresh direction to provide more relevant path
-            AddDirections();
+            AddDirectionsAsync();
 
             foreach (var clusterItem in StationControls.ToList())
             {
@@ -908,6 +907,8 @@ namespace EasyBike.Droid
             }
 
             SwitchModeStationParkingVisualState();
+
+           
         }
 
         private void ParkingButton_Click(object sender, EventArgs e)
@@ -1028,30 +1029,6 @@ namespace EasyBike.Droid
             return false;
         }
 
-
-        //protected override void OnClusterItemRendered(Java.Lang.Object p0, Marker p1)
-        //{
-        //    // doesn't work, I guess because it needs to be done on the Marker itself
-        //    if (p1.Title == "1") return;
-        //    ValueAnimator ani = ValueAnimator.OfFloat(0, 1);
-
-        //    //ani.SetDuration(200);
-        //    //ani.AddUpdateListener(new Animatorrr(p1));
-        //    //ani.Start();
-
-        //    //var test = ObjectAnimator.OfInt(p1, "Icon", 0, 100);
-        //    //test.SetDuration(1000);
-        //    //test.Start();
-        //    //ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f);
-        //    //anim.Interpolator= new MVAccelerateDecelerateInterpolator();
-        //    p1.Title = "1";
-
-
-
-        //    //Animation logoMoveAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.logoanimation);
-        //    //logoIV.startAnimation(logoMoveAnimation);
-        //}
-
         private void AnimateStation(Marker marker)
         {
             ValueAnimator ani = ValueAnimator.OfFloat(0, 1);
@@ -1104,46 +1081,75 @@ namespace EasyBike.Droid
             return url;
         }
 
-        public async void AddDirections()
+        private async void AddDirectionsAsync()
         {
+            try
+            {
+                var directions = await GetDirectionsAsync();
+                RunOnUiThread(() =>
+                {
+                    ClearPolyline();
+                    if (ActionMode != null)
+                        ActionMode.Title = $"{directions.Distance}, {directions.Duration} ({(_settingsService.Settings.IsBikeMode ? "walking" : "cycling")})";
+                    _currentPolyline = _map.AddPolyline(directions.Polylines);
+                });
+            }
+            catch { }
+            
+        }
+        private TaskCompletionSource<DirectionHolder> directionsTCS = new TaskCompletionSource<DirectionHolder>();
+        public Task<DirectionHolder> GetDirectionsAsync()
+        {
+            if (directionsTCS != null)
+            {
+                if (!directionsTCS.Task.IsCompleted)
+                    directionsTCS.TrySetCanceled();
+                directionsTCS = new TaskCompletionSource<DirectionHolder>();
+            }
+
             if (_lastUserLocation != null && currentMarkerPosition != null)
             {
-                try
+                Task.Run(async () =>
                 {
-                    // Getting URL to the Google Directions API
-                    var url = GetDirectionsUrl(_lastUserLocation, currentMarkerPosition);
-                    using (var client = new HttpClient(new NativeMessageHandler()))
+                    try
                     {
-                        var response = await client.GetAsync(url).ConfigureAwait(false);
-                        var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                        var directions = JsonConvert.DeserializeObject<DirectionsModel>(responseBodyAsText);
-                        PolylineOptions lineOptions = new PolylineOptions();
-                        lineOptions = lineOptions.InvokeColor(Resources.GetColor(Resource.Color.accent).ToArgb());
-                        lineOptions = lineOptions.InvokeWidth(15);
-
-                        if (directions.routes.FirstOrDefault() != null)
+                        // Getting URL to the Google Directions API
+                        var url = GetDirectionsUrl(_lastUserLocation, currentMarkerPosition);
+                        using (var client = new HttpClient(new NativeMessageHandler()))
                         {
-                            var duration = directions.routes.FirstOrDefault().legs.FirstOrDefault().duration;
-                            var distance = directions.routes.FirstOrDefault().legs.FirstOrDefault().distance;
-                            var points = MapHelper.DecodePolyline(directions.routes.FirstOrDefault().overview_polyline.points).AsEnumerable();
-                            foreach (var point in points)
+                            var response = await client.GetAsync(url).ConfigureAwait(false);
+                            var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var directions = JsonConvert.DeserializeObject<DirectionsModel>(responseBodyAsText);
+                            PolylineOptions lineOptions = new PolylineOptions();
+                            lineOptions = lineOptions.InvokeColor(Resources.GetColor(Resource.Color.accent).ToArgb());
+                            lineOptions = lineOptions.InvokeWidth(15);
+
+                            if (directions.routes.FirstOrDefault() != null)
                             {
-                                lineOptions.Add(point);
+                                var duration = directions.routes.FirstOrDefault().legs.FirstOrDefault().duration;
+                                var distance = directions.routes.FirstOrDefault().legs.FirstOrDefault().distance;
+                                var points = MapHelper.DecodePolyline(directions.routes.FirstOrDefault().overview_polyline.points).AsEnumerable();
+                                foreach (var point in points)
+                                {
+                                    lineOptions.Add(point);
+                                }
+                                directionsTCS.SetResult(new DirectionHolder
+                                {
+                                    Distance = distance.text,
+                                    Duration = duration.text,
+                                    Polylines = lineOptions
+                                });
+                                
                             }
-                            RunOnUiThread(() =>
-                            {
-                                ClearPolyline();
-                                if (ActionMode != null)
-                                    ActionMode.Title = $"{distance.text}, {duration.text} ({(_settingsService.Settings.IsBikeMode ? "walking" : "cycling")})";
-                                _currentPolyline = _map.AddPolyline(lineOptions);
-                            });
                         }
                     }
-                }
-                catch (Exception e)
-                {
-                }
+                    catch
+                    {
+                    }
+                });
+                
             }
+            return directionsTCS.Task;
         }
 
         public void SetViewPoint(CameraPosition cameraPosition, bool animated)
@@ -1519,7 +1525,7 @@ namespace EasyBike.Droid
         private async void SelectItem(LatLng position)
         {
             currentMarkerPosition = position;
-            AddDirections();
+            AddDirectionsAsync();
             try
             {
                 var locationDetails = await GetAddressAsync();

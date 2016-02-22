@@ -253,6 +253,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Models\ClusterItem.cs" />
+    <Compile Include="Models\DirectionHolder.cs" />
     <Compile Include="Models\DirectionsModel.cs" />
     <Compile Include="Models\PlaceApiDetailModel.cs" />
     <Compile Include="Models\PlaceApiModel.cs" />
