@@ -435,7 +435,7 @@ namespace EasyBike.Droid
                     {
                         using (var client = new HttpClient(new NativeMessageHandler()))
                         {
-                            var response = await client.GetAsync(strAutoCompleteGoogleApi + AutoCompleteSearchPlaceTextView.Text + "&types=geocode&key=" + strGoogleApiKey).ConfigureAwait(false);
+                            var response = await client.GetAsync(strAutoCompleteGoogleApi + AutoCompleteSearchPlaceTextView.Text + "&key=" + strGoogleApiKey).ConfigureAwait(false);
                             var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                             var predictions = JsonConvert.DeserializeObject<PlaceApiModel>(responseBodyAsText).predictions.ToList();
                             googlePlacesAutocompleteAdapter.Results = predictions;
