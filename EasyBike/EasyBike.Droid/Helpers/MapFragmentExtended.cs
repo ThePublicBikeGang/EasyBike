@@ -51,8 +51,8 @@ namespace EasyBike.Droid.Helpers
                 // position on top right
                 rlp.AddRule(LayoutRules.AlignParentEnd);
                 rlp.RemoveRule(LayoutRules.AlignParentStart);
-                rlp.RightMargin = (int)LayoutHelper.ConvertDpToPixel(28);
-                rlp.TopMargin = (int)LayoutHelper.ConvertDpToPixel(165);
+                rlp.RightMargin = (int)LayoutHelper.ConvertDpToPixel(20);
+                rlp.TopMargin = (int)LayoutHelper.ConvertDpToPixel(155);
 
                 compassView.RequestLayout();
                 // listen to click on compass to stop compass mode

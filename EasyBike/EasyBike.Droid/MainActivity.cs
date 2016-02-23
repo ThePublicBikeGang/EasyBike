@@ -413,7 +413,6 @@ namespace EasyBike.Droid
             _tileButton.BackgroundTintList = ColorStateList.ValueOf(Color.White);
             _tileButton.SetColorFilter(Color.Black);
             ViewCompat.SetElevation(_tileButton, 2f);
-
             _tileButton.Click += TileButton_Click;
 
             _currentTileName = FindViewById<TextView>(Resource.Id.currentTileName);
