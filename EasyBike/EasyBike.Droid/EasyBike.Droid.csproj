@@ -286,6 +286,9 @@
     <AndroidAsset Include="fonts\Roboto-Regular.ttf" />
     <AndroidAsset Include="fonts\Roboto-Thin.ttf" />
     <AndroidAsset Include="fonts\Roboto-ThinItalic.ttf" />
+    <None Include="build\build.ps1" />
+    <None Include="build\easybike.apk" />
+    <None Include="build\easybike.keystore" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml">
