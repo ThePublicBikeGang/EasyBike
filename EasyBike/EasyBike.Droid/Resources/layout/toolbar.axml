@@ -26,16 +26,28 @@
             android:paddingRight="20dp"
             android:src="@drawable/ic_menu"
             style="@style/Widget.AppCompat.ActionButton" />
-        <EasyBike.Droid.Helpers.ClearableAutoCompleteTextView
-            android:hint="@string/search_hint"
-            android:id="@+id/autoCompleteSearchPlaceTextView"
-            android:background="#ffffff"
-            android:layout_height="match_parent"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:paddingRight="15dp"
-            android:imeOptions="actionSearch"
-            android:popupBackground="#ffffff" />
+            android:layout_height="wrap_content">
+            <EasyBike.Droid.Helpers.ClearableAutoCompleteTextView
+                android:hint="@string/search_hint"
+                android:id="@+id/autoCompleteSearchPlaceTextView"
+                android:background="#ffffff"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="35dp"
+                android:singleLine="true"
+                android:imeOptions="actionSearch"
+                android:popupBackground="#ffffff" />
+            <ProgressBar
+                android:id="@+id/searchProgressBar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="35dp"
+                android:visibility="invisible" />
+        </FrameLayout>
     </LinearLayout>
 </android.support.v7.widget.Toolbar>

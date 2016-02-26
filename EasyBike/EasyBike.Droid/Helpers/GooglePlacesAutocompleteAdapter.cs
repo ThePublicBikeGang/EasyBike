@@ -22,6 +22,10 @@ namespace EasyBike.Droid.Helpers
         }
         public override Java.Lang.Object GetItem(int position)
         {
+            if(Results.Count <= position)
+            {
+                return string.Empty;
+            }
             return Results[position].ToString();  
         }
 

@@ -95,6 +95,8 @@ namespace EasyBike.Droid
         private FloatingActionButton _locationButton;
         private FloatingActionButton _tileButton;
 
+        private ProgressBar _searchProgressBar;
+
         private TextView _currentTileName;
         private Animation _currentTileNameAnimation;
         private Animation _disappearTileNameAnimation;
@@ -404,6 +406,9 @@ namespace EasyBike.Droid
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
             _locationButton.BackgroundTintList = ColorStateList.ValueOf(Color.White);
             _locationButton.SetColorFilter(Color.Black);
+
+            _searchProgressBar = FindViewById<ProgressBar>(Resource.Id.searchProgressBar);
+
             // Doesn't work on Kitkat 4.4, use SetColorFilter instead
             //_locationButton.ImageTintList = ColorStateList.ValueOf(Color.Black);
             ViewCompat.SetElevation(_locationButton, 2f);
@@ -414,7 +419,24 @@ namespace EasyBike.Droid
             _tileButton.SetColorFilter(Color.Black);
             ViewCompat.SetElevation(_tileButton, 2f);
             _tileButton.Click += TileButton_Click;
+            var parent = (View)_tileButton.Parent;
 
+            // Gets the parent view and posts a Runnable on the UI thread. 
+            // This ensures that the parent lays out its children before calling the getHitRect() method.
+            // The getHitRect() method gets the child's hit rectangle (touchable area) in the parent's coordinates.
+            parent.Post(() =>
+            {
+                var touchRect = new Rect();
+                _tileButton.GetHitRect(touchRect);
+                touchRect.Top -= 200;
+                touchRect.Left -= 200;
+                touchRect.Bottom += 200;
+                touchRect.Right += 200;
+
+
+                parent.TouchDelegate = new TouchDelegate(touchRect, _tileButton);
+            });
+           
             _currentTileName = FindViewById<TextView>(Resource.Id.currentTileName);
             _currentTileNameAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.placeholder);
             _disappearTileNameAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.disappearAnimation);
@@ -433,6 +455,11 @@ namespace EasyBike.Droid
                 {
                     try
                     {
+                        RunOnUiThread(() =>
+                        {
+                            _searchProgressBar.Visibility = ViewStates.Visible;
+                        });
+
                         using (var client = new HttpClient(new NativeMessageHandler()))
                         {
                             var response = await client.GetAsync(strAutoCompleteGoogleApi + AutoCompleteSearchPlaceTextView.Text + "&key=" + strGoogleApiKey).ConfigureAwait(false);
@@ -442,6 +469,7 @@ namespace EasyBike.Droid
                             RunOnUiThread(() =>
                             {
                                 googlePlacesAutocompleteAdapter.NotifyDataSetChanged();
+                                _searchProgressBar.Visibility = ViewStates.Invisible;
                             });
                         }
                     }
