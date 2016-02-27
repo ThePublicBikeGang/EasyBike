@@ -207,6 +207,7 @@ namespace EasyBike.Droid
                                 }
 
                                 _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
+                                SelectItem(position);
                             }
                             catch
                             {
@@ -523,6 +524,7 @@ namespace EasyBike.Droid
                 {
                     var position = new LatLng(place.result.geometry.location.lat, place.result.geometry.location.lng);
                     AddPlaceMarker(position, place.result.formatted_address, FormatLatLng(position));
+                    SelectItem(position);
                     _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
                 });
             }
@@ -818,7 +820,7 @@ namespace EasyBike.Droid
                             else
                             {
                                 // add custom location as favorite
-                                if (longClickMarker.Position.Latitude == currentMarkerPosition.Latitude && longClickMarker.Position.Longitude == currentMarkerPosition.Longitude)
+                                if (longClickMarker != null && longClickMarker.Position.Latitude == currentMarkerPosition.Latitude && longClickMarker.Position.Longitude == currentMarkerPosition.Longitude)
                                 {
                                     _favoritesService.AddFavoriteAsync(new Favorite()
                                     {
@@ -1103,11 +1105,7 @@ namespace EasyBike.Droid
             else
             {
                 SelectItem(e.Marker.Position);
-                if (ActionMode != null)
-                {
-                    ActionMode.Finish();
-                }
-                ActionMode = StartSupportActionMode(this);
+
                 e.Marker.ShowInfoWindow();
                 AnimateStation(e.Marker);
             }
@@ -1344,7 +1342,6 @@ namespace EasyBike.Droid
                 {
                     AddPlaceMarker(e.EventArgs.Point, null, null);
                     SelectItem(e.EventArgs.Point);
-
                     //IList<Address> addresses = new List<Address>();
                     //try
                     //{
@@ -1489,6 +1486,7 @@ namespace EasyBike.Droid
             if (ActionMode != null)
             {
                 ActionMode.Finish();
+                
             }
             CloseKeyboard();
         }
@@ -1498,6 +1496,7 @@ namespace EasyBike.Droid
             var position = new LatLng(_parameterLat, _parameterLon);
             // initiate the map on a location passed as parameter 
             AddPlaceMarker(position, null, FormatLatLng(position));
+            SelectItem(position);
             _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
         }
 
@@ -1586,6 +1585,19 @@ namespace EasyBike.Droid
         private async void SelectItem(LatLng position)
         {
             currentMarkerPosition = position;
+            if (ActionMode != null)
+            {
+                ActionMode.Finish();
+            }
+            // this needs some delays to appear properly
+            Task.Run(async () =>
+            {
+                await Task.Delay(200);
+                RunOnUiThread(() =>
+                {
+                    ActionMode = StartSupportActionMode(this);
+                });
+            });
             AddDirectionsAsync();
             try
             {
@@ -1618,7 +1630,7 @@ namespace EasyBike.Droid
                     longClickMarker.ShowInfoWindow();
                 }
             }
-
+          
         }
 
         /// <summary>
@@ -1627,7 +1639,6 @@ namespace EasyBike.Droid
         /// <param name="position"></param>
         private void AddPlaceMarker(LatLng position, string title, string snippet)
         {
-            SelectItem(position);
             RunOnUiThread(() =>
             {
                 if (longClickMarker != null)
@@ -1649,6 +1660,7 @@ namespace EasyBike.Droid
                 }
                 ActionMode = StartSupportActionMode(this);
             });
+            
         }
 
         private void RefreshView(AddRemoveCollection addRemoveCollection, CancellationToken token)

@@ -1,10 +1,15 @@
 ﻿using EasyBike.Models.Storage;
+using EasyBike.WinPhone.Common;
 using GalaSoft.MvvmLight.Ioc;
 using System;
+using System.Globalization;
+using System.Text.RegularExpressions;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -42,6 +47,94 @@ namespace EasyBike.WinPhone
             }
         }
 
+
+        private async void RestoreStatus(ApplicationExecutionState previousExecutionState)
+        {
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (previousExecutionState == ApplicationExecutionState.Terminated)
+            {
+                // Restore the saved session state only when appropriate
+                try
+                {
+                    await SuspensionManager.RestoreAsync();
+                }
+                catch (SuspensionManagerException)
+                {
+                    //Something went wrong restoring state.
+                    //Assume there is no state and continue
+                }
+            }
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+            if (args.Kind == ActivationKind.Protocol)
+            {
+                ProtocolActivatedEventArgs protocolArgs = args as ProtocolActivatedEventArgs;
+                Frame rootFrame = CreateRootFrame();
+                RestoreStatus(args.PreviousExecutionState);
+
+                if (rootFrame.Content == null)
+                {
+                    if (!rootFrame.Navigate(typeof(MainPage)))
+                    {
+                        throw new Exception("Failed to create initial page");
+                    }
+                }
+
+                double lat = 0, lon = 0;
+                try
+                {
+
+                    string pattern = @"(?<=lt=)-?[0-9]\d*\.*\,*\d+";
+                    if (Regex.IsMatch(protocolArgs.Uri.Query, pattern))
+                    {
+                        var regex = new Regex(pattern).Match(protocolArgs.Uri.Query);
+                        if (regex != null && regex.Captures.Count > 0)
+                        {
+                            lat = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+                        }
+                    }
+                    pattern = @"(?<=ln=)-?[0-9]\d*\.*\,*\d+";
+                    if (Regex.IsMatch(protocolArgs.Uri.Query, pattern))
+                    {
+                        var regex = new Regex(pattern).Match(protocolArgs.Uri.Query);
+                        if (regex != null && regex.Captures.Count > 0)
+                        {
+                            lon = double.Parse(regex.Captures[0].Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+                        }
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    var dialog = new MessageDialog("Unable to find the passed location :(");
+                    dialog.ShowAsync();
+                }
+                // Ensure the current window is active
+                Window.Current.Activate();
+
+                var p = rootFrame.Content as MainPage;
+                if (p == null)
+                {
+                    if (rootFrame.CanGoBack)
+                    {
+                        rootFrame.GoBack();
+                    }
+                }
+                p = rootFrame.Content as MainPage;
+
+                if (p != null)
+                {
+                    if (lat != 0 && lon != 0)
+                    {
+                        p.SetViewToLocation(lat, lon);
+                    }
+                }
+            }
+        }
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used when the application is launched to open a specific file, to display
@@ -106,6 +199,32 @@ namespace EasyBike.WinPhone
             Window.Current.Activate();
         }
 
+
+        private Frame CreateRootFrame()
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null)
+            {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+
+                // Set the default language
+                rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
+
+                SuspensionManager.RegisterFrame(rootFrame, "AppFrame");
+
+
+                rootFrame.Navigate(typeof(MainPage), null);
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+
+            return rootFrame;
+        }
+
         /// <summary>
         /// Restores the content transitions after the app has launched.
         /// </summary>
@@ -133,7 +252,7 @@ namespace EasyBike.WinPhone
             // CAREFULL: This is never reached in DEBUG mode
             var settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             await settingsService.SaveSettingAsync();
-            
+
             deferral.Complete();
         }
     }

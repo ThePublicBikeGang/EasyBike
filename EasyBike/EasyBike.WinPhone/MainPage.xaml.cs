@@ -74,6 +74,7 @@ namespace EasyBike.WinPhone
         DoubleAnimation AccuracyScaleX;
         DoubleAnimation AccuracyScaleY;
 
+        private TaskCompletionSource<bool> _mapLoaded = new TaskCompletionSource<bool>();
         public MainPage()
         {
             InitializeComponent();
@@ -180,6 +181,8 @@ namespace EasyBike.WinPhone
 
             // trigger a map center changed to refresh the view
             Map.Center = new Geopoint(new BasicGeoposition() { Longitude = Map.Center.Position.Longitude + 0.000001, Latitude = Map.Center.Position.Latitude });
+
+            _mapLoaded.SetResult(true);
         }
 
         private async void _notificationService_OnNotify(object sender, Notification.Notification e)
@@ -1357,17 +1360,15 @@ namespace EasyBike.WinPhone
 
         public async void SetViewToLocation(double lat, double lon)
         {
+            await _mapLoaded.Task;
             LastSearchGeopoint = new Geopoint(new BasicGeoposition() { Latitude = lat, Longitude = lon });
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
-                await MapCtrl.TrySetViewAsync(LastSearchGeopoint, 14.5, 0, null, MapAnimationKind.None);
+                await MapCtrl.TrySetViewAsync(LastSearchGeopoint, 15, 0, null, MapAnimationKind.None);
             });
             StopCompassAndUserLocationTracking();
             appLaunchedFromProtocolUri = true;
             ShowSearchLocationPoint(LastSearchGeopoint, string.Empty);
-
         }
-
-
     }
 }
