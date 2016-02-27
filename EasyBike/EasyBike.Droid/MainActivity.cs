@@ -88,6 +88,7 @@ namespace EasyBike.Droid
         public ActionMode ActionMode;
         private Intent _shareIntent = new Intent(Intent.ActionSend);
         private LatLng currentMarkerPosition;
+        private Marker _selectedMarker;
 
         // switch mode buttons
         private FloatingActionButton _bikesButton;
@@ -205,7 +206,14 @@ namespace EasyBike.Droid
                                 {
                                     AddPlaceMarker(position, favorite.Name, favorite.Address);
                                 }
-
+                                else
+                                {
+                                    var marker = _clusterManager.MarkerCollection.Markers.First(m => m.Position.Latitude == favorite.Latitude && m.Position.Longitude == favorite.Longitude);
+                                    if (marker != null)
+                                    {
+                                        _selectedMarker = marker;
+                                    }
+                                }
                                 _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
                                 SelectItem(position);
                             }
@@ -1104,9 +1112,11 @@ namespace EasyBike.Droid
             }
             else
             {
-                SelectItem(e.Marker.Position);
-
-                e.Marker.ShowInfoWindow();
+                _selectedMarker = e.Marker;
+                SelectItem(_selectedMarker.Position);
+                _selectedMarker.Title = Resources.GetString(Resource.String.mapMarkerResolving);
+                _selectedMarker.Snippet = FormatLatLng(e.Marker.Position);
+                _selectedMarker.ShowInfoWindow();
                 AnimateStation(e.Marker);
             }
         }
@@ -1479,9 +1489,9 @@ namespace EasyBike.Droid
 
         private void _map_MapClick(object sender, GoogleMap.MapClickEventArgs e)
         {
-            if (longClickMarker != null)
+            if (_selectedMarker != null)
             {
-                longClickMarker.HideInfoWindow();
+                _selectedMarker.HideInfoWindow();
             }
             if (ActionMode != null)
             {
@@ -1604,18 +1614,18 @@ namespace EasyBike.Droid
                 var locationDetails = await GetAddressAsync();
                 _lastResolvedAddress = locationDetails.Addresses[0].GetAddressLine(0);
                 _lastResolvedLocality = locationDetails.Addresses[0].Locality;
-                if (longClickMarker != null && longClickMarker.Position.Latitude == currentMarkerPosition.Latitude && longClickMarker.Position.Longitude == currentMarkerPosition.Longitude)
+                if (_selectedMarker != null && _selectedMarker.Position.Latitude == currentMarkerPosition.Latitude && _selectedMarker.Position.Longitude == currentMarkerPosition.Longitude)
                 {
                     if (locationDetails.Addresses.Any())
                     {
-                        longClickMarker.Title = _lastResolvedAddress;
-                        longClickMarker.Snippet = $"{_lastResolvedLocality} {locationDetails.Location}";
+                        _selectedMarker.Title = _lastResolvedAddress;
+                        _selectedMarker.Snippet = $"{_lastResolvedLocality} {locationDetails.Location}";
                     }
                     else
                     {
-                        longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
+                        _selectedMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
                     }
-                    longClickMarker.ShowInfoWindow();
+                    _selectedMarker.ShowInfoWindow();
                 }
             }
             catch (TaskCanceledException ex)
@@ -1624,10 +1634,10 @@ namespace EasyBike.Droid
             }
             catch (Exception ex)
             {
-                if (longClickMarker != null)
+                if (_selectedMarker != null)
                 {
-                    longClickMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
-                    longClickMarker.ShowInfoWindow();
+                    _selectedMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
+                    _selectedMarker.ShowInfoWindow();
                 }
             }
           
@@ -1648,9 +1658,10 @@ namespace EasyBike.Droid
                 }
                 var markerOptions = new MarkerOptions().SetPosition(position);
 
-
+                
                 // Create and show the marker
                 longClickMarker = _map.AddMarker(markerOptions);
+                _selectedMarker = longClickMarker;
                 longClickMarker.Title = title ?? Resources.GetString(Resource.String.mapMarkerResolving);
                 longClickMarker.Snippet = snippet ?? FormatLatLng(position);
                 longClickMarker.ShowInfoWindow();
