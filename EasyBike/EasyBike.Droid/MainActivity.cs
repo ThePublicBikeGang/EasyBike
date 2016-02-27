@@ -206,14 +206,7 @@ namespace EasyBike.Droid
                                 {
                                     AddPlaceMarker(position, favorite.Name, favorite.Address);
                                 }
-                                else
-                                {
-                                    var marker = _clusterManager.MarkerCollection.Markers.First(m => m.Position.Latitude == favorite.Latitude && m.Position.Longitude == favorite.Longitude);
-                                    if (marker != null)
-                                    {
-                                        _selectedMarker = marker;
-                                    }
-                                }
+                              
                                 _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
                                 SelectItem(position);
                             }
