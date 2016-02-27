@@ -7,9 +7,6 @@ namespace EasyBike.Models.Contracts
 	public class OpenSourceBikeShareModel : StationModelBase
 	{
 		[JsonProperty(PropertyName = "standId")]
-		public int id { get; set; }
-
-		// TODO Quelle différence avec l'id juste au dessus ?
 		public override string Id { get; set; }
 
 		[JsonProperty(PropertyName = "available_bike_stands")]

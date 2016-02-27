@@ -32,7 +32,12 @@ namespace EasyBike.Models.Contracts
 			{
 				HttpResponseMessage response = await client.GetAsync(new Uri(AvailabilityUrl)).ConfigureAwait(false);
 				var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-				return responseBodyAsText.FromJsonString<OpenSourceBikeShareModel>();
+				List<StationModelBase> stations = responseBodyAsText.FromJsonString<OpenSourceBikeShareModel[]>().ToList<StationModelBase>();
+				var resList = stations.Where (s => s.Id == station.Id).ToList();
+				if (resList.Count == 0) {
+					throw new Exception ("Invalid station");
+				}
+				return resList [0];
 			}
 		}
 
@@ -42,7 +47,9 @@ namespace EasyBike.Models.Contracts
 			{
 				HttpResponseMessage response = await client.GetAsync(new Uri(StationsUrl)).ConfigureAwait(false);
 				var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-				return responseBodyAsText.FromJsonString<OpenSourceBikeShareModel[]>().ToList<StationModelBase>();
+				var tmp = responseBodyAsText.FromJsonString<OpenSourceBikeShareModel[]> ();
+				var tmp2 = tmp.ToList<StationModelBase>();
+				return tmp2;
 			}
 		}
 	}
