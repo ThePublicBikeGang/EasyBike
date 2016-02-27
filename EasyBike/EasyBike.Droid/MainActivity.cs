@@ -818,7 +818,7 @@ namespace EasyBike.Droid
                             else
                             {
                                 // add custom location as favorite
-                                if (longClickMarker.Position.Latitude == currentMarkerPosition.Latitude && longClickMarker.Position.Longitude == currentMarkerPosition.Longitude)
+                                if (longClickMarker != null && longClickMarker.Position.Latitude == currentMarkerPosition.Latitude && longClickMarker.Position.Longitude == currentMarkerPosition.Longitude)
                                 {
                                     _favoritesService.AddFavoriteAsync(new Favorite()
                                     {
