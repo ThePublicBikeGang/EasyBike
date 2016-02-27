@@ -533,6 +533,18 @@ namespace EasyBike.Models
             },            
             #endregion
 
+			#region Slovakia
+			new Country
+			{
+				Name = "Slovakia",
+				ISO31661 = "SK",
+				Contracts = new List<Contract>()
+				{
+					new OpenSourceBikeShareContract{Name = "Bratislava"},
+				}
+			},
+			#endregion 
+
             #region Slovenia
             new Country
             {
