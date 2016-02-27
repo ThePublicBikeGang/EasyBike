@@ -38,10 +38,10 @@ namespace EasyBike.Resources
 
         public static LinkedList<TileContainer> TilesList = new LinkedList<TileContainer>();
 
-        public static int TilesMaquestMaxZoom = 18;
-        public static int TilesMapnikMaxZoom = 19;
-        public static int TilesCyclemapMaxZoom = 18;
-        public static int TilesLyrkMaxZoom = 18;
+        public static float TilesMaquestMaxZoom = 18;
+        public static float TilesMapnikMaxZoom = 19.7f;
+        public static float TilesCyclemapMaxZoom = 21;
+        public static float TilesLyrkMaxZoom = 18;
 
         static StaticResources()
         {
@@ -94,7 +94,7 @@ namespace EasyBike.Resources
     {
         public string Name;
         public string TilesUrl;
-        public int MaxZoom;
+        public float MaxZoom;
         public int TileSize = 256;
         public bool GoogleMapLayer = false;
     }

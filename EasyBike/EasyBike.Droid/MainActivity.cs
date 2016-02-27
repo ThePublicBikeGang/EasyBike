@@ -1300,6 +1300,7 @@ namespace EasyBike.Droid
             SwitchModeStationParkingVisualState();
 
             _map = googleMap;
+            _maxZoom = _map.MaxZoomLevel;
 
             LoadPreviousTile();
 
@@ -1411,6 +1412,10 @@ namespace EasyBike.Droid
             mapObserver
                 .Do((e) =>
                 {
+                    if (_map.CameraPosition.Zoom > _maxZoom)
+                    {
+                        _map.MoveCamera(CameraUpdateFactory.ZoomTo(_maxZoom));
+                    }
                     cts.Cancel();
                     cts = new CancellationTokenSource();
                 }).Throttle(throttleTime)
@@ -1731,6 +1736,7 @@ namespace EasyBike.Droid
         /// from the previous session (stored in settings)
         /// </summary>
         /// <param name="programatic"></param>
+        private float _maxZoom;
         private void UpdateOverlay(bool programatic = false)
         {
             if (!programatic)
@@ -1761,17 +1767,18 @@ namespace EasyBike.Droid
                 {
                     _selectedTileOverlay.Remove();
                 }
+                _maxZoom = (int)_map.MaxZoomLevel;
             }
             else
             {
-                var mMaxZoomLevel = _selectedTile.Value.MaxZoom;
-                if (mMaxZoomLevel == 0)
+                _maxZoom = _selectedTile.Value.MaxZoom;
+                if (_maxZoom == 0)
                 {
-                    mMaxZoomLevel = (int)_map.MaxZoomLevel;
+                    _maxZoom = (int)_map.MaxZoomLevel;
                 }
-                if (_map.CameraPosition.Zoom > mMaxZoomLevel)
+                if (_map.CameraPosition.Zoom > _maxZoom)
                 {
-                    _map.MoveCamera(CameraUpdateFactory.ZoomTo(mMaxZoomLevel));
+                    _map.MoveCamera(CameraUpdateFactory.ZoomTo(_maxZoom));
                 }
 
                 CustomUrlTileProvider mTileProvider = new CustomUrlTileProvider(
