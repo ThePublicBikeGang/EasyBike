@@ -38,9 +38,6 @@ namespace EasyBike.Droid
             SetSupportActionBar(toolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
-            _favorites = await _favoritesService.GetFavoritesAsync();
-
             favoritesListView = FindViewById<RecyclerView>(Resource.Id.FavoritesList);
 
             // use this setting to improve performance if you know that changes
@@ -50,6 +47,13 @@ namespace EasyBike.Droid
             var layoutManager = new LinearLayoutManager(this);
             layoutManager.Orientation = (int)Orientation.Vertical;
             favoritesListView.SetLayoutManager(layoutManager);
+
+
+
+            _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
+            _favorites = await _favoritesService.GetFavoritesAsync();
+
+       
             // specify an adapter (see also next example)
             mAdapter = new FavoriteListAdapter(this, _favorites, this);
             favoritesListView.SetAdapter(mAdapter);
@@ -64,11 +68,11 @@ namespace EasyBike.Droid
             {
                 await Task.Delay(200);
                 _placeHolder.StartAnimation(_placeHolderAnimation);
-                _placeHolder.Visibility = Android.Views.ViewStates.Visible;
+                _placeHolder.Visibility = ViewStates.Visible;
             }
         }
 
-        private async void FavoritesListView_ChildViewRemoved(object sender, Android.Views.ViewGroup.ChildViewRemovedEventArgs e)
+        private async void FavoritesListView_ChildViewRemoved(object sender, ViewGroup.ChildViewRemovedEventArgs e)
         {
             var itemViewHolder = (e.Child.Tag as FavoriteListAdapter.ItemViewHolder);
             await _favoritesService.RemoveFavoriteAsync(itemViewHolder.Favorite);
