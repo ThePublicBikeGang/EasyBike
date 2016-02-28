@@ -450,6 +450,8 @@ namespace EasyBike.Droid
             AutoCompleteSearchPlaceTextView.ItemClick += AutoCompleteSearchPlaceTextView_ItemClick;
             googlePlacesAutocompleteAdapter = new GooglePlacesAutocompleteAdapter(this, Android.Resource.Layout.SimpleDropDownItem1Line);
             AutoCompleteSearchPlaceTextView.Adapter = googlePlacesAutocompleteAdapter;
+
+
             Observable.FromEventPattern(AutoCompleteSearchPlaceTextView, "TextChanged")
                 .Throttle(TimeSpan.FromMilliseconds(300))
                 .Where(x => AutoCompleteSearchPlaceTextView.Text.Length >= 2)
@@ -468,15 +470,22 @@ namespace EasyBike.Droid
                             var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                             var predictions = JsonConvert.DeserializeObject<PlaceApiModel>(responseBodyAsText).predictions.ToList();
                             googlePlacesAutocompleteAdapter.Results = predictions;
-                            RunOnUiThread(() =>
+                            if(AutoCompleteSearchPlaceTextView.Text.Length >= 2)
                             {
-                                googlePlacesAutocompleteAdapter.NotifyDataSetChanged();
-                                _searchProgressBar.Visibility = ViewStates.Invisible;
-                            });
+                                RunOnUiThread(() =>
+                                {
+                                    googlePlacesAutocompleteAdapter.NotifyDataSetChanged();
+                                    EndPlacesSearch();
+                                });
+                            }
                         }
                     }
-                    catch (Exception e)
+                    catch
                     {
+                        RunOnUiThread(() =>
+                        {
+                            EndPlacesSearch();
+                        });
                     }
                 });
 
@@ -491,6 +500,11 @@ namespace EasyBike.Droid
             // trigger the creation of the injected dependencies
             _settingsService = SimpleIoc.Default.GetInstance<ISettingsService>();
             _favoritesService = SimpleIoc.Default.GetInstance<IFavoritesService>();
+        }
+
+        public void EndPlacesSearch()
+        {
+            _searchProgressBar.Visibility = ViewStates.Invisible;
         }
 
         private string _currentMapOverlay = StaticResources.TilesGoogleMapNormalName;
@@ -531,7 +545,7 @@ namespace EasyBike.Droid
             }
         }
 
-        protected async override void OnPause()
+        protected override void OnPause()
         {
             _locator.StopListeningAsync();
             _settingsService.MapTile = _selectedTileName;

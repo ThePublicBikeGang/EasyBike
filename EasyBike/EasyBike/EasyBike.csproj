@@ -81,6 +81,8 @@
     <Compile Include="Models\Contracts\FR\VeloPlusModel.cs" />
     <Compile Include="Models\Contracts\FR\VeoliaContract.cs" />
     <Compile Include="Models\Contracts\GR\EasyBikeContract.cs" />
+    <Compile Include="Models\Contracts\SK\OpenSourceBikeShareContract.cs" />
+    <Compile Include="Models\Contracts\SK\OpenSourceBikeShareModel.cs" />
     <Compile Include="Models\Contracts\UK\TflContract.cs" />
     <Compile Include="Models\Contracts\UK\TflModel.cs" />
     <Compile Include="Models\Contracts\US\BCycleContract.cs" />

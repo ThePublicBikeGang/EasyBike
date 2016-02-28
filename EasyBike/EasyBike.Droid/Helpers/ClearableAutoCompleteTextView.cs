@@ -32,6 +32,7 @@ namespace EasyBike.Droid.Helpers
     public class ClearableAutoCompleteTextView : AutoCompleteTextView
     {
         public static Drawable imgClearButton;
+        private MainActivity _activity;
         /* Required methods, not used in this implementation */
         public ClearableAutoCompleteTextView(Context context) : base(context)
         {
@@ -52,6 +53,7 @@ namespace EasyBike.Droid.Helpers
 
         private void Init(Context context)
         {
+            _activity = context as MainActivity;
             // set some styles
             SetHintTextColor(Color.LightGray);
             // The image we defined for the clear button
@@ -105,6 +107,10 @@ namespace EasyBike.Droid.Helpers
         {
             Text = string.Empty;
             HideClearButton();
+            if(_activity != null)
+            {
+                _activity.EndPlacesSearch();
+            }
         }
     }
 }
