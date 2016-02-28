@@ -17,8 +17,21 @@ namespace EasyBike.Models
                 return SimpleIoc.Default.GetInstance<IConfigService>();
             }
         }
+
+        /// <summary>
+        /// This tells if the API have a way to get the availability at the station level rather than the full contract
+        /// </summary>
         public bool StationRefreshGranularity { get; set; } = false;
+
+        /// <summary>
+        /// This is usually coupled with StationRefreshGranularity 
+        /// This is when the services provides the availability on a different URL than the stations
+        /// </summary>
         public string AvailabilityUrl { get; set; }
+
+        /// <summary>
+        /// The url that provides all the stations. From most of the API's, only that url is used
+        /// </summary>
         public string StationsUrl { get; set; }
         public string ServiceProvider { get; set; }
         public string Name { get; set; }
