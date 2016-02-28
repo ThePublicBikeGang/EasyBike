@@ -43,7 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_image"
-                app:fabSize="mini" />
+                app:fabSize="mini"
+                app:elevation="1dp" />
         </RelativeLayout>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/locationButton"
@@ -53,7 +54,7 @@
             android:layout_marginBottom="160dp"
             android:layout_marginRight="20dp"
             app:backgroundTint="#FFFFFF"
-            app:elevation="0dp"
+            app:elevation="1dp"
             android:layout_gravity="bottom|right" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/bikesButton"
@@ -63,7 +64,7 @@
             android:layout_marginBottom="80dp"
             android:layout_marginRight="80dp"
             android:layout_gravity="bottom|right"
-            app:elevation="0dp" />
+            app:elevation="1dp" />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/parkingButton"
             android:layout_width="wrap_content"
@@ -72,7 +73,7 @@
             android:layout_marginBottom="80dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="bottom|right"
-            app:elevation="0dp" />
+            app:elevation="1dp" />
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

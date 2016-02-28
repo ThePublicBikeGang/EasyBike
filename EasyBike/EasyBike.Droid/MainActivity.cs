@@ -206,7 +206,7 @@ namespace EasyBike.Droid
                                 {
                                     AddPlaceMarker(position, favorite.Name, favorite.Address);
                                 }
-                              
+
                                 _map.AnimateCamera(CameraUpdateFactory.NewLatLng(position));
                                 SelectItem(position);
                             }
@@ -407,19 +407,17 @@ namespace EasyBike.Droid
 
             _locationButton = FindViewById<FloatingActionButton>(Resource.Id.locationButton);
             _locationButton.BackgroundTintList = ColorStateList.ValueOf(Color.White);
-            _locationButton.SetColorFilter(Color.Black);
+            _locationButton.SetColorFilter(Color.Gray);
 
             _searchProgressBar = FindViewById<ProgressBar>(Resource.Id.searchProgressBar);
 
             // Doesn't work on Kitkat 4.4, use SetColorFilter instead
             //_locationButton.ImageTintList = ColorStateList.ValueOf(Color.Black);
-            ViewCompat.SetElevation(_locationButton, 2f);
             _locationButton.Click += LocationButton_Click;
 
             _tileButton = FindViewById<FloatingActionButton>(Resource.Id.tileButton);
             _tileButton.BackgroundTintList = ColorStateList.ValueOf(Color.White);
-            _tileButton.SetColorFilter(Color.Black);
-            ViewCompat.SetElevation(_tileButton, 2f);
+            _tileButton.SetColorFilter(Color.DarkGray);
             _tileButton.Click += TileButton_Click;
             var parent = (View)_tileButton.Parent;
 
@@ -438,7 +436,7 @@ namespace EasyBike.Droid
 
                 parent.TouchDelegate = new TouchDelegate(touchRect, _tileButton);
             });
-           
+
             _currentTileName = FindViewById<TextView>(Resource.Id.currentTileName);
             _currentTileNameAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.placeholder);
             _disappearTileNameAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.disappearAnimation);
@@ -470,7 +468,7 @@ namespace EasyBike.Droid
                             var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                             var predictions = JsonConvert.DeserializeObject<PlaceApiModel>(responseBodyAsText).predictions.ToList();
                             googlePlacesAutocompleteAdapter.Results = predictions;
-                            if(AutoCompleteSearchPlaceTextView.Text.Length >= 2)
+                            if (AutoCompleteSearchPlaceTextView.Text.Length >= 2)
                             {
                                 RunOnUiThread(() =>
                                 {
@@ -574,7 +572,7 @@ namespace EasyBike.Droid
                 _stickToUserLocation = _compassMode = false;
                 //_locationButton.Background.SetAlpha(150);
                 _locationButton.BackgroundTintList = ColorStateList.ValueOf(Color.White);
-                _locationButton.SetColorFilter(Color.Black);
+                _locationButton.SetColorFilter(Color.Gray);
                 //_locationButton.ImageTintList = ColorStateList.ValueOf(Color.Black);
                 _locationButton.SetImageBitmap(_iconUserLocation);
                 CrossCompass.Current.Stop();
@@ -934,13 +932,14 @@ namespace EasyBike.Droid
 
         private void IncreaseButtonVisibility(FloatingActionButton button)
         {
-            ViewCompat.SetElevation(button, 2f);
-            button.Background.SetAlpha(255);
+            button.BackgroundTintList = ColorStateList.ValueOf(Resources.GetColor(Resource.Color.primary_light));
+            button.SetColorFilter(Color.White);
         }
+
         private void DecreaseButtonVisibility(FloatingActionButton button)
         {
-            ViewCompat.SetElevation(button, 0f);
-            button.Background.SetAlpha(150);
+            button.BackgroundTintList = ColorStateList.ValueOf(Color.White);
+            button.SetColorFilter(Color.Gray);
         }
         /// <summary>
         /// set the visual state of the bike/parking mode buttons 
@@ -1121,13 +1120,13 @@ namespace EasyBike.Droid
             {
                 _selectedMarker = e.Marker;
                 SelectItem(_selectedMarker.Position);
-                if (string.IsNullOrWhiteSpace(_selectedMarker.Title) 
+                if (string.IsNullOrWhiteSpace(_selectedMarker.Title)
                     || _selectedMarker.Title == Resources.GetString(Resource.String.mapMarkerImpossible)
                     || _selectedMarker.Title == Resources.GetString(Resource.String.mapMarkerResolving))
                 {
                     _selectedMarker.Title = Resources.GetString(Resource.String.mapMarkerResolving);
                 }
-                    
+
                 _selectedMarker.Snippet = FormatLatLng(e.Marker.Position);
                 _selectedMarker.ShowInfoWindow();
                 AnimateStation(e.Marker);
@@ -1509,7 +1508,7 @@ namespace EasyBike.Droid
             if (ActionMode != null)
             {
                 ActionMode.Finish();
-                
+
             }
             CloseKeyboard();
         }
@@ -1664,8 +1663,8 @@ namespace EasyBike.Droid
                     }
                 }
             }
-           
-          
+
+
         }
 
         /// <summary>
@@ -1683,7 +1682,7 @@ namespace EasyBike.Droid
                 }
                 var markerOptions = new MarkerOptions().SetPosition(position);
 
-                
+
                 // Create and show the marker
                 longClickMarker = _map.AddMarker(markerOptions);
                 _selectedMarker = longClickMarker;
@@ -1696,7 +1695,7 @@ namespace EasyBike.Droid
                 }
                 ActionMode = StartSupportActionMode(this);
             });
-            
+
         }
 
         private void RefreshView(AddRemoveCollection addRemoveCollection, CancellationToken token)
