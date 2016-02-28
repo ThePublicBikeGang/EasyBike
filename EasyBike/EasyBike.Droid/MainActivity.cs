@@ -1121,7 +1121,13 @@ namespace EasyBike.Droid
             {
                 _selectedMarker = e.Marker;
                 SelectItem(_selectedMarker.Position);
-                _selectedMarker.Title = Resources.GetString(Resource.String.mapMarkerResolving);
+                if (string.IsNullOrWhiteSpace(_selectedMarker.Title) 
+                    || _selectedMarker.Title == Resources.GetString(Resource.String.mapMarkerImpossible)
+                    || _selectedMarker.Title == Resources.GetString(Resource.String.mapMarkerResolving))
+                {
+                    _selectedMarker.Title = Resources.GetString(Resource.String.mapMarkerResolving);
+                }
+                    
                 _selectedMarker.Snippet = FormatLatLng(e.Marker.Position);
                 _selectedMarker.ShowInfoWindow();
                 AnimateStation(e.Marker);
@@ -1616,37 +1622,49 @@ namespace EasyBike.Droid
                 });
             });
             AddDirectionsAsync();
-            try
+            if (string.IsNullOrWhiteSpace(_selectedMarker.Title)
+                   || _selectedMarker.Title == Resources.GetString(Resource.String.mapMarkerImpossible)
+                   || _selectedMarker.Title == Resources.GetString(Resource.String.mapMarkerResolving))
             {
-                var locationDetails = await GetAddressAsync();
-                _lastResolvedAddress = locationDetails.Addresses[0].GetAddressLine(0);
-                _lastResolvedLocality = locationDetails.Addresses[0].Locality;
-                if (_selectedMarker != null && _selectedMarker.Position.Latitude == currentMarkerPosition.Latitude && _selectedMarker.Position.Longitude == currentMarkerPosition.Longitude)
+                try
                 {
-                    if (locationDetails.Addresses.Any())
+                    var locationDetails = await GetAddressAsync();
+                    _lastResolvedAddress = locationDetails.Addresses[0].GetAddressLine(0);
+                    _lastResolvedLocality = locationDetails.Addresses[0].Locality;
+                    if (_selectedMarker != null && _selectedMarker.Position.Latitude == currentMarkerPosition.Latitude && _selectedMarker.Position.Longitude == currentMarkerPosition.Longitude)
                     {
-                        _selectedMarker.Title = _lastResolvedAddress;
-                        _selectedMarker.Snippet = $"{_lastResolvedLocality} {locationDetails.Location}";
+                        if (locationDetails.Addresses.Any())
+                        {
+                            _selectedMarker.Title = _lastResolvedAddress;
+                            _selectedMarker.Snippet = $"{_lastResolvedLocality} {locationDetails.Location}";
+                        }
+                        else
+                        {
+                            _selectedMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
+                        }
+                        if (_selectedMarker.IsInfoWindowShown)
+                        {
+                            _selectedMarker.ShowInfoWindow();
+                        }
                     }
-                    else
+                }
+                catch (TaskCanceledException ex)
+                {
+                    // ignore task cancellation and etc
+                }
+                catch (Exception ex)
+                {
+                    if (_selectedMarker != null)
                     {
                         _selectedMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
+                        if (_selectedMarker.IsInfoWindowShown)
+                        {
+                            _selectedMarker.ShowInfoWindow();
+                        }
                     }
-                    _selectedMarker.ShowInfoWindow();
                 }
             }
-            catch (TaskCanceledException ex)
-            {
-                // ignore task cancellation and etc
-            }
-            catch (Exception ex)
-            {
-                if (_selectedMarker != null)
-                {
-                    _selectedMarker.Title = Resources.GetString(Resource.String.mapMarkerImpossible);
-                    _selectedMarker.ShowInfoWindow();
-                }
-            }
+           
           
         }
 
