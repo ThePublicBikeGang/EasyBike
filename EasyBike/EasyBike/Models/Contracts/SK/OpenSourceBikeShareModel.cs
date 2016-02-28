@@ -1,37 +1,36 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.Runtime.Serialization;
 
 namespace EasyBike.Models.Contracts
 {
-	public class OpenSourceBikeShareModel : StationModelBase
-	{
-		[JsonProperty(PropertyName = "standId")]
-		public override string Id { get; set; }
+    public class OpenSourceBikeShareModel : StationModelBase
+    {
+        // unused
+        //public string standDescription { get; set; }
+        //public string standName { get; set; }
+        //public string standPhoto { get; set; }
 
-		[JsonProperty(PropertyName = "available_bike_stands")]
-		public override int? AvailableBikeStands { get; set; }
+        [JsonProperty(PropertyName = "standId")]
+        public override string Id { get; set; }
 
-		[JsonProperty(PropertyName = "bikecount")]
-		public override int? AvailableBikes { get; set; }
+        [JsonProperty(PropertyName = "bikecount")]
+        public override int? AvailableBikes { get; set; }
 
-		[JsonProperty(PropertyName = "lat")]
-		public override double Latitude { get; set; }
+        public override int? AvailableBikeStands { get; set; }
 
-		[JsonProperty(PropertyName = "lon")]
-		public override double Longitude { get; set; }
+        public  string lat { get; set; }
+        public string lon { get; set; }
 
-		/*[JsonProperty(PropertyName = "banking")]
-		public override bool Banking { get; set; }*/
 
-		[JsonProperty(PropertyName = "standDescription")]
-		public Position Description { get; set; }
-
-		[JsonProperty(PropertyName = "standName")]
-		public Position Name { get; set; }
-
-		[JsonProperty(PropertyName = "standPhoto")]
-		public Position Photo { get; set; }
-	}
+        [OnDeserialized]
+        internal new void OnDeserializedMethod(StreamingContext context)
+        {
+            Latitude = Math.Round(double.Parse(lat, new CultureInfo("en-US")), 5);
+            Longitude = Math.Round(double.Parse(lon, new CultureInfo("en-US")), 5);
+        }
+    }
 }
+   
 

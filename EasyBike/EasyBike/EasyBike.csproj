@@ -476,6 +476,7 @@
     <EmbeddedResource Include="Assets\Flags\US.png" />
     <EmbeddedResource Include="Assets\Flags\SA.png" />
     <EmbeddedResource Include="Assets\Flags\UA.png" />
+    <EmbeddedResource Include="Assets\Flags\SK.png" />
     <Content Include="Assets\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

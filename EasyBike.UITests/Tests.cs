@@ -58,7 +58,7 @@ namespace EasyBike.UITests
         [Test]
         public async void CheckContractAvailability()
         {
-            var contractToTest = "Siyang";
+            var contractToTest = "Bratislava";
             //http://218.93.33.59:85/map/wfmap/ibikegif.asp?id=1&flag=1
             //var contractToTest = "Madrid";
             SimpleIoc.Default.Register<IConfigService, ConfigService>();
