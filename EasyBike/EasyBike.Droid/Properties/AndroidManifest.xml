@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.5" package="com.easybikeapp" android:versionCode="131081" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.6" package="com.easybikeapp" android:versionCode="131082" android:installLocation="auto">
 	<uses-sdk android:targetSdkVersion="21" android:minSdkVersion="17" />
 	<!-- Google Maps for Android v2 requires OpenGL ES v2 -->
 	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
