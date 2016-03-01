@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="5950MarcMagnin.EasyBike" Publisher="CN=814EE514-E2F9-406F-A32A-08E35ADCBAC2" Version="2015.813.905.3" />
+  <Identity Name="5950MarcMagnin.EasyBike" Publisher="CN=814EE514-E2F9-406F-A32A-08E35ADCBAC2" Version="2015.813.905.5" />
   <mp:PhoneIdentity PhoneProductId="37eb17b6-63c4-4b49-b6b6-1a6b566aa064" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Easy Bike</DisplayName>

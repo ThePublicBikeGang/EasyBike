@@ -203,6 +203,8 @@
     <Language Code="ky-kg" InMinimumRequirementSet="true" />
     <Language Code="lb" InMinimumRequirementSet="true" />
     <Language Code="lb-lu" InMinimumRequirementSet="true" />
+    <Language Code="lo" InMinimumRequirementSet="true" />
+    <Language Code="lo-la" InMinimumRequirementSet="true" />
     <Language Code="lt" InMinimumRequirementSet="true" />
     <Language Code="lt-lt" InMinimumRequirementSet="true" />
     <Language Code="lv" InMinimumRequirementSet="true" />
@@ -362,23 +364,25 @@
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
+    <MainPackageIdentityName>5950MarcMagnin.510254AFBADD</MainPackageIdentityName>
     <MainPackageIdentityName>5950MarcMagnin.MtroParisien</MainPackageIdentityName>
+    <MainPackageIdentityName>5950MarcMagnin.SeedSwap</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9WZDNCRDKNG9">
     <PackageInfo>
       <OsMinVersion>6.3.1.0</OsMinVersion>
       <PackageArchitecture>Arm</PackageArchitecture>
-      <PackageMaxArchitectureVersion>2015.813.905.1</PackageMaxArchitectureVersion>
+      <PackageMaxArchitectureVersion>2015.813.905.3</PackageMaxArchitectureVersion>
     </PackageInfo>
     <PackageInfo>
       <OsMinVersion>6.3.1.0</OsMinVersion>
       <PackageArchitecture>Neutral</PackageArchitecture>
-      <PackageMaxArchitectureVersion>2015.813.905.1</PackageMaxArchitectureVersion>
+      <PackageMaxArchitectureVersion>2015.813.905.3</PackageMaxArchitectureVersion>
     </PackageInfo>
     <PackageInfo>
       <OsMinVersion>6.3.1.0</OsMinVersion>
       <PackageArchitecture>Neutral</PackageArchitecture>
-      <PackageMaxArchitectureVersion>2015.813.905.1</PackageMaxArchitectureVersion>
+      <PackageMaxArchitectureVersion>2015.813.905.3</PackageMaxArchitectureVersion>
     </PackageInfo>
   </PackageInfoList>
 </StoreAssociation>

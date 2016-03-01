@@ -1,4 +1,4 @@
-MainPackage=C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.WinPhone\bin\ARM\Release\EasyBike.WinPhone_2015.813.905.3_ARM.appx
-SymbolPackage=C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.WinPhone\AppPackages\EasyBike.WinPhone_2015.813.905.3_Test\EasyBike.WinPhone_2015.813.905.3_ARM.appxsym
-ResourcePack=C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.WinPhone\bin\ARM\Release\EasyBike.WinPhone_2015.813.905.3_scale-100.appx
-ResourcePack=C:\Users\John\Documents\GitHubVisualStudio\PublicBikes\EasyBike\EasyBike.WinPhone\bin\ARM\Release\EasyBike.WinPhone_2015.813.905.3_scale-140.appx
+MainPackage=C:\Users\marcm_000\Documents\GitHubVisualStudio\EasyBike\EasyBike\EasyBike.WinPhone\bin\ARM\Release\EasyBike.WinPhone_2015.813.905.5_ARM.appx
+SymbolPackage=C:\Users\marcm_000\Documents\GitHubVisualStudio\EasyBike\EasyBike\EasyBike.WinPhone\AppPackages\EasyBike.WinPhone_2015.813.905.5_Test\EasyBike.WinPhone_2015.813.905.5_ARM.appxsym
+ResourcePack=C:\Users\marcm_000\Documents\GitHubVisualStudio\EasyBike\EasyBike\EasyBike.WinPhone\bin\ARM\Release\EasyBike.WinPhone_2015.813.905.5_scale-100.appx
+ResourcePack=C:\Users\marcm_000\Documents\GitHubVisualStudio\EasyBike\EasyBike\EasyBike.WinPhone\bin\ARM\Release\EasyBike.WinPhone_2015.813.905.5_scale-140.appx
