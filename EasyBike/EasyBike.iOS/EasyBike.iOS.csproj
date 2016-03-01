@@ -232,12 +232,6 @@
     </Compile>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="googleiosmaps">
-      <Visible>False</Visible>
-      <Version>1.11.1.0</Version>
-    </XamarinComponentReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\SQLitePCL.raw.0.8.4\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\..\packages\SQLitePCL.raw.0.8.4\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
