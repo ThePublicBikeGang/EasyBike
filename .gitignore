@@ -220,3 +220,4 @@ EasyBike/EasyBike.Droid/MainActivity.cs.orig
 
 # APK
 .apk
+Components/googleiosmaps-1.11.1.0/lib/ios-unified/Google.Maps.dll
