@@ -34,7 +34,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-
+using EasyBike.Resources;
+using Windows.UI.ViewManagement;
 
 namespace EasyBike.WinPhone
 {
@@ -83,7 +84,7 @@ namespace EasyBike.WinPhone
             navigationHelper = new NavigationHelper(this);
             NavigationCacheMode = NavigationCacheMode.Required;
 
-            this.DataContext = SimpleIoc.Default.GetInstance<MainViewModel>();
+            DataContext = SimpleIoc.Default.GetInstance<MainViewModel>();
             _navigationService = SimpleIoc.Default.GetInstance<INavigationService>();
             _notificationService = SimpleIoc.Default.GetInstance<INotificationService>();
             _configService = SimpleIoc.Default.GetInstance<IConfigService>();
@@ -104,6 +105,8 @@ namespace EasyBike.WinPhone
                 MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = _settingsService.Settings.LastLocation.Latitude, Longitude = _settingsService.Settings.LastLocation.Longitude });
                 MapCtrl.ZoomLevel = _settingsService.Settings.LastLocation.ZoomLevel;
             }
+
+           StatusBar.GetForCurrentView().BackgroundOpacity = 0.4;
 #if DEBUG
             //MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 48.8791, Longitude = 2.354 });
             //MapCtrl.Center = new Geopoint(new BasicGeoposition { Latitude = 36.40, Longitude = 119.20 });
@@ -118,9 +121,10 @@ namespace EasyBike.WinPhone
             }
             clusterGenerator = new ClusterGenerator(MapCtrl, Resources["StationTemplate"] as ControlTemplate);
 
-            ServiceLocator.Current.GetInstance<MainViewModel>().FireGoToFavorite += MainPage_FireGoToFavorite;
+            (DataContext as MainViewModel).FireGoToFavorite += MainPage_FireGoToFavorite;
+            (DataContext as MainViewModel).LoadPreviousTile();
 
-            _notificationService.OnNotify += _notificationService_OnNotify;
+           _notificationService.OnNotify += _notificationService_OnNotify;
 
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 
@@ -461,12 +465,11 @@ namespace EasyBike.WinPhone
         #region Inscription de NavigationHelper
 
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
             if (DateTime.Now.Hour > 20 || DateTime.Now.Hour < 5)
                 MapCtrl.ColorScheme = MapColorScheme.Dark;
-
 
             //double lat = 0, lon = 0;
             //try
@@ -1340,21 +1343,16 @@ namespace EasyBike.WinPhone
         {
             var latitude = Math.Round(LastSearchGeopoint.Position.Latitude, 6).ToString(CultureInfo.InvariantCulture);
             var longitude = Math.Round(LastSearchGeopoint.Position.Longitude, 6).ToString(CultureInfo.InvariantCulture);
-            string body = "Check out this location :\r\n";
+            string body = "Check out this location:\r\n";
             if (!string.IsNullOrWhiteSpace(lastAddressFound))
             {
                 body += lastAddressFound + "\r\n";
             }
-            body += "easybike://to/?lt=" + latitude + "&ln=" + longitude;
-
-            body += "\r\n\r\nCan't open this location ? Check out \"EasyBike\" for Windows Phone ";
-            body += "http://www.windowsphone.com/s?appid=" + CurrentApp.AppId;
-
-            body += "\r\n\r\nHave an IPhone ? Check out ";
-            body += "http://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
-
-            body += "\r\n\r\nOtherwise check out ";
-            body += "https://maps.google.com/maps?q=loc:" + latitude + "," + longitude + "&z=17";
+            body += "\r\nUsing EasyBike? Click on the below links:";
+            body += "\r\nAndroid: http://easybikeapp.com/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\n\r\nIPhone: http://maps.apple.com/?q=" + latitude + "," + longitude + "&z=17";
+            body += "\r\n\r\nWindows Phone: easybike://to/?lt=" + latitude + "&ln=" + longitude;
+            body += "\r\n\r\nDon't have EasyBike? Get it now! -> " + StaticResources.WebSiteForStoresURLs;
             return body;
         }
 
@@ -1370,5 +1368,13 @@ namespace EasyBike.WinPhone
             appLaunchedFromProtocolUri = true;
             ShowSearchLocationPoint(LastSearchGeopoint, string.Empty);
         }
+
+
+        public void UpdateOverlay(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainViewModel).SwitchTileCommand.Execute(null);
+            _settingsService.SaveSettingAsync();
+        }
+
     }
 }

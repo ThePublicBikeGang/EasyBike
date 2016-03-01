@@ -21,16 +21,16 @@ namespace EasyBike.Resources
         public static string WindowsPhone81StoreURL = "http://windowsphone.com/s?appid=191ef96d-e185-47d1-80a3-377ebfefa325";
         public static string IPhoneStoreURL = "Coming soon...";
 
-        public static string TilesMapbox = "http://api.tiles.mapbox.com/v4/opentripplannerlow.jcagk4b3/{z}/{x}/{y}.png256?access_token=pk.eyJ1Ijoib3BlbnRyaXBwbGFubmVybG93IiwiYSI6ImRja1VOUjAifQ.1XBo8j8DGWj2EdIsxXGHdQ";
-        public static string TilesMapboxRetina = "http://api.tiles.mapbox.com/v4/opentripplannerhigh.jcah6hla/{z}/{x}/{y}@2x.png256?access_token=pk.eyJ1Ijoib3BlbnRyaXBwbGFubmVyaGlnaCIsImEiOiIyT2xxdVRjIn0.1n9CkukOWpsIgExzdcWfJg";
-        public static string TilesLyrk = "http://tiles.lyrk.org/lr/{z}/{x}/{y}?apikey=ea4f307439474ce99e29662232f80885";
-        public static string TilesMaquest = "http://otile1.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png";
-        public static string TilesMapnik = "http://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
-        public static string TilesCyclemap = "http://a.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png";
+        public static string TilesMapbox = "http://api.tiles.mapbox.com/v4/opentripplannerlow.jcagk4b3/{zoomlevel}/{x}/{y}.png256?access_token=pk.eyJ1Ijoib3BlbnRyaXBwbGFubmVybG93IiwiYSI6ImRja1VOUjAifQ.1XBo8j8DGWj2EdIsxXGHdQ";
+        public static string TilesMapboxRetina = "http://api.tiles.mapbox.com/v4/opentripplannerhigh.jcah6hla/{zoomlevel}/{x}/{y}@2x.png256?access_token=pk.eyJ1Ijoib3BlbnRyaXBwbGFubmVyaGlnaCIsImEiOiIyT2xxdVRjIn0.1n9CkukOWpsIgExzdcWfJg";
+        public static string TilesLyrk = "http://tiles.lyrk.org/lr/{zoomlevel}/{x}/{y}?apikey=ea4f307439474ce99e29662232f80885";
+        public static string TilesMaquest = "http://otile1.mqcdn.com/tiles/1.0.0/osm/{zoomlevel}/{x}/{y}.png";
+        public static string TilesMapnik = "http://a.tile.openstreetmap.org/{zoomlevel}/{x}/{y}.png";
+        public static string TilesCyclemap = "http://a.tile.opencyclemap.org/cycle/{zoomlevel}/{x}/{y}.png";
 
-        public static string TilesGoogleMapNormalName = "Google Map Normal";
+        public static string TilesNormalName = "Normal";
         public static string TilesGoogleMapSatelliteName = "Google Map Satellite";
-        public static string TilesGoogleMapHybridName = "Google Map Hybrid";
+        public static string TilesHybridName = "Hybrid";
         public static string TilesGoogleMapTerrainName = "Google Map Terrain";
         public static string TilesOpenStreetMapName = "Open Street Map";
         public static string TilesOpenCycleMapName = "Open Cycle Map";
@@ -47,8 +47,8 @@ namespace EasyBike.Resources
         {
             TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
             {
-                Name = TilesGoogleMapNormalName,
-                GoogleMapLayer = true
+                Name = TilesNormalName,
+                NativeMapLayer = true
             }));
             TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
             {
@@ -64,8 +64,8 @@ namespace EasyBike.Resources
             }));
             TilesList.AddLast(new LinkedListNode<TileContainer>(new TileContainer
             {
-                Name = TilesGoogleMapHybridName,
-                GoogleMapLayer = true
+                Name = TilesHybridName,
+                NativeMapLayer = true
             }));
            
            
@@ -96,7 +96,7 @@ namespace EasyBike.Resources
         public string TilesUrl;
         public float MaxZoom;
         public int TileSize = 256;
-        public bool GoogleMapLayer = false;
+        public bool NativeMapLayer = false;
     }
 
 

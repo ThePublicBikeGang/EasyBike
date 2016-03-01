@@ -27,6 +27,7 @@ namespace EasyBike.WinPhone
             SimpleIoc.Default.Register<INavigationService>(() => nav);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<ILocalisationService, LocalisationService>();
+            SimpleIoc.Default.Register<ITileService, TileService>();
         }
     }
 

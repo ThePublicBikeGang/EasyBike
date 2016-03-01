@@ -117,6 +117,7 @@
     <Compile Include="Models\Contracts\StationModelBase.cs" />
     <Compile Include="Services\IContractService.cs" />
     <Compile Include="Models\Station.cs" />
+    <Compile Include="Services\ITileService.cs" />
     <Compile Include="Services\Settings\ISettingsService.cs" />
     <Compile Include="Services\Settings\SettingsModel.cs" />
     <Compile Include="Services\Storage\IStorageService.cs" />

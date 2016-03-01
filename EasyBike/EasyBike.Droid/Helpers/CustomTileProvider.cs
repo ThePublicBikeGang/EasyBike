@@ -18,7 +18,7 @@ namespace EasyBike.Droid.Helpers
         {
             try
             {
-                return new URL(baseUrl.Replace("{z}", "" + zoom).Replace("{x}", "" + x)
+                return new URL(baseUrl.Replace("{zoomlevel}", "" + zoom).Replace("{x}", "" + x)
                         .Replace("{y}", "" + y));
             }
             catch (MalformedURLException e)

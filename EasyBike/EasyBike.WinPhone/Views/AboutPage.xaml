@@ -12,7 +12,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
     <ScrollViewer>
-        <Grid Margin="20,20,20,0">
+        <Grid Margin="20,32,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
@@ -23,7 +23,7 @@
                 </TransitionCollection>
             </Grid.ChildrenTransitions>
 
-            <TextBlock x:Name="Title" Grid.Row="0" Text="About this app" 
+            <TextBlock x:Name="Title" Grid.Row="0" Text="About EasyBike" 
      		Style="{StaticResource HeaderTextBlockStyle}" FontFamily="Global User Interface" FontSize="53.333"/>
 
             <StackPanel x:Name="stackPanel" Grid.Row="1" Margin="0">
@@ -32,8 +32,10 @@
                         <EntranceThemeTransition/>
                     </TransitionCollection>
                 </StackPanel.ChildrenTransitions>
-                <RichTextBlock VerticalAlignment="Top" Margin="0,25,22,0" d:LayoutOverrides="Width">
+                <RichTextBlock VerticalAlignment="Top" Margin="0,10,22,0" d:LayoutOverrides="Width">
                     <Paragraph FontSize="20.333">
+                        <Run Text="EasyBike is an open source and cross platform project for public bikes."/>
+                        <LineBreak/>
                         <Run Text="Created by"/>
                         <Hyperlink NavigateUri="https://github.com/MarcMagnin"  Foreground="{ThemeResource PhoneAccentBrush}">
                             <Run Text="Marc Magnin"/>
@@ -43,44 +45,41 @@
                             <Run Text="Public Bike Gang"/>
                         </Hyperlink>
                     </Paragraph>
+            
                     <Paragraph FontSize="18.333">
-                        <Run Text="You'll find the open source cross platform project on"/>
-                        <Hyperlink NavigateUri="https://github.com/ThePublicBikeGang/EasyBike"  Foreground="{ThemeResource PhoneAccentBrush}">
-                            <Run Text="Git"/>
-                        </Hyperlink>
-                    </Paragraph>
-
-                    <Paragraph FontSize="18.333">
-                        <Run Text="Special thanks to Florie for her help and patience waiting for me coding hours and hours."/>
-                    </Paragraph>
-                </RichTextBlock>
-                <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0">
-                    <Paragraph FontSize="18.333">
+             
                         <Run Text="Any suggestions ?"/>
-                    </Paragraph>
-                    <Paragraph FontSize="18.333">
+                        <LineBreak/>
                         <Run  Text="Please contact us at"/>
                         <Hyperlink NavigateUri="mailto:easybike@outlook.fr"  Foreground="{ThemeResource PhoneAccentBrush}">
                             <Run Text="easybike@outlook.fr"/>
                         </Hyperlink>
+                        <LineBreak/>
 
-                    </Paragraph>
-                    <Paragraph FontSize="18.333">
-                        <Run Text="Twitter: "/>
+                        <Run Text="Twitter:"/>
                         <Hyperlink NavigateUri="{Binding Twitter}"  Foreground="{ThemeResource PhoneAccentBrush}">
                             <Run Text="{Binding Twitter}"/>
                         </Hyperlink>
-
-
-                    </Paragraph>
-                    <Paragraph FontSize="18.333">
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Run Text="You'll find the open source cross platform project on"/>
+                        <Hyperlink NavigateUri="https://github.com/ThePublicBikeGang/EasyBike"  Foreground="{ThemeResource PhoneAccentBrush}">
+                            <Run Text="Git"/>
+                        </Hyperlink>
+                        <LineBreak/>
                         <Run  Text="If you feel that you want to be part of it"/>
                         <Hyperlink NavigateUri="https://github.com/ThePublicBikeGang"  Foreground="{ThemeResource PhoneAccentBrush}">
                             <Run Text="Join !"/>
                         </Hyperlink>
 
+                  
+               
+                       
                     </Paragraph>
 
+                    <Paragraph FontSize="18.333">
+                        <Run Text="A special thanks to Florie for her help and patience waiting for me coding hours and hours."/>
+                    </Paragraph>
 
                 </RichTextBlock>
                 <Button Click="mailButton_Click" VerticalAlignment="Stretch" Style="{StaticResource SimpleButton}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Margin="0,1,0,0" Visibility="Collapsed" FontFamily="Global User Interface">
@@ -100,7 +99,7 @@
                         <TextBlock TextWrapping="Wrap" Text="easybike@outlook.fr" VerticalAlignment="Center" Margin="22,0,0,0"/>
                     </StackPanel>
                 </Button>
-                <TextBlock Text="There is nothing such a warmfull review, this is the fuel of the hard work." FontSize="18.33" Margin="0,70,0,0" TextWrapping="Wrap"/>
+                <TextBlock Text="There is nothing such a warmfull review, this is the fuel of the hard work." FontSize="18.33" Margin="0,10,0,0" TextWrapping="Wrap"/>
 
                 <Button Click="rateButton_Click" VerticalAlignment="Stretch" Style="{StaticResource SimpleButton}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Margin="0,10,0,0" FontFamily="Global User Interface">
                     <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
@@ -117,13 +116,13 @@
                 <RichTextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="0,25,0,18">
                     <Paragraph FontSize="18.333">
                         <Run FontFamily="Segoe UI Symbol" Text="&#xE0A5;" Foreground="#FFFF2CD9"/>
-                        <Run Text=" Like it ?"/>
+                        <Run Text=" You like it ?"/>
                     </Paragraph>
 
                     <Paragraph FontSize="18.333">
-                        <Run Text="This app will never get any ads. Economy should change and advertising is not the right solution. If you like this app and think that the hard work is worth it, feel free to make a"/>
+                        <Run Text="This app will never get any ads. Economy must change and advertising is not the a solution. If you like this app and think that the hard work is worth it, feel free to"/>
                         <Hyperlink NavigateUri="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=marc%2emagnin%40gmail%2ecom&amp;lc=FR&amp;item_name=Marc%20Magnin&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"  Foreground="{ThemeResource PhoneAccentBrush}">
-                            <Run Text="donation"/>
+                            <Run Text="offer us a beer"/>
                         </Hyperlink>
 
                     </Paragraph>

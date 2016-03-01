@@ -505,7 +505,7 @@ namespace EasyBike.Droid
             _searchProgressBar.Visibility = ViewStates.Invisible;
         }
 
-        private string _currentMapOverlay = StaticResources.TilesGoogleMapNormalName;
+        private string _currentMapOverlay = StaticResources.TilesNormalName;
         private void TileButton_Click(object sender, EventArgs e)
         {
             UpdateOverlay();
@@ -1757,7 +1757,7 @@ namespace EasyBike.Droid
         {
             if (string.IsNullOrWhiteSpace(_settingsService.MapTile))
             {
-                _settingsService.MapTile = StaticResources.TilesGoogleMapNormalName;
+                _settingsService.MapTile = StaticResources.TilesNormalName;
                 return;
             }
 
@@ -1800,9 +1800,9 @@ namespace EasyBike.Droid
             }
 
             // if google map, just remove the previous overlay 
-            if (_selectedTile.Value.GoogleMapLayer)
+            if (_selectedTile.Value.NativeMapLayer)
             {
-                if (_selectedTile.Value.Name == StaticResources.TilesGoogleMapHybridName)
+                if (_selectedTile.Value.Name == StaticResources.TilesHybridName)
                 {
                     _map.MapType = GoogleMap.MapTypeHybrid;
                 }

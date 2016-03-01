@@ -8,6 +8,9 @@ using EasyBike.Models;
 using EasyBike.Notification;
 using System;
 using EasyBike.Models.Favorites;
+using EasyBike.Resources;
+using System.Collections.Generic;
+using EasyBike.Services;
 
 namespace EasyBike.ViewModels
 {
@@ -21,10 +24,12 @@ namespace EasyBike.ViewModels
         private readonly ISettingsService _settingsService;
         private readonly INotificationService _notificationService;
         private readonly IContractService _contractService;
+        private readonly ITileService _tileService;
         private readonly IDialogService _dialogService;
         public event EventHandler FireGoToFavorite;
 
-        public MainViewModel(IDialogService dialogService, INotificationService notificationService, ISettingsService settingsService, INavigationService navigationService, IConfigService configService, IStorageService storageService)
+        public MainViewModel(IDialogService dialogService, INotificationService notificationService, ISettingsService settingsService, INavigationService navigationService, IConfigService configService, IStorageService storageService,
+                   ITileService tileService)
         {
             _navigationService = navigationService;
             _configService = configService;
@@ -32,6 +37,7 @@ namespace EasyBike.ViewModels
             _settingsService = settingsService;
             _notificationService = notificationService;
             _dialogService = dialogService;
+            _tileService = tileService;
 
             Init();
             //if (App.LocalSettings.Values["Localization"] != null && (bool)App.LocalSettings.Values["Localization"] == false)
@@ -49,7 +55,6 @@ namespace EasyBike.ViewModels
         private async void Init()
         {
             MapServiceToken = (await _configService.GetConfigAsync()).WindowsPhoneMapServiceToken;
-            await SimpleIoc.Default.GetInstance<IContractService>().GetContractsAsync().ConfigureAwait(false);
         }
 
         public void GoToFavorite(Favorite favorite)
@@ -58,13 +63,62 @@ namespace EasyBike.ViewModels
         }
 
 
+        public LinkedListNode<TileContainer> SelectedTile;
+        private string _selectedTileName;
+        /// <summary>
+        /// Load the previous map tile choosen during last launch of the app
+        /// </summary>
+        public void LoadPreviousTile()
+        {
+            if (string.IsNullOrWhiteSpace(_settingsService.MapTile))
+            {
+                _settingsService.MapTile = StaticResources.TilesNormalName;
+                return;
+            }
+
+            SelectedTile = StaticResources.TilesList.First;
+            if (SelectedTile.Value.Name != _settingsService.MapTile)
+            {
+                do
+                {
+                    SelectedTile = SelectedTile.Next;
+                    if (SelectedTile == null)
+                    {
+                        break;
+                    }
+                }
+                while (SelectedTile.Value.Name != _settingsService.MapTile);
+            }
+
+            _tileService.UpdateTileOverlay(this, true);
+        }
+
+        private string _tileName;
+        public string TileName
+        {
+            get { return _tileName; }
+            set
+            {
+                _tileName = value;
+                RaisePropertyChanged(nameof(TileName));
+            }
+        }
+
+        private string _visualState;
+        public string VisualState
+        {
+            get { return _visualState; }
+            set
+            {
+                _visualState = value;
+                RaisePropertyChanged(nameof(VisualState));
+            }
+        }
+
+
         private bool firstLoad;
         private RelayCommand mainPageLoadedCommand;
-        public RelayCommand MainPageLoadedCommand
-        {
-            get
-            {
-                return mainPageLoadedCommand
+        public RelayCommand MainPageLoadedCommand => mainPageLoadedCommand
                        ?? (mainPageLoadedCommand = new RelayCommand(
                            async () =>
                            {
@@ -86,8 +140,6 @@ namespace EasyBike.ViewModels
                                    firstLoad = true;
                                }
                            }));
-            }
-        }
 
         public RelayCommand ShowContractsCommand
         {
@@ -225,6 +277,20 @@ namespace EasyBike.ViewModels
                            () =>
                            {
 
+                           }));
+            }
+        }
+
+        private RelayCommand switchTileCommand;
+        public RelayCommand SwitchTileCommand
+        {
+            get
+            {
+                return switchTileCommand
+                       ?? (switchTileCommand = new RelayCommand(
+                           () =>
+                           {
+                               _tileService.UpdateTileOverlay(this);
                            }));
             }
         }

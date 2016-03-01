@@ -253,7 +253,7 @@
      <Grid Background="{StaticResource AppBarItemBackgroundThemeBrush}">
     
 		<ListView ItemsSource="{Binding}" 
-     		ItemTemplate="{StaticResource ItemDataTemplate}" SelectionMode="None" Margin="20,0" ItemContainerStyle="{StaticResource ListViewItemStyle1}">
+     		ItemTemplate="{StaticResource ItemDataTemplate}" SelectionMode="None" Margin="20,32,20,0" ItemContainerStyle="{StaticResource ListViewItemStyle1}">
      		<ListView.HeaderTemplate>
      			<DataTemplate>
      				<TextBlock 

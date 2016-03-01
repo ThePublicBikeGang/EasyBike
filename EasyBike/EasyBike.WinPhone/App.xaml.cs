@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
@@ -113,6 +114,8 @@ namespace EasyBike.WinPhone
                     var dialog = new MessageDialog("Unable to find the passed location :(");
                     dialog.ShowAsync();
                 }
+
+               
                 // Ensure the current window is active
                 Window.Current.Activate();
 
@@ -194,7 +197,8 @@ namespace EasyBike.WinPhone
                     throw new Exception("Failed to create initial page");
                 }
             }
-
+            // use the full windows size (nice with transparent status and bottom bar)
+            ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
             // Ensure the current window is active
             Window.Current.Activate();
         }

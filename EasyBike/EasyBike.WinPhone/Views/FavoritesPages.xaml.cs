@@ -1,6 +1,4 @@
-﻿using GalaSoft.MvvmLight.Ioc;
-using EasyBike.ViewModels;
-using EasyBike.WinPhone.Common;
+﻿using EasyBike.WinPhone.Common;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 

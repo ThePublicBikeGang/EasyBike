@@ -382,7 +382,7 @@
         </CommandBar>
     </Page.BottomAppBar>
     
-    <Grid x:Name="RootLayout">
+    <Grid x:Name="RootLayout" Margin="0,32,0,0">
         <Grid.Transitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
