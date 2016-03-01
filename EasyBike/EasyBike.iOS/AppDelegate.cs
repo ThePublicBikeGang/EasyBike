@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using Google.Maps;
 using UIKit;
 
 namespace EasyBike.iOS
@@ -17,9 +18,10 @@ namespace EasyBike.iOS
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
-			return true;
+            // Override point for customization after application launch.
+            // If not required for your application you can safely delete this method
+            MapServices.ProvideAPIKey("AIzaSyBThqscLD8OiAwgEAj_0Q99oJ5qkXZ6sFQ");
+            return true;
 		}
 
 		public override void OnResignActivation (UIApplication application)

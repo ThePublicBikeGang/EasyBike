@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="googleiosmaps" is-shell="true">
+  <name>Google Maps for iOS</name>
+  <publisher>Xamarin Inc.</publisher>
+  <publisher-url>http://xamarin.com</publisher-url>
+  <docs-url>https://developers.google.com/maps/documentation/ios/</docs-url>
+  <version>1.11.1.0</version>
+  <summary>Add custom markers, styled maps, 3D buildings, indoor floor plans, street view, satellite imagery, and more to your iOS app.</summary>
+  <packages>
+    <package id="Xamarin.Google.iOS.Maps" version="1.11.1.0" framework="ios-unified" />
+  </packages>
+  <samples>
+    <sample id="GoogleMapsSample">
+      <name>Google Maps Sample</name>
+      <summary>Google Maps Sample</summary>
+    </sample>
+    <sample id="GoogleMapsAdvSample">
+      <name>Google Maps Advance Sample</name>
+      <summary>Google Maps Advance Sample</summary>
+    </sample>
+  </samples>
+</component>
