@@ -1,5 +1,6 @@
 ﻿using CoreGraphics;
 using Google.Maps;
+using IOSBindings;
 using System;
 
 using UIKit;
@@ -12,7 +13,7 @@ namespace EasyBike.iOS
 		{
 		}
 
-
+        
         MapView mapView;
 
         public override void LoadView()
@@ -23,8 +24,11 @@ namespace EasyBike.iOS
                                                      zoom: 6);
             mapView = MapView.FromCamera(CGRect.Empty, camera);
             mapView.MyLocationEnabled = true;
+            mapView.Settings.CompassButton = true;
+            mapView.Settings.MyLocationButton = true;
 
             View = mapView;
+
         }
         public override void ViewWillAppear(bool animated)
         {

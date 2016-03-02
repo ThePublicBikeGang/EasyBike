@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMapsUtility", "Google
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemTintBar", "SystemTintBar\SystemTintBar.csproj", "{614216EE-A109-4D97-8633-44033E352280}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOSBindings", "IOSBindings\IOSBindings.csproj", "{AD9DC558-19D6-4B01-A170-D1838496C749}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -355,6 +357,46 @@ Global
 		{614216EE-A109-4D97-8633-44033E352280}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{614216EE-A109-4D97-8633-44033E352280}.Release|x86.ActiveCfg = Release|Any CPU
 		{614216EE-A109-4D97-8633-44033E352280}.Release|x86.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|ARM.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Ad-Hoc|x86.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|ARM.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|iPhoneSimulator.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.AppStore|x86.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|ARM.Build.0 = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Debug|x86.Build.0 = Debug|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|ARM.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|iPhone.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|x86.ActiveCfg = Release|Any CPU
+		{AD9DC558-19D6-4B01-A170-D1838496C749}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

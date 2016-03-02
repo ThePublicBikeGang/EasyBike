@@ -20,7 +20,7 @@ namespace EasyBike.iOS
 		{
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
-            MapServices.ProvideAPIKey("AIzaSyBThqscLD8OiAwgEAj_0Q99oJ5qkXZ6sFQ");
+            MapServices.ProvideAPIKey("AIzaSyBbU-5JsxSldPSTWWF2062wll8p7URY-UA");
             return true;
 		}
 

@@ -107,6 +107,9 @@
       <HintPath>..\..\packages\Xamarin.Google.iOS.Maps.1.11.1.0\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="IOSBindings">
+      <HintPath>..\..\IOSBindings\bin\Debug\IOSBindings.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.Runtime" />
@@ -221,7 +224,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContractsActivity.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Services\LocalisationService.cs" />
@@ -231,6 +233,13 @@
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Views\ContractsViewController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="googleiosmaps">
+      <Visible>False</Visible>
+      <Version>1.11.1.0</Version>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\SQLitePCL.raw.0.8.4\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\..\packages\SQLitePCL.raw.0.8.4\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
