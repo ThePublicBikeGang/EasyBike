@@ -1,6 +1,7 @@
 ﻿using CoreGraphics;
+using EasyBike.ViewModels;
+using GalaSoft.MvvmLight.Helpers;
 using Google.Maps;
-using IOSBindings;
 using System;
 
 using UIKit;
@@ -13,7 +14,16 @@ namespace EasyBike.iOS
 		{
 		}
 
-        
+        public MainViewModel Vm
+        {
+            get
+            {
+                return Application.Locator.Main;
+            }
+        }
+
+
+        //MLPAutoCompleteTextField test = new MLPAutoCompleteTextField();
         MapView mapView;
 
         public override void LoadView()
@@ -28,6 +38,8 @@ namespace EasyBike.iOS
             mapView.Settings.MyLocationButton = true;
 
             View = mapView;
+
+         
 
         }
         public override void ViewWillAppear(bool animated)
@@ -44,10 +56,11 @@ namespace EasyBike.iOS
         public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			// Perform any additional setup after loading the view, typically from a nib.
-		}
+            // Perform any additional setup after loading the view, typically from a nib.
+            ContractButton.SetCommand("TouchDown", Vm.ShowContractsCommand);
+        }
 
-		public override void DidReceiveMemoryWarning ()
+        public override void DidReceiveMemoryWarning ()
 		{
 			base.DidReceiveMemoryWarning ();
 			// Release any cached data, images, etc that aren't in use.

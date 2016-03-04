@@ -11,18 +11,26 @@ using UIKit;
 
 namespace EasyBike.iOS
 {
-	[Register ("ViewController")]
-	partial class ViewController
+	[Register ("ContractViewController")]
+	partial class ContractViewController
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton ContractButton { get; set; }
+		UITableViewController dataSource { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITableViewController @delegate { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (ContractButton != null) {
-				ContractButton.Dispose ();
-				ContractButton = null;
+			if (dataSource != null) {
+				dataSource.Dispose ();
+				dataSource = null;
+			}
+			if (@delegate != null) {
+				@delegate.Dispose ();
+				@delegate = null;
 			}
 		}
 	}

@@ -16,17 +16,7 @@ namespace EasyBike.iOS
             {
                 if (_locator == null)
                 {
-                    // First time initialization
-                    var nav = new NavigationService();
-                    //nav.Configure(ViewModelLocator.ContractsPageKey, typeof(ContractsActivity));
-                    //nav.Configure(ViewModelLocator.AboutPageKey, typeof(AboutActivity));
-                    //nav.Configure(ViewModelLocator.FavoritesPageKey, typeof(FavoritesActivity));
-                    //nav.Configure(ViewModelLocator.HowToPageKey, typeof(TutorialActivity));
-
-                    SimpleIoc.Default.Register<INavigationService>(() => nav);
-                    SimpleIoc.Default.Register<IDialogService, DialogService>();
-                    SimpleIoc.Default.Register<ILocalisationService, LocalisationService>();
-
+            
                     _locator = new ViewModelLocator();
                 }
 

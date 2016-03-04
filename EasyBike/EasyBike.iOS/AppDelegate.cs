@@ -1,5 +1,11 @@
-﻿using Foundation;
+﻿using EasyBike.iOS.Services;
+using EasyBike.Services;
+using EasyBike.ViewModels;
+using Foundation;
+using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
 using Google.Maps;
+using Microsoft.Practices.ServiceLocation;
 using UIKit;
 
 namespace EasyBike.iOS
@@ -16,11 +22,22 @@ namespace EasyBike.iOS
 			set;
 		}
 
-		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
+        public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
             MapServices.ProvideAPIKey("AIzaSyBbU-5JsxSldPSTWWF2062wll8p7URY-UA");
+
+            var nav = new NavigationService();
+            nav.Configure(ViewModelLocator.ContractsPageKey, "Contracts");
+
+            nav.Initialize(Window.RootViewController as UINavigationController);
+
+            SimpleIoc.Default.Register<INavigationService>(() => nav);
+            SimpleIoc.Default.Register<IDialogService, DialogService>();
+            SimpleIoc.Default.Register<ILocalisationService, LocalisationService>();
+            SimpleIoc.Default.Register<ITileService, TileService>();
+
             return true;
 		}
 
