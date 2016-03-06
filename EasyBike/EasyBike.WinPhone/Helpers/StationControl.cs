@@ -205,7 +205,7 @@ namespace EasyBike.WinPhone.Helpers
                 return;
             station.IsUiRefreshNeeded = false;
 
-            if(station.Status == false)
+            if (station.Status == false)
             {
                 station.AvailableStr = "!";
                 return;
@@ -215,10 +215,11 @@ namespace EasyBike.WinPhone.Helpers
             {
                 if (station.ImageAvailable != null)
                 {
-                    try
+                    using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
                     {
-                        using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                        try
                         {
+
                             var image = new BitmapImage();
                             image.DecodePixelHeight = 15;
                             await stream.WriteAsync(((byte[])station.ImageAvailable).AsBuffer());
@@ -226,8 +227,9 @@ namespace EasyBike.WinPhone.Helpers
                             await image.SetSourceAsync(stream);
                             station.ImageNumber = image;
                         }
+                        catch { }
                     }
-                    catch { }
+
                 }
                 else
                 {

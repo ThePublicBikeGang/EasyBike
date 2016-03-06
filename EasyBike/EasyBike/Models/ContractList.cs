@@ -150,6 +150,11 @@ namespace EasyBike.Models
                     // liste des cartes chinoises : http://www.publicbike.net/en/c/param-qual.aspx?param=17
                     new PublicBicycleContract{Name = "Anqiu", StationsUrl="http://218.93.33.59:85/map/wfmap/aqibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/wfmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Bin Zhou", StationsUrl="http://map.crsud.cn/bz/map/ibikestation.asp", AvailabilityUrl = "http://map.crsud.cn/bz/map/ibikegif.asp?id={0}&flag={1}"},
+
+                    // down
+                    //new PublicBicycleContract{Name = "Changshu", StationsUrl="http://www.csbike01.com/csmap/ibikestation.asp", AvailabilityUrl = "http://www.csbike01.com/csmap/ibikestation.asp?id={0}&flag={1}"},
+
+
                     /// http://www.bike0555.com/index.asp    
                     new DangtuContract{Name = "Dangtu", AvailabilityUrl = "http://218.93.33.59:85/map/maanshanmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Fuyang", StationsUrl="http://218.93.33.59:85/map/fuyangmap/ibikestation.asp", AvailabilityUrl = "http://218.93.33.59:85/map/fuyangmap/ibikegif.asp?id={0}&flag={1}"},
@@ -179,6 +184,7 @@ namespace EasyBike.Models
                     new PublicBicycleContract{Name = "Shenmu", StationsUrl = "http://www.bike912.com/smmap/ibikestation.asp",AvailabilityUrl = "http://www.bike912.com/smmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Yangzhong", StationsUrl ="http://218.93.33.59:85/map/zjmap/ibikestation.asp",  AvailabilityUrl = "http://218.93.33.59:85/map/zjmap/ibikegif.asp?id={0}&flag={1}"},
                     new PublicBicycleContract{Name = "Yichun", StationsUrl ="http://218.93.33.59:85/map/yichunmap/ibikestation.asp",AvailabilityUrl = "http://218.93.33.59:85/map/yichunmap/ibikegif.asp?id={0}&flag={1}"},
+                    new PublicBicycle2Contract{Name = "Zhongshan", StationsUrl="http://www.zsbicycle.com/zsbicycle/zsmap/ibikestation.asp", AvailabilityUrl = "http://www.zsbicycle.com/zsbicycle/zsmap/ibikestation.asp?id={0}&flag={1}"},
                 }
             },            
             #endregion

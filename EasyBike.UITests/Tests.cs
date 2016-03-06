@@ -1,11 +1,11 @@
-﻿using NUnit.Framework;
-using EasyBike.Models;
+﻿using EasyBike.Models;
 using EasyBike.Models.Storage;
 using GalaSoft.MvvmLight.Ioc;
 using EasyBike.Config;
 using System.Diagnostics;
 using System;
 using System.Linq;
+using NUnit.Framework;
 
 namespace EasyBike.UITests
 {
@@ -58,7 +58,7 @@ namespace EasyBike.UITests
         [Test]
         public async void CheckContractAvailability()
         {
-            var contractToTest = "Bratislava";
+            var contractToTest = "Zhongshan";
             //http://218.93.33.59:85/map/wfmap/ibikegif.asp?id=1&flag=1
             //var contractToTest = "Madrid";
             SimpleIoc.Default.Register<IConfigService, ConfigService>();
