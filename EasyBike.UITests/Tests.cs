@@ -58,7 +58,11 @@ namespace EasyBike.UITests
         [Test]
         public async void CheckContractAvailability()
         {
+<<<<<<< b9d4377885a5c2970d316d4c3fe71127902194fd
             var contractToTest = "Zhongshan";
+=======
+            var contractToTest = "Nottingham";
+>>>>>>> added Northampton, Nottingham and Oxford (United Kingdom)
             //http://218.93.33.59:85/map/wfmap/ibikegif.asp?id=1&flag=1
             //var contractToTest = "Madrid";
             SimpleIoc.Default.Register<IConfigService, ConfigService>();

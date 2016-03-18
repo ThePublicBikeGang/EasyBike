@@ -16,8 +16,17 @@ namespace EasyBike.Models
     {
         public static List<Country> Countries
         {
-            get { return countries; }
+            get
+            {
+                return countries;
+            }
+
+            set
+            {
+                countries = value;
+            }
         }
+
         private static List<Country> countries = new List<Country>()
         {
             #region Australia
@@ -541,14 +550,14 @@ namespace EasyBike.Models
 
 			#region Slovakia
 			new Country
-			{
-				Name = "Slovakia",
-				ISO31661 = "SK",
-				Contracts = new List<Contract>()
-				{
-					new OpenSourceBikeShareContract{Name = "Bratislava"},
-				}
-			},
+            {
+                Name = "Slovakia",
+                ISO31661 = "SK",
+                Contracts = new List<Contract>()
+                {
+                    new OpenSourceBikeShareContract{Name = "Bratislava"},
+                }
+            },
 			#endregion 
 
             #region Slovenia
@@ -716,6 +725,10 @@ namespace EasyBike.Models
                     new NextBikeContract{Name = "Bath", Id= "236"},
                     new NextBikeContract{Name = "Glasgow", Id= "237"},
                     new TflContract{Name = "London"},
+                    // https://www.cycleconnect.co.uk/
+                    new OxonbikesContract{Name = "Northampton", ServiceProvider="Cycle CoNNect", StationsUrl="https://www.cycleconnect.co.uk/"},
+                    new CitycardCyclesContract{Name = "Nottingham"},
+                    new OxonbikesContract{Name = "Oxford"},
                     new NextBikeContract{Name = "Stirling", Id= "243"},
                 }
             },
