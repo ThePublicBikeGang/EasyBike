@@ -5,6 +5,16 @@
 The objective of the project is to store on a shared library all the integration logic of public bike services.
 All services can be easily accessed with common interfaces.
 
+## Advantages over apps based on centralised API
+The biggest advantage of EasyBike over classical apps that uses a central API is the internal virtualization of the data.
+Basically the application remains a client accessing to the data, but through a virtualization layer.
+
+- Data are the most up to date since they are from the source (a level of caching less, this is important when that's the rush to find a bike)
+- No bottlenecks, calls are decentralized
+- No hosting / Additional server maintenance as they are provided by the services already in place.
+- Better resilience of the application in general: if an api dies others are not affected. Caching is not that important when you seek for bikes as long as the app provides the stations locations offline.
+- Better performances in general: a person in China on a 3G network get data with a considerable extra time via a European or American server rather than one in China or his own city.
+
 ## Get the app:
 https://github.com/ThePublicBikeGang/EasyBike/wiki/Store-links
 
