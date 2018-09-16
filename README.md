@@ -1,4 +1,4 @@
-## (Hey visitor, I'm afraid that I'm quite busy lately so I have no more time for this awesome project but if you want to keep it up send me an email at marc.magnin@gmail.com and I coukd help getting up and running on the project)
+## (Hey visitor, I'm afraid that I'm quite busy lately so I have no more time for this awesome project but if you want to keep it up send me an email at marc.magnin@gmail.com and I could help you getting up and running on the project)
 
 ## EasyBike: Open source and cross platform project for public bikes that covers more than 300 cities. Available on Android and Windows Phone. Join the team !
 
